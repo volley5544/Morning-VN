@@ -1,79 +1,26 @@
 {
   "project_info": {
-    "project_number": "999302187733",
-    "project_id": "srisawad-mobile-app-qa-360402",
-    "storage_bucket": "srisawad-mobile-app-qa-360402.appspot.com"
+    "project_number": "171972195219",
+    "project_id": "arunsawad-vn-application",
+    "storage_bucket": "arunsawad-vn-application.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:999302187733:android:1b57104781f8625967305c",
+        "mobilesdk_app_id": "1:171972195219:android:77570c0232a6dc4f156e66",
         "android_client_info": {
-          "package_name": "com.example.mobile_application_srisawad"
+          "package_name": "com.srisawad.arunsawadvn"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "999302187733-4ous91vum7ujngtefeat2551jg942q79.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAPgXT3ovD0LivVa6Zjc2BEf2lYse-JwUU"
+          "current_key": "AIzaSyD_0GJ5y4orJ4F9gNGcS9-clssCg3z9l5s"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "999302187733-4ous91vum7ujngtefeat2551jg942q79.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "999302187733-9vtcct2ni105irsa6ffeiot60gkisicl.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.interm.mobileApplicationSrisawad"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:999302187733:android:d568e72be43c562c67305c",
-        "android_client_info": {
-          "package_name": "com.interm.mobile_application_srisawad"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "999302187733-4ous91vum7ujngtefeat2551jg942q79.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAPgXT3ovD0LivVa6Zjc2BEf2lYse-JwUU"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "999302187733-4ous91vum7ujngtefeat2551jg942q79.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "999302187733-9vtcct2ni105irsa6ffeiot60gkisicl.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.interm.mobileApplicationSrisawad"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

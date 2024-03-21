@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-	<dict>
-		<key>CLIENT_ID</key>
-		<string>999302187733-ma69qmrc81rn805lphqd29srj25g1qda.apps.googleusercontent.com</string>
-		<key>REVERSED_CLIENT_ID</key>
-		<string>com.googleusercontent.apps.999302187733-ma69qmrc81rn805lphqd29srj25g1qda</string>
-		<key>API_KEY</key>
-		<string>AIzaSyCsrtqHeV-1Q0mnT0Q8fahCHnkEvhAt2kw</string>
-		<key>GCM_SENDER_ID</key>
-		<string>999302187733</string>
-		<key>PLIST_VERSION</key>
-		<string>1</string>
-		<key>BUNDLE_ID</key>
-		<string>com.srisawad.mobileApplication</string>
-		<key>PROJECT_ID</key>
-		<string>srisawad-mobile-app-qa-360402</string>
-		<key>STORAGE_BUCKET</key>
-		<string>srisawad-mobile-app-qa-360402.appspot.com</string>
-		<key>IS_ADS_ENABLED</key>
-		<false></false>
-		<key>IS_ANALYTICS_ENABLED</key>
-		<false></false>
-		<key>IS_APPINVITE_ENABLED</key>
-		<true></true>
-		<key>IS_GCM_ENABLED</key>
-		<true></true>
-		<key>IS_SIGNIN_ENABLED</key>
-		<true></true>
-		<key>GOOGLE_APP_ID</key>
-		<string>1:999302187733:ios:fd7c443e3e69422367305c</string>
-	</dict>
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyA7AdgDTcIY0XsZ6BpMalkwKWIBcdeUBqs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>171972195219</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.srisawad.arunsawadvn</string>
+	<key>PROJECT_ID</key>
+	<string>arunsawad-vn-application</string>
+	<key>STORAGE_BUCKET</key>
+	<string>arunsawad-vn-application.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:171972195219:ios:bf8783d497623df0156e66</string>
+</dict>
 </plist>

@@ -1,1 +1,0 @@
-/Users/wattanaisangsoonthorn/FlutterProject/srisawad_mobile_app/srisawad-mobile-application-ui/android/app/src/main/kotlin/com/example/mobile_application_srisawad/MainActivity.kt
