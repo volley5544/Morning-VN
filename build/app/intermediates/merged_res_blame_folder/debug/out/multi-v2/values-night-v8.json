@@ -1,0 +1,45 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/wattanaisangsoonthorn/GopoApp/Morning-VN/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "map": [
+                {
+                    "source": "/Users/wattanaisangsoonthorn/GopoApp/Morning-VN/android/app/src/main/res/values-night/styles.xml",
+                    "from": {
+                        "startLines": "3,18",
+                        "startColumns": "4,4",
+                        "startOffsets": "172,1075",
+                        "endLines": "11,20",
+                        "endColumns": "12,12",
+                        "endOffsets": "733,1239"
+                    },
+                    "to": {
+                        "startLines": "2,11",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,621",
+                        "endLines": "10,13",
+                        "endColumns": "12,12",
+                        "endOffsets": "616,785"
+                    }
+                },
+                {
+                    "source": "/Users/wattanaisangsoonthorn/.gradle/caches/transforms-3/4d0e3472664bc83f07f1148a31bb6462/transformed/appcompat-1.2.0/res/values-night-v8/values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593,687",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "120,204,288,384,486,588,682,771"
+                    },
+                    "to": {
+                        "startLines": "14,15,16,17,18,19,20,21",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "790,860,944,1028,1124,1226,1328,1422",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "855,939,1023,1119,1221,1323,1417,1506"
+                    }
+                }
+            ]
+        }
+    ]
+}

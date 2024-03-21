@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  Runner
+
+  Created by Phupha on 6/2/2566 BE.
+  
+*/
+"NSCameraUsageDescription" = "This app uses the camera to set my profile image, scan an ID card for OCR and upload the asset documents for request top-up.";
+"NSPhotoLibraryUsageDescription" =  "This allow Srisawad to save and upload pictures e.g. qrcode, barcode, profile picture and let you browse your albums.";
+"NSLocationWhenInUseUsageDescription" = "Allow us to get your location in order to provide the direction to branch correctly";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Allow us to get your location in order to provide the direction to branch correctly";
+"NSLocationAlwaysUsageDescription" = "Allow us to get your location in order to provide the direction to branch correctly";
+"NSLocationUsageDescription" = "Allow us to get your location in order to provide the direction to branch correctly";
