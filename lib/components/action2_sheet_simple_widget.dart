@@ -46,7 +46,10 @@ class _Action2SheetSimpleWidgetState extends State<Action2SheetSimpleWidget> {
           BoxShadow(
             blurRadius: 5.0,
             color: Color(0x3B1D2429),
-            offset: Offset(0.0, -3.0),
+            offset: Offset(
+              0.0,
+              -3.0,
+            ),
           )
         ],
         borderRadius: BorderRadius.only(
@@ -78,6 +81,7 @@ class _Action2SheetSimpleWidgetState extends State<Action2SheetSimpleWidget> {
                       fontFamily: 'Plus Jakarta Sans',
                       color: const Color(0xFF14181B),
                       fontSize: 16.0,
+                      letterSpacing: 0.0,
                       fontWeight: FontWeight.normal,
                     ),
                 elevation: 2.0,
@@ -107,6 +111,7 @@ class _Action2SheetSimpleWidgetState extends State<Action2SheetSimpleWidget> {
                         fontFamily: 'Plus Jakarta Sans',
                         color: const Color(0xFF14181B),
                         fontSize: 16.0,
+                        letterSpacing: 0.0,
                         fontWeight: FontWeight.normal,
                       ),
                   elevation: 2.0,
@@ -137,6 +142,7 @@ class _Action2SheetSimpleWidgetState extends State<Action2SheetSimpleWidget> {
                         fontFamily: 'Lexend Deca',
                         color: const Color(0xFF57636C),
                         fontSize: 16.0,
+                        letterSpacing: 0.0,
                         fontWeight: FontWeight.normal,
                       ),
                   elevation: 0.0,

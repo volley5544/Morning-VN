@@ -112,6 +112,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   fontFamily: 'Outfit',
                   color: Colors.white,
                   fontSize: 22.0,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: const [],
@@ -147,6 +148,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     .override(
                                       fontFamily: 'Readex Pro',
                                       fontSize: 23.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                     ),
                               ),
@@ -207,7 +209,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x33000000),
-                                            offset: Offset(0.0, 5.0),
+                                            offset: Offset(
+                                              0.0,
+                                              5.0,
+                                            ),
                                           )
                                         ],
                                       ),
@@ -266,6 +271,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 23.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                         ),

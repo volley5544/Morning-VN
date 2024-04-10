@@ -304,6 +304,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                 child: TextFormField(
                                   controller: _model.usernameController,
                                   focusNode: _model.usernameFocusNode,
+                                  autofocus: false,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText:
@@ -311,9 +312,17 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                       '9ac7xmrv' /* username */,
                                     ),
                                     labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
                                     hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
                                     enabledBorder: InputBorder.none,
                                     focusedBorder: InputBorder.none,
                                     errorBorder: InputBorder.none,
@@ -324,8 +333,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                           FlutterFlowTheme.of(context).primary,
                                     ),
                                   ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  minLines: null,
                                   validator: _model.usernameControllerValidator
                                       .asValidator(context),
                                 ).addWalkthrough(
@@ -339,6 +353,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                 child: TextFormField(
                                   controller: _model.passwordController,
                                   focusNode: _model.passwordFocusNode,
+                                  autofocus: false,
                                   obscureText: !_model.passwordVisibility,
                                   decoration: InputDecoration(
                                     labelText:
@@ -346,9 +361,17 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                       '4m3tr4fm' /* password */,
                                     ),
                                     labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
                                     hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
                                     enabledBorder: InputBorder.none,
                                     focusedBorder: InputBorder.none,
                                     errorBorder: InputBorder.none,
@@ -372,8 +395,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                       ),
                                     ),
                                   ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  minLines: null,
                                   validator: _model.passwordControllerValidator
                                       .asValidator(context),
                                 ).addWalkthrough(
@@ -447,6 +475,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                             fontFamily:
                                                                 'Readex Pro',
                                                             color: Colors.white,
+                                                            letterSpacing: 0.0,
                                                           ),
                                                     ),
                                                     duration: const Duration(
@@ -473,6 +502,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                           fontFamily:
                                                               'Readex Pro',
                                                           color: Colors.white,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                   ),
                                                   duration: const Duration(
@@ -704,6 +734,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                     .override(
                                                       fontFamily: 'Readex Pro',
                                                       color: Colors.white,
+                                                      letterSpacing: 0.0,
                                                     ),
                                             elevation: 2.0,
                                             borderSide: const BorderSide(
@@ -740,6 +771,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                               fontFamily: 'Readex Pro',
                               color: const Color(0xFF607D8B),
                               fontSize: 13.0,
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
                             ),
                       ).animateOnPageLoad(
@@ -758,7 +790,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
   TutorialCoachMark createPageWalkthrough(BuildContext context) =>
       TutorialCoachMark(
         targets: createWalkthroughTargets(context),
-        onFinish: () {
+        onFinish: () async {
           safeSetState(() => _model.loginController = null);
         },
         onSkip: () {

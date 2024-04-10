@@ -61,7 +61,14 @@
 
 	<key>NSLocationWhenInUseUsageDescription</key>
     <string>In order to search nearby, this app requires access to your current location.</string>
-
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>This app needs access to location.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+    <string>This app needs access to location.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app needs access to location.</string>
+	<key>UIBackgroundModes</key>
+    <string>This app need access to run background</string>
 
 
 	<key>UILaunchStoryboardName</key>
