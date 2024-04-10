@@ -522,24 +522,32 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                 locationPermission);
                                             if (await getPermissionStatus(
                                                 locationPermission)) {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    content: const Text(
-                                                        'Please select \"Alway Allow\" access to your location to tracking your work'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: const Text(
-                                                            'Open Setting'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
+                                              _model.backgroundLocationCheck =
+                                                  await actions
+                                                      .backgroundLocationCheck();
+                                              shouldSetState = true;
+                                              if (!_model
+                                                  .backgroundLocationCheck!) {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      content: const Text(
+                                                          'Please select \"Allow all the tIme\" access to your location to tracking your work'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: const Text(
+                                                              'Open Setting'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                );
+                                              }
                                             } else {
                                               await showDialog(
                                                 context: context,
@@ -575,7 +583,34 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                 builder: (alertDialogContext) {
                                                   return AlertDialog(
                                                     content: const Text(
-                                                        'Please select \"Alway Allow\" access to your location to tracking your work'),
+                                                        'Please select \"Allow all the tIme\" access to your location to tracking your work'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: const Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                              if (shouldSetState) {
+                                                setState(() {});
+                                              }
+                                              return;
+                                            }
+                                            _model.checkGpsEnable =
+                                                await actions
+                                                    .checkGpsServiceEnable();
+                                            shouldSetState = true;
+                                            if (!_model.checkGpsEnable!) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    content: const Text(
+                                                        'Please Enable GPS Before Continue'),
                                                     actions: [
                                                       TextButton(
                                                         onPressed: () =>
@@ -840,7 +875,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                       alignment: const AlignmentDirectional(0.0, 1.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'f6exf55c' /* Copyright ©2022.  Srisawad Cor... */,
+                          'f6exf55c' /* Copyright ©2024.  Srisawad Cor... */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',

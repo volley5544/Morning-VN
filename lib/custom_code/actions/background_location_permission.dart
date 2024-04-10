@@ -12,6 +12,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 Future<bool> backgroundLocationPermission() async {
   // Add your function code here!
+  bool output = false;
   var status = await Permission.locationWhenInUse.status;
   if (!status.isGranted) {
     var status = await Permission.locationWhenInUse.request();
@@ -19,11 +20,14 @@ Future<bool> backgroundLocationPermission() async {
       var status = await Permission.locationAlways.request();
       if (status.isGranted) {
         //Do some stuff
+        output = status.isGranted;
       } else {
         //Do another stuff
+        output = status.isGranted;
       }
     } else {
       //The user deny the permission
+      output = false;
     }
     if (status.isPermanentlyDenied) {
       //When the user previously rejected the permission and select never ask again
@@ -37,12 +41,16 @@ Future<bool> backgroundLocationPermission() async {
       var status = await Permission.locationAlways.request();
       if (status.isGranted) {
         //Do some stuff
+        output = status.isGranted;
       } else {
         //Do another stuff
+        output = status.isGranted;
       }
     } else {
       //previously available, do some stuff or nothing
+      output = true;
     }
   }
-  return status.isGranted;
+  print(output);
+  return output;
 }

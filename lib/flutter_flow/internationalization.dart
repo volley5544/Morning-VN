@@ -147,7 +147,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': 'ĐĂNG NHẬP',
     },
     'f6exf55c': {
-      'en': 'Copyright ©2022.  Srisawad Corporation Plc.',
+      'en': 'Copyright ©2024.  Srisawad Corporation Plc.',
       'th': 'ลิขสิทธิ์ ©2022. บมจ. ศรีสวัสดิ์ คอร์ปอเรชั่น',
       'vi': 'Bản quyền ©2022. Tập đoàn Srisawad Plc.',
     },

@@ -2,6 +2,8 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/permissions_util.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -292,6 +294,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                 controller: _model.pinCodeController,
                                 onChanged: (_) {},
                                 onCompleted: (_) async {
+                                  var shouldSetState = false;
                                   if (_model.pinCodeController!.text !=
                                       FFAppState().pinCode) {
                                     await showDialog(
@@ -310,6 +313,98 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                         );
                                       },
                                     );
+                                    if (shouldSetState) setState(() {});
+                                    return;
+                                  }
+                                  await requestPermission(locationPermission);
+                                  if (await getPermissionStatus(
+                                      locationPermission)) {
+                                    _model.backgroundLocationCheck =
+                                        await actions.backgroundLocationCheck();
+                                    shouldSetState = true;
+                                    if (!_model.backgroundLocationCheck!) {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            content: const Text(
+                                                'Please select \"Allow all the tIme\" access to your location to tracking your work'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Open Setting'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    }
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          content: const Text(
+                                              'Please allow to access your location to tracking your work'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    if (shouldSetState) setState(() {});
+                                    return;
+                                  }
+
+                                  _model.permissionRequestOutput = await actions
+                                      .backgroundLocationPermission();
+                                  shouldSetState = true;
+                                  if (!_model.permissionRequestOutput!) {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          content: const Text(
+                                              'Please select \"Allow all the tIme\" access to your location to tracking your work'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    if (shouldSetState) setState(() {});
+                                    return;
+                                  }
+                                  _model.checkGpsEnable =
+                                      await actions.checkGpsServiceEnable();
+                                  shouldSetState = true;
+                                  if (!_model.checkGpsEnable!) {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          content: const Text(
+                                              'Please Enable GPS Before Continue'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    if (shouldSetState) setState(() {});
                                     return;
                                   }
                                   setState(() {
@@ -317,6 +412,8 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                   });
 
                                   context.goNamed('HomePage');
+
+                                  if (shouldSetState) setState(() {});
                                 },
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
