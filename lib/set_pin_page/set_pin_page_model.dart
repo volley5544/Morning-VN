@@ -10,8 +10,6 @@ class SetPinPageModel extends FlutterFlowModel<SetPinPageWidget> {
   TextEditingController? pinCodeController;
   String? Function(BuildContext, String?)? pinCodeControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     pinCodeController = TextEditingController();
@@ -22,8 +20,4 @@ class SetPinPageModel extends FlutterFlowModel<SetPinPageWidget> {
     unfocusNode.dispose();
     pinCodeController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

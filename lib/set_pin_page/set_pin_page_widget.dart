@@ -57,7 +57,11 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                       FFLocalizations.of(context).getText(
                         'vyizgov8' /* Set Your Pin */,
                       ),
-                      style: FlutterFlowTheme.of(context).headlineSmall,
+                      style:
+                          FlutterFlowTheme.of(context).headlineSmall.override(
+                                fontFamily: 'Outfit',
+                                letterSpacing: 0.0,
+                              ),
                     ),
                     Padding(
                       padding:
@@ -67,7 +71,10 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                           'e81wxbhr' /* This Pin will Use to Enter App... */,
                         ),
                         textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodySmall,
+                        style: FlutterFlowTheme.of(context).bodySmall.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
                       ),
                     ),
                     Padding(
@@ -81,6 +88,7 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Readex Pro',
                                   color: FlutterFlowTheme.of(context).primary,
+                                  letterSpacing: 0.0,
                                 ),
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         enableActiveFill: false,
@@ -182,6 +190,7 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Readex Pro',
                           color: FlutterFlowTheme.of(context).primaryBackground,
+                          letterSpacing: 0.0,
                         ),
                     elevation: 2.0,
                     borderSide: const BorderSide(

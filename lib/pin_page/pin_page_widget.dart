@@ -137,6 +137,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 14.0,
+                                  letterSpacing: 0.0,
                                 ),
                           )),
                         ],
@@ -175,6 +176,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                   .override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                   ),
                             )),
                           ),
@@ -212,6 +214,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                               fontFamily: 'Readex Pro',
                               color: Colors.black,
                               fontSize: 28.0,
+                              letterSpacing: 0.0,
                             ),
                       ),
                     ),
@@ -230,6 +233,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                             FlutterFlowTheme.of(context).headlineSmall.override(
                                   fontFamily: 'Outfit',
                                   color: Colors.black,
+                                  letterSpacing: 0.0,
                                 ),
                       ),
                       Container(
@@ -252,6 +256,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                       fontFamily: 'Readex Pro',
                                       color:
                                           FlutterFlowTheme.of(context).primary,
+                                      letterSpacing: 0.0,
                                     ),
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
