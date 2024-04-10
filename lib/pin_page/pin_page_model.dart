@@ -15,6 +15,8 @@ class PinPageModel extends FlutterFlowModel<PinPageWidget> {
   bool? permissionRequestOutput;
   // Stores action output result for [Custom Action - checkGpsServiceEnable] action in PinCode widget.
   bool? checkGpsEnable;
+  // Stores action output result for [Custom Action - checkGpsServiceEnable] action in PinCode widget.
+  bool? checkGpsEnable2;
 
   @override
   void initState(BuildContext context) {
