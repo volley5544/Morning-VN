@@ -229,7 +229,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Miscellaneous
   {
     '80tv2pc9': {
-      'en': '',
+      'en': 'Please allow to access your location to tracking your work',
       'th': '',
       'vi': '',
     },

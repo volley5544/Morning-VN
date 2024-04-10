@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/walkthroughs/login.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/permissions_util.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:flutter/material.dart';
@@ -517,6 +518,80 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                               return;
                                             }
 
+                                            await requestPermission(
+                                                locationPermission);
+                                            if (await getPermissionStatus(
+                                                locationPermission)) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    content: const Text(
+                                                        'Please select \"Alway Allow\" access to your location to tracking your work'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: const Text(
+                                                            'Open Setting'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    content: const Text(
+                                                        'Please allow to access your location to tracking your work'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: const Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                              if (shouldSetState) {
+                                                setState(() {});
+                                              }
+                                              return;
+                                            }
+
+                                            _model.permissionRequestOutput =
+                                                await actions
+                                                    .backgroundLocationPermission();
+                                            shouldSetState = true;
+                                            if (!_model
+                                                .permissionRequestOutput!) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    content: const Text(
+                                                        'Please select \"Alway Allow\" access to your location to tracking your work'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: const Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                              if (shouldSetState) {
+                                                setState(() {});
+                                              }
+                                              return;
+                                            }
                                             _model.authAPIOutput =
                                                 await AuthenAPICall.call(
                                               username: _model

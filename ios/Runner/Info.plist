@@ -60,7 +60,7 @@
 	<true/>
 
 	<key>NSLocationWhenInUseUsageDescription</key>
-    <string>In order to search nearby, this app requires access to your current location.</string>
+    <string>Please allow to access your location to tracking your work</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
     <string>This app needs access to location.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
