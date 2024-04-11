@@ -10,6 +10,7 @@ import 'schema/user_custom_record.dart';
 import 'schema/user_collection_record.dart';
 import 'schema/image_link_storage_record.dart';
 import 'schema/key_storage1_record.dart';
+import 'schema/application_config_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -22,6 +23,7 @@ export 'schema/user_custom_record.dart';
 export 'schema/user_collection_record.dart';
 export 'schema/image_link_storage_record.dart';
 export 'schema/key_storage1_record.dart';
+export 'schema/application_config_record.dart';
 
 /// Functions to query UserLocationLogRecords (as a Stream and as a Future).
 Future<int> queryUserLocationLogRecordCount({
@@ -203,6 +205,43 @@ Future<List<KeyStorage1Record>> queryKeyStorage1RecordOnce({
     queryCollectionOnce(
       KeyStorage1Record.collection,
       KeyStorage1Record.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query ApplicationConfigRecords (as a Stream and as a Future).
+Future<int> queryApplicationConfigRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ApplicationConfigRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ApplicationConfigRecord>> queryApplicationConfigRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ApplicationConfigRecord.collection,
+      ApplicationConfigRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ApplicationConfigRecord>> queryApplicationConfigRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ApplicationConfigRecord.collection,
+      ApplicationConfigRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
