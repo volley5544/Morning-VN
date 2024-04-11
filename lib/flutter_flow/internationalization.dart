@@ -148,8 +148,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'f6exf55c': {
       'en': 'Copyright ©2024.  Srisawad Corporation Plc.',
-      'th': 'ลิขสิทธิ์ ©2022. บมจ. ศรีสวัสดิ์ คอร์ปอเรชั่น',
-      'vi': 'Bản quyền ©2022. Tập đoàn Srisawad Plc.',
+      'th': 'ลิขสิทธิ์ ©2024. บมจ. ศรีสวัสดิ์ คอร์ปอเรชั่น',
+      'vi': 'Bản quyền ©2024. Tập đoàn Srisawad Plc.',
     },
     'fboqxk9x': {
       'en': 'Home',
