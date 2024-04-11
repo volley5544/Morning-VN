@@ -605,6 +605,23 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                     .checkGpsServiceEnable();
                                             shouldSetState = true;
                                             if (!_model.checkGpsEnable!) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    content: const Text(
+                                                        'Please Enable GPS Before Continue'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: const Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
                                               await actions.enableGpsService();
                                               _model.checkGpsEnable2 =
                                                   await actions

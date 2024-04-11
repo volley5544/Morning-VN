@@ -298,6 +298,9 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                   var shouldSetState = false;
                                   if (_model.pinCodeController!.text !=
                                       FFAppState().pinCode) {
+                                    setState(() {
+                                      _model.pinCodeController?.clear();
+                                    });
                                     await showDialog(
                                       context: context,
                                       builder: (alertDialogContext) {
@@ -342,6 +345,9 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                       );
                                     }
                                   } else {
+                                    setState(() {
+                                      _model.pinCodeController?.clear();
+                                    });
                                     await showDialog(
                                       context: context,
                                       builder: (alertDialogContext) {
@@ -366,6 +372,9 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                       .backgroundLocationPermission();
                                   shouldSetState = true;
                                   if (!_model.permissionRequestOutput!) {
+                                    setState(() {
+                                      _model.pinCodeController?.clear();
+                                    });
                                     await showDialog(
                                       context: context,
                                       builder: (alertDialogContext) {
@@ -389,11 +398,30 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                       await actions.checkGpsServiceEnable();
                                   shouldSetState = true;
                                   if (!_model.checkGpsEnable!) {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          content: const Text(
+                                              'Please Enable GPS Before Continue'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
                                     await actions.enableGpsService();
                                     _model.checkGpsEnable2 =
                                         await actions.checkGpsServiceEnable();
                                     shouldSetState = true;
                                     if (!_model.checkGpsEnable2!) {
+                                      setState(() {
+                                        _model.pinCodeController?.clear();
+                                      });
                                       await showDialog(
                                         context: context,
                                         builder: (alertDialogContext) {
