@@ -338,7 +338,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                           builder: (alertDialogContext) {
                                             return AlertDialog(
                                               content: const Text(
-                                                  '\'Morning VN\' Have a new version in store!. Please update at store before using an app'),
+                                                  '\'Morning VN\' Có phiên bản mới trong cửa hàng!. Vui lòng cập nhật tại cửa hàng trước khi sử dụng ứng dụng'),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () =>
@@ -364,7 +364,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                           builder: (alertDialogContext) {
                                             return AlertDialog(
                                               content: const Text(
-                                                  'พินไม่ถูกต้อง โปรดลองอีกครั้งหรือใช้การยืนยันตัวตนของมือถือแทน'),
+                                                  'mã pin không hợp lệ Vui lòng thử lại.'),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () =>
@@ -393,7 +393,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
                                                 content: const Text(
-                                                    'Please select \"Allow all the time\" access to your location to tracking your work'),
+                                                    'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -415,7 +415,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                           builder: (alertDialogContext) {
                                             return AlertDialog(
                                               content: const Text(
-                                                  'Please allow to access your location to tracking your work'),
+                                                  'Vui lòng cho phép truy cập vị trí của bạn để theo dõi công việc của bạn'),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () =>
@@ -444,7 +444,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                           builder: (alertDialogContext) {
                                             return AlertDialog(
                                               content: const Text(
-                                                  'Please select \"Allow all the time\" access to your location to tracking your work'),
+                                                  'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () =>
@@ -468,7 +468,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                           builder: (alertDialogContext) {
                                             return AlertDialog(
                                               content: const Text(
-                                                  'Please Enable GPS Before Continue'),
+                                                  'Vui lòng bật GPS trước khi tiếp tục'),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () =>
@@ -493,7 +493,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
                                                 content: const Text(
-                                                    'Please Enable GPS Before Continue'),
+                                                    'Vui lòng bật GPS trước khi tiếp tục'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>

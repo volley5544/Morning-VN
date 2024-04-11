@@ -501,7 +501,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         (alertDialogContext) {
                                                       return AlertDialog(
                                                         content: const Text(
-                                                            '\'Morning VN\' Have a new version in store!. Please update at store before using an app'),
+                                                            '\'Morning VN\' Có phiên bản mới trong cửa hàng!. Vui lòng cập nhật tại cửa hàng trước khi sử dụng ứng dụng'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -531,7 +531,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         .showSnackBar(
                                                       SnackBar(
                                                         content: Text(
-                                                          'กรุณาใส่ Password',
+                                                          'Xin vui lòng nhập mật khẩu',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -560,7 +560,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       .showSnackBar(
                                                     SnackBar(
                                                       content: Text(
-                                                        'กรุณาใส่ Username',
+                                                        'Vui lòng nhập tên người dùng',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium
@@ -601,7 +601,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                           (alertDialogContext) {
                                                         return AlertDialog(
                                                           content: const Text(
-                                                              'Please select \"Allow all the time\" access to your location to tracking your work'),
+                                                              'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
@@ -622,7 +622,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         (alertDialogContext) {
                                                       return AlertDialog(
                                                         content: const Text(
-                                                            'Please allow to access your location to tracking your work'),
+                                                            'Vui lòng cho phép truy cập vị trí của bạn để theo dõi công việc của bạn'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -652,7 +652,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         (alertDialogContext) {
                                                       return AlertDialog(
                                                         content: const Text(
-                                                            'Please select \"Allow all the time\" access to your location to tracking your work'),
+                                                            'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -680,7 +680,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         (alertDialogContext) {
                                                       return AlertDialog(
                                                         content: const Text(
-                                                            'Please Enable GPS Before Continue'),
+                                                            'Vui lòng bật GPS trước khi tiếp tục'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -706,7 +706,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                           (alertDialogContext) {
                                                         return AlertDialog(
                                                           content: const Text(
-                                                              'Please Enable GPS Before Continue'),
+                                                              'Vui lòng bật GPS trước khi tiếp tục'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
