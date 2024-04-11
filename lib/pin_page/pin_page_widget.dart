@@ -144,46 +144,48 @@ class _PinPageWidgetState extends State<PinPageWidget>
                           )),
                         ],
                       ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                12.0, 0.0, 0.0, 0.0),
-                            child: FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 30.0,
-                              borderWidth: 1.0,
-                              buttonSize: 55.0,
-                              icon: Icon(
-                                Icons.app_blocking_rounded,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 33.0,
+                      if (false)
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 0.0, 0.0),
+                              child: FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 30.0,
+                                borderWidth: 1.0,
+                                buttonSize: 55.0,
+                                icon: Icon(
+                                  Icons.app_blocking_rounded,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 33.0,
+                                ),
+                                onPressed: () {
+                                  print('IconButton pressed ...');
+                                },
                               ),
-                              onPressed: () {
-                                print('IconButton pressed ...');
-                              },
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 20.0, 0.0),
-                            child: SelectionArea(
-                                child: Text(
-                              FFLocalizations.of(context).getText(
-                                'el0vuhmy' /* Clear Cache */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                            )),
-                          ),
-                        ],
-                      ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 20.0, 0.0),
+                              child: SelectionArea(
+                                  child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'el0vuhmy' /* Clear Cache */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 14.0,
+                                      letterSpacing: 0.0,
+                                    ),
+                              )),
+                            ),
+                          ],
+                        ),
                     ],
                   ),
                 ),
@@ -202,7 +204,6 @@ class _PinPageWidgetState extends State<PinPageWidget>
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Container(
                     width: double.infinity,
-                    height: 50.0,
                     decoration: const BoxDecoration(),
                     child: Padding(
                       padding:
@@ -388,24 +389,30 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                       await actions.checkGpsServiceEnable();
                                   shouldSetState = true;
                                   if (!_model.checkGpsEnable!) {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          content: const Text(
-                                              'Please Enable GPS Before Continue'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: const Text('Ok'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                    if (shouldSetState) setState(() {});
-                                    return;
+                                    await actions.enableGpsService();
+                                    _model.checkGpsEnable2 =
+                                        await actions.checkGpsServiceEnable();
+                                    shouldSetState = true;
+                                    if (!_model.checkGpsEnable2!) {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            content: const Text(
+                                                'Please Enable GPS Before Continue'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      if (shouldSetState) setState(() {});
+                                      return;
+                                    }
                                   }
                                   setState(() {
                                     FFAppState().fromPinPage = true;
