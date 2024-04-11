@@ -11,6 +11,8 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
 
   TutorialCoachMark? loginController;
   final unfocusNode = FocusNode();
+  // Stores action output result for [Custom Action - getBuildVersion] action in loginPage widget.
+  String? getBuildVersion;
   // State field(s) for username widget.
   FocusNode? usernameFocusNode;
   TextEditingController? usernameController;

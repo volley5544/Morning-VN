@@ -6,6 +6,8 @@ class PinPageModel extends FlutterFlowModel<PinPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Custom Action - getBuildVersion] action in pinPage widget.
+  String? getBuildVersion;
   // State field(s) for PinCode widget.
   TextEditingController? pinCodeController;
   String? Function(BuildContext, String?)? pinCodeControllerValidator;

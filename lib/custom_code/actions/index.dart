@@ -7,3 +7,5 @@ export 'check_firebase.dart' show checkFirebase;
 export 'login.dart' show login;
 export 'check_user_firebase.dart' show checkUserFirebase;
 export 'background_location_permission.dart' show backgroundLocationPermission;
+export 'get_build_version.dart' show getBuildVersion;
+export 'terminate_app_action.dart' show terminateAppAction;

@@ -23,3 +23,20 @@ bool? checkPin(String? input) {
     }
   }
 }
+
+String? getBuildNumber(String? buildVersion) {
+  // Find the index of the opening parenthesis
+  int startIndex = buildVersion!.indexOf('(');
+
+  // Find the index of the closing parenthesis
+  int endIndex = buildVersion!.indexOf(')');
+
+  // Extract the substring between the parentheses
+  String numberString = buildVersion!.substring(startIndex + 1, endIndex);
+
+  // Convert the extracted substring to an integer
+
+  print(numberString); // Output: 21
+
+  return numberString;
+}

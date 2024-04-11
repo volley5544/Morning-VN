@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '/backend/backend.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -135,6 +137,13 @@ class FFAppState extends ChangeNotifier {
   set employeeID(String value) {
     _employeeID = value;
     prefs.setString('ff_employeeID', value);
+  }
+
+  DocumentReference? _applicationConfigDocRef =
+      FirebaseFirestore.instance.doc('/ApplicationConfig/nXAvCNHjWBswm9fqm4FX');
+  DocumentReference? get applicationConfigDocRef => _applicationConfigDocRef;
+  set applicationConfigDocRef(DocumentReference? value) {
+    _applicationConfigDocRef = value;
   }
 }
 
