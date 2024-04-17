@@ -68,7 +68,10 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
     <string>This app needs access to location.</string>
 	<key>UIBackgroundModes</key>
-    <string>This app need access to run background</string>
+    <array>
+	<string>fetch</string>
+	<string>location</string>
+    </array>
 
 
 	<key>UILaunchStoryboardName</key>
