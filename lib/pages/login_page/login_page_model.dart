@@ -15,13 +15,13 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   String? getBuildVersion;
   // State field(s) for username widget.
   FocusNode? usernameFocusNode;
-  TextEditingController? usernameController;
-  String? Function(BuildContext, String?)? usernameControllerValidator;
+  TextEditingController? usernameTextController;
+  String? Function(BuildContext, String?)? usernameTextControllerValidator;
   // State field(s) for password widget.
   FocusNode? passwordFocusNode;
-  TextEditingController? passwordController;
+  TextEditingController? passwordTextController;
   late bool passwordVisibility;
-  String? Function(BuildContext, String?)? passwordControllerValidator;
+  String? Function(BuildContext, String?)? passwordTextControllerValidator;
   // Stores action output result for [Custom Action - backgroundLocationCheck] action in Button widget.
   bool? backgroundLocationCheck;
   // Stores action output result for [Custom Action - backgroundLocationPermission] action in Button widget.
@@ -49,9 +49,9 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
     loginController?.finish();
     unfocusNode.dispose();
     usernameFocusNode?.dispose();
-    usernameController?.dispose();
+    usernameTextController?.dispose();
 
     passwordFocusNode?.dispose();
-    passwordController?.dispose();
+    passwordTextController?.dispose();
   }
 }
