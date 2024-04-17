@@ -327,11 +327,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 40.0),
                                       child: PageView.builder(
-                                        controller: _model
-                                                .pageViewController ??=
-                                            PageController(
-                                                initialPage: min(
-                                                    0, bannerItem.length - 1)),
+                                        controller:
+                                            _model.pageViewController ??=
+                                                PageController(
+                                                    initialPage: max(
+                                                        0,
+                                                        min(
+                                                            0,
+                                                            bannerItem.length -
+                                                                1))),
                                         scrollDirection: Axis.horizontal,
                                         itemCount: bannerItem.length,
                                         itemBuilder:
@@ -361,8 +365,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           controller: _model
                                                   .pageViewController ??=
                                               PageController(
-                                                  initialPage: min(0,
-                                                      bannerItem.length - 1)),
+                                                  initialPage: max(
+                                                      0,
+                                                      min(
+                                                          0,
+                                                          bannerItem.length -
+                                                              1))),
                                           count: bannerItem.length,
                                           axisDirection: Axis.horizontal,
                                           onDotClicked: (i) async {

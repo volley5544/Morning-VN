@@ -27,27 +27,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'imageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 1100.ms,
-          duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 1100.ms,
-          duration: 600.ms,
-          begin: const Offset(1.0, 1.0),
-          end: const Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -61,6 +41,27 @@ class _PinPageWidgetState extends State<PinPageWidget>
       _model.getBuildVersion = await actions.getBuildVersion();
     });
 
+    animationsMap.addAll({
+      'imageOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 1100.0.ms,
+            duration: 600.0.ms,
+            begin: 1.0,
+            end: 1.0,
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 1100.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 1.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -328,11 +329,15 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                     onChanged: (_) {},
                                     onCompleted: (_) async {
                                       var shouldSetState = false;
-                                      if (!(int.parse((functions.getBuildNumber(
-                                              _model.getBuildVersion)!)) >=
-                                          int.parse(
-                                              pinPageApplicationConfigRecord
-                                                  .buildNumber))) {
+                                      if (!((String appBuildNumber,
+                                              String latestBuildNumber) {
+                                        return int.parse(appBuildNumber) >=
+                                            int.parse(latestBuildNumber);
+                                      }(
+                                          functions.getBuildNumber(
+                                              _model.getBuildVersion)!,
+                                          pinPageApplicationConfigRecord
+                                              .buildNumber))) {
                                         await showDialog(
                                           context: context,
                                           builder: (alertDialogContext) {

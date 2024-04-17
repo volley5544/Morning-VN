@@ -32,99 +32,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
   LatLng? currentUserLocationValue;
 
-  final animationsMap = {
-    'containerOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 500.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 100.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 500.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation3': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 200.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 500.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'imageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 300.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 500.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation4': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 400.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 400.ms,
-          duration: 500.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation5': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 700.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 700.ms,
-          duration: 500.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 800.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 800.ms,
-          duration: 500.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -138,12 +46,105 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
       _model.getBuildVersion = await actions.getBuildVersion();
     });
 
-    _model.usernameController ??= TextEditingController();
+    _model.usernameTextController ??= TextEditingController();
     _model.usernameFocusNode ??= FocusNode();
 
-    _model.passwordController ??= TextEditingController();
+    _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
 
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 500.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 100.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 100.0.ms,
+            duration: 500.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation3': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 200.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 500.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'imageOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 300.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 500.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation4': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 400.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 500.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation5': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 700.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 700.0.ms,
+            duration: 500.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'textOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 800.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 800.0.ms,
+            duration: 500.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -331,7 +332,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 8.0, 0.0),
                                     child: TextFormField(
-                                      controller: _model.usernameController,
+                                      controller: _model.usernameTextController,
                                       focusNode: _model.usernameFocusNode,
                                       autofocus: false,
                                       obscureText: false,
@@ -368,9 +369,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                             fontFamily: 'Readex Pro',
                                             letterSpacing: 0.0,
                                           ),
-                                      minLines: null,
                                       validator: _model
-                                          .usernameControllerValidator
+                                          .usernameTextControllerValidator
                                           .asValidator(context),
                                     ).addWalkthrough(
                                       textField0mut7dyi,
@@ -381,7 +381,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 8.0, 0.0),
                                     child: TextFormField(
-                                      controller: _model.passwordController,
+                                      controller: _model.passwordTextController,
                                       focusNode: _model.passwordFocusNode,
                                       autofocus: false,
                                       obscureText: !_model.passwordVisibility,
@@ -432,9 +432,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                             fontFamily: 'Readex Pro',
                                             letterSpacing: 0.0,
                                           ),
-                                      minLines: null,
                                       validator: _model
-                                          .passwordControllerValidator
+                                          .passwordTextControllerValidator
                                           .asValidator(context),
                                     ).addWalkthrough(
                                       textFieldCv11xejx,
@@ -489,12 +488,18 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         defaultLocation:
                                                             const LatLng(0.0, 0.0));
                                                 var shouldSetState = false;
-                                                if (!(int.parse((functions
-                                                        .getBuildNumber(_model
-                                                            .getBuildVersion)!)) >=
-                                                    int.parse(
-                                                        containerApplicationConfigRecord
-                                                            .buildNumber))) {
+                                                if (!((String appBuildNumber,
+                                                        String latestBuildNumber) {
+                                                  return int.parse(
+                                                          appBuildNumber) >=
+                                                      int.parse(
+                                                          latestBuildNumber);
+                                                }(
+                                                    functions.getBuildNumber(
+                                                        _model
+                                                            .getBuildVersion)!,
+                                                    containerApplicationConfigRecord
+                                                        .buildNumber))) {
                                                   await showDialog(
                                                     context: context,
                                                     builder:
@@ -520,10 +525,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                   }
                                                   return;
                                                 }
-                                                if (_model.usernameController
+                                                if (_model.usernameTextController
                                                             .text !=
                                                         '') {
-                                                  if (!(_model.passwordController
+                                                  if (!(_model.passwordTextController
                                                               .text !=
                                                           '')) {
                                                     ScaffoldMessenger.of(
@@ -727,9 +732,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                 _model.authAPIOutput =
                                                     await AuthenAPICall.call(
                                                   username: _model
-                                                      .usernameController.text,
+                                                      .usernameTextController
+                                                      .text,
                                                   password: _model
-                                                      .passwordController.text,
+                                                      .passwordTextController
+                                                      .text,
                                                   apiUrl:
                                                       loginPageKeyStorage1Record
                                                           ?.apiUrl,
@@ -877,7 +884,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
 
                                                 _model.customFirebaseAuthen =
                                                     await actions.checkFirebase(
-                                                  '${_model.usernameController.text}@srisawadvn.com',
+                                                  '${_model.usernameTextController.text}@srisawadvn.com',
                                                 );
                                                 shouldSetState = true;
                                                 if (_model
@@ -895,12 +902,12 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       .set(
                                                           createUserCustomRecordData(
                                                     email:
-                                                        '${_model.usernameController.text}@VN.com',
+                                                        '${_model.usernameTextController.text}@VN.com',
                                                     uid: _model.userUID,
                                                     createdDate:
                                                         getCurrentTimestamp,
                                                     eployeeId: _model
-                                                        .usernameController
+                                                        .usernameTextController
                                                         .text,
                                                     profileImg:
                                                         'https://firebasestorage.googleapis.com/v0/b/flut-flow-test.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=4189e142-826e-4b26-b278-914c39bfac74',
@@ -910,13 +917,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                           .getDocumentFromData(
                                                               createUserCustomRecordData(
                                                                 email:
-                                                                    '${_model.usernameController.text}@VN.com',
+                                                                    '${_model.usernameTextController.text}@VN.com',
                                                                 uid: _model
                                                                     .userUID,
                                                                 createdDate:
                                                                     getCurrentTimestamp,
                                                                 eployeeId: _model
-                                                                    .usernameController
+                                                                    .usernameTextController
                                                                     .text,
                                                                 profileImg:
                                                                     'https://firebasestorage.googleapis.com/v0/b/flut-flow-test.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=4189e142-826e-4b26-b278-914c39bfac74',
