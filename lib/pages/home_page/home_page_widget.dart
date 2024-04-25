@@ -205,8 +205,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     color: Colors.transparent,
                                     elevation: 5.0,
                                     child: Container(
-                                      decoration: const BoxDecoration(
-                                        boxShadow: [
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x33000000),
@@ -250,7 +252,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               cardItemItem,
                                               width: 300.0,
                                               height: 200.0,
-                                              fit: BoxFit.cover,
+                                              fit: BoxFit.contain,
                                             ),
                                           ),
                                         ),
@@ -404,7 +406,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   bannerItemItem,
                                                   width: 300.0,
                                                   height: 200.0,
-                                                  fit: BoxFit.cover,
+                                                  fit: BoxFit.contain,
                                                 ),
                                               ),
                                             ),
