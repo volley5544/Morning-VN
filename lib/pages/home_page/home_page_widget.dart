@@ -25,7 +25,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   late HomePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
@@ -34,8 +33,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      currentUserLocationValue =
-          await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
       setAppLanguage(context, 'vi');
       setDarkModeSetting(context, ThemeMode.light);
       if (FFAppState().isLogin) {
@@ -52,20 +49,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         }
       }
 
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            content: Text(currentUserLocationValue!.toString()),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: const Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
       await actions.getBackgroundLocation(
         FFAppState().employeeID,
       );
