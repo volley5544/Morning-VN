@@ -1,4 +1,1 @@
-NSLocationWhenInUseUsageDescription = "This app needs access to location.";
-NSLocationAlwaysAndWhenInUseUsageDescription = "This app needs access to location.";
-NSLocationAlwaysUsageDescription = "This app needs access to location.";
-UIBackgroundModes = "This app need access to run background";
+NSLocationWhenInUseUsageDescription = "Please allow to access your location to tracking your work";

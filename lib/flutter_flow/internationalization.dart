@@ -253,26 +253,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
       'vi': '',
     },
-    '8076iu0j': {
-      'en': 'This app needs access to location.',
-      'th': '',
-      'vi': '',
-    },
-    'dn5k9xog': {
-      'en': 'This app needs access to location.',
-      'th': '',
-      'vi': '',
-    },
-    '4y7fjq43': {
-      'en': 'This app needs access to location.',
-      'th': '',
-      'vi': '',
-    },
-    'twyrcshe': {
-      'en': 'This app need access to run background',
-      'th': '',
-      'vi': '',
-    },
     'fr4soeui': {
       'en': '',
       'th': '',
