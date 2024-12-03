@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -41,7 +40,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setAppLanguage(context, 'vi');
+      setAppLanguage(context, 'th');
       setDarkModeSetting(context, ThemeMode.light);
       _model.getBuildVersion = await actions.getBuildVersion();
     });
@@ -191,10 +190,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
             loginPageKeyStorage1RecordList.isNotEmpty
                 ? loginPageKeyStorage1RecordList.first
                 : null;
+
         return GestureDetector(
-          onTap: () => _model.unfocusNode.canRequestFocus
-              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-              : FocusScope.of(context).unfocus(),
+          onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -218,7 +216,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                       ),
                     );
                   }
+
                   final containerApplicationConfigRecord = snapshot.data!;
+
                   return Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -229,7 +229,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                         child: Stack(
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(0.25, -3.05),
+                              alignment: const AlignmentDirectional(0.0, -1.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.5,
                                 height: MediaQuery.sizeOf(context).width * 0.5,
@@ -249,37 +249,27 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                   'containerOnPageLoadAnimation1']!),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(2.43, -2.73),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  await actions.login();
-                                },
-                                child: Container(
-                                  width: MediaQuery.sizeOf(context).width * 0.7,
-                                  height:
-                                      MediaQuery.sizeOf(context).width * 0.7,
-                                  decoration: const BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Color(0xFF0006B4),
-                                        Color(0xFF7479FF)
-                                      ],
-                                      stops: [0.0, 1.0],
-                                      begin: AlignmentDirectional(0.0, -1.0),
-                                      end: AlignmentDirectional(0, 1.0),
-                                    ),
-                                    shape: BoxShape.circle,
+                              alignment: const AlignmentDirectional(0.0, -1.0),
+                              child: Container(
+                                width: MediaQuery.sizeOf(context).width * 0.7,
+                                height: MediaQuery.sizeOf(context).width * 0.7,
+                                decoration: const BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Color(0xFF0006B4),
+                                      Color(0xFF7479FF)
+                                    ],
+                                    stops: [0.0, 1.0],
+                                    begin: AlignmentDirectional(0.0, -1.0),
+                                    end: AlignmentDirectional(0, 1.0),
                                   ),
+                                  shape: BoxShape.circle,
                                 ),
                               ).animateOnPageLoad(animationsMap[
                                   'containerOnPageLoadAnimation2']!),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-2.91, -6.61),
+                              alignment: const AlignmentDirectional(0.0, -1.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.8,
                                 height: MediaQuery.sizeOf(context).width * 0.8,
@@ -300,7 +290,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                   'containerOnPageLoadAnimation3']!),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-0.74, -1.07),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Image.asset(
                                 'assets/images/ArunSawad.png',
                                 width: 170.0,
@@ -412,7 +402,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                               .primary,
                                         ),
                                         suffixIcon: InkWell(
-                                          onTap: () => setState(
+                                          onTap: () => safeSetState(
                                             () => _model.passwordVisibility =
                                                 !_model.passwordVisibility,
                                           ),
@@ -521,7 +511,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                   await actions
                                                       .terminateAppAction();
                                                   if (shouldSetState) {
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                   }
                                                   return;
                                                 }
@@ -556,7 +546,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       ),
                                                     );
                                                     if (shouldSetState) {
-                                                      setState(() {});
+                                                      safeSetState(() {});
                                                     }
                                                     return;
                                                   }
@@ -585,7 +575,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                     ),
                                                   );
                                                   if (shouldSetState) {
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                   }
                                                   return;
                                                 }
@@ -640,7 +630,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                     },
                                                   );
                                                   if (shouldSetState) {
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                   }
                                                   return;
                                                 }
@@ -670,7 +660,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                     },
                                                   );
                                                   if (shouldSetState) {
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                   }
                                                   return;
                                                 }
@@ -724,7 +714,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       },
                                                     );
                                                     if (shouldSetState) {
-                                                      setState(() {});
+                                                      safeSetState(() {});
                                                     }
                                                     return;
                                                   }
@@ -740,10 +730,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                   apiUrl:
                                                       loginPageKeyStorage1Record
                                                           ?.apiUrl,
-                                                  fcmToken: '123123123123',
-                                                  uid: currentUserUid,
                                                   check: 'Y',
                                                 );
+
                                                 shouldSetState = true;
                                                 if ((_model.authAPIOutput
                                                             ?.statusCode ??
@@ -779,7 +768,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       ),
                                                     );
                                                     if (shouldSetState) {
-                                                      setState(() {});
+                                                      safeSetState(() {});
                                                     }
                                                     return;
                                                   }
@@ -802,7 +791,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                     },
                                                   );
                                                   if (shouldSetState) {
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                   }
                                                   return;
                                                 }
@@ -835,25 +824,49 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                     },
                                                   );
                                                   if (shouldSetState) {
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                   }
                                                   return;
                                                 }
-                                                setState(() {
-                                                  FFAppState().isLogin = true;
-                                                  FFAppState().username =
-                                                      AuthenAPICall.nameth(
-                                                    (_model.authAPIOutput
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  )!;
-                                                  FFAppState().employeeID =
-                                                      AuthenAPICall.employeeid(
-                                                    (_model.authAPIOutput
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  )!;
-                                                });
+                                                FFAppState().isLogin = true;
+                                                FFAppState().username =
+                                                    AuthenAPICall.nameth(
+                                                  (_model.authAPIOutput
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )!;
+                                                FFAppState().employeeID =
+                                                    AuthenAPICall.employeeid(
+                                                  (_model.authAPIOutput
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )!;
+                                                FFAppState()
+                                                        .profilePositionName =
+                                                    AuthenAPICall.position(
+                                                  (_model.authAPIOutput
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )!;
+                                                FFAppState().profileStartDate =
+                                                    AuthenAPICall.startdate(
+                                                  (_model.authAPIOutput
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )!;
+                                                FFAppState().accessToken =
+                                                    AuthenAPICall.accesstoken(
+                                                  (_model.authAPIOutput
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )!;
+                                                FFAppState().branchCode =
+                                                    AuthenAPICall.branchcode(
+                                                  (_model.authAPIOutput
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )!;
+                                                safeSetState(() {});
                                                 if (isAndroid) {
                                                 } else {
                                                   if (!isiOS) {
@@ -876,7 +889,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       },
                                                     );
                                                     if (shouldSetState) {
-                                                      setState(() {});
+                                                      safeSetState(() {});
                                                     }
                                                     return;
                                                   }
@@ -935,7 +948,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                 context.goNamed('setPinPage');
 
                                                 if (shouldSetState) {
-                                                  setState(() {});
+                                                  safeSetState(() {});
                                                 }
                                               },
                                               text: FFLocalizations.of(context)

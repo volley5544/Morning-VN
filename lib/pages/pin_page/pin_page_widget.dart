@@ -102,11 +102,11 @@ class _PinPageWidgetState extends State<PinPageWidget>
             ),
           );
         }
+
         final pinPageApplicationConfigRecord = snapshot.data!;
+
         return GestureDetector(
-          onTap: () => _model.unfocusNode.canRequestFocus
-              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-              : FocusScope.of(context).unfocus(),
+          onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -321,9 +321,6 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                       activeColor: Colors.white,
                                       inactiveColor: Colors.white,
                                       selectedColor: const Color(0x66FFFFFF),
-                                      activeFillColor: Colors.white,
-                                      inactiveFillColor: Colors.white,
-                                      selectedFillColor: const Color(0x66FFFFFF),
                                     ),
                                     controller: _model.pinCodeController,
                                     onChanged: (_) {},
@@ -356,12 +353,14 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                           },
                                         );
                                         await actions.terminateAppAction();
-                                        if (shouldSetState) setState(() {});
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
                                         return;
                                       }
                                       if (_model.pinCodeController!.text !=
                                           FFAppState().pinCode) {
-                                        setState(() {
+                                        safeSetState(() {
                                           _model.pinCodeController?.clear();
                                         });
                                         await showDialog(
@@ -381,7 +380,9 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                             );
                                           },
                                         );
-                                        if (shouldSetState) setState(() {});
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
                                         return;
                                       }
                                       await requestPermission(
@@ -412,7 +413,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                           );
                                         }
                                       } else {
-                                        setState(() {
+                                        safeSetState(() {
                                           _model.pinCodeController?.clear();
                                         });
                                         await showDialog(
@@ -432,7 +433,9 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                             );
                                           },
                                         );
-                                        if (shouldSetState) setState(() {});
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
                                         return;
                                       }
 
@@ -441,7 +444,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                               .backgroundLocationPermission();
                                       shouldSetState = true;
                                       if (!_model.permissionRequestOutput!) {
-                                        setState(() {
+                                        safeSetState(() {
                                           _model.pinCodeController?.clear();
                                         });
                                         await showDialog(
@@ -461,7 +464,9 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                             );
                                           },
                                         );
-                                        if (shouldSetState) setState(() {});
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
                                         return;
                                       }
                                       _model.checkGpsEnable =
@@ -490,7 +495,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                             .checkGpsServiceEnable();
                                         shouldSetState = true;
                                         if (!_model.checkGpsEnable2!) {
-                                          setState(() {
+                                          safeSetState(() {
                                             _model.pinCodeController?.clear();
                                           });
                                           await showDialog(
@@ -510,17 +515,18 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                               );
                                             },
                                           );
-                                          if (shouldSetState) setState(() {});
+                                          if (shouldSetState) {
+                                            safeSetState(() {});
+                                          }
                                           return;
                                         }
                                       }
-                                      setState(() {
-                                        FFAppState().fromPinPage = true;
-                                      });
+                                      FFAppState().fromPinPage = true;
+                                      safeSetState(() {});
 
-                                      context.goNamed('HomePage');
+                                      context.pushNamed('DashBoard');
 
-                                      if (shouldSetState) setState(() {});
+                                      if (shouldSetState) safeSetState(() {});
                                     },
                                     autovalidateMode:
                                         AutovalidateMode.onUserInteraction,

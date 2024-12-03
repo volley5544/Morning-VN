@@ -2,10 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
+import '/main.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -71,13 +74,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const HomePageWidget() : const LoginPageWidget(),
+          appStateNotifier.loggedIn ? const NavBarPage() : const LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const HomePageWidget() : const LoginPageWidget(),
+              appStateNotifier.loggedIn ? const NavBarPage() : const LoginPageWidget(),
         ),
         FFRoute(
           name: 'HomePage',
@@ -98,6 +101,105 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'setPinPage',
           path: '/setPinPage',
           builder: (context, params) => const SetPinPageWidget(),
+        ),
+        FFRoute(
+          name: 'testlogin',
+          path: '/testlogin',
+          builder: (context, params) => const TestloginWidget(),
+        ),
+        FFRoute(
+          name: 'DashboardCheckin',
+          path: '/dashboardCheckin',
+          builder: (context, params) => const DashboardCheckinWidget(),
+        ),
+        FFRoute(
+          name: 'DashboardLeavePage',
+          path: '/dashboardLeavePage',
+          builder: (context, params) => const DashboardLeavePageWidget(),
+        ),
+        FFRoute(
+          name: 'CheckInStatusPage',
+          path: '/checkInStatusPage',
+          builder: (context, params) => const CheckInStatusPageWidget(),
+        ),
+        FFRoute(
+          name: 'LeavePage',
+          path: '/leavePage',
+          builder: (context, params) => const LeavePageWidget(),
+        ),
+        FFRoute(
+          name: 'DashBoard',
+          path: '/dashBoard',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'DashBoard')
+              : const DashBoardWidget(),
+        ),
+        FFRoute(
+          name: 'EmpolyeeCheckin',
+          path: '/empolyeeCheckin',
+          builder: (context, params) => const EmpolyeeCheckinWidget(),
+        ),
+        FFRoute(
+          name: 'AddLeavePage',
+          path: '/addLeavePage',
+          builder: (context, params) => AddLeavePageWidget(
+            leaveType: params.getParam(
+              'leaveType',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'leaveShowPage',
+          path: '/leaveShowPage',
+          builder: (context, params) => const LeaveShowPageWidget(),
+        ),
+        FFRoute(
+          name: 'EditLeavePage',
+          path: '/editLeavePage',
+          builder: (context, params) => const EditLeavePageWidget(),
+        ),
+        FFRoute(
+          name: 'ChangeLatLngPage',
+          path: '/changeLatLngPage',
+          builder: (context, params) => const ChangeLatLngPageWidget(),
+        ),
+        FFRoute(
+          name: 'myProfilePage',
+          path: '/myProfilePage',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'myProfilePage')
+              : const MyProfilePageWidget(),
+        ),
+        FFRoute(
+          name: 'GuideBookPage',
+          path: '/guideBookPage',
+          builder: (context, params) => const GuideBookPageWidget(),
+        ),
+        FFRoute(
+          name: 'NotificationPage',
+          path: '/notificationPage',
+          builder: (context, params) => NotificationPageWidget(
+            leaveType: params.getParam(
+              'leaveType',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'SuccessCheckinPage',
+          path: '/successCheckinPage',
+          builder: (context, params) => const SuccessCheckinPageWidget(),
+        ),
+        FFRoute(
+          name: 'EmployeeCheckinPageVol',
+          path: '/employeeCheckinPageVol',
+          builder: (context, params) => const EmployeeCheckinPageVolWidget(),
+        ),
+        FFRoute(
+          name: 'CheckinStatusPageVol',
+          path: '/checkinStatusPageVol',
+          builder: (context, params) => const CheckinStatusPageVolWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -217,6 +319,7 @@ class FFParameters {
     ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -235,6 +338,7 @@ class FFParameters {
       type,
       isList,
       collectionNamePath: collectionNamePath,
+      structBuilder: structBuilder,
     );
   }
 }
@@ -352,4 +456,14 @@ class RootPageContext {
         value: RootPageContext(true, errorRoute),
         child: child,
       );
+}
+
+extension GoRouterLocationExtension on GoRouter {
+  String getCurrentLocation() {
+    final RouteMatch lastMatch = routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
 }

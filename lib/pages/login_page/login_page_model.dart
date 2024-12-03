@@ -10,7 +10,6 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   TutorialCoachMark? loginController;
-  final unfocusNode = FocusNode();
   // Stores action output result for [Custom Action - getBuildVersion] action in loginPage widget.
   String? getBuildVersion;
   // State field(s) for username widget.
@@ -47,7 +46,6 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   @override
   void dispose() {
     loginController?.finish();
-    unfocusNode.dispose();
     usernameFocusNode?.dispose();
     usernameTextController?.dispose();
 

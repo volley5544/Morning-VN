@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '/backend/backend.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
@@ -19,6 +18,9 @@ class FFAppState extends ChangeNotifier {
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
     _safeInit(() {
+      _accessToken = prefs.getString('ff_accessToken') ?? _accessToken;
+    });
+    _safeInit(() {
       _pinCode = prefs.getString('ff_pinCode') ?? _pinCode;
     });
     _safeInit(() {
@@ -26,6 +28,23 @@ class FFAppState extends ChangeNotifier {
     });
     _safeInit(() {
       _employeeID = prefs.getString('ff_employeeID') ?? _employeeID;
+    });
+    _safeInit(() {
+      _brachListNew = prefs.getStringList('ff_brachListNew') ?? _brachListNew;
+    });
+    _safeInit(() {
+      _brachGroupNew = prefs.getString('ff_brachGroupNew') ?? _brachGroupNew;
+    });
+    _safeInit(() {
+      _firstLoginLocation =
+          latLngFromString(prefs.getString('ff_firstLoginLocation')) ??
+              _firstLoginLocation;
+    });
+    _safeInit(() {
+      _userRef = prefs.getString('ff_userRef')?.ref ?? _userRef;
+    });
+    _safeInit(() {
+      _userRefDoc = prefs.getString('ff_userRefDoc') ?? _userRefDoc;
     });
   }
 
@@ -35,6 +54,20 @@ class FFAppState extends ChangeNotifier {
   }
 
   late SharedPreferences prefs;
+
+  String _accessToken = '';
+  String get accessToken => _accessToken;
+  set accessToken(String value) {
+    _accessToken = value;
+    prefs.setString('ff_accessToken', value);
+  }
+
+  String _apiUrlAppState =
+      'https://39fe-115-31-145-24.ngrok-free.app/ssw_morning_fm';
+  String get apiUrlAppState => _apiUrlAppState;
+  set apiUrlAppState(String value) {
+    _apiUrlAppState = value;
+  }
 
   bool _fromPinPage = false;
   bool get fromPinPage => _fromPinPage;
@@ -75,26 +108,26 @@ class FFAppState extends ChangeNotifier {
   }
 
   void addToDefaultList(String value) {
-    _defaultList.add(value);
+    defaultList.add(value);
   }
 
   void removeFromDefaultList(String value) {
-    _defaultList.remove(value);
+    defaultList.remove(value);
   }
 
   void removeAtIndexFromDefaultList(int index) {
-    _defaultList.removeAt(index);
+    defaultList.removeAt(index);
   }
 
   void updateDefaultListAtIndex(
     int index,
     String Function(String) updateFn,
   ) {
-    _defaultList[index] = updateFn(_defaultList[index]);
+    defaultList[index] = updateFn(_defaultList[index]);
   }
 
   void insertAtIndexInDefaultList(int index, String value) {
-    _defaultList.insert(index, value);
+    defaultList.insert(index, value);
   }
 
   List<String> _defaultList2 = [
@@ -110,26 +143,26 @@ class FFAppState extends ChangeNotifier {
   }
 
   void addToDefaultList2(String value) {
-    _defaultList2.add(value);
+    defaultList2.add(value);
   }
 
   void removeFromDefaultList2(String value) {
-    _defaultList2.remove(value);
+    defaultList2.remove(value);
   }
 
   void removeAtIndexFromDefaultList2(int index) {
-    _defaultList2.removeAt(index);
+    defaultList2.removeAt(index);
   }
 
   void updateDefaultList2AtIndex(
     int index,
     String Function(String) updateFn,
   ) {
-    _defaultList2[index] = updateFn(_defaultList2[index]);
+    defaultList2[index] = updateFn(_defaultList2[index]);
   }
 
   void insertAtIndexInDefaultList2(int index, String value) {
-    _defaultList2.insert(index, value);
+    defaultList2.insert(index, value);
   }
 
   String _employeeID = '';
@@ -144,6 +177,145 @@ class FFAppState extends ChangeNotifier {
   DocumentReference? get applicationConfigDocRef => _applicationConfigDocRef;
   set applicationConfigDocRef(DocumentReference? value) {
     _applicationConfigDocRef = value;
+  }
+
+  String _imgURLTemp = '';
+  String get imgURLTemp => _imgURLTemp;
+  set imgURLTemp(String value) {
+    _imgURLTemp = value;
+  }
+
+  String _profilePositionName = '';
+  String get profilePositionName => _profilePositionName;
+  set profilePositionName(String value) {
+    _profilePositionName = value;
+  }
+
+  String _profileStartDate = '[startdate]';
+  String get profileStartDate => _profileStartDate;
+  set profileStartDate(String value) {
+    _profileStartDate = value;
+  }
+
+  String _branchCode = '';
+  String get branchCode => _branchCode;
+  set branchCode(String value) {
+    _branchCode = value;
+  }
+
+  List<String> _brachListNew = [];
+  List<String> get brachListNew => _brachListNew;
+  set brachListNew(List<String> value) {
+    _brachListNew = value;
+    prefs.setStringList('ff_brachListNew', value);
+  }
+
+  void addToBrachListNew(String value) {
+    brachListNew.add(value);
+    prefs.setStringList('ff_brachListNew', _brachListNew);
+  }
+
+  void removeFromBrachListNew(String value) {
+    brachListNew.remove(value);
+    prefs.setStringList('ff_brachListNew', _brachListNew);
+  }
+
+  void removeAtIndexFromBrachListNew(int index) {
+    brachListNew.removeAt(index);
+    prefs.setStringList('ff_brachListNew', _brachListNew);
+  }
+
+  void updateBrachListNewAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    brachListNew[index] = updateFn(_brachListNew[index]);
+    prefs.setStringList('ff_brachListNew', _brachListNew);
+  }
+
+  void insertAtIndexInBrachListNew(int index, String value) {
+    brachListNew.insert(index, value);
+    prefs.setStringList('ff_brachListNew', _brachListNew);
+  }
+
+  String _brachGroupNew = '';
+  String get brachGroupNew => _brachGroupNew;
+  set brachGroupNew(String value) {
+    _brachGroupNew = value;
+    prefs.setString('ff_brachGroupNew', value);
+  }
+
+  LatLng? _firstLoginLocation;
+  LatLng? get firstLoginLocation => _firstLoginLocation;
+  set firstLoginLocation(LatLng? value) {
+    _firstLoginLocation = value;
+    value != null
+        ? prefs.setString('ff_firstLoginLocation', value.serialize())
+        : prefs.remove('ff_firstLoginLocation');
+  }
+
+  String _profileServiceDuration = '1 ปี 6 เดือน 6 วัน';
+  String get profileServiceDuration => _profileServiceDuration;
+  set profileServiceDuration(String value) {
+    _profileServiceDuration = value;
+  }
+
+  String _profilePosisionAge = '1 ปี 6 เดือน 6 วัน';
+  String get profilePosisionAge => _profilePosisionAge;
+  set profilePosisionAge(String value) {
+    _profilePosisionAge = value;
+  }
+
+  String _profilePositionAgeCheck = '[position_age_check]';
+  String get profilePositionAgeCheck => _profilePositionAgeCheck;
+  set profilePositionAgeCheck(String value) {
+    _profilePositionAgeCheck = value;
+  }
+
+  String _branchLoString = '';
+  String get branchLoString => _branchLoString;
+  set branchLoString(String value) {
+    _branchLoString = value;
+  }
+
+  bool _checkBranchDropdown = false;
+  bool get checkBranchDropdown => _checkBranchDropdown;
+  set checkBranchDropdown(bool value) {
+    _checkBranchDropdown = value;
+  }
+
+  LatLng? _branchLo;
+  LatLng? get branchLo => _branchLo;
+  set branchLo(LatLng? value) {
+    _branchLo = value;
+  }
+
+  double _currentRadius = 0.0;
+  double get currentRadius => _currentRadius;
+  set currentRadius(double value) {
+    _currentRadius = value;
+  }
+
+  DocumentReference? _userRef;
+  DocumentReference? get userRef => _userRef;
+  set userRef(DocumentReference? value) {
+    _userRef = value;
+    value != null
+        ? prefs.setString('ff_userRef', value.path)
+        : prefs.remove('ff_userRef');
+  }
+
+  String _userRefDoc = '';
+  String get userRefDoc => _userRefDoc;
+  set userRefDoc(String value) {
+    _userRefDoc = value;
+    prefs.setString('ff_userRefDoc', value);
+  }
+
+  String _branchRADIUS = '';
+  String get branchRADIUS => _branchRADIUS;
+  set branchRADIUS(String value) {
+    _branchRADIUS = value;
   }
 }
 

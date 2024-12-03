@@ -1,0 +1,1164 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
+import '/components/loading/loading_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_expanded_image_view.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/upload_data.dart';
+import 'dart:async';
+import '/custom_code/actions/index.dart' as actions;
+import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
+import 'employee_checkin_page_vol_model.dart';
+export 'employee_checkin_page_vol_model.dart';
+
+class EmployeeCheckinPageVolWidget extends StatefulWidget {
+  const EmployeeCheckinPageVolWidget({super.key});
+
+  @override
+  State<EmployeeCheckinPageVolWidget> createState() =>
+      _EmployeeCheckinPageVolWidgetState();
+}
+
+class _EmployeeCheckinPageVolWidgetState
+    extends State<EmployeeCheckinPageVolWidget> {
+  late EmployeeCheckinPageVolModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  LatLng? currentUserLocationValue;
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => EmployeeCheckinPageVolModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      showDialog(
+        context: context,
+        builder: (dialogContext) {
+          return Dialog(
+            elevation: 0,
+            insetPadding: EdgeInsets.zero,
+            backgroundColor: Colors.transparent,
+            alignment: const AlignmentDirectional(0.0, 0.0)
+                .resolve(Directionality.of(context)),
+            child: GestureDetector(
+              onTap: () => FocusScope.of(dialogContext).unfocus(),
+              child: const SizedBox(
+                height: double.infinity,
+                child: LoadingWidget(),
+              ),
+            ),
+          );
+        },
+      );
+
+      setAppLanguage(context, 'en');
+      _model.apiResultjwm = await GetLocationCall.call(
+        apiUrl: FFAppState().apiUrlAppState,
+        token: FFAppState().accessToken,
+      );
+
+      if ((_model.apiResultjwm?.statusCode ?? 200) != 200) {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              content: Text(
+                  'พบข้อผิดพลาดConnection (${(_model.apiResultjwm?.statusCode ?? 200).toString()})'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: const Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
+        return;
+      }
+      if ('${GetLocationCall.code(
+            (_model.apiResultjwm?.jsonBody ?? ''),
+          )}' !=
+          '200') {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              content: Text('พบข้อผิดพลาด (${GetLocationCall.code(
+                (_model.apiResultjwm?.jsonBody ?? ''),
+              )}) ${GetLocationCall.message(
+                (_model.apiResultjwm?.jsonBody ?? ''),
+              )}'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: const Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
+        return;
+      }
+      _model.listLocationData = GetLocationCall.listLocatio(
+        (_model.apiResultjwm?.jsonBody ?? ''),
+      )!
+          .toList()
+          .cast<ListLocationCheckInStruct>();
+      safeSetState(() {});
+      Navigator.pop(context);
+    });
+
+    getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
+        .then((loc) => safeSetState(() => currentUserLocationValue = loc));
+    _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+    if (currentUserLocationValue == null) {
+      return Container(
+        color: FlutterFlowTheme.of(context).primaryBackground,
+        child: Center(
+          child: SizedBox(
+            width: 50.0,
+            height: 50.0,
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(
+                FlutterFlowTheme.of(context).primary,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
+    return Builder(
+      builder: (context) => GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: WillPopScope(
+          onWillPop: () async => false,
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            appBar: AppBar(
+              backgroundColor: const Color(0xFFFF843D),
+              automaticallyImplyLeading: false,
+              leading: FlutterFlowIconButton(
+                borderRadius: 8.0,
+                buttonSize: 60.0,
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: FlutterFlowTheme.of(context).info,
+                  size: 30.0,
+                ),
+                onPressed: () async {
+                  context.safePop();
+                },
+              ),
+              title: Text(
+                FFLocalizations.of(context).getText(
+                  'daobyp58' /* เช็คอินเข้า - ออกงาน */,
+                ),
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Outfit',
+                      color: Colors.white,
+                      fontSize: 22.0,
+                      letterSpacing: 0.0,
+                    ),
+              ),
+              actions: [
+                Builder(
+                  builder: (context) => FlutterFlowIconButton(
+                    borderRadius: 8.0,
+                    buttonSize: 60.0,
+                    icon: Icon(
+                      Icons.camera_sharp,
+                      color: FlutterFlowTheme.of(context).info,
+                      size: 30.0,
+                    ),
+                    onPressed: () async {
+                      var shouldSetState = false;
+                      showDialog(
+                        context: context,
+                        builder: (dialogContext) {
+                          return Dialog(
+                            elevation: 0,
+                            insetPadding: EdgeInsets.zero,
+                            backgroundColor: Colors.transparent,
+                            alignment: const AlignmentDirectional(0.0, 0.0)
+                                .resolve(Directionality.of(context)),
+                            child: GestureDetector(
+                              onTap: () =>
+                                  FocusScope.of(dialogContext).unfocus(),
+                              child: const SizedBox(
+                                height: double.infinity,
+                                child: LoadingWidget(),
+                              ),
+                            ),
+                          );
+                        },
+                      );
+
+                      final selectedMedia = await selectMedia(
+                        imageQuality: 30,
+                        multiImage: false,
+                      );
+                      if (selectedMedia != null &&
+                          selectedMedia.every((m) =>
+                              validateFileFormat(m.storagePath, context))) {
+                        safeSetState(() => _model.isDataUploading2 = true);
+                        var selectedUploadedFiles = <FFUploadedFile>[];
+
+                        try {
+                          selectedUploadedFiles = selectedMedia
+                              .map((m) => FFUploadedFile(
+                                    name: m.storagePath.split('/').last,
+                                    bytes: m.bytes,
+                                    height: m.dimensions?.height,
+                                    width: m.dimensions?.width,
+                                    blurHash: m.blurHash,
+                                  ))
+                              .toList();
+                        } finally {
+                          _model.isDataUploading2 = false;
+                        }
+                        if (selectedUploadedFiles.length ==
+                            selectedMedia.length) {
+                          safeSetState(() {
+                            _model.uploadedLocalFile2 =
+                                selectedUploadedFiles.first;
+                          });
+                        } else {
+                          safeSetState(() {});
+                          return;
+                        }
+                      }
+
+                      if (!((_model.uploadedLocalFile2.bytes?.isNotEmpty ??
+                              false))) {
+                        Navigator.pop(context);
+                        if (shouldSetState) safeSetState(() {});
+                        return;
+                      }
+                      _model.uploadedImageOutput1 =
+                          await actions.uploadFileFirebaseStorage(
+                        'CheckinImage',
+                        _model.uploadedLocalFile2,
+                      );
+                      shouldSetState = true;
+                      if (!(_model.uploadedImageOutput1 != null &&
+                          _model.uploadedImageOutput1 != '')) {
+                        Navigator.pop(context);
+                        ScaffoldMessenger.of(context).clearSnackBars();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              'ถ่ายภาพล้มเหลว กรุณาลองใหม่อีกครั้ง',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            duration: Duration(milliseconds: 3000),
+                            backgroundColor: Color(0xC0000000),
+                          ),
+                        );
+                        if (shouldSetState) safeSetState(() {});
+                        return;
+                      }
+                      FFAppState().imgURLTemp = functions
+                          .convertStringToImgPath(_model.uploadedImageOutput1)!;
+                      safeSetState(() {});
+                      Navigator.pop(context);
+                      ScaffoldMessenger.of(context).clearSnackBars();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            'ถ่ายภาพสำเร็จ!',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          duration: Duration(milliseconds: 3000),
+                          backgroundColor: Color(0xC0000000),
+                        ),
+                      );
+                      if (shouldSetState) safeSetState(() {});
+                    },
+                  ),
+                ),
+              ],
+              centerTitle: true,
+              elevation: 2.0,
+            ),
+            body: SafeArea(
+              top: true,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 30.0,
+                    decoration: const BoxDecoration(),
+                    child: Align(
+                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'zmdkvqhu' /* วันจันทร์ , 2 ธันวาคม 2567 */,
+                        ),
+                        textAlign: TextAlign.center,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              fontSize: 18.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 50.0,
+                    decoration: const BoxDecoration(),
+                    child: Text(
+                      FFLocalizations.of(context).getText(
+                        'i8gdmckz' /* 13 : 41 : 35 น. */,
+                      ),
+                      textAlign: TextAlign.center,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            fontSize: 36.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                    ),
+                  ),
+                  Divider(
+                    thickness: 2.0,
+                    color: FlutterFlowTheme.of(context).alternate,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 200.0,
+                    decoration: const BoxDecoration(),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 240.0,
+                          height: double.infinity,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            boxShadow: const [
+                              BoxShadow(
+                                blurRadius: 4.0,
+                                color: Color(0x33000000),
+                                offset: Offset(
+                                  0.0,
+                                  2.0,
+                                ),
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(12.0),
+                          ),
+                          child: SizedBox(
+                            width: double.infinity,
+                            height: double.infinity,
+                            child: Stack(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(6.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      await Navigator.push(
+                                        context,
+                                        PageTransition(
+                                          type: PageTransitionType.fade,
+                                          child: FlutterFlowExpandedImageView(
+                                            image: Image.network(
+                                              valueOrDefault<String>(
+                                                FFAppState().imgURLTemp,
+                                                'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
+                                              ),
+                                              fit: BoxFit.contain,
+                                            ),
+                                            allowRotation: false,
+                                            tag: valueOrDefault<String>(
+                                              FFAppState().imgURLTemp,
+                                              'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
+                                            ),
+                                            useHeroAnimation: true,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Hero(
+                                      tag: valueOrDefault<String>(
+                                        FFAppState().imgURLTemp,
+                                        'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
+                                      ),
+                                      transitionOnUserGestures: true,
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                        child: Image.network(
+                                          valueOrDefault<String>(
+                                            FFAppState().imgURLTemp,
+                                            'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
+                                          ),
+                                          width: double.infinity,
+                                          height: double.infinity,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                if (functions.convertImgPathToString(
+                                        FFAppState().imgURLTemp) !=
+                                    '')
+                                  Align(
+                                    alignment: const AlignmentDirectional(1.0, -1.0),
+                                    child: Builder(
+                                      builder: (context) => InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        content: const Text(
+                                                            'คุณต้องการจะลบรูปภาพที่ถ่ายหรือไม่?'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                const Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child:
+                                                                const Text('Confirm'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (!confirmDialogResponse) {
+                                            return;
+                                          }
+                                          showDialog(
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: const AlignmentDirectional(
+                                                        0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: GestureDetector(
+                                                  onTap: () => FocusScope.of(
+                                                          dialogContext)
+                                                      .unfocus(),
+                                                  child: const SizedBox(
+                                                    height: double.infinity,
+                                                    child: LoadingWidget(),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+
+                                          await FirebaseStorage.instance
+                                              .refFromURL(
+                                                  FFAppState().imgURLTemp)
+                                              .delete();
+                                          FFAppState().imgURLTemp = '';
+                                          safeSetState(() {});
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Icon(
+                                          Icons.close_outlined,
+                                          color: Color(0xFFFF0000),
+                                          size: 30.0,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            12.0, 0.0, 12.0, 12.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'l6blpkdm' /* สถานที่เช็คอิน */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 15.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      4.0, 0.0, 4.0, 0.0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'z7nsnw7q' /* : */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: FlutterFlowDropDown<String>(
+                                    controller:
+                                        _model.dropDownValueController ??=
+                                            FormFieldController<String>(
+                                      _model.dropDownValue ??= '',
+                                    ),
+                                    options: List<String>.from(_model
+                                        .listLocationData
+                                        .map((e) => e.branchCode)
+                                        .toList()),
+                                    optionLabels: _model.listLocationData
+                                        .map((e) => e.branchName)
+                                        .toList(),
+                                    onChanged: (val) => safeSetState(
+                                        () => _model.dropDownValue = val),
+                                    width: 200.0,
+                                    height: 40.0,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 15.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                    hintText:
+                                        FFLocalizations.of(context).getText(
+                                      'rqaov9m7' /* เลือก... */,
+                                    ),
+                                    icon: Icon(
+                                      Icons.keyboard_arrow_down_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    elevation: 2.0,
+                                    borderColor: Colors.transparent,
+                                    borderWidth: 0.0,
+                                    borderRadius: 8.0,
+                                    margin: const EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 12.0, 0.0),
+                                    hidesUnderline: true,
+                                    isOverButton: false,
+                                    isSearchable: false,
+                                    isMultiSelect: false,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'ftoe9e4u' /* หมายเหตุ */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 15.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      4.0, 0.0, 4.0, 0.0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      '9xzwtf7m' /* : */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: SizedBox(
+                                    width: 200.0,
+                                    child: TextFormField(
+                                      controller: _model.textController,
+                                      focusNode: _model.textFieldFocusNode,
+                                      autofocus: false,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        isDense: true,
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              fontSize: 15.0,
+                                              letterSpacing: 0.0,
+                                            ),
+                                        hintText:
+                                            FFLocalizations.of(context).getText(
+                                          '71z45b5q' /* หมายเหตุ... */,
+                                        ),
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              fontSize: 15.0,
+                                              letterSpacing: 0.0,
+                                            ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        errorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        filled: true,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            fontSize: 15.0,
+                                            letterSpacing: 0.0,
+                                          ),
+                                      cursorColor: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      validator: _model.textControllerValidator
+                                          .asValidator(context),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  24.0, 12.0, 24.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Expanded(
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        currentUserLocationValue =
+                                            await getCurrentUserLocation(
+                                                defaultLocation:
+                                                    const LatLng(0.0, 0.0));
+                                        var shouldSetState = false;
+                                        if (functions.convertImgPathToString(
+                                                FFAppState().imgURLTemp) ==
+                                            '') {
+                                          unawaited(
+                                            () async {}(),
+                                          );
+                                          final selectedMedia =
+                                              await selectMedia(
+                                            imageQuality: 30,
+                                            multiImage: false,
+                                          );
+                                          if (selectedMedia != null &&
+                                              selectedMedia.every((m) =>
+                                                  validateFileFormat(
+                                                      m.storagePath,
+                                                      context))) {
+                                            safeSetState(() =>
+                                                _model.isDataUploading1 = true);
+                                            var selectedUploadedFiles =
+                                                <FFUploadedFile>[];
+
+                                            try {
+                                              selectedUploadedFiles =
+                                                  selectedMedia
+                                                      .map(
+                                                          (m) => FFUploadedFile(
+                                                                name: m
+                                                                    .storagePath
+                                                                    .split('/')
+                                                                    .last,
+                                                                bytes: m.bytes,
+                                                                height: m
+                                                                    .dimensions
+                                                                    ?.height,
+                                                                width: m
+                                                                    .dimensions
+                                                                    ?.width,
+                                                                blurHash:
+                                                                    m.blurHash,
+                                                              ))
+                                                      .toList();
+                                            } finally {
+                                              _model.isDataUploading1 = false;
+                                            }
+                                            if (selectedUploadedFiles.length ==
+                                                selectedMedia.length) {
+                                              safeSetState(() {
+                                                _model.uploadedLocalFile1 =
+                                                    selectedUploadedFiles.first;
+                                              });
+                                            } else {
+                                              safeSetState(() {});
+                                              return;
+                                            }
+                                          }
+
+                                          if (!((_model.uploadedLocalFile1.bytes
+                                                      ?.isNotEmpty ??
+                                                  false))) {
+                                            if (shouldSetState) {
+                                              safeSetState(() {});
+                                            }
+                                            return;
+                                          }
+                                          _model.uploadedImageOutput2 =
+                                              await actions
+                                                  .uploadFileFirebaseStorage(
+                                            'CheckinImage',
+                                            _model.uploadedLocalFile1,
+                                          );
+                                          shouldSetState = true;
+                                          if (!(_model.uploadedImageOutput2 !=
+                                                  null &&
+                                              _model.uploadedImageOutput2 !=
+                                                  '')) {
+                                            ScaffoldMessenger.of(context)
+                                                .clearSnackBars();
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              const SnackBar(
+                                                content: Text(
+                                                  'ถ่ายภาพล้มเหลว กรุณาลองใหม่อีกครั้ง',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 3000),
+                                                backgroundColor:
+                                                    Color(0xC0000000),
+                                              ),
+                                            );
+                                            if (shouldSetState) {
+                                              safeSetState(() {});
+                                            }
+                                            return;
+                                          }
+                                          FFAppState().imgURLTemp =
+                                              functions.convertStringToImgPath(
+                                                  _model.uploadedImageOutput2)!;
+                                          safeSetState(() {});
+                                          ScaffoldMessenger.of(context)
+                                              .clearSnackBars();
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            const SnackBar(
+                                              content: Text(
+                                                'ถ่ายภาพสำเร็จ!',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 3000),
+                                              backgroundColor:
+                                                  Color(0xC0000000),
+                                            ),
+                                          );
+                                        }
+                                        if (!(_model.dropDownValue != null &&
+                                            _model.dropDownValue != '')) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                content: const Text(
+                                                    'กรุณาเลือกสถานที่เช็คอิน'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                          if (shouldSetState) {
+                                            safeSetState(() {});
+                                          }
+                                          return;
+                                        }
+                                        if (!functions
+                                            .checkEnebleLocationDevice(
+                                                currentUserLocationValue)!) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                content: const Text(
+                                                    'กรุณาเปิด GPS ก่อนทำการเช็คอิน'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                          if (shouldSetState) {
+                                            safeSetState(() {});
+                                          }
+                                          return;
+                                        }
+                                        _model.checkUserIsInRadius =
+                                            await actions.locationCal(
+                                          functions.combineLatLngFunction(
+                                              _model
+                                                  .listLocationData[_model
+                                                      .listLocationData
+                                                      .map((e) => e.branchCode)
+                                                      .toList()
+                                                      .indexOf((_model
+                                                          .dropDownValue!))]
+                                                  .latitude,
+                                              _model
+                                                  .listLocationData[_model
+                                                      .listLocationData
+                                                      .map((e) => e.branchCode)
+                                                      .toList()
+                                                      .indexOf((_model
+                                                          .dropDownValue!))]
+                                                  .longitude),
+                                          currentUserLocationValue,
+                                          _model
+                                              .listLocationData[_model
+                                                  .listLocationData
+                                                  .map((e) => e.branchCode)
+                                                  .toList()
+                                                  .indexOf(
+                                                      (_model.dropDownValue!))]
+                                              .radius,
+                                        );
+                                        shouldSetState = true;
+                                        if (!_model.checkUserIsInRadius!) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                content: const Text(
+                                                    'คุณไม่อยู่ในระยะเช็คอิน กรุณาอยู่ใกล้กับสถานที่เช็คอินที่คุณเลือก'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                          if (shouldSetState) {
+                                            safeSetState(() {});
+                                          }
+                                          return;
+                                        }
+                                        _model.workCheckApiOutput =
+                                            await WorkCheckAPICall.call(
+                                          apiUrl: FFAppState().apiUrlAppState,
+                                          token: FFAppState().accessToken,
+                                          latitude: functions.getLatLngFunction(
+                                              currentUserLocationValue,
+                                              'latitude'),
+                                          remark:
+                                              _model.textController.text != ''
+                                                  ? _model.textController.text
+                                                  : '',
+                                          longitude:
+                                              functions.getLatLngFunction(
+                                                  currentUserLocationValue,
+                                                  'longitude'),
+                                          urlImg:
+                                              functions.convertImgPathToString(
+                                                  FFAppState().imgURLTemp),
+                                          branch: _model.dropDownValue,
+                                        );
+
+                                        shouldSetState = true;
+                                        if ((_model.workCheckApiOutput
+                                                    ?.statusCode ??
+                                                200) !=
+                                            200) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                content: Text(
+                                                    'พบข้อผิดพลาดConnection (${(_model.workCheckApiOutput?.statusCode ?? 200).toString()})'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                          if (shouldSetState) {
+                                            safeSetState(() {});
+                                          }
+                                          return;
+                                        }
+                                        if ('${WorkCheckAPICall.statuslayer1(
+                                              (_model.workCheckApiOutput
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            )?.toString()}' !=
+                                            '200') {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                content: Text(
+                                                    'พบข้อผิดพลาด (${WorkCheckAPICall.statuslayer1(
+                                                  (_model.workCheckApiOutput
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )?.toString()}) ${WorkCheckAPICall.messagelayer1(
+                                                  (_model.workCheckApiOutput
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )}'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                          if (shouldSetState) {
+                                            safeSetState(() {});
+                                          }
+                                          return;
+                                        }
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              content: const Text('ลงเวลาสำเร็จ!'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: const Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
+                                      },
+                                      text: FFLocalizations.of(context).getText(
+                                        'vsxa3kfb' /* ลงเวลา */,
+                                      ),
+                                      options: FFButtonOptions(
+                                        height: 50.0,
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                        iconPadding:
+                                            const EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: const Color(0xFF39D260),
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color: Colors.white,
+                                              letterSpacing: 0.0,
+                                            ),
+                                        elevation: 0.0,
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 180.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: MediaQuery.sizeOf(context).height * 0.25,
+                      child: custom_widgets.DrawCircleMap(
+                        width: double.infinity,
+                        height: MediaQuery.sizeOf(context).height * 0.25,
+                        latitude: double.parse(_model
+                            .listLocationData[_model.listLocationData
+                                .map((e) => e.branchCode)
+                                .toList()
+                                .indexOf((_model.dropDownValue!))]
+                            .latitude),
+                        longitude: double.parse(_model
+                            .listLocationData[_model.listLocationData
+                                .map((e) => e.branchCode)
+                                .toList()
+                                .indexOf((_model.dropDownValue!))]
+                            .longitude),
+                        radiusLo: double.parse(_model
+                            .listLocationData[_model.listLocationData
+                                .map((e) => e.branchCode)
+                                .toList()
+                                .indexOf((_model.dropDownValue!))]
+                            .radius),
+                        currentLoLat: double.parse((functions.getLatLngFunction(
+                            currentUserLocationValue, 'lat')!)),
+                        currentLoLng: double.parse((functions.getLatLngFunction(
+                            currentUserLocationValue, 'lng')!)),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

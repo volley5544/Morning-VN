@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
-import '/components/action2_sheet_simple_widget.dart';
+import '/components/action2_sheet_simple/action2_sheet_simple_widget.dart';
 
 // Focus widget keys for this walkthrough
 final textField0mut7dyi = GlobalKey();

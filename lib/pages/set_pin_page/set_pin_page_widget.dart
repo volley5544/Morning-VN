@@ -36,9 +36,7 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -116,11 +114,6 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                               FlutterFlowTheme.of(context).primaryBackground,
                           selectedColor:
                               FlutterFlowTheme.of(context).secondaryText,
-                          activeFillColor: FlutterFlowTheme.of(context).primary,
-                          inactiveFillColor:
-                              FlutterFlowTheme.of(context).primaryBackground,
-                          selectedFillColor:
-                              FlutterFlowTheme.of(context).secondaryText,
                         ),
                         controller: _model.pinCodeController,
                         onChanged: (_) {},
@@ -170,12 +163,11 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                       );
                       return;
                     }
-                    FFAppState().update(() {
-                      FFAppState().pinCode = _model.pinCodeController!.text;
-                      FFAppState().fromSetPin = true;
-                    });
+                    FFAppState().pinCode = _model.pinCodeController!.text;
+                    FFAppState().fromSetPin = true;
+                    FFAppState().update(() {});
 
-                    context.goNamed('HomePage');
+                    context.goNamed('DashBoard');
                   },
                   text: FFLocalizations.of(context).getText(
                     '67idg0p8' /* Confirm */,

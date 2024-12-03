@@ -4,10 +4,9 @@ import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/custom_code/actions/index.dart' as actions;
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -48,13 +47,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           return;
         }
       }
-
-      await actions.getBackgroundLocation(
-        FFAppState().employeeID,
-      );
-      await actions.periodicGetLocation(
-        FFAppState().employeeID,
-      );
     });
   }
 
@@ -70,9 +62,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFFFFEDE0),
@@ -93,14 +83,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               await authManager.signOut();
               GoRouter.of(context).clearRedirectLocation();
 
-              setState(() {
-                FFAppState().fromSetPin = false;
-                FFAppState().pinCode = '';
-                FFAppState().fromPinPage = false;
-                FFAppState().isLogin = false;
-                FFAppState().username = '';
-                FFAppState().employeeID = '';
-              });
+              FFAppState().fromSetPin = false;
+              FFAppState().pinCode = '';
+              FFAppState().fromPinPage = false;
+              FFAppState().isLogin = false;
+              FFAppState().username = '';
+              FFAppState().employeeID = '';
+              safeSetState(() {});
 
               context.goNamedAuth('loginPage', context.mounted);
             },
@@ -140,18 +129,27 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'atscyg3f' /* Promotion */,
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('DashboardCheckin');
+                                },
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'atscyg3f' /* Promotion */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 23.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                 ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      fontSize: 23.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
                               ),
                             ],
                           ),
@@ -188,12 +186,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             carouselImageLinkStorageRecordList.isNotEmpty
                                 ? carouselImageLinkStorageRecordList.first
                                 : null;
+
                         return Builder(
                           builder: (context) {
                             final cardItem = carouselImageLinkStorageRecord
                                     ?.cardImage
                                     .toList() ??
                                 [];
+
                             return SizedBox(
                               width: double.infinity,
                               height: 180.0,
@@ -262,9 +262,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 },
                                 carouselController:
                                     _model.carouselController ??=
-                                        CarouselController(),
+                                        CarouselSliderController(),
                                 options: CarouselOptions(
-                                  initialPage: min(0, cardItem.length - 1),
+                                  initialPage:
+                                      max(0, min(0, cardItem.length - 1)),
                                   viewportFraction: 0.5,
                                   disableCenter: false,
                                   enlargeCenterPage: true,
@@ -343,12 +344,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               pageViewImageLinkStorageRecordList.isNotEmpty
                                   ? pageViewImageLinkStorageRecordList.first
                                   : null;
+
                           return Builder(
                             builder: (context) {
                               final bannerItem = pageViewImageLinkStorageRecord
                                       ?.bannerImage
                                       .toList() ??
                                   [];
+
                               return SizedBox(
                                 width: double.infinity,
                                 height: 500.0,
@@ -440,6 +443,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   const Duration(milliseconds: 500),
                                               curve: Curves.ease,
                                             );
+                                            safeSetState(() {});
                                           },
                                           effect: smooth_page_indicator
                                               .ExpandingDotsEffect(
