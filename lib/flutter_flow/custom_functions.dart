@@ -132,7 +132,7 @@ bool? checkEnebleLocationDevice(LatLng? currentLocation) {
   if (currentLocation! == defaultLocation) {
     return false;
   } else {
-    return false;
+    return true;
   }
 }
 
@@ -162,4 +162,95 @@ String? greetingTextSuperApp(String? name) {
   String firstName = name.split(' ').first;
 
   return 'สวัสดี คุณ$firstName';
+}
+
+bool? checkYearHoliday(DateTime? dateNow) {
+  int year = dateNow!.year;
+
+  if (year == 2025) {
+    return true;
+  } else if (year == 2024) {
+    return false;
+  } else {
+    return false;
+  }
+}
+
+bool? checkSundayDate(DateTime? startDate) {
+  if (startDate!.weekday == 7) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+bool? checkHolidayDate(
+  DateTime? startDate,
+  List<String>? holidayDatelist,
+) {
+  int numHoliday = 0;
+  DateFormat dateFormat = new DateFormat('yyyy-MM-dd');
+  String startDateStr = dateFormat.format(startDate!);
+
+  for (int i = 0; i < holidayDatelist!.length; i++) {
+    if (startDateStr == holidayDatelist[i]) {
+      numHoliday++;
+    }
+  }
+  if (numHoliday > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+bool? checkYearLeave(DateTime? startDate) {
+  int year = startDate!.year;
+
+  if (year == 2025 || year == 2024) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+bool? checkSickLeaveIsBeforeCurrentDate(
+  DateTime? currentDate,
+  DateTime? leaveDate,
+) {
+  if (leaveDate!.isBefore(currentDate!)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+bool? checkLeaveDayNumber(String? leaveDayNumber) {
+  return leaveDayNumber!.contains('.');
+}
+
+bool? allowFileInput(
+  String? leaveTypeInput,
+  String? leaveDayInput,
+) {
+  bool result = true;
+  if (leaveTypeInput == 'ลาป่วย' && int.parse(leaveDayInput!) >= 3) {
+    result = true;
+  } else if (leaveTypeInput == 'ลาป่วย' && int.parse(leaveDayInput!) < 3) {
+    result = false;
+  } else if (leaveTypeInput == 'ลาทำหมัน') {
+    result = true;
+  } else if (leaveTypeInput == 'ลาเพื่อรับราชการทหาร') {
+    result = true;
+  } else {
+    result = false;
+  }
+  return result;
+}
+
+bool? containString(
+  String? input,
+  String? fullText,
+) {
+  return fullText!.contains(input!);
 }

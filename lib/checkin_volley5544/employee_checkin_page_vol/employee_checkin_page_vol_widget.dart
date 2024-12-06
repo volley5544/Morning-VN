@@ -1,6 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/loading/loading_widget.dart';
+import '/components/search_branch_component_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -546,89 +547,256 @@ class _EmployeeCheckinPageVolWidgetState
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'l6blpkdm' /* สถานที่เช็คอิน */,
+                            if (false)
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'l6blpkdm' /* สถานที่เช็คอิน */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            fontSize: 15.0,
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          fontSize: 15.0,
-                                          letterSpacing: 0.0,
-                                        ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      4.0, 0.0, 4.0, 0.0),
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'z7nsnw7q' /* : */,
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        4.0, 0.0, 4.0, 0.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'z7nsnw7q' /* : */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
                                   ),
-                                ),
-                                Expanded(
-                                  flex: 2,
-                                  child: FlutterFlowDropDown<String>(
-                                    controller:
-                                        _model.dropDownValueController ??=
-                                            FormFieldController<String>(
-                                      _model.dropDownValue ??= '',
-                                    ),
-                                    options: List<String>.from(_model
-                                        .listLocationData
-                                        .map((e) => e.branchCode)
-                                        .toList()),
-                                    optionLabels: _model.listLocationData
-                                        .map((e) => e.branchName)
-                                        .toList(),
-                                    onChanged: (val) => safeSetState(
-                                        () => _model.dropDownValue = val),
-                                    width: 200.0,
-                                    height: 40.0,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          fontSize: 15.0,
-                                          letterSpacing: 0.0,
+                                  Expanded(
+                                    flex: 2,
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return GestureDetector(
+                                              onTap: () =>
+                                                  FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: SizedBox(
+                                                  height:
+                                                      MediaQuery.sizeOf(context)
+                                                              .height *
+                                                          0.8,
+                                                  child:
+                                                      SearchBranchComponentWidget(
+                                                    dataList:
+                                                        _model.listLocationData,
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(
+                                            () => _model.indexBranch = value));
+
+                                        safeSetState(() {
+                                          _model.dropDownValueController
+                                                  ?.value =
+                                              _model
+                                                  .listLocationData[
+                                                      _model.indexBranch!]
+                                                  .branchName;
+                                        });
+
+                                        safeSetState(() {});
+                                      },
+                                      child: Container(
+                                        width: 200.0,
+                                        height: 40.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
                                         ),
-                                    hintText:
-                                        FFLocalizations.of(context).getText(
-                                      'rqaov9m7' /* เลือก... */,
+                                        child: Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              _model.indexBranch != null
+                                                  ? _model
+                                                      .listLocationData[
+                                                          _model.indexBranch!]
+                                                      .branchName
+                                                  : 'เลือกสาขา',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                    icon: Icon(
-                                      Icons.keyboard_arrow_down_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
-                                    ),
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    elevation: 2.0,
-                                    borderColor: Colors.transparent,
-                                    borderWidth: 0.0,
-                                    borderRadius: 8.0,
-                                    margin: const EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 12.0, 0.0),
-                                    hidesUnderline: true,
-                                    isOverButton: false,
-                                    isSearchable: false,
-                                    isMultiSelect: false,
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                if (_model.listLocationData.length >= 2) {
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    enableDrag: false,
+                                    context: context,
+                                    builder: (context) {
+                                      return GestureDetector(
+                                        onTap: () =>
+                                            FocusScope.of(context).unfocus(),
+                                        child: Padding(
+                                          padding:
+                                              MediaQuery.viewInsetsOf(context),
+                                          child: SizedBox(
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.8,
+                                            child: SearchBranchComponentWidget(
+                                              dataList: _model.listLocationData,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => safeSetState(
+                                      () => _model.indexBranchCopy = value));
+
+                                  safeSetState(() {
+                                    _model.dropDownValueController?.value =
+                                        _model
+                                            .listLocationData[
+                                                _model.indexBranchCopy!]
+                                            .branchName;
+                                  });
+                                }
+
+                                safeSetState(() {});
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        's3yychni' /* สถานที่เช็คอิน */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            fontSize: 15.0,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        4.0, 0.0, 4.0, 0.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'lzjrurt0' /* : */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 2,
+                                    child: FlutterFlowDropDown<String>(
+                                      controller:
+                                          _model.dropDownValueController ??=
+                                              FormFieldController<String>(
+                                        _model.dropDownValue ??= '',
+                                      ),
+                                      options: List<String>.from(_model
+                                          .listLocationData
+                                          .map((e) => e.branchCode)
+                                          .toList()),
+                                      optionLabels: _model.listLocationData
+                                          .map((e) => e.branchName)
+                                          .toList(),
+                                      onChanged: (val) => safeSetState(
+                                          () => _model.dropDownValue = val),
+                                      width: 200.0,
+                                      height: 40.0,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            fontSize: 15.0,
+                                            letterSpacing: 0.0,
+                                          ),
+                                      hintText:
+                                          FFLocalizations.of(context).getText(
+                                        'f19jf9yj' /* เลือก... */,
+                                      ),
+                                      icon: Icon(
+                                        Icons.keyboard_arrow_down_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      elevation: 2.0,
+                                      borderColor: Colors.transparent,
+                                      borderWidth: 0.0,
+                                      borderRadius: 8.0,
+                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 12.0, 0.0),
+                                      hidesUnderline: true,
+                                      disabled:
+                                          _model.listLocationData.length > 2,
+                                      isOverButton: false,
+                                      isSearchable: false,
+                                      isMultiSelect: false,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.max,
@@ -878,6 +1046,23 @@ class _EmployeeCheckinPageVolWidgetState
                                             ),
                                           );
                                         }
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              content:
+                                                  Text(_model.dropDownValue!),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: const Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
                                         if (!(_model.dropDownValue != null &&
                                             _model.dropDownValue != '')) {
                                           await showDialog(
@@ -985,8 +1170,7 @@ class _EmployeeCheckinPageVolWidgetState
                                           apiUrl: FFAppState().apiUrlAppState,
                                           token: FFAppState().accessToken,
                                           latitude: functions.getLatLngFunction(
-                                              currentUserLocationValue,
-                                              'latitude'),
+                                              currentUserLocationValue, 'lat'),
                                           remark:
                                               _model.textController.text != ''
                                                   ? _model.textController.text
@@ -1128,24 +1312,42 @@ class _EmployeeCheckinPageVolWidgetState
                       child: custom_widgets.DrawCircleMap(
                         width: double.infinity,
                         height: MediaQuery.sizeOf(context).height * 0.25,
-                        latitude: double.parse(_model
-                            .listLocationData[_model.listLocationData
-                                .map((e) => e.branchCode)
-                                .toList()
-                                .indexOf((_model.dropDownValue!))]
-                            .latitude),
-                        longitude: double.parse(_model
-                            .listLocationData[_model.listLocationData
-                                .map((e) => e.branchCode)
-                                .toList()
-                                .indexOf((_model.dropDownValue!))]
-                            .longitude),
-                        radiusLo: double.parse(_model
-                            .listLocationData[_model.listLocationData
-                                .map((e) => e.branchCode)
-                                .toList()
-                                .indexOf((_model.dropDownValue!))]
-                            .radius),
+                        latitude: _model.dropDownValue != null &&
+                                _model.dropDownValue != ''
+                            ? valueOrDefault<double>(
+                                double.parse(_model
+                                    .listLocationData[_model.listLocationData
+                                        .map((e) => e.branchCode)
+                                        .toList()
+                                        .indexOf((_model.dropDownValue!))]
+                                    .latitude),
+                                0.0,
+                              )
+                            : 0.0,
+                        longitude: _model.dropDownValue != null &&
+                                _model.dropDownValue != ''
+                            ? valueOrDefault<double>(
+                                double.parse(_model
+                                    .listLocationData[_model.listLocationData
+                                        .map((e) => e.branchCode)
+                                        .toList()
+                                        .indexOf((_model.dropDownValue!))]
+                                    .longitude),
+                                0.0,
+                              )
+                            : 0.0,
+                        radiusLo: _model.dropDownValue != null &&
+                                _model.dropDownValue != ''
+                            ? valueOrDefault<double>(
+                                double.parse(_model
+                                    .listLocationData[_model.listLocationData
+                                        .map((e) => e.branchCode)
+                                        .toList()
+                                        .indexOf((_model.dropDownValue!))]
+                                    .radius),
+                                0.0,
+                              )
+                            : 0.0,
                         currentLoLat: double.parse((functions.getLatLngFunction(
                             currentUserLocationValue, 'lat')!)),
                         currentLoLng: double.parse((functions.getLatLngFunction(

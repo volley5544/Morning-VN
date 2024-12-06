@@ -36,3 +36,9 @@ export '/checkin_volley5544/employee_checkin_page_vol/employee_checkin_page_vol_
     show EmployeeCheckinPageVolWidget;
 export '/checkin_volley5544/checkin_status_page_vol/checkin_status_page_vol_widget.dart'
     show CheckinStatusPageVolWidget;
+export '/checkin_volley5544/test_page/test_page_widget.dart'
+    show TestPageWidget;
+export '/checkin_volley5544/test2_page/test2_page_widget.dart'
+    show Test2PageWidget;
+export '/search_branch_page/search_branch_page_widget.dart'
+    show SearchBranchPageWidget;

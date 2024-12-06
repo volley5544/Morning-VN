@@ -830,42 +830,42 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                 }
                                                 FFAppState().isLogin = true;
                                                 FFAppState().username =
-                                                    AuthenAPICall.nameth(
+                                                    '${AuthenAPICall.nameth(
                                                   (_model.authAPIOutput
                                                           ?.jsonBody ??
                                                       ''),
-                                                )!;
+                                                )}';
                                                 FFAppState().employeeID =
-                                                    AuthenAPICall.employeeid(
+                                                    '${AuthenAPICall.employeeid(
                                                   (_model.authAPIOutput
                                                           ?.jsonBody ??
                                                       ''),
-                                                )!;
+                                                )}';
                                                 FFAppState()
                                                         .profilePositionName =
-                                                    AuthenAPICall.position(
+                                                    '${AuthenAPICall.position(
                                                   (_model.authAPIOutput
                                                           ?.jsonBody ??
                                                       ''),
-                                                )!;
+                                                )}';
                                                 FFAppState().profileStartDate =
-                                                    AuthenAPICall.startdate(
+                                                    '${AuthenAPICall.startdate(
                                                   (_model.authAPIOutput
                                                           ?.jsonBody ??
                                                       ''),
-                                                )!;
+                                                )}';
                                                 FFAppState().accessToken =
-                                                    AuthenAPICall.accesstoken(
+                                                    '${AuthenAPICall.accesstoken(
                                                   (_model.authAPIOutput
                                                           ?.jsonBody ??
                                                       ''),
-                                                )!;
+                                                )}';
                                                 FFAppState().branchCode =
-                                                    AuthenAPICall.branchcode(
+                                                    '${AuthenAPICall.branchcode(
                                                   (_model.authAPIOutput
                                                           ?.jsonBody ??
                                                       ''),
-                                                )!;
+                                                )}';
                                                 safeSetState(() {});
                                                 if (isAndroid) {
                                                 } else {
@@ -923,7 +923,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         .usernameTextController
                                                         .text,
                                                     profileImg:
-                                                        'https://firebasestorage.googleapis.com/v0/b/flut-flow-test.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=4189e142-826e-4b26-b278-914c39bfac74',
+                                                        'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
                                                   ));
                                                   _model.createdUserCustom =
                                                       UserCustomRecord
@@ -939,7 +939,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                                     .usernameTextController
                                                                     .text,
                                                                 profileImg:
-                                                                    'https://firebasestorage.googleapis.com/v0/b/flut-flow-test.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=4189e142-826e-4b26-b278-914c39bfac74',
+                                                                    'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
                                                               ),
                                                               userCustomRecordReference);
                                                   shouldSetState = true;
@@ -1002,19 +1002,28 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                       Expanded(
                         child: Align(
                           alignment: const AlignmentDirectional(0.0, 1.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'f6exf55c' /* Copyright ©2024.  Srisawad Cor... */,
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed('DashboardCheckin');
+                            },
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'f6exf55c' /* Copyright ©2024.  Srisawad Cor... */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: const Color(0xFF607D8B),
+                                    fontSize: 13.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: const Color(0xFF607D8B),
-                                  fontSize: 13.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
                           ).animateOnPageLoad(
                               animationsMap['textOnPageLoadAnimation']!),
                         ),

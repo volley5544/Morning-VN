@@ -8,8 +8,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:barcode_widget/barcode_widget.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -58,7 +56,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
               children: [
                 Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: 380.0,
+                  height: 350.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     image: DecorationImage(
@@ -111,280 +109,308 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                       ? stackUserCustomRecordList.first
                                       : null;
 
-                              return SizedBox(
-                                width: MediaQuery.sizeOf(context).width * 1.0,
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.22,
-                                child: Stack(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
-                                  children: [
-                                    Material(
-                                      color: Colors.transparent,
-                                      elevation: 2.0,
-                                      shape: const CircleBorder(),
-                                      child: Container(
-                                        width: 140.0,
-                                        height: 140.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          shape: BoxShape.circle,
-                                        ),
+                              return InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        content:
+                                            Text(FFAppState().profileStartDate),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: const Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                },
+                                child: SizedBox(
+                                  width: MediaQuery.sizeOf(context).width * 1.0,
+                                  height:
+                                      MediaQuery.sizeOf(context).height * 0.22,
+                                  child: Stack(
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    children: [
+                                      Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            await Navigator.push(
-                                              context,
-                                              PageTransition(
-                                                type: PageTransitionType.fade,
-                                                child:
-                                                    FlutterFlowExpandedImageView(
-                                                  image: CachedNetworkImage(
-                                                    fadeInDuration: const Duration(
-                                                        milliseconds: 500),
-                                                    fadeOutDuration: const Duration(
-                                                        milliseconds: 500),
-                                                    imageUrl:
-                                                        valueOrDefault<String>(
-                                                      stackUserCustomRecord
-                                                          ?.profileImg,
-                                                      'https://firebasestorage.googleapis.com/v0/b/flut-flow-test.appspot.com/o/imageUrlExpired.png?alt=media&token=5a9e3847-91d4-40d4-9a76-97a77d108060',
-                                                    ),
-                                                    fit: BoxFit.contain,
-                                                  ),
-                                                  allowRotation: false,
-                                                  tag: valueOrDefault<String>(
-                                                    stackUserCustomRecord
-                                                        ?.profileImg,
-                                                    'https://firebasestorage.googleapis.com/v0/b/flut-flow-test.appspot.com/o/imageUrlExpired.png?alt=media&token=5a9e3847-91d4-40d4-9a76-97a77d108060',
-                                                  ),
-                                                  useHeroAnimation: true,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: Hero(
-                                            tag: valueOrDefault<String>(
-                                              stackUserCustomRecord?.profileImg,
-                                              'https://firebasestorage.googleapis.com/v0/b/flut-flow-test.appspot.com/o/imageUrlExpired.png?alt=media&token=5a9e3847-91d4-40d4-9a76-97a77d108060',
+                                            const AlignmentDirectional(0.0, 0.9),
+                                        child: Material(
+                                          color: Colors.transparent,
+                                          elevation: 2.0,
+                                          shape: const CircleBorder(),
+                                          child: Container(
+                                            width: 140.0,
+                                            height: 140.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              shape: BoxShape.circle,
                                             ),
-                                            transitionOnUserGestures: true,
-                                            child: Container(
-                                              width: 200.0,
-                                              height: 200.0,
-                                              clipBehavior: Clip.antiAlias,
-                                              decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: CachedNetworkImage(
-                                                fadeInDuration:
-                                                    const Duration(milliseconds: 500),
-                                                fadeOutDuration:
-                                                    const Duration(milliseconds: 500),
-                                                imageUrl:
-                                                    valueOrDefault<String>(
-                                                  stackUserCustomRecord
-                                                      ?.profileImg,
-                                                  'https://firebasestorage.googleapis.com/v0/b/flut-flow-test.appspot.com/o/imageUrlExpired.png?alt=media&token=5a9e3847-91d4-40d4-9a76-97a77d108060',
-                                                ),
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment:
-                                          const AlignmentDirectional(0.25, 1.0),
-                                      child: Container(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: FlutterFlowIconButton(
-                                          borderRadius: 30.0,
-                                          buttonSize: 40.0,
-                                          icon: const Icon(
-                                            Icons.camera_alt,
-                                            color: Color(0xFF0039E3),
-                                            size: 30.0,
-                                          ),
-                                          onPressed: () async {
-                                            var shouldSetState = false;
-                                            showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
+                                            alignment:
+                                                const AlignmentDirectional(0.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
                                                   Colors.transparent,
-                                              enableDrag: false,
-                                              context: context,
-                                              builder: (context) {
-                                                return GestureDetector(
-                                                  onTap: () =>
-                                                      FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child: Padding(
-                                                    padding:
-                                                        MediaQuery.viewInsetsOf(
-                                                            context),
-                                                    child: const SizedBox(
-                                                      height: double.infinity,
-                                                      child: LoadingWidget(),
+                                              onTap: () async {
+                                                await Navigator.push(
+                                                  context,
+                                                  PageTransition(
+                                                    type:
+                                                        PageTransitionType.fade,
+                                                    child:
+                                                        FlutterFlowExpandedImageView(
+                                                      image: Image.network(
+                                                        valueOrDefault<String>(
+                                                          stackUserCustomRecord
+                                                              ?.profileImg,
+                                                          'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
+                                                        ),
+                                                        fit: BoxFit.contain,
+                                                      ),
+                                                      allowRotation: false,
+                                                      tag: valueOrDefault<
+                                                          String>(
+                                                        stackUserCustomRecord
+                                                            ?.profileImg,
+                                                        'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
+                                                      ),
+                                                      useHeroAnimation: true,
                                                     ),
                                                   ),
                                                 );
                                               },
-                                            ).then(
-                                                (value) => safeSetState(() {}));
-
-                                            final selectedMedia =
-                                                await selectMediaWithSourceBottomSheet(
-                                              context: context,
-                                              imageQuality: 30,
-                                              allowPhoto: true,
-                                            );
-                                            if (selectedMedia != null &&
-                                                selectedMedia.every((m) =>
-                                                    validateFileFormat(
-                                                        m.storagePath,
-                                                        context))) {
-                                              safeSetState(() => _model
-                                                  .isDataUploading = true);
-                                              var selectedUploadedFiles =
-                                                  <FFUploadedFile>[];
-
-                                              try {
-                                                selectedUploadedFiles =
-                                                    selectedMedia
-                                                        .map((m) =>
-                                                            FFUploadedFile(
-                                                              name: m
-                                                                  .storagePath
-                                                                  .split('/')
-                                                                  .last,
-                                                              bytes: m.bytes,
-                                                              height: m
-                                                                  .dimensions
-                                                                  ?.height,
-                                                              width: m
-                                                                  .dimensions
-                                                                  ?.width,
-                                                              blurHash:
-                                                                  m.blurHash,
-                                                            ))
-                                                        .toList();
-                                              } finally {
-                                                _model.isDataUploading = false;
-                                              }
-                                              if (selectedUploadedFiles
-                                                      .length ==
-                                                  selectedMedia.length) {
-                                                safeSetState(() {
-                                                  _model.uploadedLocalFile =
-                                                      selectedUploadedFiles
-                                                          .first;
-                                                });
-                                              } else {
-                                                safeSetState(() {});
-                                                return;
-                                              }
-                                            }
-
-                                            if (!((_model.uploadedLocalFile.bytes
-                                                        ?.isNotEmpty ??
-                                                    false))) {
-                                              Navigator.pop(context);
-                                              if (shouldSetState) {
-                                                safeSetState(() {});
-                                              }
-                                              return;
-                                            }
-                                            _model.uploadFirebaseStorageAction =
-                                                await actions
-                                                    .uploadFileFirebaseStorage(
-                                              'UsersProfileImage',
-                                              _model.uploadedLocalFile,
-                                            );
-                                            shouldSetState = true;
-                                            if (!(_model.uploadFirebaseStorageAction !=
-                                                    null &&
-                                                _model.uploadFirebaseStorageAction !=
-                                                    '')) {
-                                              Navigator.pop(context);
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    content: const Text(
-                                                        'ไม่สามารถอัพโหลดรูปได้ กรุณาลองอีกครั้ง'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: const Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                              if (shouldSetState) {
-                                                safeSetState(() {});
-                                              }
-                                              return;
-                                            }
-                                            if (stackUserCustomRecord
-                                                    ?.profileImg !=
-                                                'https://firebasestorage.googleapis.com/v0/b/flut-flow-test.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=4189e142-826e-4b26-b278-914c39bfac74') {
-                                              _model.checkProfileImgIsAvailable =
-                                                  await actions
-                                                      .checkImageIsAvailable(
-                                                functions.imgPathtoString(
-                                                    stackUserCustomRecord
-                                                        ?.profileImg),
-                                              );
-                                              shouldSetState = true;
-                                              if (_model
-                                                  .checkProfileImgIsAvailable!) {
-                                                await FirebaseStorage.instance
-                                                    .refFromURL('')
-                                                    .delete();
-                                              }
-                                            }
-
-                                            await stackUserCustomRecord!
-                                                .reference
-                                                .update(
-                                                    createUserCustomRecordData(
-                                              profileImg: functions
-                                                  .stringToImgPath(_model
-                                                      .uploadFirebaseStorageAction),
-                                            ));
-                                            safeSetState(() {
-                                              _model.isDataUploading = false;
-                                              _model.uploadedLocalFile =
-                                                  FFUploadedFile(
-                                                      bytes: Uint8List.fromList(
-                                                          []));
-                                            });
-
-                                            Navigator.pop(context);
-                                            if (shouldSetState) {
-                                              safeSetState(() {});
-                                            }
-                                          },
+                                              child: Hero(
+                                                tag: valueOrDefault<String>(
+                                                  stackUserCustomRecord
+                                                      ?.profileImg,
+                                                  'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
+                                                ),
+                                                transitionOnUserGestures: true,
+                                                child: Container(
+                                                  width: 125.0,
+                                                  height: 125.0,
+                                                  clipBehavior: Clip.antiAlias,
+                                                  decoration: const BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                  ),
+                                                  child: Image.network(
+                                                    valueOrDefault<String>(
+                                                      stackUserCustomRecord
+                                                          ?.profileImg,
+                                                      'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
+                                                    ),
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.25, 1.0),
+                                        child: Container(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: FlutterFlowIconButton(
+                                            borderRadius: 30.0,
+                                            buttonSize: 40.0,
+                                            icon: const Icon(
+                                              Icons.camera_alt,
+                                              color: Color(0xFF0039E3),
+                                              size: 30.0,
+                                            ),
+                                            onPressed: () async {
+                                              var shouldSetState = false;
+                                              showModalBottomSheet(
+                                                isScrollControlled: true,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                enableDrag: false,
+                                                context: context,
+                                                builder: (context) {
+                                                  return GestureDetector(
+                                                    onTap: () =>
+                                                        FocusScope.of(context)
+                                                            .unfocus(),
+                                                    child: Padding(
+                                                      padding: MediaQuery
+                                                          .viewInsetsOf(
+                                                              context),
+                                                      child: const SizedBox(
+                                                        height: double.infinity,
+                                                        child: LoadingWidget(),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ).then((value) =>
+                                                  safeSetState(() {}));
+
+                                              final selectedMedia =
+                                                  await selectMediaWithSourceBottomSheet(
+                                                context: context,
+                                                imageQuality: 30,
+                                                allowPhoto: true,
+                                              );
+                                              if (selectedMedia != null &&
+                                                  selectedMedia.every((m) =>
+                                                      validateFileFormat(
+                                                          m.storagePath,
+                                                          context))) {
+                                                safeSetState(() => _model
+                                                    .isDataUploading = true);
+                                                var selectedUploadedFiles =
+                                                    <FFUploadedFile>[];
+
+                                                try {
+                                                  selectedUploadedFiles =
+                                                      selectedMedia
+                                                          .map((m) =>
+                                                              FFUploadedFile(
+                                                                name: m
+                                                                    .storagePath
+                                                                    .split('/')
+                                                                    .last,
+                                                                bytes: m.bytes,
+                                                                height: m
+                                                                    .dimensions
+                                                                    ?.height,
+                                                                width: m
+                                                                    .dimensions
+                                                                    ?.width,
+                                                                blurHash:
+                                                                    m.blurHash,
+                                                              ))
+                                                          .toList();
+                                                } finally {
+                                                  _model.isDataUploading =
+                                                      false;
+                                                }
+                                                if (selectedUploadedFiles
+                                                        .length ==
+                                                    selectedMedia.length) {
+                                                  safeSetState(() {
+                                                    _model.uploadedLocalFile =
+                                                        selectedUploadedFiles
+                                                            .first;
+                                                  });
+                                                } else {
+                                                  safeSetState(() {});
+                                                  return;
+                                                }
+                                              }
+
+                                              if (!((_model.uploadedLocalFile
+                                                          .bytes?.isNotEmpty ??
+                                                      false))) {
+                                                Navigator.pop(context);
+                                                if (shouldSetState) {
+                                                  safeSetState(() {});
+                                                }
+                                                return;
+                                              }
+                                              _model.uploadFirebaseStorageAction =
+                                                  await actions
+                                                      .uploadFileFirebaseStorage(
+                                                'UsersProfileImage',
+                                                _model.uploadedLocalFile,
+                                              );
+                                              shouldSetState = true;
+                                              if (!(_model.uploadFirebaseStorageAction !=
+                                                      null &&
+                                                  _model.uploadFirebaseStorageAction !=
+                                                      '')) {
+                                                Navigator.pop(context);
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      content: const Text(
+                                                          'ไม่สามารถอัพโหลดรูปได้ กรุณาลองอีกครั้ง'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: const Text('Ok'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                );
+                                                if (shouldSetState) {
+                                                  safeSetState(() {});
+                                                }
+                                                return;
+                                              }
+                                              if (stackUserCustomRecord
+                                                      ?.profileImg !=
+                                                  'https://firebasestorage.googleapis.com/v0/b/flut-flow-test.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=4189e142-826e-4b26-b278-914c39bfac74') {
+                                                _model.checkProfileImgIsAvailable =
+                                                    await actions
+                                                        .checkImageIsAvailable(
+                                                  functions.imgPathtoString(
+                                                      stackUserCustomRecord
+                                                          ?.profileImg),
+                                                );
+                                                shouldSetState = true;
+                                                if (_model
+                                                    .checkProfileImgIsAvailable!) {
+                                                  await FirebaseStorage.instance
+                                                      .refFromURL(
+                                                          stackUserCustomRecord!
+                                                              .profileImg)
+                                                      .delete();
+                                                }
+                                              }
+
+                                              await stackUserCustomRecord!
+                                                  .reference
+                                                  .update(
+                                                      createUserCustomRecordData(
+                                                profileImg: functions
+                                                    .stringToImgPath(_model
+                                                        .uploadFirebaseStorageAction),
+                                              ));
+                                              safeSetState(() {
+                                                _model.isDataUploading = false;
+                                                _model.uploadedLocalFile =
+                                                    FFUploadedFile(
+                                                        bytes:
+                                                            Uint8List.fromList(
+                                                                []));
+                                              });
+
+                                              Navigator.pop(context);
+                                              if (shouldSetState) {
+                                                safeSetState(() {});
+                                              }
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               );
                             },
@@ -462,144 +488,126 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                8.0, 0.0, 10.0, 0.0),
-                            child: Container(
-                              width: 140.0,
-                              height: 140.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed('DashboardCheckin');
-                                },
-                                child: BarcodeWidget(
-                                  data: 'https://flutterflow.io/',
-                                  barcode: Barcode.qrCode(),
-                                  width: 200.0,
-                                  height: 200.0,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  backgroundColor: Colors.transparent,
-                                  errorBuilder: (context, error) => const SizedBox(
-                                    width: 200.0,
-                                    height: 200.0,
-                                  ),
-                                  drawText: true,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'รหัสพนักงาน: ${FFAppState().employeeID}',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                          Text(
-                            'สาขา: ${FFAppState().branchCode}',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                          Text(
-                            'วันที่เริ่มงาน: 15 พ.ค. 2023',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                          Text(
-                            'อายุงาน: 1 ปี 6 เดือน 14 วัน',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                          Text(
-                            'อายุตำแหน่ง: 1 ปี 6 เดือน 14 วัน',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                40.0, 0.0, 40.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      context.pushNamed('GuideBookPage');
-                                    },
-                                    text: FFLocalizations.of(context).getText(
-                                      '7c59mcgf' /* คู่มือพนักงาน */,
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              25.0, 0.0, 0.0, 0.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'รหัสพนักงาน: ${FFAppState().employeeID}',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
                                     ),
-                                    options: FFButtonOptions(
-                                      width: 135.0,
-                                      height: 35.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color: const Color(0xFF0039E3),
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: Colors.white,
-                                            letterSpacing: 0.0,
+                              ),
+                              Text(
+                                'สาขา: ${FFAppState().branchCode}',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                              if (FFAppState().profileStartDate != 'null')
+                                Text(
+                                  'วันที่เริ่มงาน: ${FFAppState().profileStartDate != 'null' ? dateTimeFormat(
+                                      "d/M/y",
+                                      functions.showClockIn(
+                                          FFAppState().profileStartDate),
+                                      locale: FFLocalizations.of(context)
+                                          .languageCode,
+                                    ) : '-'}',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                              Text(
+                                'อายุงาน: 1 ปี 6 เดือน 14 วัน',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                              Text(
+                                'อายุตำแหน่ง: 1 ปี 6 เดือน 14 วัน',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    40.0, 0.0, 40.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      flex: 1,
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            30.0, 0.0, 30.0, 0.0),
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            context.pushNamed('GuideBookPage');
+                                          },
+                                          text: FFLocalizations.of(context)
+                                              .getText(
+                                            '7c59mcgf' /* คู่มือพนักงาน */,
                                           ),
-                                      elevation: 0.0,
-                                      borderRadius: BorderRadius.circular(8.0),
+                                          options: FFButtonOptions(
+                                            width: 135.0,
+                                            height: 35.0,
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            iconPadding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: const Color(0xFF0039E3),
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color: Colors.white,
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            elevation: 0.0,
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          showLoadingIndicator: false,
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ],
                   ),

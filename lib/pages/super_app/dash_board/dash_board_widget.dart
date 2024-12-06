@@ -3,13 +3,16 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/pages/checkin/loading_scene/loading_scene_widget.dart';
 import 'dart:async';
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:badges/badges.dart' as badges;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -37,6 +40,11 @@ class _DashBoardWidgetState extends State<DashBoardWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => DashBoardModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setAppLanguage(context, 'en');
+    });
 
     animationsMap.addAll({
       'iconOnPageLoadAnimation': AnimationInfo(
@@ -206,7 +214,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget>
                       height: 80.0,
                     ),
                   ),
-                  const Spacer(flex: 5),
+                  const Spacer(flex: 3),
                   Expanded(
                     child: Container(
                       height: MediaQuery.sizeOf(context).height * 0.06,
@@ -288,6 +296,10 @@ class _DashBoardWidgetState extends State<DashBoardWidget>
             children: [
               StreamBuilder<List<UserCustomRecord>>(
                 stream: queryUserCustomRecord(
+                  queryBuilder: (userCustomRecord) => userCustomRecord.where(
+                    'eployee_id',
+                    isEqualTo: FFAppState().employeeID,
+                  ),
                   singleRecord: true,
                 ),
                 builder: (context, snapshot) {
@@ -340,8 +352,10 @@ class _DashBoardWidgetState extends State<DashBoardWidget>
                             child: Align(
                               alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  't6mdhedd' /* Hello */,
+                                valueOrDefault<String>(
+                                  functions.greetingTextSuperApp(
+                                      FFAppState().username),
+                                  'Hello',
                                 ),
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
@@ -804,9 +818,19 @@ class _DashBoardWidgetState extends State<DashBoardWidget>
                                             ),
                                           ),
                                         ),
-                                        Divider(
-                                          color: FlutterFlowTheme.of(context)
-                                              .grayIcon,
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed(
+                                                'CheckinStatusPageVol');
+                                          },
+                                          child: Divider(
+                                            color: FlutterFlowTheme.of(context)
+                                                .grayIcon,
+                                          ),
                                         ),
                                         Expanded(
                                           child: Padding(
@@ -817,9 +841,9 @@ class _DashBoardWidgetState extends State<DashBoardWidget>
                                               padding: EdgeInsets.zero,
                                               gridDelegate:
                                                   const SliverGridDelegateWithFixedCrossAxisCount(
-                                                crossAxisCount: 2,
+                                                crossAxisCount: 1,
                                                 mainAxisSpacing: 5.0,
-                                                childAspectRatio: 1.1,
+                                                childAspectRatio: 2.2,
                                               ),
                                               shrinkWrap: true,
                                               scrollDirection: Axis.horizontal,
@@ -913,6 +937,29 @@ class _DashBoardWidgetState extends State<DashBoardWidget>
                                                     unawaited(
                                                       () async {}(),
                                                     );
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      enableDrag: false,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return GestureDetector(
+                                                          onTap: () =>
+                                                              FocusScope.of(
+                                                                      context)
+                                                                  .unfocus(),
+                                                          child: Padding(
+                                                            padding: MediaQuery
+                                                                .viewInsetsOf(
+                                                                    context),
+                                                            child:
+                                                                const LoadingSceneWidget(),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() {}));
 
                                                     context.goNamed(
                                                         'DashboardLeavePage');
@@ -4103,13 +4150,12 @@ class _DashBoardWidgetState extends State<DashBoardWidget>
                                     ),
                                   ),
                                 ),
-                              if (false &&
-                                  responsiveVisibility(
-                                    context: context,
-                                    tablet: false,
-                                    tabletLandscape: false,
-                                    desktop: false,
-                                  ))
+                              if (responsiveVisibility(
+                                context: context,
+                                tablet: false,
+                                tabletLandscape: false,
+                                desktop: false,
+                              ))
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 10.0, 30.0),
@@ -4309,7 +4355,10 @@ class _DashBoardWidgetState extends State<DashBoardWidget>
                                                                         Colors
                                                                             .transparent,
                                                                     onTap:
-                                                                        () async {},
+                                                                        () async {
+                                                                      context.pushNamed(
+                                                                          'TestPage');
+                                                                    },
                                                                     child: Image
                                                                         .asset(
                                                                       'assets/images/pngegg.png',

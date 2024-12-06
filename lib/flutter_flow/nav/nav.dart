@@ -200,6 +200,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'CheckinStatusPageVol',
           path: '/checkinStatusPageVol',
           builder: (context, params) => const CheckinStatusPageVolWidget(),
+        ),
+        FFRoute(
+          name: 'TestPage',
+          path: '/testPage',
+          builder: (context, params) => const TestPageWidget(),
+        ),
+        FFRoute(
+          name: 'Test2Page',
+          path: '/test2Page',
+          builder: (context, params) => const Test2PageWidget(),
+        ),
+        FFRoute(
+          name: 'searchBranchPage',
+          path: '/searchBranchPage',
+          builder: (context, params) => SearchBranchPageWidget(
+            dataList: params.getParam<ListLocationCheckInStruct>(
+              'dataList',
+              ParamType.DataStruct,
+              isList: true,
+              structBuilder: ListLocationCheckInStruct.fromSerializableMap,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -101,7 +101,7 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_username', value);
   }
 
-  List<String> _defaultList = ['Hello World', 'Hello World', 'Hello World'];
+  List<String> _defaultList = ['Hello World1', 'Hello World2', 'Hello World3'];
   List<String> get defaultList => _defaultList;
   set defaultList(List<String> value) {
     _defaultList = value;
@@ -316,6 +316,121 @@ class FFAppState extends ChangeNotifier {
   String get branchRADIUS => _branchRADIUS;
   set branchRADIUS(String value) {
     _branchRADIUS = value;
+  }
+
+  List<String> _leaveHalfDay = [
+    'ลาเต็มวัน',
+    'ลาครึ่งวันเช้า',
+    'ลาครึ่งวันบ่าย'
+  ];
+  List<String> get leaveHalfDay => _leaveHalfDay;
+  set leaveHalfDay(List<String> value) {
+    _leaveHalfDay = value;
+  }
+
+  void addToLeaveHalfDay(String value) {
+    leaveHalfDay.add(value);
+  }
+
+  void removeFromLeaveHalfDay(String value) {
+    leaveHalfDay.remove(value);
+  }
+
+  void removeAtIndexFromLeaveHalfDay(int index) {
+    leaveHalfDay.removeAt(index);
+  }
+
+  void updateLeaveHalfDayAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    leaveHalfDay[index] = updateFn(_leaveHalfDay[index]);
+  }
+
+  void insertAtIndexInLeaveHalfDay(int index, String value) {
+    leaveHalfDay.insert(index, value);
+  }
+
+  List<String> _leaveFullDay = ['ลาเต็มวัน'];
+  List<String> get leaveFullDay => _leaveFullDay;
+  set leaveFullDay(List<String> value) {
+    _leaveFullDay = value;
+  }
+
+  void addToLeaveFullDay(String value) {
+    leaveFullDay.add(value);
+  }
+
+  void removeFromLeaveFullDay(String value) {
+    leaveFullDay.remove(value);
+  }
+
+  void removeAtIndexFromLeaveFullDay(int index) {
+    leaveFullDay.removeAt(index);
+  }
+
+  void updateLeaveFullDayAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    leaveFullDay[index] = updateFn(_leaveFullDay[index]);
+  }
+
+  void insertAtIndexInLeaveFullDay(int index, String value) {
+    leaveFullDay.insert(index, value);
+  }
+
+  bool _allowFileUpload = false;
+  bool get allowFileUpload => _allowFileUpload;
+  set allowFileUpload(bool value) {
+    _allowFileUpload = value;
+  }
+
+  List<DateTime> _dateSelectedList = [];
+  List<DateTime> get dateSelectedList => _dateSelectedList;
+  set dateSelectedList(List<DateTime> value) {
+    _dateSelectedList = value;
+  }
+
+  void addToDateSelectedList(DateTime value) {
+    dateSelectedList.add(value);
+  }
+
+  void removeFromDateSelectedList(DateTime value) {
+    dateSelectedList.remove(value);
+  }
+
+  void removeAtIndexFromDateSelectedList(int index) {
+    dateSelectedList.removeAt(index);
+  }
+
+  void updateDateSelectedListAtIndex(
+    int index,
+    DateTime Function(DateTime) updateFn,
+  ) {
+    dateSelectedList[index] = updateFn(_dateSelectedList[index]);
+  }
+
+  void insertAtIndexInDateSelectedList(int index, DateTime value) {
+    dateSelectedList.insert(index, value);
+  }
+
+  DateTime? _dateSelectedStart;
+  DateTime? get dateSelectedStart => _dateSelectedStart;
+  set dateSelectedStart(DateTime? value) {
+    _dateSelectedStart = value;
+  }
+
+  DateTime? _dateSelectedEnd;
+  DateTime? get dateSelectedEnd => _dateSelectedEnd;
+  set dateSelectedEnd(DateTime? value) {
+    _dateSelectedEnd = value;
+  }
+
+  int _indexBranchCheckin = -1;
+  int get indexBranchCheckin => _indexBranchCheckin;
+  set indexBranchCheckin(int value) {
+    _indexBranchCheckin = value;
   }
 }
 

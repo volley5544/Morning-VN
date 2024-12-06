@@ -29,6 +29,10 @@ class EmployeeCheckinPageVolModel
 
   // Stores action output result for [Backend Call - API (GetLocation)] action in EmployeeCheckinPageVol widget.
   ApiCallResponse? apiResultjwm;
+  // Stores action output result for [Bottom Sheet - searchBranchComponent] action in Container widget.
+  int? indexBranch;
+  // Stores action output result for [Bottom Sheet - searchBranchComponent] action in Row widget.
+  int? indexBranchCopy;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;

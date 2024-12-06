@@ -4,9 +4,11 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'add_leave_page_model.dart';
 export 'add_leave_page_model.dart';
 
@@ -48,6 +50,8 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -175,11 +179,160 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                               children: [
                                 Expanded(
                                   child: FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
+                                    onPressed: () async {
+                                      if (!(widget.leaveType != null &&
+                                          widget.leaveType != '')) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'กรุณาเลือกประเภทการลาก่อน',
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                            ),
+                                            duration:
+                                                const Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondary,
+                                          ),
+                                        );
+                                        return;
+                                      }
+                                      final datePickedDate =
+                                          await showDatePicker(
+                                        context: context,
+                                        initialDate: getCurrentTimestamp,
+                                        firstDate: getCurrentTimestamp,
+                                        lastDate: DateTime(2050),
+                                        builder: (context, child) {
+                                          return wrapInMaterialDatePickerTheme(
+                                            context,
+                                            child!,
+                                            headerBackgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            headerForegroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .info,
+                                            headerTextStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineLarge
+                                                    .override(
+                                                      fontFamily: 'Outfit',
+                                                      fontSize: 32.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                            pickerBackgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            pickerForegroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryText,
+                                            selectedDateTimeBackgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            selectedDateTimeForegroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .info,
+                                            actionButtonForegroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryText,
+                                            iconSize: 24.0,
+                                          );
+                                        },
+                                      );
+
+                                      if (datePickedDate != null) {
+                                        safeSetState(() {
+                                          _model.datePicked = DateTime(
+                                            datePickedDate.year,
+                                            datePickedDate.month,
+                                            datePickedDate.day,
+                                          );
+                                        });
+                                      }
+                                      if (functions.checkSundayDate(
+                                          _model.datePicked)!) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              content: const Text(
+                                                  'ไม่สามารถลาวันอาทิตได้ กรุณาเลือกวันใหม่'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: const Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                        return;
+                                      }
+                                      if (functions
+                                          .checkYearLeave(_model.datePicked)!) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              content: const Text(
+                                                  'ไม่สามารถล่วงหน้าปีหน้าได้ กรุณาเลือกวันใหม่'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: const Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                        return;
+                                      }
+                                      if (widget.leaveType == 'ลาป่วย') {
+                                        if (!functions
+                                            .checkSickLeaveIsBeforeCurrentDate(
+                                                getCurrentTimestamp,
+                                                _model.datePicked)!) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                content: const Text(
+                                                    'ไม่สามารถลาป่วยล่วงหน้าได้ กรุณาเลือกวันลาใหม่'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                          return;
+                                        }
+                                      }
                                     },
-                                    text: FFLocalizations.of(context).getText(
-                                      'slg5z09k' /* ระบุวันที่ */,
+                                    text: valueOrDefault<String>(
+                                      dateTimeFormat(
+                                        "d/M/y",
+                                        _model.datePicked,
+                                        locale: FFLocalizations.of(context)
+                                            .languageCode,
+                                      ),
+                                      'ระบุวันที่',
                                     ),
                                     icon: const Icon(
                                       Icons.calendar_month_rounded,
@@ -248,19 +401,16 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                     controller:
                                         _model.dropDownValueController ??=
                                             FormFieldController<String>(null),
-                                    options: [
-                                      FFLocalizations.of(context).getText(
-                                        '62hcul27' /* Option 1 */,
-                                      ),
-                                      FFLocalizations.of(context).getText(
-                                        'aeh37pc6' /* Option 2 */,
-                                      ),
-                                      FFLocalizations.of(context).getText(
-                                        'hvd7uf4c' /* Option 3 */,
-                                      )
-                                    ],
-                                    onChanged: (val) => safeSetState(
-                                        () => _model.dropDownValue = val),
+                                    options: (widget.leaveType == 'ลาป่วย') ||
+                                            (widget.leaveType == 'ลากิจ')
+                                        ? FFAppState().leaveHalfDay
+                                        : FFAppState().leaveFullDay,
+                                    onChanged: (val) async {
+                                      safeSetState(
+                                          () => _model.dropDownValue = val);
+                                      FFAppState().allowFileUpload = false;
+                                      safeSetState(() {});
+                                    },
                                     width: 90.0,
                                     height: 60.0,
                                     textStyle: FlutterFlowTheme.of(context)

@@ -141,7 +141,7 @@ class WorkCheckAPICall {
 
   static int? statuslayer1(dynamic response) => castToType<int>(getJsonField(
         response,
-        r'''$.status''',
+        r'''$.code''',
       ));
   static String? messagelayer1(dynamic response) =>
       castToType<String>(getJsonField(
@@ -253,6 +253,65 @@ class GetLocationCall {
           .toList();
 }
 
+class GetBranchLocationCall {
+  static Future<ApiCallResponse> call({
+    String? apiUrl = '',
+    String? token = '',
+    String? uid = '',
+    String? latitude = '',
+    String? longitude = '',
+    String? branchCode = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "latitude": "$latitude",
+  "longitude": "$longitude",
+  "branch_code": "$branchCode"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'getBranchLocation',
+      apiUrl: '$apiUrl/api/hr/location/get-branch-location',
+      callType: ApiCallType.POST,
+      headers: {
+        'ContentType': 'application/json; charset=utf-8,',
+        'Authorization': 'Bearer  $token',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static String? code(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+  static String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  static int? total(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.results.total''',
+      ));
+  static List? location(dynamic response) => getJsonField(
+        response,
+        r'''$.results.location[*]''',
+        true,
+      ) as List?;
+  static List? map(dynamic response) => getJsonField(
+        response,
+        r'''$.results.map[*]''',
+        true,
+      ) as List?;
+}
+
 class WorkCheckHistoryAPICall {
   static Future<ApiCallResponse> call({
     String? apiUrl = '',
@@ -277,7 +336,7 @@ class WorkCheckHistoryAPICall {
     );
   }
 
-  static String? code(dynamic response) => castToType<String>(getJsonField(
+  static int? code(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.code''',
       ));

@@ -11,3 +11,4 @@ export 'terminate_app_action.dart' show terminateAppAction;
 export 'upload_file_firebase_storage.dart' show uploadFileFirebaseStorage;
 export 'location_cal.dart' show locationCal;
 export 'check_image_is_available.dart' show checkImageIsAvailable;
+export 'a8.dart' show a8;

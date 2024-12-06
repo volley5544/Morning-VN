@@ -7,6 +7,7 @@ class AddLeavePageModel extends FlutterFlowModel<AddLeavePageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  DateTime? datePicked;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;

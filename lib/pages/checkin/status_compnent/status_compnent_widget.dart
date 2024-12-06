@@ -82,7 +82,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                           size: 40.0,
                         ),
                         onPressed: () async {
-                          context.safePop();
+                          Navigator.pop(context);
                         },
                       ),
                     ),

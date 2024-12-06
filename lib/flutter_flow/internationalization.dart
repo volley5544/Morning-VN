@@ -304,8 +304,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ero9jvlb': {
       'en': 'Home',
-      'th': '',
-      'vi': '',
+      'th': 'Profile',
+      'vi': 'Profile',
     },
   },
   // DashboardLeavePage
@@ -332,17 +332,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'qx4txjds': {
       'en': 'Home',
-      'th': '',
-      'vi': '',
+      'th': 'Profile',
+      'vi': 'Profile',
     },
   },
   // CheckInStatusPage
   {
-    'jhoco76t': {
-      'en': '[ if/then/Else (2 Conditions)]',
-      'th': '',
-      'vi': '',
-    },
     'sgu2ax3u': {
       'en': '** สาขาที่เวลาทำการพิเศษเเละสาขาที่มีสองกะ',
       'th': '',
@@ -384,246 +379,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
       'vi': '',
     },
-    '4480yavw': {
-      'en': 'จ.18 พ.ย 24',
-      'th': '',
-      'vi': '',
-    },
-    'qxj54w4m': {
-      'en': '07:43',
-      'th': '',
-      'vi': '',
-    },
-    'hq994545': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    '5buptr97': {
-      'en': 'รอลงเวลา',
-      'th': '',
-      'vi': '',
-    },
-    '8u6ibsbl': {
-      'en': 'อา.17 พ.ย 24',
-      'th': '',
-      'vi': '',
-    },
-    '5l6x73e5': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    'tyxe5gn8': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    '4o8bp4gk': {
-      'en': 'วันหยุด',
-      'th': '',
-      'vi': '',
-    },
-    'ugqezyth': {
-      'en': 'ส.16 พ.ย 24',
-      'th': '',
-      'vi': '',
-    },
-    '1tc4hex3': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    'trxmprec': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    'd1wkw1i1': {
-      'en': 'วันหยุด',
-      'th': '',
-      'vi': '',
-    },
-    'dlgtdty8': {
-      'en': 'ศ.15 พ.ย 24',
-      'th': '',
-      'vi': '',
-    },
-    'rpfjf5d4': {
-      'en': '07:38',
-      'th': '',
-      'vi': '',
-    },
-    '4zvqqp1k': {
-      'en': '17.30',
-      'th': '',
-      'vi': '',
-    },
-    'nntfox6k': {
-      'en': 'วันเฉลิมพระชนมพรรษา',
-      'th': '',
-      'vi': '',
-    },
-    '548iaz99': {
-      'en': 'พฤ.14 พ.ย 24',
-      'th': '',
-      'vi': '',
-    },
-    '8vxmo1cp': {
-      'en': '08:30',
-      'th': '',
-      'vi': '',
-    },
-    'uep5arbg': {
-      'en': '17.30',
-      'th': '',
-      'vi': '',
-    },
-    'o7qd8qxf': {
-      'en': 'ปกติ',
-      'th': '',
-      'vi': '',
-    },
-    '1pnvcf0r': {
-      'en': 'พ.13 พ.ย 24',
-      'th': '',
-      'vi': '',
-    },
-    '50jawokq': {
-      'en': '08:50',
-      'th': '',
-      'vi': '',
-    },
-    '61rzh032': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    'sw6gqn8l': {
-      'en': 'สาย',
-      'th': '',
-      'vi': '',
-    },
-    '8fuqcvrg': {
-      'en': 'อ.12 พ.ย 24',
-      'th': '',
-      'vi': '',
-    },
-    'kggva5c5': {
-      'en': '07:27',
-      'th': '',
-      'vi': '',
-    },
-    'l49dwqur': {
-      'en': '17.30',
-      'th': '',
-      'vi': '',
-    },
-    'o4h21uj0': {
-      'en': 'ปกติ',
-      'th': '',
-      'vi': '',
-    },
-    'rfzlce26': {
-      'en': 'จ.11 พ.ย 24',
-      'th': '',
-      'vi': '',
-    },
-    '2r7xc443': {
-      'en': '07:42',
-      'th': '',
-      'vi': '',
-    },
-    'w97j3cyd': {
-      'en': '18.30',
-      'th': '',
-      'vi': '',
-    },
-    '3o03innt': {
-      'en': 'ปกติ',
-      'th': '',
-      'vi': '',
-    },
-    'gere27me': {
-      'en': 'อา.10 พ.ย 24',
-      'th': '',
-      'vi': '',
-    },
-    'yhe1mlkm': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    'pcb05ufy': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    '7pllynei': {
-      'en': 'วันหยุด',
-      'th': '',
-      'vi': '',
-    },
-    'knwdeble': {
-      'en': 'ส.09 พ.ย 24',
-      'th': '',
-      'vi': '',
-    },
-    '45tot2je': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    'ld7pl8tw': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    '326annop': {
-      'en': 'วันหยุด',
-      'th': '',
-      'vi': '',
-    },
-    'aiau0utx': {
-      'en': 'ศ.08 พ.ย 24',
-      'th': '',
-      'vi': '',
-    },
-    'ytf1y1x4': {
-      'en': '08:16',
-      'th': '',
-      'vi': '',
-    },
-    '2qdkz13u': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    'ewbt8a4n': {
-      'en': 'ลงเวลาไม่ครบ',
-      'th': '',
-      'vi': '',
-    },
-    'eotrgt7h': {
-      'en': 'พฤ.07 พ.ย 24',
-      'th': '',
-      'vi': '',
-    },
-    'kuap1eii': {
-      'en': '08:00',
-      'th': '',
-      'vi': '',
-    },
-    '8lad1wfz': {
-      'en': '17.50',
-      'th': '',
-      'vi': '',
-    },
-    '5tssirkv': {
-      'en': 'ปกติ',
-      'th': '',
-      'vi': '',
-    },
     'fhhi2ptj': {
       'en': 'เดือนที่เเล้ว',
       'th': '',
@@ -649,246 +404,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
       'vi': '',
     },
-    'htvavd6m': {
-      'en': 'จ.18 ต.ค 24',
-      'th': '',
-      'vi': '',
-    },
-    'tj93jcbs': {
-      'en': '07:43',
-      'th': '',
-      'vi': '',
-    },
-    '8e2qrbu7': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    'uddmhs6k': {
-      'en': 'รอลงเวลา',
-      'th': '',
-      'vi': '',
-    },
-    '5d0of70r': {
-      'en': 'อา.17 ต.ค 24',
-      'th': '',
-      'vi': '',
-    },
-    's3j1v3j9': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    'a6pv9sat': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    'cq3twnkn': {
-      'en': 'วันหยุด',
-      'th': '',
-      'vi': '',
-    },
-    'azqeiknt': {
-      'en': 'ส.16 ต.ค 24',
-      'th': '',
-      'vi': '',
-    },
-    'c2vh5y6l': {
-      'en': '8.50',
-      'th': '',
-      'vi': '',
-    },
-    'e7o34kvu': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    'fpaire5k': {
-      'en': 'สาย',
-      'th': '',
-      'vi': '',
-    },
-    'xpnc2yzz': {
-      'en': 'ศ.15 ต.ค 24',
-      'th': '',
-      'vi': '',
-    },
-    '2u7t7m4u': {
-      'en': '07:38',
-      'th': '',
-      'vi': '',
-    },
-    'hs4hb9p3': {
-      'en': '17.30',
-      'th': '',
-      'vi': '',
-    },
-    'xqpdpx73': {
-      'en': 'วันเฉลิมพระชนมพรรษา',
-      'th': '',
-      'vi': '',
-    },
-    'rq0grr2h': {
-      'en': 'พฤ.14 ต.ค 24',
-      'th': '',
-      'vi': '',
-    },
-    'myxedv5i': {
-      'en': '08:30',
-      'th': '',
-      'vi': '',
-    },
-    'itbjwqyl': {
-      'en': '17.30',
-      'th': '',
-      'vi': '',
-    },
-    'rm0kyvkc': {
-      'en': 'ปกติ',
-      'th': '',
-      'vi': '',
-    },
-    'hzwpi6mi': {
-      'en': 'พ.13 ต.ค 24',
-      'th': '',
-      'vi': '',
-    },
-    'ga1c0azy': {
-      'en': '08:28',
-      'th': '',
-      'vi': '',
-    },
-    'vwartlwl': {
-      'en': '17.30',
-      'th': '',
-      'vi': '',
-    },
-    'z1tquits': {
-      'en': 'ปกติ',
-      'th': '',
-      'vi': '',
-    },
-    'ed1bgocl': {
-      'en': 'อ.12 ต.ค 24',
-      'th': '',
-      'vi': '',
-    },
-    'fltuyghq': {
-      'en': '07:27',
-      'th': '',
-      'vi': '',
-    },
-    '41i66p14': {
-      'en': '17.30',
-      'th': '',
-      'vi': '',
-    },
-    'vpu20i3v': {
-      'en': 'ปกติ',
-      'th': '',
-      'vi': '',
-    },
-    'j1ff2ang': {
-      'en': 'จ.11 ต.ค 24',
-      'th': '',
-      'vi': '',
-    },
-    'a3q2kd8x': {
-      'en': '07:42',
-      'th': '',
-      'vi': '',
-    },
-    'tafosp70': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    'z1d9zc9j': {
-      'en': 'ลงเวลาไม่ครบ',
-      'th': '',
-      'vi': '',
-    },
-    '78an9xzw': {
-      'en': 'อา.10 ต.ค 24',
-      'th': '',
-      'vi': '',
-    },
-    '8oevnelu': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    'y6z1hizc': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    'qyqvwlar': {
-      'en': 'วันหยุด',
-      'th': '',
-      'vi': '',
-    },
-    'uxv2o5rf': {
-      'en': 'ส.09 ต.ค 24',
-      'th': '',
-      'vi': '',
-    },
-    '4uf9g85d': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    't5ew2s76': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    'gfu78r6n': {
-      'en': 'วันหยุด',
-      'th': '',
-      'vi': '',
-    },
-    '6xmn4dy2': {
-      'en': 'ศ.08 ต.ค 24',
-      'th': '',
-      'vi': '',
-    },
-    '00meu5d6': {
-      'en': '08:16',
-      'th': '',
-      'vi': '',
-    },
-    'wd21g237': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    'jsdcle7m': {
-      'en': 'ลงเวลาไม่ครบ',
-      'th': '',
-      'vi': '',
-    },
-    'zuc250q8': {
-      'en': 'พฤ.07 ต.ค 24',
-      'th': '',
-      'vi': '',
-    },
-    'wz895m6g': {
-      'en': '08:00',
-      'th': '',
-      'vi': '',
-    },
-    '5kqj110r': {
-      'en': '-',
-      'th': '',
-      'vi': '',
-    },
-    '1x4gb6ln': {
-      'en': 'ลงเวลาไม่ครบ',
-      'th': '',
-      'vi': '',
-    },
     '3hp3ppc9': {
       'en': 'เวลาเข้างาน - ออกงาน',
       'th': '',
@@ -896,8 +411,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4uatd9i3': {
       'en': 'Home',
-      'th': '',
-      'vi': '',
+      'th': 'Profile',
+      'vi': 'Profile',
     },
   },
   // LeavePage
@@ -907,20 +422,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
       'vi': '',
     },
-    '1sphf2l3': {
-      'en': 'ไฟล์วันหยุดประจำปี',
-      'th': '',
-      'vi': '',
-    },
     'vaftq86k': {
       'en': 'ลาป่วย',
-      'th': '',
-      'vi': '',
+      'th': 'ลาป่วย',
+      'vi': 'ลาป่วย',
     },
     'hvcoykrb': {
-      'en': ' ทั้งหมด',
-      'th': '',
-      'vi': '',
+      'en': 'ทั้งหมด',
+      'th': 'ทั้งหมด',
+      'vi': 'Tất cả',
     },
     'hakrdhst': {
       'en': '0',
@@ -929,8 +439,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'yofhaew7': {
       'en': 'ใช้ไป',
-      'th': '',
-      'vi': '',
+      'th': 'ใช้ไป',
+      'vi': 'ใช้ไป',
     },
     'hcl74jy4': {
       'en': '0',
@@ -939,8 +449,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'xstbiiqr': {
       'en': 'คงเหลือ',
-      'th': '',
-      'vi': '',
+      'th': 'คงเหลือ',
+      'vi': 'คงเหลือ',
     },
     'eypwbgbv': {
       'en': '0',
@@ -949,13 +459,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '2gaa9aix': {
       'en': 'ลากิจ',
-      'th': '',
-      'vi': '',
+      'th': 'ลากิจ',
+      'vi': 'ลากิจ',
     },
     'v7spx35u': {
       'en': ' ทั้งหมด',
-      'th': '',
-      'vi': '',
+      'th': 'ทั้งหมด',
+      'vi': 'Tất cả',
     },
     'u55tza92': {
       'en': '0',
@@ -964,8 +474,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '948aa36n': {
       'en': 'ใช้ไป',
-      'th': '',
-      'vi': '',
+      'th': 'ใช้ไป',
+      'vi': 'ใช้ไป',
     },
     '3p2t1tz4': {
       'en': '0',
@@ -974,8 +484,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'cbj4sude': {
       'en': 'คงเหลือ',
-      'th': '',
-      'vi': '',
+      'th': 'คงเหลือ',
+      'vi': 'คงเหลือ',
     },
     '794qegqy': {
       'en': '0',
@@ -989,8 +499,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'aoo0r5ci': {
       'en': ' ทั้งหมด',
-      'th': '',
-      'vi': '',
+      'th': 'ทั้งหมด',
+      'vi': 'Tất cả',
     },
     'qpjrd0pr': {
       'en': '0',
@@ -999,8 +509,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'bh0wolrr': {
       'en': 'ใช้ไป',
-      'th': '',
-      'vi': '',
+      'th': 'ใช้ไป',
+      'vi': 'ใช้ไป',
     },
     'dtmp1zjp': {
       'en': '0',
@@ -1009,8 +519,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'bi1paa69': {
       'en': 'คงเหลือ',
-      'th': '',
-      'vi': '',
+      'th': 'คงเหลือ',
+      'vi': 'คงเหลือ',
     },
     '0aa69x3j': {
       'en': '0',
@@ -1025,11 +535,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // DashBoard
   {
-    't6mdhedd': {
-      'en': 'Hello',
-      'th': '',
-      'vi': '',
-    },
     'nfii7ajk': {
       'en': '1',
       'th': '',
@@ -1047,13 +552,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '08ugcqdn': {
       'en': 'Dịch vụ',
-      'th': '',
-      'vi': '',
+      'th': 'บริการ',
+      'vi': 'Dịch vụ',
     },
     'wbuyhzyn': {
       'en': 'Đăng ký',
-      'th': '',
-      'vi': '',
+      'th': 'เช็คอิน',
+      'vi': 'Đăng ký',
     },
     'vhpaflcj': {
       'en': '1',
@@ -1062,8 +567,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'tq9b43jh': {
       'en': 'Đơn xin nghỉ',
-      'th': '',
-      'vi': '',
+      'th': 'ขออนุมัติลา',
+      'vi': 'Đơn xin nghỉ',
     },
     'rmile4xw': {
       'en': 'บริการ',
@@ -1297,18 +802,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'gq0mnfr3': {
       'en': 'version 1.0.0',
-      'th': '',
-      'vi': '',
+      'th': 'version 1.0.0',
+      'vi': 'version 1.0.0',
     },
     'cvg8gweh': {
       'en': 'android',
-      'th': '',
-      'vi': '',
+      'th': 'android',
+      'vi': 'android',
     },
     'tzmiupgy': {
       'en': 'Log out',
-      'th': '',
-      'vi': '',
+      'th': 'ออกจากระบบ',
+      'vi': 'Log out',
     },
     'imxzxcpq': {
       'en': '',
@@ -1317,8 +822,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'norah8ri': {
       'en': 'Home',
-      'th': '',
-      'vi': '',
+      'th': 'Profile',
+      'vi': 'Profile',
     },
   },
   // EmpolyeeCheckin
@@ -1333,13 +838,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
       'vi': '',
     },
-    '89gzqyhn': {
-      'en': '',
-      'th': '',
-      'vi': '',
-    },
     'g8kgz1my': {
-      'en': 'สำนักงานใหญ่ เเจ้งวัฒนะ',
+      'en': 'สถานที่เช็คอิน...',
       'th': '',
       'vi': '',
     },
@@ -1363,15 +863,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
       'vi': '',
     },
-    '7cjscym5': {
-      'en': 'โหลดตำเเหน่ง',
-      'th': '',
-      'vi': '',
-    },
     '3yqz7123': {
       'en': 'Home',
-      'th': '',
-      'vi': '',
+      'th': 'Profile',
+      'vi': 'Profile',
     },
   },
   // AddLeavePage
@@ -1386,28 +881,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
       'vi': '',
     },
-    'slg5z09k': {
-      'en': 'ระบุวันที่',
-      'th': '',
-      'vi': '',
-    },
     '0elhhiqw': {
       'en': 'ช่วงเวลา :',
-      'th': '',
-      'vi': '',
-    },
-    '62hcul27': {
-      'en': 'Option 1',
-      'th': '',
-      'vi': '',
-    },
-    'aeh37pc6': {
-      'en': 'Option 2',
-      'th': '',
-      'vi': '',
-    },
-    'hvd7uf4c': {
-      'en': 'Option 3',
       'th': '',
       'vi': '',
     },
@@ -1777,21 +1252,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '2j9o1nc7': {
       'en': 'Home',
-      'th': '',
-      'vi': '',
+      'th': 'Profile',
+      'vi': 'Profile',
     },
   },
   // myProfilePage
   {
     '7c59mcgf': {
       'en': 'คู่มือพนักงาน',
-      'th': '',
-      'vi': '',
+      'th': 'คู่มือพนักงาน',
+      'vi': 'Sổ tay nhân viên',
     },
     'ubz6qsvt': {
       'en': 'Profile',
-      'th': '',
-      'vi': '',
+      'th': 'Profile',
+      'vi': 'Profile',
     },
   },
   // GuideBookPage
@@ -1864,8 +1339,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'b14q64lh': {
       'en': 'Home',
-      'th': '',
-      'vi': '',
+      'th': 'Profile',
+      'vi': 'Profile',
     },
   },
   // EmployeeCheckinPageVol
@@ -1890,22 +1365,32 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
       'vi': '',
     },
-    'b9pcmsu9': {
+    's3yychni': {
+      'en': 'สถานที่เช็คอิน',
+      'th': '',
+      'vi': '',
+    },
+    'lzjrurt0': {
+      'en': ':',
+      'th': '',
+      'vi': '',
+    },
+    'sfn0qwg3': {
       'en': 'สำนักงานใหญ่ แจ้งวัฒนะ',
       'th': '',
       'vi': '',
     },
-    'dllv136m': {
+    '624240jw': {
       'en': 'บ้าน',
       'th': '',
       'vi': '',
     },
-    'rqaov9m7': {
+    'f19jf9yj': {
       'en': 'เลือก...',
       'th': '',
       'vi': '',
     },
-    'cgtz07eu': {
+    '1551rr5u': {
       'en': 'Search...',
       'th': '',
       'vi': '',
@@ -1937,8 +1422,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'j06y3w7b': {
       'en': 'Home',
-      'th': '',
-      'vi': '',
+      'th': 'Profile',
+      'vi': 'Profile',
     },
   },
   // CheckinStatusPageVol
@@ -1948,8 +1433,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
       'vi': '',
     },
+    'zuaoy20t': {
+      'en': 'No Data ',
+      'th': '',
+      'vi': '',
+    },
     'z88z2cj0': {
       'en': 'เดือนที่แล้ว',
+      'th': '',
+      'vi': '',
+    },
+    'v4obacrw': {
+      'en': 'No Data',
       'th': '',
       'vi': '',
     },
@@ -1960,8 +1455,77 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ef7fqaz2': {
       'en': 'Home',
+      'th': 'Profile',
+      'vi': 'Profile',
+    },
+  },
+  // TestPage
+  {
+    'twf4yttl': {
+      'en': 'Page Title',
       'th': '',
       'vi': '',
+    },
+    'jnr40cz6': {
+      'en': 'Home',
+      'th': 'Profile',
+      'vi': 'Profile',
+    },
+  },
+  // Test2Page
+  {
+    'ptmrpe6b': {
+      'en': 'จ. 2 ธ.ค. 67',
+      'th': '',
+      'vi': '',
+    },
+    '5bjbdja6': {
+      'en': '08:30',
+      'th': '',
+      'vi': '',
+    },
+    'ks6296oy': {
+      'en': '17:30',
+      'th': '',
+      'vi': '',
+    },
+    '09v773m6': {
+      'en': 'Page Title',
+      'th': '',
+      'vi': '',
+    },
+    'zkc9h90s': {
+      'en': 'Home',
+      'th': 'Profile',
+      'vi': 'Profile',
+    },
+  },
+  // searchBranchPage
+  {
+    '9jepmg79': {
+      'en': 'กรุณากรอกคำค้นหา',
+      'th': '',
+      'vi': '',
+    },
+    'wuqoiaft': {
+      'en': 'ค้นหา',
+      'th': '',
+      'vi': '',
+    },
+    'gztk5uiq': {
+      'en': 'กรุณากรอกคำค้นหาอย่างน้อย 3 ตัวอักษร',
+      'th': '',
+      'vi': '',
+    },
+    'l8tbvzm7': {
+      'en': 'ค้นหาสาขา',
+      'th': '',
+      'vi': '',
+    },
+    'o31gdg36': {
+      'en': 'Home',
+      'th': 'Profile',
+      'vi': 'Profile',
     },
   },
   // Action2SheetSimple
@@ -2052,23 +1616,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
       'vi': '',
     },
-    'v3yc734v': {
-      'en': 'จ. 03/12/24',
+  },
+  // PDFViewer
+  {
+    '8hrqora5': {
+      'en': '',
       'th': '',
       'vi': '',
     },
-    'hrzhwf3w': {
-      'en': '08:30',
+  },
+  // searchBranchComponent
+  {
+    'ommo80jx': {
+      'en': 'กรุณากรอกคำค้นหา',
       'th': '',
       'vi': '',
     },
-    'wdla4zss': {
-      'en': '17:30',
-      'th': '',
-      'vi': '',
-    },
-    '7o617yfh': {
-      'en': 'สถานะ',
+  },
+  // serchBranchComponentCheckin
+  {
+    'la9fs10d': {
+      'en': 'กรุณากรอกชื่อสาขา',
       'th': '',
       'vi': '',
     },
