@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/components/loading/loading_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
@@ -6,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -56,9 +58,31 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
         },
       );
 
-      await actions.a8(
+      _model.checkGps = await actions.a8(
         currentUserLocationValue,
       );
+      if (!_model.checkGps!) {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: const Text('ระบบ'),
+              content: const Text('กรุณาเปิดGPS ก่อนทำรายการ'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: const Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
+
+        context.goNamed('DashBoard');
+
+        return;
+      }
+      Navigator.pop(context);
     });
 
     _model.branchCodeInputTextController ??= TextEditingController();
@@ -657,8 +681,155 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                               Align(
                                 alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    currentUserLocationValue =
+                                        await getCurrentUserLocation(
+                                            defaultLocation: const LatLng(0.0, 0.0));
+                                    var shouldSetState = false;
+                                    if (!(_model.branchCodeInputTextController
+                                                .text !=
+                                            '')) {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            content: const Text('กรุณากรอกรหัสสาขา'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      if (shouldSetState) safeSetState(() {});
+                                      return;
+                                    }
+                                    if (!(_model.latInputTextController.text !=
+                                            '')) {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            content: const Text('กรุณากรอกละติจูด'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      if (shouldSetState) safeSetState(() {});
+                                      return;
+                                    }
+                                    if (!(_model.lngInputTextController.text !=
+                                            '')) {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            content: const Text('กรุณากรอกลองติจูด'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      if (shouldSetState) safeSetState(() {});
+                                      return;
+                                    }
+                                    _model.locationCheckApi =
+                                        await GetBranchLocationCall.call(
+                                      apiUrl: FFAppState().apiUrlAppState,
+                                      token: FFAppState().accessToken,
+                                      latitude: functions.getLatLngFunction(
+                                          currentUserLocationValue, 'lat'),
+                                      longitude: functions.getLatLngFunction(
+                                          currentUserLocationValue,
+                                          'longitude'),
+                                      branchCode: FFAppState().branchCode,
+                                    );
+
+                                    shouldSetState = true;
+                                    if ((_model.locationCheckApi?.statusCode ??
+                                            200) !=
+                                        200) {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            content: Text(
+                                                'พบข้อผิดพลาด(${GetBranchLocationCall.code(
+                                              (_model.locationCheckApi
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            )})'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      if (shouldSetState) safeSetState(() {});
+                                      return;
+                                    }
+                                    if ('${GetBranchLocationCall.code(
+                                          (_model.locationCheckApi?.jsonBody ??
+                                              ''),
+                                        )}' !=
+                                        '200') {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            content: Text(
+                                                'พบข้อผิดพลาด (${GetBranchLocationCall.code(
+                                              (_model.locationCheckApi
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            )})'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      if (shouldSetState) safeSetState(() {});
+                                      return;
+                                    }
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          content: const Text('ค้นหาสำเร็จ!'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    if (shouldSetState) safeSetState(() {});
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'eq31tpvr' /* ค้นหา */,

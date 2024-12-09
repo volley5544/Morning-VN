@@ -660,6 +660,27 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                           );
                                         },
                                       );
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            content: Text((_model
+                                                    .listLocationData
+                                                    .map((e) => e.branchName)
+                                                    .toList()
+                                                    .indexOf((_model
+                                                        .dropDownBranchValue!)))
+                                                .toString()),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
                                     }
 
                                     safeSetState(() {});

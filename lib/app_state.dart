@@ -432,6 +432,12 @@ class FFAppState extends ChangeNotifier {
   set indexBranchCheckin(int value) {
     _indexBranchCheckin = value;
   }
+
+  bool _isFromTimesheetPage = false;
+  bool get isFromTimesheetPage => _isFromTimesheetPage;
+  set isFromTimesheetPage(bool value) {
+    _isFromTimesheetPage = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

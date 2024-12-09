@@ -1317,7 +1317,7 @@ class _EmployeeCheckinPageVolWidgetState
                             ? valueOrDefault<double>(
                                 double.parse(_model
                                     .listLocationData[_model.listLocationData
-                                        .map((e) => e.branchCode)
+                                        .map((e) => e.branchName)
                                         .toList()
                                         .indexOf((_model.dropDownValue!))]
                                     .latitude),
@@ -1329,7 +1329,7 @@ class _EmployeeCheckinPageVolWidgetState
                             ? valueOrDefault<double>(
                                 double.parse(_model
                                     .listLocationData[_model.listLocationData
-                                        .map((e) => e.branchCode)
+                                        .map((e) => e.branchName)
                                         .toList()
                                         .indexOf((_model.dropDownValue!))]
                                     .longitude),
@@ -1341,7 +1341,7 @@ class _EmployeeCheckinPageVolWidgetState
                             ? valueOrDefault<double>(
                                 double.parse(_model
                                     .listLocationData[_model.listLocationData
-                                        .map((e) => e.branchCode)
+                                        .map((e) => e.branchName)
                                         .toList()
                                         .indexOf((_model.dropDownValue!))]
                                     .radius),
