@@ -16,6 +16,8 @@ export 'serialization_util.dart';
 
 const kTransitionInfoKey = '__transition_info__';
 
+GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
+
 class AppStateNotifier extends ChangeNotifier {
   AppStateNotifier._();
 
@@ -73,6 +75,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
+      navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
           appStateNotifier.loggedIn ? const NavBarPage() : const LoginPageWidget(),
       routes: [
@@ -128,11 +131,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const LeavePageWidget(),
         ),
         FFRoute(
-          name: 'DashBoard',
-          path: '/dashBoard',
+          name: 'superAppPage',
+          path: '/superAppPage',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'DashBoard')
-              : const DashBoardWidget(),
+              ? const NavBarPage(initialPage: 'superAppPage')
+              : const SuperAppPageWidget(),
         ),
         FFRoute(
           name: 'EmpolyeeCheckin',
@@ -165,10 +168,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const ChangeLatLngPageWidget(),
         ),
         FFRoute(
-          name: 'myProfilePage',
+          name: 'MyProfilePage',
           path: '/myProfilePage',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'myProfilePage')
+              ? const NavBarPage(initialPage: 'MyProfilePage')
               : const MyProfilePageWidget(),
         ),
         FFRoute(
@@ -220,6 +223,60 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.DataStruct,
               isList: true,
               structBuilder: ListLocationCheckInStruct.fromSerializableMap,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'testCalendar',
+          path: '/testCalendar',
+          builder: (context, params) => const TestCalendarWidget(),
+        ),
+        FFRoute(
+          name: 'CancelPage',
+          path: '/cancelPage',
+          builder: (context, params) => const CancelPageWidget(),
+        ),
+        FFRoute(
+          name: 'ConfirmEmailPage',
+          path: '/confirmEmailPage',
+          builder: (context, params) => const ConfirmEmailPageWidget(),
+        ),
+        FFRoute(
+          name: 'ApprovedLeavePage',
+          path: '/approvedLeavePage',
+          builder: (context, params) => const ApprovedLeavePageWidget(),
+        ),
+        FFRoute(
+          name: 'ApproveShowPage',
+          path: '/approveShowPage',
+          builder: (context, params) => const ApproveShowPageWidget(),
+        ),
+        FFRoute(
+          name: 'AddResignPage',
+          path: '/addResignPage',
+          builder: (context, params) => const AddResignPageWidget(),
+        ),
+        FFRoute(
+          name: 'formServicePage',
+          path: '/formServicePage',
+          builder: (context, params) => FormServicePageWidget(
+            formServiceName: params.getParam(
+              'formServiceName',
+              ParamType.String,
+            ),
+            formServiceUrl: params.getParam(
+              'formServiceUrl',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'CalendarPage',
+          path: '/calendarPage',
+          builder: (context, params) => CalendarPageWidget(
+            leaveType: params.getParam(
+              'leaveType',
+              ParamType.String,
             ),
           ),
         )

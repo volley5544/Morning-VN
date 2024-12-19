@@ -1,6 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/loading/loading_widget.dart';
+import '/components/select_language_component_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -20,6 +21,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'empolyee_checkin_model.dart';
 export 'empolyee_checkin_model.dart';
 
@@ -52,18 +54,22 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
             backgroundColor: Colors.transparent,
             alignment: const AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
-            child: GestureDetector(
-              onTap: () => FocusScope.of(dialogContext).unfocus(),
-              child: const SizedBox(
-                height: double.infinity,
-                child: LoadingWidget(),
+            child: WebViewAware(
+              child: GestureDetector(
+                onTap: () {
+                  FocusScope.of(dialogContext).unfocus();
+                  FocusManager.instance.primaryFocus?.unfocus();
+                },
+                child: const SizedBox(
+                  height: double.infinity,
+                  child: LoadingWidget(),
+                ),
               ),
             ),
           );
         },
       );
 
-      setAppLanguage(context, 'en');
       FFAppState().imgURLTemp = '';
       FFAppState().update(() {});
       _model.getLocationApiOutput = await GetLocationCall.call(
@@ -76,15 +82,17 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
-            return AlertDialog(
-              content: Text(
-                  'พบข้อผิดพลาดConnection (${(_model.getLocationApiOutput?.statusCode ?? 200).toString()})'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
-                ),
-              ],
+            return WebViewAware(
+              child: AlertDialog(
+                content: Text(
+                    'พบข้อผิดพลาดConnection (${(_model.getLocationApiOutput?.statusCode ?? 200).toString()})'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: const Text('Ok'),
+                  ),
+                ],
+              ),
             );
           },
         );
@@ -98,16 +106,18 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
-            return AlertDialog(
-              content: Text('พบข้อผิดพลาด (${GetLocationCall.code(
-                (_model.getLocationApiOutput?.jsonBody ?? ''),
-              )})'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
-                ),
-              ],
+            return WebViewAware(
+              child: AlertDialog(
+                content: Text('${GetLocationCall.message(
+                  (_model.getLocationApiOutput?.jsonBody ?? ''),
+                )}'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: const Text('Ok'),
+                  ),
+                ],
+              ),
             );
           },
         );
@@ -157,7 +167,10 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
 
     return Builder(
       builder: (context) => GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
+        onTap: () {
+          FocusScope.of(context).unfocus();
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -178,17 +191,49 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                 context.pop();
               },
             ),
-            title: Text(
-              FFLocalizations.of(context).getText(
-                'dib97xps' /* ลงเวลางาน */,
+            title: InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                await showModalBottomSheet(
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  barrierColor: const Color(0xC0000000),
+                  enableDrag: false,
+                  context: context,
+                  builder: (context) {
+                    return WebViewAware(
+                      child: GestureDetector(
+                        onTap: () {
+                          FocusScope.of(context).unfocus();
+                          FocusManager.instance.primaryFocus?.unfocus();
+                        },
+                        child: Padding(
+                          padding: MediaQuery.viewInsetsOf(context),
+                          child: SizedBox(
+                            height: MediaQuery.sizeOf(context).height * 0.5,
+                            child: const SelectLanguageComponentWidget(),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ).then((value) => safeSetState(() {}));
+              },
+              child: Text(
+                FFLocalizations.of(context).getText(
+                  'dib97xps' /* ลงเวลางาน */,
+                ),
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Outfit',
+                      color: Colors.white,
+                      fontSize: 22.0,
+                      letterSpacing: 0.0,
+                      fontWeight: FontWeight.w600,
+                    ),
               ),
-              style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
-                    color: Colors.white,
-                    fontSize: 22.0,
-                    letterSpacing: 0.0,
-                    fontWeight: FontWeight.w600,
-                  ),
             ),
             actions: [
               Padding(
@@ -207,13 +252,18 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                       enableDrag: false,
                       context: context,
                       builder: (context) {
-                        return GestureDetector(
-                          onTap: () => FocusScope.of(context).unfocus(),
-                          child: Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: const SizedBox(
-                              height: double.infinity,
-                              child: LoadingSceneWidget(),
+                        return WebViewAware(
+                          child: GestureDetector(
+                            onTap: () {
+                              FocusScope.of(context).unfocus();
+                              FocusManager.instance.primaryFocus?.unfocus();
+                            },
+                            child: Padding(
+                              padding: MediaQuery.viewInsetsOf(context),
+                              child: const SizedBox(
+                                height: double.infinity,
+                                child: LoadingSceneWidget(),
+                              ),
                             ),
                           ),
                         );
@@ -273,16 +323,18 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                       await showDialog(
                         context: context,
                         builder: (alertDialogContext) {
-                          return AlertDialog(
-                            content:
-                                const Text('ไม่สามารถอัพโหลดรูปได้ กรุณาลองอีกครั้ง'),
-                            actions: [
-                              TextButton(
-                                onPressed: () =>
-                                    Navigator.pop(alertDialogContext),
-                                child: const Text('Ok'),
-                              ),
-                            ],
+                          return WebViewAware(
+                            child: AlertDialog(
+                              content: const Text(
+                                  'ไม่สามารถอัพโหลดรูปได้ กรุณาลองอีกครั้ง'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: const Text('Ok'),
+                                ),
+                              ],
+                            ),
                           );
                         },
                       );
@@ -308,383 +360,467 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
           ),
           body: SafeArea(
             top: true,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Expanded(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  height: 30.0,
-                                  child: custom_widgets.ShowDateTime(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Expanded(
+                                  child: SizedBox(
                                     width: double.infinity,
                                     height: 30.0,
-                                    currentTime: getCurrentTimestamp,
+                                    child: custom_widgets.ShowDateTime(
+                                      width: double.infinity,
+                                      height: 30.0,
+                                      currentTime: getCurrentTimestamp,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(
-                                width: double.infinity,
-                                height: 60.0,
-                                child: custom_widgets.ShowTime(
+                                const SizedBox(
                                   width: double.infinity,
                                   height: 60.0,
+                                  child: custom_widgets.ShowTime(
+                                    width: double.infinity,
+                                    height: 60.0,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      if (responsiveVisibility(
-                        context: context,
-                        tablet: false,
-                        tabletLandscape: false,
-                        desktop: false,
-                      ))
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                70.0, 10.0, 70.0, 10.0),
-                            child: Container(
-                              width: double.infinity,
-                              height: 220.0,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: const [
-                                  BoxShadow(
-                                    blurRadius: 4.0,
-                                    color: Color(0x33000000),
-                                    offset: Offset(
-                                      0.0,
-                                      2.0,
-                                    ),
-                                  )
-                                ],
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              child: Stack(
-                                children: [
-                                  Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          await Navigator.push(
-                                            context,
-                                            PageTransition(
-                                              type: PageTransitionType.fade,
-                                              child:
-                                                  FlutterFlowExpandedImageView(
-                                                image: Image.network(
-                                                  valueOrDefault<String>(
-                                                    FFAppState().imgURLTemp,
-                                                    'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
-                                                  ),
-                                                  fit: BoxFit.contain,
-                                                ),
-                                                allowRotation: false,
-                                                tag: valueOrDefault<String>(
-                                                  FFAppState().imgURLTemp,
-                                                  'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
-                                                ),
-                                                useHeroAnimation: true,
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                        child: Hero(
-                                          tag: valueOrDefault<String>(
-                                            FFAppState().imgURLTemp,
-                                            'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
-                                          ),
-                                          transitionOnUserGestures: true,
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(0.0),
-                                            child: Image.network(
-                                              valueOrDefault<String>(
-                                                FFAppState().imgURLTemp,
-                                                'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
-                                              ),
-                                              width: double.infinity,
-                                              height: double.infinity,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: const AlignmentDirectional(1.0, -1.0),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 10.0, 20.0, 0.0),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          var confirmDialogResponse =
-                                              await showDialog<bool>(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        content: const Text(
-                                                            'คุณต้องการจะลบรูปหรือไม่?'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    false),
-                                                            child:
-                                                                const Text('ยกเลิก'),
-                                                          ),
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    true),
-                                                            child: const Text('ตกลง'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  ) ??
-                                                  false;
-                                          if (!confirmDialogResponse) {
-                                            return;
-                                          }
-                                          await FirebaseStorage.instance
-                                              .refFromURL(
-                                                  FFAppState().imgURLTemp)
-                                              .delete();
-                                          FFAppState().imgURLTemp = '';
-                                          FFAppState().update(() {});
-                                          Navigator.pop(context);
-                                        },
-                                        child: const FaIcon(
-                                          FontAwesomeIcons.times,
-                                          color: Color(0xFFDE1013),
-                                          size: 30.0,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              ],
                             ),
                           ),
                         ),
+                      ),
                     ],
                   ),
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              12.0, 0.0, 12.0, 0.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 12.0, 12.0, 0.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    if (_model.listLocationData.length > 10) {
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Colors.transparent,
-                                        enableDrag: false,
-                                        context: context,
-                                        builder: (context) {
-                                          return GestureDetector(
-                                            onTap: () => FocusScope.of(context)
-                                                .unfocus(),
-                                            child: Padding(
-                                              padding: MediaQuery.viewInsetsOf(
-                                                  context),
-                                              child: SizedBox(
-                                                height:
-                                                    MediaQuery.sizeOf(context)
-                                                            .height *
-                                                        0.8,
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        if (responsiveVisibility(
+                          context: context,
+                          tablet: false,
+                          tabletLandscape: false,
+                          desktop: false,
+                        ))
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  70.0, 10.0, 70.0, 10.0),
+                              child: Container(
+                                width: double.infinity,
+                                height: 220.0,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      blurRadius: 4.0,
+                                      color: Color(0x33000000),
+                                      offset: Offset(
+                                        0.0,
+                                        2.0,
+                                      ),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
+                                child: Stack(
+                                  children: [
+                                    Align(
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            await Navigator.push(
+                                              context,
+                                              PageTransition(
+                                                type: PageTransitionType.fade,
                                                 child:
-                                                    SerchBranchComponentCheckinWidget(
-                                                  checkdatalist:
-                                                      _model.listLocationData,
+                                                    FlutterFlowExpandedImageView(
+                                                  image: Image.network(
+                                                    valueOrDefault<String>(
+                                                      FFAppState().imgURLTemp,
+                                                      'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
+                                                    ),
+                                                    fit: BoxFit.contain,
+                                                  ),
+                                                  allowRotation: false,
+                                                  tag: valueOrDefault<String>(
+                                                    FFAppState().imgURLTemp,
+                                                    'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
+                                                  ),
+                                                  useHeroAnimation: true,
                                                 ),
                                               ),
+                                            );
+                                          },
+                                          child: Hero(
+                                            tag: valueOrDefault<String>(
+                                              FFAppState().imgURLTemp,
+                                              'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
+                                            ),
+                                            transitionOnUserGestures: true,
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                              child: Image.network(
+                                                valueOrDefault<String>(
+                                                  FFAppState().imgURLTemp,
+                                                  'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
+                                                ),
+                                                width: double.infinity,
+                                                height: double.infinity,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    if (functions.convertImgPathToString(
+                                            FFAppState().imgURLTemp) !=
+                                        '')
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(1.0, -1.0),
+                                        child: Builder(
+                                          builder: (context) => Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 10.0, 20.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                var confirmDialogResponse =
+                                                    await showDialog<bool>(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return WebViewAware(
+                                                              child:
+                                                                  AlertDialog(
+                                                                content: const Text(
+                                                                    'คุณต้องการจะลบรูปหรือไม่?'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            false),
+                                                                    child: const Text(
+                                                                        'ยกเลิก'),
+                                                                  ),
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            true),
+                                                                    child: const Text(
+                                                                        'ตกลง'),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            );
+                                                          },
+                                                        ) ??
+                                                        false;
+                                                if (!confirmDialogResponse) {
+                                                  return;
+                                                }
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: WebViewAware(
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            FocusScope.of(
+                                                                    dialogContext)
+                                                                .unfocus();
+                                                            FocusManager
+                                                                .instance
+                                                                .primaryFocus
+                                                                ?.unfocus();
+                                                          },
+                                                          child:
+                                                              const LoadingWidget(),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+
+                                                await FirebaseStorage.instance
+                                                    .refFromURL(
+                                                        FFAppState().imgURLTemp)
+                                                    .delete();
+                                                FFAppState().imgURLTemp = '';
+                                                FFAppState().update(() {});
+                                                Navigator.pop(context);
+                                              },
+                                              child: const FaIcon(
+                                                FontAwesomeIcons.times,
+                                                color: Color(0xFFDE1013),
+                                                size: 30.0,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                12.0, 0.0, 12.0, 0.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 12.0, 12.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return WebViewAware(
+                                            child: AlertDialog(
+                                              content: Text(_model
+                                                  .listLocationData.length
+                                                  .toString()),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: const Text('Ok'),
+                                                ),
+                                              ],
                                             ),
                                           );
                                         },
-                                      ).then((value) => safeSetState(
-                                          () => _model.indexdata = value));
+                                      );
+                                      if (_model.listLocationData.length > 10) {
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          barrierColor: const Color(0xC0000000),
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return WebViewAware(
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  FocusScope.of(context)
+                                                      .unfocus();
+                                                  FocusManager
+                                                      .instance.primaryFocus
+                                                      ?.unfocus();
+                                                },
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child: SizedBox(
+                                                    height: MediaQuery.sizeOf(
+                                                                context)
+                                                            .height *
+                                                        0.8,
+                                                    child:
+                                                        SerchBranchComponentCheckinWidget(
+                                                      checkdatalist: _model
+                                                          .listLocationData,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(
+                                            () => _model.indexdata = value));
 
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            content: Text(
-                                                _model.indexdata!.toString()),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: const Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            content: Text(_model
-                                                .listLocationData[
-                                                    _model.indexdata!]
-                                                .latitude),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: const Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            content: Text(_model
-                                                .listLocationData[
-                                                    _model.indexdata!]
-                                                .longitude),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: const Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            content: Text(_model
-                                                .listLocationData[
-                                                    _model.indexdata!]
-                                                .radius),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: const Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                      safeSetState(() {
-                                        _model.dropDownBranchValueController
-                                                ?.value =
-                                            _model
-                                                .listLocationData[
-                                                    _model.indexdata!]
-                                                .branchName;
-                                      });
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            content: Text(
-                                                _model.dropDownBranchValue!),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: const Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            content: Text((_model
-                                                    .listLocationData
-                                                    .map((e) => e.branchName)
-                                                    .toList()
-                                                    .indexOf((_model
-                                                        .dropDownBranchValue!)))
-                                                .toString()),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: const Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                    }
+                                        safeSetState(() {
+                                          _model.dropDownBranchValueController
+                                                  ?.value =
+                                              _model.listLocationData
+                                                  .elementAtOrNull(
+                                                      _model.indexdata!)!
+                                                  .branchName;
+                                        });
+                                      }
 
-                                    safeSetState(() {});
-                                  },
+                                      safeSetState(() {});
+                                    },
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '1nfjeid0' /* เลือก:  */,
+                                              ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Expanded(
+                                                    child: FlutterFlowDropDown<
+                                                        String>(
+                                                      controller: _model
+                                                              .dropDownBranchValueController ??=
+                                                          FormFieldController<
+                                                              String>(null),
+                                                      options: _model
+                                                          .listLocationData
+                                                          .map((e) =>
+                                                              e.branchName)
+                                                          .toList(),
+                                                      onChanged: (val) =>
+                                                          safeSetState(() =>
+                                                              _model.dropDownBranchValue =
+                                                                  val),
+                                                      width: 200.0,
+                                                      height: 40.0,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                      hintText:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                        'g8kgz1my' /* สถานที่เช็คอิน... */,
+                                                      ),
+                                                      icon: Icon(
+                                                        Icons
+                                                            .keyboard_arrow_down_rounded,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 24.0,
+                                                      ),
+                                                      fillColor: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      elevation: 2.0,
+                                                      borderColor:
+                                                          Colors.transparent,
+                                                      borderWidth: 0.0,
+                                                      borderRadius: 8.0,
+                                                      margin:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  12.0,
+                                                                  0.0,
+                                                                  12.0,
+                                                                  0.0),
+                                                      hidesUnderline: true,
+                                                      disabled: _model
+                                                              .listLocationData
+                                                              .length >
+                                                          10,
+                                                      isOverButton: false,
+                                                      isSearchable: false,
+                                                      isMultiSelect: false,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 0.0, 12.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -694,7 +830,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              '1nfjeid0' /* เลือก:  */,
+                                              'k25vdgx1' /* เหตุผล: */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -714,73 +850,127 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Expanded(
-                                                  child: FlutterFlowDropDown<
-                                                      String>(
-                                                    controller: _model
-                                                            .dropDownBranchValueController ??=
-                                                        FormFieldController<
-                                                            String>(null),
-                                                    options: List<String>.from(
-                                                        _model.listLocationData
-                                                            .map((e) =>
-                                                                e.branchCode)
-                                                            .toList()),
-                                                    optionLabels: _model
-                                                        .listLocationData
-                                                        .map(
-                                                            (e) => e.branchName)
-                                                        .toList(),
-                                                    onChanged: (val) =>
-                                                        safeSetState(() => _model
-                                                                .dropDownBranchValue =
-                                                            val),
+                                                  child: SizedBox(
                                                     width: 200.0,
-                                                    height: 40.0,
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
+                                                    child: TextFormField(
+                                                      controller:
+                                                          _model.textController,
+                                                      focusNode: _model
+                                                          .textFieldFocusNode,
+                                                      autofocus: false,
+                                                      obscureText: false,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        isDense: true,
+                                                        labelStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        hintText:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          'n3lk5dy4' /* กรุณากรอกเหตุผล */,
                                                         ),
-                                                    hintText:
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                      'g8kgz1my' /* สถานที่เช็คอิน... */,
-                                                    ),
-                                                    icon: Icon(
-                                                      Icons
-                                                          .keyboard_arrow_down_rounded,
-                                                      color:
+                                                        hintStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                        enabledBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              const BorderSide(
+                                                            color: Color(
+                                                                0x00000000),
+                                                            width: 1.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                        focusedBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              const BorderSide(
+                                                            color: Color(
+                                                                0x00000000),
+                                                            width: 1.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                        errorBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 1.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                        focusedErrorBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 1.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                        filled: true,
+                                                        fillColor: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                      cursorColor:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .secondaryText,
-                                                      size: 24.0,
+                                                              .primaryText,
+                                                      validator: _model
+                                                          .textControllerValidator
+                                                          .asValidator(context),
                                                     ),
-                                                    fillColor: FlutterFlowTheme
-                                                            .of(context)
-                                                        .secondaryBackground,
-                                                    elevation: 2.0,
-                                                    borderColor:
-                                                        Colors.transparent,
-                                                    borderWidth: 0.0,
-                                                    borderRadius: 8.0,
-                                                    margin:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(12.0, 0.0,
-                                                                12.0, 0.0),
-                                                    hidesUnderline: true,
-                                                    disabled: _model
-                                                            .listLocationData
-                                                            .length >
-                                                        10,
-                                                    isOverButton: false,
-                                                    isSearchable: false,
-                                                    isMultiSelect: false,
                                                   ),
                                                 ),
                                               ],
@@ -791,290 +981,179 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                     ],
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 0.0, 12.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'k25vdgx1' /* เหตุผล: */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Expanded(
-                                                child: SizedBox(
-                                                  width: 200.0,
-                                                  child: TextFormField(
-                                                    controller:
-                                                        _model.textController,
-                                                    focusNode: _model
-                                                        .textFieldFocusNode,
-                                                    autofocus: false,
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      isDense: true,
-                                                      labelStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      hintText:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                        'n3lk5dy4' /* กรุณากรอกเหตุผล */,
-                                                      ),
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: const BorderSide(
-                                                          color:
-                                                              Color(0x00000000),
-                                                          width: 1.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                      ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: const BorderSide(
-                                                          color:
-                                                              Color(0x00000000),
-                                                          width: 1.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                      ),
-                                                      errorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 1.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 1.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                      ),
-                                                      filled: true,
-                                                      fillColor: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                                    cursorColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primaryText,
-                                                    validator: _model
-                                                        .textControllerValidator
-                                                        .asValidator(context),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 0.0, 10.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 8.0, 0.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () async {
-                                            currentUserLocationValue =
-                                                await getCurrentUserLocation(
-                                                    defaultLocation:
-                                                        const LatLng(0.0, 0.0));
-                                            var shouldSetState = false;
-                                            if (functions
-                                                    .convertImgPathToString(
-                                                        FFAppState()
-                                                            .imgURLTemp) ==
-                                                '') {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    content: const Text(
-                                                        'ท่านยังไม่ได้ทำการถ่ายรูปภาพ กรุณาถ่ายภาพ'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: const Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                              final selectedMedia =
-                                                  await selectMedia(
-                                                imageQuality: 30,
-                                                multiImage: false,
-                                              );
-                                              if (selectedMedia != null &&
-                                                  selectedMedia.every((m) =>
-                                                      validateFileFormat(
-                                                          m.storagePath,
-                                                          context))) {
-                                                safeSetState(() => _model
-                                                    .isDataUploading2 = true);
-                                                var selectedUploadedFiles =
-                                                    <FFUploadedFile>[];
-
-                                                try {
-                                                  selectedUploadedFiles =
-                                                      selectedMedia
-                                                          .map((m) =>
-                                                              FFUploadedFile(
-                                                                name: m
-                                                                    .storagePath
-                                                                    .split('/')
-                                                                    .last,
-                                                                bytes: m.bytes,
-                                                                height: m
-                                                                    .dimensions
-                                                                    ?.height,
-                                                                width: m
-                                                                    .dimensions
-                                                                    ?.width,
-                                                                blurHash:
-                                                                    m.blurHash,
-                                                              ))
-                                                          .toList();
-                                                } finally {
-                                                  _model.isDataUploading2 =
-                                                      false;
-                                                }
-                                                if (selectedUploadedFiles
-                                                        .length ==
-                                                    selectedMedia.length) {
-                                                  safeSetState(() {
-                                                    _model.uploadedLocalFile2 =
-                                                        selectedUploadedFiles
-                                                            .first;
-                                                  });
-                                                } else {
-                                                  safeSetState(() {});
-                                                  return;
-                                                }
-                                              }
-
-                                              if (!((_model.uploadedLocalFile2
-                                                          .bytes?.isNotEmpty ??
-                                                      false))) {
-                                                Navigator.pop(context);
-                                                if (shouldSetState) {
-                                                  safeSetState(() {});
-                                                }
-                                                return;
-                                              }
-                                              _model.uploadFirebaseStorageAction2 =
-                                                  await actions
-                                                      .uploadFileFirebaseStorage(
-                                                'Checkin',
-                                                _model.uploadedLocalFile2,
-                                              );
-                                              shouldSetState = true;
-                                              if (!(_model.uploadFirebaseStorageAction2 !=
-                                                      null &&
-                                                  _model.uploadFirebaseStorageAction2 !=
-                                                      '')) {
-                                                Navigator.pop(context);
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 10.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 8.0, 0.0),
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              currentUserLocationValue =
+                                                  await getCurrentUserLocation(
+                                                      defaultLocation:
+                                                          const LatLng(0.0, 0.0));
+                                              var shouldSetState = false;
+                                              if (functions
+                                                      .convertImgPathToString(
+                                                          FFAppState()
+                                                              .imgURLTemp) ==
+                                                  '') {
                                                 await showDialog(
                                                   context: context,
                                                   builder:
                                                       (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      content: const Text(
-                                                          'ไม่สามารถอัพโหลดรูปได้ กรุณาลองอีกครั้ง'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: const Text('Ok'),
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        content: const Text(
+                                                            'ท่านยังไม่ได้ทำการถ่ายรูปภาพ กรุณาถ่ายภาพ'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: const Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                                final selectedMedia =
+                                                    await selectMedia(
+                                                  imageQuality: 30,
+                                                  multiImage: false,
+                                                );
+                                                if (selectedMedia != null &&
+                                                    selectedMedia.every((m) =>
+                                                        validateFileFormat(
+                                                            m.storagePath,
+                                                            context))) {
+                                                  safeSetState(() => _model
+                                                      .isDataUploading2 = true);
+                                                  var selectedUploadedFiles =
+                                                      <FFUploadedFile>[];
+
+                                                  try {
+                                                    selectedUploadedFiles =
+                                                        selectedMedia
+                                                            .map((m) =>
+                                                                FFUploadedFile(
+                                                                  name: m
+                                                                      .storagePath
+                                                                      .split(
+                                                                          '/')
+                                                                      .last,
+                                                                  bytes:
+                                                                      m.bytes,
+                                                                  height: m
+                                                                      .dimensions
+                                                                      ?.height,
+                                                                  width: m
+                                                                      .dimensions
+                                                                      ?.width,
+                                                                  blurHash: m
+                                                                      .blurHash,
+                                                                ))
+                                                            .toList();
+                                                  } finally {
+                                                    _model.isDataUploading2 =
+                                                        false;
+                                                  }
+                                                  if (selectedUploadedFiles
+                                                          .length ==
+                                                      selectedMedia.length) {
+                                                    safeSetState(() {
+                                                      _model.uploadedLocalFile2 =
+                                                          selectedUploadedFiles
+                                                              .first;
+                                                    });
+                                                  } else {
+                                                    safeSetState(() {});
+                                                    return;
+                                                  }
+                                                }
+
+                                                if (!((_model
+                                                            .uploadedLocalFile2
+                                                            .bytes
+                                                            ?.isNotEmpty ??
+                                                        false))) {
+                                                  Navigator.pop(context);
+                                                  if (shouldSetState) {
+                                                    safeSetState(() {});
+                                                  }
+                                                  return;
+                                                }
+                                                _model.uploadFirebaseStorageAction2 =
+                                                    await actions
+                                                        .uploadFileFirebaseStorage(
+                                                  'Checkin',
+                                                  _model.uploadedLocalFile2,
+                                                );
+                                                shouldSetState = true;
+                                                if (!(_model.uploadFirebaseStorageAction2 !=
+                                                        null &&
+                                                    _model.uploadFirebaseStorageAction2 !=
+                                                        '')) {
+                                                  Navigator.pop(context);
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: const Text(
+                                                              'ไม่สามารถอัพโหลดรูปได้ กรุณาลองอีกครั้ง'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: const Text('Ok'),
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ],
+                                                      );
+                                                    },
+                                                  );
+                                                  if (shouldSetState) {
+                                                    safeSetState(() {});
+                                                  }
+                                                  return;
+                                                }
+                                                FFAppState().imgURLTemp = functions
+                                                    .stringToImgPath(_model
+                                                        .uploadFirebaseStorageAction2)!;
+                                                safeSetState(() {});
+                                              }
+                                              if (!(_model.dropDownBranchValue !=
+                                                      null &&
+                                                  _model.dropDownBranchValue !=
+                                                      '')) {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        content: const Text(
+                                                            'กรุณาเลือกสาขา'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: const Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     );
                                                   },
                                                 );
@@ -1083,347 +1162,343 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                 }
                                                 return;
                                               }
-                                              FFAppState().imgURLTemp = functions
-                                                  .stringToImgPath(_model
-                                                      .uploadFirebaseStorageAction2)!;
-                                              safeSetState(() {});
-                                            }
-                                            if (!(_model.dropDownBranchValue !=
-                                                    null &&
-                                                _model.dropDownBranchValue !=
-                                                    '')) {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    content:
-                                                        const Text('กรุณาเลือกสาขา'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: const Text('Ok'),
+                                              if (!functions
+                                                  .checkEnebleLocationDevice(
+                                                      currentUserLocationValue)!) {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        content: const Text(
+                                                            'กรุณาเปิด Location (GPS)'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: const Text('Ok'),
+                                                          ),
+                                                        ],
                                                       ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                              if (shouldSetState) {
-                                                safeSetState(() {});
-                                              }
-                                              return;
-                                            }
-                                            if (!functions
-                                                .checkEnebleLocationDevice(
-                                                    currentUserLocationValue)!) {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    content: const Text(
-                                                        'กรุณาเปิด Location (GPS)'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: const Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                              if (shouldSetState) {
-                                                safeSetState(() {});
-                                              }
-                                              return;
-                                            }
-                                            _model.checkUserIsInRadius =
-                                                await actions.locationCal(
-                                              functions.combineLatLngFunction(
-                                                  _model
-                                                      .listLocationData[_model
-                                                          .listLocationData
-                                                          .map((e) =>
-                                                              e.branchCode)
-                                                          .toList()
-                                                          .indexOf((_model
-                                                              .dropDownBranchValue!))]
-                                                      .latitude,
-                                                  _model
-                                                      .listLocationData[_model
-                                                          .listLocationData
-                                                          .map((e) =>
-                                                              e.branchCode)
-                                                          .toList()
-                                                          .indexOf((_model
-                                                              .dropDownBranchValue!))]
-                                                      .longitude),
-                                              currentUserLocationValue,
-                                              _model
-                                                  .listLocationData[_model
-                                                      .listLocationData
-                                                      .map((e) => e.branchCode)
-                                                      .toList()
-                                                      .indexOf((_model
-                                                          .dropDownBranchValue!))]
-                                                  .radius,
-                                            );
-                                            shouldSetState = true;
-                                            if (!_model.checkUserIsInRadius!) {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    content: const Text(
-                                                        'คุณไม่อยู่ในระยะเช็คอิน กรุณาอยู่ใกล้กับสถานที่เช็คอินที่คุณเลือก'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: const Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                              if (shouldSetState) {
-                                                safeSetState(() {});
-                                              }
-                                              return;
-                                            }
-                                            _model.workCheckApi =
-                                                await WorkCheckAPICall.call(
-                                              branch:
-                                                  _model.dropDownBranchValue,
-                                              urlImg: functions
-                                                  .convertImgPathToString(
-                                                      FFAppState().imgURLTemp),
-                                              token: FFAppState().accessToken,
-                                              latitude:
-                                                  functions.getLatLngFunction(
-                                                      currentUserLocationValue,
-                                                      'lat'),
-                                              remark: _model.textController
-                                                          .text !=
-                                                      ''
-                                                  ? _model.textController.text
-                                                  : '',
-                                              longitude:
-                                                  functions.getLatLngFunction(
-                                                      currentUserLocationValue,
-                                                      'longitude'),
-                                              apiUrl:
-                                                  FFAppState().apiUrlAppState,
-                                            );
-
-                                            shouldSetState = true;
-                                            if ((_model.workCheckApi
-                                                        ?.statusCode ??
-                                                    200) !=
-                                                200) {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    content: Text(
-                                                        'พบข้อผิดพลาด (${WorkCheckAPICall.statuslayer1(
-                                                      (_model.workCheckApi
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                    )?.toString()})'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: const Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                              if (shouldSetState) {
-                                                safeSetState(() {});
-                                              }
-                                              return;
-                                            }
-                                            if ('${WorkCheckAPICall.statuslayer1(
-                                                  (_model.workCheckApi
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                )?.toString()}' !=
-                                                '200') {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    content: Text(
-                                                        'พบข้อผิดพลาด (${WorkCheckAPICall.statuslayer1(
-                                                      (_model.workCheckApi
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                    )?.toString()})'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: const Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                              if (shouldSetState) {
-                                                safeSetState(() {});
-                                              }
-                                              return;
-                                            }
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  content:
-                                                      const Text('ลงเวลาสำเร็จ!'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: const Text('Ok'),
-                                                    ),
-                                                  ],
+                                                    );
+                                                  },
                                                 );
-                                              },
-                                            );
+                                                if (shouldSetState) {
+                                                  safeSetState(() {});
+                                                }
+                                                return;
+                                              }
+                                              _model.checkUserIsInRadius =
+                                                  await actions.locationCal(
+                                                functions.combineLatLngFunction(
+                                                    _model.listLocationData
+                                                        .elementAtOrNull(_model
+                                                            .listLocationData
+                                                            .map((e) =>
+                                                                e.branchName)
+                                                            .toList()
+                                                            .indexOf((_model
+                                                                .dropDownBranchValue!)))
+                                                        ?.latitude,
+                                                    _model.listLocationData
+                                                        .elementAtOrNull(_model
+                                                            .listLocationData
+                                                            .map((e) =>
+                                                                e.branchName)
+                                                            .toList()
+                                                            .indexOf((_model
+                                                                .dropDownBranchValue!)))
+                                                        ?.longitude),
+                                                currentUserLocationValue,
+                                                _model.listLocationData
+                                                    .elementAtOrNull(_model
+                                                        .listLocationData
+                                                        .map(
+                                                            (e) => e.branchName)
+                                                        .toList()
+                                                        .indexOf((_model
+                                                            .dropDownBranchValue!)))
+                                                    ?.radius,
+                                              );
+                                              shouldSetState = true;
+                                              if (!_model
+                                                  .checkUserIsInRadius!) {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        content: const Text(
+                                                            'คุณไม่อยู่ในระยะเช็คอิน กรุณาอยู่ใกล้กับสถานที่เช็คอินที่คุณเลือก'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: const Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                                if (shouldSetState) {
+                                                  safeSetState(() {});
+                                                }
+                                                return;
+                                              }
+                                              _model.workCheckApi =
+                                                  await WorkCheckAPICall.call(
+                                                branch: _model.listLocationData
+                                                    .elementAtOrNull(_model
+                                                        .listLocationData
+                                                        .map(
+                                                            (e) => e.branchName)
+                                                        .toList()
+                                                        .indexOf((_model
+                                                            .dropDownBranchValue!)))
+                                                    ?.branchCode,
+                                                urlImg: functions
+                                                    .convertImgPathToString(
+                                                        FFAppState()
+                                                            .imgURLTemp),
+                                                token: FFAppState().accessToken,
+                                                latitude:
+                                                    functions.getLatLngFunction(
+                                                        currentUserLocationValue,
+                                                        'lat'),
+                                                remark: _model.textController
+                                                            .text !=
+                                                        ''
+                                                    ? _model.textController.text
+                                                    : '',
+                                                longitude:
+                                                    functions.getLatLngFunction(
+                                                        currentUserLocationValue,
+                                                        'longitude'),
+                                                apiUrl:
+                                                    FFAppState().apiUrlAppState,
+                                              );
 
-                                            context
-                                                .pushNamed('CheckInStatusPage');
-
-                                            if (shouldSetState) {
-                                              safeSetState(() {});
-                                            }
-                                          },
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            'hgcupj9q' /* ลงเวลางาน */,
-                                          ),
-                                          options: FFButtonOptions(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.3,
-                                            height: 40.0,
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 0.0, 16.0, 0.0),
-                                            iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0xFF08DC07),
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color: Colors.white,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.w600,
+                                              shouldSetState = true;
+                                              if ((_model.workCheckApi
+                                                          ?.statusCode ??
+                                                      200) !=
+                                                  200) {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        content: Text(
+                                                            'พบข้อผิดพลาด (${WorkCheckAPICall.statuslayer1(
+                                                          (_model.workCheckApi
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                        )?.toString()})'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: const Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                                if (shouldSetState) {
+                                                  safeSetState(() {});
+                                                }
+                                                return;
+                                              }
+                                              if ('${WorkCheckAPICall.statuslayer1(
+                                                    (_model.workCheckApi
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )?.toString()}' !=
+                                                  '200') {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        content: Text(
+                                                            '${WorkCheckAPICall.messagelayer1(
+                                                          (_model.workCheckApi
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                        )}'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: const Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                                if (shouldSetState) {
+                                                  safeSetState(() {});
+                                                }
+                                                return;
+                                              }
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return WebViewAware(
+                                                    child: AlertDialog(
+                                                      content: Text(
+                                                          '${WorkCheckAPICall.messagelayer1(
+                                                        (_model.workCheckApi
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      )}'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: const Text('Ok'),
+                                                        ),
+                                                      ],
                                                     ),
-                                            elevation: 8.0,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
+                                                  );
+                                                },
+                                              );
+
+                                              context.pushNamed(
+                                                  'CheckInStatusPage');
+
+                                              if (shouldSetState) {
+                                                safeSetState(() {});
+                                              }
+                                            },
+                                            text: FFLocalizations.of(context)
+                                                .getText(
+                                              'hgcupj9q' /* ลงเวลางาน */,
+                                            ),
+                                            options: FFButtonOptions(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.3,
+                                              height: 40.0,
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 0.0, 16.0, 0.0),
+                                              iconPadding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color: const Color(0xFF08DC07),
+                                              textStyle: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: Colors.white,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                              elevation: 8.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ]
-                                      .addToStart(const SizedBox(width: 12.0))
-                                      .addToEnd(const SizedBox(width: 12.0)),
+                                    ]
+                                        .addToStart(const SizedBox(width: 12.0))
+                                        .addToEnd(const SizedBox(width: 12.0)),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        width: 100.0,
-                        height: 285.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: MediaQuery.sizeOf(context).height * 0.25,
-                          child: custom_widgets.DrawCircleMap(
+                    ],
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          width: 100.0,
+                          height: 285.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: SizedBox(
                             width: double.infinity,
                             height: MediaQuery.sizeOf(context).height * 0.25,
-                            latitude: _model.dropDownBranchValue != null &&
-                                    _model.dropDownBranchValue != ''
-                                ? valueOrDefault<double>(
-                                    double.parse(_model
-                                        .listLocationData[_model
-                                            .listLocationData
-                                            .map((e) => e.branchName)
-                                            .toList()
-                                            .indexOf(
-                                                (_model.dropDownBranchValue!))]
-                                        .latitude),
-                                    0.0,
-                                  )
-                                : 0.0,
-                            longitude: _model.dropDownBranchValue != null &&
-                                    _model.dropDownBranchValue != ''
-                                ? valueOrDefault<double>(
-                                    double.parse(_model
-                                        .listLocationData[_model
-                                            .listLocationData
-                                            .map((e) => e.branchName)
-                                            .toList()
-                                            .indexOf(
-                                                (_model.dropDownBranchValue!))]
-                                        .longitude),
-                                    0.0,
-                                  )
-                                : 0.0,
-                            radiusLo: _model.dropDownBranchValue != null &&
-                                    _model.dropDownBranchValue != ''
-                                ? valueOrDefault<double>(
-                                    double.parse(_model
-                                        .listLocationData[_model
-                                            .listLocationData
-                                            .map((e) => e.branchName)
-                                            .toList()
-                                            .indexOf(
-                                                (_model.dropDownBranchValue!))]
-                                        .radius),
-                                    0.0,
-                                  )
-                                : 0.0,
-                            currentLoLat: double.parse(
-                                (functions.getLatLngFunction(
-                                    currentUserLocationValue, 'lat')!)),
-                            currentLoLng: double.parse(
-                                (functions.getLatLngFunction(
-                                    currentUserLocationValue, 'lng')!)),
+                            child: custom_widgets.DrawCircleMap(
+                              width: double.infinity,
+                              height: MediaQuery.sizeOf(context).height * 0.25,
+                              latitude: _model.dropDownBranchValue != null &&
+                                      _model.dropDownBranchValue != ''
+                                  ? valueOrDefault<double>(
+                                      double.parse(_model.listLocationData
+                                          .elementAtOrNull(_model
+                                              .listLocationData
+                                              .map((e) => e.branchName)
+                                              .toList()
+                                              .indexOf((_model
+                                                  .dropDownBranchValue!)))!
+                                          .latitude),
+                                      0.0,
+                                    )
+                                  : 0.0,
+                              longitude: _model.dropDownBranchValue != null &&
+                                      _model.dropDownBranchValue != ''
+                                  ? valueOrDefault<double>(
+                                      double.parse(_model.listLocationData
+                                          .elementAtOrNull(_model
+                                              .listLocationData
+                                              .map((e) => e.branchName)
+                                              .toList()
+                                              .indexOf((_model
+                                                  .dropDownBranchValue!)))!
+                                          .longitude),
+                                      0.0,
+                                    )
+                                  : 0.0,
+                              radiusLo: _model.dropDownBranchValue != null &&
+                                      _model.dropDownBranchValue != ''
+                                  ? valueOrDefault<double>(
+                                      double.parse(_model.listLocationData
+                                          .elementAtOrNull(_model
+                                              .listLocationData
+                                              .map((e) => e.branchName)
+                                              .toList()
+                                              .indexOf((_model
+                                                  .dropDownBranchValue!)))!
+                                          .radius),
+                                      0.0,
+                                    )
+                                  : 0.0,
+                              currentLoLat: double.parse(
+                                  (functions.getLatLngFunction(
+                                      currentUserLocationValue, 'lat')!)),
+                              currentLoLng: double.parse(
+                                  (functions.getLatLngFunction(
+                                      currentUserLocationValue, 'lng')!)),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

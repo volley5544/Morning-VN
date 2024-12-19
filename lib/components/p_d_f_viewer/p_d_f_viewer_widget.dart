@@ -8,7 +8,12 @@ import 'p_d_f_viewer_model.dart';
 export 'p_d_f_viewer_model.dart';
 
 class PDFViewerWidget extends StatefulWidget {
-  const PDFViewerWidget({super.key});
+  const PDFViewerWidget({
+    super.key,
+    required this.pdfUrl,
+  });
+
+  final String? pdfUrl;
 
   @override
   State<PDFViewerWidget> createState() => _PDFViewerWidgetState();
@@ -45,8 +50,8 @@ class _PDFViewerWidgetState extends State<PDFViewerWidget> {
         children: [
           Stack(
             children: [
-              const FlutterFlowPdfViewer(
-                networkPath: 'http://www.pdf995.com/samples/pdf.pdf',
+              FlutterFlowPdfViewer(
+                networkPath: widget.pdfUrl!,
                 width: double.infinity,
                 height: 700.0,
                 horizontalScroll: false,
@@ -61,13 +66,12 @@ class _PDFViewerWidgetState extends State<PDFViewerWidget> {
                 icon: const FaIcon(
                   FontAwesomeIcons.times,
                   color: Color(0xFFFF0000),
-                  size: 15.0,
+                  size: 40.0,
                 ),
                 options: FFButtonOptions(
                   height: 40.0,
                   padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                  iconPadding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  iconPadding: const EdgeInsets.all(0.0),
                   color: Colors.transparent,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Readex Pro',

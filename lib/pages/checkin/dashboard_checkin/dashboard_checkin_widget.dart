@@ -1,3 +1,4 @@
+import '/components/select_language_component_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -5,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'dashboard_checkin_model.dart';
 export 'dashboard_checkin_model.dart';
 
@@ -29,9 +31,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
     _model = createModel(context, () => DashboardCheckinModel());
 
     // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setAppLanguage(context, 'en');
-    });
+    SchedulerBinding.instance.addPostFrameCallback((_) async {});
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation1': AnimationInfo(
@@ -120,7 +120,10 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -138,7 +141,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
               size: 30.0,
             ),
             onPressed: () async {
-              context.pushNamed('DashBoard');
+              context.pushNamed('superAppPage');
             },
           ),
           title: Text(
@@ -170,18 +173,52 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                 ),
                 child: Align(
                   alignment: const AlignmentDirectional(0.0, 0.0),
-                  child: Text(
-                    FFLocalizations.of(context).getText(
-                      '2890rejr' /* เมนู */,
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      await showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        barrierColor: const Color(0xC0000000),
+                        enableDrag: false,
+                        context: context,
+                        builder: (context) {
+                          return WebViewAware(
+                            child: GestureDetector(
+                              onTap: () {
+                                FocusScope.of(context).unfocus();
+                                FocusManager.instance.primaryFocus?.unfocus();
+                              },
+                              child: Padding(
+                                padding: MediaQuery.viewInsetsOf(context),
+                                child: SizedBox(
+                                  height:
+                                      MediaQuery.sizeOf(context).height * 0.5,
+                                  child: const SelectLanguageComponentWidget(),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ).then((value) => safeSetState(() {}));
+                    },
+                    child: Text(
+                      FFLocalizations.of(context).getText(
+                        '2890rejr' /* เมนู */,
+                      ),
+                      textAlign: TextAlign.start,
+                      style:
+                          FlutterFlowTheme.of(context).headlineMedium.override(
+                                fontFamily: 'Outfit',
+                                color: Colors.white,
+                                fontSize: 22.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w600,
+                              ),
                     ),
-                    textAlign: TextAlign.start,
-                    style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          fontFamily: 'Outfit',
-                          color: Colors.white,
-                          fontSize: 22.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.w600,
-                        ),
                   ),
                 ),
               ).animateOnPageLoad(

@@ -7,10 +7,9 @@ class AddLeavePageModel extends FlutterFlowModel<AddLeavePageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
-  DateTime? datePicked;
-  // State field(s) for DropDown widget.
-  String? dropDownValue;
-  FormFieldController<String>? dropDownValueController;
+  // State field(s) for leaveTime widget.
+  String? leaveTimeValue;
+  FormFieldController<String>? leaveTimeValueController;
   // State field(s) for phoneNumber widget.
   FocusNode? phoneNumberFocusNode;
   TextEditingController? phoneNumberTextController;
@@ -19,6 +18,11 @@ class AddLeavePageModel extends FlutterFlowModel<AddLeavePageWidget> {
   FocusNode? reasonToLeaveFocusNode;
   TextEditingController? reasonToLeaveTextController;
   String? Function(BuildContext, String?)? reasonToLeaveTextControllerValidator;
+  bool isDataUploading = false;
+  List<FFUploadedFile> uploadedLocalFiles = [];
+
+  // Stores action output result for [Custom Action - uploadMultipleFileFirebaseStorage] action in leaveFile widget.
+  List<String>? firebaseuploadoutput;
   // State field(s) for PageView widget.
   PageController? pageViewController;
 

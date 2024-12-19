@@ -21,14 +21,6 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   TextEditingController? passwordTextController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
-  // Stores action output result for [Custom Action - backgroundLocationCheck] action in Button widget.
-  bool? backgroundLocationCheck;
-  // Stores action output result for [Custom Action - backgroundLocationPermission] action in Button widget.
-  bool? permissionRequestOutput;
-  // Stores action output result for [Custom Action - checkGpsServiceEnable] action in Button widget.
-  bool? checkGpsEnable;
-  // Stores action output result for [Custom Action - checkGpsServiceEnable] action in Button widget.
-  bool? checkGpsEnable2;
   // Stores action output result for [Backend Call - API (authenAPI)] action in Button widget.
   ApiCallResponse? authAPIOutput;
   // Stores action output result for [Custom Action - checkFirebase] action in Button widget.

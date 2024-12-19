@@ -38,7 +38,10 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -56,7 +59,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              context.pushNamed('DashBoard');
+              context.pushNamed('superAppPage');
             },
           ),
           title: Text(
@@ -146,7 +149,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                               ),
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  't491ogrv' /* 412024 */,
+                                  't491ogrv' /* 4/1/2024 */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

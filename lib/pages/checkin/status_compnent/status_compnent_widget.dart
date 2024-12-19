@@ -56,7 +56,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
-                      '7ul9r41x' /* สถานะทั้งหมด */,
+                      '7ul9r41x' /*  */,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Readex Pro',
@@ -98,7 +98,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                 padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
-                    'mqn06a20' /* เช็คอินเข้า-ออกงาน จะมีเเถบเเล... */,
+                    'mqn06a20' /*  */,
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
@@ -129,7 +129,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
-                      'kh7en1yk' /* วันหยุดเเละวันหยุดตามประเพณี */,
+                      'kh7en1yk' /*  */,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Readex Pro',
@@ -160,7 +160,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
-                      '0il619bg' /* ขาดงาน */,
+                      '0il619bg' /*  */,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Readex Pro',

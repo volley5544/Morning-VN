@@ -36,7 +36,10 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -204,7 +207,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget> {
                               SelectionArea(
                                   child: AutoSizeText(
                                 FFLocalizations.of(context).getText(
-                                  'z4eyg5my' /* [1011257] */,
+                                  'z4eyg5my' /* [10/11/257] */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -263,7 +266,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget> {
                               SelectionArea(
                                   child: AutoSizeText(
                                 FFLocalizations.of(context).getText(
-                                  'k1k6az6n' /* [19112567-20112567] */,
+                                  'k1k6az6n' /* [19/11/2567-20/11/2567] */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

@@ -6,13 +6,17 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/checkin/add_branch_lo/add_branch_lo_widget.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'change_lat_lng_page_model.dart';
 export 'change_lat_lng_page_model.dart';
 
@@ -41,7 +45,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       currentUserLocationValue =
           await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
-      await showDialog(
+      showDialog(
         context: context,
         builder: (dialogContext) {
           return Dialog(
@@ -50,9 +54,14 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
             backgroundColor: Colors.transparent,
             alignment: const AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
-            child: GestureDetector(
-              onTap: () => FocusScope.of(dialogContext).unfocus(),
-              child: const LoadingWidget(),
+            child: WebViewAware(
+              child: GestureDetector(
+                onTap: () {
+                  FocusScope.of(dialogContext).unfocus();
+                  FocusManager.instance.primaryFocus?.unfocus();
+                },
+                child: const LoadingWidget(),
+              ),
             ),
           );
         },
@@ -65,20 +74,22 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
-            return AlertDialog(
-              title: const Text('ระบบ'),
-              content: const Text('กรุณาเปิดGPS ก่อนทำรายการ'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
-                ),
-              ],
+            return WebViewAware(
+              child: AlertDialog(
+                title: const Text('ระบบ'),
+                content: const Text('กรุณาเปิดGPS ก่อนทำรายการ'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: const Text('Ok'),
+                  ),
+                ],
+              ),
             );
           },
         );
 
-        context.goNamed('DashBoard');
+        context.goNamed('superAppPage');
 
         return;
       }
@@ -157,7 +168,10 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
 
     return Builder(
       builder: (context) => GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
+        onTap: () {
+          FocusScope.of(context).unfocus();
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
         child: Scaffold(
           key: scaffoldKey,
           resizeToAvoidBottomInset: false,
@@ -680,181 +694,408 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                   animationsMap['wrapOnPageLoadAnimation']!),
                               Align(
                                 alignment: const AlignmentDirectional(0.0, 0.0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    currentUserLocationValue =
-                                        await getCurrentUserLocation(
-                                            defaultLocation: const LatLng(0.0, 0.0));
-                                    var shouldSetState = false;
-                                    if (!(_model.branchCodeInputTextController
-                                                .text !=
-                                            '')) {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            content: const Text('กรุณากรอกรหัสสาขา'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: const Text('Ok'),
+                                child: Builder(
+                                  builder: (context) => FFButtonWidget(
+                                    onPressed: () async {
+                                      var shouldSetState = false;
+                                      if (!(_model.branchCodeInputTextController
+                                                  .text !=
+                                              '')) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                content:
+                                                    const Text('กรุณากรอกรหัสสาขา'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
                                               ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                      if (shouldSetState) safeSetState(() {});
-                                      return;
-                                    }
-                                    if (!(_model.latInputTextController.text !=
-                                            '')) {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            content: const Text('กรุณากรอกละติจูด'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: const Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                      if (shouldSetState) safeSetState(() {});
-                                      return;
-                                    }
-                                    if (!(_model.lngInputTextController.text !=
-                                            '')) {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            content: const Text('กรุณากรอกลองติจูด'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: const Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                      if (shouldSetState) safeSetState(() {});
-                                      return;
-                                    }
-                                    _model.locationCheckApi =
-                                        await GetBranchLocationCall.call(
-                                      apiUrl: FFAppState().apiUrlAppState,
-                                      token: FFAppState().accessToken,
-                                      latitude: functions.getLatLngFunction(
-                                          currentUserLocationValue, 'lat'),
-                                      longitude: functions.getLatLngFunction(
-                                          currentUserLocationValue,
-                                          'longitude'),
-                                      branchCode: FFAppState().branchCode,
-                                    );
-
-                                    shouldSetState = true;
-                                    if ((_model.locationCheckApi?.statusCode ??
-                                            200) !=
-                                        200) {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            content: Text(
-                                                'พบข้อผิดพลาด(${GetBranchLocationCall.code(
-                                              (_model.locationCheckApi
-                                                      ?.jsonBody ??
-                                                  ''),
-                                            )})'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: const Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                      if (shouldSetState) safeSetState(() {});
-                                      return;
-                                    }
-                                    if ('${GetBranchLocationCall.code(
-                                          (_model.locationCheckApi?.jsonBody ??
-                                              ''),
-                                        )}' !=
-                                        '200') {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            content: Text(
-                                                'พบข้อผิดพลาด (${GetBranchLocationCall.code(
-                                              (_model.locationCheckApi
-                                                      ?.jsonBody ??
-                                                  ''),
-                                            )})'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: const Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                      if (shouldSetState) safeSetState(() {});
-                                      return;
-                                    }
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          content: const Text('ค้นหาสำเร็จ!'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: const Text('Ok'),
-                                            ),
-                                          ],
+                                            );
+                                          },
                                         );
-                                      },
-                                    );
-                                    if (shouldSetState) safeSetState(() {});
-                                  },
-                                  text: FFLocalizations.of(context).getText(
-                                    'eq31tpvr' /* ค้นหา */,
-                                  ),
-                                  options: FFButtonOptions(
-                                    width: 130.0,
-                                    height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: Colors.white,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    elevation: 2.0,
-                                    borderSide: const BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
+                                        return;
+                                      }
+                                      if (!(_model.latInputTextController.text !=
+                                              '')) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                content:
+                                                    const Text('กรุณากรอกละติจูด'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                        );
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
+                                        return;
+                                      }
+                                      if (!(_model.lngInputTextController.text !=
+                                              '')) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                content:
+                                                    const Text('กรุณากรอกลองติจูด'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                        );
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
+                                        return;
+                                      }
+                                      if (!(((functions.changeToDouble(_model.latInputTextController.text)! <= 90.0) &&
+                                              (functions.changeToDouble(_model
+                                                      .latInputTextController
+                                                      .text)! >=
+                                                  -90.0)) &&
+                                          ((functions.changeToDouble(_model.lngInputTextController.text)! <=
+                                                  180.0) &&
+                                              (functions.changeToDouble(_model
+                                                      .lngInputTextController
+                                                      .text)! >=
+                                                  -180.0)) &&
+                                          ((functions.changeToDouble(_model.latInputTextController.text).toString() !=
+                                                  '0.0') &&
+                                              (functions
+                                                      .changeToDouble(
+                                                          _model.latInputTextController.text)
+                                                      .toString() !=
+                                                  '0.0')))) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                content: const Text(
+                                                    'กรุณากรอก ละติจุด ลองจิจูด ให้ถูกต้อง'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                        );
+                                        safeSetState(() {
+                                          _model.lngInputTextController
+                                              ?.clear();
+                                          _model.latInputTextController
+                                              ?.clear();
+                                        });
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
+                                        return;
+                                      }
+                                      FFAppState().changeBranchCode = _model
+                                          .branchCodeInputTextController.text;
+                                      FFAppState().changeLat =
+                                          _model.latInputTextController.text;
+                                      FFAppState().changeLng =
+                                          _model.lngInputTextController.text;
+                                      safeSetState(() {});
+                                      showDialog(
+                                        context: context,
+                                        builder: (dialogContext) {
+                                          return Dialog(
+                                            elevation: 0,
+                                            insetPadding: EdgeInsets.zero,
+                                            backgroundColor: Colors.transparent,
+                                            alignment: const AlignmentDirectional(
+                                                    0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                            child: WebViewAware(
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  FocusScope.of(dialogContext)
+                                                      .unfocus();
+                                                  FocusManager
+                                                      .instance.primaryFocus
+                                                      ?.unfocus();
+                                                },
+                                                child: const LoadingWidget(),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      );
+
+                                      _model.locationCheckApi =
+                                          await GetBranchLocationCall.call(
+                                        apiUrl: FFAppState().apiUrlAppState,
+                                        token: FFAppState().accessToken,
+                                        latitude:
+                                            _model.latInputTextController.text,
+                                        longitude:
+                                            _model.lngInputTextController.text,
+                                        branchCode: _model
+                                            .branchCodeInputTextController.text,
+                                      );
+
+                                      shouldSetState = true;
+                                      if ((_model.locationCheckApi
+                                                  ?.statusCode ??
+                                              200) ==
+                                          200) {
+                                        if (GetBranchLocationCall.code(
+                                              (_model.locationCheckApi
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            ) ==
+                                            '200') {
+                                          Navigator.pop(context);
+                                          unawaited(
+                                            () async {
+                                              await _model
+                                                  .googleMapsController1.future
+                                                  .then(
+                                                (c) => c.animateCamera(
+                                                  CameraUpdate.newLatLng(
+                                                      functions
+                                                          .combineLatLngFunction(
+                                                              GetBranchLocationCall
+                                                                  .latitude(
+                                                                (_model.locationCheckApi
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              ),
+                                                              GetBranchLocationCall
+                                                                  .longitude(
+                                                                (_model.locationCheckApi
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              ))!
+                                                          .toGoogleMaps()),
+                                                ),
+                                              );
+                                            }(),
+                                          );
+                                          _model.distanceBetween =
+                                              await actions.distanceBetween(
+                                            functions.combineLatLngFunction(
+                                                GetBranchLocationCall.latitude(
+                                                  (_model.locationCheckApi
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                ),
+                                                GetBranchLocationCall.longitude(
+                                                  (_model.locationCheckApi
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )),
+                                            functions.combineLatLngFunction(
+                                                _model.latInputTextController
+                                                    .text,
+                                                _model.lngInputTextController
+                                                    .text),
+                                          );
+                                          shouldSetState = true;
+                                          unawaited(
+                                            () async {
+                                              await _model
+                                                  .googleMapsController2.future
+                                                  .then(
+                                                (c) => c.animateCamera(
+                                                  CameraUpdate.newLatLng(functions
+                                                      .combineLatLngFunction(
+                                                          _model
+                                                              .latInputTextController
+                                                              .text,
+                                                          _model
+                                                              .lngInputTextController
+                                                              .text)!
+                                                      .toGoogleMaps()),
+                                                ),
+                                              );
+                                            }(),
+                                          );
+                                        } else if (GetBranchLocationCall.code(
+                                              (_model.locationCheckApi
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            ) ==
+                                            '404') {
+                                          Navigator.pop(context);
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: const Text(
+                                                      'ไม่พบสาขาที่กรอก กรุณาเพิ่มสาขา'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            enableDrag: false,
+                                            context: context,
+                                            builder: (context) {
+                                              return WebViewAware(
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    FocusScope.of(context)
+                                                        .unfocus();
+                                                    FocusManager
+                                                        .instance.primaryFocus
+                                                        ?.unfocus();
+                                                  },
+                                                  child: Padding(
+                                                    padding:
+                                                        MediaQuery.viewInsetsOf(
+                                                            context),
+                                                    child: AddBranchLoWidget(
+                                                      branchCode: _model
+                                                          .branchCodeInputTextController
+                                                          .text,
+                                                      lat: _model
+                                                          .latInputTextController
+                                                          .text,
+                                                      lng: _model
+                                                          .lngInputTextController
+                                                          .text,
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ).then(
+                                              (value) => safeSetState(() {}));
+                                        } else {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: Text(
+                                                      'พบข้อผิดพลาด(${GetBranchLocationCall.code(
+                                                    (_model.locationCheckApi
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )})'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
+                                          Navigator.pop(context);
+                                          if (shouldSetState) {
+                                            safeSetState(() {});
+                                          }
+                                          return;
+                                        }
+                                      } else {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                content: Text(
+                                                    'พบข้อผิดพลาด(${(_model.locationCheckApi?.statusCode ?? 200).toString()})'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                        );
+                                        Navigator.pop(context);
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
+                                        return;
+                                      }
+
+                                      if (shouldSetState) safeSetState(() {});
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      'eq31tpvr' /* ค้นหา */,
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
+                                    options: FFButtonOptions(
+                                      width: 130.0,
+                                      height: 40.0,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
+                                      iconPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: Colors.white,
+                                            letterSpacing: 0.0,
+                                          ),
+                                      elevation: 2.0,
+                                      borderSide: const BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -893,8 +1134,9 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                       Expanded(
                                         flex: 5,
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            '1k3jmyrr' /* 0 */,
+                                          valueOrDefault<String>(
+                                            _model.distanceBetween,
+                                            '0',
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -918,182 +1160,538 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                     ],
                   ),
                   Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        const Divider(
-                          thickness: 1.0,
-                          color: Colors.black,
-                        ),
-                        Text(
-                          FFLocalizations.of(context).getText(
-                            'nbhpres0' /* พิกัดเก่า */,
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 15.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                        ),
-                        const Divider(
-                          thickness: 1.0,
-                          color: Colors.black,
-                        ),
-                        Expanded(
-                          child: Container(
-                            width: double.infinity,
-                            height: MediaQuery.sizeOf(context).height * 0.3,
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                            ),
-                            child: FlutterFlowGoogleMap(
-                              controller: _model.googleMapsController1,
-                              onCameraIdle: (latLng) =>
-                                  _model.googleMapsCenter1 = latLng,
-                              initialLocation: _model.googleMapsCenter1 ??=
-                                  const LatLng(13.106061, -59.613158),
-                              markerColor: GoogleMarkerColor.violet,
-                              mapType: MapType.normal,
-                              style: GoogleMapStyle.standard,
-                              initialZoom: 14.0,
-                              allowInteraction: true,
-                              allowZoom: true,
-                              showZoomControls: true,
-                              showLocation: true,
-                              showCompass: false,
-                              showMapToolbar: false,
-                              showTraffic: false,
-                              centerMapOnMarkerTap: true,
-                            ),
-                          ),
-                        ),
-                        const Divider(
-                          thickness: 1.0,
-                          color: Colors.black,
-                        ),
-                        Text(
-                          FFLocalizations.of(context).getText(
-                            'dh5tylyg' /* พิกัดใหม่ */,
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 15.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                        ),
-                        const Divider(
-                          thickness: 1.0,
-                          color: Colors.black,
-                        ),
-                        Expanded(
-                          child: Container(
-                            width: double.infinity,
-                            height: MediaQuery.sizeOf(context).height * 0.3,
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                            ),
-                            child: FlutterFlowGoogleMap(
-                              controller: _model.googleMapsController2,
-                              onCameraIdle: (latLng) =>
-                                  _model.googleMapsCenter2 = latLng,
-                              initialLocation: _model.googleMapsCenter2 ??=
-                                  const LatLng(13.106061, -59.613158),
-                              markerColor: GoogleMarkerColor.violet,
-                              mapType: MapType.normal,
-                              style: GoogleMapStyle.standard,
-                              initialZoom: 14.0,
-                              allowInteraction: true,
-                              allowZoom: true,
-                              showZoomControls: true,
-                              showLocation: true,
-                              showCompass: false,
-                              showMapToolbar: false,
-                              showTraffic: false,
-                              centerMapOnMarkerTap: true,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 20.0, 0.0, 10.0),
-                            child: Container(
-                              width: double.infinity,
-                              height: 50.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
+                    child: Builder(
+                      builder: (context) {
+                        if (GetBranchLocationCall.code(
+                              (_model.locationCheckApi?.jsonBody ?? ''),
+                            ) ==
+                            '200') {
+                          return Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              const Divider(
+                                thickness: 1.0,
+                                color: Colors.black,
                               ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 20.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      flex: 1,
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 0.0, 0.0, 0.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () async {},
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            '68dxb7jg' /* บันทึก */,
-                                          ),
-                                          options: FFButtonOptions(
-                                            width: 140.0,
-                                            height: 40.0,
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0xFF24D200),
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color: Colors.white,
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            elevation: 2.0,
-                                            borderSide: const BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                        ),
-                                      ),
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'nbhpres0' /* พิกัดเก่า */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 15.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
                                     ),
-                                  ],
+                              ),
+                              const Divider(
+                                thickness: 1.0,
+                                color: Colors.black,
+                              ),
+                              Expanded(
+                                child: Container(
+                                  width: double.infinity,
+                                  height:
+                                      MediaQuery.sizeOf(context).height * 0.3,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                  ),
+                                  child: Builder(builder: (context) {
+                                    final googleMapMarker =
+                                        functions.combineLatLngFunction(
+                                            GetBranchLocationCall.latitude(
+                                              (_model.locationCheckApi
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            ),
+                                            GetBranchLocationCall.longitude(
+                                              (_model.locationCheckApi
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            ));
+                                    return FlutterFlowGoogleMap(
+                                      controller: _model.googleMapsController1,
+                                      onCameraIdle: (latLng) =>
+                                          _model.googleMapsCenter1 = latLng,
+                                      initialLocation: _model
+                                              .googleMapsCenter1 ??=
+                                          functions.combineLatLngFunction(
+                                              GetBranchLocationCall.latitude(
+                                                (_model.locationCheckApi
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              ),
+                                              GetBranchLocationCall.longitude(
+                                                (_model.locationCheckApi
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              ))!,
+                                      markers: [
+                                        if (googleMapMarker != null)
+                                          FlutterFlowMarker(
+                                            googleMapMarker.serialize(),
+                                            googleMapMarker,
+                                          ),
+                                      ],
+                                      markerColor: GoogleMarkerColor.red,
+                                      mapType: MapType.normal,
+                                      style: GoogleMapStyle.standard,
+                                      initialZoom: 14.0,
+                                      allowInteraction: true,
+                                      allowZoom: true,
+                                      showZoomControls: true,
+                                      showLocation: true,
+                                      showCompass: false,
+                                      showMapToolbar: false,
+                                      showTraffic: false,
+                                      centerMapOnMarkerTap: true,
+                                    );
+                                  }),
                                 ),
                               ),
-                            ).animateOnPageLoad(
-                                animationsMap['containerOnPageLoadAnimation']!),
-                          ),
-                        ),
-                      ],
+                              const Divider(
+                                thickness: 1.0,
+                                color: Colors.black,
+                              ),
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'dh5tylyg' /* พิกัดใหม่ */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 15.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                              const Divider(
+                                thickness: 1.0,
+                                color: Colors.black,
+                              ),
+                              Expanded(
+                                child: Container(
+                                  width: double.infinity,
+                                  height:
+                                      MediaQuery.sizeOf(context).height * 0.3,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                  ),
+                                  child: Builder(builder: (context) {
+                                    final googleMapMarker =
+                                        functions.combineLatLngFunction(
+                                            _model.latInputTextController.text,
+                                            _model.lngInputTextController.text);
+                                    return FlutterFlowGoogleMap(
+                                      controller: _model.googleMapsController2,
+                                      onCameraIdle: (latLng) =>
+                                          _model.googleMapsCenter2 = latLng,
+                                      initialLocation:
+                                          _model.googleMapsCenter2 ??=
+                                              functions.combineLatLngFunction(
+                                                  _model.latInputTextController
+                                                      .text,
+                                                  _model.lngInputTextController
+                                                      .text)!,
+                                      markers: [
+                                        if (googleMapMarker != null)
+                                          FlutterFlowMarker(
+                                            googleMapMarker.serialize(),
+                                            googleMapMarker,
+                                          ),
+                                      ],
+                                      markerColor: GoogleMarkerColor.red,
+                                      mapType: MapType.normal,
+                                      style: GoogleMapStyle.standard,
+                                      initialZoom: 14.0,
+                                      allowInteraction: true,
+                                      allowZoom: true,
+                                      showZoomControls: true,
+                                      showLocation: true,
+                                      showCompass: false,
+                                      showMapToolbar: false,
+                                      showTraffic: false,
+                                      centerMapOnMarkerTap: true,
+                                    );
+                                  }),
+                                ),
+                              ),
+                            ],
+                          );
+                        } else {
+                          return Container(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: 10.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                          );
+                        }
+                      },
                     ),
+                  ),
+                  Builder(
+                    builder: (context) {
+                      if (GetBranchLocationCall.code(
+                            (_model.locationCheckApi?.jsonBody ?? ''),
+                          ) ==
+                          '200') {
+                        return Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 10.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 20.0, 0.0, 10.0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 50.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 0.0, 20.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Expanded(
+                                            flex: 1,
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                              child: FFButtonWidget(
+                                                onPressed: () async {
+                                                  var shouldSetState = false;
+                                                  HapticFeedback.mediumImpact();
+                                                  if (!(_model.branchCodeInputTextController
+                                                              .text !=
+                                                          '')) {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return WebViewAware(
+                                                          child: AlertDialog(
+                                                            content: const Text(
+                                                                'กรุณาใส่ BranchCode'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    const Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+                                                    if (shouldSetState) {
+                                                      safeSetState(() {});
+                                                    }
+                                                    return;
+                                                  }
+                                                  if (!(_model.latInputTextController
+                                                              .text !=
+                                                          '')) {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return WebViewAware(
+                                                          child: AlertDialog(
+                                                            content: const Text(
+                                                                'กรุณาใส่ Latitude'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    const Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+                                                    if (shouldSetState) {
+                                                      safeSetState(() {});
+                                                    }
+                                                    return;
+                                                  }
+                                                  if (!(_model.lngInputTextController
+                                                              .text !=
+                                                          '')) {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return WebViewAware(
+                                                          child: AlertDialog(
+                                                            content: const Text(
+                                                                'กรุณาใส่ Longitude'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    const Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+                                                    if (shouldSetState) {
+                                                      safeSetState(() {});
+                                                    }
+                                                    return;
+                                                  }
+                                                  var confirmDialogResponse =
+                                                      await showDialog<bool>(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return WebViewAware(
+                                                                child:
+                                                                    AlertDialog(
+                                                                  content: const Text(
+                                                                      'ยืนยันเปลี่ยนพิกัด'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                      child: const Text(
+                                                                          'ยกเลิก'),
+                                                                    ),
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                      child: const Text(
+                                                                          'ยืนยัน'),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              );
+                                                            },
+                                                          ) ??
+                                                          false;
+                                                  if (!confirmDialogResponse) {
+                                                    if (shouldSetState) {
+                                                      safeSetState(() {});
+                                                    }
+                                                    return;
+                                                  }
+                                                  _model.updateBranchLocation =
+                                                      await UpdateBranchLocationCall
+                                                          .call(
+                                                    apiUrl: FFAppState()
+                                                        .apiUrlAppState,
+                                                    token: FFAppState()
+                                                        .accessToken,
+                                                    latitude: _model
+                                                        .latInputTextController
+                                                        .text,
+                                                    longitude: _model
+                                                        .lngInputTextController
+                                                        .text,
+                                                    branchCode: _model
+                                                        .branchCodeInputTextController
+                                                        .text,
+                                                    branchName:
+                                                        GetBranchLocationCall
+                                                            .branchname(
+                                                      (_model.locationCheckApi
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    ),
+                                                  );
+
+                                                  shouldSetState = true;
+                                                  if ((_model.updateBranchLocation
+                                                              ?.statusCode ??
+                                                          200) ==
+                                                      200) {
+                                                    if (UpdateBranchLocationCall
+                                                            .code(
+                                                          (_model.updateBranchLocation
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                        ) ==
+                                                        '200') {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return WebViewAware(
+                                                            child: AlertDialog(
+                                                              content: const Text(
+                                                                  'เปลี่ยนพิกัดเรียบร้อย'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: const Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+                                                      safeSetState(() {
+                                                        _model
+                                                            .latInputTextController
+                                                            ?.clear();
+                                                        _model
+                                                            .lngInputTextController
+                                                            ?.clear();
+                                                        _model
+                                                            .branchCodeInputTextController
+                                                            ?.clear();
+                                                      });
+                                                    } else {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return WebViewAware(
+                                                            child: AlertDialog(
+                                                              content: Text(
+                                                                  '${GetBranchLocationCall.message(
+                                                                (_model.locationCheckApi
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )}'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: const Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+                                                      if (shouldSetState) {
+                                                        safeSetState(() {});
+                                                      }
+                                                      return;
+                                                    }
+                                                  } else {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return WebViewAware(
+                                                          child: AlertDialog(
+                                                            content: Text(
+                                                                'พบข้อผิดพลาด(${(_model.updateBranchLocation?.statusCode ?? 200).toString()})'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    const Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+                                                    if (shouldSetState) {
+                                                      safeSetState(() {});
+                                                    }
+                                                    return;
+                                                  }
+
+                                                  Navigator.pop(context);
+                                                  if (shouldSetState) {
+                                                    safeSetState(() {});
+                                                  }
+                                                },
+                                                text:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  '68dxb7jg' /* บันทึก */,
+                                                ),
+                                                options: FFButtonOptions(
+                                                  width: 140.0,
+                                                  height: 40.0,
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 0.0),
+                                                  iconPadding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(0.0, 0.0,
+                                                              0.0, 0.0),
+                                                  color: const Color(0xFF24D200),
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            color: Colors.white,
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                  elevation: 2.0,
+                                                  borderSide: const BorderSide(
+                                                    color: Colors.transparent,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ).animateOnPageLoad(animationsMap[
+                                      'containerOnPageLoadAnimation']!),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      } else {
+                        return Container(
+                          width: MediaQuery.sizeOf(context).width * 1.0,
+                          height: 10.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                        );
+                      }
+                    },
                   ),
                 ],
               ),

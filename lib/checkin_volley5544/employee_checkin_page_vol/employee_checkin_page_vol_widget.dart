@@ -18,6 +18,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'employee_checkin_page_vol_model.dart';
 export 'employee_checkin_page_vol_model.dart';
 
@@ -52,11 +53,16 @@ class _EmployeeCheckinPageVolWidgetState
             backgroundColor: Colors.transparent,
             alignment: const AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
-            child: GestureDetector(
-              onTap: () => FocusScope.of(dialogContext).unfocus(),
-              child: const SizedBox(
-                height: double.infinity,
-                child: LoadingWidget(),
+            child: WebViewAware(
+              child: GestureDetector(
+                onTap: () {
+                  FocusScope.of(dialogContext).unfocus();
+                  FocusManager.instance.primaryFocus?.unfocus();
+                },
+                child: const SizedBox(
+                  height: double.infinity,
+                  child: LoadingWidget(),
+                ),
               ),
             ),
           );
@@ -73,15 +79,17 @@ class _EmployeeCheckinPageVolWidgetState
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
-            return AlertDialog(
-              content: Text(
-                  'พบข้อผิดพลาดConnection (${(_model.apiResultjwm?.statusCode ?? 200).toString()})'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
-                ),
-              ],
+            return WebViewAware(
+              child: AlertDialog(
+                content: Text(
+                    'พบข้อผิดพลาดConnection (${(_model.apiResultjwm?.statusCode ?? 200).toString()})'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: const Text('Ok'),
+                  ),
+                ],
+              ),
             );
           },
         );
@@ -94,18 +102,20 @@ class _EmployeeCheckinPageVolWidgetState
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
-            return AlertDialog(
-              content: Text('พบข้อผิดพลาด (${GetLocationCall.code(
-                (_model.apiResultjwm?.jsonBody ?? ''),
-              )}) ${GetLocationCall.message(
-                (_model.apiResultjwm?.jsonBody ?? ''),
-              )}'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
-                ),
-              ],
+            return WebViewAware(
+              child: AlertDialog(
+                content: Text('พบข้อผิดพลาด (${GetLocationCall.code(
+                  (_model.apiResultjwm?.jsonBody ?? ''),
+                )}) ${GetLocationCall.message(
+                  (_model.apiResultjwm?.jsonBody ?? ''),
+                )}'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: const Text('Ok'),
+                  ),
+                ],
+              ),
             );
           },
         );
@@ -155,7 +165,10 @@ class _EmployeeCheckinPageVolWidgetState
 
     return Builder(
       builder: (context) => GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
+        onTap: () {
+          FocusScope.of(context).unfocus();
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
         child: WillPopScope(
           onWillPop: () async => false,
           child: Scaffold(
@@ -208,12 +221,16 @@ class _EmployeeCheckinPageVolWidgetState
                             backgroundColor: Colors.transparent,
                             alignment: const AlignmentDirectional(0.0, 0.0)
                                 .resolve(Directionality.of(context)),
-                            child: GestureDetector(
-                              onTap: () =>
-                                  FocusScope.of(dialogContext).unfocus(),
-                              child: const SizedBox(
-                                height: double.infinity,
-                                child: LoadingWidget(),
+                            child: WebViewAware(
+                              child: GestureDetector(
+                                onTap: () {
+                                  FocusScope.of(dialogContext).unfocus();
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                },
+                                child: const SizedBox(
+                                  height: double.infinity,
+                                  child: LoadingWidget(),
+                                ),
                               ),
                             ),
                           );
@@ -457,27 +474,29 @@ class _EmployeeCheckinPageVolWidgetState
                                                     context: context,
                                                     builder:
                                                         (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        content: const Text(
-                                                            'คุณต้องการจะลบรูปภาพที่ถ่ายหรือไม่?'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    false),
-                                                            child:
-                                                                const Text('Cancel'),
-                                                          ),
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    true),
-                                                            child:
-                                                                const Text('Confirm'),
-                                                          ),
-                                                        ],
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: const Text(
+                                                              'คุณต้องการจะลบรูปภาพที่ถ่ายหรือไม่?'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      false),
+                                                              child: const Text(
+                                                                  'Cancel'),
+                                                            ),
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      true),
+                                                              child: const Text(
+                                                                  'Confirm'),
+                                                            ),
+                                                          ],
+                                                        ),
                                                       );
                                                     },
                                                   ) ??
@@ -497,13 +516,20 @@ class _EmployeeCheckinPageVolWidgetState
                                                         0.0, 0.0)
                                                     .resolve(Directionality.of(
                                                         context)),
-                                                child: GestureDetector(
-                                                  onTap: () => FocusScope.of(
-                                                          dialogContext)
-                                                      .unfocus(),
-                                                  child: const SizedBox(
-                                                    height: double.infinity,
-                                                    child: LoadingWidget(),
+                                                child: WebViewAware(
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      FocusScope.of(
+                                                              dialogContext)
+                                                          .unfocus();
+                                                      FocusManager
+                                                          .instance.primaryFocus
+                                                          ?.unfocus();
+                                                    },
+                                                    child: const SizedBox(
+                                                      height: double.infinity,
+                                                      child: LoadingWidget(),
+                                                    ),
                                                   ),
                                                 ),
                                               );
@@ -594,23 +620,29 @@ class _EmployeeCheckinPageVolWidgetState
                                           enableDrag: false,
                                           context: context,
                                           builder: (context) {
-                                            return GestureDetector(
-                                              onTap: () =>
+                                            return WebViewAware(
+                                              child: GestureDetector(
+                                                onTap: () {
                                                   FocusScope.of(context)
-                                                      .unfocus(),
-                                              child: Padding(
-                                                padding:
-                                                    MediaQuery.viewInsetsOf(
-                                                        context),
-                                                child: SizedBox(
-                                                  height:
-                                                      MediaQuery.sizeOf(context)
-                                                              .height *
-                                                          0.8,
-                                                  child:
-                                                      SearchBranchComponentWidget(
-                                                    dataList:
-                                                        _model.listLocationData,
+                                                      .unfocus();
+                                                  FocusManager
+                                                      .instance.primaryFocus
+                                                      ?.unfocus();
+                                                },
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child: SizedBox(
+                                                    height: MediaQuery.sizeOf(
+                                                                context)
+                                                            .height *
+                                                        0.8,
+                                                    child:
+                                                        SearchBranchComponentWidget(
+                                                      dataList: _model
+                                                          .listLocationData,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -622,9 +654,9 @@ class _EmployeeCheckinPageVolWidgetState
                                         safeSetState(() {
                                           _model.dropDownValueController
                                                   ?.value =
-                                              _model
-                                                  .listLocationData[
-                                                      _model.indexBranch!]
+                                              _model.listLocationData
+                                                  .elementAtOrNull(
+                                                      _model.indexBranch!)!
                                                   .branchName;
                                         });
 
@@ -646,9 +678,9 @@ class _EmployeeCheckinPageVolWidgetState
                                                     10.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               _model.indexBranch != null
-                                                  ? _model
-                                                      .listLocationData[
-                                                          _model.indexBranch!]
+                                                  ? _model.listLocationData
+                                                      .elementAtOrNull(
+                                                          _model.indexBranch!)!
                                                       .branchName
                                                   : 'เลือกสาขา',
                                               style:
@@ -680,18 +712,25 @@ class _EmployeeCheckinPageVolWidgetState
                                     enableDrag: false,
                                     context: context,
                                     builder: (context) {
-                                      return GestureDetector(
-                                        onTap: () =>
-                                            FocusScope.of(context).unfocus(),
-                                        child: Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: SizedBox(
-                                            height: MediaQuery.sizeOf(context)
-                                                    .height *
-                                                0.8,
-                                            child: SearchBranchComponentWidget(
-                                              dataList: _model.listLocationData,
+                                      return WebViewAware(
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            FocusScope.of(context).unfocus();
+                                            FocusManager.instance.primaryFocus
+                                                ?.unfocus();
+                                          },
+                                          child: Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: SizedBox(
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.8,
+                                              child:
+                                                  SearchBranchComponentWidget(
+                                                dataList:
+                                                    _model.listLocationData,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -702,9 +741,9 @@ class _EmployeeCheckinPageVolWidgetState
 
                                   safeSetState(() {
                                     _model.dropDownValueController?.value =
-                                        _model
-                                            .listLocationData[
-                                                _model.indexBranchCopy!]
+                                        _model.listLocationData
+                                            .elementAtOrNull(
+                                                _model.indexBranchCopy!)!
                                             .branchName;
                                   });
                                 }
@@ -1049,28 +1088,10 @@ class _EmployeeCheckinPageVolWidgetState
                                         await showDialog(
                                           context: context,
                                           builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              content:
-                                                  Text(_model.dropDownValue!),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                        if (!(_model.dropDownValue != null &&
-                                            _model.dropDownValue != '')) {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                content: const Text(
-                                                    'กรุณาเลือกสถานที่เช็คอิน'),
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                content:
+                                                    Text(_model.dropDownValue!),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -1079,6 +1100,28 @@ class _EmployeeCheckinPageVolWidgetState
                                                     child: const Text('Ok'),
                                                   ),
                                                 ],
+                                              ),
+                                            );
+                                          },
+                                        );
+                                        if (!(_model.dropDownValue != null &&
+                                            _model.dropDownValue != '')) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: const Text(
+                                                      'กรุณาเลือกสถานที่เช็คอิน'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
                                               );
                                             },
                                           );
@@ -1093,17 +1136,19 @@ class _EmployeeCheckinPageVolWidgetState
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                content: const Text(
-                                                    'กรุณาเปิด GPS ก่อนทำการเช็คอิน'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: const Text('Ok'),
-                                                  ),
-                                                ],
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: const Text(
+                                                      'กรุณาเปิด GPS ก่อนทำการเช็คอิน'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
                                               );
                                             },
                                           );
@@ -1115,48 +1160,50 @@ class _EmployeeCheckinPageVolWidgetState
                                         _model.checkUserIsInRadius =
                                             await actions.locationCal(
                                           functions.combineLatLngFunction(
-                                              _model
-                                                  .listLocationData[_model
+                                              _model.listLocationData
+                                                  .elementAtOrNull(_model
                                                       .listLocationData
                                                       .map((e) => e.branchCode)
                                                       .toList()
                                                       .indexOf((_model
-                                                          .dropDownValue!))]
-                                                  .latitude,
-                                              _model
-                                                  .listLocationData[_model
+                                                          .dropDownValue!)))
+                                                  ?.latitude,
+                                              _model.listLocationData
+                                                  .elementAtOrNull(_model
                                                       .listLocationData
                                                       .map((e) => e.branchCode)
                                                       .toList()
                                                       .indexOf((_model
-                                                          .dropDownValue!))]
-                                                  .longitude),
+                                                          .dropDownValue!)))
+                                                  ?.longitude),
                                           currentUserLocationValue,
-                                          _model
-                                              .listLocationData[_model
+                                          _model.listLocationData
+                                              .elementAtOrNull(_model
                                                   .listLocationData
                                                   .map((e) => e.branchCode)
                                                   .toList()
                                                   .indexOf(
-                                                      (_model.dropDownValue!))]
-                                              .radius,
+                                                      (_model.dropDownValue!)))
+                                              ?.radius,
                                         );
                                         shouldSetState = true;
                                         if (!_model.checkUserIsInRadius!) {
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                content: const Text(
-                                                    'คุณไม่อยู่ในระยะเช็คอิน กรุณาอยู่ใกล้กับสถานที่เช็คอินที่คุณเลือก'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: const Text('Ok'),
-                                                  ),
-                                                ],
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: const Text(
+                                                      'คุณไม่อยู่ในระยะเช็คอิน กรุณาอยู่ใกล้กับสถานที่เช็คอินที่คุณเลือก'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
                                               );
                                             },
                                           );
@@ -1193,17 +1240,19 @@ class _EmployeeCheckinPageVolWidgetState
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                content: Text(
-                                                    'พบข้อผิดพลาดConnection (${(_model.workCheckApiOutput?.statusCode ?? 200).toString()})'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: const Text('Ok'),
-                                                  ),
-                                                ],
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: Text(
+                                                      'พบข้อผิดพลาดConnection (${(_model.workCheckApiOutput?.statusCode ?? 200).toString()})'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
                                               );
                                             },
                                           );
@@ -1221,25 +1270,27 @@ class _EmployeeCheckinPageVolWidgetState
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                content: Text(
-                                                    'พบข้อผิดพลาด (${WorkCheckAPICall.statuslayer1(
-                                                  (_model.workCheckApiOutput
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                )?.toString()}) ${WorkCheckAPICall.messagelayer1(
-                                                  (_model.workCheckApiOutput
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                )}'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: const Text('Ok'),
-                                                  ),
-                                                ],
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: Text(
+                                                      'พบข้อผิดพลาด (${WorkCheckAPICall.statuslayer1(
+                                                    (_model.workCheckApiOutput
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )?.toString()}) ${WorkCheckAPICall.messagelayer1(
+                                                    (_model.workCheckApiOutput
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )}'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
                                               );
                                             },
                                           );
@@ -1251,16 +1302,18 @@ class _EmployeeCheckinPageVolWidgetState
                                         await showDialog(
                                           context: context,
                                           builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              content: const Text('ลงเวลาสำเร็จ!'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                content: const Text('ลงเวลาสำเร็จ!'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
                                             );
                                           },
                                         );
@@ -1315,11 +1368,11 @@ class _EmployeeCheckinPageVolWidgetState
                         latitude: _model.dropDownValue != null &&
                                 _model.dropDownValue != ''
                             ? valueOrDefault<double>(
-                                double.parse(_model
-                                    .listLocationData[_model.listLocationData
+                                double.parse(_model.listLocationData
+                                    .elementAtOrNull(_model.listLocationData
                                         .map((e) => e.branchName)
                                         .toList()
-                                        .indexOf((_model.dropDownValue!))]
+                                        .indexOf((_model.dropDownValue!)))!
                                     .latitude),
                                 0.0,
                               )
@@ -1327,11 +1380,11 @@ class _EmployeeCheckinPageVolWidgetState
                         longitude: _model.dropDownValue != null &&
                                 _model.dropDownValue != ''
                             ? valueOrDefault<double>(
-                                double.parse(_model
-                                    .listLocationData[_model.listLocationData
+                                double.parse(_model.listLocationData
+                                    .elementAtOrNull(_model.listLocationData
                                         .map((e) => e.branchName)
                                         .toList()
-                                        .indexOf((_model.dropDownValue!))]
+                                        .indexOf((_model.dropDownValue!)))!
                                     .longitude),
                                 0.0,
                               )
@@ -1339,11 +1392,11 @@ class _EmployeeCheckinPageVolWidgetState
                         radiusLo: _model.dropDownValue != null &&
                                 _model.dropDownValue != ''
                             ? valueOrDefault<double>(
-                                double.parse(_model
-                                    .listLocationData[_model.listLocationData
+                                double.parse(_model.listLocationData
+                                    .elementAtOrNull(_model.listLocationData
                                         .map((e) => e.branchName)
                                         .toList()
-                                        .indexOf((_model.dropDownValue!))]
+                                        .indexOf((_model.dropDownValue!)))!
                                     .radius),
                                 0.0,
                               )

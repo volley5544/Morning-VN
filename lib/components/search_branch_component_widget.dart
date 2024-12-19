@@ -103,7 +103,7 @@ class _SearchBranchComponentWidgetState
                                         letterSpacing: 0.0,
                                       ),
                                   hintText: FFLocalizations.of(context).getText(
-                                    'ommo80jx' /* กรุณากรอกคำค้นหา */,
+                                    'ommo80jx' /* Type Keyword */,
                                   ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
@@ -151,7 +151,8 @@ class _SearchBranchComponentWidgetState
                             return Visibility(
                               visible: functions.containString(
                                       _model.textController.text,
-                                      (widget.dataList?[dataListIndex])
+                                      (widget.dataList
+                                              ?.elementAtOrNull(dataListIndex))
                                           ?.branchName) ??
                                   true,
                               child: Column(

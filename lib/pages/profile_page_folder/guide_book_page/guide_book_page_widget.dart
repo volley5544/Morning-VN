@@ -34,7 +34,10 @@ class _GuideBookPageWidgetState extends State<GuideBookPageWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
@@ -54,12 +57,12 @@ class _GuideBookPageWidgetState extends State<GuideBookPageWidget> {
                 size: 30.0,
               ),
               onPressed: () async {
-                context.pushNamed('myProfilePage');
+                context.pushNamed('MyProfilePage');
               },
             ),
             title: Text(
               FFLocalizations.of(context).getText(
-                'hc3lnn2n' /* คู่มือพนักงาน */,
+                'hc3lnn2n' /* Employee Handbook */,
               ),
               style: FlutterFlowTheme.of(context).titleLarge.override(
                     fontFamily: 'Outfit',

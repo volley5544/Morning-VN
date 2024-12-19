@@ -2,6 +2,8 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/loading/loading_widget.dart';
+import '/components/p_d_f_viewer/p_d_f_viewer_widget.dart';
+import '/components/select_language_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -13,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'check_in_status_page_model.dart';
 export 'check_in_status_page_model.dart';
 
@@ -46,83 +49,48 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
             backgroundColor: Colors.transparent,
             alignment: const AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
-            child: GestureDetector(
-              onTap: () => FocusScope.of(dialogContext).unfocus(),
-              child: const SizedBox(
-                height: double.infinity,
-                child: LoadingWidget(),
+            child: WebViewAware(
+              child: GestureDetector(
+                onTap: () {
+                  FocusScope.of(dialogContext).unfocus();
+                  FocusManager.instance.primaryFocus?.unfocus();
+                },
+                child: const SizedBox(
+                  height: double.infinity,
+                  child: LoadingWidget(),
+                ),
               ),
             ),
           );
         },
       );
 
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            content: const Text('1'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: const Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
       _model.workCheckHistoryApiOutput = await WorkCheckHistoryAPICall.call(
         apiUrl: FFAppState().apiUrlAppState,
         token: FFAppState().accessToken,
       );
 
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            content: const Text('2'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: const Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
       if ((_model.workCheckHistoryApiOutput?.statusCode ?? 200) != 200) {
         Navigator.pop(context);
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
-            return AlertDialog(
-              content: Text(
-                  'พบข้อผิดพลาดConnection (${(_model.workCheckHistoryApiOutput?.statusCode ?? 200).toString()})'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
-                ),
-              ],
+            return WebViewAware(
+              child: AlertDialog(
+                content: Text(
+                    'พบข้อผิดพลาดConnection (${(_model.workCheckHistoryApiOutput?.statusCode ?? 200).toString()})'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: const Text('Ok'),
+                  ),
+                ],
+              ),
             );
           },
         );
         return;
       }
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            content: const Text('3'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: const Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
       if ('${WorkCheckHistoryAPICall.code(
             (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
           )?.toString()}' !=
@@ -131,38 +99,23 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
-            return AlertDialog(
-              content:
-                  Text('พบข้อผิดพลาดConnection (${WorkCheckHistoryAPICall.code(
-                (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
-              )?.toString()} )${WorkCheckHistoryAPICall.message(
-                (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
-              )}'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
-                ),
-              ],
+            return WebViewAware(
+              child: AlertDialog(
+                content: Text('${WorkCheckHistoryAPICall.message(
+                  (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
+                )}'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: const Text('Ok'),
+                  ),
+                ],
+              ),
             );
           },
         );
         return;
       }
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            content: const Text('4'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: const Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
       _model.checkinHistoryCurrentMonthData =
           WorkCheckHistoryAPICall.currentMonth(
         (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
@@ -175,20 +128,6 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
           .toList()
           .cast<CheckinDataStruct>();
       safeSetState(() {});
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            content: const Text('5'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: const Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
       Navigator.pop(context);
     });
 
@@ -214,7 +153,10 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
 
     return Builder(
       builder: (context) => GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
+        onTap: () {
+          FocusScope.of(context).unfocus();
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -235,17 +177,49 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                 context.pushNamed('DashboardCheckin');
               },
             ),
-            title: Text(
-              FFLocalizations.of(context).getText(
-                '3hp3ppc9' /* เวลาเข้างาน - ออกงาน */,
+            title: InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                await showModalBottomSheet(
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  barrierColor: const Color(0xC0000000),
+                  enableDrag: false,
+                  context: context,
+                  builder: (context) {
+                    return WebViewAware(
+                      child: GestureDetector(
+                        onTap: () {
+                          FocusScope.of(context).unfocus();
+                          FocusManager.instance.primaryFocus?.unfocus();
+                        },
+                        child: Padding(
+                          padding: MediaQuery.viewInsetsOf(context),
+                          child: SizedBox(
+                            height: MediaQuery.sizeOf(context).height * 0.5,
+                            child: const SelectLanguageComponentWidget(),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ).then((value) => safeSetState(() {}));
+              },
+              child: Text(
+                FFLocalizations.of(context).getText(
+                  '3hp3ppc9' /* เวลาเข้างาน - ออกงาน */,
+                ),
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Outfit',
+                      color: Colors.white,
+                      fontSize: 22.0,
+                      letterSpacing: 0.0,
+                      fontWeight: FontWeight.w600,
+                    ),
               ),
-              style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
-                    color: Colors.white,
-                    fontSize: 22.0,
-                    letterSpacing: 0.0,
-                    fontWeight: FontWeight.w600,
-                  ),
             ),
             actions: [
               Padding(
@@ -262,13 +236,18 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                       enableDrag: false,
                       context: context,
                       builder: (context) {
-                        return GestureDetector(
-                          onTap: () => FocusScope.of(context).unfocus(),
-                          child: Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: const SizedBox(
-                              height: 600.0,
-                              child: StatusCompnentWidget(),
+                        return WebViewAware(
+                          child: GestureDetector(
+                            onTap: () {
+                              FocusScope.of(context).unfocus();
+                              FocusManager.instance.primaryFocus?.unfocus();
+                            },
+                            child: Padding(
+                              padding: MediaQuery.viewInsetsOf(context),
+                              child: const SizedBox(
+                                height: 600.0,
+                                child: StatusCompnentWidget(),
+                              ),
                             ),
                           ),
                         );
@@ -291,30 +270,73 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 6.0, 0.0),
-                      child: Icon(
-                        Icons.read_more_sharp,
-                        color: Color(0xFFF46506),
-                        size: 32.0,
-                      ),
-                    ),
-                    Text(
-                      functions.checkYearHoliday(getCurrentTimestamp)!
-                          ? 'ประกาศวันหยุดตามประเพณี ประจำปี  2568'
-                          : 'ประกาศวันหยุดตามประเพณี ประจำปี  2567',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.w600,
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    if (functions.checkYearHoliday(getCurrentTimestamp)!) {
+                      await showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        barrierColor: const Color(0xBE000000),
+                        enableDrag: false,
+                        context: context,
+                        builder: (context) {
+                          return WebViewAware(
+                            child: GestureDetector(
+                              onTap: () {
+                                FocusScope.of(context).unfocus();
+                                FocusManager.instance.primaryFocus?.unfocus();
+                              },
+                              child: Padding(
+                                padding: MediaQuery.viewInsetsOf(context),
+                                child: const SizedBox(
+                                  height: 800.0,
+                                  child: PDFViewerWidget(
+                                    pdfUrl:
+                                        'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/%5BSkooldio%20x%20Srisawad%5D%20OCR%20Pre%20Workshop%20Instruction.pdf?alt=media&token=d27e9997-532d-45e3-9bf5-b469687bbfa0',
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ).then((value) => safeSetState(() {}));
+                    } else {
+                      return;
+                    }
+                  },
+                  child: Container(
+                    decoration: const BoxDecoration(),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 6.0, 0.0),
+                          child: Icon(
+                            Icons.read_more_sharp,
+                            color: Color(0xFFF46506),
+                            size: 32.0,
                           ),
+                        ),
+                        Text(
+                          functions.checkYearHoliday(getCurrentTimestamp)!
+                              ? 'ประกาศวันหยุดตามประเพณี ประจำปี  2568'
+                              : 'ประกาศวันหยุดตามประเพณี ประจำปี  2567',
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),

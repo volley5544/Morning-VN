@@ -62,8 +62,7 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_accessToken', value);
   }
 
-  String _apiUrlAppState =
-      'https://39fe-115-31-145-24.ngrok-free.app/ssw_morning_fm';
+  String _apiUrlAppState = 'http://dev-vn.swpfin.com:8086';
   String get apiUrlAppState => _apiUrlAppState;
   set apiUrlAppState(String value) {
     _apiUrlAppState = value;
@@ -437,6 +436,146 @@ class FFAppState extends ChangeNotifier {
   bool get isFromTimesheetPage => _isFromTimesheetPage;
   set isFromTimesheetPage(bool value) {
     _isFromTimesheetPage = value;
+  }
+
+  String _changeLng = '';
+  String get changeLng => _changeLng;
+  set changeLng(String value) {
+    _changeLng = value;
+  }
+
+  String _changeLat = '';
+  String get changeLat => _changeLat;
+  set changeLat(String value) {
+    _changeLat = value;
+  }
+
+  String _changeBranchCode = '';
+  String get changeBranchCode => _changeBranchCode;
+  set changeBranchCode(String value) {
+    _changeBranchCode = value;
+  }
+
+  List<String> _holidayList = ['2024-12-10', '2024-12-25', '2024-12-31'];
+  List<String> get holidayList => _holidayList;
+  set holidayList(List<String> value) {
+    _holidayList = value;
+  }
+
+  void addToHolidayList(String value) {
+    holidayList.add(value);
+  }
+
+  void removeFromHolidayList(String value) {
+    holidayList.remove(value);
+  }
+
+  void removeAtIndexFromHolidayList(int index) {
+    holidayList.removeAt(index);
+  }
+
+  void updateHolidayListAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    holidayList[index] = updateFn(_holidayList[index]);
+  }
+
+  void insertAtIndexInHolidayList(int index, String value) {
+    holidayList.insert(index, value);
+  }
+
+  List<DateTime> _dateSelect = [];
+  List<DateTime> get dateSelect => _dateSelect;
+  set dateSelect(List<DateTime> value) {
+    _dateSelect = value;
+  }
+
+  void addToDateSelect(DateTime value) {
+    dateSelect.add(value);
+  }
+
+  void removeFromDateSelect(DateTime value) {
+    dateSelect.remove(value);
+  }
+
+  void removeAtIndexFromDateSelect(int index) {
+    dateSelect.removeAt(index);
+  }
+
+  void updateDateSelectAtIndex(
+    int index,
+    DateTime Function(DateTime) updateFn,
+  ) {
+    dateSelect[index] = updateFn(_dateSelect[index]);
+  }
+
+  void insertAtIndexInDateSelect(int index, DateTime value) {
+    dateSelect.insert(index, value);
+  }
+
+  List<DateTime> _selectedDatesList = [];
+  List<DateTime> get selectedDatesList => _selectedDatesList;
+  set selectedDatesList(List<DateTime> value) {
+    _selectedDatesList = value;
+  }
+
+  void addToSelectedDatesList(DateTime value) {
+    selectedDatesList.add(value);
+  }
+
+  void removeFromSelectedDatesList(DateTime value) {
+    selectedDatesList.remove(value);
+  }
+
+  void removeAtIndexFromSelectedDatesList(int index) {
+    selectedDatesList.removeAt(index);
+  }
+
+  void updateSelectedDatesListAtIndex(
+    int index,
+    DateTime Function(DateTime) updateFn,
+  ) {
+    selectedDatesList[index] = updateFn(_selectedDatesList[index]);
+  }
+
+  void insertAtIndexInSelectedDatesList(int index, DateTime value) {
+    selectedDatesList.insert(index, value);
+  }
+
+  List<String> _holidayList1 = [
+    '2024-12-05',
+    '2024-12-07',
+    '2024-12-10',
+    '2024-12-31',
+    '2025-01-01'
+  ];
+  List<String> get holidayList1 => _holidayList1;
+  set holidayList1(List<String> value) {
+    _holidayList1 = value;
+  }
+
+  void addToHolidayList1(String value) {
+    holidayList1.add(value);
+  }
+
+  void removeFromHolidayList1(String value) {
+    holidayList1.remove(value);
+  }
+
+  void removeAtIndexFromHolidayList1(int index) {
+    holidayList1.removeAt(index);
+  }
+
+  void updateHolidayList1AtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    holidayList1[index] = updateFn(_holidayList1[index]);
+  }
+
+  void insertAtIndexInHolidayList1(int index, String value) {
+    holidayList1.insert(index, value);
   }
 }
 

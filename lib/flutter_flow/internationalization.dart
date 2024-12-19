@@ -173,22 +173,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '9ac7xmrv': {
       'en': 'username',
       'th': 'ชื่อผู้ใช้',
-      'vi': 'tên tài khoản',
+      'vi': 'Tên người dùng (username)',
     },
     '4m3tr4fm': {
       'en': 'password',
       'th': 'รหัสผ่าน',
-      'vi': 'mật khẩu',
+      'vi': 'Mật khẩu (password)',
     },
     '3h1qkrxb': {
       'en': 'LOGIN',
       'th': 'เข้าสู่ระบบ',
-      'vi': 'ĐĂNG NHẬP',
+      'vi': 'Đăng nhập',
     },
     'f6exf55c': {
       'en': 'Copyright ©2024.  Srisawad Corporation Plc.',
       'th': 'ลิขสิทธิ์ ©2024. บมจ. ศรีสวัสดิ์ คอร์ปอเรชั่น',
-      'vi': 'Bản quyền ©2024. Tập đoàn Srisawad Plc.',
+      'vi': 'Bản quyền © 2024 Srisawad Corporation Plc.',
     },
     'fboqxk9x': {
       'en': 'Home',
@@ -206,17 +206,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'el0vuhmy': {
       'en': 'Clear Cache',
       'th': 'ล้างแคช',
-      'vi': 'Xóa bộ nhớ đệm',
+      'vi': 'Xóa dữ liệu',
     },
     'ayr2w6ox': {
       'en': 'Welcome to ArunSawad',
       'th': 'ยินดีต้อนรับคุณอรุณสวัสดิ์',
-      'vi': 'Chào mừng đến với ArunSawad',
+      'vi': 'Chào mừng đến với Morning VN',
     },
     'm6g8fmaa': {
       'en': 'Enter Pin to Use App',
       'th': 'ป้อน PIN เพื่อใช้แอป',
-      'vi': 'Nhập mã PIN để sử dụng ứng dụng',
+      'vi': 'Vui lòng nhập mã PIN để đăng nhập',
     },
     'rbunkr85': {
       'en': 'Home',
@@ -229,12 +229,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'vyizgov8': {
       'en': 'Set Your Pin',
       'th': 'ตั้งค่าพินของคุณ',
-      'vi': 'Đặt mã pin của bạn',
+      'vi': 'Đặt mã PIN của bạn',
     },
     'e81wxbhr': {
       'en': 'This Pin will Use to Enter App Next Time',
       'th': 'พินนี้จะใช้เพื่อเข้าสู่แอปในครั้งต่อไป',
-      'vi': 'Ghim này sẽ sử dụng để vào ứng dụng vào lần tiếp theo',
+      'vi': 'Mã PIN này sẽ được sử dụng để đăng nhập vào lần tiếp theo',
     },
     '67idg0p8': {
       'en': 'Confirm',
@@ -280,27 +280,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '2890rejr': {
       'en': 'เมนู',
       'th': '',
-      'vi': '',
+      'vi': 'Menu',
     },
     'rjs557r0': {
       'en': 'ลงชื่อเข้า-ออกงาน',
       'th': '',
-      'vi': '',
+      'vi': 'Chấm Công Vào - Ra',
     },
     'yjlaassc': {
       'en': 'ประวัติการเข้างาน',
       'th': '',
-      'vi': '',
+      'vi': 'Lịch sử chấm công',
     },
     'zduj0m6f': {
       'en': 'เปลี่ยนพิกัด',
       'th': '',
-      'vi': '',
+      'vi': 'Thay đổi vị trí',
     },
     'wub2eo13': {
       'en': 'เข้างาน - ออกงาน',
       'th': '',
-      'vi': '',
+      'vi': 'Chấm Công Vào - Ra',
     },
     'ero9jvlb': {
       'en': 'Home',
@@ -330,7 +330,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
       'vi': '',
     },
-    'qx4txjds': {
+    'k5qkxo1i': {
+      'en': 'อนุมัติการลา',
+      'th': '',
+      'vi': '',
+    },
+    '5jeqd5gu': {
+      'en': 'รายการที่อนุมัติลา',
+      'th': '',
+      'vi': '',
+    },
+    'k91i2ssy': {
       'en': 'Home',
       'th': 'Profile',
       'vi': 'Profile',
@@ -341,73 +351,74 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'sgu2ax3u': {
       'en': '** สาขาที่เวลาทำการพิเศษเเละสาขาที่มีสองกะ',
       'th': '',
-      'vi': '',
+      'vi': '**Chi nhánh có thời gian làm việc đặc biệt và chi nhánh có hai ca',
     },
     'w7q9015u': {
       'en': 'เเตะเพื่ออ่านเพิ่มเติม',
       'th': '',
-      'vi': '',
+      'vi': 'Nhấn để đọc thêm',
     },
     'wul16n1i': {
       'en':
           '- ให้บันทึกเวลาในโปรเเกรมอรุณสวัสดิ์ ระบบจะส่งเวลาทำงานไปยังระบบ coach\n- ให้ตรวจสอบเวลางานผ่านระบบ coach อีกครั้งในวันถัดไป',
       'th': '',
-      'vi': '',
+      'vi':
+          'Vui lòng ghi lại thời gian làm việc trong chương trình Arun Sawat, hệ thống sẽ gửi thời gian làm việc đến hệ thống coach.',
     },
     'jyaqtfcn': {
       'en': 'เดือนปัจจุบัน',
       'th': '',
-      'vi': '',
+      'vi': 'Tháng hiện tại',
     },
     '5ele6qy2': {
       'en': 'วันที่',
       'th': '',
-      'vi': '',
+      'vi': 'Ngày',
     },
     'xskemw5s': {
       'en': 'เข้างาน',
       'th': '',
-      'vi': '',
+      'vi': 'Vào ca',
     },
     'b5odvrkg': {
       'en': 'ออกงาน',
       'th': '',
-      'vi': '',
+      'vi': 'Tan ca',
     },
     '913wcxla': {
       'en': 'สถานะ',
       'th': '',
-      'vi': '',
+      'vi': 'Trạng thái',
     },
     'fhhi2ptj': {
       'en': 'เดือนที่เเล้ว',
       'th': '',
-      'vi': '',
+      'vi': 'Tháng trước',
     },
     'nkl89n6f': {
       'en': 'วันที่',
       'th': '',
-      'vi': '',
+      'vi': 'Ngày',
     },
     'fzgyk444': {
       'en': 'เข้างาน',
       'th': '',
-      'vi': '',
+      'vi': 'Vào ca',
     },
     '04vegjgh': {
       'en': 'ออกงาน',
       'th': '',
-      'vi': '',
+      'vi': 'Tan ca',
     },
     'umt6f8p4': {
       'en': 'สถานะ',
       'th': '',
-      'vi': '',
+      'vi': 'Trạng thái',
     },
     '3hp3ppc9': {
       'en': 'เวลาเข้างาน - ออกงาน',
       'th': '',
-      'vi': '',
+      'vi': 'Thời gian vào ca - tan ca',
     },
     '4uatd9i3': {
       'en': 'Home',
@@ -422,110 +433,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
       'vi': '',
     },
-    'vaftq86k': {
-      'en': 'ลาป่วย',
-      'th': 'ลาป่วย',
-      'vi': 'ลาป่วย',
-    },
     'hvcoykrb': {
       'en': 'ทั้งหมด',
       'th': 'ทั้งหมด',
       'vi': 'Tất cả',
-    },
-    'hakrdhst': {
-      'en': '0',
-      'th': '',
-      'vi': '',
     },
     'yofhaew7': {
       'en': 'ใช้ไป',
       'th': 'ใช้ไป',
       'vi': 'ใช้ไป',
     },
-    'hcl74jy4': {
-      'en': '0',
-      'th': '',
-      'vi': '',
-    },
     'xstbiiqr': {
       'en': 'คงเหลือ',
       'th': 'คงเหลือ',
       'vi': 'คงเหลือ',
-    },
-    'eypwbgbv': {
-      'en': '0',
-      'th': '',
-      'vi': '',
-    },
-    '2gaa9aix': {
-      'en': 'ลากิจ',
-      'th': 'ลากิจ',
-      'vi': 'ลากิจ',
-    },
-    'v7spx35u': {
-      'en': ' ทั้งหมด',
-      'th': 'ทั้งหมด',
-      'vi': 'Tất cả',
-    },
-    'u55tza92': {
-      'en': '0',
-      'th': '',
-      'vi': '',
-    },
-    '948aa36n': {
-      'en': 'ใช้ไป',
-      'th': 'ใช้ไป',
-      'vi': 'ใช้ไป',
-    },
-    '3p2t1tz4': {
-      'en': '0',
-      'th': '',
-      'vi': '',
-    },
-    'cbj4sude': {
-      'en': 'คงเหลือ',
-      'th': 'คงเหลือ',
-      'vi': 'คงเหลือ',
-    },
-    '794qegqy': {
-      'en': '0',
-      'th': '',
-      'vi': '',
-    },
-    'uv0g48n7': {
-      'en': 'ลาพักร้อน',
-      'th': '',
-      'vi': '',
-    },
-    'aoo0r5ci': {
-      'en': ' ทั้งหมด',
-      'th': 'ทั้งหมด',
-      'vi': 'Tất cả',
-    },
-    'qpjrd0pr': {
-      'en': '0',
-      'th': '',
-      'vi': '',
-    },
-    'bh0wolrr': {
-      'en': 'ใช้ไป',
-      'th': 'ใช้ไป',
-      'vi': 'ใช้ไป',
-    },
-    'dtmp1zjp': {
-      'en': '0',
-      'th': '',
-      'vi': '',
-    },
-    'bi1paa69': {
-      'en': 'คงเหลือ',
-      'th': 'คงเหลือ',
-      'vi': 'คงเหลือ',
-    },
-    '0aa69x3j': {
-      'en': '0',
-      'th': '',
-      'vi': '',
     },
     'kkxcueyp': {
       'en': 'Home',
@@ -533,7 +454,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
   },
-  // DashBoard
+  // superAppPage
   {
     'nfii7ajk': {
       'en': '1',
@@ -551,14 +472,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     '08ugcqdn': {
-      'en': 'Dịch vụ',
+      'en': 'Service',
       'th': 'บริการ',
       'vi': 'Dịch vụ',
     },
     'wbuyhzyn': {
-      'en': 'Đăng ký',
+      'en': 'Check-in',
       'th': 'เช็คอิน',
-      'vi': 'Đăng ký',
+      'vi': 'Check-in',
     },
     'vhpaflcj': {
       'en': '1',
@@ -566,224 +487,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'tq9b43jh': {
-      'en': 'Đơn xin nghỉ',
+      'en': 'Leave Request',
       'th': 'ขออนุมัติลา',
       'vi': 'Đơn xin nghỉ',
-    },
-    'rmile4xw': {
-      'en': 'บริการ',
-      'th': '',
-      'vi': '',
-    },
-    '0j2vgbpn': {
-      'en': 'เช็คอิน',
-      'th': '',
-      'vi': '',
-    },
-    '032r7heg': {
-      'en': 'รางาน',
-      'th': '',
-      'vi': '',
-    },
-    'w6xmzaik': {
-      'en': 'เช็คอิน',
-      'th': '',
-      'vi': '',
-    },
-    'qlcz872l': {
-      'en': 'อื่นๆ',
-      'th': '',
-      'vi': '',
-    },
-    'or04md3g': {
-      'en': 'เช็คอิน',
-      'th': '',
-      'vi': '',
     },
     'xmeui8qw': {
       'en': 'บริการ',
       'th': '',
-      'vi': '',
-    },
-    '4mey34p5': {
-      'en': 'เช็คอิน',
-      'th': '',
-      'vi': '',
-    },
-    'suyw2ruc': {
-      'en': '1',
-      'th': '',
-      'vi': '',
-    },
-    'jp24p63r': {
-      'en': 'ขออนุมัติลา',
-      'th': '',
-      'vi': '',
-    },
-    'a2cid5zb': {
-      'en': 'ลูกค้ารถยึด',
-      'th': '',
-      'vi': '',
-    },
-    't5leiapk': {
-      'en': 'Scan QRCode',
-      'th': '',
-      'vi': '',
-    },
-    'tttxylu3': {
-      'en': 'Cancel',
-      'th': '',
-      'vi': '',
-    },
-    'yp4c6hdt': {
-      'en': 'Cancel',
-      'th': '',
-      'vi': '',
-    },
-    '9xtt4ts5': {
-      'en': 'ค่าลีดรถ M',
-      'th': '',
-      'vi': '',
-    },
-    'm5pvsibp': {
-      'en': 'ลูกค้าที่ดิน',
-      'th': '',
-      'vi': '',
-    },
-    'zm9dw6sp': {
-      'en': 'เส้นทางนักขายประกัน',
-      'th': '',
-      'vi': '',
-    },
-    '7epoxnwz': {
-      'en': 'DSI การจ่ายงาน',
-      'th': '',
-      'vi': '',
-    },
-    'yan1dhy3': {
-      'en': 'DSI HO การจ่ายงาน',
-      'th': '',
-      'vi': '',
-    },
-    'ow9lho9s': {
-      'en': 'GEN E-PA',
-      'th': '',
-      'vi': '',
-    },
-    '9j7sy6s7': {
-      'en': 'รายงานรถยึด',
-      'th': '',
-      'vi': '',
-    },
-    'hami3c21': {
-      'en': 'โครงการ ZUVศษ',
-      'th': '',
-      'vi': '',
-    },
-    'cptksuui': {
-      'en': 'ประกันนอกเรท',
-      'th': '',
-      'vi': '',
-    },
-    'exjmwxpw': {
-      'en': 'รายงาน BSI',
-      'th': '',
-      'vi': '',
-    },
-    'daq28b1a': {
-      'en': 'เป้า/ผลงาน',
-      'th': '',
-      'vi': '',
-    },
-    '6u6lmn09': {
-      'en': 'KPI',
-      'th': '',
-      'vi': '',
-    },
-    '3pvsgfkq': {
-      'en': 'ยอดจัดสาขา',
-      'th': '',
-      'vi': '',
-    },
-    'llf97pne': {
-      'en': 'ยอดประกัน',
-      'th': '',
-      'vi': '',
-    },
-    '9pz1d04f': {
-      'en': '!',
-      'th': '',
-      'vi': '',
-    },
-    'm032h0bx': {
-      'en': 'รายชื่อลีด',
-      'th': '',
-      'vi': '',
-    },
-    'sgtxtdia': {
-      'en': '%ความสำเร็จ',
-      'th': '',
-      'vi': '',
-    },
-    'fyl146uo': {
-      'en': 'เช็คเบี้ยประกัน',
-      'th': '',
-      'vi': '',
-    },
-    'qqfvq3eg': {
-      'en': 'Branch View',
-      'th': '',
-      'vi': '',
-    },
-    'jefx9trj': {
-      'en': 'QR พนักงาน',
-      'th': '',
-      'vi': '',
-    },
-    '1krye4u7': {
-      'en': 'Saleskit',
-      'th': '',
-      'vi': '',
-    },
-    '4j35yu3u': {
-      'en': 'ฟอร์มลีด',
-      'th': '',
-      'vi': '',
-    },
-    'w2p21nke': {
-      'en': 'โปรโมชั่น',
-      'th': '',
-      'vi': '',
-    },
-    'pq7t9adp': {
-      'en': 'COACH',
-      'th': '',
-      'vi': '',
-    },
-    '4m2jwphv': {
-      'en': 'ห้องเรียนทันใจ',
-      'th': '',
-      'vi': '',
-    },
-    'o5bwgd56': {
-      'en': 'ข้อมูลไอที',
-      'th': '',
-      'vi': '',
-    },
-    '7lcu5obv': {
-      'en': 'Incentive สาขา',
-      'th': '',
-      'vi': '',
-    },
-    'wyas8k5z': {
-      'en': '06-10-2022',
-      'th': '',
-      'vi': '',
-    },
-    'xp179dg2': {
-      'en': 'โปรโมชั่น การขายพิเศษ',
-      'th': '',
-      'vi': '',
+      'vi': 'Dịch vụ',
     },
     'weds1r6d': {
       'en': 'Incentive สาขา',
@@ -811,19 +522,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': 'android',
     },
     'tzmiupgy': {
-      'en': 'Log out',
-      'th': 'ออกจากระบบ',
-      'vi': 'Log out',
+      'en': 'Language Settings',
+      'th': 'เปลี่ยนภาษา',
+      'vi': 'Cài đặt ngôn ngữ',
     },
     'imxzxcpq': {
       'en': '',
       'th': '',
       'vi': '',
     },
+    'clybdejr': {
+      'en': 'Log Out',
+      'th': 'ออกจากระบบ',
+      'vi': 'Đăng xuất',
+    },
+    'uyn6knsr': {
+      'en': '',
+      'th': '',
+      'vi': '',
+    },
     'norah8ri': {
       'en': 'Home',
-      'th': 'Profile',
-      'vi': 'Profile',
+      'th': 'Home',
+      'vi': 'TRANG CHỦ',
     },
   },
   // EmpolyeeCheckin
@@ -831,37 +552,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'dib97xps': {
       'en': 'ลงเวลางาน',
       'th': '',
-      'vi': '',
+      'vi': 'Chấm công',
     },
     '1nfjeid0': {
       'en': 'เลือก: ',
       'th': '',
-      'vi': '',
+      'vi': 'Chọn',
     },
     'g8kgz1my': {
       'en': 'สถานที่เช็คอิน...',
       'th': '',
-      'vi': '',
+      'vi': 'địa điểm check-in',
     },
     'e5yri805': {
       'en': 'สาขาที่จะเช็คอิน ...',
       'th': '',
-      'vi': '',
+      'vi': 'nhánh...',
     },
     'k25vdgx1': {
       'en': 'เหตุผล:',
       'th': '',
-      'vi': '',
+      'vi': 'Lý do',
     },
     'n3lk5dy4': {
       'en': 'กรุณากรอกเหตุผล',
       'th': '',
-      'vi': '',
+      'vi': 'Ô: Vui lòng nhập lý do',
     },
     'hgcupj9q': {
       'en': 'ลงเวลางาน',
       'th': '',
-      'vi': '',
+      'vi': 'Thông báo: Đăng ký giờ làm việc',
     },
     '3yqz7123': {
       'en': 'Home',
@@ -896,11 +617,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
       'vi': '',
     },
-    '937nv8jq': {
-      'en': 'ใส่จำนวนวันที่ต้องการลา',
-      'th': '',
-      'vi': '',
-    },
     '3kgjydml': {
       'en': 'เบอร์โทรติดต่อ :',
       'th': '',
@@ -916,12 +632,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
       'vi': '',
     },
-    'r5aq23yf': {
-      'en': '',
-      'th': '',
-      'vi': '',
-    },
-    'gt2y7n4a': {
+    'kth04b07': {
       'en': 'กรุณากรอก...',
       'th': '',
       'vi': '',
@@ -1173,7 +884,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ow65a9dm': {
       'en': 'รหัสสาขา:',
       'th': '',
-      'vi': '',
+      'vi': 'Mã chi nhánh',
     },
     'mda334g6': {
       'en': '',
@@ -1183,12 +894,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ys1nicdw': {
       'en': 'กรอกรหัสสาขา',
       'th': '',
-      'vi': '',
+      'vi': 'Ô nhập mã chi nhánh',
     },
     '3zbhrtsz': {
       'en': 'ละติจูด ใหม่:',
       'th': '',
-      'vi': '',
+      'vi': 'Vĩ độ mới',
     },
     'ujz0ux2p': {
       'en': '',
@@ -1198,12 +909,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'p8e64plt': {
       'en': 'กรอกละติจูด',
       'th': '',
-      'vi': '',
+      'vi': 'Ô nhập vĩ độ',
     },
     'kgjyms41': {
       'en': 'ลองจิจูด ใหม่:',
       'th': '',
-      'vi': '',
+      'vi': 'Kinh độ mới',
     },
     'tnk17wa1': {
       'en': '',
@@ -1213,42 +924,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'gpgeky4b': {
       'en': 'กรอกลองจิจูด',
       'th': '',
-      'vi': '',
+      'vi': 'Ô nhập kinh độ',
     },
     'eq31tpvr': {
       'en': 'ค้นหา',
       'th': '',
-      'vi': '',
+      'vi': 'Tìm kiếm',
     },
     'al0dzpl0': {
       'en': 'ระยะห่าง:',
       'th': '',
-      'vi': '',
-    },
-    '1k3jmyrr': {
-      'en': '0',
-      'th': '',
-      'vi': '',
+      'vi': 'Khoảng cách',
     },
     'nbhpres0': {
       'en': 'พิกัดเก่า',
       'th': '',
-      'vi': '',
+      'vi': 'Tọa độ cũ',
     },
     'dh5tylyg': {
       'en': 'พิกัดใหม่',
       'th': '',
-      'vi': '',
+      'vi': 'Tọa độ mới',
     },
     '68dxb7jg': {
       'en': 'บันทึก',
       'th': '',
-      'vi': '',
+      'vi': 'Lưu',
     },
     'ud7qpnr0': {
       'en': 'Change Lat,Lng',
       'th': '',
-      'vi': '',
+      'vi': 'Thay đổi Lat, Lng',
     },
     '2j9o1nc7': {
       'en': 'Home',
@@ -1256,25 +962,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': 'Profile',
     },
   },
-  // myProfilePage
+  // MyProfilePage
   {
     '7c59mcgf': {
-      'en': 'คู่มือพนักงาน',
+      'en': 'Employee Handbook',
       'th': 'คู่มือพนักงาน',
       'vi': 'Sổ tay nhân viên',
     },
     'ubz6qsvt': {
       'en': 'Profile',
       'th': 'Profile',
-      'vi': 'Profile',
+      'vi': 'Hồ sơ',
     },
   },
   // GuideBookPage
   {
     'hc3lnn2n': {
-      'en': 'คู่มือพนักงาน',
-      'th': '',
-      'vi': '',
+      'en': 'Employee Handbook',
+      'th': 'คู่มือพนักงาน',
+      'vi': 'Sổ tay nhân viên',
     },
     'dydg99w9': {
       'en': 'Home',
@@ -1318,29 +1024,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // SuccessCheckinPage
   {
     'a4jv1rkh': {
-      'en': 'สำเร็จ!',
-      'th': '',
-      'vi': '',
+      'en': 'Success!',
+      'th': 'ความสำเร็จ!',
+      'vi': 'Thành công!',
     },
     'dm3qluv6': {
-      'en': 'บันทึกข้อมูลเสร็จสิ้น',
-      'th': '',
-      'vi': '',
+      'en': 'Checkin Successful',
+      'th': 'เช็คอินสำเร็จ',
+      'vi': 'Đã đăng ký thành công',
     },
     '0p889zk0': {
-      'en': 'กลับหน้าหลัก',
-      'th': '',
-      'vi': '',
+      'en': 'Return to Dashboard',
+      'th': 'กลับไปยังแดชบอร์ด',
+      'vi': 'Quay lại Bảng điều khiển',
     },
     'ep6jzjsj': {
-      'en': 'เช็คสถานะ',
-      'th': '',
-      'vi': '',
+      'en': 'Check Statue',
+      'th': 'ตรวจสอบรูปปั้น',
+      'vi': 'Kiểm tra Tượng',
     },
     'b14q64lh': {
       'en': 'Home',
-      'th': 'Profile',
-      'vi': 'Profile',
+      'th': 'บ้าน',
+      'vi': 'Trang chủ',
     },
   },
   // EmployeeCheckinPageVol
@@ -1461,6 +1167,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // TestPage
   {
+    'lwgr5i7x': {
+      'en': 'print date',
+      'th': '',
+      'vi': '',
+    },
     'twf4yttl': {
       'en': 'Page Title',
       'th': '',
@@ -1474,18 +1185,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Test2Page
   {
-    'ptmrpe6b': {
-      'en': 'จ. 2 ธ.ค. 67',
+    'chvvrzbn': {
+      'en': 'ชื่อ',
       'th': '',
       'vi': '',
     },
-    '5bjbdja6': {
-      'en': '08:30',
+    '5emha11a': {
+      'en': 'id',
       'th': '',
       'vi': '',
     },
-    'ks6296oy': {
-      'en': '17:30',
+    'npsbmg9b': {
+      'en': 'ทั้งหมด',
+      'th': '',
+      'vi': '',
+    },
+    '4u3uk24q': {
+      'en': 'เหลือ',
       'th': '',
       'vi': '',
     },
@@ -1503,26 +1219,755 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // searchBranchPage
   {
     '9jepmg79': {
-      'en': 'กรุณากรอกคำค้นหา',
-      'th': '',
-      'vi': '',
+      'en': 'Type Keyword',
+      'th': 'ประเภทคำสำคัญ',
+      'vi': 'Loại từ khóa',
     },
     'wuqoiaft': {
-      'en': 'ค้นหา',
-      'th': '',
-      'vi': '',
+      'en': 'Search',
+      'th': 'ค้นหา',
+      'vi': 'Tìm kiếm',
     },
     'gztk5uiq': {
-      'en': 'กรุณากรอกคำค้นหาอย่างน้อย 3 ตัวอักษร',
-      'th': '',
-      'vi': '',
+      'en': 'Please enter at least 3 characters in your search keyword',
+      'th': 'กรุณากรอกคำค้นหาอย่างน้อย 3 ตัวอักษร',
+      'vi': 'Vui lòng nhập ít nhất 3 ký tự vào từ khóa tìm kiếm của bạn',
     },
     'l8tbvzm7': {
-      'en': 'ค้นหาสาขา',
+      'en': 'Search Branch',
+      'th': 'ค้นหาสาขา',
+      'vi': 'Tìm kiếm chi nhánh',
+    },
+    'o31gdg36': {
+      'en': 'Home',
+      'th': 'บ้าน',
+      'vi': 'Trang chủ',
+    },
+  },
+  // testCalendar
+  {
+    'p284fx26': {
+      'en': 'calendar',
       'th': '',
       'vi': '',
     },
-    'o31gdg36': {
+    'zp5mlaak': {
+      'en': 'Home',
+      'th': 'Profile',
+      'vi': 'Profile',
+    },
+  },
+  // CancelPage
+  {
+    'q5k9ngwl': {
+      'en': 'ยืนยันยกเลิกการลา',
+      'th': '',
+      'vi': '',
+    },
+    'e1jg2oz0': {
+      'en': 'ระบุเหตุผล...',
+      'th': '',
+      'vi': '',
+    },
+    '3r8ie4m2': {
+      'en': 'ตกลง',
+      'th': '',
+      'vi': '',
+    },
+    'oj5qzq3a': {
+      'en': 'ยกเลิก',
+      'th': '',
+      'vi': '',
+    },
+    'obkfjorb': {
+      'en': 'ยกเลิกการลา',
+      'th': '',
+      'vi': '',
+    },
+    '7uxb0u59': {
+      'en': 'Home',
+      'th': 'Profile',
+      'vi': 'Profile',
+    },
+  },
+  // ConfirmEmailPage
+  {
+    '8m06dlb4': {
+      'en': 'กรุณากรอก Email ที่ต้องการรับข้อมูล',
+      'th': '',
+      'vi': '',
+    },
+    'ulf75id4': {
+      'en': 'ระบุ Email',
+      'th': '',
+      'vi': '',
+    },
+    'uc1mk3r9': {
+      'en': 'ตกลง',
+      'th': '',
+      'vi': '',
+    },
+    'ah880bci': {
+      'en': 'ยกเลิก',
+      'th': '',
+      'vi': '',
+    },
+    'raqolgop': {
+      'en': 'ยืนยัน Email',
+      'th': '',
+      'vi': '',
+    },
+    'ssa9mvcl': {
+      'en': 'Home',
+      'th': 'Profile',
+      'vi': 'Profile',
+    },
+  },
+  // ApprovedLeavePage
+  {
+    'npr1uom5': {
+      'en': 'อนุมัติหลายคน',
+      'th': '',
+      'vi': '',
+    },
+    'iay7wijr': {
+      'en': 'เลือกทั้งหมด',
+      'th': '',
+      'vi': '',
+    },
+    '8v1skjen': {
+      'en': 'อนุมัติที่เลือก',
+      'th': '',
+      'vi': '',
+    },
+    '9gtffiey': {
+      'en': 'ยกเลิก',
+      'th': '',
+      'vi': '',
+    },
+    'jg3xyl0h': {
+      'en': 'นางสาวมนฑิรา ยอดแสง',
+      'th': '',
+      'vi': '',
+    },
+    'ouxi7r2w': {
+      'en': 'สถานะ:',
+      'th': '',
+      'vi': '',
+    },
+    'vrk7jqcz': {
+      'en': '[รอดำเนินการ]',
+      'th': '',
+      'vi': '',
+    },
+    'k5srt8i3': {
+      'en': 'ชื่อเล่น:',
+      'th': '',
+      'vi': '',
+    },
+    'igau20xk': {
+      'en': '[รอดำเนินการ]',
+      'th': '',
+      'vi': '',
+    },
+    'b3bahwxv': {
+      'en': 'สังกัดแผนก:',
+      'th': '',
+      'vi': '',
+    },
+    'g3lsp65w': {
+      'en': '[รอดำเนินการ]',
+      'th': '',
+      'vi': '',
+    },
+    'w0nvlwg7': {
+      'en': 'ประเภทการลา:',
+      'th': '',
+      'vi': '',
+    },
+    '1eeddxbe': {
+      'en': '[ลากิจ]',
+      'th': '',
+      'vi': '',
+    },
+    'gng922zv': {
+      'en': 'วันที่ทำรายการ:',
+      'th': '',
+      'vi': '',
+    },
+    'vyxbo8pr': {
+      'en': '[01/11/2565]',
+      'th': '',
+      'vi': '',
+    },
+    '0ujmyhz5': {
+      'en': 'วันที่ลา:',
+      'th': '',
+      'vi': '',
+    },
+    '99wj3vjj': {
+      'en': '[11/11/2565-12/11/2565]',
+      'th': '',
+      'vi': '',
+    },
+    '0gdw90ug': {
+      'en': 'จำนวนวันที่ลา:',
+      'th': '',
+      'vi': '',
+    },
+    'nhvi9s8r': {
+      'en': '[2]',
+      'th': '',
+      'vi': '',
+    },
+    'fpgss961': {
+      'en': 'ช่วงเวลา:',
+      'th': '',
+      'vi': '',
+    },
+    't7pil997': {
+      'en': '[ลาเต็มวัน]',
+      'th': '',
+      'vi': '',
+    },
+    'g74iy68d': {
+      'en': 'เหตุผลการลา:',
+      'th': '',
+      'vi': '',
+    },
+    'svx1xewb': {
+      'en': '[]',
+      'th': '',
+      'vi': '',
+    },
+    'fdr09igk': {
+      'en': 'เบอร์ติดต่อ:',
+      'th': '',
+      'vi': '',
+    },
+    'u5c28l7i': {
+      'en': '[]',
+      'th': '',
+      'vi': '',
+    },
+    '1g9vmjum': {
+      'en': 'ไฟล์เเนบ:',
+      'th': '',
+      'vi': '',
+    },
+    'cxtkyf9c': {
+      'en': 'อนุมัติ',
+      'th': '',
+      'vi': '',
+    },
+    'efs1tfam': {
+      'en': 'ไม่อนุมัติ',
+      'th': '',
+      'vi': '',
+    },
+    'v5174jja': {
+      'en': 'รายการอนุมัติลา',
+      'th': '',
+      'vi': '',
+    },
+    '29x4izzy': {
+      'en': 'Home',
+      'th': 'Profile',
+      'vi': 'Profile',
+    },
+  },
+  // ApproveShowPage
+  {
+    'ci20ou7l': {
+      'en': 'มกราคม',
+      'th': '',
+      'vi': '',
+    },
+    'ub583bqh': {
+      'en': 'กุมภาพันธ์',
+      'th': '',
+      'vi': '',
+    },
+    'o8jvanhe': {
+      'en': 'มีนาคม',
+      'th': '',
+      'vi': '',
+    },
+    'gvs5s7c8': {
+      'en': 'เมษายน',
+      'th': '',
+      'vi': '',
+    },
+    'f4x7k16x': {
+      'en': 'พฤษภาคม',
+      'th': '',
+      'vi': '',
+    },
+    '25i0nsss': {
+      'en': 'มิถุนายน',
+      'th': '',
+      'vi': '',
+    },
+    'w3jv3kct': {
+      'en': 'กรกฎาคม',
+      'th': '',
+      'vi': '',
+    },
+    'byf99dzy': {
+      'en': 'สิงหาคม',
+      'th': '',
+      'vi': '',
+    },
+    'oosfavsl': {
+      'en': 'กันยายน',
+      'th': '',
+      'vi': '',
+    },
+    'jqss06f9': {
+      'en': 'ตุลาคม',
+      'th': '',
+      'vi': '',
+    },
+    'l2fp2qht': {
+      'en': 'พฤศจิกายน',
+      'th': '',
+      'vi': '',
+    },
+    'ioa5adoz': {
+      'en': 'ธันวาคม',
+      'th': '',
+      'vi': '',
+    },
+    'yaf5hk1f': {
+      'en': 'กรุณาเลือกเดือนที่ต้องการหา',
+      'th': '',
+      'vi': '',
+    },
+    'zog3trpj': {
+      'en': 'อนุมัติ',
+      'th': '',
+      'vi': '',
+    },
+    'ry9t5l7w': {
+      'en': 'นางสาวมนฑิรา ยอดแสง',
+      'th': '',
+      'vi': '',
+    },
+    'wu7bwqpo': {
+      'en': 'ประเภทการลา:',
+      'th': '',
+      'vi': '',
+    },
+    'n98opwaw': {
+      'en': '[ลากิจ]',
+      'th': '',
+      'vi': '',
+    },
+    'nzyrvgfg': {
+      'en': 'วันที่ทำรายการ:',
+      'th': '',
+      'vi': '',
+    },
+    '5e8fdojn': {
+      'en': '[01/11/2565]',
+      'th': '',
+      'vi': '',
+    },
+    '6si6wxv9': {
+      'en': 'วันที่ลา:',
+      'th': '',
+      'vi': '',
+    },
+    '4jpfh0kl': {
+      'en': '[11/11/2565-12/11/2565]',
+      'th': '',
+      'vi': '',
+    },
+    'f92owody': {
+      'en': 'จำนวนวันที่ลา:',
+      'th': '',
+      'vi': '',
+    },
+    'fmtdk2hj': {
+      'en': '[2]',
+      'th': '',
+      'vi': '',
+    },
+    '68jor54s': {
+      'en': 'ช่วงเวลา:',
+      'th': '',
+      'vi': '',
+    },
+    'f0d8msx4': {
+      'en': '[ลาเต็มวัน]',
+      'th': '',
+      'vi': '',
+    },
+    'fboxmgh9': {
+      'en': 'เหตุผลการลา:',
+      'th': '',
+      'vi': '',
+    },
+    '7ecl265k': {
+      'en': '[]',
+      'th': '',
+      'vi': '',
+    },
+    'vecl8vum': {
+      'en': 'ยกเลิก',
+      'th': '',
+      'vi': '',
+    },
+    'ju9gujxi': {
+      'en': 'ไม่อนุมัติ',
+      'th': '',
+      'vi': '',
+    },
+    '17h2yfm5': {
+      'en': 'นางสาวมนฑิรา ยอดแสง',
+      'th': '',
+      'vi': '',
+    },
+    '8t704b06': {
+      'en': 'ประเภทการลา:',
+      'th': '',
+      'vi': '',
+    },
+    '6lqnvew1': {
+      'en': '[ลากิจ]',
+      'th': '',
+      'vi': '',
+    },
+    'ys1edxki': {
+      'en': 'วันที่ทำรายการ:',
+      'th': '',
+      'vi': '',
+    },
+    'sfcwclje': {
+      'en': '[01/11/2565]',
+      'th': '',
+      'vi': '',
+    },
+    '7fjre75u': {
+      'en': 'วันที่ลา:',
+      'th': '',
+      'vi': '',
+    },
+    '1rknhkyu': {
+      'en': '[11/11/2565-12/11/2565]',
+      'th': '',
+      'vi': '',
+    },
+    'sucyvupt': {
+      'en': 'จำนวนวันที่ลา:',
+      'th': '',
+      'vi': '',
+    },
+    'yrwpaktz': {
+      'en': '[2]',
+      'th': '',
+      'vi': '',
+    },
+    'btjotui7': {
+      'en': 'ช่วงเวลา:',
+      'th': '',
+      'vi': '',
+    },
+    'lhyym0me': {
+      'en': '[ลาเต็มวัน]',
+      'th': '',
+      'vi': '',
+    },
+    'h9xs8tj1': {
+      'en': 'เหตุผลการลา:',
+      'th': '',
+      'vi': '',
+    },
+    'ftuagybp': {
+      'en': '[]',
+      'th': '',
+      'vi': '',
+    },
+    'bbrf4wkp': {
+      'en': 'ยกเลิก',
+      'th': '',
+      'vi': '',
+    },
+    'yj8ercyv': {
+      'en': 'นางสาวมนฑิรา ยอดแสง',
+      'th': '',
+      'vi': '',
+    },
+    '9rn3l90n': {
+      'en': 'ประเภทการลา:',
+      'th': '',
+      'vi': '',
+    },
+    '6x27g592': {
+      'en': '[ลากิจ]',
+      'th': '',
+      'vi': '',
+    },
+    'm5y8iz1t': {
+      'en': 'วันที่ทำรายการ:',
+      'th': '',
+      'vi': '',
+    },
+    'r8hn4bdz': {
+      'en': '[01/11/2565]',
+      'th': '',
+      'vi': '',
+    },
+    'mkio0twd': {
+      'en': 'วันที่ลา:',
+      'th': '',
+      'vi': '',
+    },
+    '2h9up40u': {
+      'en': '[11/11/2565-12/11/2565]',
+      'th': '',
+      'vi': '',
+    },
+    '6s0ra4ev': {
+      'en': 'จำนวนวันที่ลา:',
+      'th': '',
+      'vi': '',
+    },
+    'kbi81yuc': {
+      'en': '[2]',
+      'th': '',
+      'vi': '',
+    },
+    'yvyhvbem': {
+      'en': 'ช่วงเวลา:',
+      'th': '',
+      'vi': '',
+    },
+    'toaf452f': {
+      'en': '[ลาเต็มวัน]',
+      'th': '',
+      'vi': '',
+    },
+    'wsbsizda': {
+      'en': 'เหตุผลการลา:',
+      'th': '',
+      'vi': '',
+    },
+    '04brg3y6': {
+      'en': '[]',
+      'th': '',
+      'vi': '',
+    },
+    'fou3q3o0': {
+      'en': 'ถูกยกเลิกโดย:',
+      'th': '',
+      'vi': '',
+    },
+    'gjzr33yv': {
+      'en': '[]',
+      'th': '',
+      'vi': '',
+    },
+    'c1mkkoeu': {
+      'en': 'รายการ',
+      'th': '',
+      'vi': '',
+    },
+    'ln348tdv': {
+      'en': 'Home',
+      'th': 'Profile',
+      'vi': 'Profile',
+    },
+  },
+  // AddResignPage
+  {
+    '1p6xvu7s': {
+      'en': '[Some hint text...]',
+      'th': '',
+      'vi': '',
+    },
+    '14ilm5iv': {
+      'en': 'ประเภทการลา: ลาออก',
+      'th': '',
+      'vi': '',
+    },
+    'b04k4nfv': {
+      'en': 'วันที่ทำงานวันสุดท้าย  :',
+      'th': '',
+      'vi': '',
+    },
+    '9rswm622': {
+      'en': 'ระบุวันที่',
+      'th': '',
+      'vi': '',
+    },
+    'ojtl5sgg': {
+      'en': 'เหตุผลที่ตัดสินใจลาออก (ระบุได้มากกว่า 1 ข้อ)  :',
+      'th': '',
+      'vi': '',
+    },
+    'sgjkyk5p': {
+      'en': 'Option 1',
+      'th': '',
+      'vi': '',
+    },
+    'xqwwlx2j': {
+      'en': 'อื่นๆ  :',
+      'th': '',
+      'vi': '',
+    },
+    'xgafgfqt': {
+      'en': 'ระบุ...',
+      'th': '',
+      'vi': '',
+    },
+    '5dois0z1': {
+      'en': 'อยากให้บริษัทปรับปรุงการทำงานด้านใดบ้าง  :',
+      'th': '',
+      'vi': '',
+    },
+    '5s6i0679': {
+      'en': 'กรุณากรอก...',
+      'th': '',
+      'vi': '',
+    },
+    '8hqyjbe0': {
+      'en': 'ในช่วงที่แจ้งลาออก สามารถติดต่อได้ที่ :',
+      'th': '',
+      'vi': '',
+    },
+    '6smmdirl': {
+      'en': 'Option 1',
+      'th': '',
+      'vi': '',
+    },
+    'vruwucvp': {
+      'en': 'กรุณาเลือกจังหวัด...',
+      'th': '',
+      'vi': '',
+    },
+    'af2rga2h': {
+      'en': 'Option 1',
+      'th': '',
+      'vi': '',
+    },
+    'jn23m6pt': {
+      'en': 'กรุณาเลือกอำเภอ...',
+      'th': '',
+      'vi': '',
+    },
+    'o6nytm6z': {
+      'en': 'Option 1',
+      'th': '',
+      'vi': '',
+    },
+    '9dgpo4iy': {
+      'en': 'กรุณาเลือกตำบล...',
+      'th': '',
+      'vi': '',
+    },
+    'fqawe8q3': {
+      'en': 'Option 1',
+      'th': '',
+      'vi': '',
+    },
+    'pei96fxr': {
+      'en': 'กรุณาเลือกรหัสไปรษณีย์...',
+      'th': '',
+      'vi': '',
+    },
+    '7soisp68': {
+      'en': 'ระบุหมู่ที่/ถนน',
+      'th': '',
+      'vi': '',
+    },
+    'uaigiro9': {
+      'en': 'เบอร์ติดต่อ',
+      'th': '',
+      'vi': '',
+    },
+    'hlwgphwz': {
+      'en': 'หากมีโอกาสจะกลับมาร่วมงานกับบริษัทหรือไม่  :',
+      'th': '',
+      'vi': '',
+    },
+    '20h6md13': {
+      'en': 'ร่วมงาน',
+      'th': '',
+      'vi': '',
+    },
+    'untfjje1': {
+      'en': 'ไม่ร่วมงาน',
+      'th': '',
+      'vi': '',
+    },
+    '6tzsbxm9': {
+      'en': 'กรุณาเลือก...',
+      'th': '',
+      'vi': '',
+    },
+    '4o4btaer': {
+      'en': 'ทรัพย์สินของบริษัทที่ต้องส่งคืน (ระบุได้มากกว่า 1 ข้อ)  :',
+      'th': '',
+      'vi': '',
+    },
+    'haztp0ir': {
+      'en': 'Option 1',
+      'th': '',
+      'vi': '',
+    },
+    'z65ahjr3': {
+      'en': 'อื่นๆ  :',
+      'th': '',
+      'vi': '',
+    },
+    'atq6169s': {
+      'en': 'ระบุ...',
+      'th': '',
+      'vi': '',
+    },
+    '2s9h0bsb': {
+      'en': 'บันทึก',
+      'th': '',
+      'vi': '',
+    },
+    'ui4tf8f1': {
+      'en': 'ยื่นเรื่องขออนุมัติลาออก',
+      'th': '',
+      'vi': '',
+    },
+    'z5xufqr2': {
+      'en': 'Home',
+      'th': 'Profile',
+      'vi': 'Profile',
+    },
+  },
+  // formServicePage
+  {
+    '70n0shev': {
+      'en': 'Home',
+      'th': '',
+      'vi': '',
+    },
+  },
+  // CalendarPage
+  {
+    '9muysoab': {
+      'en': 'print date',
+      'th': '',
+      'vi': '',
+    },
+    'z2nha2vi': {
+      'en': 'ตกลง',
+      'th': '',
+      'vi': '',
+    },
+    'njtk4cjj': {
+      'en': 'เลือกวันที่ต้องการลา',
+      'th': '',
+      'vi': '',
+    },
+    '7vgnua2q': {
       'en': 'Home',
       'th': 'Profile',
       'vi': 'Profile',
@@ -1549,49 +1994,49 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // StatusCompnent
   {
     '7ul9r41x': {
-      'en': 'สถานะทั้งหมด',
-      'th': '',
-      'vi': '',
+      'en': '',
+      'th': 'สถานะทั้งหมด',
+      'vi': 'Tất cả trạng thái',
     },
     'mqn06a20': {
-      'en': 'เช็คอินเข้า-ออกงาน จะมีเเถบเเละสถานะดังนี้',
-      'th': '',
-      'vi': '',
+      'en': '',
+      'th': 'เช็คอินเข้า-ออกงาน จะมีเเถบเเละสถานะดังนี้',
+      'vi': 'Khi chấm công vào/ra làm việc, sẽ có các trạng thái sau:',
     },
     'kh7en1yk': {
-      'en': 'วันหยุดเเละวันหยุดตามประเพณี',
-      'th': '',
-      'vi': '',
+      'en': '',
+      'th': 'วันหยุดเเละวันหยุดตามประเพณี',
+      'vi': 'Ngày nghỉ và ngày nghỉ lễ theo truyền thống',
     },
     '0il619bg': {
-      'en': 'ขาดงาน',
-      'th': '',
-      'vi': '',
+      'en': '',
+      'th': 'ขาดงาน',
+      'vi': 'Nghỉ làm không phép',
     },
     '3py39tbc': {
       'en': 'ลงเวลาไม่ครบ(ไม่เช็คเอาท์ออกงาน)',
-      'th': '',
-      'vi': '',
+      'th': 'ลงเวลาไม่ครบ(ไม่เช็คเอาท์ออกงาน)',
+      'vi': 'Ghi nhận thời gian không đầy đủ (không chấm công ra)',
     },
     'q4nj7lx7': {
       'en': 'เข้างานไม่ครบจำนวน(ทำงานไม่ครบ 8 ชั่วโมง)',
-      'th': '',
-      'vi': '',
+      'th': 'เข้างานไม่ครบจำนวน(ทำงานไม่ครบ 8 ชั่วโมง)',
+      'vi': 'Thời gian làm việc không đủ (làm việc không đủ 8 giờ)',
     },
     '0g6rkfn2': {
       'en': 'สาย (เช็คอินหลังเวลาเข้างาน)',
-      'th': '',
-      'vi': '',
+      'th': 'สาย (เช็คอินหลังเวลาเข้างาน)',
+      'vi': 'Đi muộn (chấm công vào sau giờ làm việc)',
     },
     'fn4vqph9': {
       'en': 'ออกก่อนเวลา (เช็คเอาท์ก่อนเวลาเลิกงาน)',
-      'th': '',
-      'vi': '',
+      'th': 'ออกก่อนเวลา (เช็คเอาท์ก่อนเวลาเลิกงาน)',
+      'vi': 'Về sớm (chấm công ra trước giờ tan ca)',
     },
     '5qzqlkly': {
       'en': 'ปกติ',
-      'th': '',
-      'vi': '',
+      'th': 'ปกติ',
+      'vi': 'Bình thường',
     },
   },
   // CheckinDataTableComponent
@@ -1628,17 +2073,113 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // searchBranchComponent
   {
     'ommo80jx': {
-      'en': 'กรุณากรอกคำค้นหา',
-      'th': '',
-      'vi': '',
+      'en': 'Type Keyword',
+      'th': 'ประเภทคำสำคัญ',
+      'vi': 'Loại từ khóa',
     },
   },
   // serchBranchComponentCheckin
   {
     'la9fs10d': {
-      'en': 'กรุณากรอกชื่อสาขา',
-      'th': '',
-      'vi': '',
+      'en': 'Type Branch Name',
+      'th': 'พิมพ์ชื่อสาขา',
+      'vi': 'Loại Tên Chi Nhánh',
+    },
+  },
+  // addBranchLo
+  {
+    '0sedvpht': {
+      'en': 'Add Branch',
+      'th': 'เพิ่มสาขา',
+      'vi': 'Thêm nhánh',
+    },
+    'qmpuw8u9': {
+      'en': 'Branch Code',
+      'th': 'รหัสสาขา',
+      'vi': 'Mã chi nhánh',
+    },
+    'yljhs3rr': {
+      'en': 'Latitude',
+      'th': 'ละติจูด',
+      'vi': 'Vĩ độ',
+    },
+    'mw8ii5r1': {
+      'en': 'Longitude',
+      'th': 'ลองจิจูด',
+      'vi': 'Kinh độ',
+    },
+    'mtq2moqx': {
+      'en': 'Branch Name',
+      'th': 'ชื่อสาขา',
+      'vi': 'Tên chi nhánh',
+    },
+    '4j9zgrfq': {
+      'en': 'Type Branch Name',
+      'th': 'พิมพ์ชื่อสาขา',
+      'vi': 'Loại Tên Chi Nhánh',
+    },
+    'mk9hibp1': {
+      'en': 'Area Code',
+      'th': 'รหัสพื้นที่',
+      'vi': 'Mã vùng',
+    },
+    '51gtgp4l': {
+      'en': 'Type Area Code',
+      'th': 'ประเภท รหัสพื้นที่',
+      'vi': 'Mã vùng loại',
+    },
+    '6k592bd8': {
+      'en': 'Region Code',
+      'th': 'รหัสภูมิภาค',
+      'vi': 'Mã vùng',
+    },
+    '8osenk5v': {
+      'en': 'Type Region Code',
+      'th': 'ประเภทรหัสภูมิภาค',
+      'vi': 'Loại Mã vùng',
+    },
+    'po0mmgz2': {
+      'en': 'Add Branch',
+      'th': 'เพิ่มสาขา',
+      'vi': 'Thêm nhánh',
+    },
+  },
+  // SelectLanguageComponent
+  {
+    'z9wupsex': {
+      'en': 'Select Language',
+      'th': 'เลือกภาษา',
+      'vi': 'Chọn Ngôn Ngữ',
+    },
+    'sq3inuds': {
+      'en': 'English',
+      'th': 'ภาษาอังกฤษ',
+      'vi': 'Tiếng Anh',
+    },
+    'iibe6wmu': {
+      'en': 'Veitnamese',
+      'th': 'ภาษาเวียดนาม',
+      'vi': 'Việt Nam',
+    },
+    '1scoi5ff': {
+      'en': 'ไทย',
+      'th': 'ภาษาไทย',
+      'vi': 'Thái Lan',
+    },
+    'hk2e1qgf': {
+      'en': 'Select...',
+      'th': 'เลือก...',
+      'vi': 'Lựa chọn...',
+    },
+    'gro3nnlg': {
+      'en': 'Search...',
+      'th': 'Search...',
+      'vi': 'Tìm kiếm...',
+    },
+    'l1cgvu45': {
+      'en': 'Apply',
+      'th': 'เลือกภาษา',
+      'vi': 'Áp dụng',
     },
   },
   // Miscellaneous

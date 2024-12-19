@@ -45,7 +45,10 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -63,12 +66,12 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              context.pushNamed('DashBoard');
+              context.pushNamed('superAppPage');
             },
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              'l8tbvzm7' /* ค้นหาสาขา */,
+              'l8tbvzm7' /* Search Branch */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
@@ -136,7 +139,7 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        '9jepmg79' /* กรุณากรอกคำค้นหา */,
+                                        '9jepmg79' /* Type Keyword */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
@@ -173,7 +176,7 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
                                   }
                                 },
                                 text: FFLocalizations.of(context).getText(
-                                  'wuqoiaft' /* ค้นหา */,
+                                  'wuqoiaft' /* Search */,
                                 ),
                                 options: FFButtonOptions(
                                   width: 100.0,
@@ -222,8 +225,9 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
                                           children: [
                                             if (functions.containString(
                                                     _model.textController.text,
-                                                    (widget.dataList?[
-                                                            dataListIndex])
+                                                    (widget.dataList
+                                                            ?.elementAtOrNull(
+                                                                dataListIndex))
                                                         ?.branchName) ??
                                                 true)
                                               InkWell(
@@ -303,7 +307,7 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
                                       decoration: const BoxDecoration(),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'gztk5uiq' /* กรุณากรอกคำค้นหาอย่างน้อย 3 ตั... */,
+                                          'gztk5uiq' /* Please enter at least 3 charac... */,
                                         ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)

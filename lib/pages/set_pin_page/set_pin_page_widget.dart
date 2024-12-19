@@ -5,6 +5,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'set_pin_page_model.dart';
 export 'set_pin_page_model.dart';
 
@@ -36,7 +37,10 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -149,15 +153,17 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                       await showDialog(
                         context: context,
                         builder: (alertDialogContext) {
-                          return AlertDialog(
-                            content: const Text('กรุณาใส่รหัสพิน6หลัก (ตัวเลข)'),
-                            actions: [
-                              TextButton(
-                                onPressed: () =>
-                                    Navigator.pop(alertDialogContext),
-                                child: const Text('Ok'),
-                              ),
-                            ],
+                          return WebViewAware(
+                            child: AlertDialog(
+                              content: const Text('กรุณาใส่รหัสพิน6หลัก (ตัวเลข)'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: const Text('Ok'),
+                                ),
+                              ],
+                            ),
                           );
                         },
                       );
@@ -167,7 +173,7 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                     FFAppState().fromSetPin = true;
                     FFAppState().update(() {});
 
-                    context.goNamed('DashBoard');
+                    context.goNamed('superAppPage');
                   },
                   text: FFLocalizations.of(context).getText(
                     '67idg0p8' /* Confirm */,

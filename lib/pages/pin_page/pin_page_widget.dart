@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/components/select_language_component_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -11,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'pin_page_model.dart';
 export 'pin_page_model.dart';
 
@@ -36,7 +38,6 @@ class _PinPageWidgetState extends State<PinPageWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setAppLanguage(context, 'vi');
       setDarkModeSetting(context, ThemeMode.light);
       _model.getBuildVersion = await actions.getBuildVersion();
     });
@@ -106,7 +107,10 @@ class _PinPageWidgetState extends State<PinPageWidget>
         final pinPageApplicationConfigRecord = snapshot.data!;
 
         return GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -221,11 +225,44 @@ class _PinPageWidgetState extends State<PinPageWidget>
                       height: 50.0,
                       decoration: const BoxDecoration(),
                     ),
-                    Image.asset(
-                      'assets/images/ArunSawadQR.png',
-                      width: 140.0,
-                      height: 140.0,
-                      fit: BoxFit.fitHeight,
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        await showModalBottomSheet(
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          barrierColor: const Color(0xC0000000),
+                          enableDrag: false,
+                          context: context,
+                          builder: (context) {
+                            return WebViewAware(
+                              child: GestureDetector(
+                                onTap: () {
+                                  FocusScope.of(context).unfocus();
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                },
+                                child: Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: SizedBox(
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 0.5,
+                                    child: const SelectLanguageComponentWidget(),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ).then((value) => safeSetState(() {}));
+                      },
+                      child: Image.asset(
+                        'assets/images/ArunSawadQR.png',
+                        width: 140.0,
+                        height: 140.0,
+                        fit: BoxFit.fitHeight,
+                      ),
                     ).animateOnPageLoad(
                         animationsMap['imageOnPageLoadAnimation']!),
                     Padding(
@@ -338,17 +375,19 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                         await showDialog(
                                           context: context,
                                           builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              content: const Text(
-                                                  '\'Morning VN\' Có phiên bản mới trong cửa hàng!. Vui lòng cập nhật tại cửa hàng trước khi sử dụng ứng dụng'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                content: const Text(
+                                                    '\'Morning VN\' Có phiên bản mới trong cửa hàng!. Vui lòng cập nhật tại cửa hàng trước khi sử dụng ứng dụng'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
                                             );
                                           },
                                         );
@@ -366,17 +405,19 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                         await showDialog(
                                           context: context,
                                           builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              content: const Text(
-                                                  'mã pin không hợp lệ Vui lòng thử lại.'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                content: const Text(
+                                                    'mã pin không hợp lệ Vui lòng thử lại.'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
                                             );
                                           },
                                         );
@@ -387,144 +428,13 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                       }
                                       await requestPermission(
                                           locationPermission);
-                                      if (await getPermissionStatus(
-                                          locationPermission)) {
-                                        _model.backgroundLocationCheck =
-                                            await actions
-                                                .backgroundLocationCheck();
-                                        shouldSetState = true;
-                                        if (!_model.backgroundLocationCheck!) {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                content: const Text(
-                                                    'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: const Text('Open Setting'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                        }
-                                      } else {
-                                        safeSetState(() {
-                                          _model.pinCodeController?.clear();
-                                        });
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              content: const Text(
-                                                  'Vui lòng cho phép truy cập vị trí của bạn để theo dõi công việc của bạn'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                        if (shouldSetState) {
-                                          safeSetState(() {});
-                                        }
-                                        return;
-                                      }
-
-                                      _model.permissionRequestOutput =
-                                          await actions
-                                              .backgroundLocationPermission();
-                                      shouldSetState = true;
-                                      if (!_model.permissionRequestOutput!) {
-                                        safeSetState(() {
-                                          _model.pinCodeController?.clear();
-                                        });
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              content: const Text(
-                                                  'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                        if (shouldSetState) {
-                                          safeSetState(() {});
-                                        }
-                                        return;
-                                      }
                                       _model.checkGpsEnable =
                                           await actions.checkGpsServiceEnable();
                                       shouldSetState = true;
-                                      if (!_model.checkGpsEnable!) {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              content: const Text(
-                                                  'Vui lòng bật GPS trước khi tiếp tục'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                        await actions.enableGpsService();
-                                        _model.checkGpsEnable2 = await actions
-                                            .checkGpsServiceEnable();
-                                        shouldSetState = true;
-                                        if (!_model.checkGpsEnable2!) {
-                                          safeSetState(() {
-                                            _model.pinCodeController?.clear();
-                                          });
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                content: const Text(
-                                                    'Vui lòng bật GPS trước khi tiếp tục'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: const Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                          if (shouldSetState) {
-                                            safeSetState(() {});
-                                          }
-                                          return;
-                                        }
-                                      }
                                       FFAppState().fromPinPage = true;
                                       safeSetState(() {});
 
-                                      context.pushNamed('DashBoard');
+                                      context.pushNamed('superAppPage');
 
                                       if (shouldSetState) safeSetState(() {});
                                     },

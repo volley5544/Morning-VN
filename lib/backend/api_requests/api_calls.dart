@@ -296,9 +296,85 @@ class GetBranchLocationCall {
         response,
         r'''$.message''',
       ));
-  static int? total(dynamic response) => castToType<int>(getJsonField(
+  static List? location(dynamic response) => getJsonField(
         response,
-        r'''$.results.total''',
+        r'''$.results.location[*]''',
+        true,
+      ) as List?;
+  static List? map(dynamic response) => getJsonField(
+        response,
+        r'''$.results.map[*]''',
+        true,
+      ) as List?;
+  static String? branchlocation(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.results.map[:].branch_location''',
+      ));
+  static String? inputlocation(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.results.map[:].input_location''',
+      ));
+  static String? latitude(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.results.location[:].latitude''',
+      ));
+  static String? longitude(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.results.location[:].longitude''',
+      ));
+  static String? branchname(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.results.location[:].branch_name''',
+      ));
+}
+
+class UpdateBranchLocationCall {
+  static Future<ApiCallResponse> call({
+    String? apiUrl = '',
+    String? token = '',
+    String? uid = '',
+    String? latitude = '',
+    String? longitude = '',
+    String? branchCode = '',
+    String? branchName = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "latitude": "$latitude",
+  "longitude": "$longitude",
+  "branch_code": "$branchCode",
+  "branch_name": "$branchName"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'updateBranchLocation',
+      apiUrl: '$apiUrl/api/hr/location/update-branch-location',
+      callType: ApiCallType.POST,
+      headers: {
+        'ContentType': 'application/json; charset=utf-8,',
+        'Authorization': 'Bearer  $token',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static String? code(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+  static String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
       ));
   static List? location(dynamic response) => getJsonField(
         response,
@@ -310,6 +386,103 @@ class GetBranchLocationCall {
         r'''$.results.map[*]''',
         true,
       ) as List?;
+  static String? branchlocation(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.results.map[:].branch_location''',
+      ));
+  static String? inputlocation(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.results.map[:].input_location''',
+      ));
+  static String? latitude(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.results.location[:].latitude''',
+      ));
+  static String? longitude(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.results.location[:].longitude''',
+      ));
+}
+
+class CreateBranchLocationCall {
+  static Future<ApiCallResponse> call({
+    String? apiUrl = '',
+    String? token = '',
+    String? uid = '',
+    String? latitude = '',
+    String? longitude = '',
+    String? branchCode = '',
+    String? branchName = '',
+    String? areaCode = '',
+    String? regionCode = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "latitude": "$latitude",
+  "longitude": "$longitude",
+  "branch_code": "$branchCode",
+  "branch_name": "$branchName",
+  "area_code": "$areaCode",
+  "region_code": "$regionCode"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'createBranchLocation',
+      apiUrl: '$apiUrl/api/hr/location/create-branch-location',
+      callType: ApiCallType.POST,
+      headers: {
+        'ContentType': 'application/json; charset=utf-8,',
+        'Authorization': 'Bearer  $token',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static String? code(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+  static String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  static List? location(dynamic response) => getJsonField(
+        response,
+        r'''$.results.location[*]''',
+        true,
+      ) as List?;
+  static List? map(dynamic response) => getJsonField(
+        response,
+        r'''$.results.map[*]''',
+        true,
+      ) as List?;
+  static String? branchlocation(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.results.map[:].branch_location''',
+      ));
+  static String? inputlocation(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.results.map[:].input_location''',
+      ));
+  static String? latitude(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.results.location[:].latitude''',
+      ));
+  static String? longitude(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.results.location[:].longitude''',
+      ));
 }
 
 class WorkCheckHistoryAPICall {
@@ -361,6 +534,98 @@ class WorkCheckHistoryAPICall {
       ) as List?)
           ?.withoutNulls
           .map((x) => CheckinDataStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+}
+
+class GetLeaveListCall {
+  static Future<ApiCallResponse> call({
+    String? apiUrl = '',
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getLeaveList',
+      apiUrl: '$apiUrl/api/leave/get-list',
+      callType: ApiCallType.POST,
+      headers: {
+        'ContentType': 'application/json; charset=utf-8,',
+        'Authorization': 'Bearer  $token',
+      },
+      params: {},
+      bodyType: BodyType.NONE,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static int? code(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+  static String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  static List<CheckinDataStruct>? lastMonth(dynamic response) => (getJsonField(
+        response,
+        r'''$.results.last_month[*]''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => CheckinDataStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+  static List<CheckinDataStruct>? currentMonth(dynamic response) =>
+      (getJsonField(
+        response,
+        r'''$.results.current_month[*]''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => CheckinDataStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+  static List<LeaveTypeDataStruct>? leavelist(dynamic response) =>
+      (getJsonField(
+        response,
+        r'''$.results.leave_list.*''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => LeaveTypeDataStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+  static List<CalendarDataStruct>? listcalendar(dynamic response) =>
+      (getJsonField(
+        response,
+        r'''$.results.list_calendar''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => CalendarDataStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+  static List<CurrentYearStruct>? currentyear(dynamic response) =>
+      (getJsonField(
+        response,
+        r'''$.results.leave_list.*.current_year''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => CurrentYearStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+  static List<NextYearStruct>? nextyear(dynamic response) => (getJsonField(
+        response,
+        r'''$.results.leave_list.*.next_year''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => NextYearStruct.maybeFromMap(x))
           .withoutNulls
           .toList();
 }

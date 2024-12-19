@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/select_language_component_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -14,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'login_page_model.dart';
 export 'login_page_model.dart';
 
@@ -40,7 +42,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setAppLanguage(context, 'th');
       setDarkModeSetting(context, ThemeMode.light);
       _model.getBuildVersion = await actions.getBuildVersion();
     });
@@ -192,7 +193,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                 : null;
 
         return GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -291,11 +295,48 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                             ),
                             Align(
                               alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: Image.asset(
-                                'assets/images/ArunSawad.png',
-                                width: 170.0,
-                                height: 210.0,
-                                fit: BoxFit.contain,
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    barrierColor: const Color(0xC0000000),
+                                    enableDrag: false,
+                                    context: context,
+                                    builder: (context) {
+                                      return WebViewAware(
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            FocusScope.of(context).unfocus();
+                                            FocusManager.instance.primaryFocus
+                                                ?.unfocus();
+                                          },
+                                          child: Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: SizedBox(
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.5,
+                                              child:
+                                                  const SelectLanguageComponentWidget(),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => safeSetState(() {}));
+                                },
+                                child: Image.asset(
+                                  'assets/images/ArunSawad.png',
+                                  width: 170.0,
+                                  height: 210.0,
+                                  fit: BoxFit.contain,
+                                ),
                               ).animateOnPageLoad(
                                   animationsMap['imageOnPageLoadAnimation']!),
                             ),
@@ -348,7 +389,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                         errorBorder: InputBorder.none,
                                         focusedErrorBorder: InputBorder.none,
                                         prefixIcon: Icon(
-                                          Icons.mail,
+                                          Icons.person_sharp,
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
                                         ),
@@ -494,17 +535,19 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                     context: context,
                                                     builder:
                                                         (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        content: const Text(
-                                                            '\'Morning VN\' Có phiên bản mới trong cửa hàng!. Vui lòng cập nhật tại cửa hàng trước khi sử dụng ứng dụng'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: const Text('Ok'),
-                                                          ),
-                                                        ],
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: const Text(
+                                                              '\'Morning VN\' Có phiên bản mới trong cửa hàng!. Vui lòng cập nhật tại cửa hàng trước khi sử dụng ứng dụng'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: const Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
                                                       );
                                                     },
                                                   );
@@ -582,143 +625,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
 
                                                 await requestPermission(
                                                     locationPermission);
-                                                if (await getPermissionStatus(
-                                                    locationPermission)) {
-                                                  _model.backgroundLocationCheck =
-                                                      await actions
-                                                          .backgroundLocationCheck();
-                                                  shouldSetState = true;
-                                                  if (!_model
-                                                      .backgroundLocationCheck!) {
-                                                    await showDialog(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          content: const Text(
-                                                              'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext),
-                                                              child: const Text(
-                                                                  'Open Setting'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    );
-                                                  }
-                                                } else {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        content: const Text(
-                                                            'Vui lòng cho phép truy cập vị trí của bạn để theo dõi công việc của bạn'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: const Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
-                                                  if (shouldSetState) {
-                                                    safeSetState(() {});
-                                                  }
-                                                  return;
-                                                }
-
-                                                _model.permissionRequestOutput =
-                                                    await actions
-                                                        .backgroundLocationPermission();
-                                                shouldSetState = true;
-                                                if (!_model
-                                                    .permissionRequestOutput!) {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        content: const Text(
-                                                            'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: const Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
-                                                  if (shouldSetState) {
-                                                    safeSetState(() {});
-                                                  }
-                                                  return;
-                                                }
-                                                _model.checkGpsEnable =
-                                                    await actions
-                                                        .checkGpsServiceEnable();
-                                                shouldSetState = true;
-                                                if (!_model.checkGpsEnable!) {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        content: const Text(
-                                                            'Vui lòng bật GPS trước khi tiếp tục'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: const Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
-                                                  await actions
-                                                      .enableGpsService();
-                                                  _model.checkGpsEnable2 =
-                                                      await actions
-                                                          .checkGpsServiceEnable();
-                                                  shouldSetState = true;
-                                                  if (!_model
-                                                      .checkGpsEnable2!) {
-                                                    await showDialog(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          content: const Text(
-                                                              'Vui lòng bật GPS trước khi tiếp tục'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext),
-                                                              child: const Text('Ok'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    );
-                                                    if (shouldSetState) {
-                                                      safeSetState(() {});
-                                                    }
-                                                    return;
-                                                  }
-                                                }
                                                 _model.authAPIOutput =
                                                     await AuthenAPICall.call(
                                                   username: _model
@@ -776,17 +682,19 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                     context: context,
                                                     builder:
                                                         (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        content: Text(
-                                                            'พบข้อผิดพลาด (${(_model.authAPIOutput?.statusCode ?? 200).toString()})'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: const Text('Ok'),
-                                                          ),
-                                                        ],
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: Text(
+                                                              'พบข้อผิดพลาด (${(_model.authAPIOutput?.statusCode ?? 200).toString()})'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: const Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
                                                       );
                                                     },
                                                   );
@@ -805,21 +713,23 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                     context: context,
                                                     builder:
                                                         (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        content: Text(
-                                                            '${AuthenAPICall.messagelayer1(
-                                                          (_model.authAPIOutput
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        )}'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: const Text('Ok'),
-                                                          ),
-                                                        ],
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: Text(
+                                                              '${AuthenAPICall.messagelayer1(
+                                                            (_model.authAPIOutput
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                          )}'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: const Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
                                                       );
                                                     },
                                                   );
@@ -874,17 +784,29 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       context: context,
                                                       builder:
                                                           (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          content: const Text(
-                                                              'แอพพลิเคชั่นนี้ ให้ใช้ได้แค่ใน Android หรือ Ios เท่านั้น'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext),
-                                                              child: const Text('Ok'),
-                                                            ),
-                                                          ],
+                                                        return WebViewAware(
+                                                          child: AlertDialog(
+                                                            content: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                              enText:
+                                                                  'This application is only available for use on Android or iOS.',
+                                                              viText:
+                                                                  'Ứng dụng này chỉ được sử dụng trên Android hoặc iOS',
+                                                              thText:
+                                                                  'แอพพลิเคชั่นนี้ ให้ใช้ได้แค่ใน Android หรือ Ios เท่านั้น',
+                                                            )),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    const Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          ),
                                                         );
                                                       },
                                                     );
@@ -1002,28 +924,19 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                       Expanded(
                         child: Align(
                           alignment: const AlignmentDirectional(0.0, 1.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              context.pushNamed('DashboardCheckin');
-                            },
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'f6exf55c' /* Copyright ©2024.  Srisawad Cor... */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: const Color(0xFF607D8B),
-                                    fontSize: 13.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              'f6exf55c' /* Copyright ©2024.  Srisawad Cor... */,
                             ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: const Color(0xFF607D8B),
+                                  fontSize: 13.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
                           ).animateOnPageLoad(
                               animationsMap['textOnPageLoadAnimation']!),
                         ),

@@ -12,8 +12,8 @@ export '/pages/checkin/check_in_status_page/check_in_status_page_widget.dart'
     show CheckInStatusPageWidget;
 export '/pages/leave_app/leave_page/leave_page_widget.dart'
     show LeavePageWidget;
-export '/pages/super_app/dash_board/dash_board_widget.dart'
-    show DashBoardWidget;
+export '/pages/super_app/super_app_page/super_app_page_widget.dart'
+    show SuperAppPageWidget;
 export '/pages/checkin/empolyee_checkin/empolyee_checkin_widget.dart'
     show EmpolyeeCheckinWidget;
 export '/pages/leave_app/add_leave_page/add_leave_page_widget.dart'
@@ -42,3 +42,19 @@ export '/checkin_volley5544/test2_page/test2_page_widget.dart'
     show Test2PageWidget;
 export '/search_branch_page/search_branch_page_widget.dart'
     show SearchBranchPageWidget;
+export '/checkin_volley5544/test_calendar/test_calendar_widget.dart'
+    show TestCalendarWidget;
+export '/pages/leave_app/cancel_page/cancel_page_widget.dart'
+    show CancelPageWidget;
+export '/pages/leave_app/confirm_email_page/confirm_email_page_widget.dart'
+    show ConfirmEmailPageWidget;
+export '/pages/leave_app/approved_leave_page/approved_leave_page_widget.dart'
+    show ApprovedLeavePageWidget;
+export '/pages/leave_app/approve_show_page/approve_show_page_widget.dart'
+    show ApproveShowPageWidget;
+export '/pages/leave_app/add_resign_page/add_resign_page_widget.dart'
+    show AddResignPageWidget;
+export '/pages/super_app/form_service_page/form_service_page_widget.dart'
+    show FormServicePageWidget;
+export '/pages/leave_app/calendar_page/calendar_page_widget.dart'
+    show CalendarPageWidget;

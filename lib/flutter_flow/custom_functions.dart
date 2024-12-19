@@ -65,12 +65,12 @@ String? currentTimeToMonthThai(String? currentTime) {
 
 List<String>? sortingListByOrder(
   List<String>? somethingList,
-  List<String>? orderList,
+  List<int>? orderList,
 ) {
   List<String> outputList = [];
 
   for (int i = 0; i < orderList!.length; i++) {
-    outputList.add(somethingList![orderList.indexOf('${i + 1}')]);
+    outputList.add(somethingList![orderList!.indexOf(i + 1)]);
   }
 
   return outputList;
@@ -161,7 +161,7 @@ String? greetingTextSuperApp(String? name) {
   // ตัดคำตามช่องว่างและดึงคำแรก
   String firstName = name.split(' ').first;
 
-  return 'สวัสดี คุณ$firstName';
+  return 'Xin chào bạn$firstName';
 }
 
 bool? checkYearHoliday(DateTime? dateNow) {
@@ -207,7 +207,7 @@ bool? checkHolidayDate(
 bool? checkYearLeave(DateTime? startDate) {
   int year = startDate!.year;
 
-  if (year == 2025 || year == 2024) {
+  if (year == 2025 || year == 2026) {
     return true;
   } else {
     return false;
@@ -250,7 +250,51 @@ bool? allowFileInput(
 
 bool? containString(
   String? input,
-  String? fullText,
+  String? containText,
 ) {
-  return fullText!.contains(input!);
+  return containText!.contains(input!);
+}
+
+double? changeToDouble(String? input) {
+  if (double.tryParse(input!) != null) {
+    return double.tryParse(input!);
+  } else {
+    return 0.0;
+  }
+}
+
+LatLng? stringToLatLng(
+  String? latitude,
+  String? longitude,
+) {
+  // var latdouble = double.parse(latitude!);
+  // var lngdouble = double.parse(longitude!);
+
+  return LatLng(double.parse(latitude!), double.parse(longitude!));
+}
+
+bool checkFormServiceUrl(String? formServiceUrl) {
+  // Add your function code here!
+  return formServiceUrl!.contains('spreadsheets');
+}
+
+String? stringToImgPathBanners(
+  List<int>? orderList,
+  int currentIndex,
+  List<String>? bannerImageList,
+) {
+  int index = orderList!.indexOf(currentIndex + 1);
+  return bannerImageList![index];
+
+  //return bannerImageList[orderList.indexOf(currentIndex + 1)];
+  //return stringToImgPathBanners(orderList, currentIndex, bannerImageList);
+}
+
+String? returnAllValueInList(List<DateTime>? inputList) {
+  String output = '';
+
+  for (int i = 0; i < inputList!.length; i++) {
+    output = output + '${DateFormat('yyyy-MM-dd').format(inputList![i])}, ';
+  }
+  return '${output}';
 }

@@ -10,6 +10,7 @@ import '/pages/checkin/status_compnent/status_compnent_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'checkin_status_page_vol_model.dart';
 export 'checkin_status_page_vol_model.dart';
 
@@ -43,11 +44,16 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
             backgroundColor: Colors.transparent,
             alignment: const AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
-            child: GestureDetector(
-              onTap: () => FocusScope.of(dialogContext).unfocus(),
-              child: const SizedBox(
-                height: double.infinity,
-                child: LoadingWidget(),
+            child: WebViewAware(
+              child: GestureDetector(
+                onTap: () {
+                  FocusScope.of(dialogContext).unfocus();
+                  FocusManager.instance.primaryFocus?.unfocus();
+                },
+                child: const SizedBox(
+                  height: double.infinity,
+                  child: LoadingWidget(),
+                ),
               ),
             ),
           );
@@ -64,15 +70,17 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
-            return AlertDialog(
-              content: Text(
-                  'พบข้อผิดพลาดConnection (${(_model.workCheckHistoryApiOutput?.statusCode ?? 200).toString()})'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
-                ),
-              ],
+            return WebViewAware(
+              child: AlertDialog(
+                content: Text(
+                    'พบข้อผิดพลาดConnection (${(_model.workCheckHistoryApiOutput?.statusCode ?? 200).toString()})'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: const Text('Ok'),
+                  ),
+                ],
+              ),
             );
           },
         );
@@ -86,19 +94,21 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
-            return AlertDialog(
-              content:
-                  Text('พบข้อผิดพลาดConnection (${WorkCheckHistoryAPICall.code(
-                (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
-              )?.toString()}) ${WorkCheckHistoryAPICall.message(
-                (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
-              )}'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
-                ),
-              ],
+            return WebViewAware(
+              child: AlertDialog(
+                content: Text(
+                    'พบข้อผิดพลาดConnection (${WorkCheckHistoryAPICall.code(
+                  (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
+                )?.toString()}) ${WorkCheckHistoryAPICall.message(
+                  (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
+                )}'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: const Text('Ok'),
+                  ),
+                ],
+              ),
             );
           },
         );
@@ -139,7 +149,10 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
 
     return Builder(
       builder: (context) => GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
+        onTap: () {
+          FocusScope.of(context).unfocus();
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -187,13 +200,18 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                     barrierColor: const Color(0xBE000000),
                     context: context,
                     builder: (context) {
-                      return GestureDetector(
-                        onTap: () => FocusScope.of(context).unfocus(),
-                        child: Padding(
-                          padding: MediaQuery.viewInsetsOf(context),
-                          child: SizedBox(
-                            height: MediaQuery.sizeOf(context).height * 0.8,
-                            child: const StatusCompnentWidget(),
+                      return WebViewAware(
+                        child: GestureDetector(
+                          onTap: () {
+                            FocusScope.of(context).unfocus();
+                            FocusManager.instance.primaryFocus?.unfocus();
+                          },
+                          child: Padding(
+                            padding: MediaQuery.viewInsetsOf(context),
+                            child: SizedBox(
+                              height: MediaQuery.sizeOf(context).height * 0.8,
+                              child: const StatusCompnentWidget(),
+                            ),
                           ),
                         ),
                       );

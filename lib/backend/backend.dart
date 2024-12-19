@@ -11,6 +11,8 @@ import 'schema/user_collection_record.dart';
 import 'schema/image_link_storage_record.dart';
 import 'schema/key_storage1_record.dart';
 import 'schema/application_config_record.dart';
+import 'schema/sawad_form_services_v_n_record.dart';
+import 'schema/sawad_announcement_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -25,6 +27,8 @@ export 'schema/user_collection_record.dart';
 export 'schema/image_link_storage_record.dart';
 export 'schema/key_storage1_record.dart';
 export 'schema/application_config_record.dart';
+export 'schema/sawad_form_services_v_n_record.dart';
+export 'schema/sawad_announcement_record.dart';
 
 /// Functions to query UserLocationLogRecords (as a Stream and as a Future).
 Future<int> queryUserLocationLogRecordCount({
@@ -243,6 +247,80 @@ Future<List<ApplicationConfigRecord>> queryApplicationConfigRecordOnce({
     queryCollectionOnce(
       ApplicationConfigRecord.collection,
       ApplicationConfigRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query SawadFormServicesVNRecords (as a Stream and as a Future).
+Future<int> querySawadFormServicesVNRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      SawadFormServicesVNRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<SawadFormServicesVNRecord>> querySawadFormServicesVNRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      SawadFormServicesVNRecord.collection,
+      SawadFormServicesVNRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<SawadFormServicesVNRecord>> querySawadFormServicesVNRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      SawadFormServicesVNRecord.collection,
+      SawadFormServicesVNRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query SawadAnnouncementRecords (as a Stream and as a Future).
+Future<int> querySawadAnnouncementRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      SawadAnnouncementRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<SawadAnnouncementRecord>> querySawadAnnouncementRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      SawadAnnouncementRecord.collection,
+      SawadAnnouncementRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<SawadAnnouncementRecord>> querySawadAnnouncementRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      SawadAnnouncementRecord.collection,
+      SawadAnnouncementRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

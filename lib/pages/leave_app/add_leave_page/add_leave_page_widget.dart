@@ -4,11 +4,15 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/upload_data.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'add_leave_page_model.dart';
 export 'add_leave_page_model.dart';
 
@@ -53,7 +57,10 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -180,160 +187,23 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                 Expanded(
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      if (!(widget.leaveType != null &&
-                                          widget.leaveType != '')) {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'กรุณาเลือกประเภทการลาก่อน',
-                                              style: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                            ),
-                                            duration:
-                                                const Duration(milliseconds: 4000),
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondary,
+                                      context.goNamed(
+                                        'CalendarPage',
+                                        queryParameters: {
+                                          'leaveType': serializeParam(
+                                            widget.leaveType,
+                                            ParamType.String,
                                           ),
-                                        );
-                                        return;
-                                      }
-                                      final datePickedDate =
-                                          await showDatePicker(
-                                        context: context,
-                                        initialDate: getCurrentTimestamp,
-                                        firstDate: getCurrentTimestamp,
-                                        lastDate: DateTime(2050),
-                                        builder: (context, child) {
-                                          return wrapInMaterialDatePickerTheme(
-                                            context,
-                                            child!,
-                                            headerBackgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                            headerForegroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .info,
-                                            headerTextStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineLarge
-                                                    .override(
-                                                      fontFamily: 'Outfit',
-                                                      fontSize: 32.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
-                                            pickerBackgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            pickerForegroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryText,
-                                            selectedDateTimeBackgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                            selectedDateTimeForegroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .info,
-                                            actionButtonForegroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryText,
-                                            iconSize: 24.0,
-                                          );
-                                        },
+                                        }.withoutNulls,
                                       );
-
-                                      if (datePickedDate != null) {
-                                        safeSetState(() {
-                                          _model.datePicked = DateTime(
-                                            datePickedDate.year,
-                                            datePickedDate.month,
-                                            datePickedDate.day,
-                                          );
-                                        });
-                                      }
-                                      if (functions.checkSundayDate(
-                                          _model.datePicked)!) {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              content: const Text(
-                                                  'ไม่สามารถลาวันอาทิตได้ กรุณาเลือกวันใหม่'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                        return;
-                                      }
-                                      if (functions
-                                          .checkYearLeave(_model.datePicked)!) {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              content: const Text(
-                                                  'ไม่สามารถล่วงหน้าปีหน้าได้ กรุณาเลือกวันใหม่'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                        return;
-                                      }
-                                      if (widget.leaveType == 'ลาป่วย') {
-                                        if (!functions
-                                            .checkSickLeaveIsBeforeCurrentDate(
-                                                getCurrentTimestamp,
-                                                _model.datePicked)!) {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                content: const Text(
-                                                    'ไม่สามารถลาป่วยล่วงหน้าได้ กรุณาเลือกวันลาใหม่'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: const Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                          return;
-                                        }
-                                      }
                                     },
-                                    text: valueOrDefault<String>(
-                                      dateTimeFormat(
-                                        "d/M/y",
-                                        _model.datePicked,
-                                        locale: FFLocalizations.of(context)
-                                            .languageCode,
-                                      ),
-                                      'ระบุวันที่',
-                                    ),
+                                    text:
+                                        FFAppState().selectedDatesList.isNotEmpty
+                                            ? functions.returnAllValueInList(
+                                                FFAppState()
+                                                    .selectedDatesList
+                                                    .toList())!
+                                            : 'ระบุวันที่',
                                     icon: const Icon(
                                       Icons.calendar_month_rounded,
                                       size: 26.0,
@@ -399,7 +269,7 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                 Expanded(
                                   child: FlutterFlowDropDown<String>(
                                     controller:
-                                        _model.dropDownValueController ??=
+                                        _model.leaveTimeValueController ??=
                                             FormFieldController<String>(null),
                                     options: (widget.leaveType == 'ลาป่วย') ||
                                             (widget.leaveType == 'ลากิจ')
@@ -407,7 +277,7 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                         : FFAppState().leaveFullDay,
                                     onChanged: (val) async {
                                       safeSetState(
-                                          () => _model.dropDownValue = val);
+                                          () => _model.leaveTimeValue = val);
                                       FFAppState().allowFileUpload = false;
                                       safeSetState(() {});
                                     },
@@ -472,9 +342,12 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      FFLocalizations.of(context).getText(
-                                        '937nv8jq' /* ใส่จำนวนวันที่ต้องการลา */,
-                                      ),
+                                      FFAppState().selectedDatesList.isNotEmpty
+                                          ? FFAppState()
+                                              .selectedDatesList
+                                              .length
+                                              .toString()
+                                          : 'ใส่จำนวนวันที่ต้องการลา',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -601,6 +474,12 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                     fontSize: 15.0,
                                                     letterSpacing: 0.0,
                                                   ),
+                                              maxLength: 10,
+                                              buildCounter: (context,
+                                                      {required currentLength,
+                                                      required isFocused,
+                                                      maxLength}) =>
+                                                  null,
                                               keyboardType: TextInputType.phone,
                                               cursorColor:
                                                   FlutterFlowTheme.of(context)
@@ -608,6 +487,10 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                               validator: _model
                                                   .phoneNumberTextControllerValidator
                                                   .asValidator(context),
+                                              inputFormatters: [
+                                                FilteringTextInputFormatter
+                                                    .allow(RegExp('[0-9]'))
+                                              ],
                                             ),
                                           ),
                                         ),
@@ -647,79 +530,79 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Expanded(
-                                  child: TextFormField(
-                                    controller:
-                                        _model.reasonToLeaveTextController,
-                                    focusNode: _model.reasonToLeaveFocusNode,
-                                    autofocus: false,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      isDense: false,
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
+                                  child: SizedBox(
+                                    width: double.infinity,
+                                    child: TextFormField(
+                                      controller:
+                                          _model.reasonToLeaveTextController,
+                                      focusNode: _model.reasonToLeaveFocusNode,
+                                      autofocus: false,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        isDense: false,
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              letterSpacing: 0.0,
+                                            ),
+                                        hintText:
+                                            FFLocalizations.of(context).getText(
+                                          'kth04b07' /* กรุณากรอก... */,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: Color(0xFFF5F5F5),
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        errorBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        filled: true,
+                                        fillColor: const Color(0xFFF5F5F5),
+                                        contentPadding:
+                                            const EdgeInsetsDirectional.fromSTEB(
+                                                20.0, 0.0, 24.0, 0.0),
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
                                           .override(
-                                            fontFamily: 'Outfit',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                            fontFamily: 'Readex Pro',
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
                                           ),
-                                      hintText:
-                                          FFLocalizations.of(context).getText(
-                                        'gt2y7n4a' /* กรุณากรอก... */,
-                                      ),
-                                      enabledBorder: UnderlineInputBorder(
-                                        borderSide: const BorderSide(
-                                          color: Color(0x33000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: const BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      errorBorder: UnderlineInputBorder(
-                                        borderSide: const BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      focusedErrorBorder: UnderlineInputBorder(
-                                        borderSide: const BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      filled: true,
-                                      fillColor: const Color(0xFFF5F5F5),
-                                      contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              20.0, 0.0, 24.0, 25.0),
+                                      textAlign: TextAlign.start,
+                                      validator: _model
+                                          .reasonToLeaveTextControllerValidator
+                                          .asValidator(context),
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Outfit',
-                                          fontSize: 15.0,
-                                          letterSpacing: 0.0,
-                                          lineHeight: 3.0,
-                                        ),
-                                    textAlign: TextAlign.start,
-                                    cursorColor: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    validator: _model
-                                        .reasonToLeaveTextControllerValidator
-                                        .asValidator(context),
                                   ),
                                 ),
                               ],
@@ -753,10 +636,122 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
+                                // 4. ประเภทการลาไหนบ้าง ต้องเเนบไฟล์
+                                // 	- ลาป่่วย3 วันต่อเนื่องต้องเเนบใบรับรองเเพทย์
+                                // 	- ลาทำหมันต้องเเนบใบรับรองเเพทย์
+                                // 	- ลาเพื่อรับราชการทหารเเนบใบรับรองเเพทย์
                                 Expanded(
                                   child: FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
+                                    onPressed: () async {
+                                      var shouldSetState = false;
+                                      final selectedMedia = await selectMedia(
+                                        imageQuality: 70,
+                                        mediaSource: MediaSource.photoGallery,
+                                        multiImage: true,
+                                      );
+                                      if (selectedMedia != null &&
+                                          selectedMedia.every((m) =>
+                                              validateFileFormat(
+                                                  m.storagePath, context))) {
+                                        safeSetState(() =>
+                                            _model.isDataUploading = true);
+                                        var selectedUploadedFiles =
+                                            <FFUploadedFile>[];
+
+                                        try {
+                                          showUploadMessage(
+                                            context,
+                                            'Uploading file...',
+                                            showLoading: true,
+                                          );
+                                          selectedUploadedFiles = selectedMedia
+                                              .map((m) => FFUploadedFile(
+                                                    name: m.storagePath
+                                                        .split('/')
+                                                        .last,
+                                                    bytes: m.bytes,
+                                                    height:
+                                                        m.dimensions?.height,
+                                                    width: m.dimensions?.width,
+                                                    blurHash: m.blurHash,
+                                                  ))
+                                              .toList();
+                                        } finally {
+                                          ScaffoldMessenger.of(context)
+                                              .hideCurrentSnackBar();
+                                          _model.isDataUploading = false;
+                                        }
+                                        if (selectedUploadedFiles.length ==
+                                            selectedMedia.length) {
+                                          safeSetState(() {
+                                            _model.uploadedLocalFiles =
+                                                selectedUploadedFiles;
+                                          });
+                                          showUploadMessage(
+                                              context, 'Success!');
+                                        } else {
+                                          safeSetState(() {});
+                                          showUploadMessage(
+                                              context, 'Failed to upload data');
+                                          return;
+                                        }
+                                      }
+
+                                      _model.firebaseuploadoutput = await actions
+                                          .uploadMultipleFileFirebaseStorage(
+                                        'leave',
+                                        _model.uploadedLocalFiles.toList(),
+                                      );
+                                      shouldSetState = true;
+                                      if (_model.firebaseuploadoutput != null &&
+                                          (_model.firebaseuploadoutput)!
+                                              .isNotEmpty) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'สามารถเลือกรูปได้ไม่เกิน 5 รูป',
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                            duration:
+                                                const Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondary,
+                                          ),
+                                        );
+                                      } else {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                content:
+                                                    const Text('อัพโหลดรูปไม่สำเร็จ'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                        );
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
+                                        return;
+                                      }
+
+                                      if (shouldSetState) safeSetState(() {});
                                     },
                                     text: FFLocalizations.of(context).getText(
                                       'znmc7q82' /* [เเนบไฟล์ภาพ] */,
@@ -781,6 +776,7 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
                                             letterSpacing: 0.0,
+                                            fontWeight: FontWeight.normal,
                                           ),
                                       elevation: 2.0,
                                       borderSide: const BorderSide(
@@ -794,90 +790,126 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                15.0, 15.0, 15.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: SizedBox(
-                                    width: double.infinity,
-                                    height: 500.0,
-                                    child: Stack(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 50.0),
-                                          child: PageView(
-                                            controller: _model
-                                                    .pageViewController ??=
-                                                PageController(initialPage: 0),
-                                            scrollDirection: Axis.horizontal,
+                          if (_model.uploadedLocalFiles.isNotEmpty)
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 15.0, 15.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Builder(
+                                      builder: (context) {
+                                        final uploadListNum = _model
+                                                .firebaseuploadoutput
+                                                ?.toList() ??
+                                            [];
+
+                                        return SizedBox(
+                                          width: double.infinity,
+                                          height: 500.0,
+                                          child: Stack(
                                             children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.network(
-                                                  'https://picsum.photos/seed/793/600',
-                                                  width: 200.0,
-                                                  height: 200.0,
-                                                  fit: BoxFit.cover,
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 50.0),
+                                                child: PageView.builder(
+                                                  controller: _model
+                                                          .pageViewController ??=
+                                                      PageController(
+                                                          initialPage: max(
+                                                              0,
+                                                              min(
+                                                                  0,
+                                                                  uploadListNum
+                                                                          .length -
+                                                                      1))),
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  itemCount:
+                                                      uploadListNum.length,
+                                                  itemBuilder: (context,
+                                                      uploadListNumIndex) {
+                                                    final uploadListNumItem =
+                                                        uploadListNum[
+                                                            uploadListNumIndex];
+                                                    return ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      child: Image.network(
+                                                        uploadListNumItem,
+                                                        width: 200.0,
+                                                        height: 200.0,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 1.0),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 10.0),
+                                                  child: smooth_page_indicator
+                                                      .SmoothPageIndicator(
+                                                    controller: _model
+                                                            .pageViewController ??=
+                                                        PageController(
+                                                            initialPage: max(
+                                                                0,
+                                                                min(
+                                                                    0,
+                                                                    uploadListNum
+                                                                            .length -
+                                                                        1))),
+                                                    count: uploadListNum.length,
+                                                    axisDirection:
+                                                        Axis.horizontal,
+                                                    onDotClicked: (i) async {
+                                                      await _model
+                                                          .pageViewController!
+                                                          .animateToPage(
+                                                        i,
+                                                        duration: const Duration(
+                                                            milliseconds: 500),
+                                                        curve: Curves.ease,
+                                                      );
+                                                      safeSetState(() {});
+                                                    },
+                                                    effect: smooth_page_indicator
+                                                        .ExpandingDotsEffect(
+                                                      expansionFactor: 2.0,
+                                                      spacing: 8.0,
+                                                      radius: 16.0,
+                                                      dotWidth: 16.0,
+                                                      dotHeight: 16.0,
+                                                      dotColor:
+                                                          const Color(0xFF9E9E9E),
+                                                      activeDotColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      paintStyle:
+                                                          PaintingStyle.fill,
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                             ],
                                           ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 1.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 10.0),
-                                            child: smooth_page_indicator
-                                                .SmoothPageIndicator(
-                                              controller:
-                                                  _model.pageViewController ??=
-                                                      PageController(
-                                                          initialPage: 0),
-                                              count: 1,
-                                              axisDirection: Axis.horizontal,
-                                              onDotClicked: (i) async {
-                                                await _model.pageViewController!
-                                                    .animateToPage(
-                                                  i,
-                                                  duration: const Duration(
-                                                      milliseconds: 500),
-                                                  curve: Curves.ease,
-                                                );
-                                                safeSetState(() {});
-                                              },
-                                              effect: smooth_page_indicator
-                                                  .ExpandingDotsEffect(
-                                                expansionFactor: 2.0,
-                                                spacing: 8.0,
-                                                radius: 16.0,
-                                                dotWidth: 16.0,
-                                                dotHeight: 16.0,
-                                                dotColor: const Color(0xFF9E9E9E),
-                                                activeDotColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                paintStyle: PaintingStyle.fill,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                        );
+                                      },
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
                           Container(
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             height: MediaQuery.sizeOf(context).height * 0.15,
@@ -893,8 +925,80 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                 children: [
                                   Expanded(
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        HapticFeedback.mediumImpact();
+                                        if (FFAppState()
+                                                .selectedDatesList.isNotEmpty) {
+                                          if (!(_model.leaveTimeValue != null &&
+                                              _model.leaveTimeValue != '')) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return WebViewAware(
+                                                  child: AlertDialog(
+                                                    content: const Text(
+                                                        'กรุณาเลือกช่วงเวลาที่จะลา'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: const Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                            return;
+                                          }
+                                        } else {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: const Text(
+                                                      'กรุณาเลือกวันเริ่มลา'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
+                                          return;
+                                        }
+
+                                        if (!(_model.phoneNumberTextController
+                                                    .text !=
+                                                '')) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: const Text(
+                                                      'กรุณากรอกเบอร์โทรศัพท์'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
+                                          return;
+                                        }
                                       },
                                       text: FFLocalizations.of(context).getText(
                                         'ouvrw7wb' /* บันทึก */,

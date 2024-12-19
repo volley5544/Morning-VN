@@ -35,7 +35,10 @@ class _SuccessCheckinPageWidgetState extends State<SuccessCheckinPageWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFF39D2C0),
@@ -65,7 +68,7 @@ class _SuccessCheckinPageWidgetState extends State<SuccessCheckinPageWidget> {
               ),
               Text(
                 FFLocalizations.of(context).getText(
-                  'a4jv1rkh' /* สำเร็จ! */,
+                  'a4jv1rkh' /* Success! */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
@@ -79,7 +82,7 @@ class _SuccessCheckinPageWidgetState extends State<SuccessCheckinPageWidget> {
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
-                    'dm3qluv6' /* บันทึกข้อมูลเสร็จสิ้น */,
+                    'dm3qluv6' /* Checkin Successful */,
                   ),
                   style: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Outfit',
@@ -104,7 +107,7 @@ class _SuccessCheckinPageWidgetState extends State<SuccessCheckinPageWidget> {
                           print('Button pressed ...');
                         },
                         text: FFLocalizations.of(context).getText(
-                          '0p889zk0' /* กลับหน้าหลัก */,
+                          '0p889zk0' /* Return to Dashboard */,
                         ),
                         options: FFButtonOptions(
                           width: 130.0,
@@ -138,7 +141,7 @@ class _SuccessCheckinPageWidgetState extends State<SuccessCheckinPageWidget> {
                           print('Button pressed ...');
                         },
                         text: FFLocalizations.of(context).getText(
-                          'ep6jzjsj' /* เช็คสถานะ */,
+                          'ep6jzjsj' /* Check Statue */,
                         ),
                         options: FFButtonOptions(
                           width: 130.0,

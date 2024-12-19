@@ -11,6 +11,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'my_profile_page_model.dart';
 export 'my_profile_page_model.dart';
 
@@ -44,7 +45,10 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -115,21 +119,20 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return AlertDialog(
-                                        content:
-                                            Text(FFAppState().profileStartDate),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: const Text('Ok'),
-                                          ),
-                                        ],
-                                      );
-                                    },
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        FFAppState().profilePositionName,
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: const Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
                                   );
                                 },
                                 child: SizedBox(
@@ -247,17 +250,25 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                                 enableDrag: false,
                                                 context: context,
                                                 builder: (context) {
-                                                  return GestureDetector(
-                                                    onTap: () =>
+                                                  return WebViewAware(
+                                                    child: GestureDetector(
+                                                      onTap: () {
                                                         FocusScope.of(context)
-                                                            .unfocus(),
-                                                    child: Padding(
-                                                      padding: MediaQuery
-                                                          .viewInsetsOf(
-                                                              context),
-                                                      child: const SizedBox(
-                                                        height: double.infinity,
-                                                        child: LoadingWidget(),
+                                                            .unfocus();
+                                                        FocusManager.instance
+                                                            .primaryFocus
+                                                            ?.unfocus();
+                                                      },
+                                                      child: Padding(
+                                                        padding: MediaQuery
+                                                            .viewInsetsOf(
+                                                                context),
+                                                        child: const SizedBox(
+                                                          height:
+                                                              double.infinity,
+                                                          child:
+                                                              LoadingWidget(),
+                                                        ),
                                                       ),
                                                     ),
                                                   );
@@ -344,17 +355,19 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                                   context: context,
                                                   builder:
                                                       (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      content: const Text(
-                                                          'ไม่สามารถอัพโหลดรูปได้ กรุณาลองอีกครั้ง'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: const Text('Ok'),
-                                                        ),
-                                                      ],
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        content: const Text(
+                                                            'ไม่สามารถอัพโหลดรูปได้ กรุณาลองอีกครั้ง'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: const Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     );
                                                   },
                                                 );
@@ -424,21 +437,28 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 5.0, 0.0, 0.0),
-                          child: Text(
-                            'Bạn${FFAppState().username}',
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  color: const Color(0xFF0039E3),
-                                  fontSize: 24.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                        child: Visibility(
+                          visible: FFAppState().username != 'null',
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 5.0, 0.0, 0.0),
+                            child: Text(
+                              '${FFLocalizations.of(context).getVariableText(
+                                enText: '',
+                                viText: 'Bạn',
+                                thText: 'คุณ',
+                              )}${FFAppState().username}',
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color: const Color(0xFF0039E3),
+                                    fontSize: 24.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ),
                       ),
@@ -452,22 +472,25 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                             color: const Color(0xFFFFD57C),
                             borderRadius: BorderRadius.circular(18.0),
                           ),
-                          child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  12.0, 0.0, 12.0, 0.0),
-                              child: Text(
-                                FFAppState().profilePositionName,
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      fontSize: 14.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                          child: Visibility(
+                            visible: FFAppState().profilePositionName != 'null',
+                            child: Align(
+                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 0.0, 12.0, 0.0),
+                                child: Text(
+                                  FFAppState().profilePositionName,
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 14.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
                               ),
                             ),
                           ),
@@ -499,35 +522,43 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'รหัสพนักงาน: ${FFAppState().employeeID}',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
-                              Text(
-                                'สาขา: ${FFAppState().branchCode}',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
+                              if (FFAppState().employeeID != 'null')
+                                Text(
+                                  '${FFLocalizations.of(context).getVariableText(
+                                    enText: 'Employee ID: ',
+                                    viText: 'Mã nhân viên: ',
+                                    thText: 'รหัสพนักงาน: ',
+                                  )}${FFAppState().employeeID}',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                              if (FFAppState().branchCode != 'null')
+                                Text(
+                                  '${FFLocalizations.of(context).getVariableText(
+                                    enText: 'Branch: ',
+                                    viText: 'Chi nhánh: ',
+                                    thText: 'สาขา: ',
+                                  )}${FFAppState().branchCode}',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
                               if (FFAppState().profileStartDate != 'null')
                                 Text(
-                                  'วันที่เริ่มงาน: ${FFAppState().profileStartDate != 'null' ? dateTimeFormat(
-                                      "d/M/y",
-                                      functions.showClockIn(
-                                          FFAppState().profileStartDate),
-                                      locale: FFLocalizations.of(context)
-                                          .languageCode,
-                                    ) : '-'}',
+                                  '${FFLocalizations.of(context).getVariableText(
+                                    enText: 'Start Date: ',
+                                    viText: 'Ngày bắt đầu làm việc: ',
+                                    thText: 'วันเริ่มทำงาน: ',
+                                  )}${FFAppState().profileStartDate}',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -537,7 +568,11 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                       ),
                                 ),
                               Text(
-                                'อายุงาน: 1 ปี 6 เดือน 14 วัน',
+                                '${FFLocalizations.of(context).getVariableText(
+                                  enText: 'Employment Duration:',
+                                  viText: 'Thâm niên làm việc: ',
+                                  thText: 'อายุงาน: ',
+                                )}-',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -547,7 +582,25 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                     ),
                               ),
                               Text(
-                                'อายุตำแหน่ง: 1 ปี 6 เดือน 14 วัน',
+                                '${FFLocalizations.of(context).getVariableText(
+                                  enText: 'Position Tenure: ',
+                                  viText: 'Thời gian giữ chức vụ: ',
+                                  thText: 'อายุตำแหน่ง: ',
+                                )}-',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                              Text(
+                                '${FFLocalizations.of(context).getVariableText(
+                                  enText: 'Insurance Plan: ',
+                                  viText: 'Chương trình bảo hiểm: ',
+                                  thText: 'แผนประกัน: ',
+                                )}-',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -574,7 +627,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
-                                            '7c59mcgf' /* คู่มือพนักงาน */,
+                                            '7c59mcgf' /* Employee Handbook */,
                                           ),
                                           options: FFButtonOptions(
                                             width: 135.0,

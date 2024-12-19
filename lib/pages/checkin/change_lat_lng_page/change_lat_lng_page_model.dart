@@ -24,12 +24,16 @@ class ChangeLatLngPageModel extends FlutterFlowModel<ChangeLatLngPageWidget> {
   String? Function(BuildContext, String?)? lngInputTextControllerValidator;
   // Stores action output result for [Backend Call - API (getBranchLocation)] action in Button widget.
   ApiCallResponse? locationCheckApi;
+  // Stores action output result for [Custom Action - distanceBetween] action in Button widget.
+  String? distanceBetween;
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter1;
   final googleMapsController1 = Completer<GoogleMapController>();
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter2;
   final googleMapsController2 = Completer<GoogleMapController>();
+  // Stores action output result for [Backend Call - API (updateBranchLocation)] action in Button widget.
+  ApiCallResponse? updateBranchLocation;
 
   @override
   void initState(BuildContext context) {}
