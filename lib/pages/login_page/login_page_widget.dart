@@ -537,8 +537,17 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         (alertDialogContext) {
                                                       return WebViewAware(
                                                         child: AlertDialog(
-                                                          content: const Text(
-                                                              '\'Morning VN\' Có phiên bản mới trong cửa hàng!. Vui lòng cập nhật tại cửa hàng trước khi sử dụng ứng dụng'),
+                                                          content: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getVariableText(
+                                                            enText:
+                                                                'Morning VN\' has a new version available in the store! Please update it in the store before using the application.',
+                                                            viText:
+                                                                '\'Morning VN\' Có phiên bản mới trong cửa hàng!. Vui lòng cập nhật tại cửa hàng trước khi sử dụng ứng dụng',
+                                                            thText:
+                                                                'Morning VN\' มีเวอร์ชันใหม่! กรุณาอัปเดตก่อนใช้งานแอปพลิเคชัน',
+                                                          )),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>

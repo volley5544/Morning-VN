@@ -49,8 +49,6 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (!(FFAppState().isLogin || FFAppState().fromPinPage)) {
-        Navigator.pop(context);
-
         context.goNamed('pinPage');
 
         return;
@@ -1324,12 +1322,13 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                     ),
                                   ),
                                 ),
-                              if (responsiveVisibility(
-                                context: context,
-                                tablet: false,
-                                tabletLandscape: false,
-                                desktop: false,
-                              ))
+                              if (false &&
+                                  responsiveVisibility(
+                                    context: context,
+                                    tablet: false,
+                                    tabletLandscape: false,
+                                    desktop: false,
+                                  ))
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 30.0, 10.0, 0.0),

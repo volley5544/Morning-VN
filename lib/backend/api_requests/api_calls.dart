@@ -621,12 +621,19 @@ class SaveLeaveCall {
     String? leavePeriod = '',
     String? leaveReason = '',
     String? leaveDocument = '',
-    dynamic leaveDateJson,
+    List<String>? leaveDateList,
   }) async {
-    final leaveDate = _serializeJson(leaveDateJson);
-    const ffApiRequestBody = '''
-{
+    final leaveDate = _serializeList(leaveDateList);
 
+    final ffApiRequestBody = '''
+{
+  "leave_type": "$leaveType",
+  "leave_start_date": "$leaveStartDate",
+  "leave_end_date": "$leaveEndDate",
+  "leave_period": "$leavePeriod",
+  "leave_reason": "$leaveReason",
+  "leave_document": "$leaveDocument",
+  "leave_date": $leaveDate
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'saveLeave',
@@ -656,25 +663,14 @@ class SaveLeaveCall {
         response,
         r'''$.message''',
       ));
-  static List<CheckinDataStruct>? lastMonth(dynamic response) => (getJsonField(
+  static int? leaveId(dynamic response) => castToType<int>(getJsonField(
         response,
-        r'''$.results.last_month[*]''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => CheckinDataStruct.maybeFromMap(x))
-          .withoutNulls
-          .toList();
-  static List<CheckinDataStruct>? currentMonth(dynamic response) =>
-      (getJsonField(
+        r'''$.results.leave_id''',
+      ));
+  static int? leaveDetailId(dynamic response) => castToType<int>(getJsonField(
         response,
-        r'''$.results.current_month[*]''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => CheckinDataStruct.maybeFromMap(x))
-          .withoutNulls
-          .toList();
+        r'''$.results.leave_detail_id''',
+      ));
 }
 
 class GetUserProfileAPICall {

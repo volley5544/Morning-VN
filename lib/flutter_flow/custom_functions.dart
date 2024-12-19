@@ -25,6 +25,17 @@ bool? checkPin(String? input) {
   }
 }
 
+double? currentLatLngDoubleCopy(
+  LatLng? currentLocation,
+  bool? isLatitude,
+) {
+  if (isLatitude! == true) {
+    return currentLocation!.latitude;
+  } else {
+    return currentLocation!.longitude;
+  }
+}
+
 String? getBuildNumber(String? buildVersion) {
   // Find the index of the opening parenthesis
   int startIndex = buildVersion!.indexOf('(');
@@ -108,14 +119,22 @@ DateTime? showClockIn(String? clockIn) {
   return time;
 }
 
-double? currentLatLngDouble(
-  LatLng? currentLocation,
-  bool? isLatitude,
-) {
-  if (isLatitude! == true) {
-    return currentLocation!.latitude;
+String? currentLengthOfWork(String? profileStartDate) {
+  if (profileStartDate != null) {
+    DateTime startDate = DateTime.parse(
+        profileStartDate); // แปลงเป็น DateTime จากรูปแบบที่เก็บใน profileStartDate
+    DateTime currentDate = DateTime.now(); // วันที่ปัจจุบัน
+    Duration difference =
+        currentDate.difference(startDate); // คำนวณความต่างระหว่างวันที่
+
+    // คำนวณระยะเวลาเป็นปี เดือน หรือวัน
+    int years = difference.inDays ~/ 365; // คำนวณเป็นปี
+    int months = (difference.inDays % 365) ~/ 30; // คำนวณเป็นเดือน
+    int days = (difference.inDays % 365) % 30; // คำนวณเป็นวัน
+
+    return "$years ปี $months เดือน $days วัน"; // ผลลัพธ์ที่ได้คืออายุงาน
   } else {
-    return currentLocation!.longitude;
+    return "ข้อมูลวันที่เริ่มงานไม่ถูกต้อง";
   }
 }
 

@@ -28,6 +28,8 @@ class LeaveCalendarWidget extends StatefulWidget {
     this.nextYear,
     this.currentYearSelectableDates = '0',
     this.nextYearSelectableDates = '0',
+    this.startdate,
+    this.enddate,
   });
 
   final double? width;
@@ -41,6 +43,8 @@ class LeaveCalendarWidget extends StatefulWidget {
   final String? nextYear;
   final String currentYearSelectableDates;
   final String nextYearSelectableDates;
+  final String? startdate;
+  final String? enddate;
 
   @override
   State<LeaveCalendarWidget> createState() => _LeaveCalendarWidgetState();
@@ -68,8 +72,8 @@ class _LeaveCalendarWidgetState extends State<LeaveCalendarWidget> {
       width: widget.width!,
       child: TableCalendar(
         focusedDay: focusDate,
-        firstDay: DateTime(_currentYear, 1, 1),
-        lastDay: DateTime(_nextYear, 12, 31),
+        firstDay: DateTime.parse(startdate),
+        lastDay: DateTime.parse(enddate),
         selectedDayPredicate: (day) {
           return FFAppState().selectedDatesList!.any((selectedDay) =>
               selectedDay.year == day.year &&
@@ -117,7 +121,7 @@ class _LeaveCalendarWidgetState extends State<LeaveCalendarWidget> {
           });
         },
         enabledDayPredicate: (day) {
-          return checkEnebleDateSelected(day, widget.holidaysList);
+          return checkEnebleDateSelected(day, widget.holidaysList, false);
         },
         startingDayOfWeek: StartingDayOfWeek.monday,
         calendarStyle: CalendarStyle(
@@ -151,8 +155,12 @@ class _LeaveCalendarWidgetState extends State<LeaveCalendarWidget> {
   }
 }
 
-bool checkEnebleDateSelected(DateTime day, List<String>? holidays) {
-  return (day.weekday != DateTime.sunday &&
+bool checkEnebleDateSelected(
+    DateTime day, List<String>? holidays, bool disableOnlySunday) {
+  return ((disableOnlySunday
+          ? day.weekday != DateTime.sunday
+          : (day.weekday != DateTime.sunday &&
+              day.weekday != DateTime.saturday)) &&
       (holidays != null
           ? !holidays.contains('${DateFormat('yyyy-MM-dd').format(day)}')
           : true) &&

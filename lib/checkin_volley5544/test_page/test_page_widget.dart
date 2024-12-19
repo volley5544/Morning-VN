@@ -76,6 +76,11 @@ class _TestPageWidgetState extends State<TestPageWidget> {
       )!
           .toList()
           .cast<OtherYearStruct>();
+      _model.listLeaveData = GetLeaveListCall.leavelist(
+        (_model.apiResult235?.jsonBody ?? ''),
+      )!
+          .toList()
+          .cast<TestLeaveListDataStruct>();
       safeSetState(() {});
       Navigator.pop(context);
     });
@@ -147,6 +152,8 @@ class _TestPageWidgetState extends State<TestPageWidget> {
                           _model.currentYearDataPage.lastOrNull!.leaveRemain,
                       nextYearSelectableDates:
                           _model.otherYearDataPage.lastOrNull!.leaveRemain,
+                      startdate: _model.listLeaveData.lastOrNull?.startDate,
+                      enddate: _model.listLeaveData.lastOrNull?.endDate,
                     ),
                   ),
                 ),

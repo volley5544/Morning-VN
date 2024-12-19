@@ -502,7 +502,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                 ),
                 Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: 250.0,
+                  height: MediaQuery.sizeOf(context).height * 0.25,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
@@ -575,7 +575,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                   enText: 'Employment Duration:',
                                   viText: 'Thâm niên làm việc: ',
                                   thText: 'อายุงาน: ',
-                                )}-',
+                                )}${functions.currentLengthOfWork(FFAppState().profileStartDate)}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -584,83 +584,88 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),
-                              Text(
-                                '${FFLocalizations.of(context).getVariableText(
-                                  enText: 'Position Tenure: ',
-                                  viText: 'Thời gian giữ chức vụ: ',
-                                  thText: 'อายุตำแหน่ง: ',
-                                )}-',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
-                              Text(
-                                '${FFLocalizations.of(context).getVariableText(
-                                  enText: 'Insurance Plan: ',
-                                  viText: 'Chương trình bảo hiểm: ',
-                                  thText: 'แผนประกัน: ',
-                                )}-',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    40.0, 0.0, 40.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      flex: 1,
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            30.0, 0.0, 30.0, 0.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () async {
-                                            context.pushNamed('GuideBookPage');
-                                          },
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            '7c59mcgf' /* Employee Handbook */,
+                              if (false)
+                                Text(
+                                  '${FFLocalizations.of(context).getVariableText(
+                                    enText: 'Position Tenure: ',
+                                    viText: 'Thời gian giữ chức vụ: ',
+                                    thText: 'อายุตำแหน่ง: ',
+                                  )}-',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                              if (false)
+                                Text(
+                                  '${FFLocalizations.of(context).getVariableText(
+                                    enText: 'Insurance Plan: ',
+                                    viText: 'Chương trình bảo hiểm: ',
+                                    thText: 'แผนประกัน: ',
+                                  )}-',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                              if (false)
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      40.0, 0.0, 40.0, 0.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Expanded(
+                                        flex: 1,
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  30.0, 0.0, 30.0, 0.0),
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              context
+                                                  .pushNamed('GuideBookPage');
+                                            },
+                                            text: FFLocalizations.of(context)
+                                                .getText(
+                                              '7c59mcgf' /* Employee Handbook */,
+                                            ),
+                                            options: FFButtonOptions(
+                                              width: 135.0,
+                                              height: 35.0,
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 0.0, 16.0, 0.0),
+                                              iconPadding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color: const Color(0xFF0039E3),
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        color: Colors.white,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              elevation: 0.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            showLoadingIndicator: false,
                                           ),
-                                          options: FFButtonOptions(
-                                            width: 135.0,
-                                            height: 35.0,
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 0.0, 16.0, 0.0),
-                                            iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0xFF0039E3),
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color: Colors.white,
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            elevation: 0.0,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          showLoadingIndicator: false,
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
                             ],
                           ),
                         ),

@@ -47,6 +47,19 @@ class TestPageModel extends FlutterFlowModel<TestPageWidget> {
           int index, Function(OtherYearStruct) updateFn) =>
       otherYearDataPage[index] = updateFn(otherYearDataPage[index]);
 
+  List<TestLeaveListDataStruct> listLeaveData = [];
+  void addToListLeaveData(TestLeaveListDataStruct item) =>
+      listLeaveData.add(item);
+  void removeFromListLeaveData(TestLeaveListDataStruct item) =>
+      listLeaveData.remove(item);
+  void removeAtIndexFromListLeaveData(int index) =>
+      listLeaveData.removeAt(index);
+  void insertAtIndexInListLeaveData(int index, TestLeaveListDataStruct item) =>
+      listLeaveData.insert(index, item);
+  void updateListLeaveDataAtIndex(
+          int index, Function(TestLeaveListDataStruct) updateFn) =>
+      listLeaveData[index] = updateFn(listLeaveData[index]);
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Backend Call - API (getLeaveList)] action in TestPage widget.

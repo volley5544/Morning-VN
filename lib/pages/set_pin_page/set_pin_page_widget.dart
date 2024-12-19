@@ -136,15 +136,19 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                     HapticFeedback.mediumImpact();
                     if (!(_model.pinCodeController!.text != '')) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
+                        SnackBar(
                           content: Text(
-                            'กรุณาใส่พิน',
-                            style: TextStyle(
+                            FFLocalizations.of(context).getVariableText(
+                              enText: 'Please enter the PIN',
+                              viText: 'Vui lòng nhập mã PIN',
+                              thText: 'กรุณาใส่พิน',
+                            ),
+                            style: const TextStyle(
                               color: Colors.white,
                             ),
                           ),
-                          duration: Duration(milliseconds: 3000),
-                          backgroundColor: Color(0xCC000000),
+                          duration: const Duration(milliseconds: 3000),
+                          backgroundColor: const Color(0xCC000000),
                         ),
                       );
                       return;
@@ -155,7 +159,13 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                         builder: (alertDialogContext) {
                           return WebViewAware(
                             child: AlertDialog(
-                              content: const Text('กรุณาใส่รหัสพิน6หลัก (ตัวเลข)'),
+                              content: Text(
+                                  FFLocalizations.of(context).getVariableText(
+                                enText: 'Please enter a 6-digit PIN (numbers)',
+                                viText:
+                                    'Vui lòng nhập mã PIN 6 chữ số (chỉ số)',
+                                thText: 'กรุณาใส่รหัสพิน6หลัก (ตัวเลข)',
+                              )),
                               actions: [
                                 TextButton(
                                   onPressed: () =>
