@@ -10,8 +10,6 @@ class PinPageModel extends FlutterFlowModel<PinPageWidget> {
   // State field(s) for PinCode widget.
   TextEditingController? pinCodeController;
   String? Function(BuildContext, String?)? pinCodeControllerValidator;
-  // Stores action output result for [Custom Action - checkGpsServiceEnable] action in PinCode widget.
-  bool? checkGpsEnable;
 
   @override
   void initState(BuildContext context) {

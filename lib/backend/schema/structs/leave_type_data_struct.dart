@@ -17,7 +17,7 @@ class LeaveTypeDataStruct extends FFFirebaseStruct {
     String? color,
     String? icon,
     CurrentYearStruct? currentYear,
-    NextYearStruct? nextYear,
+    NextYearStruct? otherYear,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _name = name,
         _leaveType = leaveType,
@@ -27,7 +27,7 @@ class LeaveTypeDataStruct extends FFFirebaseStruct {
         _color = color,
         _icon = icon,
         _currentYear = currentYear,
-        _nextYear = nextYear,
+        _otherYear = otherYear,
         super(firestoreUtilData);
 
   // "name" field.
@@ -94,16 +94,16 @@ class LeaveTypeDataStruct extends FFFirebaseStruct {
 
   bool hasCurrentYear() => _currentYear != null;
 
-  // "next_year" field.
-  NextYearStruct? _nextYear;
-  NextYearStruct get nextYear => _nextYear ?? NextYearStruct();
-  set nextYear(NextYearStruct? val) => _nextYear = val;
+  // "other_year" field.
+  NextYearStruct? _otherYear;
+  NextYearStruct get otherYear => _otherYear ?? NextYearStruct();
+  set otherYear(NextYearStruct? val) => _otherYear = val;
 
-  void updateNextYear(Function(NextYearStruct) updateFn) {
-    updateFn(_nextYear ??= NextYearStruct());
+  void updateOtherYear(Function(NextYearStruct) updateFn) {
+    updateFn(_otherYear ??= NextYearStruct());
   }
 
-  bool hasNextYear() => _nextYear != null;
+  bool hasOtherYear() => _otherYear != null;
 
   static LeaveTypeDataStruct fromMap(Map<String, dynamic> data) =>
       LeaveTypeDataStruct(
@@ -120,9 +120,9 @@ class LeaveTypeDataStruct extends FFFirebaseStruct {
         currentYear: data['current_year'] is CurrentYearStruct
             ? data['current_year']
             : CurrentYearStruct.maybeFromMap(data['current_year']),
-        nextYear: data['next_year'] is NextYearStruct
-            ? data['next_year']
-            : NextYearStruct.maybeFromMap(data['next_year']),
+        otherYear: data['other_year'] is NextYearStruct
+            ? data['other_year']
+            : NextYearStruct.maybeFromMap(data['other_year']),
       );
 
   static LeaveTypeDataStruct? maybeFromMap(dynamic data) => data is Map
@@ -138,7 +138,7 @@ class LeaveTypeDataStruct extends FFFirebaseStruct {
         'color': _color,
         'icon': _icon,
         'current_year': _currentYear?.toMap(),
-        'next_year': _nextYear?.toMap(),
+        'other_year': _otherYear?.toMap(),
       }.withoutNulls;
 
   @override
@@ -176,8 +176,8 @@ class LeaveTypeDataStruct extends FFFirebaseStruct {
           _currentYear,
           ParamType.DataStruct,
         ),
-        'next_year': serializeParam(
-          _nextYear,
+        'other_year': serializeParam(
+          _otherYear,
           ParamType.DataStruct,
         ),
       }.withoutNulls;
@@ -226,8 +226,8 @@ class LeaveTypeDataStruct extends FFFirebaseStruct {
           false,
           structBuilder: CurrentYearStruct.fromSerializableMap,
         ),
-        nextYear: deserializeStructParam(
-          data['next_year'],
+        otherYear: deserializeStructParam(
+          data['other_year'],
           ParamType.DataStruct,
           false,
           structBuilder: NextYearStruct.fromSerializableMap,
@@ -249,7 +249,7 @@ class LeaveTypeDataStruct extends FFFirebaseStruct {
         color == other.color &&
         icon == other.icon &&
         currentYear == other.currentYear &&
-        nextYear == other.nextYear;
+        otherYear == other.otherYear;
   }
 
   @override
@@ -262,7 +262,7 @@ class LeaveTypeDataStruct extends FFFirebaseStruct {
         color,
         icon,
         currentYear,
-        nextYear
+        otherYear
       ]);
 }
 
@@ -274,7 +274,7 @@ LeaveTypeDataStruct createLeaveTypeDataStruct({
   String? color,
   String? icon,
   CurrentYearStruct? currentYear,
-  NextYearStruct? nextYear,
+  NextYearStruct? otherYear,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -289,7 +289,7 @@ LeaveTypeDataStruct createLeaveTypeDataStruct({
       icon: icon,
       currentYear:
           currentYear ?? (clearUnsetFields ? CurrentYearStruct() : null),
-      nextYear: nextYear ?? (clearUnsetFields ? NextYearStruct() : null),
+      otherYear: otherYear ?? (clearUnsetFields ? NextYearStruct() : null),
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
@@ -355,11 +355,11 @@ Map<String, dynamic> getLeaveTypeDataFirestoreData(
     forFieldValue,
   );
 
-  // Handle nested data for "next_year" field.
+  // Handle nested data for "other_year" field.
   addNextYearStructData(
     firestoreData,
-    leaveTypeData.hasNextYear() ? leaveTypeData.nextYear : null,
-    'next_year',
+    leaveTypeData.hasOtherYear() ? leaveTypeData.otherYear : null,
+    'other_year',
     forFieldValue,
   );
 

@@ -237,7 +237,6 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                     const Spacer(flex: 2),
                     Expanded(
                       child: Container(
-                        height: MediaQuery.sizeOf(context).height * 0.06,
                         decoration: const BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -333,10 +332,6 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                currentUserLocationValue =
-                                    await getCurrentUserLocation(
-                                        defaultLocation: const LatLng(0.0, 0.0));
-                                var shouldSetState = false;
                                 HapticFeedback.mediumImpact();
                                 if (!(FFAppState().isLogin ||
                                     FFAppState().fromSetPin)) {
@@ -344,117 +339,11 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
 
                                   context.pushNamed('pinPage');
 
-                                  if (shouldSetState) safeSetState(() {});
                                   return;
                                 }
-                                showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  backgroundColor: Colors.transparent,
-                                  enableDrag: false,
-                                  context: context,
-                                  builder: (context) {
-                                    return WebViewAware(
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          FocusScope.of(context).unfocus();
-                                          FocusManager.instance.primaryFocus
-                                              ?.unfocus();
-                                        },
-                                        child: Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: const SizedBox(
-                                            height: double.infinity,
-                                            child: LoadingSceneWidget(),
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ).then((value) => safeSetState(() {}));
-
-                                _model.checkDeviceLocSerLogout =
-                                    await actions.a1();
-                                shouldSetState = true;
-                                if (!_model.checkDeviceLocSerLogout!) {
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return WebViewAware(
-                                        child: AlertDialog(
-                                          content: const Text(
-                                              'กรุณาเปิด GPS เพื่อทำรายการ'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: const Text('Ok'),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                  );
-                                  if (shouldSetState) safeSetState(() {});
-                                  return;
-                                }
-                                _model.checkDeviceLocPerLogout =
-                                    await actions.a2();
-                                shouldSetState = true;
-                                if (!_model.checkDeviceLocPerLogout!) {
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return WebViewAware(
-                                        child: AlertDialog(
-                                          content: const Text(
-                                              'กรุณาให้อรุณสวัสดิ์เข้าถึง GPS ของคุณ'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: const Text('Ok'),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                  );
-                                  if (shouldSetState) safeSetState(() {});
-                                  return;
-                                }
-                                _model.checkLatLngLogout = await actions.a8(
-                                  currentUserLocationValue,
-                                );
-                                shouldSetState = true;
-                                if (!_model.checkLatLngLogout!) {
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return WebViewAware(
-                                        child: AlertDialog(
-                                          content:
-                                              const Text('กรุณาเปิดGPSเพื่อทำรายการ'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: const Text('Ok'),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                  );
-                                  if (shouldSetState) safeSetState(() {});
-                                  return;
-                                }
-                                Navigator.pop(context);
                                 await actions.a22();
 
                                 context.pushNamed('loginPage');
-
-                                if (shouldSetState) safeSetState(() {});
                               },
                               child: Material(
                                 color: Colors.transparent,

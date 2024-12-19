@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
-import '/flutter_flow/permissions_util.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -362,7 +361,6 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                     controller: _model.pinCodeController,
                                     onChanged: (_) {},
                                     onCompleted: (_) async {
-                                      var shouldSetState = false;
                                       if (!((String appBuildNumber,
                                               String latestBuildNumber) {
                                         return int.parse(appBuildNumber) >=
@@ -392,9 +390,6 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                           },
                                         );
                                         await actions.terminateAppAction();
-                                        if (shouldSetState) {
-                                          safeSetState(() {});
-                                        }
                                         return;
                                       }
                                       if (_model.pinCodeController!.text !=
@@ -421,22 +416,12 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                             );
                                           },
                                         );
-                                        if (shouldSetState) {
-                                          safeSetState(() {});
-                                        }
                                         return;
                                       }
-                                      await requestPermission(
-                                          locationPermission);
-                                      _model.checkGpsEnable =
-                                          await actions.checkGpsServiceEnable();
-                                      shouldSetState = true;
                                       FFAppState().fromPinPage = true;
                                       safeSetState(() {});
 
-                                      context.pushNamed('superAppPage');
-
-                                      if (shouldSetState) safeSetState(() {});
+                                      context.goNamed('superAppPage');
                                     },
                                     autovalidateMode:
                                         AutovalidateMode.onUserInteraction,

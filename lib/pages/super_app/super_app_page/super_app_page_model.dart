@@ -21,12 +21,6 @@ class SuperAppPageModel extends FlutterFlowModel<SuperAppPageWidget> {
           pageViewController!.page != null
       ? pageViewController!.page!.round()
       : 0;
-  // Stores action output result for [Custom Action - a1] action in ListTile widget.
-  bool? checkDeviceLocSerLogout;
-  // Stores action output result for [Custom Action - a2] action in ListTile widget.
-  bool? checkDeviceLocPerLogout;
-  // Stores action output result for [Custom Action - a8] action in ListTile widget.
-  bool? checkLatLngLogout;
 
   @override
   void initState(BuildContext context) {}

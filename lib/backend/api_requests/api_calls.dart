@@ -34,8 +34,8 @@ class AuthenAPICall {
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'x-api-key':
-            'L86sMywotb3IDdAvcHP889AOD9shoiti9BWFAuuK2SJfKCdYCdmjZ7De7Y-4lw4ZXJhSIxIMCjxeMA-YMw9SPvwHLf1gebNiohicTHbNsCe9-UiX9GlURVQT7wMLoCjI',
+        'Authorization':
+            'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA5MFwvc3N3X21vcm5pbmdfZm1cL2FwaVwvbG9naW4iLCJpYXQiOjE3MzQzMzE3MzIsIm5iZiI6MTczNDMzMTczMiwianRpIjoiaUZCdHhkQjNCSURmcmduZCIsInN1YiI6ODc3NSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.YMz2tzAuFeEgkcknPmaZiaKPOcFZFiEFGlYvNKJ7gck',
       },
       params: {},
       body: ffApiRequestBody,
@@ -619,15 +619,48 @@ class GetLeaveListCall {
           .map((x) => CurrentYearStruct.maybeFromMap(x))
           .withoutNulls
           .toList();
-  static List<NextYearStruct>? nextyear(dynamic response) => (getJsonField(
+  static List<NextYearStruct>? otheryear(dynamic response) => (getJsonField(
         response,
-        r'''$.results.leave_list.*.next_year''',
+        r'''$.results.leave_list.*.other_year''',
         true,
       ) as List?)
           ?.withoutNulls
           .map((x) => NextYearStruct.maybeFromMap(x))
           .withoutNulls
           .toList();
+}
+
+class GetUserProfileCall {
+  static Future<ApiCallResponse> call({
+    String? username = '',
+    String? password = '',
+    String? apiUrl = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "username": "${escapeStringForJson(username)}",
+  "password": "${escapeStringForJson(password)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'getUserProfile',
+      apiUrl: '$apiUrl/api/user-profile',
+      callType: ApiCallType.POST,
+      headers: {
+        'ContentType': 'application/json; charset=utf-8,',
+        'Authorization':
+            'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA5MFwvc3N3X21vcm5pbmdfZm1cL2FwaVwvbG9naW4iLCJpYXQiOjE3MzQzMzE3MzIsIm5iZiI6MTczNDMzMTczMiwianRpIjoiaUZCdHhkQjNCSURmcmduZCIsInN1YiI6ODc3NSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.YMz2tzAuFeEgkcknPmaZiaKPOcFZFiEFGlYvNKJ7gck',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
 }
 
 class ApiPagingParams {
@@ -675,4 +708,15 @@ String _serializeJson(dynamic jsonVar, [bool isList = false]) {
     }
     return isList ? '[]' : '{}';
   }
+}
+
+String? escapeStringForJson(String? input) {
+  if (input == null) {
+    return null;
+  }
+  return input
+      .replaceAll('\\', '\\\\')
+      .replaceAll('"', '\\"')
+      .replaceAll('\n', '\\n')
+      .replaceAll('\t', '\\t');
 }
