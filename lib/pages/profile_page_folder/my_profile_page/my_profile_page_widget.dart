@@ -472,25 +472,22 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                             color: const Color(0xFFFFD57C),
                             borderRadius: BorderRadius.circular(18.0),
                           ),
-                          child: Visibility(
-                            visible: FFAppState().profilePositionName != 'null',
-                            child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 0.0, 12.0, 0.0),
-                                child: Text(
-                                  FFAppState().profilePositionName,
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        fontSize: 14.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                ),
+                          child: Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 12.0, 0.0),
+                              child: Text(
+                                FFAppState().profilePositionName,
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 14.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                               ),
                             ),
                           ),

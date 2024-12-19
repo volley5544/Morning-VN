@@ -146,7 +146,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              'wub2eo13' /* เข้างาน - ออกงาน */,
+              'wub2eo13' /* Check in - Check out */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
@@ -207,7 +207,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                     },
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        '2890rejr' /* เมนู */,
+                        '2890rejr' /* Menu */,
                       ),
                       textAlign: TextAlign.start,
                       style:
@@ -286,7 +286,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                         8.0, 12.0, 0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        'rjs557r0' /* ลงชื่อเข้า-ออกงาน */,
+                                        'rjs557r0' /* Check in-out */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .titleMedium
@@ -354,7 +354,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                         8.0, 12.0, 0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        'yjlaassc' /* ประวัติการเข้างาน */,
+                                        'yjlaassc' /* Check-in history */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .titleMedium
@@ -422,7 +422,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                         8.0, 12.0, 0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        'zduj0m6f' /* เปลี่ยนพิกัด */,
+                                        'zduj0m6f' /* Change location */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .titleMedium

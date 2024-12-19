@@ -278,28 +278,28 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // DashboardCheckin
   {
     '2890rejr': {
-      'en': 'เมนู',
-      'th': '',
+      'en': 'Menu',
+      'th': 'เมนู',
       'vi': 'Menu',
     },
     'rjs557r0': {
-      'en': 'ลงชื่อเข้า-ออกงาน',
-      'th': '',
+      'en': 'Check in-out',
+      'th': 'ลงชื่อเข้า-ออกงาน',
       'vi': 'Chấm Công Vào - Ra',
     },
     'yjlaassc': {
-      'en': 'ประวัติการเข้างาน',
-      'th': '',
+      'en': 'Check-in history',
+      'th': 'ประวัติการเข้างาน',
       'vi': 'Lịch sử chấm công',
     },
     'zduj0m6f': {
-      'en': 'เปลี่ยนพิกัด',
-      'th': '',
+      'en': 'Change location',
+      'th': 'เปลี่ยนพิกัด',
       'vi': 'Thay đổi vị trí',
     },
     'wub2eo13': {
-      'en': 'เข้างาน - ออกงาน',
-      'th': '',
+      'en': 'Check in - Check out',
+      'th': 'เข้างาน - ออกงาน',
       'vi': 'Chấm Công Vào - Ra',
     },
     'ero9jvlb': {

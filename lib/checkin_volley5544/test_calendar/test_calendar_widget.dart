@@ -140,14 +140,8 @@ class _TestCalendarWidgetState extends State<TestCalendarWidget> {
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: MediaQuery.sizeOf(context).height * 0.6,
                     holiday: _model.holidayDataPage.map((e) => e.date).toList(),
-                    currentYear: _model.leaveTypeDataPage
-                        .elementAtOrNull(1)
-                        ?.currentYear
-                        .year,
-                    nextYear: _model.leaveTypeDataPage
-                        .elementAtOrNull(1)
-                        ?.otherYear
-                        .year,
+                    currentYear: '2024',
+                    nextYear: '2025',
                     currentYearSelectableDates: _model.leaveTypeDataPage
                         .elementAtOrNull(1)!
                         .currentYear
