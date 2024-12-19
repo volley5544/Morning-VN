@@ -1716,10 +1716,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                                         highlightColor:
                                                                             Colors.transparent,
                                                                         onTap:
-                                                                            () async {
-                                                                          context
-                                                                              .pushNamed('Test2Page');
-                                                                        },
+                                                                            () async {},
                                                                         child:
                                                                             Text(
                                                                           listViewSawadAnnouncementRecord
@@ -1804,10 +1801,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                                         highlightColor:
                                                                             Colors.transparent,
                                                                         onTap:
-                                                                            () async {
-                                                                          context
-                                                                              .pushNamed('TestPage');
-                                                                        },
+                                                                            () async {},
                                                                         child: Image
                                                                             .asset(
                                                                           'assets/images/pngegg.png',

@@ -575,11 +575,11 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                       ),
                                 ),
                               Text(
-                                FFLocalizations.of(context).getVariableText(
+                                '${FFLocalizations.of(context).getVariableText(
                                   enText: 'Employment Duration:',
                                   viText: 'Thâm niên làm việc: ',
                                   thText: 'อายุงาน: ',
-                                ),
+                                )}${functions.currentLengthOfWork(FFAppState().profileStartDate)}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(

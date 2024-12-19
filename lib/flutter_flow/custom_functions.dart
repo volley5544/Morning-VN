@@ -119,7 +119,7 @@ DateTime? showClockIn(String? clockIn) {
   return time;
 }
 
-List<String>? currentLengthOfWork(String? profileStartDate) {
+String? currentLengthOfWork(String? profileStartDate) {
   if (profileStartDate != null) {
     DateTime startDate = DateTime.parse(
         profileStartDate); // แปลงเป็น DateTime จากรูปแบบที่เก็บใน profileStartDate
@@ -132,11 +132,9 @@ List<String>? currentLengthOfWork(String? profileStartDate) {
     int months = (difference.inDays % 365) ~/ 30; // คำนวณเป็นเดือน
     int days = (difference.inDays % 365) % 30; // คำนวณเป็นวัน
 
-    //return "$years ปี $months เดือน $days วัน"; // ผลลัพธ์ที่ได้คืออายุงาน
-    return [years, months, days];
+    return "$years Năm $months Tháng $days Ngày"; // ผลลัพธ์ที่ได้คืออายุงาน
   } else {
-    //return "ข้อมูลวันที่เริ่มงานไม่ถูกต้อง";
-    return [0, 0, 0];
+    return "Ngày bắt đầu công việc không hợp lệ";
   }
 }
 
