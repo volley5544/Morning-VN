@@ -555,7 +555,13 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                     enText: 'Start Date: ',
                                     viText: 'Ngày bắt đầu làm việc: ',
                                     thText: 'วันเริ่มทำงาน: ',
-                                  )}${FFAppState().profileStartDate}',
+                                  )}${FFAppState().profileStartDate != 'null' ? dateTimeFormat(
+                                      "d/M/y",
+                                      functions.showClockIn(
+                                          FFAppState().profileStartDate),
+                                      locale: FFLocalizations.of(context)
+                                          .languageCode,
+                                    ) : '-'}',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(

@@ -570,25 +570,6 @@ class GetLeaveListCall {
         response,
         r'''$.message''',
       ));
-  static List<CheckinDataStruct>? lastMonth(dynamic response) => (getJsonField(
-        response,
-        r'''$.results.last_month[*]''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => CheckinDataStruct.maybeFromMap(x))
-          .withoutNulls
-          .toList();
-  static List<CheckinDataStruct>? currentMonth(dynamic response) =>
-      (getJsonField(
-        response,
-        r'''$.results.current_month[*]''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => CheckinDataStruct.maybeFromMap(x))
-          .withoutNulls
-          .toList();
   static List<TestLeaveListDataStruct>? leavelist(dynamic response) =>
       (getJsonField(
         response,
@@ -630,19 +611,84 @@ class GetLeaveListCall {
           .toList();
 }
 
-class GetUserProfileCall {
+class SaveLeaveCall {
   static Future<ApiCallResponse> call({
-    String? username = '',
-    String? password = '',
     String? apiUrl = '',
+    String? token = '',
+    String? leaveType = '',
+    String? leaveStartDate = '',
+    String? leaveEndDate = '',
+    String? leavePeriod = '',
+    String? leaveReason = '',
+    String? leaveDocument = '',
+    dynamic leaveDateJson,
+  }) async {
+    final leaveDate = _serializeJson(leaveDateJson);
+    const ffApiRequestBody = '''
+{
+
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'saveLeave',
+      apiUrl: '$apiUrl/api/leave/save',
+      callType: ApiCallType.POST,
+      headers: {
+        'ContentType': 'application/json; charset=utf-8,',
+        'Authorization': 'Bearer  $token',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static int? code(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+  static String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  static List<CheckinDataStruct>? lastMonth(dynamic response) => (getJsonField(
+        response,
+        r'''$.results.last_month[*]''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => CheckinDataStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+  static List<CheckinDataStruct>? currentMonth(dynamic response) =>
+      (getJsonField(
+        response,
+        r'''$.results.current_month[*]''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => CheckinDataStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+}
+
+class GetUserProfileAPICall {
+  static Future<ApiCallResponse> call({
+    String? apiUrl = '',
+    String? token = '',
   }) async {
     final ffApiRequestBody = '''
 {
-  "username": "${escapeStringForJson(username)}",
-  "password": "${escapeStringForJson(password)}"
+  "token": "${escapeStringForJson(token)}",
+  "api_url": "${escapeStringForJson(apiUrl)}"
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'getUserProfile',
+      callName: 'getUserProfileAPI',
       apiUrl: '$apiUrl/api/user-profile',
       callType: ApiCallType.POST,
       headers: {

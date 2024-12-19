@@ -1706,16 +1706,32 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                                         CrossAxisAlignment
                                                                             .start,
                                                                     children: [
-                                                                      Text(
-                                                                        listViewSawadAnnouncementRecord
-                                                                            .title,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Readex Pro',
-                                                                              fontSize: 18.0,
-                                                                              letterSpacing: 0.0,
-                                                                            ),
+                                                                      InkWell(
+                                                                        splashColor:
+                                                                            Colors.transparent,
+                                                                        focusColor:
+                                                                            Colors.transparent,
+                                                                        hoverColor:
+                                                                            Colors.transparent,
+                                                                        highlightColor:
+                                                                            Colors.transparent,
+                                                                        onTap:
+                                                                            () async {
+                                                                          context
+                                                                              .pushNamed('Test2Page');
+                                                                        },
+                                                                        child:
+                                                                            Text(
+                                                                          listViewSawadAnnouncementRecord
+                                                                              .title,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                fontSize: 18.0,
+                                                                                letterSpacing: 0.0,
+                                                                              ),
+                                                                        ),
                                                                       ),
                                                                       Divider(
                                                                         color: FlutterFlowTheme.of(context)
@@ -1790,7 +1806,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                                         onTap:
                                                                             () async {
                                                                           context
-                                                                              .pushNamed('testCalendar');
+                                                                              .pushNamed('TestPage');
                                                                         },
                                                                         child: Image
                                                                             .asset(

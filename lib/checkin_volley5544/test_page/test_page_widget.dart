@@ -1,4 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/loading/loading_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -59,6 +61,21 @@ class _TestPageWidgetState extends State<TestPageWidget> {
         token: FFAppState().accessToken,
       );
 
+      _model.holidayDataPage = GetLeaveListCall.listcalendar(
+        (_model.apiResult235?.jsonBody ?? ''),
+      )!
+          .toList()
+          .cast<CalendarDataStruct>();
+      _model.currentYearDataPage = GetLeaveListCall.currentyear(
+        (_model.apiResult235?.jsonBody ?? ''),
+      )!
+          .toList()
+          .cast<CurrentYearStruct>();
+      _model.otherYearDataPage = GetLeaveListCall.otheryear(
+        (_model.apiResult235?.jsonBody ?? ''),
+      )!
+          .toList()
+          .cast<OtherYearStruct>();
       safeSetState(() {});
       Navigator.pop(context);
     });
@@ -121,8 +138,15 @@ class _TestPageWidgetState extends State<TestPageWidget> {
                       selectedColor: const Color(0xFFFF843D),
                       selectedTextColor:
                           FlutterFlowTheme.of(context).secondaryBackground,
-                      holidaysList: FFAppState().holidayList1,
+                      holidaysList:
+                          _model.holidayDataPage.map((e) => e.date).toList(),
                       currentDate: getCurrentTimestamp,
+                      currentYear: _model.currentYearDataPage.lastOrNull?.year,
+                      nextYear: _model.otherYearDataPage.lastOrNull?.year,
+                      currentYearSelectableDates:
+                          _model.currentYearDataPage.lastOrNull!.leaveRemain,
+                      nextYearSelectableDates:
+                          _model.otherYearDataPage.lastOrNull!.leaveRemain,
                     ),
                   ),
                 ),

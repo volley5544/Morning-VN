@@ -569,7 +569,16 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         .showSnackBar(
                                                       SnackBar(
                                                         content: Text(
-                                                          'Xin vui lòng nhập mật khẩu',
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getVariableText(
+                                                            enText:
+                                                                'Please enter your password',
+                                                            viText:
+                                                                'Xin vui lòng nhập mật khẩu',
+                                                            thText:
+                                                                'กรุณากรอกรหัสผ่าน',
+                                                          ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -598,7 +607,16 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       .showSnackBar(
                                                     SnackBar(
                                                       content: Text(
-                                                        'Vui lòng nhập tên người dùng',
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getVariableText(
+                                                          enText:
+                                                              'Please enter your username',
+                                                          viText:
+                                                              'Vui lòng nhập tên người dùng',
+                                                          thText:
+                                                              'กรุณากรอกชื่อผู้ใช้งาน',
+                                                        ),
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium
@@ -650,27 +668,31 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       401) {
                                                     ScaffoldMessenger.of(
                                                             context)
-                                                        .clearSnackBars();
-                                                    ScaffoldMessenger.of(
-                                                            context)
                                                         .showSnackBar(
                                                       SnackBar(
                                                         content: Text(
-                                                          '${AuthenAPICall.messagelayer1(
-                                                            (_model.authAPIOutput
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                          )}',
-                                                          style: const TextStyle(
-                                                            color: Colors.white,
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getVariableText(
+                                                            enText:
+                                                                'User not found, or Username or Password is incorrect.',
+                                                            viText:
+                                                                'Không tìm thấy người dùng hoặc Tên đăng nhập hoặc Mật khẩu không chính xác.',
+                                                            thText:
+                                                                'ไม่พบผู้ใช้งาน Username หรือ Password ไม่ถูกต้อง',
+                                                          ),
+                                                          style: TextStyle(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
                                                           ),
                                                         ),
                                                         duration: const Duration(
-                                                            milliseconds: 3000),
+                                                            milliseconds: 4000),
                                                         backgroundColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryText,
+                                                                .secondary,
                                                       ),
                                                     );
                                                     if (shouldSetState) {
@@ -685,7 +707,14 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       return WebViewAware(
                                                         child: AlertDialog(
                                                           content: Text(
-                                                              'พบข้อผิดพลาด (${(_model.authAPIOutput?.statusCode ?? 200).toString()})'),
+                                                              '${'${FFLocalizations.of(context).getVariableText(
+                                                            enText:
+                                                                'An error has occurred',
+                                                            viText:
+                                                                'Đã xảy ra lỗi',
+                                                            thText:
+                                                                'พบข้อผิดพลาด',
+                                                          )} ('}${(_model.authAPIOutput?.statusCode ?? 200).toString()})'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>

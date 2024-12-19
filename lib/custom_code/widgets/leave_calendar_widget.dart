@@ -24,6 +24,10 @@ class LeaveCalendarWidget extends StatefulWidget {
     this.selectedColor,
     this.selectedTextColor,
     this.currentDate,
+    this.currentYear,
+    this.nextYear,
+    this.currentYearSelectableDates = '0',
+    this.nextYearSelectableDates = '0',
   });
 
   final double? width;
@@ -33,6 +37,10 @@ class LeaveCalendarWidget extends StatefulWidget {
   final Color? selectedColor;
   final Color? selectedTextColor;
   final DateTime? currentDate;
+  final String? currentYear;
+  final String? nextYear;
+  final String currentYearSelectableDates;
+  final String nextYearSelectableDates;
 
   @override
   State<LeaveCalendarWidget> createState() => _LeaveCalendarWidgetState();
@@ -41,83 +49,105 @@ class LeaveCalendarWidget extends StatefulWidget {
 class _LeaveCalendarWidgetState extends State<LeaveCalendarWidget> {
   DateTime focusDate = DateTime.now();
 
+  // Helper to calculate currentYear and nextYear
+  int get _currentYear =>
+      int.tryParse(widget.currentYear ?? DateTime.now().year.toString()) ??
+      DateTime.now().year;
+  int get _nextYear =>
+      int.tryParse(widget.nextYear ?? (_currentYear + 1).toString()) ??
+      (_currentYear + 1);
+
+  int get _currentYearSelectableDates =>
+      int.tryParse(widget.currentYearSelectableDates) ?? 0;
+  int get _nextYearSelectableDates =>
+      int.tryParse(widget.nextYearSelectableDates) ?? 0;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: widget.width!,
-        child: TableCalendar(
-          focusedDay: focusDate,
-          firstDay: DateTime(2020, 1, 1),
-          lastDay: DateTime(2030, 1, 1),
-          selectedDayPredicate: (day) {
-            // Check if this day is in the list of selected dates
-            return FFAppState().selectedDatesList!.any((selectedDay) =>
-                selectedDay.year == day.year &&
-                selectedDay.month == day.month &&
-                selectedDay.day == day.day);
-          },
-          onDaySelected: (selectedDay, focusedDay) {
-            setState(() {
-              // Toggle date selection
-              print('eiei ${FFAppState().selectedDatesList!}');
-              print('ee ${FFAppState().selectedDatesList!}');
-              print('aa ${focusedDay}');
-              if (FFAppState().selectedDatesList.contains(selectedDay)) {
-                FFAppState().selectedDatesList!.remove(selectedDay);
-                safeSetState(() {});
-              } else {
-                print('in else');
-                FFAppState().selectedDatesList!.add(selectedDay);
-                safeSetState(() {});
-                print(FFAppState().selectedDatesList);
-                print('after else');
+      width: widget.width!,
+      child: TableCalendar(
+        focusedDay: focusDate,
+        firstDay: DateTime(_currentYear, 1, 1),
+        lastDay: DateTime(_nextYear, 12, 31),
+        selectedDayPredicate: (day) {
+          return FFAppState().selectedDatesList!.any((selectedDay) =>
+              selectedDay.year == day.year &&
+              selectedDay.month == day.month &&
+              selectedDay.day == day.day);
+        },
+        onDaySelected: (selectedDay, focusedDay) {
+          setState(() {
+            final currentYearCount = FFAppState()
+                .selectedDatesList!
+                .where((date) => date.year == _currentYear)
+                .length;
+            final nextYearCount = FFAppState()
+                .selectedDatesList!
+                .where((date) => date.year == _nextYear)
+                .length;
+
+            if (FFAppState().selectedDatesList!.contains(selectedDay)) {
+              FFAppState().selectedDatesList!.remove(selectedDay);
+            } else {
+              if (selectedDay.year == _currentYear &&
+                  currentYearCount >= _currentYearSelectableDates) {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content:
+                      Text("You can't select more dates in $_currentYear!"),
+                ));
+                return;
               }
-              safeSetState(() {});
-            });
-          },
-          onPageChanged: (newFocusedDay) {
-            // Update the focused day when the month is changed
-            setState(() {
-              focusDate = newFocusedDay;
-            });
-          },
-          enabledDayPredicate: (day) {
-            // Disable Sundays
-            return checkEnebleDateSelected(day, widget.holidaysList);
-          },
-          startingDayOfWeek: StartingDayOfWeek.monday,
-          calendarStyle: CalendarStyle(
-            selectedTextStyle: TextStyle(
-                color: widget.selectedTextColor != null
-                    ? widget.selectedTextColor
-                    : Colors.white),
-            selectedDecoration: BoxDecoration(
-              color: widget.selectedColor != null
-                  ? widget.selectedColor
-                  : Colors.orange,
-              shape: BoxShape.circle,
-            ),
-            todayDecoration: BoxDecoration(
-              //color: null != null ? Colors.green:Color(0xFFFFCAAA),
-              shape: BoxShape.circle,
-              border: Border.all(
-                  color: widget.todayColor != null
-                      ? widget.todayColor!
-                      : Color(0xFFFFCAAA),
-                  width: 2),
-            ),
-            todayTextStyle: TextStyle(color: Colors.black),
+              if (selectedDay.year == _nextYear &&
+                  nextYearCount >= _nextYearSelectableDates) {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text("You can't select more dates in $_nextYear!"),
+                ));
+                return;
+              }
+
+              FFAppState().selectedDatesList!.add(selectedDay);
+            }
+            safeSetState(() {});
+          });
+        },
+        onPageChanged: (newFocusedDay) {
+          setState(() {
+            focusDate = newFocusedDay;
+          });
+        },
+        enabledDayPredicate: (day) {
+          return checkEnebleDateSelected(day, widget.holidaysList);
+        },
+        startingDayOfWeek: StartingDayOfWeek.monday,
+        calendarStyle: CalendarStyle(
+          selectedTextStyle: TextStyle(
+            color: widget.selectedTextColor ?? Colors.white,
           ),
-          headerVisible: true,
-          headerStyle: HeaderStyle(
-            formatButtonShowsNext: false,
-            titleCentered: false,
-            formatButtonVisible: false,
-            titleTextFormatter: (date, locale) {
-              return DateFormat.yMMMM('en').format(date);
-            },
+          selectedDecoration: BoxDecoration(
+            color: widget.selectedColor ?? Colors.orange,
+            shape: BoxShape.circle,
           ),
-        ));
+          todayDecoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: widget.todayColor ?? Color(0xFFFFCAAA),
+              width: 2,
+            ),
+          ),
+          todayTextStyle: TextStyle(color: Colors.black),
+        ),
+        headerVisible: true,
+        headerStyle: HeaderStyle(
+          formatButtonShowsNext: false,
+          titleCentered: false,
+          formatButtonVisible: false,
+          titleTextFormatter: (date, locale) {
+            return DateFormat.yMMMM('en').format(date);
+          },
+        ),
+      ),
+    );
   }
 }
 
@@ -126,8 +156,6 @@ bool checkEnebleDateSelected(DateTime day, List<String>? holidays) {
       (holidays != null
           ? !holidays.contains('${DateFormat('yyyy-MM-dd').format(day)}')
           : true) &&
-      DateTime.parse('${DateFormat('yyyy-MM-dd').format(day)}').isAfter(
-          DateTime.parse('2024-11-12').add(Duration(
-              days:
-                  -1)))); //&& DateTime.parse('${DateFormat('yyyy-MM-dd').format(day)}').isAfter(DateTime.parse('2024-11-12'))หลังisAfter คือตัวแปรปาล์ม
+      DateTime.parse('${DateFormat('yyyy-MM-dd').format(day)}')
+          .isAfter(DateTime.parse('2024-11-12').add(Duration(days: -1))));
 }

@@ -327,17 +327,17 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                           functions.checkYearHoliday(getCurrentTimestamp)!
                               ? FFLocalizations.of(context).getVariableText(
                                   enText:
-                                      'Announcement of Traditional Holidays for the Year 2025',
-                                  viText: 'Thông báo nghỉ lễ năm 2025',
-                                  thText:
-                                      'ประกาศวันหยุดตามประเพณี ประจำปี 2568',
-                                )
-                              : FFLocalizations.of(context).getVariableText(
-                                  enText:
                                       'Announcement of Traditional Holidays for the Year 2024',
                                   viText: 'Thông báo nghỉ lễ năm 2024',
                                   thText:
-                                      'ประกาศวันหยุดตามประเพณี ประจำปี  2567',
+                                      'ประกาศวันหยุดตามประเพณี ประจำปี 2567',
+                                )
+                              : FFLocalizations.of(context).getVariableText(
+                                  enText:
+                                      'Announcement of Traditional Holidays for the Year 2025',
+                                  viText: 'Thông báo nghỉ lễ năm 2025',
+                                  thText:
+                                      'ประกาศวันหยุดตามประเพณี ประจำปี  2568',
                                 ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
