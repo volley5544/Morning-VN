@@ -992,8 +992,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              context.pushNamed(
-                                                  'EmployeeCheckinPageVol');
+                                              context.pushNamed('TestPage');
                                             },
                                             child: Text(
                                               FFLocalizations.of(context)

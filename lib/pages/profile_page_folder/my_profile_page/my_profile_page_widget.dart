@@ -576,7 +576,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                 ),
                               Text(
                                 '${FFLocalizations.of(context).getVariableText(
-                                  enText: 'Employment Duration:',
+                                  enText: 'Employment Duration: ',
                                   viText: 'Thâm niên làm việc: ',
                                   thText: 'อายุงาน: ',
                                 )}${functions.currentLengthOfWork(FFAppState().profileStartDate)}',
