@@ -55,23 +55,6 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
 
         return;
       }
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return WebViewAware(
-            child: AlertDialog(
-              content:
-                  Text((_model.boolList.toList().indexOf(true)).toString()),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
-                ),
-              ],
-            ),
-          );
-        },
-      );
     });
 
     animationsMap.addAll({
@@ -349,14 +332,6 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               HapticFeedback.mediumImpact();
-                              if (!(FFAppState().isLogin ||
-                                  FFAppState().fromSetPin)) {
-                                Navigator.pop(context);
-
-                                context.pushNamed('pinPage');
-
-                                return;
-                              }
                               await actions.a22();
 
                               context.pushNamed('loginPage');
