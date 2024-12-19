@@ -14,11 +14,13 @@ class NextYearStruct extends FFFirebaseStruct {
     String? leaveLimit,
     String? leaveRemain,
     List<String>? leaveDate,
+    String? year,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _leaveUse = leaveUse,
         _leaveLimit = leaveLimit,
         _leaveRemain = leaveRemain,
         _leaveDate = leaveDate,
+        _year = year,
         super(firestoreUtilData);
 
   // "leave_use" field.
@@ -53,11 +55,19 @@ class NextYearStruct extends FFFirebaseStruct {
 
   bool hasLeaveDate() => _leaveDate != null;
 
+  // "year" field.
+  String? _year;
+  String get year => _year ?? '';
+  set year(String? val) => _year = val;
+
+  bool hasYear() => _year != null;
+
   static NextYearStruct fromMap(Map<String, dynamic> data) => NextYearStruct(
         leaveUse: data['leave_use'] as String?,
         leaveLimit: data['leave_limit'] as String?,
         leaveRemain: data['leave_remain'] as String?,
         leaveDate: getDataList(data['leave_date']),
+        year: data['year'] as String?,
       );
 
   static NextYearStruct? maybeFromMap(dynamic data) =>
@@ -68,6 +78,7 @@ class NextYearStruct extends FFFirebaseStruct {
         'leave_limit': _leaveLimit,
         'leave_remain': _leaveRemain,
         'leave_date': _leaveDate,
+        'year': _year,
       }.withoutNulls;
 
   @override
@@ -88,6 +99,10 @@ class NextYearStruct extends FFFirebaseStruct {
           _leaveDate,
           ParamType.String,
           isList: true,
+        ),
+        'year': serializeParam(
+          _year,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -113,6 +128,11 @@ class NextYearStruct extends FFFirebaseStruct {
           ParamType.String,
           true,
         ),
+        year: deserializeParam(
+          data['year'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -125,18 +145,20 @@ class NextYearStruct extends FFFirebaseStruct {
         leaveUse == other.leaveUse &&
         leaveLimit == other.leaveLimit &&
         leaveRemain == other.leaveRemain &&
-        listEquality.equals(leaveDate, other.leaveDate);
+        listEquality.equals(leaveDate, other.leaveDate) &&
+        year == other.year;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([leaveUse, leaveLimit, leaveRemain, leaveDate]);
+  int get hashCode => const ListEquality()
+      .hash([leaveUse, leaveLimit, leaveRemain, leaveDate, year]);
 }
 
 NextYearStruct createNextYearStruct({
   String? leaveUse,
   String? leaveLimit,
   String? leaveRemain,
+  String? year,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -146,6 +168,7 @@ NextYearStruct createNextYearStruct({
       leaveUse: leaveUse,
       leaveLimit: leaveLimit,
       leaveRemain: leaveRemain,
+      year: year,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

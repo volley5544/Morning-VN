@@ -3,6 +3,17 @@ import 'super_app_page_widget.dart' show SuperAppPageWidget;
 import 'package:flutter/material.dart';
 
 class SuperAppPageModel extends FlutterFlowModel<SuperAppPageWidget> {
+  ///  Local state fields for this page.
+
+  List<bool> boolList = [false, false, true, false, false];
+  void addToBoolList(bool item) => boolList.add(item);
+  void removeFromBoolList(bool item) => boolList.remove(item);
+  void removeAtIndexFromBoolList(int index) => boolList.removeAt(index);
+  void insertAtIndexInBoolList(int index, bool item) =>
+      boolList.insert(index, item);
+  void updateBoolListAtIndex(int index, Function(bool) updateFn) =>
+      boolList[index] = updateFn(boolList[index]);
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for PageViewBanner widget.

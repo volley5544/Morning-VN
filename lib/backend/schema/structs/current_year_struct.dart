@@ -13,11 +13,13 @@ class CurrentYearStruct extends FFFirebaseStruct {
     List<LeaveDateStruct>? leaveDate,
     String? leaveLimit,
     String? leaveRemain,
+    String? year,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _leaveUse = leaveUse,
         _leaveDate = leaveDate,
         _leaveLimit = leaveLimit,
         _leaveRemain = leaveRemain,
+        _year = year,
         super(firestoreUtilData);
 
   // "leave_use" field.
@@ -52,6 +54,13 @@ class CurrentYearStruct extends FFFirebaseStruct {
 
   bool hasLeaveRemain() => _leaveRemain != null;
 
+  // "year" field.
+  String? _year;
+  String get year => _year ?? '';
+  set year(String? val) => _year = val;
+
+  bool hasYear() => _year != null;
+
   static CurrentYearStruct fromMap(Map<String, dynamic> data) =>
       CurrentYearStruct(
         leaveUse: data['leave_use'] as String?,
@@ -61,6 +70,7 @@ class CurrentYearStruct extends FFFirebaseStruct {
         ),
         leaveLimit: data['leave_limit'] as String?,
         leaveRemain: data['leave_remain'] as String?,
+        year: data['year'] as String?,
       );
 
   static CurrentYearStruct? maybeFromMap(dynamic data) => data is Map
@@ -72,6 +82,7 @@ class CurrentYearStruct extends FFFirebaseStruct {
         'leave_date': _leaveDate?.map((e) => e.toMap()).toList(),
         'leave_limit': _leaveLimit,
         'leave_remain': _leaveRemain,
+        'year': _year,
       }.withoutNulls;
 
   @override
@@ -91,6 +102,10 @@ class CurrentYearStruct extends FFFirebaseStruct {
         ),
         'leave_remain': serializeParam(
           _leaveRemain,
+          ParamType.String,
+        ),
+        'year': serializeParam(
+          _year,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -118,6 +133,11 @@ class CurrentYearStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        year: deserializeParam(
+          data['year'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -130,18 +150,20 @@ class CurrentYearStruct extends FFFirebaseStruct {
         leaveUse == other.leaveUse &&
         listEquality.equals(leaveDate, other.leaveDate) &&
         leaveLimit == other.leaveLimit &&
-        leaveRemain == other.leaveRemain;
+        leaveRemain == other.leaveRemain &&
+        year == other.year;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([leaveUse, leaveDate, leaveLimit, leaveRemain]);
+  int get hashCode => const ListEquality()
+      .hash([leaveUse, leaveDate, leaveLimit, leaveRemain, year]);
 }
 
 CurrentYearStruct createCurrentYearStruct({
   String? leaveUse,
   String? leaveLimit,
   String? leaveRemain,
+  String? year,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -151,6 +173,7 @@ CurrentYearStruct createCurrentYearStruct({
       leaveUse: leaveUse,
       leaveLimit: leaveLimit,
       leaveRemain: leaveRemain,
+      year: year,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
