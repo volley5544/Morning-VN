@@ -21,18 +21,31 @@ class TestCalendarModel extends FlutterFlowModel<TestCalendarWidget> {
           int index, Function(CalendarDataStruct) updateFn) =>
       holidayDataPage[index] = updateFn(holidayDataPage[index]);
 
-  List<LeaveTypeDataStruct> leaveTypeDataPage = [];
-  void addToLeaveTypeDataPage(LeaveTypeDataStruct item) =>
-      leaveTypeDataPage.add(item);
-  void removeFromLeaveTypeDataPage(LeaveTypeDataStruct item) =>
-      leaveTypeDataPage.remove(item);
-  void removeAtIndexFromLeaveTypeDataPage(int index) =>
-      leaveTypeDataPage.removeAt(index);
-  void insertAtIndexInLeaveTypeDataPage(int index, LeaveTypeDataStruct item) =>
-      leaveTypeDataPage.insert(index, item);
-  void updateLeaveTypeDataPageAtIndex(
-          int index, Function(LeaveTypeDataStruct) updateFn) =>
-      leaveTypeDataPage[index] = updateFn(leaveTypeDataPage[index]);
+  List<CurrentYearStruct> currentYearDataPage = [];
+  void addToCurrentYearDataPage(CurrentYearStruct item) =>
+      currentYearDataPage.add(item);
+  void removeFromCurrentYearDataPage(CurrentYearStruct item) =>
+      currentYearDataPage.remove(item);
+  void removeAtIndexFromCurrentYearDataPage(int index) =>
+      currentYearDataPage.removeAt(index);
+  void insertAtIndexInCurrentYearDataPage(int index, CurrentYearStruct item) =>
+      currentYearDataPage.insert(index, item);
+  void updateCurrentYearDataPageAtIndex(
+          int index, Function(CurrentYearStruct) updateFn) =>
+      currentYearDataPage[index] = updateFn(currentYearDataPage[index]);
+
+  List<OtherYearStruct> otherYearDataPage = [];
+  void addToOtherYearDataPage(OtherYearStruct item) =>
+      otherYearDataPage.add(item);
+  void removeFromOtherYearDataPage(OtherYearStruct item) =>
+      otherYearDataPage.remove(item);
+  void removeAtIndexFromOtherYearDataPage(int index) =>
+      otherYearDataPage.removeAt(index);
+  void insertAtIndexInOtherYearDataPage(int index, OtherYearStruct item) =>
+      otherYearDataPage.insert(index, item);
+  void updateOtherYearDataPageAtIndex(
+          int index, Function(OtherYearStruct) updateFn) =>
+      otherYearDataPage[index] = updateFn(otherYearDataPage[index]);
 
   ///  State fields for stateful widgets in this page.
 

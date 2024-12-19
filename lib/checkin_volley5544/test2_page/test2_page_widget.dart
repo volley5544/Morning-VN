@@ -66,7 +66,7 @@ class _Test2PageWidgetState extends State<Test2PageWidget> {
         (_model.apiResult235?.jsonBody ?? ''),
       )!
           .toList()
-          .cast<LeaveTypeDataStruct>();
+          .cast<TestLeaveListDataStruct>();
       _model.currentYearData = GetLeaveListCall.currentyear(
         (_model.apiResult235?.jsonBody ?? ''),
       )!
@@ -76,7 +76,7 @@ class _Test2PageWidgetState extends State<Test2PageWidget> {
         (_model.apiResult235?.jsonBody ?? ''),
       )!
           .toList()
-          .cast<NextYearStruct>();
+          .cast<OtherYearStruct>();
       safeSetState(() {});
       Navigator.pop(context);
     });

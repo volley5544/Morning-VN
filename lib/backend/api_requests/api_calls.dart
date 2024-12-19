@@ -589,14 +589,14 @@ class GetLeaveListCall {
           .map((x) => CheckinDataStruct.maybeFromMap(x))
           .withoutNulls
           .toList();
-  static List<LeaveTypeDataStruct>? leavelist(dynamic response) =>
+  static List<TestLeaveListDataStruct>? leavelist(dynamic response) =>
       (getJsonField(
         response,
         r'''$.results.leave_list.*''',
         true,
       ) as List?)
           ?.withoutNulls
-          .map((x) => LeaveTypeDataStruct.maybeFromMap(x))
+          .map((x) => TestLeaveListDataStruct.maybeFromMap(x))
           .withoutNulls
           .toList();
   static List<CalendarDataStruct>? listcalendar(dynamic response) =>
@@ -619,13 +619,13 @@ class GetLeaveListCall {
           .map((x) => CurrentYearStruct.maybeFromMap(x))
           .withoutNulls
           .toList();
-  static List<NextYearStruct>? otheryear(dynamic response) => (getJsonField(
+  static List<OtherYearStruct>? otheryear(dynamic response) => (getJsonField(
         response,
         r'''$.results.leave_list.*.other_year''',
         true,
       ) as List?)
           ?.withoutNulls
-          .map((x) => NextYearStruct.maybeFromMap(x))
+          .map((x) => OtherYearStruct.maybeFromMap(x))
           .withoutNulls
           .toList();
 }
