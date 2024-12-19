@@ -1564,12 +1564,13 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                     ),
                                   ),
                                 ),
-                              if (responsiveVisibility(
-                                context: context,
-                                tablet: false,
-                                tabletLandscape: false,
-                                desktop: false,
-                              ))
+                              if (false &&
+                                  responsiveVisibility(
+                                    context: context,
+                                    tablet: false,
+                                    tabletLandscape: false,
+                                    desktop: false,
+                                  ))
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 10.0, 30.0),

@@ -10,6 +10,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'my_profile_page_model.dart';
@@ -31,6 +32,9 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MyProfilePageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {});
   }
 
   @override
@@ -571,11 +575,11 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                       ),
                                 ),
                               Text(
-                                '${FFLocalizations.of(context).getVariableText(
+                                FFLocalizations.of(context).getVariableText(
                                   enText: 'Employment Duration:',
                                   viText: 'Thâm niên làm việc: ',
                                   thText: 'อายุงาน: ',
-                                )}${functions.currentLengthOfWork(FFAppState().profileStartDate)}',
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(

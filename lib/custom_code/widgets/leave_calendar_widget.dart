@@ -72,8 +72,8 @@ class _LeaveCalendarWidgetState extends State<LeaveCalendarWidget> {
       width: widget.width!,
       child: TableCalendar(
         focusedDay: focusDate,
-        firstDay: DateTime.parse(startdate),
-        lastDay: DateTime.parse(enddate),
+        firstDay: DateTime.parse(widget.startdate!),
+        lastDay: DateTime.parse(widget.enddate!),
         selectedDayPredicate: (day) {
           return FFAppState().selectedDatesList!.any((selectedDay) =>
               selectedDay.year == day.year &&
