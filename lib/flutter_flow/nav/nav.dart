@@ -221,12 +221,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'leaveName',
               ParamType.String,
             ),
-            leaveDetails: params.getParam<LeaveDetailsStruct>(
-              'leaveDetails',
-              ParamType.DataStruct,
-              isList: true,
-              structBuilder: LeaveDetailsStruct.fromSerializableMap,
-            ),
             leaveStartDate: params.getParam(
               'leaveStartDate',
               ParamType.String,

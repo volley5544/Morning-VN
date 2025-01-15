@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/pages/checkin/loading_scene/loading_scene_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
@@ -29,7 +28,6 @@ class EditLeavePageWidget extends StatefulWidget {
     this.userPhoneNumber,
     this.leaveID,
     this.leaveName,
-    this.leaveDetails,
     this.leaveStartDate,
     this.leaveEndDate,
   });
@@ -42,7 +40,6 @@ class EditLeavePageWidget extends StatefulWidget {
   final String? userPhoneNumber;
   final String? leaveID;
   final String? leaveName;
-  final List<LeaveDetailsStruct>? leaveDetails;
   final String? leaveStartDate;
   final String? leaveEndDate;
 
@@ -62,27 +59,6 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await showModalBottomSheet(
-        isScrollControlled: true,
-        backgroundColor: Colors.transparent,
-        enableDrag: false,
-        context: context,
-        builder: (context) {
-          return WebViewAware(
-            child: GestureDetector(
-              onTap: () {
-                FocusScope.of(context).unfocus();
-                FocusManager.instance.primaryFocus?.unfocus();
-              },
-              child: Padding(
-                padding: MediaQuery.viewInsetsOf(context),
-                child: const LoadingSceneWidget(),
-              ),
-            ),
-          );
-        },
-      ).then((value) => safeSetState(() {}));
-
       _model.apiResultLeaveList = await GetLeaveListCall.call(
         apiUrl: FFAppState().apiUrlAppState,
         token: FFAppState().accessToken,

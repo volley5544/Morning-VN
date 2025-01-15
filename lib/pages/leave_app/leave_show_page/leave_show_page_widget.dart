@@ -1270,15 +1270,6 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                       ParamType
                                                                           .String,
                                                                     ),
-                                                                    'leaveDetails':
-                                                                        serializeParam(
-                                                                      leaveItemItem
-                                                                          .leaveDetails,
-                                                                      ParamType
-                                                                          .DataStruct,
-                                                                      isList:
-                                                                          true,
-                                                                    ),
                                                                     'leaveStartDate':
                                                                         serializeParam(
                                                                       leaveItemItem
@@ -1295,7 +1286,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                     ),
                                                                     'leaveDate':
                                                                         serializeParam(
-                                                                      '',
+                                                                      'kjk',
                                                                       ParamType
                                                                           .String,
                                                                     ),
