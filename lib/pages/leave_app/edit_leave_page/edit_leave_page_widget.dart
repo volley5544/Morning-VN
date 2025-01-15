@@ -1,17 +1,50 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/pages/checkin/loading_scene/loading_scene_widget.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'edit_leave_page_model.dart';
 export 'edit_leave_page_model.dart';
 
 class EditLeavePageWidget extends StatefulWidget {
-  const EditLeavePageWidget({super.key});
+  const EditLeavePageWidget({
+    super.key,
+    this.leaveType,
+    this.leavePeriod,
+    this.leaveCountDay,
+    this.leaveReason,
+    this.leaveDate,
+    this.userPhoneNumber,
+    this.leaveID,
+    this.leaveName,
+    this.leaveDetails,
+    this.leaveStartDate,
+    this.leaveEndDate,
+  });
+
+  final String? leaveType;
+  final String? leavePeriod;
+  final String? leaveCountDay;
+  final String? leaveReason;
+  final String? leaveDate;
+  final String? userPhoneNumber;
+  final String? leaveID;
+  final String? leaveName;
+  final List<LeaveDetailsStruct>? leaveDetails;
+  final String? leaveStartDate;
+  final String? leaveEndDate;
 
   @override
   State<EditLeavePageWidget> createState() => _EditLeavePageWidgetState();
@@ -27,10 +60,84 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
     super.initState();
     _model = createModel(context, () => EditLeavePageModel());
 
-    _model.phoneNumberTextController ??= TextEditingController();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await showModalBottomSheet(
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        enableDrag: false,
+        context: context,
+        builder: (context) {
+          return WebViewAware(
+            child: GestureDetector(
+              onTap: () {
+                FocusScope.of(context).unfocus();
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
+              child: Padding(
+                padding: MediaQuery.viewInsetsOf(context),
+                child: const LoadingSceneWidget(),
+              ),
+            ),
+          );
+        },
+      ).then((value) => safeSetState(() {}));
+
+      _model.apiResultLeaveList = await GetLeaveListCall.call(
+        apiUrl: FFAppState().apiUrlAppState,
+        token: FFAppState().accessToken,
+      );
+
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return WebViewAware(
+            child: AlertDialog(
+              content: const Text('Call Api เรียบร้อยแล้ว'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: const Text('Ok'),
+                ),
+              ],
+            ),
+          );
+        },
+      );
+      _model.holidayDataPage = GetLeaveListCall.listcalendar(
+        (_model.apiResultLeaveList?.jsonBody ?? ''),
+      )!
+          .toList()
+          .cast<CalendarDataStruct>();
+      _model.currentYearDataPage = GetLeaveListCall.currentyear(
+        (_model.apiResultLeaveList?.jsonBody ?? ''),
+      )!
+          .toList()
+          .cast<CurrentYearStruct>();
+      _model.otherYearDataPage = GetLeaveListCall.otheryear(
+        (_model.apiResultLeaveList?.jsonBody ?? ''),
+      )!
+          .toList()
+          .cast<OtherYearStruct>();
+      _model.listLeaveData = GetLeaveListCall.leavelist(
+        (_model.apiResultLeaveList?.jsonBody ?? ''),
+      )!
+          .toList()
+          .cast<LeaveListDataStruct>();
+      safeSetState(() {});
+      Navigator.pop(context);
+    });
+
+    _model.textController1 ??=
+        TextEditingController(text: widget.leaveCountDay);
+    _model.textFieldFocusNode ??= FocusNode();
+
+    _model.phoneNumberTextController ??=
+        TextEditingController(text: widget.userPhoneNumber);
     _model.phoneNumberFocusNode ??= FocusNode();
 
-    _model.reasonToLeaveTextController ??= TextEditingController();
+    _model.reasonToLeaveTextController ??=
+        TextEditingController(text: widget.leaveReason);
     _model.reasonToLeaveFocusNode ??= FocusNode();
   }
 
@@ -43,6 +150,8 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -128,9 +237,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      FFLocalizations.of(context).getText(
-                                        'od7tp6s4' /* ประเภทการลา :  */,
-                                      ),
+                                      'ประเภทการ : ${widget.leaveName}',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -167,53 +274,51 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                15.0, 0.0, 15.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Expanded(
-                                  child: FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
-                                    },
-                                    text: FFLocalizations.of(context).getText(
-                                      '6qo2iyv8' /* ระบุวันที่ */,
-                                    ),
-                                    icon: const Icon(
-                                      Icons.calendar_month_rounded,
-                                      size: 26.0,
-                                    ),
-                                    options: FFButtonOptions(
-                                      width: MediaQuery.sizeOf(context).width *
-                                          0.92,
-                                      height: 60.0,
-                                      padding: const EdgeInsets.all(0.0),
-                                      iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Outfit',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            letterSpacing: 0.0,
-                                          ),
-                                      elevation: 2.0,
-                                      borderSide: const BorderSide(
-                                        color: Color(0xFFBDBDBD),
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                          Divider(
+                            thickness: 2.0,
+                            color: FlutterFlowTheme.of(context).alternate,
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: 400.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                             ),
+                            child: SizedBox(
+                              width: double.infinity,
+                              height: MediaQuery.sizeOf(context).height * 1.0,
+                              child: custom_widgets.LeaveCalendarWidget(
+                                width: double.infinity,
+                                height: MediaQuery.sizeOf(context).height * 1.0,
+                                todayColor: const Color(0xFFFF843D),
+                                selectedColor: const Color(0xFFFF843D),
+                                selectedTextColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                holidaysList: _model.holidayDataPage
+                                    .map((e) => e.date)
+                                    .toList(),
+                                currentDate: getCurrentTimestamp,
+                                currentYear:
+                                    _model.currentYearDataPage.lastOrNull?.year,
+                                nextYear:
+                                    _model.otherYearDataPage.lastOrNull?.year,
+                                currentYearSelectableDates: _model
+                                    .currentYearDataPage
+                                    .lastOrNull!
+                                    .leaveRemain,
+                                nextYearSelectableDates: _model
+                                    .otherYearDataPage.lastOrNull!.leaveRemain,
+                                startdate:
+                                    _model.listLeaveData.lastOrNull?.startDate,
+                                enddate:
+                                    _model.listLeaveData.lastOrNull?.endDate,
+                              ),
+                            ),
+                          ),
+                          Divider(
+                            thickness: 2.0,
+                            color: FlutterFlowTheme.of(context).alternate,
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
@@ -246,21 +351,30 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                 Expanded(
                                   child: FlutterFlowDropDown<String>(
                                     controller:
-                                        _model.dropDownValueController ??=
-                                            FormFieldController<String>(null),
-                                    options: [
+                                        _model.leaveTimeValueController ??=
+                                            FormFieldController<String>(
+                                      _model.leaveTimeValue ??=
+                                          widget.leavePeriod,
+                                    ),
+                                    options: List<String>.from(
+                                        ['full', 'half', 'half']),
+                                    optionLabels: [
                                       FFLocalizations.of(context).getText(
-                                        'wyd50c1m' /* Option 1 */,
+                                        '03inv98e' /* ลาเต็มวัน */,
                                       ),
                                       FFLocalizations.of(context).getText(
-                                        'lqaxawpl' /* Option 2 */,
+                                        'oy5uij8u' /* ลาครึ่งวันเช้า */,
                                       ),
                                       FFLocalizations.of(context).getText(
-                                        'gb2d3owg' /* Option 3 */,
+                                        'povs34al' /* ลาครึ่งวันบ่าย */,
                                       )
                                     ],
-                                    onChanged: (val) => safeSetState(
-                                        () => _model.dropDownValue = val),
+                                    onChanged: (val) async {
+                                      safeSetState(
+                                          () => _model.leaveTimeValue = val);
+                                      FFAppState().allowFileUpload = false;
+                                      safeSetState(() {});
+                                    },
                                     width: 90.0,
                                     height: 60.0,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -272,7 +386,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                         ),
                                     hintText:
                                         FFLocalizations.of(context).getText(
-                                      '7aqnk1ld' /* กรุณาเลือก... */,
+                                      '84tw9mm6' /* กรุณาเลือก... */,
                                     ),
                                     icon: Icon(
                                       Icons.keyboard_arrow_down_rounded,
@@ -321,18 +435,96 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Text(
-                                      FFLocalizations.of(context).getText(
-                                        'i8cw499x' /* ใส่จำนวนวันที่ต้องการลา */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Outfit',
-                                            fontSize: 15.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
+                                    Expanded(
+                                      child: SizedBox(
+                                        width: 200.0,
+                                        child: TextFormField(
+                                          controller: _model.textController1,
+                                          focusNode: _model.textFieldFocusNode,
+                                          autofocus: false,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            isDense: true,
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'kvgvg8v2' /* TextField */,
+                                            ),
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: const BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: const BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            filled: true,
+                                            fillColor: const Color(0xFFF5F5F5),
                                           ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                letterSpacing: 0.0,
+                                              ),
+                                          cursorColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                          validator: _model
+                                              .textController1Validator
+                                              .asValidator(context),
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -565,6 +757,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                           lineHeight: 3.0,
                                         ),
                                     textAlign: TextAlign.start,
+                                    maxLines: 3,
                                     cursorColor: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     validator: _model

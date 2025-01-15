@@ -75,7 +75,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              'c1mkkoeu' /* รายการ */,
+              'c1mkkoeu' /* List */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
@@ -100,8 +100,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                       FormFieldController<String>(
                     _model.monthSelectValue ??= true
                         ? ''
-                        : functions.currentTimeToMonthThai(
-                            getCurrentTimestamp.toString()),
+                        : functions.currentTimeToMonthThai(getCurrentTimestamp),
                   ),
                   options: [
                     FFLocalizations.of(context).getText(
@@ -151,7 +150,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                         letterSpacing: 0.0,
                       ),
                   hintText: FFLocalizations.of(context).getText(
-                    'yaf5hk1f' /* กรุณาเลือกเดือนที่ต้องการหา */,
+                    'yaf5hk1f' /* Please select the month you wa... */,
                   ),
                   icon: const FaIcon(
                     FontAwesomeIcons.solidCalendarAlt,
@@ -185,17 +184,17 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                         tabs: [
                           Tab(
                             text: FFLocalizations.of(context).getText(
-                              'zog3trpj' /* อนุมัติ */,
+                              'zog3trpj' /* Approve */,
                             ),
                           ),
                           Tab(
                             text: FFLocalizations.of(context).getText(
-                              'ju9gujxi' /* ไม่อนุมัติ */,
+                              'ju9gujxi' /* Not approved */,
                             ),
                           ),
                           Tab(
                             text: FFLocalizations.of(context).getText(
-                              'bbrf4wkp' /* ยกเลิก */,
+                              'bbrf4wkp' /* Cancel */,
                             ),
                           ),
                         ],
@@ -299,7 +298,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'wu7bwqpo' /* ประเภทการลา: */,
+                                                            'wu7bwqpo' /* Type of leave: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -383,7 +382,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'nzyrvgfg' /* วันที่ทำรายการ: */,
+                                                            'nzyrvgfg' /* Transaction date: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -467,7 +466,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            '6si6wxv9' /* วันที่ลา: */,
+                                                            '6si6wxv9' /* Leave date: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -551,7 +550,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'f92owody' /* จำนวนวันที่ลา: */,
+                                                            'f92owody' /* Number of leave days: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -637,7 +636,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            '68jor54s' /* ช่วงเวลา: */,
+                                                            '68jor54s' /* Time period: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -723,7 +722,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'fboxmgh9' /* เหตุผลการลา: */,
+                                                            'fboxmgh9' /* Reason for leave: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -800,7 +799,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'vecl8vum' /* ยกเลิก */,
+                                                          'vecl8vum' /* Cancel */,
                                                         ),
                                                         icon: const Icon(
                                                           Icons.cancel,
@@ -960,7 +959,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            '8t704b06' /* ประเภทการลา: */,
+                                                            '8t704b06' /* Type of leave: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -1044,7 +1043,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'ys1edxki' /* วันที่ทำรายการ: */,
+                                                            'ys1edxki' /* Transaction date: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -1128,7 +1127,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            '7fjre75u' /* วันที่ลา: */,
+                                                            '7fjre75u' /* Leave date: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -1212,7 +1211,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'sucyvupt' /* จำนวนวันที่ลา: */,
+                                                            'sucyvupt' /* Number of leave days: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -1298,7 +1297,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'btjotui7' /* ช่วงเวลา: */,
+                                                            'btjotui7' /* Time period: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -1384,7 +1383,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'h9xs8tj1' /* เหตุผลการลา: */,
+                                                            'h9xs8tj1' /* Reason for leave: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -1540,7 +1539,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            '9rn3l90n' /* ประเภทการลา: */,
+                                                            '9rn3l90n' /* Type of leave: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -1624,7 +1623,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'm5y8iz1t' /* วันที่ทำรายการ: */,
+                                                            'm5y8iz1t' /* Transaction date: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -1708,7 +1707,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'mkio0twd' /* วันที่ลา: */,
+                                                            'mkio0twd' /* Leave date: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -1792,7 +1791,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            '6s0ra4ev' /* จำนวนวันที่ลา: */,
+                                                            '6s0ra4ev' /* Number of leave days: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -1878,7 +1877,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'yvyhvbem' /* ช่วงเวลา: */,
+                                                            'yvyhvbem' /* Time period: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -1964,7 +1963,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'wsbsizda' /* เหตุผลการลา: */,
+                                                            'wsbsizda' /* Reason for leave: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -2050,7 +2049,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'fou3q3o0' /* ถูกยกเลิกโดย: */,
+                                                            'fou3q3o0' /* Canceled by: */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)

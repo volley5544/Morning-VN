@@ -66,7 +66,7 @@ class _Test2PageWidgetState extends State<Test2PageWidget> {
         (_model.apiResult235?.jsonBody ?? ''),
       )!
           .toList()
-          .cast<TestLeaveListDataStruct>();
+          .cast<LeaveListDataStruct>();
       _model.currentYearData = GetLeaveListCall.currentyear(
         (_model.apiResult235?.jsonBody ?? ''),
       )!

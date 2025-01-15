@@ -76,8 +76,16 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
           builder: (alertDialogContext) {
             return WebViewAware(
               child: AlertDialog(
-                title: const Text('ระบบ'),
-                content: const Text('กรุณาเปิดGPS ก่อนทำรายการ'),
+                title: Text(FFLocalizations.of(context).getVariableText(
+                  enText: 'System',
+                  viText: 'Hệ thống',
+                  thText: 'ระบบ',
+                )),
+                content: Text(FFLocalizations.of(context).getVariableText(
+                  enText: 'Please turn on GPS before proceeding.',
+                  viText: 'Vui lòng bật GPS trước khi thực hiện giao dịch.',
+                  thText: 'กรุณาเปิด GPS ก่อนทำรายการ',
+                )),
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
@@ -263,7 +271,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'ow65a9dm' /* รหัสสาขา: */,
+                                                'ow65a9dm' /* Branch code: */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -303,7 +311,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                 hintText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'ys1nicdw' /* กรอกรหัสสาขา */,
+                                                  'ys1nicdw' /* Please enter branch code */,
                                                 ),
                                                 hintStyle: FlutterFlowTheme.of(
                                                         context)
@@ -412,7 +420,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '3zbhrtsz' /* ละติจูด ใหม่: */,
+                                                '3zbhrtsz' /* New latitude: */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -452,7 +460,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                 hintText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'p8e64plt' /* กรอกละติจูด */,
+                                                  'p8e64plt' /* Please enter latitude */,
                                                 ),
                                                 hintStyle: FlutterFlowTheme.of(
                                                         context)
@@ -561,7 +569,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'kgjyms41' /* ลองจิจูด ใหม่: */,
+                                                'kgjyms41' /* New longitude: */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -601,7 +609,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                 hintText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'gpgeky4b' /* กรอกลองจิจูด */,
+                                                  'gpgeky4b' /* Please enter longitude */,
                                                 ),
                                                 hintStyle: FlutterFlowTheme.of(
                                                         context)
@@ -706,8 +714,15 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
                                               child: AlertDialog(
-                                                content:
-                                                    const Text('กรุณากรอกรหัสสาขา'),
+                                                content: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  enText:
+                                                      'Please enter the branch code.',
+                                                  viText:
+                                                      'Vui lòng nhập mã chi nhánh.',
+                                                  thText: 'กรุณากรอกรหัสสาขา',
+                                                )),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -732,8 +747,15 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
                                               child: AlertDialog(
-                                                content:
-                                                    const Text('กรุณากรอกละติจูด'),
+                                                content: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  enText:
+                                                      'Please enter the latitude.',
+                                                  viText:
+                                                      'Vui lòng nhập vĩ độ.',
+                                                  thText: 'กรุณากรอกละติจูด',
+                                                )),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -758,8 +780,15 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
                                               child: AlertDialog(
-                                                content:
-                                                    const Text('กรุณากรอกลองติจูด'),
+                                                content: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  enText:
+                                                      'Please enter the longitude.',
+                                                  viText:
+                                                      'Vui lòng nhập kinh độ.',
+                                                  thText: 'กรุณากรอกลองติจูด',
+                                                )),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -800,8 +829,16 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
                                               child: AlertDialog(
-                                                content: const Text(
-                                                    'กรุณากรอก ละติจุด ลองจิจูด ให้ถูกต้อง'),
+                                                content: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  enText:
+                                                      'Please enter the latitude and longitude correctly.',
+                                                  viText:
+                                                      'Vui lòng nhập đúng vĩ độ và kinh độ.',
+                                                  thText:
+                                                      'กรุณากรอก ละติจุด ลองจิจูด ให้ถูกต้อง',
+                                                )),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -960,8 +997,13 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                             builder: (alertDialogContext) {
                                               return WebViewAware(
                                                 child: AlertDialog(
-                                                  content: const Text(
-                                                      'ไม่พบสาขาที่กรอก กรุณาเพิ่มสาขา'),
+                                                  content: Text(
+                                                      GetBranchLocationCall
+                                                          .message(
+                                                    (_model.locationCheckApi
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )!),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
@@ -978,6 +1020,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                             isScrollControlled: true,
                                             backgroundColor: Colors.transparent,
                                             enableDrag: false,
+                                            useSafeArea: true,
                                             context: context,
                                             builder: (context) {
                                               return WebViewAware(
@@ -1017,7 +1060,12 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                               return WebViewAware(
                                                 child: AlertDialog(
                                                   content: Text(
-                                                      'พบข้อผิดพลาด(${GetBranchLocationCall.code(
+                                                      '${FFLocalizations.of(context).getVariableText(
+                                                    enText:
+                                                        'Error encountered(',
+                                                    viText: 'Đã xảy ra lỗi(',
+                                                    thText: 'พบข้อผิดพลาด(',
+                                                  )}${GetBranchLocationCall.code(
                                                     (_model.locationCheckApi
                                                             ?.jsonBody ??
                                                         ''),
@@ -1047,7 +1095,11 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                             return WebViewAware(
                                               child: AlertDialog(
                                                 content: Text(
-                                                    'พบข้อผิดพลาด(${(_model.locationCheckApi?.statusCode ?? 200).toString()})'),
+                                                    '${FFLocalizations.of(context).getVariableText(
+                                                  enText: 'Error encountered(',
+                                                  viText: 'Đã xảy ra lỗi(',
+                                                  thText: 'พบข้อผิดพลาด(',
+                                                )}${(_model.locationCheckApi?.statusCode ?? 200).toString()})'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -1070,7 +1122,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                       if (shouldSetState) safeSetState(() {});
                                     },
                                     text: FFLocalizations.of(context).getText(
-                                      'eq31tpvr' /* ค้นหา */,
+                                      'eq31tpvr' /* Search */,
                                     ),
                                     options: FFButtonOptions(
                                       width: 130.0,
@@ -1119,7 +1171,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                         flex: 4,
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'al0dzpl0' /* ระยะห่าง: */,
+                                            'al0dzpl0' /* Distance: */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -1175,7 +1227,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                               ),
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'nbhpres0' /* พิกัดเก่า */,
+                                  'nbhpres0' /* Old location */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -1257,7 +1309,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                               ),
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'dh5tylyg' /* พิกัดใหม่ */,
+                                  'dh5tylyg' /* New location */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

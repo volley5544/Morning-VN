@@ -100,9 +100,9 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
           ),
           MoveEffect(
             curve: Curves.easeInOut,
-            delay: 350.0.ms,
+            delay: 150.0.ms,
             duration: 500.0.ms,
-            begin: const Offset(-100.0, 0.0),
+            begin: const Offset(0.0, -100.0),
             end: const Offset(0.0, 0.0),
           ),
         ],
@@ -151,7 +151,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
                   color: Colors.white,
-                  fontSize: 32.0,
+                  fontSize: 28.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                 ),

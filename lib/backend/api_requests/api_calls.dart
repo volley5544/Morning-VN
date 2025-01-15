@@ -570,14 +570,14 @@ class GetLeaveListCall {
         response,
         r'''$.message''',
       ));
-  static List<TestLeaveListDataStruct>? leavelist(dynamic response) =>
+  static List<LeaveListDataStruct>? leavelist(dynamic response) =>
       (getJsonField(
         response,
         r'''$.results.leave_list.*''',
         true,
       ) as List?)
           ?.withoutNulls
-          .map((x) => TestLeaveListDataStruct.maybeFromMap(x))
+          .map((x) => LeaveListDataStruct.maybeFromMap(x))
           .withoutNulls
           .toList();
   static List<CalendarDataStruct>? listcalendar(dynamic response) =>
@@ -607,6 +607,75 @@ class GetLeaveListCall {
       ) as List?)
           ?.withoutNulls
           .map((x) => OtherYearStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+}
+
+class GetLeaveHistoryCall {
+  static Future<ApiCallResponse> call({
+    String? apiUrl = '',
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getLeaveHistory',
+      apiUrl: '$apiUrl/api/leave/history',
+      callType: ApiCallType.POST,
+      headers: {
+        'ContentType': 'application/json; charset=utf-8,',
+        'Authorization': 'Bearer  $token',
+      },
+      params: {},
+      bodyType: BodyType.NONE,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static int? code(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+  static String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  static List? currentYear(dynamic response) => getJsonField(
+        response,
+        r'''$.results.current_year''',
+        true,
+      ) as List?;
+  static List? previousYear(dynamic response) => getJsonField(
+        response,
+        r'''$.results.previous_year''',
+        true,
+      ) as List?;
+  static List? nextYear(dynamic response) => getJsonField(
+        response,
+        r'''$.results.next_year''',
+        true,
+      ) as List?;
+  static List<LeaveHistoryNewStruct>? leaveListCurrentYear(dynamic response) =>
+      (getJsonField(
+        response,
+        r'''$.results.current_year.leave_list[*]''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => LeaveHistoryNewStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+  static List<String>? leaveListCurrentYearMonth(dynamic response) =>
+      (getJsonField(
+        response,
+        r'''$.results.current_year.leave_list[*].month''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
 }
@@ -677,11 +746,13 @@ class GetUserProfileAPICall {
   static Future<ApiCallResponse> call({
     String? apiUrl = '',
     String? token = '',
+    String? username = '',
+    String? password = '',
   }) async {
     final ffApiRequestBody = '''
 {
-  "token": "${escapeStringForJson(token)}",
-  "api_url": "${escapeStringForJson(apiUrl)}"
+  "username": ${escapeStringForJson(username)},
+  "password": ${escapeStringForJson(password)}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'getUserProfileAPI',
@@ -689,8 +760,7 @@ class GetUserProfileAPICall {
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization':
-            'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA5MFwvc3N3X21vcm5pbmdfZm1cL2FwaVwvbG9naW4iLCJpYXQiOjE3MzQzMzE3MzIsIm5iZiI6MTczNDMzMTczMiwianRpIjoiaUZCdHhkQjNCSURmcmduZCIsInN1YiI6ODc3NSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.YMz2tzAuFeEgkcknPmaZiaKPOcFZFiEFGlYvNKJ7gck',
+        'Authorization': 'Bearer  $token',
       },
       params: {},
       body: ffApiRequestBody,
@@ -703,6 +773,101 @@ class GetUserProfileAPICall {
       alwaysAllowBody: false,
     );
   }
+
+  static String? code(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+  static String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  static dynamic results(dynamic response) => getJsonField(
+        response,
+        r'''$.results''',
+      );
+  static dynamic profileBranchCode(dynamic response) => getJsonField(
+        response,
+        r'''$.results[:].branchCode''',
+      );
+  static dynamic profliePositionName(dynamic response) => getJsonField(
+        response,
+        r'''$.results[:].positionName''',
+      );
+  static dynamic profilePhoneNumber(dynamic response) => getJsonField(
+        response,
+        r'''$.results[:].mobileNumber''',
+      );
+  static dynamic profileHiredDate(dynamic response) => getJsonField(
+        response,
+        r'''$.results[:].hiredDate''',
+      );
+}
+
+class GetLeaveListApproveCall {
+  static Future<ApiCallResponse> call({
+    String? apiUrl = '',
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getLeaveListApprove',
+      apiUrl: '$apiUrl/api/leave/get-list-approve',
+      callType: ApiCallType.POST,
+      headers: {
+        'ContentType': 'application/json; charset=utf-8,',
+        'Authorization': 'Bearer  $token',
+      },
+      params: {},
+      bodyType: BodyType.NONE,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static String? statuslayer(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+  static String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  static dynamic results(dynamic response) => getJsonField(
+        response,
+        r'''$.results''',
+      );
+  static List<ListAppoveStruct>? listApprove(dynamic response) => (getJsonField(
+        response,
+        r'''$.results.list_approve''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => ListAppoveStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+  static List<String>? allLeaveId(dynamic response) => (getJsonField(
+        response,
+        r'''$.results.all_leave_id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? empCode(dynamic response) => (getJsonField(
+        response,
+        r'''$.results.list_approve[:].emp_code''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
 }
 
 class ApiPagingParams {

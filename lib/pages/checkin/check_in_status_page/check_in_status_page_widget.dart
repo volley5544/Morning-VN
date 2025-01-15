@@ -77,8 +77,11 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
           builder: (alertDialogContext) {
             return WebViewAware(
               child: AlertDialog(
-                content: Text(
-                    'พบข้อผิดพลาดConnection (${(_model.workCheckHistoryApiOutput?.statusCode ?? 200).toString()})'),
+                content: Text('${FFLocalizations.of(context).getVariableText(
+                  enText: 'Error encountered(',
+                  viText: 'Đã xảy ra lỗi(',
+                  thText: 'พบข้อผิดพลาด(',
+                )}${(_model.workCheckHistoryApiOutput?.statusCode ?? 200).toString()})'),
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
@@ -210,7 +213,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
               },
               child: Text(
                 FFLocalizations.of(context).getText(
-                  '3hp3ppc9' /* เวลาเข้างาน - ออกงาน */,
+                  '3hp3ppc9' /* Clock-in/out Time */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
@@ -245,7 +248,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                             child: Padding(
                               padding: MediaQuery.viewInsetsOf(context),
                               child: const SizedBox(
-                                height: 600.0,
+                                height: double.infinity,
                                 child: StatusCompnentWidget(),
                               ),
                             ),
@@ -270,160 +273,181 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    if (functions.checkYearHoliday(getCurrentTimestamp)!) {
-                      await showModalBottomSheet(
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        barrierColor: const Color(0xBE000000),
-                        enableDrag: false,
-                        context: context,
-                        builder: (context) {
-                          return WebViewAware(
-                            child: GestureDetector(
-                              onTap: () {
-                                FocusScope.of(context).unfocus();
-                                FocusManager.instance.primaryFocus?.unfocus();
-                              },
-                              child: Padding(
-                                padding: MediaQuery.viewInsetsOf(context),
-                                child: const SizedBox(
-                                  height: 800.0,
-                                  child: PDFViewerWidget(
+                if (false)
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      if (functions.checkYearHoliday(getCurrentTimestamp)!) {
+                        await showModalBottomSheet(
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          enableDrag: false,
+                          context: context,
+                          builder: (context) {
+                            return WebViewAware(
+                              child: GestureDetector(
+                                onTap: () {
+                                  FocusScope.of(context).unfocus();
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                },
+                                child: Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: const PDFViewerWidget(
+                                    pdfUrl:
+                                        'https://firebasestorage.googleapis.com/v0/b/flut-flow-test.appspot.com/o/AnnouncementPDF%2F%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B8%AB%E0%B8%A2%E0%B8%B8%E0%B8%94%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9E%E0%B8%93%E0%B8%B5%20%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B52568.pdf?alt=media&token=8bd45d24-e555-4e59-9ebe-1eb0ac4ebfc5',
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ).then((value) => safeSetState(() {}));
+                      } else {
+                        await showModalBottomSheet(
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          enableDrag: false,
+                          context: context,
+                          builder: (context) {
+                            return WebViewAware(
+                              child: GestureDetector(
+                                onTap: () {
+                                  FocusScope.of(context).unfocus();
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                },
+                                child: Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: const PDFViewerWidget(
                                     pdfUrl:
                                         'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/%5BSkooldio%20x%20Srisawad%5D%20OCR%20Pre%20Workshop%20Instruction.pdf?alt=media&token=d27e9997-532d-45e3-9bf5-b469687bbfa0',
                                   ),
                                 ),
                               ),
+                            );
+                          },
+                        ).then((value) => safeSetState(() {}));
+                      }
+                    },
+                    child: Container(
+                      decoration: const BoxDecoration(),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 6.0, 0.0),
+                            child: Icon(
+                              Icons.read_more_sharp,
+                              color: Color(0xFFF46506),
+                              size: 32.0,
                             ),
-                          );
-                        },
-                      ).then((value) => safeSetState(() {}));
-                    } else {
-                      return;
-                    }
-                  },
-                  child: Container(
-                    decoration: const BoxDecoration(),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 6.0, 0.0),
-                          child: Icon(
-                            Icons.read_more_sharp,
-                            color: Color(0xFFF46506),
-                            size: 32.0,
                           ),
-                        ),
-                        Text(
-                          functions.checkYearHoliday(getCurrentTimestamp)!
-                              ? FFLocalizations.of(context).getVariableText(
-                                  enText:
-                                      'Announcement of Traditional Holidays for the Year 2024',
-                                  viText: 'Thông báo nghỉ lễ năm 2024',
-                                  thText:
-                                      'ประกาศวันหยุดตามประเพณี ประจำปี 2567',
-                                )
-                              : FFLocalizations.of(context).getVariableText(
-                                  enText:
-                                      'Announcement of Traditional Holidays for the Year 2025',
-                                  viText: 'Thông báo nghỉ lễ năm 2025',
-                                  thText:
-                                      'ประกาศวันหยุดตามประเพณี ประจำปี  2568',
-                                ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
+                          Text(
+                            functions.checkYearHoliday(getCurrentTimestamp)!
+                                ? FFLocalizations.of(context).getVariableText(
+                                    enText: 'Holidays for the Year 2024',
+                                    viText: 'Thông báo nghỉ lễ năm 2024',
+                                    thText:
+                                        'ประกาศวันหยุดตามประเพณี ประจำปี 2567',
+                                  )
+                                : FFLocalizations.of(context).getVariableText(
+                                    enText: 'Holidays for the Year 2025',
+                                    viText: 'Thông báo nghỉ lễ năm 2025',
+                                    thText:
+                                        'ประกาศวันหยุดตามประเพณี ประจำปี  2568',
                                   ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
-                  child: Container(
-                    width: double.infinity,
-                    color: const Color(0x00000000),
-                    child: ExpandableNotifier(
-                      controller: _model.expandableExpandableController,
-                      child: ExpandablePanel(
-                        header: Text(
-                          FFLocalizations.of(context).getText(
-                            'sgu2ax3u' /* ** สาขาที่เวลาทำการพิเศษเเละสา... */,
-                          ),
-                          textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Outfit',
-                                    color: const Color(0xFFFF0000),
-                                    fontSize: 15.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                        ),
-                        collapsed: Container(
-                          width: double.infinity,
-                          height: 20.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'w7q9015u' /* เเตะเพื่ออ่านเพิ่มเติม */,
-                            ),
-                            textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: const Color(0xFF95A1AC),
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
                                 ),
                           ),
-                        ),
-                        expanded: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
+                        ],
+                      ),
+                    ),
+                  ),
+                if (false)
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                    child: Container(
+                      width: double.infinity,
+                      color: const Color(0x00000000),
+                      child: ExpandableNotifier(
+                        controller: _model.expandableExpandableController,
+                        child: ExpandablePanel(
+                          header: Text(
+                            FFLocalizations.of(context).getText(
+                              'sgu2ax3u' /* ** Branches with special opera... */,
+                            ),
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  color: const Color(0xFFFF0000),
+                                  fontSize: 15.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                          ),
+                          collapsed: Container(
+                            width: double.infinity,
+                            height: 20.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Text(
                               FFLocalizations.of(context).getText(
-                                'wul16n1i' /* - ให้บันทึกเวลาในโปรเเกรมอรุณส... */,
+                                'w7q9015u' /* Tap to read more */,
                               ),
+                              textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Readex Pro',
-                                    color: const Color(0xFF090F13),
+                                    color: const Color(0xFF95A1AC),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
                                   ),
                             ),
-                          ],
-                        ),
-                        theme: const ExpandableThemeData(
-                          tapHeaderToExpand: true,
-                          tapBodyToExpand: false,
-                          tapBodyToCollapse: false,
-                          headerAlignment:
-                              ExpandablePanelHeaderAlignment.center,
-                          hasIcon: true,
+                          ),
+                          expanded: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'wul16n1i' /* - ให้บันทึกเวลาในโปรเเกรมอรุณส... */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: const Color(0xFF090F13),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                            ],
+                          ),
+                          theme: const ExpandableThemeData(
+                            tapHeaderToExpand: true,
+                            tapBodyToExpand: false,
+                            tapBodyToCollapse: false,
+                            headerAlignment:
+                                ExpandablePanelHeaderAlignment.center,
+                            hasIcon: true,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
                 Expanded(
                   child: Column(
                     children: [
@@ -449,12 +473,12 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                           tabs: [
                             Tab(
                               text: FFLocalizations.of(context).getText(
-                                'jyaqtfcn' /* เดือนปัจจุบัน */,
+                                'jyaqtfcn' /* Current month */,
                               ),
                             ),
                             Tab(
                               text: FFLocalizations.of(context).getText(
-                                'fhhi2ptj' /* เดือนที่เเล้ว */,
+                                'fhhi2ptj' /* Last month */,
                               ),
                             ),
                           ],
@@ -845,7 +869,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                     child: Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'nkl89n6f' /* วันที่ */,
+                                                    'nkl89n6f' /* Date */,
                                                   ),
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
@@ -868,7 +892,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                   child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'fzgyk444' /* เข้างาน */,
+                                                  'fzgyk444' /* Clock in */,
                                                 ),
                                                 textAlign: TextAlign.center,
                                                 style:
@@ -889,7 +913,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                   child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  '04vegjgh' /* ออกงาน */,
+                                                  '04vegjgh' /* Clock out */,
                                                 ),
                                                 textAlign: TextAlign.center,
                                                 style:
@@ -910,7 +934,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                   child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'umt6f8p4' /* สถานะ */,
+                                                  'umt6f8p4' /* Status */,
                                                 ),
                                                 textAlign: TextAlign.center,
                                                 style:

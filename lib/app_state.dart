@@ -46,6 +46,9 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _userRefDoc = prefs.getString('ff_userRefDoc') ?? _userRefDoc;
     });
+    _safeInit(() {
+      _appLanguage = prefs.getString('ff_appLanguage') ?? _appLanguage;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -190,7 +193,7 @@ class FFAppState extends ChangeNotifier {
     _profilePositionName = value;
   }
 
-  String _profileStartDate = '[startdate]';
+  String _profileStartDate = '';
   String get profileStartDate => _profileStartDate;
   set profileStartDate(String value) {
     _profileStartDate = value;
@@ -253,13 +256,13 @@ class FFAppState extends ChangeNotifier {
         : prefs.remove('ff_firstLoginLocation');
   }
 
-  String _profileServiceDuration = '1 ปี 6 เดือน 6 วัน';
+  String _profileServiceDuration = '';
   String get profileServiceDuration => _profileServiceDuration;
   set profileServiceDuration(String value) {
     _profileServiceDuration = value;
   }
 
-  String _profilePosisionAge = '1 ปี 6 เดือน 6 วัน';
+  String _profilePosisionAge = '';
   String get profilePosisionAge => _profilePosisionAge;
   set profilePosisionAge(String value) {
     _profilePosisionAge = value;
@@ -576,6 +579,72 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInHolidayList1(int index, String value) {
     holidayList1.insert(index, value);
+  }
+
+  String _ProfilePhoneNumber = '';
+  String get ProfilePhoneNumber => _ProfilePhoneNumber;
+  set ProfilePhoneNumber(String value) {
+    _ProfilePhoneNumber = value;
+  }
+
+  int _leaveDays = 0;
+  int get leaveDays => _leaveDays;
+  set leaveDays(int value) {
+    _leaveDays = value;
+  }
+
+  String _appLanguage = '';
+  String get appLanguage => _appLanguage;
+  set appLanguage(String value) {
+    _appLanguage = value;
+    prefs.setString('ff_appLanguage', value);
+  }
+
+  String _profileHiredDate = '';
+  String get profileHiredDate => _profileHiredDate;
+  set profileHiredDate(String value) {
+    _profileHiredDate = value;
+  }
+
+  String _selectMonthViewLeaveShow = '';
+  String get selectMonthViewLeaveShow => _selectMonthViewLeaveShow;
+  set selectMonthViewLeaveShow(String value) {
+    _selectMonthViewLeaveShow = value;
+  }
+
+  bool _multiApprove = false;
+  bool get multiApprove => _multiApprove;
+  set multiApprove(bool value) {
+    _multiApprove = value;
+  }
+
+  List<bool> _selectApproveList = [];
+  List<bool> get selectApproveList => _selectApproveList;
+  set selectApproveList(List<bool> value) {
+    _selectApproveList = value;
+  }
+
+  void addToSelectApproveList(bool value) {
+    selectApproveList.add(value);
+  }
+
+  void removeFromSelectApproveList(bool value) {
+    selectApproveList.remove(value);
+  }
+
+  void removeAtIndexFromSelectApproveList(int index) {
+    selectApproveList.removeAt(index);
+  }
+
+  void updateSelectApproveListAtIndex(
+    int index,
+    bool Function(bool) updateFn,
+  ) {
+    selectApproveList[index] = updateFn(_selectApproveList[index]);
+  }
+
+  void insertAtIndexInSelectApproveList(int index, bool value) {
+    selectApproveList.insert(index, value);
   }
 }
 

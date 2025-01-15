@@ -476,22 +476,25 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                             color: const Color(0xFFFFD57C),
                             borderRadius: BorderRadius.circular(18.0),
                           ),
-                          child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  12.0, 0.0, 12.0, 0.0),
-                              child: Text(
-                                FFAppState().profilePositionName,
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      fontSize: 14.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                          child: Visibility(
+                            visible: FFAppState().profilePositionName != '',
+                            child: Align(
+                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 0.0, 12.0, 0.0),
+                                child: Text(
+                                  FFAppState().profilePositionName,
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 14.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
                               ),
                             ),
                           ),
@@ -523,7 +526,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              if (FFAppState().employeeID != 'null')
+                              if (FFAppState().employeeID != '')
                                 Text(
                                   '${FFLocalizations.of(context).getVariableText(
                                     enText: 'Employee ID: ',
@@ -538,7 +541,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                         fontWeight: FontWeight.w600,
                                       ),
                                 ),
-                              if (FFAppState().branchCode != 'null')
+                              if (FFAppState().branchCode != '')
                                 Text(
                                   '${FFLocalizations.of(context).getVariableText(
                                     enText: 'Branch: ',
@@ -553,7 +556,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                         fontWeight: FontWeight.w600,
                                       ),
                                 ),
-                              if (FFAppState().profileStartDate != 'null')
+                              if (FFAppState().profileStartDate != '')
                                 Text(
                                   '${FFLocalizations.of(context).getVariableText(
                                     enText: 'Start Date: ',
@@ -574,20 +577,33 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                         fontWeight: FontWeight.w600,
                                       ),
                                 ),
-                              Text(
-                                '${FFLocalizations.of(context).getVariableText(
-                                  enText: 'Employment Duration: ',
-                                  viText: 'Thâm niên làm việc: ',
-                                  thText: 'อายุงาน: ',
-                                )}${functions.currentLengthOfWork(FFAppState().profileStartDate)}',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
+                              if (FFAppState().profileStartDate != '')
+                                Text(
+                                  '${FFLocalizations.of(context).getVariableText(
+                                    enText: 'Employment Duration: ',
+                                    viText: 'Thâm niên làm việc: ',
+                                    thText: 'อายุงาน: ',
+                                  )}${'${functions.currentYearLengthOfWork(FFAppState().profileStartDate)}${FFLocalizations.of(context).getVariableText(
+                                    enText: ' year ',
+                                    viText: ' năm ',
+                                    thText: ' ปี ',
+                                  )}${functions.currentMonthLengthOfWork(FFAppState().profileStartDate)}${FFLocalizations.of(context).getVariableText(
+                                    enText: ' month ',
+                                    viText: ' tháng ',
+                                    thText: ' เดือน ',
+                                  )}${functions.currentDayLengthOfWork(FFAppState().profileStartDate)}${FFLocalizations.of(context).getVariableText(
+                                    enText: ' day ',
+                                    viText: ' ngày  ',
+                                    thText: ' วัน ',
+                                  )}'}',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
                               if (false)
                                 Text(
                                   '${FFLocalizations.of(context).getVariableText(

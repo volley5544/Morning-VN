@@ -224,7 +224,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
               },
               child: Text(
                 FFLocalizations.of(context).getText(
-                  'dib97xps' /* ลงเวลางาน */,
+                  'dib97xps' /* Clock in/Clock out */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
@@ -718,7 +718,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                             Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '1nfjeid0' /* เลือก:  */,
+                                                '1nfjeid0' /* Select:  */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -773,7 +773,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                        'g8kgz1my' /* สถานที่เช็คอิน... */,
+                                                        'g8kgz1my' /* Check-in location... */,
                                                       ),
                                                       icon: Icon(
                                                         Icons
@@ -830,7 +830,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'k25vdgx1' /* เหตุผล: */,
+                                              'k25vdgx1' /* Reason: */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -879,7 +879,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'n3lk5dy4' /* กรุณากรอกเหตุผล */,
+                                                          'n3lk5dy4' /* Please provide a reason. */,
                                                         ),
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
@@ -1011,8 +1011,17 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                       (alertDialogContext) {
                                                     return WebViewAware(
                                                       child: AlertDialog(
-                                                        content: const Text(
-                                                            'ท่านยังไม่ได้ทำการถ่ายรูปภาพ กรุณาถ่ายภาพ'),
+                                                        content: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getVariableText(
+                                                          enText:
+                                                              'You have not taken a photo yet, please take one',
+                                                          viText:
+                                                              'Bạn chưa chụp ảnh, vui lòng chụp ảnh',
+                                                          thText:
+                                                              'ท่านยังไม่ได้ทำการถ่ายรูปภาพ กรุณาถ่ายภาพ',
+                                                        )),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -1109,8 +1118,17 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                         (alertDialogContext) {
                                                       return WebViewAware(
                                                         child: AlertDialog(
-                                                          content: const Text(
-                                                              'ไม่สามารถอัพโหลดรูปได้ กรุณาลองอีกครั้ง'),
+                                                          content: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getVariableText(
+                                                            enText:
+                                                                'Unable to upload the photo, please try again',
+                                                            viText:
+                                                                'Không thể tải ảnh lên, vui lòng thử lại',
+                                                            thText:
+                                                                'ไม่สามารถอัพโหลดรูปได้ กรุณาลองอีกครั้ง',
+                                                          )),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
@@ -1143,8 +1161,17 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                       (alertDialogContext) {
                                                     return WebViewAware(
                                                       child: AlertDialog(
-                                                        content: const Text(
-                                                            'กรุณาเลือกสาขา'),
+                                                        content: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getVariableText(
+                                                          enText:
+                                                              'Please select branch',
+                                                          viText:
+                                                              'Vui lòng chọn chi nhánh',
+                                                          thText:
+                                                              'กรุณาเลือกสาขา',
+                                                        )),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -1171,8 +1198,17 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                       (alertDialogContext) {
                                                     return WebViewAware(
                                                       child: AlertDialog(
-                                                        content: const Text(
-                                                            'กรุณาเปิด Location (GPS)'),
+                                                        content: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getVariableText(
+                                                          enText:
+                                                              'Please enable Location (GPS)',
+                                                          viText:
+                                                              'Vui lòng bật Vị trí (GPS)',
+                                                          thText:
+                                                              'กรุณาเปิด Location (GPS)',
+                                                        )),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -1231,8 +1267,17 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                       (alertDialogContext) {
                                                     return WebViewAware(
                                                       child: AlertDialog(
-                                                        content: const Text(
-                                                            'คุณไม่อยู่ในระยะเช็คอิน กรุณาอยู่ใกล้กับสถานที่เช็คอินที่คุณเลือก'),
+                                                        content: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getVariableText(
+                                                          enText:
+                                                              'You are not within the check-in range. Please stay close to the check-in location you selected',
+                                                          viText:
+                                                              'Bạn không ở trong phạm vi điểm danh. Vui lòng ở gần địa điểm điểm danh mà bạn đã chọn',
+                                                          thText:
+                                                              'คุณไม่อยู่ในระยะเช็คอิน กรุณาอยู่ใกล้กับสถานที่เช็คอินที่คุณเลือก',
+                                                        )),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -1295,7 +1340,14 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                     return WebViewAware(
                                                       child: AlertDialog(
                                                         content: Text(
-                                                            'พบข้อผิดพลาด (${WorkCheckAPICall.statuslayer1(
+                                                            '${FFLocalizations.of(context).getVariableText(
+                                                          enText:
+                                                              'An error has occurred (',
+                                                          viText:
+                                                              'Đã xảy ra lỗi (',
+                                                          thText:
+                                                              'พบข้อผิดพลาด (',
+                                                        )}${WorkCheckAPICall.statuslayer1(
                                                           (_model.workCheckApi
                                                                   ?.jsonBody ??
                                                               ''),
@@ -1385,7 +1437,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                             },
                                             text: FFLocalizations.of(context)
                                                 .getText(
-                                              'hgcupj9q' /* ลงเวลางาน */,
+                                              'hgcupj9q' /* Clock in-out */,
                                             ),
                                             options: FFButtonOptions(
                                               width: MediaQuery.sizeOf(context)

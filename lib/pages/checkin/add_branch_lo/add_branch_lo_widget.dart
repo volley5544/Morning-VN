@@ -124,8 +124,8 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                         color: Color(0xFF7E7C7C),
                         size: 24.0,
                       ),
-                      onPressed: () {
-                        print('IconButton pressed ...');
+                      onPressed: () async {
+                        Navigator.pop(context);
                       },
                     ),
                   ],

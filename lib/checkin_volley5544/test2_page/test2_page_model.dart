@@ -19,17 +19,16 @@ class Test2PageModel extends FlutterFlowModel<Test2PageWidget> {
           int index, Function(CalendarDataStruct) updateFn) =>
       calendarData[index] = updateFn(calendarData[index]);
 
-  List<TestLeaveListDataStruct> leaveTypeData = [];
-  void addToLeaveTypeData(TestLeaveListDataStruct item) =>
-      leaveTypeData.add(item);
-  void removeFromLeaveTypeData(TestLeaveListDataStruct item) =>
+  List<LeaveListDataStruct> leaveTypeData = [];
+  void addToLeaveTypeData(LeaveListDataStruct item) => leaveTypeData.add(item);
+  void removeFromLeaveTypeData(LeaveListDataStruct item) =>
       leaveTypeData.remove(item);
   void removeAtIndexFromLeaveTypeData(int index) =>
       leaveTypeData.removeAt(index);
-  void insertAtIndexInLeaveTypeData(int index, TestLeaveListDataStruct item) =>
+  void insertAtIndexInLeaveTypeData(int index, LeaveListDataStruct item) =>
       leaveTypeData.insert(index, item);
   void updateLeaveTypeDataAtIndex(
-          int index, Function(TestLeaveListDataStruct) updateFn) =>
+          int index, Function(LeaveListDataStruct) updateFn) =>
       leaveTypeData[index] = updateFn(leaveTypeData[index]);
 
   List<CurrentYearStruct> currentYearData = [];

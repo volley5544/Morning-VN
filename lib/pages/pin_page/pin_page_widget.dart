@@ -37,6 +37,18 @@ class _PinPageWidgetState extends State<PinPageWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (FFAppState().appLanguage != '') {
+        if ((FFAppState().appLanguage == 'en') ||
+            (FFAppState().appLanguage == 'vi')) {
+          if (FFAppState().appLanguage == 'vi') {
+            setAppLanguage(context, 'vi');
+          } else {
+            setAppLanguage(context, 'en');
+          }
+        } else {
+          setAppLanguage(context, 'th');
+        }
+      }
       setDarkModeSetting(context, ThemeMode.light);
       _model.getBuildVersion = await actions.getBuildVersion();
     });

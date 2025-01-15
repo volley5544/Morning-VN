@@ -25,6 +25,37 @@ bool? checkPin(String? input) {
   }
 }
 
+String? currentTimeToMonthNumber(DateTime? currentTime) {
+  String? month = DateFormat.MMMM().format(currentTime!);
+  Map<String, String> monthLists = {
+    'January': '01',
+    'February': '02',
+    'March': '03',
+    'April': '04',
+    'May': '05',
+    'June': '06',
+    'July': '07',
+    'August': '08',
+    'September': '09',
+    'October': '10',
+    'November': '11',
+    'December': '12',
+  };
+
+  String? monthNumber = monthLists[month];
+  return monthNumber;
+}
+
+String? returnAllValueI(List<DateTime>? inputList) {
+  String output = '';
+
+  for (int i = 0; i < inputList!.length; i++) {
+    //output = output + '${DateFormat('yyyy-MM-dd').format(inputList![i])}, ';
+    output = '${DateFormat('yyyy-MM-dd').format(inputList![0])}';
+  }
+  return '${output}';
+}
+
 double? currentLatLngDoubleCopy(
   LatLng? currentLocation,
   bool? isLatitude,
@@ -33,6 +64,44 @@ double? currentLatLngDoubleCopy(
     return currentLocation!.latitude;
   } else {
     return currentLocation!.longitude;
+  }
+}
+
+String? currentDayLengthOfWork(String? profileStartDate) {
+  if (profileStartDate != null) {
+    DateTime startDate = DateTime.parse(
+        profileStartDate); // แปลงเป็น DateTime จากรูปแบบที่เก็บใน profileStartDate
+    DateTime currentDate = DateTime.now(); // วันที่ปัจจุบัน
+    Duration difference =
+        currentDate.difference(startDate); // คำนวณความต่างระหว่างวันที่
+
+    // คำนวณระยะเวลาเป็นปี เดือน หรือวัน
+    int years = difference.inDays ~/ 365; // คำนวณเป็นปี
+    int months = (difference.inDays % 365) ~/ 30; // คำนวณเป็นเดือน
+    int days = (difference.inDays % 365) % 30; // คำนวณเป็นวัน
+
+    return "$days"; // ผลลัพธ์ที่ได้คืออายุงาน
+  } else {
+    return "Ngày bắt đầu công việc không hợp lệ";
+  }
+}
+
+String? currentMonthLengthOfWork(String? profileStartDate) {
+  if (profileStartDate != null) {
+    DateTime startDate = DateTime.parse(
+        profileStartDate); // แปลงเป็น DateTime จากรูปแบบที่เก็บใน profileStartDate
+    DateTime currentDate = DateTime.now(); // วันที่ปัจจุบัน
+    Duration difference =
+        currentDate.difference(startDate); // คำนวณความต่างระหว่างวันที่
+
+    // คำนวณระยะเวลาเป็นปี เดือน หรือวัน
+    int years = difference.inDays ~/ 365; // คำนวณเป็นปี
+    int months = (difference.inDays % 365) ~/ 30; // คำนวณเป็นเดือน
+    int days = (difference.inDays % 365) % 30; // คำนวณเป็นวัน
+
+    return "$months"; // ผลลัพธ์ที่ได้คืออายุงาน
+  } else {
+    return "Ngày bắt đầu công việc không hợp lệ";
   }
 }
 
@@ -53,8 +122,8 @@ String? getBuildNumber(String? buildVersion) {
   return numberString;
 }
 
-String? currentTimeToMonthThai(String? currentTime) {
-  String? month = ''; //'${DateFormat.MMMM().format(currentTime!)}';
+String? currentTimeToMonthThai(DateTime? currentTime) {
+  String? month = DateFormat.MMMM().format(currentTime!);
   Map<String, String> monthNames = {
     'January': 'มกราคม',
     'February': 'กุมภาพันธ์',
@@ -119,7 +188,7 @@ DateTime? showClockIn(String? clockIn) {
   return time;
 }
 
-String? currentLengthOfWork(String? profileStartDate) {
+String? currentYearLengthOfWork(String? profileStartDate) {
   if (profileStartDate != null) {
     DateTime startDate = DateTime.parse(
         profileStartDate); // แปลงเป็น DateTime จากรูปแบบที่เก็บใน profileStartDate
@@ -132,7 +201,8 @@ String? currentLengthOfWork(String? profileStartDate) {
     int months = (difference.inDays % 365) ~/ 30; // คำนวณเป็นเดือน
     int days = (difference.inDays % 365) % 30; // คำนวณเป็นวัน
 
-    return "$years Năm $months Tháng $days Ngày"; // ผลลัพธ์ที่ได้คืออายุงาน
+    //return "$years Năm $months Tháng $days Ngày"; // ผลลัพธ์ที่ได้คืออายุงาน
+    return "$years";
   } else {
     return "Ngày bắt đầu công việc không hợp lệ";
   }
@@ -223,25 +293,37 @@ bool? checkHolidayDate(
   }
 }
 
-bool? checkYearLeave(DateTime? startDate) {
-  int year = startDate!.year;
+bool? checkYearLeave(List<DateTime> leaveDateList) {
+  //int year = startDate!.year;
 
-  if (year == 2025 || year == 2026) {
-    return true;
-  } else {
-    return false;
+  // if (year == 2024 || year == 2025) {
+  //   return true;
+  // } else {
+  //   return false;
+  //}
+
+  // ใช้ลูป for เพื่อตรวจสอบปีของแต่ละ DateTime
+  for (var date in leaveDateList) {
+    int year = date.year;
+    if (year == 2024 || year == 2025) {
+      return true;
+    }
   }
+  return false;
 }
 
 bool? checkSickLeaveIsBeforeCurrentDate(
   DateTime? currentDate,
-  DateTime? leaveDate,
+  List<DateTime> leaveDateList,
 ) {
-  if (leaveDate!.isBefore(currentDate!)) {
-    return true;
-  } else {
-    return false;
+  // ตรวจสอบว่า leaveDate ทุกค่าอยู่ก่อน currentDate หรือไม่
+  for (var leaveDate in leaveDateList) {
+    if (!leaveDate.isBefore(currentDate!)) {
+      return false; // หาก leaveDate ใดๆ ไม่อยู่ก่อน currentDate ให้คืน false
+    }
   }
+
+  return true;
 }
 
 bool? checkLeaveDayNumber(String? leaveDayNumber) {
@@ -316,4 +398,221 @@ String? returnAllValueInList(List<DateTime>? inputList) {
     output = output + '${DateFormat('yyyy-MM-dd').format(inputList![i])}, ';
   }
   return '${output}';
+}
+
+bool? checkPhoneNumber10(String? phoneNumber) {
+  if (phoneNumber!.length <= 10) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+String leaveTypeToLeaveId(String? leaveType) {
+  // Add your function code here!
+  String result = '';
+  if (leaveType == 'ลาป่วย') {
+    result = '1';
+  }
+  if (leaveType == 'ลากิจ') {
+    result = '2';
+  }
+  if (leaveType == 'ลาพักร้อน') {
+    result = '3';
+  }
+  if (leaveType == 'ลาอุปสมบท') {
+    result = '4';
+  }
+  if (leaveType == 'ลาเพื่อรับราชการทหาร') {
+    result = '5';
+  }
+  if (leaveType == 'ลาคลอด') {
+    result = '6';
+  }
+  if (leaveType == 'ลาทำหมัน') {
+    result = '7';
+  }
+  if (leaveType == 'ลาโดยไม่รับค่าตอบแทน') {
+    result = '8';
+  }
+  if (leaveType == 'ลาออก') {
+    result = '9';
+  }
+  return result;
+}
+
+String? startLeaveDayString(List<DateTime>? startLeaveDayInput) {
+  if (startLeaveDayInput != null && startLeaveDayInput.isNotEmpty) {
+    String result = DateFormat('yyyy-MM-dd').format(startLeaveDayInput[0]);
+    return result;
+  }
+  return null; // หรือค่าที่เหมาะสมในกรณีที่เป็น null หรือ empty
+}
+
+String? endLeaveDayCalString(
+  List<DateTime>? startLeaveDayList,
+  int? dayLeaveNumber,
+  String? leaveTime,
+) {
+  DateTime startLeaveDay = startLeaveDayList!.last;
+  String result = '';
+
+  if (leaveTime == 'ลาเต็มวัน') {
+    //DateTime endLeaveDay =
+    //    startLeaveDay!.add(Duration(days: dayLeaveNumber! - 1));
+    // Add your function code here!
+    //result = DateFormat('yyyy-MM-dd').format(endLeaveDay);
+
+    result = DateFormat('yyyy-MM-dd').format(startLeaveDay!);
+  } else {
+    // Add your function code here!
+    result = DateFormat('yyyy-MM-dd').format(startLeaveDay!);
+  }
+  return result;
+}
+
+List<String> convertListDatetimeToListString(
+    List<DateTime>? selectedDatesList) {
+  //return selectedDatesList
+  //        ?.map((date) => DateFormat('yyyy-MM-dd').format(date))
+  //        .toList() ??
+  //    [];
+
+  List<String> output = [];
+
+  for (int i = 0; i < selectedDatesList!.length; i++) {
+    output.add('${DateFormat('yyyy-MM-dd').format(selectedDatesList![i])}');
+  }
+  return output;
+}
+
+String? imgPathListToString(List<String>? imgPathList) {
+  if (imgPathList == null) {
+    return "";
+  }
+  String namesString = '';
+
+  for (String name in imgPathList!) {
+    namesString += name + ',';
+  }
+
+// Remove the last comma
+  namesString = namesString.substring(0, namesString.length - 1);
+
+  return namesString;
+}
+
+Color? getResignCardColor(
+  String? leaveName,
+  Color? resignCardColor,
+) {
+  Color cardColor = Colors.white;
+
+  if (leaveName! == 'ลาออก') {
+    cardColor = resignCardColor!;
+  }
+
+  return cardColor;
+}
+
+String? showMatNameInList(
+  String? materialNameList,
+  int? index,
+) {
+  // Add your function code here!
+  return '${materialNameList![index!]}';
+}
+
+List<String> reverseList(List<String>? somethingList) {
+  // Add your function code here!
+  //List<String> reverseList = somethingList!.reversed;
+  return somethingList!.reversed.toList();
+}
+
+double? contrainerChange(double? contrainerHeight) {
+  WidgetsFlutterBinding.ensureInitialized();
+  double deviceTextScaleFactor =
+      WidgetsBinding.instance!.window.textScaleFactor;
+  return (contrainerHeight! * deviceTextScaleFactor);
+}
+
+String? getLeavePeriod(String? leaveTime) {
+  if (leaveTime == "ลาเต็มวัน") {
+    return "full";
+  } else {
+    return "half";
+  }
+}
+
+String? getMonthFromJson(
+  List<dynamic> jsonList,
+  int inputIndex,
+) {
+  // ตรวจสอบว่า inputIndex มีค่าไม่เป็น null และอยู่ในช่วงที่ถูกต้อง
+  if (inputIndex != null && inputIndex >= 1 && inputIndex <= jsonList.length) {
+    // ดึงข้อมูลตาม index ที่กำหนด (จำเป็นต้องลบ 1 เพราะ index ใน List เริ่มจาก 0)
+    var item = jsonList[inputIndex - 1];
+    // คืนค่าชื่อของ item ที่ดึงมา
+    return 'ข้อมูลที่คุณเลือก: ${item['name']}';
+  } else {
+    return 'กรุณาใส่ค่า input ที่อยู่ในช่วง 1 ถึง ${jsonList.length}';
+  }
+}
+
+List<bool>? createFalseList(
+  bool? value,
+  int? listLength,
+) {
+  List<bool> output = List.filled(listLength!, value!);
+
+  return output;
+}
+
+List<String> returnMapListFromBoolList(
+  List<String>? somethingList1,
+  List<bool>? somethingList2,
+  bool? searchValue,
+) {
+  List<String> mappedList = [];
+
+  for (int i = 0; i < somethingList1!.length; i++) {
+    if (searchValue! == somethingList2![i]) {
+      mappedList.add(somethingList1![i]);
+    }
+  }
+
+  return mappedList;
+}
+
+String headApproveToStringFunction(List<String>? headApproveList) {
+  if (headApproveList == null) {
+    return "";
+  }
+  String namesString = '';
+
+  for (String name in headApproveList!) {
+    namesString += name + ',';
+  }
+
+// Remove the last comma
+  namesString = namesString.substring(0, namesString.length - 1);
+
+  return namesString;
+}
+
+bool? containWordinStringUrl(
+  String? word,
+  String? url,
+) {
+  if (url!.contains(word!)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+int? countTrueInBoolList(List<String>? booleanList) {
+  int trueCount = booleanList!.where((element) => element == true).length;
+
+  return trueCount;
 }

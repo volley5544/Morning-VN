@@ -50,7 +50,7 @@ export '/pages/leave_app/confirm_email_page/confirm_email_page_widget.dart'
     show ConfirmEmailPageWidget;
 export '/pages/leave_app/approved_leave_page/approved_leave_page_widget.dart'
     show ApprovedLeavePageWidget;
-export '/pages/leave_app/approve_show_page/approve_show_page_widget.dart'
+export '/pages/approve_show_page/approve_show_page_widget.dart'
     show ApproveShowPageWidget;
 export '/pages/leave_app/add_resign_page/add_resign_page_widget.dart'
     show AddResignPageWidget;

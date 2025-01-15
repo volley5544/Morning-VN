@@ -80,7 +80,7 @@ class _TestPageWidgetState extends State<TestPageWidget> {
         (_model.apiResult235?.jsonBody ?? ''),
       )!
           .toList()
-          .cast<TestLeaveListDataStruct>();
+          .cast<LeaveListDataStruct>();
       safeSetState(() {});
       Navigator.pop(context);
     });

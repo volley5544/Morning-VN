@@ -72,8 +72,8 @@ class _LeaveCalendarWidgetState extends State<LeaveCalendarWidget> {
       width: widget.width!,
       child: TableCalendar(
         focusedDay: focusDate,
-        firstDay: DateTime.parse(widget.startdate!),
-        lastDay: DateTime.parse(widget.enddate!),
+        firstDay: DateTime.parse("2024-01-01"),
+        lastDay: DateTime.parse("2030-12-12"),
         selectedDayPredicate: (day) {
           return FFAppState().selectedDatesList!.any((selectedDay) =>
               selectedDay.year == day.year &&
@@ -96,17 +96,17 @@ class _LeaveCalendarWidgetState extends State<LeaveCalendarWidget> {
             } else {
               if (selectedDay.year == _currentYear &&
                   currentYearCount >= _currentYearSelectableDates) {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content:
-                      Text("You can't select more dates in $_currentYear!"),
-                ));
+                //  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                //    content:
+                //        Text("You can't select more dates in $_currentYear!"),
+                //  ));
                 return;
               }
               if (selectedDay.year == _nextYear &&
                   nextYearCount >= _nextYearSelectableDates) {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text("You can't select more dates in $_nextYear!"),
-                ));
+                //  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                //    content: Text("You can't select more dates in $_nextYear!"),
+                //  ));
                 return;
               }
 
@@ -121,7 +121,12 @@ class _LeaveCalendarWidgetState extends State<LeaveCalendarWidget> {
           });
         },
         enabledDayPredicate: (day) {
-          return checkEnebleDateSelected(day, widget.holidaysList, false);
+          return checkEnebleDateSelected(
+              day,
+              widget.holidaysList,
+              false,
+              DateTime.parse(widget.startdate!),
+              DateTime.parse(widget.enddate!));
         },
         startingDayOfWeek: StartingDayOfWeek.monday,
         calendarStyle: CalendarStyle(
@@ -155,15 +160,17 @@ class _LeaveCalendarWidgetState extends State<LeaveCalendarWidget> {
   }
 }
 
-bool checkEnebleDateSelected(
-    DateTime day, List<String>? holidays, bool disableOnlySunday) {
+bool checkEnebleDateSelected(DateTime day, List<String>? holidays,
+    bool disableOnlySunday, DateTime startdate, DateTime enddate) {
   return ((disableOnlySunday
-          ? day.weekday != DateTime.sunday
-          : (day.weekday != DateTime.sunday &&
-              day.weekday != DateTime.saturday)) &&
-      (holidays != null
-          ? !holidays.contains('${DateFormat('yyyy-MM-dd').format(day)}')
-          : true) &&
-      DateTime.parse('${DateFormat('yyyy-MM-dd').format(day)}')
-          .isAfter(DateTime.parse('2024-11-12').add(Duration(days: -1))));
+              ? day.weekday != DateTime.sunday
+              : (day.weekday != DateTime.sunday &&
+                  day.weekday != DateTime.saturday)) &&
+          (holidays != null
+              ? !holidays.contains('${DateFormat('yyyy-MM-dd').format(day)}')
+              : true) &&
+          DateTime.parse('${DateFormat('yyyy-MM-dd').format(day)}')
+              .isAfter(DateTime.parse('2024-11-12').add(Duration(days: -1)))) &&
+      (day.isAfter(startdate!)) &&
+      (day.isBefore(enddate!));
 }

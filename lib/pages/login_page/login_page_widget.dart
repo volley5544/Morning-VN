@@ -2,6 +2,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/select_language_component_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -42,6 +43,22 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (FFAppState().appLanguage != '') {
+        if ((FFAppState().appLanguage == 'en') ||
+            (FFAppState().appLanguage == 'vi')) {
+          if (FFAppState().appLanguage == 'vi') {
+            setAppLanguage(context, 'vi');
+          } else {
+            setAppLanguage(context, 'en');
+          }
+        } else {
+          setAppLanguage(context, 'th');
+        }
+      } else {
+        FFAppState().appLanguage = 'en';
+        safeSetState(() {});
+      }
+
       setDarkModeSetting(context, ThemeMode.light);
       _model.getBuildVersion = await actions.getBuildVersion();
     });
@@ -229,11 +246,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                     children: [
                       SizedBox(
                         width: double.infinity,
-                        height: MediaQuery.sizeOf(context).height * 0.4,
+                        height: MediaQuery.sizeOf(context).height * 0.44,
                         child: Stack(
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(0.0, -1.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.5,
                                 height: MediaQuery.sizeOf(context).width * 0.5,
@@ -253,7 +270,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                   'containerOnPageLoadAnimation1']!),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, -1.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.7,
                                 height: MediaQuery.sizeOf(context).width * 0.7,
@@ -273,7 +290,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                   'containerOnPageLoadAnimation2']!),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, -1.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.8,
                                 height: MediaQuery.sizeOf(context).width * 0.8,
@@ -330,12 +347,37 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                       );
                                     },
                                   ).then((value) => safeSetState(() {}));
+
+                                  await Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: FlutterFlowExpandedImageView(
+                                        image: Image.asset(
+                                          'assets/images/ArunSawad.png',
+                                          fit: BoxFit.contain,
+                                          alignment: const Alignment(0.0, 0.0),
+                                        ),
+                                        allowRotation: false,
+                                        tag: 'imageTag',
+                                        useHeroAnimation: true,
+                                      ),
+                                    ),
+                                  );
                                 },
-                                child: Image.asset(
-                                  'assets/images/ArunSawad.png',
-                                  width: 170.0,
-                                  height: 210.0,
-                                  fit: BoxFit.contain,
+                                child: Hero(
+                                  tag: 'imageTag',
+                                  transitionOnUserGestures: true,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(0.0),
+                                    child: Image.asset(
+                                      'assets/images/ArunSawad.png',
+                                      width: 190.0,
+                                      height: 200.0,
+                                      fit: BoxFit.cover,
+                                      alignment: const Alignment(0.0, 0.0),
+                                    ),
+                                  ),
                                 ),
                               ).animateOnPageLoad(
                                   animationsMap['imageOnPageLoadAnimation']!),
@@ -962,28 +1004,19 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                       Expanded(
                         child: Align(
                           alignment: const AlignmentDirectional(0.0, 1.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              context.pushNamed('TestPage');
-                            },
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'f6exf55c' /* Copyright ©2024.  Srisawad Cor... */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: const Color(0xFF607D8B),
-                                    fontSize: 13.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              'f6exf55c' /* Copyright ©2024.  Srisawad Cor... */,
                             ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: const Color(0xFF607D8B),
+                                  fontSize: 13.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
                           ).animateOnPageLoad(
                               animationsMap['textOnPageLoadAnimation']!),
                         ),

@@ -427,198 +427,204 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
 
                   return Container(
                     width: double.infinity,
-                    height: 120.0,
+                    height: 135.0,
                     decoration: const BoxDecoration(
                       color: Colors.white,
                     ),
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, -0.2),
-                          child: Container(
-                            width: MediaQuery.sizeOf(context).width * 0.6,
-                            height: 80.0,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: Image.asset(
-                                  'assets/images/8czKzxdqi-2.png',
-                                ).image,
-                              ),
-                            ),
-                            child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: Text(
-                                valueOrDefault<String>(
-                                  functions.greetingTextSuperApp(
-                                      FFAppState().username),
-                                  'Xin chào',
+                    child: Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, -0.2),
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 0.6,
+                              height: 80.0,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: Image.asset(
+                                    'assets/images/8czKzxdqi-2.png',
+                                  ).image,
                                 ),
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      color: Colors.white,
-                                      letterSpacing: 0.0,
-                                    ),
+                              ),
+                              child: Align(
+                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                child: Text(
+                                  valueOrDefault<String>(
+                                    functions.greetingTextSuperApp(
+                                        FFAppState().username),
+                                    'Xin chào',
+                                  ),
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: Colors.white,
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Align(
-                          alignment: const AlignmentDirectional(-0.95, 0.8),
-                          child: Container(
-                            width: 64.0,
-                            height: 64.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              shape: BoxShape.circle,
-                            ),
+                          Align(
+                            alignment: const AlignmentDirectional(-0.95, 0.8),
                             child: Container(
-                              width: 120.0,
-                              height: 120.0,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: const BoxDecoration(
+                              width: 64.0,
+                              height: 64.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                                 shape: BoxShape.circle,
                               ),
-                              child: CachedNetworkImage(
-                                fadeInDuration: const Duration(milliseconds: 500),
-                                fadeOutDuration: const Duration(milliseconds: 500),
-                                imageUrl: valueOrDefault<String>(
-                                  containerUserCustomRecord?.profileImg,
-                                  'https://firebasestorage.googleapis.com/v0/b/flut-flow-test.appspot.com/o/imageUrlExpired.png?alt=media&token=5a9e3847-91d4-40d4-9a76-97a77d108060',
+                              child: Container(
+                                width: 120.0,
+                                height: 120.0,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
                                 ),
-                                fit: BoxFit.cover,
-                                errorWidget: (context, error, stackTrace) =>
-                                    Image.asset(
-                                  'assets/images/error_image.png',
+                                child: CachedNetworkImage(
+                                  fadeInDuration: const Duration(milliseconds: 500),
+                                  fadeOutDuration: const Duration(milliseconds: 500),
+                                  imageUrl: valueOrDefault<String>(
+                                    containerUserCustomRecord?.profileImg,
+                                    'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
+                                  ),
                                   fit: BoxFit.cover,
+                                  errorWidget: (context, error, stackTrace) =>
+                                      Image.asset(
+                                    'assets/images/error_image.png',
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  scaffoldKey.currentState!.openDrawer();
-                                },
-                                child: const Icon(
-                                  Icons.dehaze,
-                                  color: Color(0xFFFF8700),
-                                  size: 30.0,
-                                ),
-                              ).animateOnPageLoad(
-                                  animationsMap['iconOnPageLoadAnimation']!),
-                              if (false)
-                                badges.Badge(
-                                  badgeContent: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'nfii7ajk' /* 1 */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: Colors.white,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                  showBadge: true,
-                                  shape: badges.BadgeShape.circle,
-                                  badgeColor: const Color(0xFFFF0005),
-                                  elevation: 4.0,
-                                  padding: const EdgeInsets.all(8.0),
-                                  position: badges.BadgePosition.topEnd(),
-                                  animationType:
-                                      badges.BadgeAnimationType.scale,
-                                  toAnimate: true,
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30.0,
-                                    borderWidth: 1.0,
-                                    buttonSize: 50.0,
-                                    icon: const Icon(
-                                      Icons.notifications,
-                                      color: Color(0xFFFF8700),
-                                      size: 40.0,
-                                    ),
-                                    onPressed: () async {
-                                      HapticFeedback.mediumImpact();
-
-                                      context.goNamed('NotificationPage');
-                                    },
-                                  ).animateOnPageLoad(animationsMap[
-                                      'iconButtonOnPageLoadAnimation']!),
-                                ),
-                            ],
-                          ),
-                        ),
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, -0.2),
-                          child: Container(
-                            width: MediaQuery.sizeOf(context).width * 0.6,
-                            height: 100.0,
-                            decoration: const BoxDecoration(),
-                            child: Column(
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                20.0, 0.0, 20.0, 0.0),
+                            child: Row(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                if (false)
-                                  Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'uwsaa34m' /* Thẻ môi giới bảo hiểm sẽ hết h... */,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            fontSize: 16.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    scaffoldKey.currentState!.openDrawer();
+                                  },
+                                  child: const Icon(
+                                    Icons.dehaze,
+                                    color: Color(0xFFFF8700),
+                                    size: 30.0,
                                   ),
+                                ).animateOnPageLoad(
+                                    animationsMap['iconOnPageLoadAnimation']!),
                                 if (false)
-                                  Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
-                                    child: Text(
+                                  badges.Badge(
+                                    badgeContent: Text(
                                       FFLocalizations.of(context).getText(
-                                        'na0wb65k' /* Thẻ môi giới bảo hiểm phi nhân... */,
+                                        'nfii7ajk' /* 1 */,
                                       ),
-                                      textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            fontSize: 16.0,
+                                            color: Colors.white,
                                             letterSpacing: 0.0,
                                           ),
                                     ),
+                                    showBadge: true,
+                                    shape: badges.BadgeShape.circle,
+                                    badgeColor: const Color(0xFFFF0005),
+                                    elevation: 4.0,
+                                    padding: const EdgeInsets.all(8.0),
+                                    position: badges.BadgePosition.topEnd(),
+                                    animationType:
+                                        badges.BadgeAnimationType.scale,
+                                    toAnimate: true,
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 50.0,
+                                      icon: const Icon(
+                                        Icons.notifications,
+                                        color: Color(0xFFFF8700),
+                                        size: 40.0,
+                                      ),
+                                      onPressed: () async {
+                                        HapticFeedback.mediumImpact();
+
+                                        context.goNamed('NotificationPage');
+                                      },
+                                    ).animateOnPageLoad(animationsMap[
+                                        'iconButtonOnPageLoadAnimation']!),
                                   ),
                               ],
                             ),
                           ),
-                        ),
-                      ],
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, -0.2),
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 0.6,
+                              height: 100.0,
+                              decoration: const BoxDecoration(),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  if (false)
+                                    Align(
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'uwsaa34m' /* Thẻ môi giới bảo hiểm sẽ hết h... */,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              fontSize: 16.0,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ),
+                                  if (false)
+                                    Align(
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'na0wb65k' /* Thẻ môi giới bảo hiểm phi nhân... */,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              fontSize: 16.0,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },

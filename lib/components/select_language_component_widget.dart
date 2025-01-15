@@ -120,6 +120,8 @@ class _SelectLanguageComponentWidgetState
               child: FFButtonWidget(
                 onPressed: () async {
                   setAppLanguage(context, _model.dropDownValue!);
+                  FFAppState().appLanguage = _model.dropDownValue!;
+                  safeSetState(() {});
                   Navigator.pop(context);
                 },
                 text: FFLocalizations.of(context).getText(

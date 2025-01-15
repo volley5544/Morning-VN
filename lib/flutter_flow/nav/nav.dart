@@ -146,8 +146,36 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'AddLeavePage',
           path: '/addLeavePage',
           builder: (context, params) => AddLeavePageWidget(
+            leaveName: params.getParam(
+              'leaveName',
+              ParamType.String,
+            ),
             leaveType: params.getParam(
               'leaveType',
+              ParamType.String,
+            ),
+            startDateLeave: params.getParam(
+              'startDateLeave',
+              ParamType.String,
+            ),
+            endDateLeave: params.getParam(
+              'endDateLeave',
+              ParamType.String,
+            ),
+            currentYear: params.getParam(
+              'currentYear',
+              ParamType.String,
+            ),
+            nextYear: params.getParam(
+              'nextYear',
+              ParamType.String,
+            ),
+            currentYearSelectableDates: params.getParam(
+              'currentYearSelectableDates',
+              ParamType.String,
+            ),
+            nextYearSelectableDates: params.getParam(
+              'nextYearSelectableDates',
               ParamType.String,
             ),
           ),
@@ -160,7 +188,54 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'EditLeavePage',
           path: '/editLeavePage',
-          builder: (context, params) => const EditLeavePageWidget(),
+          builder: (context, params) => EditLeavePageWidget(
+            leaveType: params.getParam(
+              'leaveType',
+              ParamType.String,
+            ),
+            leavePeriod: params.getParam(
+              'leavePeriod',
+              ParamType.String,
+            ),
+            leaveCountDay: params.getParam(
+              'leaveCountDay',
+              ParamType.String,
+            ),
+            leaveReason: params.getParam(
+              'leaveReason',
+              ParamType.String,
+            ),
+            leaveDate: params.getParam(
+              'leaveDate',
+              ParamType.String,
+            ),
+            userPhoneNumber: params.getParam(
+              'userPhoneNumber',
+              ParamType.String,
+            ),
+            leaveID: params.getParam(
+              'leaveID',
+              ParamType.String,
+            ),
+            leaveName: params.getParam(
+              'leaveName',
+              ParamType.String,
+            ),
+            leaveDetails: params.getParam<LeaveDetailsStruct>(
+              'leaveDetails',
+              ParamType.DataStruct,
+              isList: true,
+              structBuilder: LeaveDetailsStruct.fromSerializableMap,
+            ),
+            leaveStartDate: params.getParam(
+              'leaveStartDate',
+              ParamType.String,
+            ),
+            leaveEndDate: params.getParam(
+              'leaveEndDate',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'ChangeLatLngPage',

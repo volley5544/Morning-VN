@@ -7,8 +7,8 @@ import '/backend/schema/util/firestore_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class TestLeaveListDataStruct extends FFFirebaseStruct {
-  TestLeaveListDataStruct({
+class LeaveListDataStruct extends FFFirebaseStruct {
+  LeaveListDataStruct({
     String? name,
     String? leaveType,
     CurrentYearStruct? currentYear,
@@ -118,8 +118,8 @@ class TestLeaveListDataStruct extends FFFirebaseStruct {
 
   bool hasIcon() => _icon != null;
 
-  static TestLeaveListDataStruct fromMap(Map<String, dynamic> data) =>
-      TestLeaveListDataStruct(
+  static LeaveListDataStruct fromMap(Map<String, dynamic> data) =>
+      LeaveListDataStruct(
         name: data['name'] as String?,
         leaveType: data['leave_type'] as String?,
         currentYear: data['current_year'] is CurrentYearStruct
@@ -141,8 +141,8 @@ class TestLeaveListDataStruct extends FFFirebaseStruct {
         icon: data['icon'] as String?,
       );
 
-  static TestLeaveListDataStruct? maybeFromMap(dynamic data) => data is Map
-      ? TestLeaveListDataStruct.fromMap(data.cast<String, dynamic>())
+  static LeaveListDataStruct? maybeFromMap(dynamic data) => data is Map
+      ? LeaveListDataStruct.fromMap(data.cast<String, dynamic>())
       : null;
 
   Map<String, dynamic> toMap() => {
@@ -203,9 +203,8 @@ class TestLeaveListDataStruct extends FFFirebaseStruct {
         ),
       }.withoutNulls;
 
-  static TestLeaveListDataStruct fromSerializableMap(
-          Map<String, dynamic> data) =>
-      TestLeaveListDataStruct(
+  static LeaveListDataStruct fromSerializableMap(Map<String, dynamic> data) =>
+      LeaveListDataStruct(
         name: deserializeParam(
           data['name'],
           ParamType.String,
@@ -263,12 +262,12 @@ class TestLeaveListDataStruct extends FFFirebaseStruct {
       );
 
   @override
-  String toString() => 'TestLeaveListDataStruct(${toMap()})';
+  String toString() => 'LeaveListDataStruct(${toMap()})';
 
   @override
   bool operator ==(Object other) {
     const listEquality = ListEquality();
-    return other is TestLeaveListDataStruct &&
+    return other is LeaveListDataStruct &&
         name == other.name &&
         leaveType == other.leaveType &&
         currentYear == other.currentYear &&
@@ -296,7 +295,7 @@ class TestLeaveListDataStruct extends FFFirebaseStruct {
       ]);
 }
 
-TestLeaveListDataStruct createTestLeaveListDataStruct({
+LeaveListDataStruct createLeaveListDataStruct({
   String? name,
   String? leaveType,
   CurrentYearStruct? currentYear,
@@ -311,7 +310,7 @@ TestLeaveListDataStruct createTestLeaveListDataStruct({
   bool create = false,
   bool delete = false,
 }) =>
-    TestLeaveListDataStruct(
+    LeaveListDataStruct(
       name: name,
       leaveType: leaveType,
       currentYear:
@@ -330,59 +329,59 @@ TestLeaveListDataStruct createTestLeaveListDataStruct({
       ),
     );
 
-TestLeaveListDataStruct? updateTestLeaveListDataStruct(
-  TestLeaveListDataStruct? testLeaveListData, {
+LeaveListDataStruct? updateLeaveListDataStruct(
+  LeaveListDataStruct? leaveListData, {
   bool clearUnsetFields = true,
   bool create = false,
 }) =>
-    testLeaveListData
+    leaveListData
       ?..firestoreUtilData = FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
       );
 
-void addTestLeaveListDataStructData(
+void addLeaveListDataStructData(
   Map<String, dynamic> firestoreData,
-  TestLeaveListDataStruct? testLeaveListData,
+  LeaveListDataStruct? leaveListData,
   String fieldName, [
   bool forFieldValue = false,
 ]) {
   firestoreData.remove(fieldName);
-  if (testLeaveListData == null) {
+  if (leaveListData == null) {
     return;
   }
-  if (testLeaveListData.firestoreUtilData.delete) {
+  if (leaveListData.firestoreUtilData.delete) {
     firestoreData[fieldName] = FieldValue.delete();
     return;
   }
   final clearFields =
-      !forFieldValue && testLeaveListData.firestoreUtilData.clearUnsetFields;
+      !forFieldValue && leaveListData.firestoreUtilData.clearUnsetFields;
   if (clearFields) {
     firestoreData[fieldName] = <String, dynamic>{};
   }
-  final testLeaveListDataData =
-      getTestLeaveListDataFirestoreData(testLeaveListData, forFieldValue);
+  final leaveListDataData =
+      getLeaveListDataFirestoreData(leaveListData, forFieldValue);
   final nestedData =
-      testLeaveListDataData.map((k, v) => MapEntry('$fieldName.$k', v));
+      leaveListDataData.map((k, v) => MapEntry('$fieldName.$k', v));
 
-  final mergeFields = testLeaveListData.firestoreUtilData.create || clearFields;
+  final mergeFields = leaveListData.firestoreUtilData.create || clearFields;
   firestoreData
       .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
 }
 
-Map<String, dynamic> getTestLeaveListDataFirestoreData(
-  TestLeaveListDataStruct? testLeaveListData, [
+Map<String, dynamic> getLeaveListDataFirestoreData(
+  LeaveListDataStruct? leaveListData, [
   bool forFieldValue = false,
 ]) {
-  if (testLeaveListData == null) {
+  if (leaveListData == null) {
     return {};
   }
-  final firestoreData = mapToFirestore(testLeaveListData.toMap());
+  final firestoreData = mapToFirestore(leaveListData.toMap());
 
   // Handle nested data for "current_year" field.
   addCurrentYearStructData(
     firestoreData,
-    testLeaveListData.hasCurrentYear() ? testLeaveListData.currentYear : null,
+    leaveListData.hasCurrentYear() ? leaveListData.currentYear : null,
     'current_year',
     forFieldValue,
   );
@@ -390,7 +389,7 @@ Map<String, dynamic> getTestLeaveListDataFirestoreData(
   // Handle nested data for "other_year" field.
   addOtherYearStructData(
     firestoreData,
-    testLeaveListData.hasOtherYear() ? testLeaveListData.otherYear : null,
+    leaveListData.hasOtherYear() ? leaveListData.otherYear : null,
     'other_year',
     forFieldValue,
   );
@@ -398,22 +397,22 @@ Map<String, dynamic> getTestLeaveListDataFirestoreData(
   // Handle nested data for "temp_year" field.
   addTempYearStructData(
     firestoreData,
-    testLeaveListData.hasTempYear() ? testLeaveListData.tempYear : null,
+    leaveListData.hasTempYear() ? leaveListData.tempYear : null,
     'temp_year',
     forFieldValue,
   );
 
   // Add any Firestore field values
-  testLeaveListData.firestoreUtilData.fieldValues
+  leaveListData.firestoreUtilData.fieldValues
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
 }
 
-List<Map<String, dynamic>> getTestLeaveListDataListFirestoreData(
-  List<TestLeaveListDataStruct>? testLeaveListDatas,
+List<Map<String, dynamic>> getLeaveListDataListFirestoreData(
+  List<LeaveListDataStruct>? leaveListDatas,
 ) =>
-    testLeaveListDatas
-        ?.map((e) => getTestLeaveListDataFirestoreData(e, true))
+    leaveListDatas
+        ?.map((e) => getLeaveListDataFirestoreData(e, true))
         .toList() ??
     [];
