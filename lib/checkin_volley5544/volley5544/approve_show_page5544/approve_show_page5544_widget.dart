@@ -112,6 +112,26 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
         );
         return;
       }
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return WebViewAware(
+            child: AlertDialog(
+              content: Text((GetAllLeaveCopyCall.currentYearData(
+                (_model.getAllLeave?.jsonBody ?? ''),
+              )!
+                      .toMap())
+                  .toString()),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: const Text('Ok'),
+                ),
+              ],
+            ),
+          );
+        },
+      );
       _model.currentYearData = ApproveListDataModelStruct(
         year: getJsonField(
           GetAllLeaveCopyCall.currentYearData(
