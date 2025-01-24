@@ -114,6 +114,42 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
         (_model.getAllLeave?.jsonBody ?? ''),
       );
       safeSetState(() {});
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return WebViewAware(
+            child: AlertDialog(
+              content:
+                  Text((_model.currentYearData!.approve.toMap()).toString()),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: const Text('Ok'),
+                ),
+              ],
+            ),
+          );
+        },
+      );
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return WebViewAware(
+            child: AlertDialog(
+              content: Text(getJsonField(
+                _model.currentYearData!.approve.toMap(),
+                r'''$.*.name''',
+              ).toString().toString()),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: const Text('Ok'),
+                ),
+              ],
+            ),
+          );
+        },
+      );
       Navigator.pop(context);
     });
 

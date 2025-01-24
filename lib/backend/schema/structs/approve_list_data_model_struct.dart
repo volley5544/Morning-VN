@@ -11,8 +11,8 @@ class ApproveListDataModelStruct extends FFFirebaseStruct {
   ApproveListDataModelStruct({
     int? year,
     ApproveListMonthDataModelStruct? cancel,
-    ApproveListDataModelStruct? approve,
-    ApproveListDataModelStruct? notApprove,
+    ApproveListMonthDataModelStruct? approve,
+    ApproveListMonthDataModelStruct? notApprove,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _year = year,
         _cancel = cancel,
@@ -42,25 +42,25 @@ class ApproveListDataModelStruct extends FFFirebaseStruct {
   bool hasCancel() => _cancel != null;
 
   // "Approve" field.
-  ApproveListDataModelStruct? _approve;
-  ApproveListDataModelStruct get approve =>
-      _approve ?? ApproveListDataModelStruct();
-  set approve(ApproveListDataModelStruct? val) => _approve = val;
+  ApproveListMonthDataModelStruct? _approve;
+  ApproveListMonthDataModelStruct get approve =>
+      _approve ?? ApproveListMonthDataModelStruct();
+  set approve(ApproveListMonthDataModelStruct? val) => _approve = val;
 
-  void updateApprove(Function(ApproveListDataModelStruct) updateFn) {
-    updateFn(_approve ??= ApproveListDataModelStruct());
+  void updateApprove(Function(ApproveListMonthDataModelStruct) updateFn) {
+    updateFn(_approve ??= ApproveListMonthDataModelStruct());
   }
 
   bool hasApprove() => _approve != null;
 
   // "NotApprove" field.
-  ApproveListDataModelStruct? _notApprove;
-  ApproveListDataModelStruct get notApprove =>
-      _notApprove ?? ApproveListDataModelStruct();
-  set notApprove(ApproveListDataModelStruct? val) => _notApprove = val;
+  ApproveListMonthDataModelStruct? _notApprove;
+  ApproveListMonthDataModelStruct get notApprove =>
+      _notApprove ?? ApproveListMonthDataModelStruct();
+  set notApprove(ApproveListMonthDataModelStruct? val) => _notApprove = val;
 
-  void updateNotApprove(Function(ApproveListDataModelStruct) updateFn) {
-    updateFn(_notApprove ??= ApproveListDataModelStruct());
+  void updateNotApprove(Function(ApproveListMonthDataModelStruct) updateFn) {
+    updateFn(_notApprove ??= ApproveListMonthDataModelStruct());
   }
 
   bool hasNotApprove() => _notApprove != null;
@@ -71,12 +71,12 @@ class ApproveListDataModelStruct extends FFFirebaseStruct {
         cancel: data['Cancel'] is ApproveListMonthDataModelStruct
             ? data['Cancel']
             : ApproveListMonthDataModelStruct.maybeFromMap(data['Cancel']),
-        approve: data['Approve'] is ApproveListDataModelStruct
+        approve: data['Approve'] is ApproveListMonthDataModelStruct
             ? data['Approve']
-            : ApproveListDataModelStruct.maybeFromMap(data['Approve']),
-        notApprove: data['NotApprove'] is ApproveListDataModelStruct
+            : ApproveListMonthDataModelStruct.maybeFromMap(data['Approve']),
+        notApprove: data['NotApprove'] is ApproveListMonthDataModelStruct
             ? data['NotApprove']
-            : ApproveListDataModelStruct.maybeFromMap(data['NotApprove']),
+            : ApproveListMonthDataModelStruct.maybeFromMap(data['NotApprove']),
       );
 
   static ApproveListDataModelStruct? maybeFromMap(dynamic data) => data is Map
@@ -128,13 +128,13 @@ class ApproveListDataModelStruct extends FFFirebaseStruct {
           data['Approve'],
           ParamType.DataStruct,
           false,
-          structBuilder: ApproveListDataModelStruct.fromSerializableMap,
+          structBuilder: ApproveListMonthDataModelStruct.fromSerializableMap,
         ),
         notApprove: deserializeStructParam(
           data['NotApprove'],
           ParamType.DataStruct,
           false,
-          structBuilder: ApproveListDataModelStruct.fromSerializableMap,
+          structBuilder: ApproveListMonthDataModelStruct.fromSerializableMap,
         ),
       );
 
@@ -158,8 +158,8 @@ class ApproveListDataModelStruct extends FFFirebaseStruct {
 ApproveListDataModelStruct createApproveListDataModelStruct({
   int? year,
   ApproveListMonthDataModelStruct? cancel,
-  ApproveListDataModelStruct? approve,
-  ApproveListDataModelStruct? notApprove,
+  ApproveListMonthDataModelStruct? approve,
+  ApproveListMonthDataModelStruct? notApprove,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -169,10 +169,10 @@ ApproveListDataModelStruct createApproveListDataModelStruct({
       year: year,
       cancel: cancel ??
           (clearUnsetFields ? ApproveListMonthDataModelStruct() : null),
-      approve:
-          approve ?? (clearUnsetFields ? ApproveListDataModelStruct() : null),
+      approve: approve ??
+          (clearUnsetFields ? ApproveListMonthDataModelStruct() : null),
       notApprove: notApprove ??
-          (clearUnsetFields ? ApproveListDataModelStruct() : null),
+          (clearUnsetFields ? ApproveListMonthDataModelStruct() : null),
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
@@ -240,7 +240,7 @@ Map<String, dynamic> getApproveListDataModelFirestoreData(
   );
 
   // Handle nested data for "Approve" field.
-  addApproveListDataModelStructData(
+  addApproveListMonthDataModelStructData(
     firestoreData,
     approveListDataModel.hasApprove() ? approveListDataModel.approve : null,
     'Approve',
@@ -248,7 +248,7 @@ Map<String, dynamic> getApproveListDataModelFirestoreData(
   );
 
   // Handle nested data for "NotApprove" field.
-  addApproveListDataModelStructData(
+  addApproveListMonthDataModelStructData(
     firestoreData,
     approveListDataModel.hasNotApprove()
         ? approveListDataModel.notApprove

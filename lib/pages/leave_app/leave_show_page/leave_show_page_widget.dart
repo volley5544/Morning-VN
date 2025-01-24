@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pages/checkin/loading_scene/loading_scene_widget.dart';
+import '/pages/leave_app/datail_leave_requet/datail_leave_requet_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
@@ -608,6 +609,46 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                       () async {
                                                                     HapticFeedback
                                                                         .mediumImpact();
+                                                                    await showModalBottomSheet(
+                                                                      isScrollControlled:
+                                                                          true,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      enableDrag:
+                                                                          false,
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (context) {
+                                                                        return WebViewAware(
+                                                                          child:
+                                                                              GestureDetector(
+                                                                            onTap:
+                                                                                () {
+                                                                              FocusScope.of(context).unfocus();
+                                                                              FocusManager.instance.primaryFocus?.unfocus();
+                                                                            },
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: MediaQuery.viewInsetsOf(context),
+                                                                              child: SizedBox(
+                                                                                height: MediaQuery.sizeOf(context).height * 0.7,
+                                                                                child: DatailLeaveRequetWidget(
+                                                                                  detailList: getJsonField(
+                                                                                    _model.leaveHistoryList.elementAtOrNull(leaveItemIndex),
+                                                                                    r'''$.LEAVE_DETAILS''',
+                                                                                    true,
+                                                                                  )!,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    ).then((value) =>
+                                                                        safeSetState(
+                                                                            () {}));
                                                                   },
                                                                   child: Text(
                                                                     FFLocalizations.of(
@@ -1664,6 +1705,96 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                     () async {
                                                                   HapticFeedback
                                                                       .mediumImpact();
+
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'EditLeavePage',
+                                                                    queryParameters:
+                                                                        {
+                                                                      'leaveID':
+                                                                          serializeParam(
+                                                                        getJsonField(
+                                                                          _model
+                                                                              .leaveHistoryList
+                                                                              .elementAtOrNull(leaveItemIndex),
+                                                                          r'''$.LEAVE_ID''',
+                                                                        ).toString(),
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'leaveName':
+                                                                          serializeParam(
+                                                                        getJsonField(
+                                                                          _model
+                                                                              .leaveHistoryList
+                                                                              .elementAtOrNull(leaveItemIndex),
+                                                                          r'''$.LEAVE_NAME''',
+                                                                        ).toString(),
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'leavePerios':
+                                                                          serializeParam(
+                                                                        getJsonField(
+                                                                          _model
+                                                                              .leaveHistoryList
+                                                                              .elementAtOrNull(leaveItemIndex),
+                                                                          r'''$.LEAVE_PERIOD''',
+                                                                        ).toString(),
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'leaveCountDay':
+                                                                          serializeParam(
+                                                                        getJsonField(
+                                                                          _model
+                                                                              .leaveHistoryList
+                                                                              .elementAtOrNull(leaveItemIndex),
+                                                                          r'''$.LEAVE_COUNT_DAY''',
+                                                                        ).toString(),
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'leaveReason':
+                                                                          serializeParam(
+                                                                        getJsonField(
+                                                                          _model
+                                                                              .leaveHistoryList
+                                                                              .elementAtOrNull(leaveItemIndex),
+                                                                          r'''$.LEAVE_REASON''',
+                                                                        ).toString(),
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'userPhoneNumber':
+                                                                          serializeParam(
+                                                                        getJsonField(
+                                                                          _model
+                                                                              .leaveHistoryList
+                                                                              .elementAtOrNull(leaveItemIndex),
+                                                                          r'''$.EMP_TEL''',
+                                                                        ).toString(),
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'leaveDocument':
+                                                                          serializeParam(
+                                                                        functions.convertStringListToImgPathList((getJsonField(
+                                                                          _model
+                                                                              .leaveHistoryList
+                                                                              .elementAtOrNull(leaveItemIndex),
+                                                                          r'''$.LEAVE_DOCUMENT''',
+                                                                          true,
+                                                                        ) as List)
+                                                                            .map<String>((s) => s.toString())
+                                                                            .toList()),
+                                                                        ParamType
+                                                                            .String,
+                                                                        isList:
+                                                                            true,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                  );
                                                                 },
                                                                 text: FFLocalizations.of(
                                                                         context)
