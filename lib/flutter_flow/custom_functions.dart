@@ -674,3 +674,14 @@ String? floorNumberFunction(String? value) {
   int result = number.floor(); // ใช้ floor() เพื่อปัดลง
   return result.toString(); // แปลง int กลับเป็น String
 }
+
+String? encodingJson(dynamic jsonInput) {
+  String output = jsonEncode(jsonInput!);
+  return output;
+}
+
+dynamic decodingJson(String? stringJson) {
+  dynamic output = jsonDecode(stringJson!);
+
+  return output;
+}

@@ -1,4 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/loading/loading_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -110,8 +112,31 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
         );
         return;
       }
-      _model.currentYearData = GetAllLeaveCopyCall.currentYearData(
-        (_model.getAllLeave?.jsonBody ?? ''),
+      _model.currentYearData = ApproveListDataModelStruct(
+        year: getJsonField(
+          GetAllLeaveCopyCall.currentYearData(
+            (_model.getAllLeave?.jsonBody ?? ''),
+          )?.toMap(),
+          r'''$.year''',
+        ),
+        cancel: functions.encodingJson(getJsonField(
+          GetAllLeaveCopyCall.currentYearData(
+            (_model.getAllLeave?.jsonBody ?? ''),
+          )?.toMap(),
+          r'''$.Cancel''',
+        )),
+        approve: functions.encodingJson(getJsonField(
+          GetAllLeaveCopyCall.currentYearData(
+            (_model.getAllLeave?.jsonBody ?? ''),
+          )?.toMap(),
+          r'''$.Approve''',
+        )),
+        notApprove: functions.encodingJson(getJsonField(
+          GetAllLeaveCopyCall.currentYearData(
+            (_model.getAllLeave?.jsonBody ?? ''),
+          )?.toMap(),
+          r'''$.NotApprove''',
+        )),
       );
       safeSetState(() {});
       await showDialog(
@@ -119,8 +144,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
         builder: (alertDialogContext) {
           return WebViewAware(
             child: AlertDialog(
-              content:
-                  Text((_model.currentYearData!.approve.toMap()).toString()),
+              content: Text(_model.currentYearData!.approve),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),
@@ -137,7 +161,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
           return WebViewAware(
             child: AlertDialog(
               content: Text(getJsonField(
-                _model.currentYearData!.approve.toMap(),
+                functions.decodingJson(_model.currentYearData?.approve),
                 r'''$.*.name''',
               ).toString().toString()),
               actions: [

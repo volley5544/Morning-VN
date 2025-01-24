@@ -135,25 +135,6 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
               .toList()
               .cast<dynamic>();
       safeSetState(() {});
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return WebViewAware(
-            child: AlertDialog(
-              content: Text(getJsonField(
-                (_model.leaveHistoryListAPIOutput?.jsonBody ?? ''),
-                r'''$.results.current_year.leave_list[*]''',
-              ).toString().toString()),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
-                ),
-              ],
-            ),
-          );
-        },
-      );
       Navigator.pop(context);
     });
 

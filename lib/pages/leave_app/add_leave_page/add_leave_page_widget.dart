@@ -1592,45 +1592,6 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                   HapticFeedback.mediumImpact();
                                                   if (FFAppState()
                                                           .selectedDatesList.isNotEmpty) {
-                                                    if (!functions.checkYearLeave(
-                                                        FFAppState()
-                                                            .selectedDatesList
-                                                            .toList())!) {
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return WebViewAware(
-                                                            child: AlertDialog(
-                                                              content: Text(
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getVariableText(
-                                                                enText:
-                                                                    'Leave for next year cannot be requested in advance. Please select a new date.',
-                                                                viText:
-                                                                    'Không thể nghỉ phép trước năm sau, vui lòng chọn ngày khác.',
-                                                                thText:
-                                                                    'ไม่สามารถลาล่วงหน้าปีหน้าได้ กรุณาเลือกวันใหม่',
-                                                              )),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: const Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          );
-                                                        },
-                                                      );
-                                                      if (shouldSetState) {
-                                                        safeSetState(() {});
-                                                      }
-                                                      return;
-                                                    }
                                                     if (!(_model.leaveTimeValue !=
                                                             null &&
                                                         _model.leaveTimeValue !=
