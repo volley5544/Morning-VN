@@ -978,7 +978,6 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                             children: [
                               if (responsiveVisibility(
                                 context: context,
-                                tablet: false,
                                 tabletLandscape: false,
                                 desktop: false,
                               ))

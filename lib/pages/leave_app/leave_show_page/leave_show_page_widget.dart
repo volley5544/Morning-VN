@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pages/checkin/loading_scene/loading_scene_widget.dart';
+import '/pages/leave_app/confirm_cancel_leave_component/confirm_cancel_leave_component_widget.dart';
 import '/pages/leave_app/datail_leave_requet/datail_leave_requet_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -1594,6 +1595,20 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             .transparent,
                                                                     onTap:
                                                                         () async {
+                                                                      FFAppState()
+                                                                          .leaveDocImgPathListNew = (getJsonField(
+                                                                        _model
+                                                                            .leaveHistoryList
+                                                                            .elementAtOrNull(leaveItemIndex),
+                                                                        r'''$.LEAVE_DOCUMENT''',
+                                                                        true,
+                                                                      ) as List)
+                                                                          .map<String>((s) => s.toString())
+                                                                          .toList()
+                                                                          .toList()
+                                                                          .cast<String>();
+                                                                      safeSetState(
+                                                                          () {});
                                                                       if (FFAppState()
                                                                               .leaveDocImgPathListNew.isEmpty) {
                                                                         await showDialog(
@@ -1859,6 +1874,53 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                   () async {
                                                                 HapticFeedback
                                                                     .mediumImpact();
+                                                                await showModalBottomSheet(
+                                                                  isScrollControlled:
+                                                                      true,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  enableDrag:
+                                                                      false,
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (context) {
+                                                                    return WebViewAware(
+                                                                      child:
+                                                                          GestureDetector(
+                                                                        onTap:
+                                                                            () {
+                                                                          FocusScope.of(context)
+                                                                              .unfocus();
+                                                                          FocusManager
+                                                                              .instance
+                                                                              .primaryFocus
+                                                                              ?.unfocus();
+                                                                        },
+                                                                        child:
+                                                                            Padding(
+                                                                          padding:
+                                                                              MediaQuery.viewInsetsOf(context),
+                                                                          child:
+                                                                              ConfirmCancelLeaveComponentWidget(
+                                                                            leaveID:
+                                                                                getJsonField(
+                                                                              _model.leaveHistoryList.elementAtOrNull(leaveItemIndex),
+                                                                              r'''$.ID''',
+                                                                            ).toString(),
+                                                                            isFromCancelPage:
+                                                                                'leaveShowPage',
+                                                                            leaveStatus:
+                                                                                'cancel',
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    safeSetState(
+                                                                        () {}));
                                                               },
                                                               text: FFLocalizations
                                                                       .of(context)

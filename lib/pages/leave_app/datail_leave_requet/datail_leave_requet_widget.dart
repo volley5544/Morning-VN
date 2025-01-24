@@ -203,13 +203,10 @@ class _DatailLeaveRequetWidgetState extends State<DatailLeaveRequetWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          '${getJsonField(
+                                          getJsonField(
                                             leaveDetailItemItem,
-                                            r'''$.LEAVE_START_DATE''',
-                                          ).toString()} -${getJsonField(
-                                            leaveDetailItemItem,
-                                            r'''$.LEAVE_END_DATE''',
-                                          ).toString()}',
+                                            r'''$.LEAVE_DATE''',
+                                          ).toString(),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -256,7 +253,7 @@ class _DatailLeaveRequetWidgetState extends State<DatailLeaveRequetWidget> {
                                         Text(
                                           getJsonField(
                                             leaveDetailItemItem,
-                                            r'''$.LEAVE_PERIOD_NAME''',
+                                            r'''$.LEAVE_PERIOD''',
                                           ).toString(),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
