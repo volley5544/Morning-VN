@@ -1005,11 +1005,10 @@ class GetAllLeaveCopyCall {
         response,
         r'''$.message''',
       ));
-  static ApproveListDataModelStruct? currentYearData(dynamic response) =>
-      ApproveListDataModelStruct.maybeFromMap(getJsonField(
+  static dynamic currentYearData(dynamic response) => getJsonField(
         response,
         r'''$.results.current_year''',
-      ));
+      );
   static dynamic previousYearData(dynamic response) => getJsonField(
         response,
         r'''$.results.previous_year''',

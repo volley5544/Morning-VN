@@ -117,11 +117,9 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
         builder: (alertDialogContext) {
           return WebViewAware(
             child: AlertDialog(
-              content: Text((GetAllLeaveCopyCall.currentYearData(
+              content: Text(GetAllLeaveCopyCall.currentYearData(
                 (_model.getAllLeave?.jsonBody ?? ''),
-              )!
-                      .toMap())
-                  .toString()),
+              ).toString()),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),
@@ -136,25 +134,25 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
         year: getJsonField(
           GetAllLeaveCopyCall.currentYearData(
             (_model.getAllLeave?.jsonBody ?? ''),
-          )?.toMap(),
+          ),
           r'''$.year''',
         ),
         cancel: functions.encodingJson(getJsonField(
           GetAllLeaveCopyCall.currentYearData(
             (_model.getAllLeave?.jsonBody ?? ''),
-          )?.toMap(),
+          ),
           r'''$.Cancel''',
         )),
         approve: functions.encodingJson(getJsonField(
           GetAllLeaveCopyCall.currentYearData(
             (_model.getAllLeave?.jsonBody ?? ''),
-          )?.toMap(),
+          ),
           r'''$.Approve''',
         )),
         notApprove: functions.encodingJson(getJsonField(
           GetAllLeaveCopyCall.currentYearData(
             (_model.getAllLeave?.jsonBody ?? ''),
-          )?.toMap(),
+          ),
           r'''$.NotApprove''',
         )),
       );
