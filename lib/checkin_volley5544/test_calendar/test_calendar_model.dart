@@ -34,18 +34,18 @@ class TestCalendarModel extends FlutterFlowModel<TestCalendarWidget> {
           int index, Function(CurrentYearStruct) updateFn) =>
       currentYearDataPage[index] = updateFn(currentYearDataPage[index]);
 
-  List<OtherYearStruct> otherYearDataPage = [];
-  void addToOtherYearDataPage(OtherYearStruct item) =>
-      otherYearDataPage.add(item);
-  void removeFromOtherYearDataPage(OtherYearStruct item) =>
-      otherYearDataPage.remove(item);
-  void removeAtIndexFromOtherYearDataPage(int index) =>
-      otherYearDataPage.removeAt(index);
-  void insertAtIndexInOtherYearDataPage(int index, OtherYearStruct item) =>
-      otherYearDataPage.insert(index, item);
-  void updateOtherYearDataPageAtIndex(
-          int index, Function(OtherYearStruct) updateFn) =>
-      otherYearDataPage[index] = updateFn(otherYearDataPage[index]);
+  List<CurrentYearStruct> nextYearDataPage = [];
+  void addToNextYearDataPage(CurrentYearStruct item) =>
+      nextYearDataPage.add(item);
+  void removeFromNextYearDataPage(CurrentYearStruct item) =>
+      nextYearDataPage.remove(item);
+  void removeAtIndexFromNextYearDataPage(int index) =>
+      nextYearDataPage.removeAt(index);
+  void insertAtIndexInNextYearDataPage(int index, CurrentYearStruct item) =>
+      nextYearDataPage.insert(index, item);
+  void updateNextYearDataPageAtIndex(
+          int index, Function(CurrentYearStruct) updateFn) =>
+      nextYearDataPage[index] = updateFn(nextYearDataPage[index]);
 
   ///  State fields for stateful widgets in this page.
 

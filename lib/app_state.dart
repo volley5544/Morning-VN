@@ -320,11 +320,7 @@ class FFAppState extends ChangeNotifier {
     _branchRADIUS = value;
   }
 
-  List<String> _leaveHalfDay = [
-    'ลาเต็มวัน',
-    'ลาครึ่งวันเช้า',
-    'ลาครึ่งวันบ่าย'
-  ];
+  List<String> _leaveHalfDay = ['full', 'half', 'half'];
   List<String> get leaveHalfDay => _leaveHalfDay;
   set leaveHalfDay(List<String> value) {
     _leaveHalfDay = value;
@@ -353,7 +349,7 @@ class FFAppState extends ChangeNotifier {
     leaveHalfDay.insert(index, value);
   }
 
-  List<String> _leaveFullDay = ['ลาเต็มวัน'];
+  List<String> _leaveFullDay = ['full'];
   List<String> get leaveFullDay => _leaveFullDay;
   set leaveFullDay(List<String> value) {
     _leaveFullDay = value;
@@ -645,6 +641,105 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInSelectApproveList(int index, bool value) {
     selectApproveList.insert(index, value);
+  }
+
+  List<String> _leaveDocImgPathList = [];
+  List<String> get leaveDocImgPathList => _leaveDocImgPathList;
+  set leaveDocImgPathList(List<String> value) {
+    _leaveDocImgPathList = value;
+  }
+
+  void addToLeaveDocImgPathList(String value) {
+    leaveDocImgPathList.add(value);
+  }
+
+  void removeFromLeaveDocImgPathList(String value) {
+    leaveDocImgPathList.remove(value);
+  }
+
+  void removeAtIndexFromLeaveDocImgPathList(int index) {
+    leaveDocImgPathList.removeAt(index);
+  }
+
+  void updateLeaveDocImgPathListAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    leaveDocImgPathList[index] = updateFn(_leaveDocImgPathList[index]);
+  }
+
+  void insertAtIndexInLeaveDocImgPathList(int index, String value) {
+    leaveDocImgPathList.insert(index, value);
+  }
+
+  List<String> _leaveDocImgPathListNew = [];
+  List<String> get leaveDocImgPathListNew => _leaveDocImgPathListNew;
+  set leaveDocImgPathListNew(List<String> value) {
+    _leaveDocImgPathListNew = value;
+  }
+
+  void addToLeaveDocImgPathListNew(String value) {
+    leaveDocImgPathListNew.add(value);
+  }
+
+  void removeFromLeaveDocImgPathListNew(String value) {
+    leaveDocImgPathListNew.remove(value);
+  }
+
+  void removeAtIndexFromLeaveDocImgPathListNew(int index) {
+    leaveDocImgPathListNew.removeAt(index);
+  }
+
+  void updateLeaveDocImgPathListNewAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    leaveDocImgPathListNew[index] = updateFn(_leaveDocImgPathListNew[index]);
+  }
+
+  void insertAtIndexInLeaveDocImgPathListNew(int index, String value) {
+    leaveDocImgPathListNew.insert(index, value);
+  }
+
+  String _selectYearViewLeaveShow = '';
+  String get selectYearViewLeaveShow => _selectYearViewLeaveShow;
+  set selectYearViewLeaveShow(String value) {
+    _selectYearViewLeaveShow = value;
+  }
+
+  List<dynamic> _emptyJson = [];
+  List<dynamic> get emptyJson => _emptyJson;
+  set emptyJson(List<dynamic> value) {
+    _emptyJson = value;
+  }
+
+  void addToEmptyJson(dynamic value) {
+    emptyJson.add(value);
+  }
+
+  void removeFromEmptyJson(dynamic value) {
+    emptyJson.remove(value);
+  }
+
+  void removeAtIndexFromEmptyJson(int index) {
+    emptyJson.removeAt(index);
+  }
+
+  void updateEmptyJsonAtIndex(
+    int index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    emptyJson[index] = updateFn(_emptyJson[index]);
+  }
+
+  void insertAtIndexInEmptyJson(int index, dynamic value) {
+    emptyJson.insert(index, value);
+  }
+
+  String _Uid = '';
+  String get Uid => _Uid;
+  set Uid(String value) {
+    _Uid = value;
   }
 }
 

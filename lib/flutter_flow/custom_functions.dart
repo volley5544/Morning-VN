@@ -516,7 +516,7 @@ Color? getResignCardColor(
 }
 
 String? showMatNameInList(
-  String? materialNameList,
+  List<String>? materialNameList,
   int? index,
 ) {
   // Add your function code here!
@@ -537,7 +537,7 @@ double? contrainerChange(double? contrainerHeight) {
 }
 
 String? getLeavePeriod(String? leaveTime) {
-  if (leaveTime == "ลาเต็มวัน") {
+  if (leaveTime == "full") {
     return "full";
   } else {
     return "half";
@@ -615,4 +615,62 @@ int? countTrueInBoolList(List<String>? booleanList) {
   int trueCount = booleanList!.where((element) => element == true).length;
 
   return trueCount;
+}
+
+List<String>? leaveStringImgToImgPathList(String? leaveStringImg) {
+  List<String> listStr = leaveStringImg!.split(',').toList();
+  return listStr;
+}
+
+String? countLeaveDateSelectedByYear(
+  List<DateTime>? selectedDateList,
+  String? currentYear,
+  String? otherYear,
+  bool? returnCurrentYearCount,
+) {
+  int currentYearSelectedCount = 0;
+  int otherYearSelectedCount = 0;
+
+  for (int i = 0; i < selectedDateList!.length; i++) {
+    if ('${selectedDateList![i].year}' == currentYear!) {
+      currentYearSelectedCount++;
+    } else {
+      otherYearSelectedCount++;
+    }
+  }
+  if (returnCurrentYearCount!) {
+    return '$currentYearSelectedCount';
+  } else {
+    return '$otherYearSelectedCount';
+  }
+}
+
+List<String> convertStringListToImgPathList(List<String>? inputList) {
+  return inputList!;
+}
+
+String? currentTimeToYearNumber(DateTime? currentTime) {
+  String? year = DateFormat.MMMM().format(currentTime!);
+  Map<String, String> yearLists = {
+    'Currentyear': '01',
+    'Previousyear': '02',
+    'Nextyear': '03',
+  };
+
+  String? yearNumber = yearLists[year];
+  return yearNumber;
+}
+
+List<String> converApproveOneSaveFunction(String? idLeave) {
+  List<String> output = [];
+  if (idLeave != null) {
+    output.add(idLeave); // เพิ่มค่า idLeave เข้าไปใน List
+  }
+  return output;
+}
+
+String? floorNumberFunction(String? value) {
+  double? number = double.tryParse(value!) ?? 0; // แปลง String เป็น double
+  int result = number.floor(); // ใช้ floor() เพื่อปัดลง
+  return result.toString(); // แปลง int กลับเป็น String
 }

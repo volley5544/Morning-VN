@@ -70,11 +70,11 @@ class _TestCalendarWidgetState extends State<TestCalendarWidget> {
       )!
           .toList()
           .cast<CurrentYearStruct>();
-      _model.otherYearDataPage = GetLeaveListCall.otheryear(
+      _model.nextYearDataPage = GetLeaveListCall.nextyear(
         (_model.apiResult235?.jsonBody ?? ''),
       )!
           .toList()
-          .cast<OtherYearStruct>();
+          .cast<CurrentYearStruct>();
       safeSetState(() {});
       Navigator.pop(context);
     });
@@ -146,11 +146,11 @@ class _TestCalendarWidgetState extends State<TestCalendarWidget> {
                     height: MediaQuery.sizeOf(context).height * 0.6,
                     holiday: _model.holidayDataPage.map((e) => e.date).toList(),
                     currentYear: _model.currentYearDataPage.lastOrNull?.year,
-                    nextYear: _model.otherYearDataPage.lastOrNull?.year,
+                    nextYear: _model.nextYearDataPage.lastOrNull?.year,
                     currentYearSelectableDates:
                         _model.currentYearDataPage.lastOrNull!.leaveRemain,
                     nextYearSelectableDates:
-                        _model.otherYearDataPage.lastOrNull!.leaveRemain,
+                        _model.nextYearDataPage.lastOrNull!.leaveRemain,
                     onDateSelected: (dateList) async {
                       FFAppState().dateSelect =
                           dateList!.toList().cast<DateTime>();

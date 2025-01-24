@@ -6,8 +6,8 @@ import '/backend/schema/util/firestore_util.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 
-class LaveDetailStruct extends FFFirebaseStruct {
-  LaveDetailStruct({
+class LeaveDetailStruct extends FFFirebaseStruct {
+  LeaveDetailStruct({
     String? leaveId,
     String? leaveName,
     String? leaveDate,
@@ -38,15 +38,15 @@ class LaveDetailStruct extends FFFirebaseStruct {
 
   bool hasLeaveDate() => _leaveDate != null;
 
-  static LaveDetailStruct fromMap(Map<String, dynamic> data) =>
-      LaveDetailStruct(
+  static LeaveDetailStruct fromMap(Map<String, dynamic> data) =>
+      LeaveDetailStruct(
         leaveId: data['leave_id'] as String?,
         leaveName: data['leave_name'] as String?,
         leaveDate: data['leave_date'] as String?,
       );
 
-  static LaveDetailStruct? maybeFromMap(dynamic data) => data is Map
-      ? LaveDetailStruct.fromMap(data.cast<String, dynamic>())
+  static LeaveDetailStruct? maybeFromMap(dynamic data) => data is Map
+      ? LeaveDetailStruct.fromMap(data.cast<String, dynamic>())
       : null;
 
   Map<String, dynamic> toMap() => {
@@ -71,8 +71,8 @@ class LaveDetailStruct extends FFFirebaseStruct {
         ),
       }.withoutNulls;
 
-  static LaveDetailStruct fromSerializableMap(Map<String, dynamic> data) =>
-      LaveDetailStruct(
+  static LeaveDetailStruct fromSerializableMap(Map<String, dynamic> data) =>
+      LeaveDetailStruct(
         leaveId: deserializeParam(
           data['leave_id'],
           ParamType.String,
@@ -91,11 +91,11 @@ class LaveDetailStruct extends FFFirebaseStruct {
       );
 
   @override
-  String toString() => 'LaveDetailStruct(${toMap()})';
+  String toString() => 'LeaveDetailStruct(${toMap()})';
 
   @override
   bool operator ==(Object other) {
-    return other is LaveDetailStruct &&
+    return other is LeaveDetailStruct &&
         leaveId == other.leaveId &&
         leaveName == other.leaveName &&
         leaveDate == other.leaveDate;
@@ -106,7 +106,7 @@ class LaveDetailStruct extends FFFirebaseStruct {
       const ListEquality().hash([leaveId, leaveName, leaveDate]);
 }
 
-LaveDetailStruct createLaveDetailStruct({
+LeaveDetailStruct createLeaveDetailStruct({
   String? leaveId,
   String? leaveName,
   String? leaveDate,
@@ -115,7 +115,7 @@ LaveDetailStruct createLaveDetailStruct({
   bool create = false,
   bool delete = false,
 }) =>
-    LaveDetailStruct(
+    LeaveDetailStruct(
       leaveId: leaveId,
       leaveName: leaveName,
       leaveDate: leaveDate,
@@ -127,61 +127,64 @@ LaveDetailStruct createLaveDetailStruct({
       ),
     );
 
-LaveDetailStruct? updateLaveDetailStruct(
-  LaveDetailStruct? laveDetail, {
+LeaveDetailStruct? updateLeaveDetailStruct(
+  LeaveDetailStruct? leaveDetail, {
   bool clearUnsetFields = true,
   bool create = false,
 }) =>
-    laveDetail
+    leaveDetail
       ?..firestoreUtilData = FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
       );
 
-void addLaveDetailStructData(
+void addLeaveDetailStructData(
   Map<String, dynamic> firestoreData,
-  LaveDetailStruct? laveDetail,
+  LeaveDetailStruct? leaveDetail,
   String fieldName, [
   bool forFieldValue = false,
 ]) {
   firestoreData.remove(fieldName);
-  if (laveDetail == null) {
+  if (leaveDetail == null) {
     return;
   }
-  if (laveDetail.firestoreUtilData.delete) {
+  if (leaveDetail.firestoreUtilData.delete) {
     firestoreData[fieldName] = FieldValue.delete();
     return;
   }
   final clearFields =
-      !forFieldValue && laveDetail.firestoreUtilData.clearUnsetFields;
+      !forFieldValue && leaveDetail.firestoreUtilData.clearUnsetFields;
   if (clearFields) {
     firestoreData[fieldName] = <String, dynamic>{};
   }
-  final laveDetailData = getLaveDetailFirestoreData(laveDetail, forFieldValue);
-  final nestedData = laveDetailData.map((k, v) => MapEntry('$fieldName.$k', v));
+  final leaveDetailData =
+      getLeaveDetailFirestoreData(leaveDetail, forFieldValue);
+  final nestedData =
+      leaveDetailData.map((k, v) => MapEntry('$fieldName.$k', v));
 
-  final mergeFields = laveDetail.firestoreUtilData.create || clearFields;
+  final mergeFields = leaveDetail.firestoreUtilData.create || clearFields;
   firestoreData
       .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
 }
 
-Map<String, dynamic> getLaveDetailFirestoreData(
-  LaveDetailStruct? laveDetail, [
+Map<String, dynamic> getLeaveDetailFirestoreData(
+  LeaveDetailStruct? leaveDetail, [
   bool forFieldValue = false,
 ]) {
-  if (laveDetail == null) {
+  if (leaveDetail == null) {
     return {};
   }
-  final firestoreData = mapToFirestore(laveDetail.toMap());
+  final firestoreData = mapToFirestore(leaveDetail.toMap());
 
   // Add any Firestore field values
-  laveDetail.firestoreUtilData.fieldValues
+  leaveDetail.firestoreUtilData.fieldValues
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
 }
 
-List<Map<String, dynamic>> getLaveDetailListFirestoreData(
-  List<LaveDetailStruct>? laveDetails,
+List<Map<String, dynamic>> getLeaveDetailListFirestoreData(
+  List<LeaveDetailStruct>? leaveDetails,
 ) =>
-    laveDetails?.map((e) => getLaveDetailFirestoreData(e, true)).toList() ?? [];
+    leaveDetails?.map((e) => getLeaveDetailFirestoreData(e, true)).toList() ??
+    [];

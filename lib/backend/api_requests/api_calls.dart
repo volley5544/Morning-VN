@@ -18,15 +18,14 @@ class AuthenAPICall {
     String? fcmToken = '',
     String? uid = '',
     String? check = '',
+    String? projectName = 'SSW_ARUNSAWAD_VN',
   }) async {
     final ffApiRequestBody = '''
 {
   "username": "$username",
   "password": "$password",
-  "api_url": "$apiUrl",
-  "fcm_token": "$fcmToken",
   "uid": "$uid",
-  "check": "$check"
+  "project_name" : "$projectName"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'authenAPI',
@@ -34,8 +33,6 @@ class AuthenAPICall {
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization':
-            'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA5MFwvc3N3X21vcm5pbmdfZm1cL2FwaVwvbG9naW4iLCJpYXQiOjE3MzQzMzE3MzIsIm5iZiI6MTczNDMzMTczMiwianRpIjoiaUZCdHhkQjNCSURmcmduZCIsInN1YiI6ODc3NSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.YMz2tzAuFeEgkcknPmaZiaKPOcFZFiEFGlYvNKJ7gck',
       },
       params: {},
       body: ffApiRequestBody,
@@ -125,7 +122,7 @@ class WorkCheckAPICall {
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer  $token',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       body: ffApiRequestBody,
@@ -215,7 +212,7 @@ class GetLocationCall {
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer  $token',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       body: ffApiRequestBody,
@@ -274,7 +271,7 @@ class GetBranchLocationCall {
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer  $token',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       body: ffApiRequestBody,
@@ -354,7 +351,7 @@ class UpdateBranchLocationCall {
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer  $token',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       body: ffApiRequestBody,
@@ -433,7 +430,7 @@ class CreateBranchLocationCall {
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer  $token',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       body: ffApiRequestBody,
@@ -496,7 +493,7 @@ class WorkCheckHistoryAPICall {
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer  $token',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       bodyType: BodyType.NONE,
@@ -549,7 +546,7 @@ class GetLeaveListCall {
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer  $token',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       bodyType: BodyType.NONE,
@@ -570,16 +567,11 @@ class GetLeaveListCall {
         response,
         r'''$.message''',
       ));
-  static List<LeaveListDataStruct>? leavelist(dynamic response) =>
-      (getJsonField(
+  static List? leavelist(dynamic response) => getJsonField(
         response,
-        r'''$.results.leave_list.*''',
+        r'''$.results.leave_list[*]''',
         true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => LeaveListDataStruct.maybeFromMap(x))
-          .withoutNulls
-          .toList();
+      ) as List?;
   static List<CalendarDataStruct>? listcalendar(dynamic response) =>
       (getJsonField(
         response,
@@ -600,13 +592,32 @@ class GetLeaveListCall {
           .map((x) => CurrentYearStruct.maybeFromMap(x))
           .withoutNulls
           .toList();
-  static List<OtherYearStruct>? otheryear(dynamic response) => (getJsonField(
+  static List<CurrentYearStruct>? nextyear(dynamic response) => (getJsonField(
         response,
-        r'''$.results.leave_list.*.other_year''',
+        r'''$.results.leave_list.*.next_year''',
         true,
       ) as List?)
           ?.withoutNulls
-          .map((x) => OtherYearStruct.maybeFromMap(x))
+          .map((x) => CurrentYearStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+  static int? total(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.results.total''',
+      ));
+  static int? countlistcalendar(dynamic response) =>
+      castToType<int>(getJsonField(
+        response,
+        r'''$.results.count_list_calendar''',
+      ));
+  static List<CurrentYearStruct>? previousyear(dynamic response) =>
+      (getJsonField(
+        response,
+        r'''$.results.leave_list.*.previous_year''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => CurrentYearStruct.maybeFromMap(x))
           .withoutNulls
           .toList();
 }
@@ -622,7 +633,7 @@ class GetLeaveHistoryCall {
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer  $token',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       bodyType: BodyType.NONE,
@@ -645,27 +656,27 @@ class GetLeaveHistoryCall {
       ));
   static List? currentYear(dynamic response) => getJsonField(
         response,
-        r'''$.results.current_year''',
+        r'''$.results.current_year.leave_list[*]''',
         true,
       ) as List?;
   static List? previousYear(dynamic response) => getJsonField(
         response,
-        r'''$.results.previous_year''',
+        r'''$.results.previous_year.leave_list[*]''',
         true,
       ) as List?;
   static List? nextYear(dynamic response) => getJsonField(
         response,
-        r'''$.results.next_year''',
+        r'''$.results.next_year.leave_list[*]''',
         true,
       ) as List?;
-  static List<LeaveHistoryNewStruct>? leaveListCurrentYear(dynamic response) =>
+  static List<LeaveHistoryStruct>? leaveListCurrentYear(dynamic response) =>
       (getJsonField(
         response,
         r'''$.results.current_year.leave_list[*]''',
         true,
       ) as List?)
           ?.withoutNulls
-          .map((x) => LeaveHistoryNewStruct.maybeFromMap(x))
+          .map((x) => LeaveHistoryStruct.maybeFromMap(x))
           .withoutNulls
           .toList();
   static List<String>? leaveListCurrentYearMonth(dynamic response) =>
@@ -678,6 +689,15 @@ class GetLeaveHistoryCall {
           .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
+  static String? currentMonth(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.results.current_month_only''',
+      ));
+  static dynamic results(dynamic response) => getJsonField(
+        response,
+        r'''$.results''',
+      );
 }
 
 class SaveLeaveCall {
@@ -710,7 +730,7 @@ class SaveLeaveCall {
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer  $token',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       body: ffApiRequestBody,
@@ -746,13 +766,11 @@ class GetUserProfileAPICall {
   static Future<ApiCallResponse> call({
     String? apiUrl = '',
     String? token = '',
-    String? username = '',
-    String? password = '',
   }) async {
-    final ffApiRequestBody = '''
+    const ffApiRequestBody = '''
 {
-  "username": ${escapeStringForJson(username)},
-  "password": ${escapeStringForJson(password)}
+  "username": <username>,
+  "password": <password>
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'getUserProfileAPI',
@@ -760,7 +778,7 @@ class GetUserProfileAPICall {
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer  $token',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       body: ffApiRequestBody,
@@ -786,22 +804,26 @@ class GetUserProfileAPICall {
         response,
         r'''$.results''',
       );
-  static dynamic profileBranchCode(dynamic response) => getJsonField(
+  static String? profileBranchCode(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
-        r'''$.results[:].branchCode''',
-      );
-  static dynamic profliePositionName(dynamic response) => getJsonField(
+        r'''$.results.branchCode''',
+      ));
+  static String? profliePositionName(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
-        r'''$.results[:].positionName''',
-      );
-  static dynamic profilePhoneNumber(dynamic response) => getJsonField(
+        r'''$.results.positionName''',
+      ));
+  static String? profilePhoneNumber(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
-        r'''$.results[:].mobileNumber''',
-      );
-  static dynamic profileHiredDate(dynamic response) => getJsonField(
+        r'''$.results.mobileNumber''',
+      ));
+  static String? profileHiredDate(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
-        r'''$.results[:].hiredDate''',
-      );
+        r'''$.results.hiredDate''',
+      ));
 }
 
 class GetLeaveListApproveCall {
@@ -815,7 +837,7 @@ class GetLeaveListApproveCall {
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer  $token',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       bodyType: BodyType.NONE,
@@ -841,13 +863,14 @@ class GetLeaveListApproveCall {
         response,
         r'''$.results''',
       );
-  static List<ListAppoveStruct>? listApprove(dynamic response) => (getJsonField(
+  static List<ListApproveStruct>? listApprove(dynamic response) =>
+      (getJsonField(
         response,
         r'''$.results.list_approve''',
         true,
       ) as List?)
           ?.withoutNulls
-          .map((x) => ListAppoveStruct.maybeFromMap(x))
+          .map((x) => ListApproveStruct.maybeFromMap(x))
           .withoutNulls
           .toList();
   static List<String>? allLeaveId(dynamic response) => (getJsonField(
@@ -868,6 +891,179 @@ class GetLeaveListApproveCall {
           .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
+}
+
+class GetAllLeaveCall {
+  static Future<ApiCallResponse> call({
+    String? apiUrl = '',
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getAllLeave',
+      apiUrl: '$apiUrl/api/leave/get-all-leave',
+      callType: ApiCallType.POST,
+      headers: {
+        'ContentType': 'application/json; charset=utf-8,',
+        'Authorization': 'Bearer $token',
+      },
+      params: {},
+      bodyType: BodyType.NONE,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static DataLeaveAllStruct? previousYearCancel(dynamic response) =>
+      DataLeaveAllStruct.maybeFromMap(getJsonField(
+        response,
+        r'''$.results.previous_year.Cancel[*]''',
+      ));
+  static List? previousYearApprove(dynamic response) => getJsonField(
+        response,
+        r'''$.results.previous_year.Approve[*]''',
+        true,
+      ) as List?;
+  static DataLeaveAllStruct? previousYearNotApprove(dynamic response) =>
+      DataLeaveAllStruct.maybeFromMap(getJsonField(
+        response,
+        r'''$.results.previous_year.NotApprove[*]''',
+      ));
+  static String? statuslayer(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+  static String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  static List? currentYearCancel(dynamic response) => getJsonField(
+        response,
+        r'''$.results.current_year.Cancel[*]''',
+        true,
+      ) as List?;
+  static List? currentYearApprove(dynamic response) => getJsonField(
+        response,
+        r'''$.results.current_year.Approve[*]''',
+        true,
+      ) as List?;
+  static List? currentYearNotApprove(dynamic response) => getJsonField(
+        response,
+        r'''$.results.current_year.NotApprove[*]''',
+        true,
+      ) as List?;
+  static dynamic nextYearCancel(dynamic response) => getJsonField(
+        response,
+        r'''$.results.next_year.Cancel[*]''',
+      );
+  static List? nextYearApprove(dynamic response) => getJsonField(
+        response,
+        r'''$.results.next_year.Approve[*]''',
+        true,
+      ) as List?;
+  static dynamic nextYearNotApprove(dynamic response) => getJsonField(
+        response,
+        r'''$.results.next_year.NotApprove[*]''',
+      );
+}
+
+class GetAllLeaveCopyCall {
+  static Future<ApiCallResponse> call({
+    String? apiUrl = '',
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getAllLeave Copy',
+      apiUrl: '$apiUrl/api/leave/get-all-leave',
+      callType: ApiCallType.POST,
+      headers: {
+        'ContentType': 'application/json; charset=utf-8,',
+        'Authorization': 'Bearer $token',
+      },
+      params: {},
+      bodyType: BodyType.NONE,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static String? statusLayer1(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+  static String? messageLayer1(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  static ApproveListDataModelStruct? currentYearData(dynamic response) =>
+      ApproveListDataModelStruct.maybeFromMap(getJsonField(
+        response,
+        r'''$.results.current_year''',
+      ));
+  static dynamic previousYearData(dynamic response) => getJsonField(
+        response,
+        r'''$.results.previous_year''',
+      );
+  static dynamic nextYearData(dynamic response) => getJsonField(
+        response,
+        r'''$.results.next_year''',
+      );
+}
+
+class SaveStatusLeaveCall {
+  static Future<ApiCallResponse> call({
+    String? apiUrl = '',
+    String? token = '',
+    List<String>? idList,
+    String? status = '',
+    String? reason = '',
+  }) async {
+    final id = _serializeList(idList);
+
+    final ffApiRequestBody = '''
+{
+  "id": $id,
+  "status": "${escapeStringForJson(status)}",
+  "reason": "${escapeStringForJson(reason)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'saveStatusLeave',
+      apiUrl: '$apiUrl/api/leave/save-status',
+      callType: ApiCallType.POST,
+      headers: {
+        'ContentType': 'application/json; charset=utf-8,',
+        'Authorization': 'Bearer $token',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static String? code(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+  static String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
 }
 
 class ApiPagingParams {

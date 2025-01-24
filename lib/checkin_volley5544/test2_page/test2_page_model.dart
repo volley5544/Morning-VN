@@ -19,16 +19,14 @@ class Test2PageModel extends FlutterFlowModel<Test2PageWidget> {
           int index, Function(CalendarDataStruct) updateFn) =>
       calendarData[index] = updateFn(calendarData[index]);
 
-  List<LeaveListDataStruct> leaveTypeData = [];
-  void addToLeaveTypeData(LeaveListDataStruct item) => leaveTypeData.add(item);
-  void removeFromLeaveTypeData(LeaveListDataStruct item) =>
-      leaveTypeData.remove(item);
+  List<dynamic> leaveTypeData = [];
+  void addToLeaveTypeData(dynamic item) => leaveTypeData.add(item);
+  void removeFromLeaveTypeData(dynamic item) => leaveTypeData.remove(item);
   void removeAtIndexFromLeaveTypeData(int index) =>
       leaveTypeData.removeAt(index);
-  void insertAtIndexInLeaveTypeData(int index, LeaveListDataStruct item) =>
+  void insertAtIndexInLeaveTypeData(int index, dynamic item) =>
       leaveTypeData.insert(index, item);
-  void updateLeaveTypeDataAtIndex(
-          int index, Function(LeaveListDataStruct) updateFn) =>
+  void updateLeaveTypeDataAtIndex(int index, Function(dynamic) updateFn) =>
       leaveTypeData[index] = updateFn(leaveTypeData[index]);
 
   List<CurrentYearStruct> currentYearData = [];
@@ -44,15 +42,15 @@ class Test2PageModel extends FlutterFlowModel<Test2PageWidget> {
           int index, Function(CurrentYearStruct) updateFn) =>
       currentYearData[index] = updateFn(currentYearData[index]);
 
-  List<OtherYearStruct> nextYearData = [];
-  void addToNextYearData(OtherYearStruct item) => nextYearData.add(item);
-  void removeFromNextYearData(OtherYearStruct item) =>
+  List<CurrentYearStruct> nextYearData = [];
+  void addToNextYearData(CurrentYearStruct item) => nextYearData.add(item);
+  void removeFromNextYearData(CurrentYearStruct item) =>
       nextYearData.remove(item);
   void removeAtIndexFromNextYearData(int index) => nextYearData.removeAt(index);
-  void insertAtIndexInNextYearData(int index, OtherYearStruct item) =>
+  void insertAtIndexInNextYearData(int index, CurrentYearStruct item) =>
       nextYearData.insert(index, item);
   void updateNextYearDataAtIndex(
-          int index, Function(OtherYearStruct) updateFn) =>
+          int index, Function(CurrentYearStruct) updateFn) =>
       nextYearData[index] = updateFn(nextYearData[index]);
 
   ///  State fields for stateful widgets in this page.

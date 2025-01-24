@@ -66,17 +66,17 @@ class _Test2PageWidgetState extends State<Test2PageWidget> {
         (_model.apiResult235?.jsonBody ?? ''),
       )!
           .toList()
-          .cast<LeaveListDataStruct>();
+          .cast<dynamic>();
       _model.currentYearData = GetLeaveListCall.currentyear(
         (_model.apiResult235?.jsonBody ?? ''),
       )!
           .toList()
           .cast<CurrentYearStruct>();
-      _model.nextYearData = GetLeaveListCall.otheryear(
+      _model.nextYearData = GetLeaveListCall.nextyear(
         (_model.apiResult235?.jsonBody ?? ''),
       )!
           .toList()
-          .cast<OtherYearStruct>();
+          .cast<CurrentYearStruct>();
       safeSetState(() {});
       Navigator.pop(context);
     });
@@ -228,9 +228,11 @@ class _Test2PageWidgetState extends State<Test2PageWidget> {
                                     child: Text(
                                       valueOrDefault<String>(
                                         _model.leaveTypeData
-                                            .elementAtOrNull(
-                                                defaultListItemIndex)
-                                            ?.name,
+                                            .elementAtOrNull(getJsonField(
+                                              defaultListItemItem,
+                                              r'''$.start_date''',
+                                            ))
+                                            ?.toString(),
                                         '-',
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -246,9 +248,11 @@ class _Test2PageWidgetState extends State<Test2PageWidget> {
                                     child: Text(
                                       valueOrDefault<String>(
                                         _model.leaveTypeData
-                                            .elementAtOrNull(
-                                                defaultListItemIndex)
-                                            ?.leaveType,
+                                            .elementAtOrNull(getJsonField(
+                                              defaultListItemItem,
+                                              r'''$.end_date''',
+                                            ))
+                                            ?.toString(),
                                         '-',
                                       ),
                                       style: FlutterFlowTheme.of(context)

@@ -64,7 +64,6 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
               children: [
                 Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: 350.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     image: DecorationImage(
@@ -434,72 +433,78 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                           ),
                         ),
                       ),
-                      Container(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: 50.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: Visibility(
-                          visible: FFAppState().username != 'null',
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 5.0, 0.0, 0.0),
-                            child: Text(
-                              '${FFLocalizations.of(context).getVariableText(
-                                enText: '',
-                                viText: 'Bạn',
-                                thText: 'คุณ',
-                              )}${FFAppState().username}',
-                              textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Outfit',
-                                    color: const Color(0xFF0039E3),
-                                    fontSize: 24.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ),
-                          ),
-                        ),
-                      ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                         child: Container(
-                          width: 300.0,
-                          height: 45.0,
+                          width: MediaQuery.sizeOf(context).width * 1.0,
+                          height: 50.0,
                           decoration: BoxDecoration(
-                            color: const Color(0xFFFFD57C),
-                            borderRadius: BorderRadius.circular(18.0),
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                           ),
                           child: Visibility(
-                            visible: FFAppState().profilePositionName != '',
-                            child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 0.0, 12.0, 0.0),
-                                child: Text(
-                                  FFAppState().profilePositionName,
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        fontSize: 14.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                ),
+                            visible: FFAppState().username != 'null',
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 5.0, 0.0, 0.0),
+                              child: Text(
+                                '${FFLocalizations.of(context).getVariableText(
+                                  enText: '',
+                                  viText: 'Bạn',
+                                  thText: 'คุณ',
+                                )}${FFAppState().username}',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color: const Color(0xFF0039E3),
+                                      fontSize: 24.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                               ),
                             ),
                           ),
                         ),
                       ),
+                      if (FFAppState().profilePositionName != '')
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 30.0),
+                          child: Container(
+                            width: 300.0,
+                            height: 45.0,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFFFD57C),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                            child: Visibility(
+                              visible:
+                                  FFAppState().profilePositionName != '',
+                              child: Align(
+                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 0.0, 12.0, 0.0),
+                                  child: Text(
+                                    FFAppState().profilePositionName,
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 14.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                     ],
                   ),
                 ),
@@ -509,7 +514,6 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                 ),
                 Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: MediaQuery.sizeOf(context).height * 0.25,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
@@ -523,121 +527,175 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                               25.0, 0.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               if (FFAppState().employeeID != '')
-                                Text(
-                                  '${FFLocalizations.of(context).getVariableText(
-                                    enText: 'Employee ID: ',
-                                    viText: 'Mã nhân viên: ',
-                                    thText: 'รหัสพนักงาน: ',
-                                  )}${FFAppState().employeeID}',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 0.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        '${FFLocalizations.of(context).getVariableText(
+                                          enText: 'Employee ID: ',
+                                          viText: 'Mã nhân viên: ',
+                                          thText: 'รหัสพนักงาน: ',
+                                        )}${FFAppState().employeeID}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
                                       ),
+                                    ],
+                                  ),
                                 ),
                               if (FFAppState().branchCode != '')
-                                Text(
-                                  '${FFLocalizations.of(context).getVariableText(
-                                    enText: 'Branch: ',
-                                    viText: 'Chi nhánh: ',
-                                    thText: 'สาขา: ',
-                                  )}${FFAppState().branchCode}',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 5.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        '${FFLocalizations.of(context).getVariableText(
+                                          enText: 'Branch: ',
+                                          viText: 'Chi nhánh: ',
+                                          thText: 'สาขา: ',
+                                        )}${FFAppState().branchCode}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
                                       ),
+                                    ],
+                                  ),
                                 ),
                               if (FFAppState().profileStartDate != '')
-                                Text(
-                                  '${FFLocalizations.of(context).getVariableText(
-                                    enText: 'Start Date: ',
-                                    viText: 'Ngày bắt đầu làm việc: ',
-                                    thText: 'วันเริ่มทำงาน: ',
-                                  )}${FFAppState().profileStartDate != 'null' ? dateTimeFormat(
-                                      "d/M/y",
-                                      functions.showClockIn(
-                                          FFAppState().profileStartDate),
-                                      locale: FFLocalizations.of(context)
-                                          .languageCode,
-                                    ) : '-'}',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 5.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        '${FFLocalizations.of(context).getVariableText(
+                                          enText: 'Start Date: ',
+                                          viText: 'Ngày bắt đầu làm việc: ',
+                                          thText: 'วันเริ่มทำงาน: ',
+                                        )}${FFAppState().profileStartDate != 'null' ? dateTimeFormat(
+                                            "d/M/y",
+                                            functions.showClockIn(
+                                                FFAppState().profileStartDate),
+                                            locale: FFLocalizations.of(context)
+                                                .languageCode,
+                                          ) : '-'}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
                                       ),
+                                    ],
+                                  ),
                                 ),
                               if (FFAppState().profileStartDate != '')
-                                Text(
-                                  '${FFLocalizations.of(context).getVariableText(
-                                    enText: 'Employment Duration: ',
-                                    viText: 'Thâm niên làm việc: ',
-                                    thText: 'อายุงาน: ',
-                                  )}${'${functions.currentYearLengthOfWork(FFAppState().profileStartDate)}${FFLocalizations.of(context).getVariableText(
-                                    enText: ' year ',
-                                    viText: ' năm ',
-                                    thText: ' ปี ',
-                                  )}${functions.currentMonthLengthOfWork(FFAppState().profileStartDate)}${FFLocalizations.of(context).getVariableText(
-                                    enText: ' month ',
-                                    viText: ' tháng ',
-                                    thText: ' เดือน ',
-                                  )}${functions.currentDayLengthOfWork(FFAppState().profileStartDate)}${FFLocalizations.of(context).getVariableText(
-                                    enText: ' day ',
-                                    viText: ' ngày  ',
-                                    thText: ' วัน ',
-                                  )}'}',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 5.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        '${FFLocalizations.of(context).getVariableText(
+                                          enText: 'Employment Duration: ',
+                                          viText: 'Thâm niên làm việc: ',
+                                          thText: 'อายุงาน: ',
+                                        )}${'${functions.currentYearLengthOfWork(FFAppState().profileStartDate)}${FFLocalizations.of(context).getVariableText(
+                                          enText: ' year ',
+                                          viText: ' năm ',
+                                          thText: ' ปี ',
+                                        )}${functions.currentMonthLengthOfWork(FFAppState().profileStartDate)}${FFLocalizations.of(context).getVariableText(
+                                          enText: ' month ',
+                                          viText: ' tháng ',
+                                          thText: ' เดือน ',
+                                        )}${functions.currentDayLengthOfWork(FFAppState().profileStartDate)}${FFLocalizations.of(context).getVariableText(
+                                          enText: ' day ',
+                                          viText: ' ngày  ',
+                                          thText: ' วัน ',
+                                        )}'}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
                                       ),
-                                ),
-                              if (false)
-                                Text(
-                                  '${FFLocalizations.of(context).getVariableText(
-                                    enText: 'Position Tenure: ',
-                                    viText: 'Thời gian giữ chức vụ: ',
-                                    thText: 'อายุตำแหน่ง: ',
-                                  )}-',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                ),
-                              if (false)
-                                Text(
-                                  '${FFLocalizations.of(context).getVariableText(
-                                    enText: 'Insurance Plan: ',
-                                    viText: 'Chương trình bảo hiểm: ',
-                                    thText: 'แผนประกัน: ',
-                                  )}-',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                                    ],
+                                  ),
                                 ),
                               if (false)
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      40.0, 0.0, 40.0, 0.0),
+                                      0.0, 0.0, 0.0, 5.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        '${FFLocalizations.of(context).getVariableText(
+                                          enText: 'Position Tenure: ',
+                                          viText: 'Thời gian giữ chức vụ: ',
+                                          thText: 'อายุตำแหน่ง: ',
+                                        )}-',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              if (false)
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 5.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        '${FFLocalizations.of(context).getVariableText(
+                                          enText: 'Insurance Plan: ',
+                                          viText: 'Chương trình bảo hiểm: ',
+                                          thText: 'แผนประกัน: ',
+                                        )}-',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              if (false)
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      40.0, 0.0, 40.0, 15.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,

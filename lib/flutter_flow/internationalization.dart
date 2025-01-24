@@ -313,7 +313,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'awoy36wg': {
       'en': 'Leave list',
       'th': 'รายการลา',
-      'vi': 'รายการลา',
+      'vi': 'Danh sách nghỉ phép',
     },
     'km99di9u': {
       'en': 'Menu',
@@ -323,22 +323,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'gr18g86i': {
       'en': 'Leave list',
       'th': 'รายการลา',
-      'vi': 'รายการลา',
+      'vi': 'Danh sách nghỉ phép',
     },
     'on67qnxg': {
       'en': 'Leave approval request list',
       'th': 'รายการขออนุมัติลา',
-      'vi': 'รายการขออนุมัติลา',
+      'vi': 'danh sách yêu cầu phê duyệt nghỉ',
     },
     'k5qkxo1i': {
       'en': 'Leave approval',
       'th': 'อนุมัติการลา',
-      'vi': 'อนุมัติการลา',
+      'vi': 'Phê duyệt nghỉ phép',
     },
     '5jeqd5gu': {
       'en': 'Approved leave list',
       'th': 'รายการที่อนุมัติลา',
-      'vi': 'รายการที่อนุมัติลา',
+      'vi': 'Danh sách phê duyệt nghỉ phép',
     },
     'k91i2ssy': {
       'en': 'Home',
@@ -600,78 +600,113 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'vz6y5of2': {
       'en': 'Submit approval request',
-      'th': 'ยื่นเรื่องขออนุมัติ',
-      'vi': 'ยื่นเรื่องขออนุมัติ',
+      'th': 'ส่งคำขออนุมัติ',
+      'vi': 'Gửi yêu cầu phê duyệt',
     },
-    'b9538lpc': {
-      'en': 'วันที่ลา :',
-      'th': 'วันที่ลา :',
-      'vi': 'วันที่ลา :',
+    '3muwdz2y': {
+      'en': 'Leave Type :',
+      'th': 'ประเภทการลา :',
+      'vi': 'Loại nghỉ phép:',
     },
-    '0elhhiqw': {
-      'en': 'ช่วงเวลา :',
-      'th': 'ช่วงเวลา :',
-      'vi': 'ช่วงเวลา :',
+    '85a5yekq': {
+      'en': 'Time Period :',
+      'th': 'ระยะเวลา :',
+      'vi': 'Khoảng thời gian:',
     },
-    'irupdmbb': {
-      'en': 'กรุณาเลือก...',
+    '1mgxb68x': {
+      'en': 'Please select...',
       'th': 'กรุณาเลือก...',
-      'vi': 'กรุณาเลือก...',
+      'vi': 'vui lòng chọn...',
     },
-    'bkl4yvb7': {
+    'uy4lb33j': {
       'en': 'Search...',
       'th': '',
       'vi': '',
     },
-    '3kgjydml': {
-      'en': 'เบอร์โทรติดต่อ :',
+    'qp8zgfyk': {
+      'en': 'full',
+      'th': 'full',
+      'vi': 'full',
+    },
+    '5s1fyayd': {
+      'en': 'Leave Date :',
+      'th': 'วันที่ลา :',
+      'vi': 'Ngày bắt đầu nghỉ phép :',
+    },
+    'hb2e15pc': {
+      'en': 'Number of leave days :',
+      'th': 'จำนวนวันที่ลา :',
+      'vi': 'Số ngày nghỉ phép :',
+    },
+    'iri0s2i1': {
+      'en': 'Number of leave days in other years :',
+      'th': 'จำนวนวันที่ลาปีอื่น :',
+      'vi': 'số ngày nghỉ trong năm khác :',
+    },
+    '6n0mnmsp': {
+      'en': 'Contact phone number :',
       'th': 'เบอร์โทรติดต่อ :',
-      'vi': 'เบอร์โทรติดต่อ :',
+      'vi': 'Số liên lạc :',
     },
-    'hsst7oqz': {
-      'en': 'กรุณากรอกเบอร์โทรศัพท์',
-      'th': 'กรุณากรอกเบอร์โทรศัพท์',
-      'vi': 'กรุณากรอกเบอร์โทรศัพท์',
-    },
-    '63k8f7ok': {
-      'en': 'กรุณากรอกเบอร์โทรศัพท์',
-      'th': '',
-      'vi': '',
-    },
-    '5tu2ewa8': {
-      'en': 'Please choose an option from the dropdown',
-      'th': '',
-      'vi': '',
-    },
-    '8om1wy4i': {
-      'en': 'เหตุผลการลา :',
-      'th': 'เหตุผลการลา :',
-      'vi': 'เหตุผลการลา :',
-    },
-    '2xngye0q': {
+    'hlw0cn79': {
       'en': '',
       'th': '',
       'vi': '',
     },
-    '8gbpsn0a': {
-      'en': 'กรุณากรอก...',
-      'th': 'กรุณากรอก...',
-      'vi': 'กรุณากรอก...',
+    'cjw62sjc': {
+      'en': 'Please enter your phone number.',
+      'th': 'กรุณากรอกเบอร์โทรศัพท์',
+      'vi': 'Vui lòng nhập số điện thoại',
     },
-    'q3c9wvz6': {
-      'en': 'แนบไฟล์การลา :',
+    '3mw1bin9': {
+      'en': 'กรุณากรอกเบอร์โทรศัพท์',
       'th': '',
       'vi': '',
     },
-    'znmc7q82': {
-      'en': '[เเนบไฟล์ภาพ]',
-      'th': '[เเนบไฟล์ภาพ]',
-      'vi': '[เเนบไฟล์ภาพ]',
+    '5czkdhuf': {
+      'en': 'Please choose an option from the dropdown',
+      'th': '',
+      'vi': '',
     },
-    'ouvrw7wb': {
-      'en': 'บันทึก',
+    '0j2tmxwg': {
+      'en': 'Reason for leave :',
+      'th': 'เหตุผลการลา :',
+      'vi': 'Lý do nghỉ phép :',
+    },
+    'q18r50no': {
+      'en': '',
+      'th': '',
+      'vi': '',
+    },
+    'n092fkl6': {
+      'en': 'Please enter...',
+      'th': 'กรุณากรอก...',
+      'vi': 'vui lòng điền...',
+    },
+    'c1517k3m': {
+      'en': 'Attach leave file :',
+      'th': 'แนบไฟล์การลา :',
+      'vi': 'đính kèm tệp nghỉ phép :',
+    },
+    'xe5cj3gc': {
+      'en': '[Attach image file]',
+      'th': '[เเนบไฟล์ภาพ]',
+      'vi': '[Đính kèm ảnh]',
+    },
+    'o413q951': {
+      'en': 'Save',
       'th': 'บันทึก',
-      'vi': 'บันทึก',
+      'vi': 'Lưu',
+    },
+    'gkx6c92x': {
+      'en': 'จำนวนวันที่ปีปัจจุบันลา :',
+      'th': 'จำนวนวันที่ปีปัจจุบันลา :',
+      'vi': 'จำนวนวันที่ปีปัจจุบันลา :',
+    },
+    'vxv3vsaw': {
+      'en': 'จำนวนวันที่ลาปีอื่น :',
+      'th': 'จำนวนวันที่ลาปีอื่น :',
+      'vi': 'จำนวนวันที่ลาปีอื่น :',
     },
     'hw7uo3w2': {
       'en': 'Home',
@@ -686,75 +721,100 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'รายการขออนุมัติ',
       'vi': '',
     },
+    '8docfjnz': {
+      'en': 'Please select the month you want to search for',
+      'th': 'กรุณาเลือกเดือนที่ต้องการหา',
+      'vi': '',
+    },
+    '4c9e79fg': {
+      'en': 'previous year',
+      'th': 'ปีที่แล้ว',
+      'vi': 'năm trước',
+    },
+    'uyv3fqx6': {
+      'en': 'current year',
+      'th': 'ปีปัจจุบัน',
+      'vi': 'năm hiện tại',
+    },
+    'dufbkjtg': {
+      'en': 'next year',
+      'th': 'ปีหน้า',
+      'vi': 'năm sau',
+    },
     'hnu9wndq': {
       'en': 'Please select the month you want to search for',
       'th': 'กรุณาเลือกเดือนที่ต้องการหา',
       'vi': 'กรุณาเลือกเดือนที่ต้องการหา',
     },
     'gbupk547': {
-      'en': 'มกราคม',
+      'en': 'January',
       'th': 'มกราคม',
-      'vi': 'มกราคม',
+      'vi': 'Tháng Một',
     },
     'qyu0cqfp': {
-      'en': 'กุมภาพันธ์',
+      'en': 'February',
       'th': 'กุมภาพันธ์',
-      'vi': 'กุมภาพันธ์',
+      'vi': 'Tháng hai',
     },
     'ell27mzr': {
-      'en': 'มีนาคม',
+      'en': 'March',
       'th': 'มีนาคม',
-      'vi': 'มีนาคม',
+      'vi': 'Bước đều',
     },
     '3524vv4b': {
-      'en': 'เมษายน',
+      'en': 'April',
       'th': 'เมษายน',
-      'vi': 'เมษายน',
+      'vi': 'Tháng tư',
     },
     '8pioxviy': {
-      'en': 'พฤษภาคม',
+      'en': 'May',
       'th': 'พฤษภาคม',
-      'vi': 'พฤษภาคม',
+      'vi': 'Tháng năm',
     },
     '3hstfuhu': {
-      'en': 'มิถุนายน',
+      'en': 'June',
       'th': 'มิถุนายน',
-      'vi': 'มิถุนายน',
+      'vi': 'tháng Sáu',
     },
     'nfk5kp23': {
-      'en': 'กรกฎาคม',
+      'en': 'July',
       'th': 'กรกฎาคม',
-      'vi': 'กรกฎาคม',
+      'vi': 'tháng Bảy',
     },
     '0zv18zxh': {
-      'en': 'สิงหาคม',
+      'en': 'August',
       'th': 'สิงหาคม',
-      'vi': 'สิงหาคม',
+      'vi': 'tháng Tám',
     },
     '5r8kjjcw': {
-      'en': 'กันยายน',
+      'en': 'September',
       'th': 'กันยายน',
-      'vi': 'กันยายน',
+      'vi': 'tháng Chín',
     },
     '42mrkdha': {
-      'en': 'ตุลาคม',
+      'en': 'October',
       'th': 'ตุลาคม',
-      'vi': 'ตุลาคม',
+      'vi': 'tháng Mười',
     },
     'qmmnb3ms': {
-      'en': 'พฤศจิกายน',
+      'en': 'November',
       'th': 'พฤศจิกายน',
-      'vi': 'พฤศจิกายน',
+      'vi': 'tháng Mười Một',
     },
     '6zsnfvum': {
-      'en': 'ธันวาคม',
+      'en': 'December',
       'th': 'ธันวาคม',
-      'vi': 'ธันวาคม',
+      'vi': 'tháng Mười Hai',
     },
     'at82sxc8': {
       'en': 'Leave',
       'th': 'ลา',
-      'vi': 'ลา',
+      'vi': 'nghỉ phép',
+    },
+    '412n9dwt': {
+      'en': 'ดูรายละเอียด',
+      'th': 'ดูรายละเอียด',
+      'vi': 'xem chi tiết',
     },
     'bfni9e49': {
       'en': 'Type of leave:',
@@ -784,32 +844,32 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '2vv061k1': {
       'en': 'Reason for leave:',
       'th': 'เหตุผลการลา:',
-      'vi': '',
+      'vi': 'Lý do nghỉ phép:',
     },
     'xyx1pgqi': {
       'en': 'Approver:',
       'th': 'ผู้อนุมัติ:',
-      'vi': '',
+      'vi': 'Người phê duyệt:',
     },
     'y41pb3gc': {
       'en': 'Status:',
       'th': 'สถานะ:',
-      'vi': '',
+      'vi': 'Trạng thái:',
     },
     '5r04t7id': {
       'en': 'Attached file:',
       'th': 'ไฟล์เเนบ:',
-      'vi': '',
+      'vi': 'Tệp đính kèm:',
     },
     'lroplpyc': {
       'en': 'Edit',
       'th': 'แก้ไข',
-      'vi': '',
+      'vi': 'Chỉnh sửa',
     },
-    'yrzcj3jl': {
+    'db2tvi6z': {
       'en': 'Cancel',
       'th': 'ยกเลิก',
-      'vi': '',
+      'vi': 'Hủy bỏ',
     },
     'ycvzb83m': {
       'en': 'Home',
@@ -821,18 +881,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '3s87m5yx': {
       'en': 'ยื่นเรื่องขออนุมัติ',
-      'th': '',
-      'vi': '',
+      'th': 'ยื่นเรื่องขออนุมัติ',
+      'vi': 'ยื่นเรื่องขออนุมัติ',
     },
-    '6ab0k4ay': {
-      'en': 'วันที่ลาเริ่มต้น :',
-      'th': 'วันที่ลาเริ่มต้น :',
-      'vi': 'วันที่ลาเริ่มต้น :',
+    '47ur4vwm': {
+      'en': 'ประเภทการลา :',
+      'th': 'ประเภทการลา :',
+      'vi': 'Loại nghỉ phép :',
     },
     'eggk5pnq': {
       'en': 'ช่วงเวลา :',
       'th': 'ช่วงเวลา :',
-      'vi': 'ช่วงเวลา :',
+      'vi': 'Thời gian :',
     },
     '84tw9mm6': {
       'en': 'กรุณาเลือก...',
@@ -850,14 +910,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': 'ลาเต็มวัน',
     },
     'oy5uij8u': {
-      'en': 'ลาครึ่งวันเช้า',
-      'th': 'ลาครึ่งวันเช้า',
-      'vi': 'ลาครึ่งวันเช้า',
+      'en': 'ลาครึ่งวัน',
+      'th': 'ลาครึ่งวัน',
+      'vi': 'ลาครึ่งวัน',
     },
-    'povs34al': {
-      'en': 'ลาครึ่งวันบ่าย',
-      'th': 'ลาครึ่งวันบ่าย',
-      'vi': 'ลาครึ่งวันบ่าย',
+    '6ab0k4ay': {
+      'en': 'วันที่ลา :',
+      'th': 'วันที่ลา :',
+      'vi': 'Ngày nghỉ phép :',
+    },
+    'e7tzv8dn': {
+      'en': 'จำนวนวันที่ลา :',
+      'th': 'จำนวนวันที่ลา :',
+      'vi': 'Số ngày nghỉ phép :',
     },
     'kvgvg8v2': {
       'en': 'TextField',
@@ -867,7 +932,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     's8zjhfy2': {
       'en': 'เบอร์โทรติดต่อ :',
       'th': 'เบอร์โทรติดต่อ :',
-      'vi': 'เบอร์โทรติดต่อ :',
+      'vi': 'Số liên lạc :',
     },
     'ha4k3i3t': {
       'en': 'กรุณากรอกเบอร์โทรศัพท์',
@@ -877,7 +942,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'g7ay52et': {
       'en': 'เหตุผลการลา :',
       'th': 'เหตุผลการลา :',
-      'vi': 'เหตุผลการลา :',
+      'vi': 'Lý do nghỉ phép :',
     },
     'afe57qmx': {
       'en': '',
@@ -892,17 +957,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'f9wpd6zy': {
       'en': 'แนบไฟล์การลา :',
       'th': 'แนบไฟล์การลา :',
-      'vi': 'แนบไฟล์การลา :',
+      'vi': 'Đính kèm tệp nghỉ phép :',
     },
     'zoen0z04': {
-      'en': '[เเนบไฟล์ภาพ]',
+      'en': '[Attach image file]',
       'th': '[เเนบไฟล์ภาพ]',
-      'vi': '[เเนบไฟล์ภาพ]',
+      'vi': '[Đính kèm ảnh]',
     },
     'jegp9wff': {
-      'en': 'บันทึก',
+      'en': 'Save',
       'th': 'บันทึก',
-      'vi': 'บันทึก',
+      'vi': 'Lưu',
     },
     'u8ph3ko2': {
       'en': 'Home',
@@ -1359,32 +1424,32 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'npr1uom5': {
       'en': 'Approve many people',
       'th': 'อนุมัติหลายคน',
-      'vi': '',
+      'vi': 'phê duyệt cho nhiều người',
     },
     'iay7wijr': {
       'en': 'Select all',
       'th': 'เลือกทั้งหมด',
-      'vi': '',
+      'vi': 'chọn tất cả',
     },
     '8v1skjen': {
       'en': 'Approve selected',
       'th': 'อนุมัติที่เลือก',
-      'vi': '',
+      'vi': 'phê duyệt đã chọn',
     },
     '9gtffiey': {
       'en': 'Cancel',
       'th': 'ยกเลิก',
-      'vi': '',
+      'vi': 'Hủy bỏ',
     },
     'ouxi7r2w': {
       'en': 'Status:',
       'th': 'สถานะ:',
-      'vi': '',
+      'vi': 'Trạng thái:',
     },
     'k5srt8i3': {
       'en': 'Nickname:',
       'th': 'ชื่อเล่น:',
-      'vi': '',
+      'vi': 'biệt danh:',
     },
     'b3bahwxv': {
       'en': 'Department affiliation:',
@@ -1399,57 +1464,57 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'w0nvlwg7': {
       'en': 'Type of leave:',
       'th': 'ประเภทการลา:',
-      'vi': '',
+      'vi': 'Loại nghỉ phép:',
     },
     'gng922zv': {
       'en': 'Transaction date:',
       'th': 'วันที่ทำรายการ:',
-      'vi': '',
+      'vi': 'Ngày tạo yêu cầu:',
     },
     '0ujmyhz5': {
       'en': 'Leave date:',
       'th': 'วันที่ลา:',
-      'vi': '',
+      'vi': 'Ngày nghỉ phép:',
     },
     '0gdw90ug': {
       'en': 'Number of leave days:',
       'th': 'จำนวนวันที่ลา:',
-      'vi': '',
+      'vi': 'Số ngày nghỉ phép:',
     },
     'fpgss961': {
       'en': 'Time period:',
       'th': 'ช่วงเวลา:',
-      'vi': '',
+      'vi': 'Thời gian:',
     },
     'g74iy68d': {
       'en': 'Reason for leave:',
       'th': 'เหตุผลการลา:',
-      'vi': '',
+      'vi': 'Lý do nghỉ phép:',
     },
     'fdr09igk': {
       'en': 'Contact telephone number:',
       'th': 'เบอร์ติดต่อ:',
-      'vi': '',
+      'vi': 'Số liên lạc:',
     },
     '1g9vmjum': {
       'en': 'Attachment:',
       'th': 'ไฟล์เเนบ:',
-      'vi': '',
+      'vi': 'Tệp đính kèm:',
     },
     'cxtkyf9c': {
       'en': 'Approve',
       'th': 'อนุมัติ',
-      'vi': '',
+      'vi': 'phê duyệt',
     },
     'efs1tfam': {
       'en': 'Do not approve',
       'th': 'ไม่อนุมัติ',
-      'vi': '',
+      'vi': 'không phê duyệt',
     },
     'v5174jja': {
       'en': 'Leave approval list',
       'th': 'รายการอนุมัติลา',
-      'vi': '',
+      'vi': 'Danh sách phê duyệt nghỉ phép',
     },
     '29x4izzy': {
       'en': 'Home',
@@ -1465,294 +1530,204 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'ci20ou7l': {
-      'en': 'มกราคม',
-      'th': '',
-      'vi': '',
+      'en': 'previous year',
+      'th': 'ปีที่แล้ว',
+      'vi': 'năm trước',
     },
     'ub583bqh': {
-      'en': 'กุมภาพันธ์',
-      'th': '',
-      'vi': '',
+      'en': 'current year',
+      'th': 'ปีปัจจุบัน',
+      'vi': 'năm hiện tại',
     },
     'o8jvanhe': {
-      'en': 'มีนาคม',
-      'th': '',
+      'en': 'next year',
+      'th': 'ปีหน้า',
+      'vi': 'năm sau',
+    },
+    '7h6r5fg1': {
+      'en': 'Please select the month you want to search for',
+      'th': 'กรุณาเลือกเดือนที่ต้องการหา',
       'vi': '',
     },
-    'gvs5s7c8': {
-      'en': 'เมษายน',
-      'th': '',
-      'vi': '',
+    '20j0jgp0': {
+      'en': 'January',
+      'th': 'มกราคม',
+      'vi': 'Tháng Một',
     },
-    'f4x7k16x': {
-      'en': 'พฤษภาคม',
-      'th': '',
-      'vi': '',
+    '777xsva4': {
+      'en': 'February',
+      'th': 'กุมภาพันธ์',
+      'vi': 'Tháng hai',
     },
-    '25i0nsss': {
-      'en': 'มิถุนายน',
-      'th': '',
-      'vi': '',
+    '0zw3mwze': {
+      'en': 'March',
+      'th': 'มีนาคม',
+      'vi': 'Bước đều',
     },
-    'w3jv3kct': {
-      'en': 'กรกฎาคม',
-      'th': '',
-      'vi': '',
+    'eqathzgp': {
+      'en': 'April',
+      'th': 'เมษายน',
+      'vi': 'Tháng tư',
     },
-    'byf99dzy': {
-      'en': 'สิงหาคม',
-      'th': '',
-      'vi': '',
+    'nqsrb8v8': {
+      'en': 'May',
+      'th': 'พฤษภาคม',
+      'vi': 'Tháng năm',
     },
-    'oosfavsl': {
-      'en': 'กันยายน',
-      'th': '',
-      'vi': '',
+    '8036as78': {
+      'en': 'June',
+      'th': 'มิถุนายน',
+      'vi': 'tháng Sáu',
     },
-    'jqss06f9': {
-      'en': 'ตุลาคม',
-      'th': '',
-      'vi': '',
+    'bf5y2f3w': {
+      'en': 'July',
+      'th': 'กรกฎาคม',
+      'vi': 'tháng Bảy',
     },
-    'l2fp2qht': {
-      'en': 'พฤศจิกายน',
-      'th': '',
-      'vi': '',
+    '67jwgwjy': {
+      'en': 'August',
+      'th': 'สิงหาคม',
+      'vi': 'tháng Tám',
     },
-    'ioa5adoz': {
-      'en': 'ธันวาคม',
-      'th': '',
-      'vi': '',
+    'sgndsf60': {
+      'en': 'September',
+      'th': 'กันยายน',
+      'vi': 'tháng Chín',
+    },
+    'e2h4kxym': {
+      'en': 'October',
+      'th': 'ตุลาคม',
+      'vi': 'tháng Mười',
+    },
+    'urvhq68f': {
+      'en': 'November',
+      'th': 'พฤศจิกายน',
+      'vi': 'tháng Mười Một',
+    },
+    'axlron8f': {
+      'en': 'December',
+      'th': 'ธันวาคม',
+      'vi': 'tháng Mười Hai',
     },
     'zog3trpj': {
       'en': 'Approve',
       'th': 'อนุมัติ',
-      'vi': '',
-    },
-    'ry9t5l7w': {
-      'en': 'นางสาวมนฑิรา ยอดแสง',
-      'th': '',
-      'vi': '',
+      'vi': 'phê duyệt',
     },
     'wu7bwqpo': {
       'en': 'Type of leave:',
       'th': 'ประเภทการลา:',
-      'vi': '',
-    },
-    'n98opwaw': {
-      'en': '[ลากิจ]',
-      'th': '[ลากิจ]',
-      'vi': '',
+      'vi': 'Loại nghỉ phép:',
     },
     'nzyrvgfg': {
       'en': 'Transaction date:',
       'th': 'วันที่ทำรายการ:',
-      'vi': '',
-    },
-    '5e8fdojn': {
-      'en': '[01/11/2565]',
-      'th': '[01/11/2565]',
-      'vi': '',
+      'vi': 'Ngày tạo yêu cầu:',
     },
     '6si6wxv9': {
       'en': 'Leave date:',
       'th': 'วันที่ลา:',
-      'vi': '',
-    },
-    '4jpfh0kl': {
-      'en': '[11/11/2565-12/11/2565]',
-      'th': '[11/11/2565-12/11/2565]',
-      'vi': '',
+      'vi': 'Ngày nghỉ phép:',
     },
     'f92owody': {
       'en': 'Number of leave days:',
       'th': 'จำนวนวันที่ลา:',
-      'vi': '',
-    },
-    'fmtdk2hj': {
-      'en': '[2]',
-      'th': '',
-      'vi': '',
+      'vi': 'Số ngày nghỉ phép:',
     },
     '68jor54s': {
       'en': 'Time period:',
       'th': 'ช่วงเวลา:',
-      'vi': '',
-    },
-    'f0d8msx4': {
-      'en': '[ลาเต็มวัน]',
-      'th': '',
-      'vi': '',
+      'vi': 'Thời gian:',
     },
     'fboxmgh9': {
       'en': 'Reason for leave:',
       'th': 'เหตุผลการลา:',
-      'vi': '',
-    },
-    '7ecl265k': {
-      'en': '[]',
-      'th': '',
-      'vi': '',
+      'vi': 'Lý do nghỉ phép:',
     },
     'vecl8vum': {
       'en': 'Cancel',
       'th': 'ยกเลิก',
-      'vi': '',
+      'vi': 'Hủy bỏ',
     },
     'ju9gujxi': {
       'en': 'Not approved',
       'th': 'ไม่อนุมัติ',
-      'vi': '',
-    },
-    '17h2yfm5': {
-      'en': 'นางสาวมนฑิรา ยอดแสง',
-      'th': '',
-      'vi': '',
+      'vi': 'không phê duyệt',
     },
     '8t704b06': {
       'en': 'Type of leave:',
       'th': 'ประเภทการลา:',
-      'vi': '',
-    },
-    '6lqnvew1': {
-      'en': '[ลากิจ]',
-      'th': '',
-      'vi': '',
+      'vi': 'Loại nghỉ phép:',
     },
     'ys1edxki': {
       'en': 'Transaction date:',
       'th': 'วันที่ทำรายการ:',
-      'vi': '',
-    },
-    'sfcwclje': {
-      'en': '[01/11/2565]',
-      'th': '',
-      'vi': '',
+      'vi': 'Ngày tạo yêu cầu:',
     },
     '7fjre75u': {
       'en': 'Leave date:',
       'th': 'วันที่ลา:',
-      'vi': '',
-    },
-    '1rknhkyu': {
-      'en': '[11/11/2565-12/11/2565]',
-      'th': '',
-      'vi': '',
+      'vi': 'Ngày nghỉ phép:',
     },
     'sucyvupt': {
       'en': 'Number of leave days:',
       'th': 'จำนวนวันที่ลา:',
-      'vi': '',
-    },
-    'yrwpaktz': {
-      'en': '[2]',
-      'th': '',
-      'vi': '',
+      'vi': 'Số ngày nghỉ phép:',
     },
     'btjotui7': {
       'en': 'Time period:',
       'th': 'ช่วงเวลา:',
-      'vi': '',
-    },
-    'lhyym0me': {
-      'en': '[ลาเต็มวัน]',
-      'th': '',
-      'vi': '',
+      'vi': 'Thời gian:',
     },
     'h9xs8tj1': {
       'en': 'Reason for leave:',
       'th': 'เหตุผลการลา:',
-      'vi': '',
-    },
-    'ftuagybp': {
-      'en': '[]',
-      'th': '',
-      'vi': '',
+      'vi': 'Lý do nghỉ phép:',
     },
     'bbrf4wkp': {
       'en': 'Cancel',
       'th': 'ยกเลิก',
-      'vi': '',
-    },
-    'yj8ercyv': {
-      'en': 'นางสาวมนฑิรา ยอดแสง',
-      'th': '',
-      'vi': '',
+      'vi': 'hủy bỏ',
     },
     '9rn3l90n': {
       'en': 'Type of leave:',
       'th': 'ประเภทการลา:',
-      'vi': '',
-    },
-    '6x27g592': {
-      'en': '[ลากิจ]',
-      'th': '',
-      'vi': '',
+      'vi': 'Loại nghỉ phép:',
     },
     'm5y8iz1t': {
       'en': 'Transaction date:',
       'th': 'วันที่ทำรายการ:',
-      'vi': '',
-    },
-    'r8hn4bdz': {
-      'en': '[01/11/2565]',
-      'th': '',
-      'vi': '',
+      'vi': 'Ngày tạo yêu cầu:',
     },
     'mkio0twd': {
       'en': 'Leave date:',
       'th': 'วันที่ลา:',
-      'vi': '',
-    },
-    '2h9up40u': {
-      'en': '[11/11/2565-12/11/2565]',
-      'th': '',
-      'vi': '',
+      'vi': 'Ngày nghỉ phép:',
     },
     '6s0ra4ev': {
       'en': 'Number of leave days:',
       'th': 'จำนวนวันที่ลา:',
-      'vi': '',
-    },
-    'kbi81yuc': {
-      'en': '[2]',
-      'th': '',
-      'vi': '',
+      'vi': 'Số ngày nghỉ phép:',
     },
     'yvyhvbem': {
       'en': 'Time period:',
       'th': 'ช่วงเวลา:',
-      'vi': '',
-    },
-    'toaf452f': {
-      'en': '[ลาเต็มวัน]',
-      'th': '',
-      'vi': '',
+      'vi': 'Thời gian:',
     },
     'wsbsizda': {
       'en': 'Reason for leave:',
       'th': 'เหตุผลการลา:',
-      'vi': '',
-    },
-    '04brg3y6': {
-      'en': '[]',
-      'th': '',
-      'vi': '',
+      'vi': 'Lý do nghỉ phép:',
     },
     'fou3q3o0': {
       'en': 'Canceled by:',
       'th': 'ถูกยกเลิกโดย:',
-      'vi': '',
-    },
-    'gjzr33yv': {
-      'en': '[]',
-      'th': '',
-      'vi': '',
+      'vi': 'bị hủy bỏ bởi:',
     },
     'c1mkkoeu': {
       'en': 'List',
       'th': 'รายการ',
-      'vi': '',
+      'vi': 'Danh sách',
     },
     'ln348tdv': {
       'en': 'Home',
@@ -1952,6 +1927,492 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
       'th': 'Profile',
       'vi': 'Profile',
+    },
+  },
+  // ApproveShowPage5544
+  {
+    '8kjl5vqv': {
+      'en': 'Please select the month you want to search for',
+      'th': 'กรุณาเลือกเดือนที่ต้องการหา',
+      'vi': '',
+    },
+    'trzdbwqs': {
+      'en': 'previous year',
+      'th': 'ปีที่แล้ว',
+      'vi': 'năm trước',
+    },
+    'crd3k2n5': {
+      'en': 'current year',
+      'th': 'ปีปัจจุบัน',
+      'vi': 'năm hiện tại',
+    },
+    'i74y1w72': {
+      'en': 'next year',
+      'th': 'ปีหน้า',
+      'vi': 'năm sau',
+    },
+    'bm324v3m': {
+      'en': 'Please select the month you want to search for',
+      'th': 'กรุณาเลือกเดือนที่ต้องการหา',
+      'vi': '',
+    },
+    'wxhl4s2p': {
+      'en': 'January',
+      'th': 'มกราคม',
+      'vi': 'Tháng Một',
+    },
+    '6z936yoh': {
+      'en': 'February',
+      'th': 'กุมภาพันธ์',
+      'vi': 'Tháng hai',
+    },
+    '352g7w3y': {
+      'en': 'March',
+      'th': 'มีนาคม',
+      'vi': 'Bước đều',
+    },
+    '6m7sdifx': {
+      'en': 'April',
+      'th': 'เมษายน',
+      'vi': 'Tháng tư',
+    },
+    'nc4r808h': {
+      'en': 'May',
+      'th': 'พฤษภาคม',
+      'vi': 'Tháng năm',
+    },
+    '0tjp4kvd': {
+      'en': 'June',
+      'th': 'มิถุนายน',
+      'vi': 'tháng Sáu',
+    },
+    'kcsax99p': {
+      'en': 'July',
+      'th': 'กรกฎาคม',
+      'vi': 'tháng Bảy',
+    },
+    '32ydk3df': {
+      'en': 'August',
+      'th': 'สิงหาคม',
+      'vi': 'tháng Tám',
+    },
+    'csltu18n': {
+      'en': 'September',
+      'th': 'กันยายน',
+      'vi': 'tháng Chín',
+    },
+    '8wlayxqo': {
+      'en': 'October',
+      'th': 'ตุลาคม',
+      'vi': 'tháng Mười',
+    },
+    'mpu68eij': {
+      'en': 'November',
+      'th': 'พฤศจิกายน',
+      'vi': 'tháng Mười Một',
+    },
+    'ukr1g9m8': {
+      'en': 'December',
+      'th': 'ธันวาคม',
+      'vi': 'tháng Mười Hai',
+    },
+    'gzgffeqr': {
+      'en': 'Approve',
+      'th': 'อนุมัติ',
+      'vi': 'phê duyệt',
+    },
+    'bqhaw5ji': {
+      'en': '',
+      'th': 'นางสาวมนฑิรา ยอดแสง',
+      'vi': '',
+    },
+    'lcpqxgra': {
+      'en': 'Type of leave:',
+      'th': 'ประเภทการลา:',
+      'vi': 'Loại nghỉ phép:',
+    },
+    'ux4jl78p': {
+      'en': '',
+      'th': '[ลากิจ]',
+      'vi': '',
+    },
+    'u3tng47q': {
+      'en': 'Transaction date:',
+      'th': 'วันที่ทำรายการ:',
+      'vi': 'Ngày tạo yêu cầu:',
+    },
+    'p0pjdg55': {
+      'en': '',
+      'th': '[01/11/2565]',
+      'vi': '',
+    },
+    'eobnf015': {
+      'en': 'Leave date:',
+      'th': 'วันที่ลา:',
+      'vi': 'Ngày nghỉ phép:',
+    },
+    'iu9nhap5': {
+      'en': '',
+      'th': '[11/11/2565-12/11/2565]',
+      'vi': '',
+    },
+    'ho59pvhl': {
+      'en': 'Number of leave days:',
+      'th': 'จำนวนวันที่ลา:',
+      'vi': 'Số ngày nghỉ phép:',
+    },
+    'ude9tq28': {
+      'en': '',
+      'th': '[2]',
+      'vi': '',
+    },
+    'r3emsfkl': {
+      'en': 'Time period:',
+      'th': 'ช่วงเวลา:',
+      'vi': 'Thời gian:',
+    },
+    '24cuemds': {
+      'en': '',
+      'th': '[ลาเต็มวัน]',
+      'vi': '',
+    },
+    '052k0gxb': {
+      'en': 'Reason for leave:',
+      'th': 'เหตุผลการลา:',
+      'vi': 'Lý do nghỉ phép:',
+    },
+    'tfhlcz7z': {
+      'en': '',
+      'th': '[]',
+      'vi': '',
+    },
+    'bnsywkq5': {
+      'en': 'Cancel',
+      'th': 'ยกเลิก',
+      'vi': 'Hủy bỏ',
+    },
+    'zfkapbdb': {
+      'en': 'Not approved',
+      'th': 'ไม่อนุมัติ',
+      'vi': 'không phê duyệt',
+    },
+    'n8qgsrut': {
+      'en': '',
+      'th': 'นางสาวมนฑิรา ยอดแสง',
+      'vi': '',
+    },
+    '3mna71ix': {
+      'en': 'Type of leave:',
+      'th': 'ประเภทการลา:',
+      'vi': 'Loại nghỉ phép:',
+    },
+    'tnu2e8k3': {
+      'en': '[ลากิจ]',
+      'th': '[ลากิจ]',
+      'vi': '',
+    },
+    'vnln2mze': {
+      'en': 'Transaction date:',
+      'th': 'วันที่ทำรายการ:',
+      'vi': 'Ngày tạo yêu cầu:',
+    },
+    '4sgjvwv7': {
+      'en': '[01/11/2565]',
+      'th': '[01/11/2565]',
+      'vi': '',
+    },
+    'cdne7rrm': {
+      'en': 'Leave date:',
+      'th': 'วันที่ลา:',
+      'vi': 'Ngày nghỉ phép:',
+    },
+    '6xpxw6lt': {
+      'en': '[11/11/2565-12/11/2565]',
+      'th': '[11/11/2565-12/11/2565]',
+      'vi': '',
+    },
+    '17yh43yl': {
+      'en': 'Number of leave days:',
+      'th': 'จำนวนวันที่ลา:',
+      'vi': 'Số ngày nghỉ phép:',
+    },
+    'nsiud3rn': {
+      'en': '[2]',
+      'th': '[2]',
+      'vi': '',
+    },
+    'rdxeweca': {
+      'en': 'Time period:',
+      'th': 'ช่วงเวลา:',
+      'vi': 'Thời gian:',
+    },
+    'y08pbg7n': {
+      'en': '[ลาเต็มวัน]',
+      'th': '[ลาเต็มวัน]',
+      'vi': '',
+    },
+    '2dh5j55k': {
+      'en': 'Reason for leave:',
+      'th': 'เหตุผลการลา:',
+      'vi': 'Lý do nghỉ phép:',
+    },
+    'dapg6t4p': {
+      'en': '[]',
+      'th': '[]',
+      'vi': '',
+    },
+    'eg1wjxad': {
+      'en': 'Cancel',
+      'th': 'ยกเลิก',
+      'vi': 'hủy bỏ',
+    },
+    'hxwcdb8y': {
+      'en': 'นางสาวมนฑิรา ยอดแสง',
+      'th': 'นางสาวมนฑิรา ยอดแสง',
+      'vi': '',
+    },
+    'qd18ol4p': {
+      'en': 'Type of leave:',
+      'th': 'ประเภทการลา:',
+      'vi': 'Loại nghỉ phép:',
+    },
+    'hcqs7xop': {
+      'en': '[ลากิจ]',
+      'th': '[ลากิจ]',
+      'vi': '',
+    },
+    'jpy2inh9': {
+      'en': 'Transaction date:',
+      'th': 'วันที่ทำรายการ:',
+      'vi': 'Ngày tạo yêu cầu:',
+    },
+    'o8hrs7fd': {
+      'en': '[01/11/2565]',
+      'th': '[01/11/2565]',
+      'vi': '',
+    },
+    'a51flgbs': {
+      'en': 'Leave date:',
+      'th': 'วันที่ลา:',
+      'vi': 'Ngày nghỉ phép:',
+    },
+    'bnm2cmtz': {
+      'en': '[11/11/2565-12/11/2565]',
+      'th': '[11/11/2565-12/11/2565]',
+      'vi': '',
+    },
+    'pnl53gg0': {
+      'en': 'Number of leave days:',
+      'th': 'จำนวนวันที่ลา:',
+      'vi': 'Số ngày nghỉ phép:',
+    },
+    '3mtan5kl': {
+      'en': '',
+      'th': '[2]',
+      'vi': '',
+    },
+    '9kugenjl': {
+      'en': 'Time period:',
+      'th': 'ช่วงเวลา:',
+      'vi': 'Thời gian:',
+    },
+    'xji4p64j': {
+      'en': '[ลาเต็มวัน]',
+      'th': '[ลาเต็มวัน]',
+      'vi': '',
+    },
+    's0dnrfiz': {
+      'en': 'Reason for leave:',
+      'th': 'เหตุผลการลา:',
+      'vi': 'Lý do nghỉ phép:',
+    },
+    'prqv86tn': {
+      'en': '[]',
+      'th': '[]',
+      'vi': '',
+    },
+    'ktw7prrt': {
+      'en': 'Canceled by:',
+      'th': 'ถูกยกเลิกโดย:',
+      'vi': 'bị hủy bỏ bởi:',
+    },
+    '9guuy1el': {
+      'en': '[]',
+      'th': '[]',
+      'vi': '',
+    },
+    'a6b4w1e2': {
+      'en': 'List',
+      'th': 'รายการ',
+      'vi': 'Danh sách',
+    },
+    '76z5n6cs': {
+      'en': 'Home',
+      'th': 'Profile',
+      'vi': 'Profile',
+    },
+  },
+  // leaveShowPage5544
+  {
+    '49v59d6c': {
+      'en': 'Approval request list',
+      'th': 'รายการขออนุมัติ',
+      'vi': '',
+    },
+    'ytb6w97r': {
+      'en': 'Please select the month you want to search for',
+      'th': 'กรุณาเลือกเดือนที่ต้องการหา',
+      'vi': '',
+    },
+    'dosdtmqg': {
+      'en': 'previous year',
+      'th': 'ปีที่แล้ว',
+      'vi': 'năm trước',
+    },
+    'jd4kkr6o': {
+      'en': 'current year',
+      'th': 'ปีปัจจุบัน',
+      'vi': 'năm hiện tại',
+    },
+    '2pnjypu2': {
+      'en': 'next year',
+      'th': 'ปีหน้า',
+      'vi': 'năm sau',
+    },
+    '5abwhlob': {
+      'en': 'Please select the month you want to search for',
+      'th': 'กรุณาเลือกเดือนที่ต้องการหา',
+      'vi': 'กรุณาเลือกเดือนที่ต้องการหา',
+    },
+    'lndq7syu': {
+      'en': 'January',
+      'th': 'มกราคม',
+      'vi': 'Tháng Một',
+    },
+    'bcosqlap': {
+      'en': 'February',
+      'th': 'กุมภาพันธ์',
+      'vi': 'Tháng hai',
+    },
+    'az91s72k': {
+      'en': 'March',
+      'th': 'มีนาคม',
+      'vi': 'Bước đều',
+    },
+    'ij50p6zs': {
+      'en': 'April',
+      'th': 'เมษายน',
+      'vi': 'Tháng tư',
+    },
+    'txru1osf': {
+      'en': 'May',
+      'th': 'พฤษภาคม',
+      'vi': 'Tháng năm',
+    },
+    'ngj6glr4': {
+      'en': 'June',
+      'th': 'มิถุนายน',
+      'vi': 'tháng Sáu',
+    },
+    'xnvoupck': {
+      'en': 'July',
+      'th': 'กรกฎาคม',
+      'vi': 'tháng Bảy',
+    },
+    '1wm1or11': {
+      'en': 'August',
+      'th': 'สิงหาคม',
+      'vi': 'tháng Tám',
+    },
+    'vr78qbef': {
+      'en': 'September',
+      'th': 'กันยายน',
+      'vi': 'tháng Chín',
+    },
+    'i4t6podj': {
+      'en': 'October',
+      'th': 'ตุลาคม',
+      'vi': 'tháng Mười',
+    },
+    'h1fsd41v': {
+      'en': 'November',
+      'th': 'พฤศจิกายน',
+      'vi': 'tháng Mười Một',
+    },
+    'tubffjw3': {
+      'en': 'December',
+      'th': 'ธันวาคม',
+      'vi': 'tháng Mười Hai',
+    },
+    '2x9mg8yk': {
+      'en': 'Leave',
+      'th': 'ลา',
+      'vi': 'nghỉ phép',
+    },
+    '83ihgbws': {
+      'en': 'ดูรายละเอียด',
+      'th': 'ดูรายละเอียด',
+      'vi': 'xem chi tiết',
+    },
+    'wvj0pl0d': {
+      'en': 'Type of leave:',
+      'th': 'ประเภทการลา:',
+      'vi': 'Loại nghỉ phép:',
+    },
+    'jvedgaix': {
+      'en': 'Transaction date:',
+      'th': 'วันที่ทำรายการ:',
+      'vi': 'Ngày thực hiện giao dịch:',
+    },
+    'otudutw2': {
+      'en': 'Leave date:',
+      'th': 'วันที่ลา:',
+      'vi': 'Ngày nghỉ:',
+    },
+    'ix8j74um': {
+      'en': 'Number of leave days:',
+      'th': 'จำนวนวันที่ลา:',
+      'vi': 'Số ngày nghỉ',
+    },
+    'terjg43g': {
+      'en': 'Period of time:',
+      'th': 'ช่วงเวลา:',
+      'vi': 'Khoảng thời gian:',
+    },
+    'skbva5cg': {
+      'en': 'Reason for leave:',
+      'th': 'เหตุผลการลา:',
+      'vi': 'Lý do nghỉ phép:',
+    },
+    'yrgikrj9': {
+      'en': 'Approver:',
+      'th': 'ผู้อนุมัติ:',
+      'vi': 'Người phê duyệt:',
+    },
+    'lijkajyn': {
+      'en': 'Status:',
+      'th': 'สถานะ:',
+      'vi': 'Trạng thái:',
+    },
+    'm4nwj6h9': {
+      'en': 'Attached file:',
+      'th': 'ไฟล์เเนบ:',
+      'vi': 'Tệp đính kèm:',
+    },
+    'v1v7xsf0': {
+      'en': 'Edit',
+      'th': 'แก้ไข',
+      'vi': 'Chỉnh sửa',
+    },
+    '33efeibt': {
+      'en': 'Cancel',
+      'th': 'ยกเลิก',
+      'vi': 'Hủy bỏ',
+    },
+    'ocsmjskw': {
+      'en': 'Home',
+      'th': '',
+      'vi': '',
     },
   },
   // Action2SheetSimple
@@ -2171,24 +2632,55 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // ConfirmCancelLeaveComponent
   {
     '3fsz4nym': {
-      'en': 'ยืนยันยกเลิกการลา',
+      'en': 'Confirm leave cancellation.',
       'th': 'ยืนยันยกเลิกการลา',
-      'vi': 'ยืนยันยกเลิกการลา',
+      'vi': 'xác nhận hủy bỏ đơn xin nghỉ:',
     },
     '6b6wmwup': {
-      'en': 'ระบุเหตุผล...',
+      'en': 'Specify the reason...',
       'th': 'ระบุเหตุผล...',
-      'vi': 'ระบุเหตุผล...',
+      'vi': 'chỉ rõ lý do...',
     },
     'md2xelp4': {
-      'en': 'ยกเลิก',
+      'en': 'Cancel',
       'th': 'ยกเลิก',
-      'vi': 'ยกเลิก',
+      'vi': 'Hủy bỏ',
     },
     'm27y9t0n': {
-      'en': 'ตกลง',
+      'en': 'OK',
       'th': 'ตกลง',
-      'vi': 'ตกลง',
+      'vi': 'đồng ý',
+    },
+  },
+  // urlLink
+  {
+    'di2hpfkd': {
+      'en': 'รายละเอียดไฟล์แนบ',
+      'th': 'รายละเอียดไฟล์แนบ',
+      'vi': 'รายละเอียดไฟล์แนบ',
+    },
+  },
+  // DatailLeaveRequet
+  {
+    'a4obaq6u': {
+      'en': 'รายละเอียดการลา',
+      'th': 'รายละเอียดการลา',
+      'vi': 'รายละเอียดการลา',
+    },
+    'p7onmop6': {
+      'en': 'ประเภทการลา',
+      'th': 'ประเภทการลา',
+      'vi': 'Loại nghỉ phép:',
+    },
+    'o11h3zrv': {
+      'en': 'วันที่ลา: ',
+      'th': 'วันที่ลา: ',
+      'vi': 'Ngày nghỉ phép:',
+    },
+    '9yokmjpl': {
+      'en': 'ช่วงเวลา:  ',
+      'th': 'ช่วงเวลา:  ',
+      'vi': 'Thời gian:',
     },
   },
   // Miscellaneous

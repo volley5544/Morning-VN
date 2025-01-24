@@ -4,26 +4,72 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '/backend/schema/util/firestore_util.dart';
 
+import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class TempYearStruct extends FFFirebaseStruct {
   TempYearStruct({
-    int? leaveUse,
+    String? leaveUse,
+    List<LeaveDateStruct>? leaveDate,
+    String? year,
+    String? leaveLimit,
+    String? leaveRemain,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _leaveUse = leaveUse,
+        _leaveDate = leaveDate,
+        _year = year,
+        _leaveLimit = leaveLimit,
+        _leaveRemain = leaveRemain,
         super(firestoreUtilData);
 
   // "leave_use" field.
-  int? _leaveUse;
-  int get leaveUse => _leaveUse ?? 0;
-  set leaveUse(int? val) => _leaveUse = val;
-
-  void incrementLeaveUse(int amount) => leaveUse = leaveUse + amount;
+  String? _leaveUse;
+  String get leaveUse => _leaveUse ?? '';
+  set leaveUse(String? val) => _leaveUse = val;
 
   bool hasLeaveUse() => _leaveUse != null;
 
+  // "leave_date" field.
+  List<LeaveDateStruct>? _leaveDate;
+  List<LeaveDateStruct> get leaveDate => _leaveDate ?? const [];
+  set leaveDate(List<LeaveDateStruct>? val) => _leaveDate = val;
+
+  void updateLeaveDate(Function(List<LeaveDateStruct>) updateFn) {
+    updateFn(_leaveDate ??= []);
+  }
+
+  bool hasLeaveDate() => _leaveDate != null;
+
+  // "year" field.
+  String? _year;
+  String get year => _year ?? '';
+  set year(String? val) => _year = val;
+
+  bool hasYear() => _year != null;
+
+  // "leave_limit" field.
+  String? _leaveLimit;
+  String get leaveLimit => _leaveLimit ?? '';
+  set leaveLimit(String? val) => _leaveLimit = val;
+
+  bool hasLeaveLimit() => _leaveLimit != null;
+
+  // "leave_remain" field.
+  String? _leaveRemain;
+  String get leaveRemain => _leaveRemain ?? '';
+  set leaveRemain(String? val) => _leaveRemain = val;
+
+  bool hasLeaveRemain() => _leaveRemain != null;
+
   static TempYearStruct fromMap(Map<String, dynamic> data) => TempYearStruct(
-        leaveUse: castToType<int>(data['leave_use']),
+        leaveUse: data['leave_use'] as String?,
+        leaveDate: getStructList(
+          data['leave_date'],
+          LeaveDateStruct.fromMap,
+        ),
+        year: data['year'] as String?,
+        leaveLimit: data['leave_limit'] as String?,
+        leaveRemain: data['leave_remain'] as String?,
       );
 
   static TempYearStruct? maybeFromMap(dynamic data) =>
@@ -31,13 +77,34 @@ class TempYearStruct extends FFFirebaseStruct {
 
   Map<String, dynamic> toMap() => {
         'leave_use': _leaveUse,
+        'leave_date': _leaveDate?.map((e) => e.toMap()).toList(),
+        'year': _year,
+        'leave_limit': _leaveLimit,
+        'leave_remain': _leaveRemain,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
         'leave_use': serializeParam(
           _leaveUse,
-          ParamType.int,
+          ParamType.String,
+        ),
+        'leave_date': serializeParam(
+          _leaveDate,
+          ParamType.DataStruct,
+          isList: true,
+        ),
+        'year': serializeParam(
+          _year,
+          ParamType.String,
+        ),
+        'leave_limit': serializeParam(
+          _leaveLimit,
+          ParamType.String,
+        ),
+        'leave_remain': serializeParam(
+          _leaveRemain,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -45,7 +112,28 @@ class TempYearStruct extends FFFirebaseStruct {
       TempYearStruct(
         leaveUse: deserializeParam(
           data['leave_use'],
-          ParamType.int,
+          ParamType.String,
+          false,
+        ),
+        leaveDate: deserializeStructParam<LeaveDateStruct>(
+          data['leave_date'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: LeaveDateStruct.fromSerializableMap,
+        ),
+        year: deserializeParam(
+          data['year'],
+          ParamType.String,
+          false,
+        ),
+        leaveLimit: deserializeParam(
+          data['leave_limit'],
+          ParamType.String,
+          false,
+        ),
+        leaveRemain: deserializeParam(
+          data['leave_remain'],
+          ParamType.String,
           false,
         ),
       );
@@ -55,15 +143,25 @@ class TempYearStruct extends FFFirebaseStruct {
 
   @override
   bool operator ==(Object other) {
-    return other is TempYearStruct && leaveUse == other.leaveUse;
+    const listEquality = ListEquality();
+    return other is TempYearStruct &&
+        leaveUse == other.leaveUse &&
+        listEquality.equals(leaveDate, other.leaveDate) &&
+        year == other.year &&
+        leaveLimit == other.leaveLimit &&
+        leaveRemain == other.leaveRemain;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([leaveUse]);
+  int get hashCode => const ListEquality()
+      .hash([leaveUse, leaveDate, year, leaveLimit, leaveRemain]);
 }
 
 TempYearStruct createTempYearStruct({
-  int? leaveUse,
+  String? leaveUse,
+  String? year,
+  String? leaveLimit,
+  String? leaveRemain,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -71,6 +169,9 @@ TempYearStruct createTempYearStruct({
 }) =>
     TempYearStruct(
       leaveUse: leaveUse,
+      year: year,
+      leaveLimit: leaveLimit,
+      leaveRemain: leaveRemain,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

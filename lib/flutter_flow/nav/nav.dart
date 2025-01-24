@@ -178,6 +178,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'nextYearSelectableDates',
               ParamType.String,
             ),
+            leavePeriods: params.getParam<dynamic>(
+              'leavePeriods',
+              ParamType.JSON,
+              isList: true,
+            ),
+            previousYear: params.getParam(
+              'previousYear',
+              ParamType.String,
+            ),
+            previousYearSelectableDates: params.getParam(
+              'previousYearSelectableDates',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(
@@ -189,12 +202,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'EditLeavePage',
           path: '/editLeavePage',
           builder: (context, params) => EditLeavePageWidget(
-            leaveType: params.getParam(
-              'leaveType',
+            leaveID: params.getParam(
+              'leaveID',
               ParamType.String,
             ),
-            leavePeriod: params.getParam(
-              'leavePeriod',
+            leaveName: params.getParam(
+              'leaveName',
+              ParamType.String,
+            ),
+            leavePerios: params.getParam(
+              'leavePerios',
               ParamType.String,
             ),
             leaveCountDay: params.getParam(
@@ -205,29 +222,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'leaveReason',
               ParamType.String,
             ),
-            leaveDate: params.getParam(
-              'leaveDate',
-              ParamType.String,
-            ),
             userPhoneNumber: params.getParam(
               'userPhoneNumber',
               ParamType.String,
             ),
-            leaveID: params.getParam(
-              'leaveID',
+            leaveDocument: params.getParam<String>(
+              'leaveDocument',
               ParamType.String,
-            ),
-            leaveName: params.getParam(
-              'leaveName',
-              ParamType.String,
-            ),
-            leaveStartDate: params.getParam(
-              'leaveStartDate',
-              ParamType.String,
-            ),
-            leaveEndDate: params.getParam(
-              'leaveEndDate',
-              ParamType.String,
+              isList: true,
             ),
           ),
         ),
@@ -348,6 +350,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'ApproveShowPage5544',
+          path: '/approveShowPage5544',
+          builder: (context, params) => const ApproveShowPage5544Widget(),
+        ),
+        FFRoute(
+          name: 'leaveShowPage5544',
+          path: '/leaveShowPage5544',
+          builder: (context, params) => const LeaveShowPage5544Widget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

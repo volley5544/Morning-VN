@@ -7,13 +7,13 @@ import '/backend/schema/util/firestore_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class LeaveHistoryNewStruct extends FFFirebaseStruct {
-  LeaveHistoryNewStruct({
+class ApproveListMonthDataModelStruct extends FFFirebaseStruct {
+  ApproveListMonthDataModelStruct({
     String? month,
     String? name,
     String? fullName,
     int? total,
-    List<ListDateStruct>? listDate,
+    List<ApproveListDetailDataModelStruct>? listDate,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _month = month,
         _name = name,
@@ -53,30 +53,32 @@ class LeaveHistoryNewStruct extends FFFirebaseStruct {
   bool hasTotal() => _total != null;
 
   // "list_date" field.
-  List<ListDateStruct>? _listDate;
-  List<ListDateStruct> get listDate => _listDate ?? const [];
-  set listDate(List<ListDateStruct>? val) => _listDate = val;
+  List<ApproveListDetailDataModelStruct>? _listDate;
+  List<ApproveListDetailDataModelStruct> get listDate => _listDate ?? const [];
+  set listDate(List<ApproveListDetailDataModelStruct>? val) => _listDate = val;
 
-  void updateListDate(Function(List<ListDateStruct>) updateFn) {
+  void updateListDate(
+      Function(List<ApproveListDetailDataModelStruct>) updateFn) {
     updateFn(_listDate ??= []);
   }
 
   bool hasListDate() => _listDate != null;
 
-  static LeaveHistoryNewStruct fromMap(Map<String, dynamic> data) =>
-      LeaveHistoryNewStruct(
+  static ApproveListMonthDataModelStruct fromMap(Map<String, dynamic> data) =>
+      ApproveListMonthDataModelStruct(
         month: data['month'] as String?,
         name: data['name'] as String?,
         fullName: data['full_name'] as String?,
         total: castToType<int>(data['total']),
         listDate: getStructList(
           data['list_date'],
-          ListDateStruct.fromMap,
+          ApproveListDetailDataModelStruct.fromMap,
         ),
       );
 
-  static LeaveHistoryNewStruct? maybeFromMap(dynamic data) => data is Map
-      ? LeaveHistoryNewStruct.fromMap(data.cast<String, dynamic>())
+  static ApproveListMonthDataModelStruct? maybeFromMap(dynamic data) => data
+          is Map
+      ? ApproveListMonthDataModelStruct.fromMap(data.cast<String, dynamic>())
       : null;
 
   Map<String, dynamic> toMap() => {
@@ -112,8 +114,9 @@ class LeaveHistoryNewStruct extends FFFirebaseStruct {
         ),
       }.withoutNulls;
 
-  static LeaveHistoryNewStruct fromSerializableMap(Map<String, dynamic> data) =>
-      LeaveHistoryNewStruct(
+  static ApproveListMonthDataModelStruct fromSerializableMap(
+          Map<String, dynamic> data) =>
+      ApproveListMonthDataModelStruct(
         month: deserializeParam(
           data['month'],
           ParamType.String,
@@ -134,21 +137,21 @@ class LeaveHistoryNewStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
-        listDate: deserializeStructParam<ListDateStruct>(
+        listDate: deserializeStructParam<ApproveListDetailDataModelStruct>(
           data['list_date'],
           ParamType.DataStruct,
           true,
-          structBuilder: ListDateStruct.fromSerializableMap,
+          structBuilder: ApproveListDetailDataModelStruct.fromSerializableMap,
         ),
       );
 
   @override
-  String toString() => 'LeaveHistoryNewStruct(${toMap()})';
+  String toString() => 'ApproveListMonthDataModelStruct(${toMap()})';
 
   @override
   bool operator ==(Object other) {
     const listEquality = ListEquality();
-    return other is LeaveHistoryNewStruct &&
+    return other is ApproveListMonthDataModelStruct &&
         month == other.month &&
         name == other.name &&
         fullName == other.fullName &&
@@ -161,7 +164,7 @@ class LeaveHistoryNewStruct extends FFFirebaseStruct {
       const ListEquality().hash([month, name, fullName, total, listDate]);
 }
 
-LeaveHistoryNewStruct createLeaveHistoryNewStruct({
+ApproveListMonthDataModelStruct createApproveListMonthDataModelStruct({
   String? month,
   String? name,
   String? fullName,
@@ -171,7 +174,7 @@ LeaveHistoryNewStruct createLeaveHistoryNewStruct({
   bool create = false,
   bool delete = false,
 }) =>
-    LeaveHistoryNewStruct(
+    ApproveListMonthDataModelStruct(
       month: month,
       name: name,
       fullName: fullName,
@@ -184,66 +187,68 @@ LeaveHistoryNewStruct createLeaveHistoryNewStruct({
       ),
     );
 
-LeaveHistoryNewStruct? updateLeaveHistoryNewStruct(
-  LeaveHistoryNewStruct? leaveHistoryNew, {
+ApproveListMonthDataModelStruct? updateApproveListMonthDataModelStruct(
+  ApproveListMonthDataModelStruct? approveListMonthDataModel, {
   bool clearUnsetFields = true,
   bool create = false,
 }) =>
-    leaveHistoryNew
+    approveListMonthDataModel
       ?..firestoreUtilData = FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
       );
 
-void addLeaveHistoryNewStructData(
+void addApproveListMonthDataModelStructData(
   Map<String, dynamic> firestoreData,
-  LeaveHistoryNewStruct? leaveHistoryNew,
+  ApproveListMonthDataModelStruct? approveListMonthDataModel,
   String fieldName, [
   bool forFieldValue = false,
 ]) {
   firestoreData.remove(fieldName);
-  if (leaveHistoryNew == null) {
+  if (approveListMonthDataModel == null) {
     return;
   }
-  if (leaveHistoryNew.firestoreUtilData.delete) {
+  if (approveListMonthDataModel.firestoreUtilData.delete) {
     firestoreData[fieldName] = FieldValue.delete();
     return;
   }
-  final clearFields =
-      !forFieldValue && leaveHistoryNew.firestoreUtilData.clearUnsetFields;
+  final clearFields = !forFieldValue &&
+      approveListMonthDataModel.firestoreUtilData.clearUnsetFields;
   if (clearFields) {
     firestoreData[fieldName] = <String, dynamic>{};
   }
-  final leaveHistoryNewData =
-      getLeaveHistoryNewFirestoreData(leaveHistoryNew, forFieldValue);
+  final approveListMonthDataModelData =
+      getApproveListMonthDataModelFirestoreData(
+          approveListMonthDataModel, forFieldValue);
   final nestedData =
-      leaveHistoryNewData.map((k, v) => MapEntry('$fieldName.$k', v));
+      approveListMonthDataModelData.map((k, v) => MapEntry('$fieldName.$k', v));
 
-  final mergeFields = leaveHistoryNew.firestoreUtilData.create || clearFields;
+  final mergeFields =
+      approveListMonthDataModel.firestoreUtilData.create || clearFields;
   firestoreData
       .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
 }
 
-Map<String, dynamic> getLeaveHistoryNewFirestoreData(
-  LeaveHistoryNewStruct? leaveHistoryNew, [
+Map<String, dynamic> getApproveListMonthDataModelFirestoreData(
+  ApproveListMonthDataModelStruct? approveListMonthDataModel, [
   bool forFieldValue = false,
 ]) {
-  if (leaveHistoryNew == null) {
+  if (approveListMonthDataModel == null) {
     return {};
   }
-  final firestoreData = mapToFirestore(leaveHistoryNew.toMap());
+  final firestoreData = mapToFirestore(approveListMonthDataModel.toMap());
 
   // Add any Firestore field values
-  leaveHistoryNew.firestoreUtilData.fieldValues
+  approveListMonthDataModel.firestoreUtilData.fieldValues
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
 }
 
-List<Map<String, dynamic>> getLeaveHistoryNewListFirestoreData(
-  List<LeaveHistoryNewStruct>? leaveHistoryNews,
+List<Map<String, dynamic>> getApproveListMonthDataModelListFirestoreData(
+  List<ApproveListMonthDataModelStruct>? approveListMonthDataModels,
 ) =>
-    leaveHistoryNews
-        ?.map((e) => getLeaveHistoryNewFirestoreData(e, true))
+    approveListMonthDataModels
+        ?.map((e) => getApproveListMonthDataModelFirestoreData(e, true))
         .toList() ??
     [];

@@ -5,8 +5,8 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class MorningVNFirebaseUser extends BaseAuthUser {
-  MorningVNFirebaseUser(this.user);
+class MorningFMFirebaseUser extends BaseAuthUser {
+  MorningFMFirebaseUser(this.user);
   User? user;
   @override
   bool get loggedIn => user != null;
@@ -60,17 +60,17 @@ class MorningVNFirebaseUser extends BaseAuthUser {
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
   static BaseAuthUser fromFirebaseUser(User? user) =>
-      MorningVNFirebaseUser(user);
+      MorningFMFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> morningVNFirebaseUserStream() => FirebaseAuth.instance
+Stream<BaseAuthUser> morningFMFirebaseUserStream() => FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = MorningVNFirebaseUser(user);
+        currentUser = MorningFMFirebaseUser(user);
         return currentUser!;
       },
     );

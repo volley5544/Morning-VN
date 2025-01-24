@@ -12,6 +12,10 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   TutorialCoachMark? loginController;
   // Stores action output result for [Custom Action - getBuildVersion] action in loginPage widget.
   String? getBuildVersion;
+  // Stores action output result for [Custom Action - a3] action in loginPage widget.
+  String? androidIMEI1st;
+  // Stores action output result for [Custom Action - a4] action in loginPage widget.
+  String? iOSidentifierForVendor1st;
   // State field(s) for username widget.
   FocusNode? usernameFocusNode;
   TextEditingController? usernameTextController;

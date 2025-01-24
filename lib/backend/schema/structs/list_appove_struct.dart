@@ -19,13 +19,12 @@ class ListAppoveStruct extends FFFirebaseStruct {
     String? leavePeriod,
     String? empTel,
     String? leaveReason,
-    String? leaveDocument,
     String? id,
-    List<LaveDetailStruct>? laeveDetail,
     String? nickName,
     String? leaveStatusName,
     String? leavePeriodName,
     String? createDate,
+    List<LeaveDetailStruct>? leaveDetail,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _empCode = empCode,
         _fullName = fullName,
@@ -37,13 +36,12 @@ class ListAppoveStruct extends FFFirebaseStruct {
         _leavePeriod = leavePeriod,
         _empTel = empTel,
         _leaveReason = leaveReason,
-        _leaveDocument = leaveDocument,
         _id = id,
-        _laeveDetail = laeveDetail,
         _nickName = nickName,
         _leaveStatusName = leaveStatusName,
         _leavePeriodName = leavePeriodName,
         _createDate = createDate,
+        _leaveDetail = leaveDetail,
         super(firestoreUtilData);
 
   // "emp_code" field.
@@ -116,30 +114,12 @@ class ListAppoveStruct extends FFFirebaseStruct {
 
   bool hasLeaveReason() => _leaveReason != null;
 
-  // "leave_document" field.
-  String? _leaveDocument;
-  String get leaveDocument => _leaveDocument ?? '';
-  set leaveDocument(String? val) => _leaveDocument = val;
-
-  bool hasLeaveDocument() => _leaveDocument != null;
-
   // "id" field.
   String? _id;
   String get id => _id ?? '';
   set id(String? val) => _id = val;
 
   bool hasId() => _id != null;
-
-  // "laeve_detail" field.
-  List<LaveDetailStruct>? _laeveDetail;
-  List<LaveDetailStruct> get laeveDetail => _laeveDetail ?? const [];
-  set laeveDetail(List<LaveDetailStruct>? val) => _laeveDetail = val;
-
-  void updateLaeveDetail(Function(List<LaveDetailStruct>) updateFn) {
-    updateFn(_laeveDetail ??= []);
-  }
-
-  bool hasLaeveDetail() => _laeveDetail != null;
 
   // "nick_name" field.
   String? _nickName;
@@ -169,6 +149,17 @@ class ListAppoveStruct extends FFFirebaseStruct {
 
   bool hasCreateDate() => _createDate != null;
 
+  // "leave_detail" field.
+  List<LeaveDetailStruct>? _leaveDetail;
+  List<LeaveDetailStruct> get leaveDetail => _leaveDetail ?? const [];
+  set leaveDetail(List<LeaveDetailStruct>? val) => _leaveDetail = val;
+
+  void updateLeaveDetail(Function(List<LeaveDetailStruct>) updateFn) {
+    updateFn(_leaveDetail ??= []);
+  }
+
+  bool hasLeaveDetail() => _leaveDetail != null;
+
   static ListAppoveStruct fromMap(Map<String, dynamic> data) =>
       ListAppoveStruct(
         empCode: data['emp_code'] as String?,
@@ -181,16 +172,15 @@ class ListAppoveStruct extends FFFirebaseStruct {
         leavePeriod: data['leave_period'] as String?,
         empTel: data['emp_tel'] as String?,
         leaveReason: data['leave_reason'] as String?,
-        leaveDocument: data['leave_document'] as String?,
         id: data['id'] as String?,
-        laeveDetail: getStructList(
-          data['laeve_detail'],
-          LaveDetailStruct.fromMap,
-        ),
         nickName: data['nick_name'] as String?,
         leaveStatusName: data['leave_status_name'] as String?,
         leavePeriodName: data['leave_period_name'] as String?,
         createDate: data['create_date'] as String?,
+        leaveDetail: getStructList(
+          data['leave_detail'],
+          LeaveDetailStruct.fromMap,
+        ),
       );
 
   static ListAppoveStruct? maybeFromMap(dynamic data) => data is Map
@@ -208,13 +198,12 @@ class ListAppoveStruct extends FFFirebaseStruct {
         'leave_period': _leavePeriod,
         'emp_tel': _empTel,
         'leave_reason': _leaveReason,
-        'leave_document': _leaveDocument,
         'id': _id,
-        'laeve_detail': _laeveDetail?.map((e) => e.toMap()).toList(),
         'nick_name': _nickName,
         'leave_status_name': _leaveStatusName,
         'leave_period_name': _leavePeriodName,
         'create_date': _createDate,
+        'leave_detail': _leaveDetail?.map((e) => e.toMap()).toList(),
       }.withoutNulls;
 
   @override
@@ -259,18 +248,9 @@ class ListAppoveStruct extends FFFirebaseStruct {
           _leaveReason,
           ParamType.String,
         ),
-        'leave_document': serializeParam(
-          _leaveDocument,
-          ParamType.String,
-        ),
         'id': serializeParam(
           _id,
           ParamType.String,
-        ),
-        'laeve_detail': serializeParam(
-          _laeveDetail,
-          ParamType.DataStruct,
-          isList: true,
         ),
         'nick_name': serializeParam(
           _nickName,
@@ -287,6 +267,11 @@ class ListAppoveStruct extends FFFirebaseStruct {
         'create_date': serializeParam(
           _createDate,
           ParamType.String,
+        ),
+        'leave_detail': serializeParam(
+          _leaveDetail,
+          ParamType.DataStruct,
+          isList: true,
         ),
       }.withoutNulls;
 
@@ -342,21 +327,10 @@ class ListAppoveStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
-        leaveDocument: deserializeParam(
-          data['leave_document'],
-          ParamType.String,
-          false,
-        ),
         id: deserializeParam(
           data['id'],
           ParamType.String,
           false,
-        ),
-        laeveDetail: deserializeStructParam<LaveDetailStruct>(
-          data['laeve_detail'],
-          ParamType.DataStruct,
-          true,
-          structBuilder: LaveDetailStruct.fromSerializableMap,
         ),
         nickName: deserializeParam(
           data['nick_name'],
@@ -378,6 +352,12 @@ class ListAppoveStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        leaveDetail: deserializeStructParam<LeaveDetailStruct>(
+          data['leave_detail'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: LeaveDetailStruct.fromSerializableMap,
+        ),
       );
 
   @override
@@ -397,13 +377,12 @@ class ListAppoveStruct extends FFFirebaseStruct {
         leavePeriod == other.leavePeriod &&
         empTel == other.empTel &&
         leaveReason == other.leaveReason &&
-        leaveDocument == other.leaveDocument &&
         id == other.id &&
-        listEquality.equals(laeveDetail, other.laeveDetail) &&
         nickName == other.nickName &&
         leaveStatusName == other.leaveStatusName &&
         leavePeriodName == other.leavePeriodName &&
-        createDate == other.createDate;
+        createDate == other.createDate &&
+        listEquality.equals(leaveDetail, other.leaveDetail);
   }
 
   @override
@@ -418,13 +397,12 @@ class ListAppoveStruct extends FFFirebaseStruct {
         leavePeriod,
         empTel,
         leaveReason,
-        leaveDocument,
         id,
-        laeveDetail,
         nickName,
         leaveStatusName,
         leavePeriodName,
-        createDate
+        createDate,
+        leaveDetail
       ]);
 }
 
@@ -439,7 +417,6 @@ ListAppoveStruct createListAppoveStruct({
   String? leavePeriod,
   String? empTel,
   String? leaveReason,
-  String? leaveDocument,
   String? id,
   String? nickName,
   String? leaveStatusName,
@@ -461,7 +438,6 @@ ListAppoveStruct createListAppoveStruct({
       leavePeriod: leavePeriod,
       empTel: empTel,
       leaveReason: leaveReason,
-      leaveDocument: leaveDocument,
       id: id,
       nickName: nickName,
       leaveStatusName: leaveStatusName,

@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'confirm_cancel_leave_component_widget.dart'
     show ConfirmCancelLeaveComponentWidget;
@@ -11,6 +12,8 @@ class ConfirmCancelLeaveComponentModel
   FocusNode? reasonCancelFocusNode;
   TextEditingController? reasonCancelTextController;
   String? Function(BuildContext, String?)? reasonCancelTextControllerValidator;
+  // Stores action output result for [Backend Call - API (saveStatusLeave)] action in Button widget.
+  ApiCallResponse? leaveListCancelAPIOutput;
 
   @override
   void initState(BuildContext context) {}

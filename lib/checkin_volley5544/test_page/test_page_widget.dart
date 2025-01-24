@@ -71,16 +71,16 @@ class _TestPageWidgetState extends State<TestPageWidget> {
       )!
           .toList()
           .cast<CurrentYearStruct>();
-      _model.otherYearDataPage = GetLeaveListCall.otheryear(
+      _model.nextYearDataPage = GetLeaveListCall.nextyear(
         (_model.apiResult235?.jsonBody ?? ''),
       )!
           .toList()
-          .cast<OtherYearStruct>();
+          .cast<CurrentYearStruct>();
       _model.listLeaveData = GetLeaveListCall.leavelist(
         (_model.apiResult235?.jsonBody ?? ''),
       )!
           .toList()
-          .cast<LeaveListDataStruct>();
+          .cast<dynamic>();
       safeSetState(() {});
       Navigator.pop(context);
     });
@@ -147,13 +147,19 @@ class _TestPageWidgetState extends State<TestPageWidget> {
                           _model.holidayDataPage.map((e) => e.date).toList(),
                       currentDate: getCurrentTimestamp,
                       currentYear: _model.currentYearDataPage.lastOrNull?.year,
-                      nextYear: _model.otherYearDataPage.lastOrNull?.year,
+                      nextYear: _model.nextYearDataPage.lastOrNull?.year,
                       currentYearSelectableDates:
                           _model.currentYearDataPage.lastOrNull!.leaveRemain,
                       nextYearSelectableDates:
-                          _model.otherYearDataPage.lastOrNull!.leaveRemain,
-                      startdate: _model.listLeaveData.lastOrNull?.startDate,
-                      enddate: _model.listLeaveData.lastOrNull?.endDate,
+                          _model.nextYearDataPage.lastOrNull!.leaveRemain,
+                      startdate: getJsonField(
+                        _model.listLeaveData.lastOrNull,
+                        r'''$.start_date''',
+                      ).toString(),
+                      enddate: getJsonField(
+                        _model.listLeaveData.lastOrNull,
+                        r'''$.end_date''',
+                      ).toString(),
                     ),
                   ),
                 ),

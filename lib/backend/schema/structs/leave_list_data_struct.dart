@@ -12,24 +12,26 @@ class LeaveListDataStruct extends FFFirebaseStruct {
     String? name,
     String? leaveType,
     CurrentYearStruct? currentYear,
-    OtherYearStruct? otherYear,
-    TempYearStruct? tempYear,
     String? startDate,
     String? endDate,
     List<AllLeaveListStruct>? allLeaveList,
     String? color,
     String? icon,
+    TempYearStruct? tempYear,
+    TempYearStruct? ontherYear,
+    List<LeavePeriodStruct>? leavePeriod,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _name = name,
         _leaveType = leaveType,
         _currentYear = currentYear,
-        _otherYear = otherYear,
-        _tempYear = tempYear,
         _startDate = startDate,
         _endDate = endDate,
         _allLeaveList = allLeaveList,
         _color = color,
         _icon = icon,
+        _tempYear = tempYear,
+        _ontherYear = ontherYear,
+        _leavePeriod = leavePeriod,
         super(firestoreUtilData);
 
   // "name" field.
@@ -56,28 +58,6 @@ class LeaveListDataStruct extends FFFirebaseStruct {
   }
 
   bool hasCurrentYear() => _currentYear != null;
-
-  // "other_year" field.
-  OtherYearStruct? _otherYear;
-  OtherYearStruct get otherYear => _otherYear ?? OtherYearStruct();
-  set otherYear(OtherYearStruct? val) => _otherYear = val;
-
-  void updateOtherYear(Function(OtherYearStruct) updateFn) {
-    updateFn(_otherYear ??= OtherYearStruct());
-  }
-
-  bool hasOtherYear() => _otherYear != null;
-
-  // "temp_year" field.
-  TempYearStruct? _tempYear;
-  TempYearStruct get tempYear => _tempYear ?? TempYearStruct();
-  set tempYear(TempYearStruct? val) => _tempYear = val;
-
-  void updateTempYear(Function(TempYearStruct) updateFn) {
-    updateFn(_tempYear ??= TempYearStruct());
-  }
-
-  bool hasTempYear() => _tempYear != null;
 
   // "start_date" field.
   String? _startDate;
@@ -118,6 +98,39 @@ class LeaveListDataStruct extends FFFirebaseStruct {
 
   bool hasIcon() => _icon != null;
 
+  // "temp_year" field.
+  TempYearStruct? _tempYear;
+  TempYearStruct get tempYear => _tempYear ?? TempYearStruct();
+  set tempYear(TempYearStruct? val) => _tempYear = val;
+
+  void updateTempYear(Function(TempYearStruct) updateFn) {
+    updateFn(_tempYear ??= TempYearStruct());
+  }
+
+  bool hasTempYear() => _tempYear != null;
+
+  // "onther_year" field.
+  TempYearStruct? _ontherYear;
+  TempYearStruct get ontherYear => _ontherYear ?? TempYearStruct();
+  set ontherYear(TempYearStruct? val) => _ontherYear = val;
+
+  void updateOntherYear(Function(TempYearStruct) updateFn) {
+    updateFn(_ontherYear ??= TempYearStruct());
+  }
+
+  bool hasOntherYear() => _ontherYear != null;
+
+  // "leave_period" field.
+  List<LeavePeriodStruct>? _leavePeriod;
+  List<LeavePeriodStruct> get leavePeriod => _leavePeriod ?? const [];
+  set leavePeriod(List<LeavePeriodStruct>? val) => _leavePeriod = val;
+
+  void updateLeavePeriod(Function(List<LeavePeriodStruct>) updateFn) {
+    updateFn(_leavePeriod ??= []);
+  }
+
+  bool hasLeavePeriod() => _leavePeriod != null;
+
   static LeaveListDataStruct fromMap(Map<String, dynamic> data) =>
       LeaveListDataStruct(
         name: data['name'] as String?,
@@ -125,12 +138,6 @@ class LeaveListDataStruct extends FFFirebaseStruct {
         currentYear: data['current_year'] is CurrentYearStruct
             ? data['current_year']
             : CurrentYearStruct.maybeFromMap(data['current_year']),
-        otherYear: data['other_year'] is OtherYearStruct
-            ? data['other_year']
-            : OtherYearStruct.maybeFromMap(data['other_year']),
-        tempYear: data['temp_year'] is TempYearStruct
-            ? data['temp_year']
-            : TempYearStruct.maybeFromMap(data['temp_year']),
         startDate: data['start_date'] as String?,
         endDate: data['end_date'] as String?,
         allLeaveList: getStructList(
@@ -139,6 +146,16 @@ class LeaveListDataStruct extends FFFirebaseStruct {
         ),
         color: data['color'] as String?,
         icon: data['icon'] as String?,
+        tempYear: data['temp_year'] is TempYearStruct
+            ? data['temp_year']
+            : TempYearStruct.maybeFromMap(data['temp_year']),
+        ontherYear: data['onther_year'] is TempYearStruct
+            ? data['onther_year']
+            : TempYearStruct.maybeFromMap(data['onther_year']),
+        leavePeriod: getStructList(
+          data['leave_period'],
+          LeavePeriodStruct.fromMap,
+        ),
       );
 
   static LeaveListDataStruct? maybeFromMap(dynamic data) => data is Map
@@ -149,13 +166,14 @@ class LeaveListDataStruct extends FFFirebaseStruct {
         'name': _name,
         'leave_type': _leaveType,
         'current_year': _currentYear?.toMap(),
-        'other_year': _otherYear?.toMap(),
-        'temp_year': _tempYear?.toMap(),
         'start_date': _startDate,
         'end_date': _endDate,
         'all_leave_list': _allLeaveList?.map((e) => e.toMap()).toList(),
         'color': _color,
         'icon': _icon,
+        'temp_year': _tempYear?.toMap(),
+        'onther_year': _ontherYear?.toMap(),
+        'leave_period': _leavePeriod?.map((e) => e.toMap()).toList(),
       }.withoutNulls;
 
   @override
@@ -170,14 +188,6 @@ class LeaveListDataStruct extends FFFirebaseStruct {
         ),
         'current_year': serializeParam(
           _currentYear,
-          ParamType.DataStruct,
-        ),
-        'other_year': serializeParam(
-          _otherYear,
-          ParamType.DataStruct,
-        ),
-        'temp_year': serializeParam(
-          _tempYear,
           ParamType.DataStruct,
         ),
         'start_date': serializeParam(
@@ -201,6 +211,19 @@ class LeaveListDataStruct extends FFFirebaseStruct {
           _icon,
           ParamType.String,
         ),
+        'temp_year': serializeParam(
+          _tempYear,
+          ParamType.DataStruct,
+        ),
+        'onther_year': serializeParam(
+          _ontherYear,
+          ParamType.DataStruct,
+        ),
+        'leave_period': serializeParam(
+          _leavePeriod,
+          ParamType.DataStruct,
+          isList: true,
+        ),
       }.withoutNulls;
 
   static LeaveListDataStruct fromSerializableMap(Map<String, dynamic> data) =>
@@ -220,18 +243,6 @@ class LeaveListDataStruct extends FFFirebaseStruct {
           ParamType.DataStruct,
           false,
           structBuilder: CurrentYearStruct.fromSerializableMap,
-        ),
-        otherYear: deserializeStructParam(
-          data['other_year'],
-          ParamType.DataStruct,
-          false,
-          structBuilder: OtherYearStruct.fromSerializableMap,
-        ),
-        tempYear: deserializeStructParam(
-          data['temp_year'],
-          ParamType.DataStruct,
-          false,
-          structBuilder: TempYearStruct.fromSerializableMap,
         ),
         startDate: deserializeParam(
           data['start_date'],
@@ -259,6 +270,24 @@ class LeaveListDataStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        tempYear: deserializeStructParam(
+          data['temp_year'],
+          ParamType.DataStruct,
+          false,
+          structBuilder: TempYearStruct.fromSerializableMap,
+        ),
+        ontherYear: deserializeStructParam(
+          data['onther_year'],
+          ParamType.DataStruct,
+          false,
+          structBuilder: TempYearStruct.fromSerializableMap,
+        ),
+        leavePeriod: deserializeStructParam<LeavePeriodStruct>(
+          data['leave_period'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: LeavePeriodStruct.fromSerializableMap,
+        ),
       );
 
   @override
@@ -271,13 +300,14 @@ class LeaveListDataStruct extends FFFirebaseStruct {
         name == other.name &&
         leaveType == other.leaveType &&
         currentYear == other.currentYear &&
-        otherYear == other.otherYear &&
-        tempYear == other.tempYear &&
         startDate == other.startDate &&
         endDate == other.endDate &&
         listEquality.equals(allLeaveList, other.allLeaveList) &&
         color == other.color &&
-        icon == other.icon;
+        icon == other.icon &&
+        tempYear == other.tempYear &&
+        ontherYear == other.ontherYear &&
+        listEquality.equals(leavePeriod, other.leavePeriod);
   }
 
   @override
@@ -285,13 +315,14 @@ class LeaveListDataStruct extends FFFirebaseStruct {
         name,
         leaveType,
         currentYear,
-        otherYear,
-        tempYear,
         startDate,
         endDate,
         allLeaveList,
         color,
-        icon
+        icon,
+        tempYear,
+        ontherYear,
+        leavePeriod
       ]);
 }
 
@@ -299,12 +330,12 @@ LeaveListDataStruct createLeaveListDataStruct({
   String? name,
   String? leaveType,
   CurrentYearStruct? currentYear,
-  OtherYearStruct? otherYear,
-  TempYearStruct? tempYear,
   String? startDate,
   String? endDate,
   String? color,
   String? icon,
+  TempYearStruct? tempYear,
+  TempYearStruct? ontherYear,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -315,12 +346,12 @@ LeaveListDataStruct createLeaveListDataStruct({
       leaveType: leaveType,
       currentYear:
           currentYear ?? (clearUnsetFields ? CurrentYearStruct() : null),
-      otherYear: otherYear ?? (clearUnsetFields ? OtherYearStruct() : null),
-      tempYear: tempYear ?? (clearUnsetFields ? TempYearStruct() : null),
       startDate: startDate,
       endDate: endDate,
       color: color,
       icon: icon,
+      tempYear: tempYear ?? (clearUnsetFields ? TempYearStruct() : null),
+      ontherYear: ontherYear ?? (clearUnsetFields ? TempYearStruct() : null),
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
@@ -386,19 +417,19 @@ Map<String, dynamic> getLeaveListDataFirestoreData(
     forFieldValue,
   );
 
-  // Handle nested data for "other_year" field.
-  addOtherYearStructData(
-    firestoreData,
-    leaveListData.hasOtherYear() ? leaveListData.otherYear : null,
-    'other_year',
-    forFieldValue,
-  );
-
   // Handle nested data for "temp_year" field.
   addTempYearStructData(
     firestoreData,
     leaveListData.hasTempYear() ? leaveListData.tempYear : null,
     'temp_year',
+    forFieldValue,
+  );
+
+  // Handle nested data for "onther_year" field.
+  addTempYearStructData(
+    firestoreData,
+    leaveListData.hasOntherYear() ? leaveListData.ontherYear : null,
+    'onther_year',
     forFieldValue,
   );
 

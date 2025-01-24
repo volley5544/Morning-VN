@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/select_language_component_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -53,6 +54,25 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
 
         return;
       }
+      _model.apiResultGetProfile = await GetUserProfileAPICall.call(
+        apiUrl: FFAppState().apiUrlAppState,
+        token: FFAppState().accessToken,
+      );
+
+      FFAppState().profilePositionName =
+          GetUserProfileAPICall.profliePositionName(
+        (_model.apiResultGetProfile?.jsonBody ?? ''),
+      )!;
+      safeSetState(() {});
+      FFAppState().ProfilePhoneNumber =
+          GetUserProfileAPICall.profilePhoneNumber(
+        (_model.apiResultGetProfile?.jsonBody ?? ''),
+      )!;
+      safeSetState(() {});
+      FFAppState().branchCode = GetUserProfileAPICall.profileBranchCode(
+        (_model.apiResultGetProfile?.jsonBody ?? ''),
+      )!;
+      safeSetState(() {});
     });
 
     animationsMap.addAll({

@@ -1,6 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/leave_calendar_component_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'add_leave_page_widget.dart' show AddLeavePageWidget;
@@ -35,30 +36,41 @@ class AddLeavePageModel extends FlutterFlowModel<AddLeavePageWidget> {
           int index, Function(CurrentYearStruct) updateFn) =>
       currentYearDataPage[index] = updateFn(currentYearDataPage[index]);
 
-  List<OtherYearStruct> otherYearDataPage = [];
-  void addToOtherYearDataPage(OtherYearStruct item) =>
-      otherYearDataPage.add(item);
-  void removeFromOtherYearDataPage(OtherYearStruct item) =>
-      otherYearDataPage.remove(item);
-  void removeAtIndexFromOtherYearDataPage(int index) =>
-      otherYearDataPage.removeAt(index);
-  void insertAtIndexInOtherYearDataPage(int index, OtherYearStruct item) =>
-      otherYearDataPage.insert(index, item);
-  void updateOtherYearDataPageAtIndex(
-          int index, Function(OtherYearStruct) updateFn) =>
-      otherYearDataPage[index] = updateFn(otherYearDataPage[index]);
+  List<CurrentYearStruct> nextYearDataPage = [];
+  void addToNextYearDataPage(CurrentYearStruct item) =>
+      nextYearDataPage.add(item);
+  void removeFromNextYearDataPage(CurrentYearStruct item) =>
+      nextYearDataPage.remove(item);
+  void removeAtIndexFromNextYearDataPage(int index) =>
+      nextYearDataPage.removeAt(index);
+  void insertAtIndexInNextYearDataPage(int index, CurrentYearStruct item) =>
+      nextYearDataPage.insert(index, item);
+  void updateNextYearDataPageAtIndex(
+          int index, Function(CurrentYearStruct) updateFn) =>
+      nextYearDataPage[index] = updateFn(nextYearDataPage[index]);
 
-  List<LeaveListDataStruct> listLeaveData = [];
-  void addToListLeaveData(LeaveListDataStruct item) => listLeaveData.add(item);
-  void removeFromListLeaveData(LeaveListDataStruct item) =>
-      listLeaveData.remove(item);
+  List<dynamic> listLeaveData = [];
+  void addToListLeaveData(dynamic item) => listLeaveData.add(item);
+  void removeFromListLeaveData(dynamic item) => listLeaveData.remove(item);
   void removeAtIndexFromListLeaveData(int index) =>
       listLeaveData.removeAt(index);
-  void insertAtIndexInListLeaveData(int index, LeaveListDataStruct item) =>
+  void insertAtIndexInListLeaveData(int index, dynamic item) =>
       listLeaveData.insert(index, item);
-  void updateListLeaveDataAtIndex(
-          int index, Function(LeaveListDataStruct) updateFn) =>
+  void updateListLeaveDataAtIndex(int index, Function(dynamic) updateFn) =>
       listLeaveData[index] = updateFn(listLeaveData[index]);
+
+  List<CurrentYearStruct> previousYearDataPage = [];
+  void addToPreviousYearDataPage(CurrentYearStruct item) =>
+      previousYearDataPage.add(item);
+  void removeFromPreviousYearDataPage(CurrentYearStruct item) =>
+      previousYearDataPage.remove(item);
+  void removeAtIndexFromPreviousYearDataPage(int index) =>
+      previousYearDataPage.removeAt(index);
+  void insertAtIndexInPreviousYearDataPage(int index, CurrentYearStruct item) =>
+      previousYearDataPage.insert(index, item);
+  void updatePreviousYearDataPageAtIndex(
+          int index, Function(CurrentYearStruct) updateFn) =>
+      previousYearDataPage[index] = updateFn(previousYearDataPage[index]);
 
   ///  State fields for stateful widgets in this page.
 
@@ -68,6 +80,8 @@ class AddLeavePageModel extends FlutterFlowModel<AddLeavePageWidget> {
   // State field(s) for leaveTime widget.
   String? leaveTimeValue;
   FormFieldController<String>? leaveTimeValueController;
+  // Model for LeaveCalendarComponent component.
+  late LeaveCalendarComponentModel leaveCalendarComponentModel;
   // State field(s) for phoneNumber widget.
   FocusNode? phoneNumberFocusNode;
   TextEditingController? phoneNumberTextController;
@@ -93,10 +107,14 @@ class AddLeavePageModel extends FlutterFlowModel<AddLeavePageWidget> {
   ApiCallResponse? leaveRequestAPIOutput;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    leaveCalendarComponentModel =
+        createModel(context, () => LeaveCalendarComponentModel());
+  }
 
   @override
   void dispose() {
+    leaveCalendarComponentModel.dispose();
     phoneNumberFocusNode?.dispose();
     phoneNumberTextController?.dispose();
 

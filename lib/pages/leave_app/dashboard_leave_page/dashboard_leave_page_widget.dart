@@ -448,6 +448,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget>
                                         FFLocalizations.of(context).getText(
                                           'k5qkxo1i' /* Leave approval */,
                                         ),
+                                        textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .titleMedium
                                             .override(

@@ -8,17 +8,17 @@ import 'package:flutter/material.dart';
 class ApprovedLeavePageModel extends FlutterFlowModel<ApprovedLeavePageWidget> {
   ///  Local state fields for this page.
 
-  List<ListAppoveStruct> approveLeaveData = [];
-  void addToApproveLeaveData(ListAppoveStruct item) =>
+  List<ListApproveStruct> approveLeaveData = [];
+  void addToApproveLeaveData(ListApproveStruct item) =>
       approveLeaveData.add(item);
-  void removeFromApproveLeaveData(ListAppoveStruct item) =>
+  void removeFromApproveLeaveData(ListApproveStruct item) =>
       approveLeaveData.remove(item);
   void removeAtIndexFromApproveLeaveData(int index) =>
       approveLeaveData.removeAt(index);
-  void insertAtIndexInApproveLeaveData(int index, ListAppoveStruct item) =>
+  void insertAtIndexInApproveLeaveData(int index, ListApproveStruct item) =>
       approveLeaveData.insert(index, item);
   void updateApproveLeaveDataAtIndex(
-          int index, Function(ListAppoveStruct) updateFn) =>
+          int index, Function(ListApproveStruct) updateFn) =>
       approveLeaveData[index] = updateFn(approveLeaveData[index]);
 
   ///  State fields for stateful widgets in this page.
@@ -27,6 +27,12 @@ class ApprovedLeavePageModel extends FlutterFlowModel<ApprovedLeavePageWidget> {
   ApiCallResponse? getLeaveListApprove;
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
+  // Stores action output result for [Backend Call - API (saveStatusLeave)] action in Button widget.
+  ApiCallResponse? leaveListApproveAllAPIOutput;
+  // Stores action output result for [Backend Call - API (saveStatusLeave)] action in Button widget.
+  ApiCallResponse? saveStatusLeave;
+  // Stores action output result for [Backend Call - API (saveStatusLeave)] action in Button widget.
+  ApiCallResponse? saveStatusLeaveNotApprove;
 
   @override
   void initState(BuildContext context) {}

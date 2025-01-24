@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Morning VN</string>
+	<string>Morning FM</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleLocalizations</key>
@@ -43,10 +43,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>morningvn.com</string>
+        <string>morningfm.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>morningvn</string>
+        <string>morningfm</string>
         </array>
         </dict>
     </array>

@@ -9,25 +9,36 @@ import 'package:flutter/material.dart';
 class LeaveShowPageModel extends FlutterFlowModel<LeaveShowPageWidget> {
   ///  Local state fields for this page.
 
-  List<LeaveHistoryNewStruct> leaveHistoryCYearData = [];
-  void addToLeaveHistoryCYearData(LeaveHistoryNewStruct item) =>
+  List<LeaveHistoryStruct> leaveHistoryCYearData = [];
+  void addToLeaveHistoryCYearData(LeaveHistoryStruct item) =>
       leaveHistoryCYearData.add(item);
-  void removeFromLeaveHistoryCYearData(LeaveHistoryNewStruct item) =>
+  void removeFromLeaveHistoryCYearData(LeaveHistoryStruct item) =>
       leaveHistoryCYearData.remove(item);
   void removeAtIndexFromLeaveHistoryCYearData(int index) =>
       leaveHistoryCYearData.removeAt(index);
   void insertAtIndexInLeaveHistoryCYearData(
-          int index, LeaveHistoryNewStruct item) =>
+          int index, LeaveHistoryStruct item) =>
       leaveHistoryCYearData.insert(index, item);
   void updateLeaveHistoryCYearDataAtIndex(
-          int index, Function(LeaveHistoryNewStruct) updateFn) =>
+          int index, Function(LeaveHistoryStruct) updateFn) =>
       leaveHistoryCYearData[index] = updateFn(leaveHistoryCYearData[index]);
 
-  LeaveHistoryNewStruct? leaveHistoryCMonthData;
+  LeaveHistoryStruct? leaveHistoryCMonthData;
   void updateLeaveHistoryCMonthDataStruct(
-      Function(LeaveHistoryNewStruct) updateFn) {
-    updateFn(leaveHistoryCMonthData ??= LeaveHistoryNewStruct());
+      Function(LeaveHistoryStruct) updateFn) {
+    updateFn(leaveHistoryCMonthData ??= LeaveHistoryStruct());
   }
+
+  List<dynamic> leaveHistoryList = [];
+  void addToLeaveHistoryList(dynamic item) => leaveHistoryList.add(item);
+  void removeFromLeaveHistoryList(dynamic item) =>
+      leaveHistoryList.remove(item);
+  void removeAtIndexFromLeaveHistoryList(int index) =>
+      leaveHistoryList.removeAt(index);
+  void insertAtIndexInLeaveHistoryList(int index, dynamic item) =>
+      leaveHistoryList.insert(index, item);
+  void updateLeaveHistoryListAtIndex(int index, Function(dynamic) updateFn) =>
+      leaveHistoryList[index] = updateFn(leaveHistoryList[index]);
 
   ///  State fields for stateful widgets in this page.
 
@@ -37,11 +48,12 @@ class LeaveShowPageModel extends FlutterFlowModel<LeaveShowPageWidget> {
   String? selectMonth;
   // Stores action output result for [Custom Action - convertToMonthNamber] action in leaveShowPage widget.
   String? selectMonthNumber;
+  // State field(s) for yearSelect widget.
+  String? yearSelectValue;
+  FormFieldController<String>? yearSelectValueController;
   // State field(s) for monthSelect widget.
   String? monthSelectValue;
   FormFieldController<String>? monthSelectValueController;
-  // Stores action output result for [Custom Action - convertToMonthNamber] action in monthSelect widget.
-  String? monthNamber;
   // State field(s) for TabBar widget.
   TabController? tabBarController;
   int get tabBarCurrentIndex =>

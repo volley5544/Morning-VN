@@ -1,47 +1,36 @@
-import '/backend/api_requests/api_calls.dart';
-import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'edit_leave_page_model.dart';
 export 'edit_leave_page_model.dart';
 
 class EditLeavePageWidget extends StatefulWidget {
   const EditLeavePageWidget({
     super.key,
-    this.leaveType,
-    this.leavePeriod,
-    this.leaveCountDay,
-    this.leaveReason,
-    this.leaveDate,
-    this.userPhoneNumber,
     this.leaveID,
     this.leaveName,
-    this.leaveStartDate,
-    this.leaveEndDate,
+    this.leavePerios,
+    this.leaveCountDay,
+    this.leaveReason,
+    this.userPhoneNumber,
+    this.leaveDocument,
   });
 
-  final String? leaveType;
-  final String? leavePeriod;
-  final String? leaveCountDay;
-  final String? leaveReason;
-  final String? leaveDate;
-  final String? userPhoneNumber;
   final String? leaveID;
   final String? leaveName;
-  final String? leaveStartDate;
-  final String? leaveEndDate;
+  final String? leavePerios;
+  final String? leaveCountDay;
+  final String? leaveReason;
+  final String? userPhoneNumber;
+  final List<String>? leaveDocument;
 
   @override
   State<EditLeavePageWidget> createState() => _EditLeavePageWidgetState();
@@ -58,51 +47,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
     _model = createModel(context, () => EditLeavePageModel());
 
     // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultLeaveList = await GetLeaveListCall.call(
-        apiUrl: FFAppState().apiUrlAppState,
-        token: FFAppState().accessToken,
-      );
-
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return WebViewAware(
-            child: AlertDialog(
-              content: const Text('Call Api เรียบร้อยแล้ว'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
-                ),
-              ],
-            ),
-          );
-        },
-      );
-      _model.holidayDataPage = GetLeaveListCall.listcalendar(
-        (_model.apiResultLeaveList?.jsonBody ?? ''),
-      )!
-          .toList()
-          .cast<CalendarDataStruct>();
-      _model.currentYearDataPage = GetLeaveListCall.currentyear(
-        (_model.apiResultLeaveList?.jsonBody ?? ''),
-      )!
-          .toList()
-          .cast<CurrentYearStruct>();
-      _model.otherYearDataPage = GetLeaveListCall.otheryear(
-        (_model.apiResultLeaveList?.jsonBody ?? ''),
-      )!
-          .toList()
-          .cast<OtherYearStruct>();
-      _model.listLeaveData = GetLeaveListCall.leavelist(
-        (_model.apiResultLeaveList?.jsonBody ?? ''),
-      )!
-          .toList()
-          .cast<LeaveListDataStruct>();
-      safeSetState(() {});
-      Navigator.pop(context);
-    });
+    SchedulerBinding.instance.addPostFrameCallback((_) async {});
 
     _model.textController1 ??=
         TextEditingController(text: widget.leaveCountDay);
@@ -189,7 +134,29 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                         children: [
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                15.0, 15.0, 15.0, 0.0),
+                                20.0, 15.0, 20.0, 10.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    '47ur4vwm' /* ประเภทการลา : */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Outfit',
+                                        fontSize: 15.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                15.0, 0.0, 15.0, 0.0),
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 1.0,
                               height: 60.0,
@@ -213,7 +180,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      'ประเภทการ : ${widget.leaveName}',
+                                      '${widget.leaveName}',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -227,74 +194,6 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                 ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                20.0, 15.0, 20.0, 10.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    '6ab0k4ay' /* วันที่ลาเริ่มต้น : */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Outfit',
-                                        fontSize: 15.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Divider(
-                            thickness: 2.0,
-                            color: FlutterFlowTheme.of(context).alternate,
-                          ),
-                          Container(
-                            width: double.infinity,
-                            height: 400.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                            child: SizedBox(
-                              width: double.infinity,
-                              height: MediaQuery.sizeOf(context).height * 1.0,
-                              child: custom_widgets.LeaveCalendarWidget(
-                                width: double.infinity,
-                                height: MediaQuery.sizeOf(context).height * 1.0,
-                                todayColor: const Color(0xFFFF843D),
-                                selectedColor: const Color(0xFFFF843D),
-                                selectedTextColor: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                holidaysList: _model.holidayDataPage
-                                    .map((e) => e.date)
-                                    .toList(),
-                                currentDate: getCurrentTimestamp,
-                                currentYear:
-                                    _model.currentYearDataPage.lastOrNull?.year,
-                                nextYear:
-                                    _model.otherYearDataPage.lastOrNull?.year,
-                                currentYearSelectableDates: _model
-                                    .currentYearDataPage
-                                    .lastOrNull!
-                                    .leaveRemain,
-                                nextYearSelectableDates: _model
-                                    .otherYearDataPage.lastOrNull!.leaveRemain,
-                                startdate:
-                                    _model.listLeaveData.lastOrNull?.startDate,
-                                enddate:
-                                    _model.listLeaveData.lastOrNull?.endDate,
-                              ),
-                            ),
-                          ),
-                          Divider(
-                            thickness: 2.0,
-                            color: FlutterFlowTheme.of(context).alternate,
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
@@ -330,19 +229,16 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                         _model.leaveTimeValueController ??=
                                             FormFieldController<String>(
                                       _model.leaveTimeValue ??=
-                                          widget.leavePeriod,
+                                          widget.leavePerios,
                                     ),
-                                    options: List<String>.from(
-                                        ['full', 'half', 'half']),
+                                    options:
+                                        List<String>.from(['Fullday', 'half']),
                                     optionLabels: [
                                       FFLocalizations.of(context).getText(
                                         '03inv98e' /* ลาเต็มวัน */,
                                       ),
                                       FFLocalizations.of(context).getText(
-                                        'oy5uij8u' /* ลาครึ่งวันเช้า */,
-                                      ),
-                                      FFLocalizations.of(context).getText(
-                                        'povs34al' /* ลาครึ่งวันบ่าย */,
+                                        'oy5uij8u' /* ลาครึ่งวัน */,
                                       )
                                     ],
                                     onChanged: (val) async {
@@ -386,125 +282,202 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                15.0, 10.0, 15.0, 0.0),
-                            child: Container(
-                              width: MediaQuery.sizeOf(context).width * 1.0,
-                              height: 60.0,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFF5F5F5),
-                                boxShadow: const [
-                                  BoxShadow(
-                                    blurRadius: 4.0,
-                                    color: Color(0x33000000),
-                                    offset: Offset(
-                                      0.0,
-                                      2.0,
+                          Container(
+                            decoration: const BoxDecoration(),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 15.0, 20.0, 10.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          '6ab0k4ay' /* วันที่ลา : */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              fontSize: 15.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Divider(
+                                  thickness: 2.0,
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                ),
+                                Divider(
+                                  thickness: 2.0,
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 10.0, 20.0, 10.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'e7tzv8dn' /* จำนวนวันที่ลา : */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              fontSize: 15.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 0.0, 15.0, 0.0),
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    height: 60.0,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFFF5F5F5),
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x33000000),
+                                          offset: Offset(
+                                            0.0,
+                                            2.0,
+                                          ),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
-                                  )
-                                ],
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        width: 200.0,
-                                        child: TextFormField(
-                                          controller: _model.textController1,
-                                          focusNode: _model.textFieldFocusNode,
-                                          autofocus: false,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            child: SizedBox(
+                                              width: 200.0,
+                                              child: TextFormField(
+                                                controller:
+                                                    _model.textController1,
+                                                focusNode:
+                                                    _model.textFieldFocusNode,
+                                                autofocus: false,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  isDense: true,
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  hintText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'kvgvg8v2' /* TextField */,
+                                                  ),
+                                                  hintStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: const BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: const BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  filled: true,
+                                                  fillColor: const Color(0xFFF5F5F5),
+                                                ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily: 'Readex Pro',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .secondaryText,
+                                                              .primaryText,
                                                       letterSpacing: 0.0,
                                                     ),
-                                            hintText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'kvgvg8v2' /* TextField */,
-                                            ),
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            filled: true,
-                                            fillColor: const Color(0xFFF5F5F5),
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                color:
+                                                cursorColor:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
-                                                letterSpacing: 0.0,
+                                                validator: _model
+                                                    .textController1Validator
+                                                    .asValidator(context),
                                               ),
-                                          cursorColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          validator: _model
-                                              .textController1Validator
-                                              .asValidator(context),
-                                        ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
                           ),
                           Padding(
@@ -778,7 +751,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                       print('Button pressed ...');
                                     },
                                     text: FFLocalizations.of(context).getText(
-                                      'zoen0z04' /* [เเนบไฟล์ภาพ] */,
+                                      'zoen0z04' /* [Attach image file] */,
                                     ),
                                     icon: const Icon(
                                       Icons.attach_file,
@@ -813,90 +786,121 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                15.0, 15.0, 15.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: SizedBox(
-                                    width: double.infinity,
-                                    height: 500.0,
-                                    child: Stack(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 50.0),
-                                          child: PageView(
-                                            controller: _model
-                                                    .pageViewController ??=
-                                                PageController(initialPage: 0),
-                                            scrollDirection: Axis.horizontal,
+                          if (widget.leaveDocument!.isNotEmpty)
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 15.0, 15.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Builder(
+                                      builder: (context) {
+                                        final leaveDoc =
+                                            widget.leaveDocument?.toList() ??
+                                                [];
+
+                                        return SizedBox(
+                                          width: double.infinity,
+                                          height: 500.0,
+                                          child: Stack(
                                             children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.network(
-                                                  'https://picsum.photos/seed/793/600',
-                                                  width: 200.0,
-                                                  height: 200.0,
-                                                  fit: BoxFit.cover,
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 50.0),
+                                                child: PageView.builder(
+                                                  controller: _model
+                                                          .pageViewController ??=
+                                                      PageController(
+                                                          initialPage: max(
+                                                              0,
+                                                              min(
+                                                                  0,
+                                                                  leaveDoc.length -
+                                                                      1))),
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  itemCount: leaveDoc.length,
+                                                  itemBuilder:
+                                                      (context, leaveDocIndex) {
+                                                    final leaveDocItem =
+                                                        leaveDoc[leaveDocIndex];
+                                                    return ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      child: Image.network(
+                                                        leaveDocItem,
+                                                        width: 200.0,
+                                                        height: 200.0,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 1.0),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 10.0),
+                                                  child: smooth_page_indicator
+                                                      .SmoothPageIndicator(
+                                                    controller: _model
+                                                            .pageViewController ??=
+                                                        PageController(
+                                                            initialPage: max(
+                                                                0,
+                                                                min(
+                                                                    0,
+                                                                    leaveDoc.length -
+                                                                        1))),
+                                                    count: leaveDoc.length,
+                                                    axisDirection:
+                                                        Axis.horizontal,
+                                                    onDotClicked: (i) async {
+                                                      await _model
+                                                          .pageViewController!
+                                                          .animateToPage(
+                                                        i,
+                                                        duration: const Duration(
+                                                            milliseconds: 500),
+                                                        curve: Curves.ease,
+                                                      );
+                                                      safeSetState(() {});
+                                                    },
+                                                    effect: smooth_page_indicator
+                                                        .ExpandingDotsEffect(
+                                                      expansionFactor: 2.0,
+                                                      spacing: 8.0,
+                                                      radius: 16.0,
+                                                      dotWidth: 16.0,
+                                                      dotHeight: 16.0,
+                                                      dotColor:
+                                                          const Color(0xFF9E9E9E),
+                                                      activeDotColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      paintStyle:
+                                                          PaintingStyle.fill,
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                             ],
                                           ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 1.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 10.0),
-                                            child: smooth_page_indicator
-                                                .SmoothPageIndicator(
-                                              controller:
-                                                  _model.pageViewController ??=
-                                                      PageController(
-                                                          initialPage: 0),
-                                              count: 1,
-                                              axisDirection: Axis.horizontal,
-                                              onDotClicked: (i) async {
-                                                await _model.pageViewController!
-                                                    .animateToPage(
-                                                  i,
-                                                  duration: const Duration(
-                                                      milliseconds: 500),
-                                                  curve: Curves.ease,
-                                                );
-                                                safeSetState(() {});
-                                              },
-                                              effect: smooth_page_indicator
-                                                  .ExpandingDotsEffect(
-                                                expansionFactor: 2.0,
-                                                spacing: 8.0,
-                                                radius: 16.0,
-                                                dotWidth: 16.0,
-                                                dotHeight: 16.0,
-                                                dotColor: const Color(0xFF9E9E9E),
-                                                activeDotColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                paintStyle: PaintingStyle.fill,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                        );
+                                      },
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
                           Container(
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             height: MediaQuery.sizeOf(context).height * 0.15,
@@ -916,7 +920,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                         context.pushNamed('leaveShowPage');
                                       },
                                       text: FFLocalizations.of(context).getText(
-                                        'jegp9wff' /* บันทึก */,
+                                        'jegp9wff' /* Save */,
                                       ),
                                       options: FFButtonOptions(
                                         width: 90.0,

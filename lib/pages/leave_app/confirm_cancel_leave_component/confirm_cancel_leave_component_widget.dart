@@ -1,7 +1,11 @@
+import '/backend/api_requests/api_calls.dart';
+import '/components/loading/loading_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'confirm_cancel_leave_component_model.dart';
 export 'confirm_cancel_leave_component_model.dart';
@@ -12,13 +16,15 @@ class ConfirmCancelLeaveComponentWidget extends StatefulWidget {
     String? leaveID,
     this.employeeID,
     this.leaveName,
-    this.isFromApprovePage,
+    this.isFromCancelPage,
+    required this.leaveStatus,
   }) : leaveID = leaveID ?? '';
 
   final String leaveID;
   final String? employeeID;
   final String? leaveName;
-  final bool? isFromApprovePage;
+  final String? isFromCancelPage;
+  final String? leaveStatus;
 
   @override
   State<ConfirmCancelLeaveComponentWidget> createState() =>
@@ -53,6 +59,8 @@ class _ConfirmCancelLeaveComponentWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
       child: Column(
@@ -83,7 +91,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                           SelectionArea(
                               child: Text(
                             FFLocalizations.of(context).getText(
-                              '3fsz4nym' /* ยืนยันยกเลิกการลา */,
+                              '3fsz4nym' /* Confirm leave cancellation. */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -113,7 +121,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                                 decoration: InputDecoration(
                                   isDense: true,
                                   hintText: FFLocalizations.of(context).getText(
-                                    '6b6wmwup' /* ระบุเหตุผล... */,
+                                    '6b6wmwup' /* Specify the reason... */,
                                   ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
@@ -187,7 +195,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                                 Navigator.pop(context);
                               },
                               text: FFLocalizations.of(context).getText(
-                                'md2xelp4' /* ยกเลิก */,
+                                'md2xelp4' /* Cancel */,
                               ),
                               options: FFButtonOptions(
                                 width: 130.0,
@@ -220,13 +228,181 @@ class _ConfirmCancelLeaveComponentWidgetState
                           children: [
                             FFButtonWidget(
                               onPressed: () async {
+                                var shouldSetState = false;
+                                if (!(_model.reasonCancelTextController.text !=
+                                        '')) {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return WebViewAware(
+                                        child: AlertDialog(
+                                          content: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                            enText:
+                                                'Please provide a reason for cancellation.',
+                                            viText:
+                                                'vui lòng điền lý do hủy bỏ',
+                                            thText: 'กรุณากรอกเหตุผลที่ยกเลิก',
+                                          )),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  );
+                                  if (shouldSetState) safeSetState(() {});
+                                  return;
+                                }
+                                var confirmDialogResponse =
+                                    await showDialog<bool>(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                content: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  enText:
+                                                      'Do you want to cancel the leave day?',
+                                                  viText:
+                                                      'Bạn có muốn hủy ngày nghỉ phép không?',
+                                                  thText:
+                                                      'คุณต้องการยกเลิกวันลาใช่หรือไม่',
+                                                )),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext,
+                                                            false),
+                                                    child: const Text('Cancel'),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext,
+                                                            true),
+                                                    child: const Text('Confirm'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                        ) ??
+                                        false;
+                                if (!confirmDialogResponse) {
+                                  if (shouldSetState) safeSetState(() {});
+                                  return;
+                                }
+                                showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  enableDrag: false,
+                                  context: context,
+                                  builder: (context) {
+                                    return WebViewAware(
+                                      child: Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: const LoadingWidget(),
+                                      ),
+                                    );
+                                  },
+                                ).then((value) => safeSetState(() {}));
+
+                                _model.leaveListCancelAPIOutput =
+                                    await SaveStatusLeaveCall.call(
+                                  apiUrl: FFAppState().apiUrlAppState,
+                                  token: FFAppState().accessToken,
+                                  idList:
+                                      functions.converApproveOneSaveFunction(
+                                          widget.leaveID),
+                                  status: widget.leaveStatus,
+                                  reason:
+                                      _model.reasonCancelTextController.text,
+                                );
+
+                                shouldSetState = true;
+                                if ((_model.leaveListCancelAPIOutput
+                                            ?.statusCode ??
+                                        200) !=
+                                    200) {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return WebViewAware(
+                                        child: AlertDialog(
+                                          content: Text(
+                                              'พบข้อผิดพลาด (${SaveStatusLeaveCall.message(
+                                            (_model.leaveListCancelAPIOutput
+                                                    ?.jsonBody ??
+                                                ''),
+                                          )})'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  );
+                                  Navigator.pop(context);
+                                  if (shouldSetState) safeSetState(() {});
+                                  return;
+                                }
+                                if (getJsonField(
+                                      (_model.leaveListCancelAPIOutput
+                                              ?.jsonBody ??
+                                          ''),
+                                      r'''$.code''',
+                                    ).toString() !=
+                                    '200') {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return WebViewAware(
+                                        child: AlertDialog(
+                                          content:
+                                              Text(SaveStatusLeaveCall.message(
+                                            (_model.leaveListCancelAPIOutput
+                                                    ?.jsonBody ??
+                                                ''),
+                                          )!),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  );
+                                  Navigator.pop(context);
+                                  if (shouldSetState) safeSetState(() {});
+                                  return;
+                                }
                                 await showDialog(
                                   context: context,
                                   builder: (alertDialogContext) {
                                     return WebViewAware(
                                       child: AlertDialog(
-                                        content: const Text(
-                                            'เข้าสู่การ save ยกเลิกการลาต่อไป'),
+                                        content:
+                                            Text(SaveStatusLeaveCall.message(
+                                          (_model.leaveListCancelAPIOutput
+                                                  ?.jsonBody ??
+                                              ''),
+                                        )!),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
@@ -239,9 +415,17 @@ class _ConfirmCancelLeaveComponentWidgetState
                                   },
                                 );
                                 Navigator.pop(context);
+                                if (widget.isFromCancelPage ==
+                                    'leaveShowPage') {
+                                  context.goNamed('leaveShowPage');
+                                } else {
+                                  context.goNamed('ApproveShowPage');
+                                }
+
+                                if (shouldSetState) safeSetState(() {});
                               },
                               text: FFLocalizations.of(context).getText(
-                                'm27y9t0n' /* ตกลง */,
+                                'm27y9t0n' /* OK */,
                               ),
                               options: FFButtonOptions(
                                 width: 130.0,

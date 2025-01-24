@@ -3,7 +3,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -14,7 +13,7 @@ class LeaveHistoryStruct extends FFFirebaseStruct {
     String? name,
     String? fullName,
     int? total,
-    List<String>? listDate,
+    List<ListDateStruct>? listDate,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _month = month,
         _name = name,
@@ -54,11 +53,11 @@ class LeaveHistoryStruct extends FFFirebaseStruct {
   bool hasTotal() => _total != null;
 
   // "list_date" field.
-  List<String>? _listDate;
-  List<String> get listDate => _listDate ?? const [];
-  set listDate(List<String>? val) => _listDate = val;
+  List<ListDateStruct>? _listDate;
+  List<ListDateStruct> get listDate => _listDate ?? const [];
+  set listDate(List<ListDateStruct>? val) => _listDate = val;
 
-  void updateListDate(Function(List<String>) updateFn) {
+  void updateListDate(Function(List<ListDateStruct>) updateFn) {
     updateFn(_listDate ??= []);
   }
 
@@ -70,7 +69,10 @@ class LeaveHistoryStruct extends FFFirebaseStruct {
         name: data['name'] as String?,
         fullName: data['full_name'] as String?,
         total: castToType<int>(data['total']),
-        listDate: getDataList(data['list_date']),
+        listDate: getStructList(
+          data['list_date'],
+          ListDateStruct.fromMap,
+        ),
       );
 
   static LeaveHistoryStruct? maybeFromMap(dynamic data) => data is Map
@@ -82,7 +84,7 @@ class LeaveHistoryStruct extends FFFirebaseStruct {
         'name': _name,
         'full_name': _fullName,
         'total': _total,
-        'list_date': _listDate,
+        'list_date': _listDate?.map((e) => e.toMap()).toList(),
       }.withoutNulls;
 
   @override
@@ -105,7 +107,7 @@ class LeaveHistoryStruct extends FFFirebaseStruct {
         ),
         'list_date': serializeParam(
           _listDate,
-          ParamType.String,
+          ParamType.DataStruct,
           isList: true,
         ),
       }.withoutNulls;
@@ -132,10 +134,11 @@ class LeaveHistoryStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
-        listDate: deserializeParam<String>(
+        listDate: deserializeStructParam<ListDateStruct>(
           data['list_date'],
-          ParamType.String,
+          ParamType.DataStruct,
           true,
+          structBuilder: ListDateStruct.fromSerializableMap,
         ),
       );
 

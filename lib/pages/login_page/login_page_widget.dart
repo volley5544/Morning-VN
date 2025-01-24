@@ -55,12 +55,20 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
           setAppLanguage(context, 'th');
         }
       } else {
-        FFAppState().appLanguage = 'en';
-        safeSetState(() {});
+        setAppLanguage(context, 'vi');
       }
 
       setDarkModeSetting(context, ThemeMode.light);
       _model.getBuildVersion = await actions.getBuildVersion();
+      if (isAndroid) {
+        _model.androidIMEI1st = await actions.a3();
+        FFAppState().Uid = _model.androidIMEI1st!;
+        safeSetState(() {});
+      } else {
+        _model.iOSidentifierForVendor1st = await actions.a4();
+        FFAppState().Uid = _model.iOSidentifierForVendor1st!;
+        safeSetState(() {});
+      }
     });
 
     _model.usernameTextController ??= TextEditingController();
@@ -354,7 +362,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                       type: PageTransitionType.fade,
                                       child: FlutterFlowExpandedImageView(
                                         image: Image.asset(
-                                          'assets/images/ArunSawad.png',
+                                          'assets/images/Logo-Morning_VN_HEAD_2(1)(1).png',
                                           fit: BoxFit.contain,
                                           alignment: const Alignment(0.0, 0.0),
                                         ),
@@ -371,8 +379,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(0.0),
                                     child: Image.asset(
-                                      'assets/images/ArunSawad.png',
-                                      width: 190.0,
+                                      'assets/images/Logo-Morning_VN_HEAD_2(1)(1).png',
+                                      width: 220.0,
                                       height: 200.0,
                                       fit: BoxFit.cover,
                                       alignment: const Alignment(0.0, 0.0),
@@ -705,14 +713,17 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                   apiUrl:
                                                       loginPageKeyStorage1Record
                                                           ?.apiUrl,
-                                                  check: 'Y',
+                                                  projectName:
+                                                      'SSW_ARUNSAWAD_VN',
+                                                  uid: FFAppState().Uid,
                                                 );
 
                                                 shouldSetState = true;
                                                 if ((_model.authAPIOutput
                                                             ?.statusCode ??
-                                                        200) !=
+                                                        200) ==
                                                     200) {
+                                                } else {
                                                   if ((_model.authAPIOutput
                                                               ?.statusCode ??
                                                           200) ==
@@ -783,12 +794,15 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                   }
                                                   return;
                                                 }
-                                                if (AuthenAPICall.statuslayer1(
+
+                                                if (getJsonField(
                                                       (_model.authAPIOutput
                                                               ?.jsonBody ??
                                                           ''),
-                                                    ) !=
-                                                    200) {
+                                                      r'''$.status''',
+                                                    ).toString() ==
+                                                    '200') {
+                                                } else {
                                                   await showDialog(
                                                     context: context,
                                                     builder:
@@ -818,6 +832,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                   }
                                                   return;
                                                 }
+
                                                 FFAppState().isLogin = true;
                                                 FFAppState().username =
                                                     '${AuthenAPICall.nameth(
