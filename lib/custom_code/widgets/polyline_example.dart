@@ -42,7 +42,7 @@ class _PolylineExampleState extends State<PolylineExample> {
   //final ValueNotifier<List<LatLng>> latLngNotifier =
   // ValueNotifier<List<LatLng>>([]);
   final String _googleApiKey =
-      "AIzaSyCxgfP7r2FHQ8TZVpKcJqG5x6csoehfDlg"; // Replace with your actual API key
+      "AIzaSyD8zeYUPKCTTFJAy7TQJQUbqRwDKner0qM"; // Replace with your actual API key
   String? _lastTappedMarkerId;
   @override
   void initState() {
@@ -135,7 +135,7 @@ class _PolylineExampleState extends State<PolylineExample> {
 
   void _launchStreetView(double lat, double lng) async {
     final String apiKey =
-        "AIzaSyCxgfP7r2FHQ8TZVpKcJqG5x6csoehfDlg"; // Replace with your actual API key
+        "AIzaSyD8zeYUPKCTTFJAy7TQJQUbqRwDKner0qM"; // Replace with your actual API key
     final String metadataUrl =
         "https://maps.googleapis.com/maps/api/streetview/metadata?location=$lat,$lng&key=$apiKey";
 

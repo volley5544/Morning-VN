@@ -314,12 +314,9 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                                   },
                                   child: Padding(
                                     padding: MediaQuery.viewInsetsOf(context),
-                                    child: SizedBox(
-                                      height: double.infinity,
-                                      child: PDFViewerWidget(
-                                        pdfUrl: leavePageHolidayStorageRecord!
-                                            .urlFileHoliday,
-                                      ),
+                                    child: PDFViewerWidget(
+                                      pdfUrl: leavePageHolidayStorageRecord!
+                                          .urlFileHoliday,
                                     ),
                                   ),
                                 ),
@@ -365,11 +362,11 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                                       child: Text(
                                     '${FFLocalizations.of(context).getVariableText(
                                       enText:
-                                          'Announcement of Traditional Holidays for the Year ',
+                                          'Traditional Holidays for the Year',
                                       viText:
                                           'Thông báo ngày nghỉ lễ truyền thống năm ',
                                       thText:
-                                          'ประกาศวันหยุดตามประเพณี ประจำปี  ',
+                                          'ประกาศวันหยุดตามประเพณี ประจำปี ',
                                     )}${functions.checkYearHolidayCopy(getCurrentTimestamp, FFAppState().appLanguage).toString()}',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium

@@ -528,159 +528,175 @@ class _SearchEmployeeTrackingPageWidgetState
                               animationsMap['containerOnPageLoadAnimation4']!),
                         ],
                       ),
-                    if (FFAppState().EmpProfileLocationSelected.employeeId !=
-                        'null')
+                    if ((FFAppState().EmpProfileLocationSelected.employeeId !=
+                            'null') &&
+                        (FFAppState().EmpProfileLocationSelected.employeeId !=
+                            ''))
                       const Divider(
                         thickness: 1.0,
                       ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                      child: Container(
-                        width: double.infinity,
-                        height: 40.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              10.0, 0.0, 10.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Expanded(
-                                flex: 1,
-                                child: Icon(
-                                  Icons.date_range_rounded,
-                                  color: Colors.black,
-                                  size: 29.0,
-                                ),
-                              ),
-                              Expanded(
-                                flex: 3,
-                                child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    '9tole3jd' /* วันที่ Location :  */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        fontSize: 15.0,
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 5,
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    final datePickedDate =
-                                        await showDatePicker(
-                                      context: context,
-                                      initialDate: getCurrentTimestamp,
-                                      firstDate: DateTime(1900),
-                                      lastDate: getCurrentTimestamp,
-                                      builder: (context, child) {
-                                        return wrapInMaterialDatePickerTheme(
-                                          context,
-                                          child!,
-                                          headerBackgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                          headerForegroundColor:
-                                              FlutterFlowTheme.of(context).info,
-                                          headerTextStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineLarge
-                                                  .override(
-                                                    fontFamily: 'Outfit',
-                                                    fontSize: 32.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                          pickerBackgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          pickerForegroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          selectedDateTimeBackgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                          selectedDateTimeForegroundColor:
-                                              FlutterFlowTheme.of(context).info,
-                                          actionButtonForegroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          iconSize: 24.0,
-                                        );
-                                      },
-                                    );
-
-                                    if (datePickedDate != null) {
-                                      safeSetState(() {
-                                        _model.datePicked = DateTime(
-                                          datePickedDate.year,
-                                          datePickedDate.month,
-                                          datePickedDate.day,
-                                        );
-                                      });
-                                    }
-                                  },
-                                  child: Container(
-                                    height: 50.0,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      border: Border.all(
-                                        color: const Color(0xFF757575),
-                                      ),
-                                    ),
-                                    child: Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: Text(
-                                        valueOrDefault<String>(
-                                          _model.datePicked != null
-                                              ? functions.showDateBE(
-                                                  _model.datePicked?.toString())
-                                              : 'กรุณาเลือกวันที่',
-                                          'กรุณาเลือกวันที่',
-                                        ),
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              color: const Color(0xFF757575),
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                    if ((FFAppState().EmpProfileLocationSelected.employeeId !=
+                            'null') &&
+                        (FFAppState().EmpProfileLocationSelected.employeeId !=
+                            ''))
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        child: Container(
+                          width: double.infinity,
+                          height: 40.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                           ),
-                        ),
-                      ).animateOnPageLoad(
-                          animationsMap['containerOnPageLoadAnimation5']!),
-                    ),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 10.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Expanded(
+                                  flex: 1,
+                                  child: Icon(
+                                    Icons.date_range_rounded,
+                                    color: Colors.black,
+                                    size: 29.0,
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 3,
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      '9tole3jd' /* วันที่ Location :  */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 15.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 5,
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      final datePickedDate =
+                                          await showDatePicker(
+                                        context: context,
+                                        initialDate: getCurrentTimestamp,
+                                        firstDate: DateTime(1900),
+                                        lastDate: getCurrentTimestamp,
+                                        builder: (context, child) {
+                                          return wrapInMaterialDatePickerTheme(
+                                            context,
+                                            child!,
+                                            headerBackgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            headerForegroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .info,
+                                            headerTextStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineLarge
+                                                    .override(
+                                                      fontFamily: 'Outfit',
+                                                      fontSize: 32.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                            pickerBackgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            pickerForegroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryText,
+                                            selectedDateTimeBackgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            selectedDateTimeForegroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .info,
+                                            actionButtonForegroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryText,
+                                            iconSize: 24.0,
+                                          );
+                                        },
+                                      );
+
+                                      if (datePickedDate != null) {
+                                        safeSetState(() {
+                                          _model.datePicked = DateTime(
+                                            datePickedDate.year,
+                                            datePickedDate.month,
+                                            datePickedDate.day,
+                                          );
+                                        });
+                                      }
+                                    },
+                                    child: Container(
+                                      height: 50.0,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        border: Border.all(
+                                          color: const Color(0xFF757575),
+                                        ),
+                                      ),
+                                      child: Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          valueOrDefault<String>(
+                                            _model.datePicked != null
+                                                ? functions.showDateBE(_model
+                                                    .datePicked
+                                                    ?.toString())
+                                                : 'กรุณาเลือกวันที่',
+                                            'กรุณาเลือกวันที่',
+                                          ),
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color: const Color(0xFF757575),
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ).animateOnPageLoad(
+                            animationsMap['containerOnPageLoadAnimation5']!),
+                      ),
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          if (FFAppState()
-                                  .EmpProfileLocationSelected
-                                  .employeeId !=
-                              'null')
+                          if ((FFAppState()
+                                      .EmpProfileLocationSelected
+                                      .employeeId !=
+                                  'null') &&
+                              (FFAppState()
+                                      .EmpProfileLocationSelected
+                                      .employeeId !=
+                                  ''))
                             const Divider(
                               thickness: 1.0,
                             ),

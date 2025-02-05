@@ -362,11 +362,10 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                               ),
                               Text(
                                 '${FFLocalizations.of(context).getVariableText(
-                                  enText:
-                                      'Announcement of Traditional Holidays for the Year ',
+                                  enText: 'Traditional Holidays for the Year ',
                                   viText:
                                       'Thông báo ngày nghỉ lễ truyền thống năm ',
-                                  thText: 'ประกาศวันหยุดตามประเพณี ประจำปี  ',
+                                  thText: 'ประกาศวันหยุดตามประเพณี ประจำปี ',
                                 )}${functions.checkYearHolidayCopy(getCurrentTimestamp, FFAppState().appLanguage).toString()}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

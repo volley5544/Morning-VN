@@ -356,6 +356,8 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                               FFAppState().profileStartDate = '';
                               FFAppState().branchCode = '';
                               safeSetState(() {});
+                              FFAppState().profileHiredDate = '';
+                              safeSetState(() {});
                               FFAppState().profileBranchName = '';
                               FFAppState().profileBranchCode = '';
                               safeSetState(() {});

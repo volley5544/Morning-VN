@@ -221,16 +221,17 @@ class _SearchEmployeePageWidgetState extends State<SearchEmployeePageWidget> {
                                       itemBuilder: (context, dataListIndex) {
                                         final dataListItem =
                                             dataList[dataListIndex];
-                                        return Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            if (functions.containString(
-                                                    _model.textController.text,
-                                                    (widget.dataList
-                                                            ?.elementAtOrNull(
-                                                                dataListIndex))
-                                                        ?.fullprofile) ??
-                                                true)
+                                        return Visibility(
+                                          visible: functions.containString(
+                                                  _model.textController.text,
+                                                  (widget.dataList
+                                                          ?.elementAtOrNull(
+                                                              dataListIndex))
+                                                      ?.fullprofile) ??
+                                              true,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
                                               InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -283,13 +284,14 @@ class _SearchEmployeePageWidgetState extends State<SearchEmployeePageWidget> {
                                                   ),
                                                 ),
                                               ),
-                                            Divider(
-                                              thickness: 1.0,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent4,
-                                            ),
-                                          ],
+                                              Divider(
+                                                thickness: 1.0,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent4,
+                                              ),
+                                            ],
+                                          ),
                                         );
                                       },
                                     );

@@ -578,36 +578,35 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                     ],
                                   ),
                                 ),
-                              if (FFAppState().profileStartDate != '')
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 10.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Text(
-                                        '${FFLocalizations.of(context).getVariableText(
-                                          enText: 'Start Date: ',
-                                          viText: 'Ngày bắt đầu làm việc: ',
-                                          thText: 'วันเริ่มทำงาน: ',
-                                        )}${FFAppState().profileHiredDate != 'null' ? dateTimeFormat(
-                                            "d/M/y",
-                                            functions.showClockIn(
-                                                FFAppState().profileStartDate),
-                                            locale: FFLocalizations.of(context)
-                                                .languageCode,
-                                          ) : '-'}',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 10.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text(
+                                      '${FFLocalizations.of(context).getVariableText(
+                                        enText: 'Start Date: ',
+                                        viText: 'Ngày bắt đầu làm việc: ',
+                                        thText: 'วันเริ่มทำงาน: ',
+                                      )}${FFAppState().profileHiredDate != '' ? dateTimeFormat(
+                                          "d/M/y",
+                                          functions.showClockIn(
+                                              FFAppState().profileHiredDate),
+                                          locale: FFLocalizations.of(context)
+                                              .languageCode,
+                                        ) : '-'}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                    ),
+                                  ],
                                 ),
+                              ),
                               if (false)
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
@@ -664,19 +663,19 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                         enText: 'Employment Duration: ',
                                         viText: 'Thâm niên làm việc: ',
                                         thText: 'อายุงาน: ',
-                                      )}${'${functions.currentYearLengthOfWork(FFAppState().profileStartDate)}${FFLocalizations.of(context).getVariableText(
-                                        enText: ' year ',
-                                        viText: ' năm ',
-                                        thText: ' ปี ',
-                                      )}${functions.currentMonthLengthOfWork(FFAppState().profileStartDate)}${FFLocalizations.of(context).getVariableText(
-                                        enText: ' month ',
-                                        viText: ' tháng ',
-                                        thText: ' เดือน ',
-                                      )}${functions.currentDayLengthOfWork(FFAppState().profileStartDate)}${FFLocalizations.of(context).getVariableText(
-                                        enText: ' day ',
-                                        viText: ' ngày  ',
-                                        thText: ' วัน ',
-                                      )}'}',
+                                      )}${FFAppState().profileHiredDate != '' ? '${functions.currentYearLengthOfWork(FFAppState().profileStartDate)}${FFLocalizations.of(context).getVariableText(
+                                          enText: ' year ',
+                                          viText: ' năm ',
+                                          thText: ' ปี ',
+                                        )}${functions.currentMonthLengthOfWork(FFAppState().profileStartDate)}${FFLocalizations.of(context).getVariableText(
+                                          enText: ' month ',
+                                          viText: ' tháng ',
+                                          thText: ' เดือน ',
+                                        )}${functions.currentDayLengthOfWork(FFAppState().profileStartDate)}${FFLocalizations.of(context).getVariableText(
+                                          enText: ' day ',
+                                          viText: ' ngày  ',
+                                          thText: ' วัน ',
+                                        )}' : '-'}',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

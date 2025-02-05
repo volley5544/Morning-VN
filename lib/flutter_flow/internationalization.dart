@@ -2495,23 +2495,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '623ekfqn': {
       'en': 'รหัสพนักงาน :',
-      'th': '',
-      'vi': '',
+      'th': 'รหัสพนักงาน :',
+      'vi': 'employee_id : ',
     },
     'yt2d1r9c': {
       'en': 'ชื่อพนักงาน : ',
-      'th': '',
-      'vi': '',
+      'th': 'ชื่อพนักงาน : ',
+      'vi': 'name :',
     },
     'ag8e9bht': {
       'en': 'ตำแหน่ง : ',
-      'th': '',
-      'vi': '',
+      'th': 'ตำแหน่ง : ',
+      'vi': 'position :',
     },
     'flp6d1t0': {
       'en': 'จำนวนLocation : ',
-      'th': '',
-      'vi': '',
+      'th': 'จำนวนLocation : ',
+      'vi': 'Location',
     },
     'f4i8hze7': {
       'en': 'Location พนักงาน',

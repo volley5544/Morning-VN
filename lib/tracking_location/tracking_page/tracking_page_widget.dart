@@ -79,7 +79,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                   .toList(),
               (widget.data?.elementAtOrNull(widget.index!))
                   ?.data
-                  .map((e) => e.latitude)
+                  .map((e) => e.longitude)
                   .toList()
                   .toList())!
           .toList()
@@ -688,7 +688,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                     children: [
                                       Flexible(
                                         child: Text(
-                                          '${'${(widget.data?.elementAtOrNull(widget.index!))?.data.length.toString()}'} ที่ (${functions.showDateBE(widget.selectDate)})',
+                                          '${'${(widget.data?.elementAtOrNull(widget.index!))?.data.length.toString()}'} ที่ (${functions.showDateBE(_model.dateIndex)})',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
