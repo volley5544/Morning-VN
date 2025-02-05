@@ -1,5 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/loading/loading_widget.dart';
+import '/components/loading_scene/loading_scene_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -52,13 +52,65 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                   FocusScope.of(dialogContext).unfocus();
                   FocusManager.instance.primaryFocus?.unfocus();
                 },
-                child: const LoadingWidget(),
+                child: const LoadingSceneWidget(),
               ),
             ),
           );
         },
       );
 
+      _model.getUserProfileAPI = await GetUserProfileAPICall.call(
+        apiUrl: FFAppState().apiUrlAppState,
+        token: FFAppState().accessToken,
+      );
+
+      if ((_model.getUserProfileAPI?.statusCode ?? 200) != 200) {
+        if (GetUserProfileAPICall.code(
+              (_model.getUserProfileAPI?.jsonBody ?? ''),
+            ) !=
+            '440') {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return WebViewAware(
+                child: AlertDialog(
+                  content: Text('${FFLocalizations.of(context).getVariableText(
+                    enText: 'Error encountered(',
+                    viText: 'Đã xảy ra lỗi(',
+                    thText: 'พบข้อผิดพลาด(',
+                  )}${(_model.getUserProfileAPI?.statusCode ?? 200).toString()})'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+          Navigator.pop(context);
+          return;
+        }
+        FFAppState().isLogin = false;
+        FFAppState().accessToken = '';
+        safeSetState(() {});
+        FFAppState().username = '';
+        FFAppState().employeeID = '';
+        safeSetState(() {});
+        FFAppState().profilePositionName = '';
+        FFAppState().profileStartDate = '';
+        FFAppState().branchCode = '';
+        safeSetState(() {});
+        FFAppState().profileBranchName = '';
+        FFAppState().profileBranchCode = '';
+        safeSetState(() {});
+        Navigator.pop(context);
+
+        context.pushNamed('loginPage');
+
+        return;
+      }
       _model.getAllLeave = await GetAllLeaveCall.call(
         apiUrl: FFAppState().apiUrlAppState,
         token: FFAppState().accessToken,
@@ -70,9 +122,11 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
           builder: (alertDialogContext) {
             return WebViewAware(
               child: AlertDialog(
-                content: Text('${GetAllLeaveCall.message(
-                  (_model.getAllLeave?.jsonBody ?? ''),
-                )}'),
+                content: Text('${FFLocalizations.of(context).getVariableText(
+                  enText: 'Error encountered(',
+                  viText: 'Đã xảy ra lỗi(',
+                  thText: 'พบข้อผิดพลาด(',
+                )}${(_model.getAllLeave?.statusCode ?? 200).toString()})'),
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
@@ -236,197 +290,238 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        if (true)
-                          FlutterFlowDropDown<String>(
-                            controller: _model.yearSelectValueController ??=
-                                FormFieldController<String>(
-                              _model.yearSelectValue ??= 'current_year',
-                            ),
-                            options: List<String>.from(
-                                ['previous_year', 'current_year', 'next_year']),
-                            optionLabels: [
-                              FFLocalizations.of(context).getText(
-                                'ci20ou7l' /* previous year */,
-                              ),
-                              FFLocalizations.of(context).getText(
-                                'ub583bqh' /* current year */,
-                              ),
-                              FFLocalizations.of(context).getText(
-                                'o8jvanhe' /* next year */,
-                              )
-                            ],
-                            onChanged: (val) async {
-                              safeSetState(() => _model.yearSelectValue = val);
-                              actions.convertToMonthNamber(
-                                _model.yearSelectValue,
-                              );
-                              FFAppState().selectYearViewLeaveShow =
-                                  _model.yearSelectValue!;
-                              safeSetState(() {});
-                              _model.approve = () {
-                                if (_model.yearSelectValue == 'previous_year') {
-                                  return ('null' ==
-                                          getJsonField(
-                                            (_model.getAllLeave?.jsonBody ??
-                                                ''),
-                                            r'''$.results.previous_year.Approve[*].list_date[*]''',
-                                          ).toString()
-                                      ? FFAppState().emptyJson
-                                      : getJsonField(
-                                          (_model.getAllLeave?.jsonBody ?? ''),
-                                          r'''$.results.previous_year.Approve[*].list_date[*]''',
-                                          true,
-                                        )!);
-                                } else if (_model.yearSelectValue ==
-                                    'current_year') {
-                                  return ('null' ==
-                                          getJsonField(
-                                            (_model.getAllLeave?.jsonBody ??
-                                                ''),
-                                            r'''$.results.current_year.Approve[*].list_date[*]''',
-                                          ).toString()
-                                      ? FFAppState().emptyJson
-                                      : getJsonField(
-                                          (_model.getAllLeave?.jsonBody ?? ''),
-                                          r'''$.results.current_year.Approve[*].list_date[*]''',
-                                          true,
-                                        )!);
-                                } else {
-                                  return ('null' ==
-                                          getJsonField(
-                                            (_model.getAllLeave?.jsonBody ??
-                                                ''),
-                                            r'''$.results.next_year.Approve[*].list_date[*]''',
-                                          ).toString()
-                                      ? FFAppState().emptyJson
-                                      : getJsonField(
-                                          (_model.getAllLeave?.jsonBody ?? ''),
-                                          r'''$.results.next_year.Approve[*].list_date[*]''',
-                                          true,
-                                        )!);
-                                }
-                              }()
-                                  .toList()
-                                  .cast<dynamic>();
-                              _model.notApprove = () {
-                                if (_model.yearSelectValue == 'previous_year') {
-                                  return ('null' ==
-                                          getJsonField(
-                                            (_model.getAllLeave?.jsonBody ??
-                                                ''),
-                                            r'''$.results.previous_year.NotApprove[*].list_date[*]''',
-                                          ).toString()
-                                      ? FFAppState().emptyJson
-                                      : getJsonField(
-                                          (_model.getAllLeave?.jsonBody ?? ''),
-                                          r'''$.results.previous_year.NotApprove[*].list_date[*]''',
-                                          true,
-                                        )!);
-                                } else if (_model.yearSelectValue ==
-                                    'current_year') {
-                                  return ('null' ==
-                                          getJsonField(
-                                            (_model.getAllLeave?.jsonBody ??
-                                                ''),
-                                            r'''$.results.current_year.NotApprove[*].list_date[*]''',
-                                          ).toString()
-                                      ? FFAppState().emptyJson
-                                      : getJsonField(
-                                          (_model.getAllLeave?.jsonBody ?? ''),
-                                          r'''$.results.current_year.NotApprove[*].list_date[*]''',
-                                          true,
-                                        )!);
-                                } else {
-                                  return ('null' ==
-                                          getJsonField(
-                                            (_model.getAllLeave?.jsonBody ??
-                                                ''),
-                                            r'''$.results.next_year.NotApprove[*].list_date[*]''',
-                                          ).toString()
-                                      ? FFAppState().emptyJson
-                                      : getJsonField(
-                                          (_model.getAllLeave?.jsonBody ?? ''),
-                                          r'''$.results.next_year.NotApprove[*].list_date[*]''',
-                                          true,
-                                        )!);
-                                }
-                              }()
-                                  .toList()
-                                  .cast<dynamic>();
-                              _model.cancel = () {
-                                if (_model.yearSelectValue == 'previous_year') {
-                                  return ('null' ==
-                                          getJsonField(
-                                            (_model.getAllLeave?.jsonBody ??
-                                                ''),
-                                            r'''$.results.previous_year.Cancel[*].list_date[*]''',
-                                          ).toString()
-                                      ? FFAppState().emptyJson
-                                      : getJsonField(
-                                          (_model.getAllLeave?.jsonBody ?? ''),
-                                          r'''$.results.previous_year.Cancel[*].list_date[*]''',
-                                          true,
-                                        )!);
-                                } else if (_model.yearSelectValue ==
-                                    'current_year') {
-                                  return ('null' ==
-                                          getJsonField(
-                                            (_model.getAllLeave?.jsonBody ??
-                                                ''),
-                                            r'''$.results.current_year.Cancel[*].list_date[*]''',
-                                          ).toString()
-                                      ? FFAppState().emptyJson
-                                      : getJsonField(
-                                          (_model.getAllLeave?.jsonBody ?? ''),
-                                          r'''$.results.current_year.Cancel[*].list_date[*]''',
-                                          true,
-                                        )!);
-                                } else {
-                                  return ('null' ==
-                                          getJsonField(
-                                            (_model.getAllLeave?.jsonBody ??
-                                                ''),
-                                            r'''$.results.next_year.Cancel[*].list_date[*]''',
-                                          ).toString()
-                                      ? FFAppState().emptyJson
-                                      : getJsonField(
-                                          (_model.getAllLeave?.jsonBody ?? ''),
-                                          r'''$.results.next_year.Cancel[*].list_date[*]''',
-                                          true,
-                                        )!);
-                                }
-                              }()
-                                  .toList()
-                                  .cast<dynamic>();
-                              safeSetState(() {});
-                            },
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 4.0),
+                          child: Container(
                             width: double.infinity,
                             height: 50.0,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: Colors.black,
-                                  letterSpacing: 0.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 1.0,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  offset: const Offset(
+                                    0.0,
+                                    1.0,
+                                  ),
+                                )
+                              ],
+                            ),
+                            child: Visibility(
+                              visible: true,
+                              child: FlutterFlowDropDown<String>(
+                                controller: _model.yearSelectValueController ??=
+                                    FormFieldController<String>(
+                                  _model.yearSelectValue ??= 'current_year',
                                 ),
-                            hintText: FFLocalizations.of(context).getText(
-                              'yaf5hk1f' /* Please select the month you wa... */,
+                                options: List<String>.from([
+                                  'previous_year',
+                                  'current_year',
+                                  'next_year'
+                                ]),
+                                optionLabels: [
+                                  FFLocalizations.of(context).getText(
+                                    'ci20ou7l' /* previous year */,
+                                  ),
+                                  FFLocalizations.of(context).getText(
+                                    'ub583bqh' /* current year */,
+                                  ),
+                                  FFLocalizations.of(context).getText(
+                                    'o8jvanhe' /* next year */,
+                                  )
+                                ],
+                                onChanged: (val) async {
+                                  safeSetState(
+                                      () => _model.yearSelectValue = val);
+                                  actions.convertToMonthNamber(
+                                    _model.yearSelectValue,
+                                  );
+                                  FFAppState().selectYearViewLeaveShow =
+                                      _model.yearSelectValue!;
+                                  safeSetState(() {});
+                                  _model.approve = () {
+                                    if (_model.yearSelectValue ==
+                                        'previous_year') {
+                                      return ('null' ==
+                                              getJsonField(
+                                                (_model.getAllLeave?.jsonBody ??
+                                                    ''),
+                                                r'''$.results.previous_year.Approve[*].list_date[*]''',
+                                              ).toString()
+                                          ? FFAppState().emptyJson
+                                          : getJsonField(
+                                              (_model.getAllLeave?.jsonBody ??
+                                                  ''),
+                                              r'''$.results.previous_year.Approve[*].list_date[*]''',
+                                              true,
+                                            )!);
+                                    } else if (_model.yearSelectValue ==
+                                        'current_year') {
+                                      return ('null' ==
+                                              getJsonField(
+                                                (_model.getAllLeave?.jsonBody ??
+                                                    ''),
+                                                r'''$.results.current_year.Approve[*].list_date[*]''',
+                                              ).toString()
+                                          ? FFAppState().emptyJson
+                                          : getJsonField(
+                                              (_model.getAllLeave?.jsonBody ??
+                                                  ''),
+                                              r'''$.results.current_year.Approve[*].list_date[*]''',
+                                              true,
+                                            )!);
+                                    } else {
+                                      return ('null' ==
+                                              getJsonField(
+                                                (_model.getAllLeave?.jsonBody ??
+                                                    ''),
+                                                r'''$.results.next_year.Approve[*].list_date[*]''',
+                                              ).toString()
+                                          ? FFAppState().emptyJson
+                                          : getJsonField(
+                                              (_model.getAllLeave?.jsonBody ??
+                                                  ''),
+                                              r'''$.results.next_year.Approve[*].list_date[*]''',
+                                              true,
+                                            )!);
+                                    }
+                                  }()
+                                      .toList()
+                                      .cast<dynamic>();
+                                  _model.notApprove = () {
+                                    if (_model.yearSelectValue ==
+                                        'previous_year') {
+                                      return ('null' ==
+                                              getJsonField(
+                                                (_model.getAllLeave?.jsonBody ??
+                                                    ''),
+                                                r'''$.results.previous_year.NotApprove[*].list_date[*]''',
+                                              ).toString()
+                                          ? FFAppState().emptyJson
+                                          : getJsonField(
+                                              (_model.getAllLeave?.jsonBody ??
+                                                  ''),
+                                              r'''$.results.previous_year.NotApprove[*].list_date[*]''',
+                                              true,
+                                            )!);
+                                    } else if (_model.yearSelectValue ==
+                                        'current_year') {
+                                      return ('null' ==
+                                              getJsonField(
+                                                (_model.getAllLeave?.jsonBody ??
+                                                    ''),
+                                                r'''$.results.current_year.NotApprove[*].list_date[*]''',
+                                              ).toString()
+                                          ? FFAppState().emptyJson
+                                          : getJsonField(
+                                              (_model.getAllLeave?.jsonBody ??
+                                                  ''),
+                                              r'''$.results.current_year.NotApprove[*].list_date[*]''',
+                                              true,
+                                            )!);
+                                    } else {
+                                      return ('null' ==
+                                              getJsonField(
+                                                (_model.getAllLeave?.jsonBody ??
+                                                    ''),
+                                                r'''$.results.next_year.NotApprove[*].list_date[*]''',
+                                              ).toString()
+                                          ? FFAppState().emptyJson
+                                          : getJsonField(
+                                              (_model.getAllLeave?.jsonBody ??
+                                                  ''),
+                                              r'''$.results.next_year.NotApprove[*].list_date[*]''',
+                                              true,
+                                            )!);
+                                    }
+                                  }()
+                                      .toList()
+                                      .cast<dynamic>();
+                                  _model.cancel = () {
+                                    if (_model.yearSelectValue ==
+                                        'previous_year') {
+                                      return ('null' ==
+                                              getJsonField(
+                                                (_model.getAllLeave?.jsonBody ??
+                                                    ''),
+                                                r'''$.results.previous_year.Cancel[*].list_date[*]''',
+                                              ).toString()
+                                          ? FFAppState().emptyJson
+                                          : getJsonField(
+                                              (_model.getAllLeave?.jsonBody ??
+                                                  ''),
+                                              r'''$.results.previous_year.Cancel[*].list_date[*]''',
+                                              true,
+                                            )!);
+                                    } else if (_model.yearSelectValue ==
+                                        'current_year') {
+                                      return ('null' ==
+                                              getJsonField(
+                                                (_model.getAllLeave?.jsonBody ??
+                                                    ''),
+                                                r'''$.results.current_year.Cancel[*].list_date[*]''',
+                                              ).toString()
+                                          ? FFAppState().emptyJson
+                                          : getJsonField(
+                                              (_model.getAllLeave?.jsonBody ??
+                                                  ''),
+                                              r'''$.results.current_year.Cancel[*].list_date[*]''',
+                                              true,
+                                            )!);
+                                    } else {
+                                      return ('null' ==
+                                              getJsonField(
+                                                (_model.getAllLeave?.jsonBody ??
+                                                    ''),
+                                                r'''$.results.next_year.Cancel[*].list_date[*]''',
+                                              ).toString()
+                                          ? FFAppState().emptyJson
+                                          : getJsonField(
+                                              (_model.getAllLeave?.jsonBody ??
+                                                  ''),
+                                              r'''$.results.next_year.Cancel[*].list_date[*]''',
+                                              true,
+                                            )!);
+                                    }
+                                  }()
+                                      .toList()
+                                      .cast<dynamic>();
+                                  safeSetState(() {});
+                                },
+                                width: double.infinity,
+                                height: 50.0,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: Colors.black,
+                                      letterSpacing: 0.0,
+                                    ),
+                                hintText: FFLocalizations.of(context).getText(
+                                  'yaf5hk1f' /* Please select the month you wa... */,
+                                ),
+                                icon: const FaIcon(
+                                  FontAwesomeIcons.solidCalendarAlt,
+                                  size: 15.0,
+                                ),
+                                fillColor: Colors.white,
+                                elevation: 2.0,
+                                borderColor: Colors.transparent,
+                                borderWidth: 0.0,
+                                borderRadius: 0.0,
+                                margin: const EdgeInsetsDirectional.fromSTEB(
+                                    160.0, 4.0, 12.0, 4.0),
+                                hidesUnderline: true,
+                                isSearchable: false,
+                                isMultiSelect: false,
+                              ),
                             ),
-                            icon: const FaIcon(
-                              FontAwesomeIcons.solidCalendarAlt,
-                              size: 15.0,
-                            ),
-                            fillColor: Colors.white,
-                            elevation: 2.0,
-                            borderColor: Colors.transparent,
-                            borderWidth: 0.0,
-                            borderRadius: 0.0,
-                            margin: const EdgeInsetsDirectional.fromSTEB(
-                                160.0, 4.0, 12.0, 4.0),
-                            hidesUnderline: true,
-                            isSearchable: false,
-                            isMultiSelect: false,
                           ),
+                        ),
                         if (true)
                           FlutterFlowDropDown<String>(
                             controller: _model.monthSelectValueController ??=
@@ -587,7 +682,8 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                   8.0, 16.0, 8.0, 8.0),
                                           child: Container(
                                             width: double.infinity,
-                                            height: 290.0,
+                                            height: functions
+                                                .contrainerChange(290.0),
                                             decoration: BoxDecoration(
                                               color: const Color(0x80C29999),
                                               boxShadow: const [

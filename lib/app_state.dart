@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/backend/backend.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
@@ -740,6 +741,145 @@ class FFAppState extends ChangeNotifier {
   String get Uid => _Uid;
   set Uid(String value) {
     _Uid = value;
+  }
+
+  String _profileServiceDurationYY = '';
+  String get profileServiceDurationYY => _profileServiceDurationYY;
+  set profileServiceDurationYY(String value) {
+    _profileServiceDurationYY = value;
+  }
+
+  String _profileServiceDurationMM = '';
+  String get profileServiceDurationMM => _profileServiceDurationMM;
+  set profileServiceDurationMM(String value) {
+    _profileServiceDurationMM = value;
+  }
+
+  String _profileServiceDurationDD = '';
+  String get profileServiceDurationDD => _profileServiceDurationDD;
+  set profileServiceDurationDD(String value) {
+    _profileServiceDurationDD = value;
+  }
+
+  String _profileBranchName = '';
+  String get profileBranchName => _profileBranchName;
+  set profileBranchName(String value) {
+    _profileBranchName = value;
+  }
+
+  String _profileBranchCode = '';
+  String get profileBranchCode => _profileBranchCode;
+  set profileBranchCode(String value) {
+    _profileBranchCode = value;
+  }
+
+  TrackingEmployeeDataModelStruct _EmpProfileLocationSelected =
+      TrackingEmployeeDataModelStruct();
+  TrackingEmployeeDataModelStruct get EmpProfileLocationSelected =>
+      _EmpProfileLocationSelected;
+  set EmpProfileLocationSelected(TrackingEmployeeDataModelStruct value) {
+    _EmpProfileLocationSelected = value;
+  }
+
+  void updateEmpProfileLocationSelectedStruct(
+      Function(TrackingEmployeeDataModelStruct) updateFn) {
+    updateFn(_EmpProfileLocationSelected);
+  }
+
+  List<TrackingEmployeeDataModelStruct> _EmpProfileLocationData = [];
+  List<TrackingEmployeeDataModelStruct> get EmpProfileLocationData =>
+      _EmpProfileLocationData;
+  set EmpProfileLocationData(List<TrackingEmployeeDataModelStruct> value) {
+    _EmpProfileLocationData = value;
+  }
+
+  void addToEmpProfileLocationData(TrackingEmployeeDataModelStruct value) {
+    EmpProfileLocationData.add(value);
+  }
+
+  void removeFromEmpProfileLocationData(TrackingEmployeeDataModelStruct value) {
+    EmpProfileLocationData.remove(value);
+  }
+
+  void removeAtIndexFromEmpProfileLocationData(int index) {
+    EmpProfileLocationData.removeAt(index);
+  }
+
+  void updateEmpProfileLocationDataAtIndex(
+    int index,
+    TrackingEmployeeDataModelStruct Function(TrackingEmployeeDataModelStruct)
+        updateFn,
+  ) {
+    EmpProfileLocationData[index] = updateFn(_EmpProfileLocationData[index]);
+  }
+
+  void insertAtIndexInEmpProfileLocationData(
+      int index, TrackingEmployeeDataModelStruct value) {
+    EmpProfileLocationData.insert(index, value);
+  }
+
+  List<LatLng> _polyMapLatLngList = [];
+  List<LatLng> get polyMapLatLngList => _polyMapLatLngList;
+  set polyMapLatLngList(List<LatLng> value) {
+    _polyMapLatLngList = value;
+  }
+
+  void addToPolyMapLatLngList(LatLng value) {
+    polyMapLatLngList.add(value);
+  }
+
+  void removeFromPolyMapLatLngList(LatLng value) {
+    polyMapLatLngList.remove(value);
+  }
+
+  void removeAtIndexFromPolyMapLatLngList(int index) {
+    polyMapLatLngList.removeAt(index);
+  }
+
+  void updatePolyMapLatLngListAtIndex(
+    int index,
+    LatLng Function(LatLng) updateFn,
+  ) {
+    polyMapLatLngList[index] = updateFn(_polyMapLatLngList[index]);
+  }
+
+  void insertAtIndexInPolyMapLatLngList(int index, LatLng value) {
+    polyMapLatLngList.insert(index, value);
+  }
+
+  List<String> _polyMapTimeList = [];
+  List<String> get polyMapTimeList => _polyMapTimeList;
+  set polyMapTimeList(List<String> value) {
+    _polyMapTimeList = value;
+  }
+
+  void addToPolyMapTimeList(String value) {
+    polyMapTimeList.add(value);
+  }
+
+  void removeFromPolyMapTimeList(String value) {
+    polyMapTimeList.remove(value);
+  }
+
+  void removeAtIndexFromPolyMapTimeList(int index) {
+    polyMapTimeList.removeAt(index);
+  }
+
+  void updatePolyMapTimeListAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    polyMapTimeList[index] = updateFn(_polyMapTimeList[index]);
+  }
+
+  void insertAtIndexInPolyMapTimeList(int index, String value) {
+    polyMapTimeList.insert(index, value);
+  }
+
+  bool _isProduction = false;
+  bool get isProduction => _isProduction;
+  set isProduction(bool value) {
+    _isProduction = value;
   }
 }
 

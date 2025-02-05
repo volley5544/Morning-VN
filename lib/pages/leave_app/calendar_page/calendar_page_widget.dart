@@ -178,6 +178,8 @@ class _CalendarPageWidgetState extends State<CalendarPageWidget> {
                         _model.listLeaveData.lastOrNull,
                         r'''$.end_date''',
                       ).toString(),
+                      previousYear: '1',
+                      previousYearSelectableDates: '2',
                     ),
                   ),
                 ),

@@ -1,4 +1,3 @@
-import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'super_app_page_widget.dart' show SuperAppPageWidget;
 import 'package:flutter/material.dart';
@@ -17,8 +16,6 @@ class SuperAppPageModel extends FlutterFlowModel<SuperAppPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Backend Call - API (getUserProfileAPI)] action in superAppPage widget.
-  ApiCallResponse? apiResultGetProfile;
   // State field(s) for PageViewBanner widget.
   PageController? pageViewBannerController;
 

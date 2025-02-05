@@ -16,6 +16,8 @@ class LeaveCalendarComponentWidget extends StatefulWidget {
     this.nextYearSelectableDates,
     this.startDate,
     this.endDate,
+    required this.previousYear,
+    this.previousYearSelectableDates,
   }) : currentYearSelectableDates = currentYearSelectableDates ?? '';
 
   final List<String>? holidayList;
@@ -26,6 +28,8 @@ class LeaveCalendarComponentWidget extends StatefulWidget {
   final String? nextYearSelectableDates;
   final String? startDate;
   final String? endDate;
+  final String? previousYear;
+  final String? previousYearSelectableDates;
 
   @override
   State<LeaveCalendarComponentWidget> createState() =>
@@ -86,6 +90,11 @@ class _LeaveCalendarComponentWidgetState
                   .toString()),
           startdate: widget.startDate,
           enddate: widget.endDate,
+          previousYear: widget.previousYear,
+          previousYearSelectableDates: widget.leaveTime != 'full'
+              ? '1'
+              : ((double.parse((widget.previousYearSelectableDates!)).toInt())
+                  .toString()),
         ),
       ),
     );

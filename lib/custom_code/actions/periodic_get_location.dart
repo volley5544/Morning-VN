@@ -11,9 +11,10 @@ import 'package:flutter/material.dart';
 
 import 'dart:async';
 
-Future periodicGetLocation(String? username) async {
+Future periodicGetLocation(String? username, String? phoneNumber,
+    String? operatingSystem, String? deviceId) async {
   // Add your function code here!
-  Timer.periodic(const Duration(minutes: 15), (timer) {
-    getBackgroundLocation(username!);
+  Timer.periodic(const Duration(minutes: 1), (timer) {
+    getBackgroundLocation(username!, phoneNumber!, operatingSystem!, deviceId);
   });
 }

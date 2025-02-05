@@ -25,6 +25,19 @@ bool? checkPin(String? input) {
   }
 }
 
+int? checkYearHolidayCopy(
+  DateTime? dateNow,
+  String? appLanguage,
+) {
+  int year = dateNow!.year;
+
+  if (appLanguage! == 'th') {
+    return year + 543;
+  } else {
+    return year;
+  }
+}
+
 String? currentTimeToMonthNumber(DateTime? currentTime) {
   String? month = DateFormat.MMMM().format(currentTime!);
   Map<String, String> monthLists = {
@@ -684,4 +697,76 @@ dynamic decodingJson(String? stringJson) {
   dynamic output = jsonDecode(stringJson!);
 
   return output;
+}
+
+String? showDateBE(String? inputDateStr) {
+  DateTime inputDate = DateTime.parse(inputDateStr!);
+  DateTime newDate =
+      DateTime(inputDate!.year + 543, inputDate!.month, inputDate!.day);
+
+  // Create a DateFormat instance with the Thai locale and B.E. era
+//   final thaiDateFormat = DateFormat.yMd('th').add_y();
+  final thaiDateFormat = DateFormat('dd/MM/y');
+
+  // Format the date in Thai style with B.E. era
+  String formattedDate = thaiDateFormat.format(newDate);
+
+  print(formattedDate); // Output: "13 กุมภาพันธ์ 2539"
+  return formattedDate;
+}
+
+List<LatLng>? makeLatLngList(
+  List<String>? lat,
+  List<String>? lng,
+) {
+  if (lat == null || lng == null || lat.length != lng.length) {
+    return null; // Return null if lists are null or lengths don't match
+  }
+
+  List<LatLng> result = [];
+  for (int i = 0; i < lat.length; i++) {
+    double? latitude = double.tryParse(lat[i]);
+    double? longitude = double.tryParse(lng[i]);
+
+    if (latitude != null && longitude != null) {
+      result.add(LatLng(latitude, longitude));
+    }
+  }
+
+  return result;
+}
+
+List<DateTime>? generateListLast30dateTime(String? selectedDate) {
+  final currentDate = DateTime.parse(selectedDate!);
+
+  // Generate a list of the last 30 days
+  final last30Days = List.generate(
+    30,
+    (index) => currentDate.subtract(Duration(days: index)),
+  );
+  //print(last30Days);
+  return last30Days;
+}
+
+DateTime? parseStringToDateTime(String? datetimeStr) {
+  return DateTime.parse(datetimeStr!);
+}
+
+String? getDateFormat(DateTime? inputDate) {
+  return DateFormat('yyyy-MM-dd').format(inputDate!);
+  ;
+}
+
+bool? containStringInListString(
+  List<String>? inputListString,
+  String? valueString,
+) {
+  return inputListString!.contains(valueString!);
+}
+
+int? getIndexOfSomethingList(
+  List<String>? somethingList,
+  String? somethingValue,
+) {
+  return somethingList!.indexOf(somethingValue!);
 }

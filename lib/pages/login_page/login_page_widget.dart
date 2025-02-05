@@ -1,8 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/components/select_language_component_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -189,8 +187,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return FutureBuilder<List<KeyStorage1Record>>(
-      future: queryKeyStorage1RecordOnce(
+    return FutureBuilder<List<KeyStorage2Record>>(
+      future: queryKeyStorage2RecordOnce(
         singleRecord: true,
       ),
       builder: (context, snapshot) {
@@ -211,10 +209,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
             ),
           );
         }
-        List<KeyStorage1Record> loginPageKeyStorage1RecordList = snapshot.data!;
-        final loginPageKeyStorage1Record =
-            loginPageKeyStorage1RecordList.isNotEmpty
-                ? loginPageKeyStorage1RecordList.first
+        List<KeyStorage2Record> loginPageKeyStorage2RecordList = snapshot.data!;
+        final loginPageKeyStorage2Record =
+            loginPageKeyStorage2RecordList.isNotEmpty
+                ? loginPageKeyStorage2RecordList.first
                 : null;
 
         return GestureDetector(
@@ -325,66 +323,15 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                 focusColor: Colors.transparent,
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  await showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    backgroundColor: Colors.transparent,
-                                    barrierColor: const Color(0xC0000000),
-                                    enableDrag: false,
-                                    context: context,
-                                    builder: (context) {
-                                      return WebViewAware(
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            FocusScope.of(context).unfocus();
-                                            FocusManager.instance.primaryFocus
-                                                ?.unfocus();
-                                          },
-                                          child: Padding(
-                                            padding: MediaQuery.viewInsetsOf(
-                                                context),
-                                            child: SizedBox(
-                                              height: MediaQuery.sizeOf(context)
-                                                      .height *
-                                                  0.5,
-                                              child:
-                                                  const SelectLanguageComponentWidget(),
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ).then((value) => safeSetState(() {}));
-
-                                  await Navigator.push(
-                                    context,
-                                    PageTransition(
-                                      type: PageTransitionType.fade,
-                                      child: FlutterFlowExpandedImageView(
-                                        image: Image.asset(
-                                          'assets/images/Logo-Morning_VN_HEAD_2(1)(1).png',
-                                          fit: BoxFit.contain,
-                                          alignment: const Alignment(0.0, 0.0),
-                                        ),
-                                        allowRotation: false,
-                                        tag: 'imageTag',
-                                        useHeroAnimation: true,
-                                      ),
-                                    ),
-                                  );
-                                },
-                                child: Hero(
-                                  tag: 'imageTag',
-                                  transitionOnUserGestures: true,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(0.0),
-                                    child: Image.asset(
-                                      'assets/images/Logo-Morning_VN_HEAD_2(1)(1).png',
-                                      width: 220.0,
-                                      height: 200.0,
-                                      fit: BoxFit.cover,
-                                      alignment: const Alignment(0.0, 0.0),
-                                    ),
+                                onTap: () async {},
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(0.0),
+                                  child: Image.asset(
+                                    'assets/images/Logo-Morning_VN_HEAD_2(1)(1).png',
+                                    width: 220.0,
+                                    height: 200.0,
+                                    fit: BoxFit.cover,
+                                    alignment: const Alignment(0.0, 0.0),
                                   ),
                                 ),
                               ).animateOnPageLoad(
@@ -702,6 +649,154 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
 
                                                 await requestPermission(
                                                     locationPermission);
+                                                if (await getPermissionStatus(
+                                                    locationPermission)) {
+                                                  _model.backgroundLocationCheck =
+                                                      await actions
+                                                          .backgroundLocationCheck();
+                                                  shouldSetState = true;
+                                                  if (!_model
+                                                      .backgroundLocationCheck!) {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return WebViewAware(
+                                                          child: AlertDialog(
+                                                            content: const Text(
+                                                                'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child: const Text(
+                                                                    'Open Setting'),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+                                                  }
+                                                } else {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: const Text(
+                                                              'Vui lòng cho phép truy cập vị trí của bạn để theo dõi công việc của bạn'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: const Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                  if (shouldSetState) {
+                                                    safeSetState(() {});
+                                                  }
+                                                  return;
+                                                }
+
+                                                _model.permissionRequestOutput =
+                                                    await actions
+                                                        .backgroundLocationPermission();
+                                                shouldSetState = true;
+                                                if (!_model
+                                                    .permissionRequestOutput!) {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: const Text(
+                                                              'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: const Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                  if (shouldSetState) {
+                                                    safeSetState(() {});
+                                                  }
+                                                  return;
+                                                }
+                                                _model.checkGpsEnable =
+                                                    await actions
+                                                        .checkGpsServiceEnable();
+                                                shouldSetState = true;
+                                                if (!_model.checkGpsEnable!) {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: const Text(
+                                                              'Vui lòng bật GPS trước khi tiếp tục'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: const Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                  await actions
+                                                      .enableGpsService();
+                                                  _model.checkGpsEnable2 =
+                                                      await actions
+                                                          .checkGpsServiceEnable();
+                                                  shouldSetState = true;
+                                                  if (!_model
+                                                      .checkGpsEnable2!) {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return WebViewAware(
+                                                          child: AlertDialog(
+                                                            content: const Text(
+                                                                'Vui lòng bật GPS trước khi tiếp tục'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    const Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+                                                    if (shouldSetState) {
+                                                      safeSetState(() {});
+                                                    }
+                                                    return;
+                                                  }
+                                                }
                                                 _model.authAPIOutput =
                                                     await AuthenAPICall.call(
                                                   username: _model
@@ -711,7 +806,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       .passwordTextController
                                                       .text,
                                                   apiUrl:
-                                                      loginPageKeyStorage1Record
+                                                      loginPageKeyStorage2Record
                                                           ?.apiUrl,
                                                   projectName:
                                                       'SSW_ARUNSAWAD_VN',
@@ -912,6 +1007,149 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                   }
                                                 }
 
+                                                FFAppState().apiUrlAppState =
+                                                    loginPageKeyStorage2Record!
+                                                        .apiUrl;
+                                                safeSetState(() {});
+                                                _model.getUserProfile =
+                                                    await GetUserProfileAPICall
+                                                        .call(
+                                                  apiUrl:
+                                                      loginPageKeyStorage2Record
+                                                          .apiUrl,
+                                                  token:
+                                                      FFAppState().accessToken,
+                                                );
+
+                                                shouldSetState = true;
+                                                if ((_model.getUserProfile
+                                                            ?.statusCode ??
+                                                        200) !=
+                                                    200) {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: Text(
+                                                              '${FFLocalizations.of(context).getVariableText(
+                                                            enText:
+                                                                'Error encountered(',
+                                                            viText:
+                                                                'Đã xảy ra lỗi(',
+                                                            thText:
+                                                                'พบข้อผิดพลาด(',
+                                                          )}${(_model.getUserProfile?.statusCode ?? 200).toString()})'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: const Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                  if (shouldSetState) {
+                                                    safeSetState(() {});
+                                                  }
+                                                  return;
+                                                }
+                                                if (getJsonField(
+                                                      (_model.getUserProfile
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.status''',
+                                                    ).toString() !=
+                                                    '200') {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: Text(
+                                                              GetUserProfileAPICall
+                                                                  .message(
+                                                            (_model.getUserProfile
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                          )!),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: const Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                  if (shouldSetState) {
+                                                    safeSetState(() {});
+                                                  }
+                                                  return;
+                                                }
+                                                FFAppState()
+                                                        .profilePositionName =
+                                                    '${GetUserProfileAPICall.profliePositionName(
+                                                  (_model.getUserProfile
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )}';
+                                                FFAppState()
+                                                        .ProfilePhoneNumber =
+                                                    '${GetUserProfileAPICall.profilePhoneNumber(
+                                                  (_model.getUserProfile
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )}';
+                                                FFAppState().profileBranchName =
+                                                    '${GetUserProfileAPICall.profileBranchName(
+                                                  (_model.getUserProfile
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )}';
+                                                FFAppState().profileBranchCode =
+                                                    '${GetUserProfileAPICall.profileBranchCode(
+                                                  (_model.getUserProfile
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )}';
+                                                safeSetState(() {});
+                                                FFAppState().profileHiredDate =
+                                                    '${GetUserProfileAPICall.profileHiredDate(
+                                                  (_model.getUserProfile
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )}';
+                                                FFAppState()
+                                                        .profileServiceDurationYY =
+                                                    '${GetUserProfileAPICall.profileServiceDurationYY(
+                                                  (_model.getUserProfile
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )}';
+                                                FFAppState()
+                                                        .profileServiceDurationMM =
+                                                    '${GetUserProfileAPICall.profileServiceDurationMM(
+                                                  (_model.getUserProfile
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )}';
+                                                FFAppState()
+                                                        .profileServiceDurationDD =
+                                                    '${GetUserProfileAPICall.profileServiceDurationDD(
+                                                  (_model.getUserProfile
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )}';
+                                                safeSetState(() {});
                                                 _model.customFirebaseAuthen =
                                                     await actions.checkFirebase(
                                                   '${_model.usernameTextController.text}@srisawadvn.com',

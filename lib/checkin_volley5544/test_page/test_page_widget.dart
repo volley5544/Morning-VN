@@ -160,6 +160,8 @@ class _TestPageWidgetState extends State<TestPageWidget> {
                         _model.listLeaveData.lastOrNull,
                         r'''$.end_date''',
                       ).toString(),
+                      previousYear: '1',
+                      previousYearSelectableDates: '3',
                     ),
                   ),
                 ),

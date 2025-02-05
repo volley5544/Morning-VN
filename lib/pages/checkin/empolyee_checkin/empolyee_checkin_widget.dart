@@ -1,6 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/loading/loading_widget.dart';
+import '/components/loading_scene/loading_scene_widget.dart';
 import '/components/select_language_component_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
@@ -10,7 +11,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
-import '/pages/checkin/loading_scene/loading_scene_widget.dart';
 import '/pages/checkin/serch_branch_component_checkin/serch_branch_component_checkin_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
@@ -78,14 +78,16 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
       );
 
       if ((_model.getLocationApiOutput?.statusCode ?? 200) != 200) {
-        Navigator.pop(context);
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
             return WebViewAware(
               child: AlertDialog(
-                content: Text(
-                    'พบข้อผิดพลาดConnection (${(_model.getLocationApiOutput?.statusCode ?? 200).toString()})'),
+                content: Text('${FFLocalizations.of(context).getVariableText(
+                  enText: 'Connection Error Found (',
+                  viText: 'Lỗi kết nối (',
+                  thText: 'พบข้อผิดพลาด Connection (',
+                )}${(_model.getLocationApiOutput?.statusCode ?? 200).toString()})'),
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
@@ -96,13 +98,13 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
             );
           },
         );
+        Navigator.pop(context);
         return;
       }
       if ('${GetLocationCall.code(
             (_model.getLocationApiOutput?.jsonBody ?? ''),
           )}' !=
           '200') {
-        Navigator.pop(context);
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
@@ -121,6 +123,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
             );
           },
         );
+        Navigator.pop(context);
         return;
       }
       _model.listLocationData = GetLocationCall.listLocatio(
@@ -636,26 +639,6 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return WebViewAware(
-                                            child: AlertDialog(
-                                              content: Text(_model
-                                                  .listLocationData.length
-                                                  .toString()),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        },
-                                      );
                                       if (_model.listLocationData.length > 10) {
                                         await showModalBottomSheet(
                                           isScrollControlled: true,
@@ -1111,7 +1094,6 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                         null &&
                                                     _model.uploadFirebaseStorageAction2 !=
                                                         '')) {
-                                                  Navigator.pop(context);
                                                   await showDialog(
                                                     context: context,
                                                     builder:
@@ -1141,6 +1123,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                       );
                                                     },
                                                   );
+                                                  Navigator.pop(context);
                                                   if (shouldSetState) {
                                                     safeSetState(() {});
                                                   }
@@ -1364,6 +1347,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                     );
                                                   },
                                                 );
+                                                Navigator.pop(context);
                                                 if (shouldSetState) {
                                                   safeSetState(() {});
                                                 }
@@ -1399,6 +1383,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                     );
                                                   },
                                                 );
+                                                Navigator.pop(context);
                                                 if (shouldSetState) {
                                                   safeSetState(() {});
                                                 }

@@ -1,7 +1,11 @@
+import '/components/p_d_f_viewer/p_d_f_viewer_widget.dart';
+import '/components/show_checkin_image_new/show_checkin_image_new_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'url_link_model.dart';
 export 'url_link_model.dart';
 
@@ -84,10 +88,10 @@ class _UrlLinkWidgetState extends State<UrlLinkWidget>
                     icon: Icon(
                       Icons.close,
                       color: FlutterFlowTheme.of(context).error,
-                      size: 24.0,
+                      size: 26.0,
                     ),
-                    onPressed: () {
-                      print('IconButton pressed ...');
+                    onPressed: () async {
+                      Navigator.pop(context);
                     },
                   ),
                 ],
@@ -137,44 +141,124 @@ class _UrlLinkWidgetState extends State<UrlLinkWidget>
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                           ),
-                          child: ListView(
-                            padding: EdgeInsets.zero,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            children: [
-                              Container(
-                                width: 100.0,
-                                height: 100.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      'กดเพื่อดูรายละเอียดไฟล์แนบที่ []',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 0.0, 0.0, 0.0),
-                                      child: Icon(
-                                        Icons.attach_file,
+                          child: Builder(
+                            builder: (context) {
+                              final leaveDocList = widget.leaveDoc!.toList();
+
+                              return ListView.builder(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: leaveDocList.length,
+                                itemBuilder: (context, leaveDocListIndex) {
+                                  final leaveDocListItem =
+                                      leaveDocList[leaveDocListIndex];
+                                  return InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      if (functions.containWordinStringUrl(
+                                          '.pdf',
+                                          functions.showMatNameInList(
+                                              widget.leaveDoc?.toList(),
+                                              leaveDocListIndex))!) {
+                                        showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          context: context,
+                                          builder: (context) {
+                                            return WebViewAware(
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: PDFViewerWidget(
+                                                  pdfUrl: functions
+                                                      .showMatNameInList(
+                                                          widget.leaveDoc
+                                                              ?.toList(),
+                                                          leaveDocListIndex)!,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
+                                      } else {
+                                        showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          context: context,
+                                          builder: (context) {
+                                            return WebViewAware(
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child:
+                                                    ShowCheckinImageNewWidget(
+                                                  leaveImage: functions
+                                                      .showMatNameInList(
+                                                          widget.leaveDoc
+                                                              ?.toList(),
+                                                          leaveDocListIndex),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
+                                      }
+                                    },
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 60.0,
+                                      decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        size: 20.0,
+                                            .secondaryBackground,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 4.0,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            offset: const Offset(
+                                              2.0,
+                                              1.0,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Text(
+                                            'กดเพื่อดูรายละเอียดไฟล์แนบที่ ${(leaveDocListIndex + 1).toString()}',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 0.0, 0.0),
+                                            child: Icon(
+                                              Icons.attach_file,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                                  );
+                                },
+                              );
+                            },
                           ),
                         ),
                       ],

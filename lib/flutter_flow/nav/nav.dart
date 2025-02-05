@@ -360,6 +360,45 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'leaveShowPage5544',
           path: '/leaveShowPage5544',
           builder: (context, params) => const LeaveShowPage5544Widget(),
+        ),
+        FFRoute(
+          name: 'SearchEmployeeTrackingPage',
+          path: '/searchEmployeeTrackingPage',
+          builder: (context, params) => const SearchEmployeeTrackingPageWidget(),
+        ),
+        FFRoute(
+          name: 'searchEmployeePage',
+          path: '/searchEmployeePage',
+          builder: (context, params) => SearchEmployeePageWidget(
+            dataList: params.getParam<TrackingEmployeeDataModelStruct>(
+              'dataList',
+              ParamType.DataStruct,
+              isList: true,
+              structBuilder:
+                  TrackingEmployeeDataModelStruct.fromSerializableMap,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'TrackingPage',
+          path: '/trackingPage',
+          builder: (context, params) => TrackingPageWidget(
+            selectDate: params.getParam(
+              'selectDate',
+              ParamType.String,
+            ),
+            data: params.getParam<TrackingEmployeeDataLocationModelStruct>(
+              'data',
+              ParamType.DataStruct,
+              isList: true,
+              structBuilder:
+                  TrackingEmployeeDataLocationModelStruct.fromSerializableMap,
+            ),
+            index: params.getParam(
+              'index',
+              ParamType.int,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

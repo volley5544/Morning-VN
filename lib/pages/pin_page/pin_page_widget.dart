@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/select_language_component_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -6,7 +7,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/permissions_util.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -51,6 +54,11 @@ class _PinPageWidgetState extends State<PinPageWidget>
       }
       setDarkModeSetting(context, ThemeMode.light);
       _model.getBuildVersion = await actions.getBuildVersion();
+      _model.apiKeyStorage = await queryKeyStorage2RecordOnce(
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+      FFAppState().apiUrlAppState = _model.apiKeyStorage!.apiUrl;
+      safeSetState(() {});
     });
 
     animationsMap.addAll({
@@ -93,8 +101,8 @@ class _PinPageWidgetState extends State<PinPageWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return FutureBuilder<ApplicationConfigRecord>(
-      future: ApplicationConfigRecord.getDocumentOnce(
+    return StreamBuilder<ApplicationConfigRecord>(
+      stream: ApplicationConfigRecord.getDocument(
           FFAppState().applicationConfigDocRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -167,7 +175,22 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                     size: 35.0,
                                   ),
                                   onPressed: () async {
-                                    context.goNamed('loginPage');
+                                    FFAppState().isLogin = false;
+                                    FFAppState().accessToken = '';
+                                    safeSetState(() {});
+                                    FFAppState().username = '';
+                                    FFAppState().employeeID = '';
+                                    safeSetState(() {});
+                                    FFAppState().profilePositionName = '';
+                                    FFAppState().profileStartDate = '';
+                                    FFAppState().branchCode = '';
+                                    safeSetState(() {});
+                                    FFAppState().profileBranchName = '';
+                                    FFAppState().profileBranchCode = '';
+                                    safeSetState(() {});
+                                    Navigator.pop(context);
+
+                                    context.pushNamed('loginPage');
                                   },
                                 ),
                               ),
@@ -373,6 +396,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                     controller: _model.pinCodeController,
                                     onChanged: (_) {},
                                     onCompleted: (_) async {
+                                      var shouldSetState = false;
                                       if (!((String appBuildNumber,
                                               String latestBuildNumber) {
                                         return int.parse(appBuildNumber) >=
@@ -387,8 +411,16 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
                                               child: AlertDialog(
-                                                content: const Text(
-                                                    '\'Morning VN\' Có phiên bản mới trong cửa hàng!. Vui lòng cập nhật tại cửa hàng trước khi sử dụng ứng dụng'),
+                                                content: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  enText:
+                                                      '\'Morning FM\' has a new version available in the store! Please update in the store before using the application.',
+                                                  viText:
+                                                      '\'Morning FM\' Có phiên bản mới trong cửa hàng!. Vui lòng cập nhật tại cửa hàng trước khi sử dụng ứng dụng',
+                                                  thText:
+                                                      '\'Morning FM\' มีเวอร์ชันใหม่ในร้านค้า! กรุณาอัปเดตที่ร้านค้าก่อนใช้งานแอปพลิเคชัน',
+                                                )),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -402,6 +434,9 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                           },
                                         );
                                         await actions.terminateAppAction();
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
                                         return;
                                       }
                                       if (_model.pinCodeController!.text !=
@@ -414,8 +449,16 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
                                               child: AlertDialog(
-                                                content: const Text(
-                                                    'mã pin không hợp lệ Vui lòng thử lại.'),
+                                                content: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  enText:
+                                                      'Invalid PIN. Please try again.',
+                                                  viText:
+                                                      'mã pin không hợp lệ Vui lòng thử lại.',
+                                                  thText:
+                                                      'รหัส PIN ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง',
+                                                )),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -428,12 +471,302 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                             );
                                           },
                                         );
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
                                         return;
+                                      }
+                                      await requestPermission(
+                                          locationPermission);
+                                      if (await getPermissionStatus(
+                                          locationPermission)) {
+                                        _model.backgroundLocationCheck =
+                                            await actions
+                                                .backgroundLocationCheck();
+                                        shouldSetState = true;
+                                        if (!_model.backgroundLocationCheck!) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: const Text(
+                                                      'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child:
+                                                          const Text('Open Setting'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        }
+                                      } else {
+                                        safeSetState(() {
+                                          _model.pinCodeController?.clear();
+                                        });
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                content: const Text(
+                                                    'Vui lòng cho phép truy cập vị trí của bạn để theo dõi công việc của bạn'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                        );
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
+                                        return;
+                                      }
+
+                                      _model.permissionRequestOutput =
+                                          await actions
+                                              .backgroundLocationPermission();
+                                      shouldSetState = true;
+                                      if (!_model.permissionRequestOutput!) {
+                                        safeSetState(() {
+                                          _model.pinCodeController?.clear();
+                                        });
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                content: const Text(
+                                                    'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                        );
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
+                                        return;
+                                      }
+                                      _model.checkGpsEnable =
+                                          await actions.checkGpsServiceEnable();
+                                      shouldSetState = true;
+                                      if (!_model.checkGpsEnable!) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                content: const Text(
+                                                    'Vui lòng bật GPS trước khi tiếp tục'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                        );
+                                        await actions.enableGpsService();
+                                        _model.checkGpsEnable2 = await actions
+                                            .checkGpsServiceEnable();
+                                        shouldSetState = true;
+                                        if (!_model.checkGpsEnable2!) {
+                                          safeSetState(() {
+                                            _model.pinCodeController?.clear();
+                                          });
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: const Text(
+                                                      'Vui lòng bật GPS trước khi tiếp tục'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
+                                          if (shouldSetState) {
+                                            safeSetState(() {});
+                                          }
+                                          return;
+                                        }
                                       }
                                       FFAppState().fromPinPage = true;
                                       safeSetState(() {});
+                                      _model.getUserProfile =
+                                          await GetUserProfileAPICall.call(
+                                        apiUrl: FFAppState().apiUrlAppState,
+                                        token: FFAppState().accessToken,
+                                      );
+
+                                      shouldSetState = true;
+                                      if ((_model.getUserProfile?.statusCode ??
+                                              200) !=
+                                          200) {
+                                        if (GetUserProfileAPICall.code(
+                                              (_model.getUserProfile
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            ) !=
+                                            '440') {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: Text(
+                                                      '${FFLocalizations.of(context).getVariableText(
+                                                    enText:
+                                                        'Error encountered(',
+                                                    viText: 'Đã xảy ra lỗi(',
+                                                    thText: 'พบข้อผิดพลาด(',
+                                                  )}${(_model.getUserProfile?.statusCode ?? 200).toString()})'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
+                                          if (shouldSetState) {
+                                            safeSetState(() {});
+                                          }
+                                          return;
+                                        }
+                                        FFAppState().isLogin = false;
+                                        FFAppState().accessToken = '';
+                                        safeSetState(() {});
+                                        FFAppState().username = '';
+                                        FFAppState().employeeID = '';
+                                        safeSetState(() {});
+                                        FFAppState().profilePositionName = '';
+                                        FFAppState().profileStartDate = '';
+                                        FFAppState().branchCode = '';
+                                        safeSetState(() {});
+                                        FFAppState().profileBranchName = '';
+                                        FFAppState().profileBranchCode = '';
+                                        safeSetState(() {});
+
+                                        context.pushNamed('loginPage');
+
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
+                                        return;
+                                      }
+                                      if (getJsonField(
+                                            (_model.getUserProfile?.jsonBody ??
+                                                ''),
+                                            r'''$.status''',
+                                          ).toString() !=
+                                          '200') {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                content: Text(
+                                                    GetUserProfileAPICall
+                                                        .message(
+                                                  (_model.getUserProfile
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )!),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                        );
+                                        if (shouldSetState) {
+                                          safeSetState(() {});
+                                        }
+                                        return;
+                                      }
+                                      FFAppState().profilePositionName =
+                                          '${GetUserProfileAPICall.profliePositionName(
+                                        (_model.getUserProfile?.jsonBody ?? ''),
+                                      )}';
+                                      FFAppState().ProfilePhoneNumber =
+                                          '${GetUserProfileAPICall.profilePhoneNumber(
+                                        (_model.getUserProfile?.jsonBody ?? ''),
+                                      )}';
+                                      FFAppState().profileBranchName =
+                                          '${GetUserProfileAPICall.profileBranchName(
+                                        (_model.getUserProfile?.jsonBody ?? ''),
+                                      )}';
+                                      FFAppState().profileBranchCode =
+                                          '${GetUserProfileAPICall.profileBranchCode(
+                                        (_model.getUserProfile?.jsonBody ?? ''),
+                                      )}';
+                                      safeSetState(() {});
+                                      FFAppState().profileHiredDate =
+                                          '${GetUserProfileAPICall.profileHiredDate(
+                                        (_model.getUserProfile?.jsonBody ?? ''),
+                                      )}';
+                                      FFAppState().profileServiceDurationYY =
+                                          GetUserProfileAPICall
+                                              .profileServiceDurationYY(
+                                        (_model.getUserProfile?.jsonBody ?? ''),
+                                      )!;
+                                      FFAppState().profileServiceDurationMM =
+                                          GetUserProfileAPICall
+                                              .profileServiceDurationMM(
+                                        (_model.getUserProfile?.jsonBody ?? ''),
+                                      )!;
+                                      FFAppState().profileServiceDurationDD =
+                                          GetUserProfileAPICall
+                                              .profileServiceDurationMM(
+                                        (_model.getUserProfile?.jsonBody ?? ''),
+                                      )!;
+                                      safeSetState(() {});
 
                                       context.goNamed('superAppPage');
+
+                                      if (shouldSetState) safeSetState(() {});
                                     },
                                     autovalidateMode:
                                         AutovalidateMode.onUserInteraction,

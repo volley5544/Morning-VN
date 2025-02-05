@@ -1,12 +1,12 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/show_checkin_image/show_checkin_image_widget.dart';
+import '/components/loading_scene/loading_scene_widget.dart';
+import '/components/url_link/url_link_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/pages/checkin/loading_scene/loading_scene_widget.dart';
 import '/pages/leave_app/confirm_cancel_leave_component/confirm_cancel_leave_component_widget.dart';
 import '/pages/leave_app/datail_leave_requet/datail_leave_requet_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
@@ -61,6 +61,58 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
         },
       ).then((value) => safeSetState(() {}));
 
+      _model.getUserProfileAPI = await GetUserProfileAPICall.call(
+        apiUrl: FFAppState().apiUrlAppState,
+        token: FFAppState().accessToken,
+      );
+
+      if ((_model.getUserProfileAPI?.statusCode ?? 200) != 200) {
+        if (GetUserProfileAPICall.code(
+              (_model.getUserProfileAPI?.jsonBody ?? ''),
+            ) !=
+            '440') {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return WebViewAware(
+                child: AlertDialog(
+                  content: Text('${FFLocalizations.of(context).getVariableText(
+                    enText: 'Error encountered(',
+                    viText: 'Đã xảy ra lỗi(',
+                    thText: 'พบข้อผิดพลาด(',
+                  )}${(_model.getUserProfileAPI?.statusCode ?? 200).toString()})'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+          Navigator.pop(context);
+          return;
+        }
+        FFAppState().isLogin = false;
+        FFAppState().accessToken = '';
+        safeSetState(() {});
+        FFAppState().username = '';
+        FFAppState().employeeID = '';
+        safeSetState(() {});
+        FFAppState().profilePositionName = '';
+        FFAppState().profileStartDate = '';
+        FFAppState().branchCode = '';
+        safeSetState(() {});
+        FFAppState().profileBranchName = '';
+        FFAppState().profileBranchCode = '';
+        safeSetState(() {});
+        Navigator.pop(context);
+
+        context.pushNamed('loginPage');
+
+        return;
+      }
       _model.leaveHistoryListAPIOutput = await GetLeaveHistoryCall.call(
         apiUrl: FFAppState().apiUrlAppState,
         token: FFAppState().accessToken,
@@ -72,9 +124,11 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
           builder: (alertDialogContext) {
             return WebViewAware(
               child: AlertDialog(
-                content: Text(GetLeaveHistoryCall.message(
-                  (_model.leaveHistoryListAPIOutput?.jsonBody ?? ''),
-                )!),
+                content: Text('${FFLocalizations.of(context).getVariableText(
+                  enText: 'Error encountered(',
+                  viText: 'Đã xảy ra lỗi(',
+                  thText: 'พบข้อผิดพลาด(',
+                )}${(_model.leaveHistoryListAPIOutput?.statusCode ?? 200).toString()})'),
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
@@ -85,6 +139,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
             );
           },
         );
+        Navigator.pop(context);
         return;
       }
       if (getJsonField(
@@ -203,110 +258,137 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                if (true)
-                  FlutterFlowDropDown<String>(
-                    controller: _model.yearSelectValueController ??=
-                        FormFieldController<String>(
-                      _model.yearSelectValue ??= 'current_year',
-                    ),
-                    options: List<String>.from(
-                        ['previous_year', 'current_year', 'next_year']),
-                    optionLabels: [
-                      FFLocalizations.of(context).getText(
-                        '4c9e79fg' /* previous year */,
-                      ),
-                      FFLocalizations.of(context).getText(
-                        'uyv3fqx6' /* current year */,
-                      ),
-                      FFLocalizations.of(context).getText(
-                        'dufbkjtg' /* next year */,
-                      )
-                    ],
-                    onChanged: (val) async {
-                      safeSetState(() => _model.yearSelectValue = val);
-                      actions.convertToMonthNamber(
-                        _model.yearSelectValue,
-                      );
-                      FFAppState().selectYearViewLeaveShow =
-                          _model.yearSelectValue!;
-                      safeSetState(() {});
-                      _model.leaveHistoryList = () {
-                        if (_model.yearSelectValue == 'current_year') {
-                          return ('null' ==
-                                  getJsonField(
-                                    (_model.leaveHistoryListAPIOutput
-                                            ?.jsonBody ??
-                                        ''),
-                                    r'''$.results.current_year.leave_list[*].list_date[*]''',
-                                  ).toString()
-                              ? FFAppState().emptyJson
-                              : getJsonField(
-                                  (_model.leaveHistoryListAPIOutput?.jsonBody ??
-                                      ''),
-                                  r'''$.results.current_year.leave_list[*].list_date[*]''',
-                                  true,
-                                )!);
-                        } else if (_model.yearSelectValue == 'previous_year') {
-                          return ('null' ==
-                                  getJsonField(
-                                    (_model.leaveHistoryListAPIOutput
-                                            ?.jsonBody ??
-                                        ''),
-                                    r'''$.results.previous_year.leave_list[*].list_date[*]''',
-                                  ).toString()
-                              ? FFAppState().emptyJson
-                              : getJsonField(
-                                  (_model.leaveHistoryListAPIOutput?.jsonBody ??
-                                      ''),
-                                  r'''$.results.previous_year.leave_list[*].list_date[*]''',
-                                  true,
-                                )!);
-                        } else {
-                          return ('null' ==
-                                  getJsonField(
-                                    (_model.leaveHistoryListAPIOutput
-                                            ?.jsonBody ??
-                                        ''),
-                                    r'''$.results.next_year.leave_list[*].list_date[*]''',
-                                  ).toString()
-                              ? FFAppState().emptyJson
-                              : getJsonField(
-                                  (_model.leaveHistoryListAPIOutput?.jsonBody ??
-                                      ''),
-                                  r'''$.results.next_year.leave_list[*].list_date[*]''',
-                                  true,
-                                )!);
-                        }
-                      }()
-                          .toList()
-                          .cast<dynamic>();
-                      safeSetState(() {});
-                    },
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+                  child: Container(
                     width: double.infinity,
                     height: 50.0,
-                    textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Readex Pro',
-                          color: Colors.black,
-                          letterSpacing: 0.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 1.0,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          offset: const Offset(
+                            0.0,
+                            1.0,
+                          ),
+                        )
+                      ],
+                    ),
+                    child: Visibility(
+                      visible: true,
+                      child: FlutterFlowDropDown<String>(
+                        controller: _model.yearSelectValueController ??=
+                            FormFieldController<String>(
+                          _model.yearSelectValue ??= 'current_year',
                         ),
-                    hintText: FFLocalizations.of(context).getText(
-                      '8docfjnz' /* Please select the month you wa... */,
+                        options: List<String>.from(
+                            ['previous_year', 'current_year', 'next_year']),
+                        optionLabels: [
+                          FFLocalizations.of(context).getText(
+                            '4c9e79fg' /* previous year */,
+                          ),
+                          FFLocalizations.of(context).getText(
+                            'uyv3fqx6' /* current year */,
+                          ),
+                          FFLocalizations.of(context).getText(
+                            'dufbkjtg' /* next year */,
+                          )
+                        ],
+                        onChanged: (val) async {
+                          safeSetState(() => _model.yearSelectValue = val);
+                          actions.convertToMonthNamber(
+                            _model.yearSelectValue,
+                          );
+                          FFAppState().selectYearViewLeaveShow =
+                              _model.yearSelectValue!;
+                          safeSetState(() {});
+                          _model.leaveHistoryList = () {
+                            if (_model.yearSelectValue == 'current_year') {
+                              return ('null' ==
+                                      getJsonField(
+                                        (_model.leaveHistoryListAPIOutput
+                                                ?.jsonBody ??
+                                            ''),
+                                        r'''$.results.current_year.leave_list[*].list_date[*]''',
+                                      ).toString()
+                                  ? FFAppState().emptyJson
+                                  : getJsonField(
+                                      (_model.leaveHistoryListAPIOutput
+                                              ?.jsonBody ??
+                                          ''),
+                                      r'''$.results.current_year.leave_list[*].list_date[*]''',
+                                      true,
+                                    )!);
+                            } else if (_model.yearSelectValue ==
+                                'previous_year') {
+                              return ('null' ==
+                                      getJsonField(
+                                        (_model.leaveHistoryListAPIOutput
+                                                ?.jsonBody ??
+                                            ''),
+                                        r'''$.results.previous_year.leave_list[*].list_date[*]''',
+                                      ).toString()
+                                  ? FFAppState().emptyJson
+                                  : getJsonField(
+                                      (_model.leaveHistoryListAPIOutput
+                                              ?.jsonBody ??
+                                          ''),
+                                      r'''$.results.previous_year.leave_list[*].list_date[*]''',
+                                      true,
+                                    )!);
+                            } else {
+                              return ('null' ==
+                                      getJsonField(
+                                        (_model.leaveHistoryListAPIOutput
+                                                ?.jsonBody ??
+                                            ''),
+                                        r'''$.results.next_year.leave_list[*].list_date[*]''',
+                                      ).toString()
+                                  ? FFAppState().emptyJson
+                                  : getJsonField(
+                                      (_model.leaveHistoryListAPIOutput
+                                              ?.jsonBody ??
+                                          ''),
+                                      r'''$.results.next_year.leave_list[*].list_date[*]''',
+                                      true,
+                                    )!);
+                            }
+                          }()
+                              .toList()
+                              .cast<dynamic>();
+                          safeSetState(() {});
+                        },
+                        width: double.infinity,
+                        height: 50.0,
+                        textStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.black,
+                                  letterSpacing: 0.0,
+                                ),
+                        hintText: FFLocalizations.of(context).getText(
+                          '8docfjnz' /* Please select the month you wa... */,
+                        ),
+                        icon: const FaIcon(
+                          FontAwesomeIcons.solidCalendarAlt,
+                          size: 15.0,
+                        ),
+                        fillColor: Colors.white,
+                        elevation: 2.0,
+                        borderColor: Colors.transparent,
+                        borderWidth: 0.0,
+                        borderRadius: 0.0,
+                        margin: const EdgeInsetsDirectional.fromSTEB(
+                            160.0, 4.0, 12.0, 4.0),
+                        hidesUnderline: true,
+                        isSearchable: false,
+                        isMultiSelect: false,
+                      ),
                     ),
-                    icon: const FaIcon(
-                      FontAwesomeIcons.solidCalendarAlt,
-                      size: 15.0,
-                    ),
-                    fillColor: Colors.white,
-                    elevation: 2.0,
-                    borderColor: Colors.transparent,
-                    borderWidth: 0.0,
-                    borderRadius: 0.0,
-                    margin:
-                        const EdgeInsetsDirectional.fromSTEB(160.0, 4.0, 12.0, 4.0),
-                    hidesUnderline: true,
-                    isSearchable: false,
-                    isMultiSelect: false,
                   ),
+                ),
                 if (true)
                   FlutterFlowDropDown<String>(
                     controller: _model.monthSelectValueController ??=
@@ -1621,13 +1703,11 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                               String>();
                                                                       safeSetState(
                                                                           () {});
-                                                                      await showModalBottomSheet(
+                                                                      showModalBottomSheet(
                                                                         isScrollControlled:
                                                                             true,
                                                                         backgroundColor:
                                                                             Colors.transparent,
-                                                                        enableDrag:
-                                                                            false,
                                                                         context:
                                                                             context,
                                                                         builder:
@@ -1642,9 +1722,9 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                               child: Padding(
                                                                                 padding: MediaQuery.viewInsetsOf(context),
                                                                                 child: SizedBox(
-                                                                                  height: MediaQuery.sizeOf(context).height * 0.7,
-                                                                                  child: ShowCheckinImageWidget(
-                                                                                    leaveImage: FFAppState().leaveDocImgPathList,
+                                                                                  height: double.infinity,
+                                                                                  child: UrlLinkWidget(
+                                                                                    leaveDoc: FFAppState().leaveDocImgPathListNew,
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -1687,119 +1767,226 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                               MainAxisAlignment
                                                                   .center,
                                                           children: [
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          20.0,
-                                                                          0.0),
-                                                              child:
-                                                                  FFButtonWidget(
+                                                            if ('true' ==
+                                                                getJsonField(
+                                                                  _model
+                                                                      .leaveHistoryList
+                                                                      .elementAtOrNull(
+                                                                          leaveItemIndex),
+                                                                  r'''$.EDIT_BOTTON''',
+                                                                ).toString())
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            20.0,
+                                                                            0.0),
+                                                                child:
+                                                                    FFButtonWidget(
+                                                                  onPressed:
+                                                                      () async {
+                                                                    HapticFeedback
+                                                                        .mediumImpact();
+
+                                                                    context
+                                                                        .pushNamed(
+                                                                      'EditLeavePage',
+                                                                      queryParameters:
+                                                                          {
+                                                                        'leaveID':
+                                                                            serializeParam(
+                                                                          getJsonField(
+                                                                            _model.leaveHistoryList.elementAtOrNull(leaveItemIndex),
+                                                                            r'''$.LEAVE_ID''',
+                                                                          ).toString(),
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'leaveName':
+                                                                            serializeParam(
+                                                                          getJsonField(
+                                                                            _model.leaveHistoryList.elementAtOrNull(leaveItemIndex),
+                                                                            r'''$.LEAVE_NAME''',
+                                                                          ).toString(),
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'leavePerios':
+                                                                            serializeParam(
+                                                                          getJsonField(
+                                                                            _model.leaveHistoryList.elementAtOrNull(leaveItemIndex),
+                                                                            r'''$.LEAVE_PERIOD''',
+                                                                          ).toString(),
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'leaveCountDay':
+                                                                            serializeParam(
+                                                                          getJsonField(
+                                                                            _model.leaveHistoryList.elementAtOrNull(leaveItemIndex),
+                                                                            r'''$.LEAVE_COUNT_DAY''',
+                                                                          ).toString(),
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'leaveReason':
+                                                                            serializeParam(
+                                                                          getJsonField(
+                                                                            _model.leaveHistoryList.elementAtOrNull(leaveItemIndex),
+                                                                            r'''$.LEAVE_REASON''',
+                                                                          ).toString(),
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'userPhoneNumber':
+                                                                            serializeParam(
+                                                                          getJsonField(
+                                                                            _model.leaveHistoryList.elementAtOrNull(leaveItemIndex),
+                                                                            r'''$.EMP_TEL''',
+                                                                          ).toString(),
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'leaveDocument':
+                                                                            serializeParam(
+                                                                          functions.convertStringListToImgPathList((getJsonField(
+                                                                            _model.leaveHistoryList.elementAtOrNull(leaveItemIndex),
+                                                                            r'''$.LEAVE_DOCUMENT''',
+                                                                            true,
+                                                                          ) as List)
+                                                                              .map<String>((s) => s.toString())
+                                                                              .toList()),
+                                                                          ParamType
+                                                                              .String,
+                                                                          isList:
+                                                                              true,
+                                                                        ),
+                                                                      }.withoutNulls,
+                                                                    );
+                                                                  },
+                                                                  text: FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'lroplpyc' /* Edit */,
+                                                                  ),
+                                                                  icon: const FaIcon(
+                                                                    FontAwesomeIcons
+                                                                        .edit,
+                                                                    size: 22.0,
+                                                                  ),
+                                                                  options:
+                                                                      FFButtonOptions(
+                                                                    width:
+                                                                        130.0,
+                                                                    height:
+                                                                        40.0,
+                                                                    padding: const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    iconPadding:
+                                                                        const EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    color: const Color(
+                                                                        0xFF00968A),
+                                                                    textStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Readex Pro',
+                                                                          color:
+                                                                              Colors.white,
+                                                                          fontSize:
+                                                                              14.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                        ),
+                                                                    elevation:
+                                                                        2.0,
+                                                                    borderSide:
+                                                                        const BorderSide(
+                                                                      color: Colors
+                                                                          .transparent,
+                                                                      width:
+                                                                          2.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if ('true' ==
+                                                                getJsonField(
+                                                                  _model
+                                                                      .leaveHistoryList
+                                                                      .elementAtOrNull(
+                                                                          leaveItemIndex),
+                                                                  r'''$.CANCEL_BOTTON''',
+                                                                ).toString())
+                                                              FFButtonWidget(
                                                                 onPressed:
                                                                     () async {
                                                                   HapticFeedback
                                                                       .mediumImpact();
-
-                                                                  context
-                                                                      .pushNamed(
-                                                                    'EditLeavePage',
-                                                                    queryParameters:
-                                                                        {
-                                                                      'leaveID':
-                                                                          serializeParam(
-                                                                        getJsonField(
-                                                                          _model
-                                                                              .leaveHistoryList
-                                                                              .elementAtOrNull(leaveItemIndex),
-                                                                          r'''$.LEAVE_ID''',
-                                                                        ).toString(),
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'leaveName':
-                                                                          serializeParam(
-                                                                        getJsonField(
-                                                                          _model
-                                                                              .leaveHistoryList
-                                                                              .elementAtOrNull(leaveItemIndex),
-                                                                          r'''$.LEAVE_NAME''',
-                                                                        ).toString(),
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'leavePerios':
-                                                                          serializeParam(
-                                                                        getJsonField(
-                                                                          _model
-                                                                              .leaveHistoryList
-                                                                              .elementAtOrNull(leaveItemIndex),
-                                                                          r'''$.LEAVE_PERIOD''',
-                                                                        ).toString(),
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'leaveCountDay':
-                                                                          serializeParam(
-                                                                        getJsonField(
-                                                                          _model
-                                                                              .leaveHistoryList
-                                                                              .elementAtOrNull(leaveItemIndex),
-                                                                          r'''$.LEAVE_COUNT_DAY''',
-                                                                        ).toString(),
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'leaveReason':
-                                                                          serializeParam(
-                                                                        getJsonField(
-                                                                          _model
-                                                                              .leaveHistoryList
-                                                                              .elementAtOrNull(leaveItemIndex),
-                                                                          r'''$.LEAVE_REASON''',
-                                                                        ).toString(),
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'userPhoneNumber':
-                                                                          serializeParam(
-                                                                        getJsonField(
-                                                                          _model
-                                                                              .leaveHistoryList
-                                                                              .elementAtOrNull(leaveItemIndex),
-                                                                          r'''$.EMP_TEL''',
-                                                                        ).toString(),
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'leaveDocument':
-                                                                          serializeParam(
-                                                                        functions.convertStringListToImgPathList((getJsonField(
-                                                                          _model
-                                                                              .leaveHistoryList
-                                                                              .elementAtOrNull(leaveItemIndex),
-                                                                          r'''$.LEAVE_DOCUMENT''',
-                                                                          true,
-                                                                        ) as List)
-                                                                            .map<String>((s) => s.toString())
-                                                                            .toList()),
-                                                                        ParamType
-                                                                            .String,
-                                                                        isList:
-                                                                            true,
-                                                                      ),
-                                                                    }.withoutNulls,
-                                                                  );
+                                                                  await showModalBottomSheet(
+                                                                    isScrollControlled:
+                                                                        true,
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    enableDrag:
+                                                                        false,
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (context) {
+                                                                      return WebViewAware(
+                                                                        child:
+                                                                            GestureDetector(
+                                                                          onTap:
+                                                                              () {
+                                                                            FocusScope.of(context).unfocus();
+                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                          },
+                                                                          child:
+                                                                              Padding(
+                                                                            padding:
+                                                                                MediaQuery.viewInsetsOf(context),
+                                                                            child:
+                                                                                ConfirmCancelLeaveComponentWidget(
+                                                                              leaveID: getJsonField(
+                                                                                _model.leaveHistoryList.elementAtOrNull(leaveItemIndex),
+                                                                                r'''$.ID''',
+                                                                              ).toString(),
+                                                                              isFromCancelPage: 'leaveShowPage',
+                                                                              leaveStatus: 'cancel',
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                  ).then((value) =>
+                                                                      safeSetState(
+                                                                          () {}));
                                                                 },
                                                                 text: FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'lroplpyc' /* Edit */,
+                                                                  'db2tvi6z' /* Cancel */,
                                                                 ),
-                                                                icon: const FaIcon(
-                                                                  FontAwesomeIcons
-                                                                      .edit,
+                                                                icon: const Icon(
+                                                                  Icons.cancel,
                                                                   size: 22.0,
                                                                 ),
                                                                 options:
@@ -1808,9 +1995,9 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                   height: 40.0,
                                                                   padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
+                                                                          16.0,
                                                                           0.0,
-                                                                          0.0,
-                                                                          0.0,
+                                                                          16.0,
                                                                           0.0),
                                                                   iconPadding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
@@ -1819,7 +2006,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                           0.0,
                                                                           0.0),
                                                                   color: const Color(
-                                                                      0xFF00968A),
+                                                                      0xFFB32A33),
                                                                   textStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleSmall
@@ -1828,20 +2015,14 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             'Readex Pro',
                                                                         color: Colors
                                                                             .white,
-                                                                        fontSize:
-                                                                            14.0,
                                                                         letterSpacing:
                                                                             0.0,
-                                                                        fontWeight:
-                                                                            FontWeight.normal,
                                                                       ),
                                                                   elevation:
-                                                                      2.0,
+                                                                      0.0,
                                                                   borderSide:
                                                                       const BorderSide(
-                                                                    color: Colors
-                                                                        .transparent,
-                                                                    width: 2.0,
+                                                                    width: 0.5,
                                                                   ),
                                                                   borderRadius:
                                                                       BorderRadius
@@ -1849,110 +2030,6 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                               8.0),
                                                                 ),
                                                               ),
-                                                            ),
-                                                            FFButtonWidget(
-                                                              onPressed:
-                                                                  () async {
-                                                                HapticFeedback
-                                                                    .mediumImpact();
-                                                                await showModalBottomSheet(
-                                                                  isScrollControlled:
-                                                                      true,
-                                                                  backgroundColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  enableDrag:
-                                                                      false,
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (context) {
-                                                                    return WebViewAware(
-                                                                      child:
-                                                                          GestureDetector(
-                                                                        onTap:
-                                                                            () {
-                                                                          FocusScope.of(context)
-                                                                              .unfocus();
-                                                                          FocusManager
-                                                                              .instance
-                                                                              .primaryFocus
-                                                                              ?.unfocus();
-                                                                        },
-                                                                        child:
-                                                                            Padding(
-                                                                          padding:
-                                                                              MediaQuery.viewInsetsOf(context),
-                                                                          child:
-                                                                              ConfirmCancelLeaveComponentWidget(
-                                                                            leaveID:
-                                                                                getJsonField(
-                                                                              _model.leaveHistoryList.elementAtOrNull(leaveItemIndex),
-                                                                              r'''$.ID''',
-                                                                            ).toString(),
-                                                                            isFromCancelPage:
-                                                                                'leaveShowPage',
-                                                                            leaveStatus:
-                                                                                'cancel',
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                ).then((value) =>
-                                                                    safeSetState(
-                                                                        () {}));
-                                                              },
-                                                              text: FFLocalizations
-                                                                      .of(context)
-                                                                  .getText(
-                                                                'db2tvi6z' /* Cancel */,
-                                                              ),
-                                                              icon: const Icon(
-                                                                Icons.cancel,
-                                                                size: 22.0,
-                                                              ),
-                                                              options:
-                                                                  FFButtonOptions(
-                                                                width: 130.0,
-                                                                height: 40.0,
-                                                                padding: const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        16.0,
-                                                                        0.0,
-                                                                        16.0,
-                                                                        0.0),
-                                                                iconPadding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                color: const Color(
-                                                                    0xFFB32A33),
-                                                                textStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      color: Colors
-                                                                          .white,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                    ),
-                                                                elevation: 0.0,
-                                                                borderSide:
-                                                                    const BorderSide(
-                                                                  width: 0.5,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                              ),
-                                                            ),
                                                           ],
                                                         ),
                                                       ),

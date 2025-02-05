@@ -10,6 +10,121 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
+/// Start TrackingApi Group Code
+
+class TrackingApiGroup {
+  static String getBaseUrl({
+    String? apiUrl = '',
+  }) =>
+      'https://prd-proxy.swpfin.com:8093';
+  static Map<String, String> headers = {
+    'Content-Type': 'application/json',
+  };
+  static GetEmployeeListApiCall getEmployeeListApiCall =
+      GetEmployeeListApiCall();
+  static GetLocationEmployeeAPICall getLocationEmployeeAPICall =
+      GetLocationEmployeeAPICall();
+}
+
+class GetEmployeeListApiCall {
+  Future<ApiCallResponse> call({
+    String? apiUrl = '',
+  }) async {
+    final baseUrl = TrackingApiGroup.getBaseUrl(
+      apiUrl: apiUrl,
+    );
+
+    const ffApiRequestBody = '''
+{
+  "branch_code": "<branch_code>"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetEmployeeListApi',
+      apiUrl: '$baseUrl/api/users/vn',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  List<TrackingEmployeeDataModelStruct>? employeeData(dynamic response) =>
+      (getJsonField(
+        response,
+        r'''$.data''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => TrackingEmployeeDataModelStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+}
+
+class GetLocationEmployeeAPICall {
+  Future<ApiCallResponse> call({
+    String? employeeId = '',
+    String? dateTime = '',
+    String? apiUrl = '',
+  }) async {
+    final baseUrl = TrackingApiGroup.getBaseUrl(
+      apiUrl: apiUrl,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "employee_id": "${escapeStringForJson(employeeId)}",
+  "date_time": "${escapeStringForJson(dateTime)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetLocationEmployeeAPI',
+      apiUrl: '$baseUrl/api/data/user-location-vn',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  int? code(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  List<TrackingEmployeeDataLocationModelStruct>? data(dynamic response) =>
+      (getJsonField(
+        response,
+        r'''$.data[:]''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => TrackingEmployeeDataLocationModelStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+}
+
+/// End TrackingApi Group Code
+
 class AuthenAPICall {
   static Future<ApiCallResponse> call({
     String? username = '',
@@ -792,10 +907,6 @@ class GetUserProfileAPICall {
     );
   }
 
-  static String? code(dynamic response) => castToType<String>(getJsonField(
-        response,
-        r'''$.code''',
-      ));
   static String? message(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.message''',
@@ -823,6 +934,55 @@ class GetUserProfileAPICall {
       castToType<String>(getJsonField(
         response,
         r'''$.results.hiredDate''',
+      ));
+  static String? statuslayer(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.status''',
+      ));
+  static String? statusHead(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.results.headOfWork''',
+      ));
+  static String? profileEmployeeID(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.results.empCode''',
+      ));
+  static String? profileFullName(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.results.fullName''',
+      ));
+  static String? profileNickName(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.results.nickName''',
+      ));
+  static String? profileServiceDurationYY(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.results.serviceDuration.year''',
+      ));
+  static String? profileServiceDurationMM(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.results.serviceDuration.month''',
+      ));
+  static String? profileServiceDurationDD(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.results.serviceDuration.day''',
+      ));
+  static String? code(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+  static String? profileBranchName(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.results.branchName''',
       ));
 }
 

@@ -672,7 +672,13 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                               builder: (alertDialogContext) {
                                 return WebViewAware(
                                   child: AlertDialog(
-                                    content: const Text('กรุณากรอกข้อมูลให้ครบ'),
+                                    content: Text(FFLocalizations.of(context)
+                                        .getVariableText(
+                                      enText:
+                                          'Please fill in all required fields.',
+                                      viText: 'Vui lòng nhập đầy đủ thông tin',
+                                      thText: 'กรุณากรอกข้อมูลให้ครบ',
+                                    )),
                                     actions: [
                                       TextButton(
                                         onPressed: () =>
@@ -692,18 +698,35 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                                 builder: (alertDialogContext) {
                                   return WebViewAware(
                                     child: AlertDialog(
-                                      content:
-                                          const Text('ต้องการเพิ่มสาขาใช่หรือไม่'),
+                                      content: Text(FFLocalizations.of(context)
+                                          .getVariableText(
+                                        enText: 'Do you want to add a branch?',
+                                        viText:
+                                            'Bạn có muốn thêm chi nhánh không?',
+                                        thText: 'ต้องการเพิ่มสาขาใช่หรือไม่',
+                                      )),
                                       actions: [
                                         TextButton(
                                           onPressed: () => Navigator.pop(
                                               alertDialogContext, false),
-                                          child: const Text('ยกเลิก'),
+                                          child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                            enText: 'Cancel',
+                                            viText: 'Hủy',
+                                            thText: 'ยกเลิก',
+                                          )),
                                         ),
                                         TextButton(
                                           onPressed: () => Navigator.pop(
                                               alertDialogContext, true),
-                                          child: const Text('ยืนยัน'),
+                                          child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                            enText: 'Confirm',
+                                            viText: 'Xác nhận',
+                                            thText: 'ยืนยัน',
+                                          )),
                                         ),
                                       ],
                                     ),
@@ -742,7 +765,13 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                                 builder: (alertDialogContext) {
                                   return WebViewAware(
                                     child: AlertDialog(
-                                      content: const Text('เพิ่มสาขาเรียบร้อยแล้ว'),
+                                      content: Text(FFLocalizations.of(context)
+                                          .getVariableText(
+                                        enText:
+                                            'The branch has been successfully added.',
+                                        viText: 'Đã thêm chi nhánh thành công',
+                                        thText: 'เพิ่มสาขาเรียบร้อยแล้ว',
+                                      )),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
@@ -789,7 +818,11 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                                 return WebViewAware(
                                   child: AlertDialog(
                                     content: Text(
-                                        'พบข้อผิดพลาด (${(_model.createBranchLocation?.statusCode ?? 200).toString()})'),
+                                        '${FFLocalizations.of(context).getVariableText(
+                                      enText: 'Error encountered (',
+                                      viText: 'Đã xảy ra lỗi (',
+                                      thText: 'พบข้อผิดพลาด (',
+                                    )}${(_model.createBranchLocation?.statusCode ?? 200).toString()})'),
                                     actions: [
                                       TextButton(
                                         onPressed: () =>

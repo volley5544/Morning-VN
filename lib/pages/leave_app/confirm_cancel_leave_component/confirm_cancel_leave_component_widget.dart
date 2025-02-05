@@ -417,9 +417,9 @@ class _ConfirmCancelLeaveComponentWidgetState
                                 Navigator.pop(context);
                                 if (widget.isFromCancelPage ==
                                     'leaveShowPage') {
-                                  context.goNamed('leaveShowPage');
+                                  context.pushNamed('leaveShowPage');
                                 } else {
-                                  context.goNamed('ApproveShowPage');
+                                  context.pushNamed('ApproveShowPage');
                                 }
 
                                 if (shouldSetState) safeSetState(() {});

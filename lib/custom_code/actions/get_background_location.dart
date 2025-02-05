@@ -13,7 +13,8 @@ import 'package:background_location/background_location.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-Future getBackgroundLocation(String? username) async {
+Future getBackgroundLocation(String? username, String? phoneNumber,
+    String? operatingSystem, String? deviceId) async {
   // Add your function code here!
   LatLng outputLocation = LatLng(0, 0);
   await BackgroundLocation.startLocationService();
@@ -26,6 +27,9 @@ Future getBackgroundLocation(String? username) async {
         'location': GeoPoint(outputLocation.latitude, outputLocation.longitude),
         'employee_id': username!,
         'date_time': Timestamp.now(),
+        'phone_number': phoneNumber!,
+        'device_id': deviceId!,
+        'operating_system': operatingSystem!
       };
       await firestore.collection('UserLocationLog').add(data);
     } catch (e) {

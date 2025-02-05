@@ -23,6 +23,8 @@ class ApprovedLeavePageModel extends FlutterFlowModel<ApprovedLeavePageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Backend Call - API (getUserProfileAPI)] action in ApprovedLeavePage widget.
+  ApiCallResponse? getUserProfileAPI;
   // Stores action output result for [Backend Call - API (getLeaveListApprove)] action in ApprovedLeavePage widget.
   ApiCallResponse? getLeaveListApprove;
   // State field(s) for Checkbox widget.

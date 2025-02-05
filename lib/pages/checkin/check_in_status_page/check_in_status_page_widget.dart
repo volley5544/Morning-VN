@@ -1,7 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
-import '/components/loading/loading_widget.dart';
+import '/components/loading_scene/loading_scene_widget.dart';
 import '/components/p_d_f_viewer/p_d_f_viewer_widget.dart';
 import '/components/select_language_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -57,7 +56,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                 },
                 child: const SizedBox(
                   height: double.infinity,
-                  child: LoadingWidget(),
+                  child: LoadingSceneWidget(),
                 ),
               ),
             ),
@@ -71,7 +70,6 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
       );
 
       if ((_model.workCheckHistoryApiOutput?.statusCode ?? 200) != 200) {
-        Navigator.pop(context);
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
@@ -92,13 +90,13 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
             );
           },
         );
+        Navigator.pop(context);
         return;
       }
       if ('${WorkCheckHistoryAPICall.code(
             (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
           )?.toString()}' !=
           '200') {
-        Navigator.pop(context);
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
@@ -117,6 +115,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
             );
           },
         );
+        Navigator.pop(context);
         return;
       }
       _model.checkinHistoryCurrentMonthData =
@@ -155,79 +154,65 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
     context.watch<FFAppState>();
 
     return Builder(
-      builder: (context) => GestureDetector(
-        onTap: () {
-          FocusScope.of(context).unfocus();
-          FocusManager.instance.primaryFocus?.unfocus();
-        },
-        child: Scaffold(
-          key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          appBar: AppBar(
-            backgroundColor: const Color(0xFFFF6500),
-            automaticallyImplyLeading: false,
-            leading: FlutterFlowIconButton(
-              borderColor: Colors.transparent,
-              borderRadius: 30.0,
-              borderWidth: 1.0,
-              buttonSize: 60.0,
-              icon: const Icon(
-                Icons.arrow_back_rounded,
-                color: Colors.white,
-                size: 30.0,
-              ),
-              onPressed: () async {
-                context.pushNamed('DashboardCheckin');
-              },
-            ),
-            title: InkWell(
-              splashColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              onTap: () async {
-                await showModalBottomSheet(
-                  isScrollControlled: true,
-                  backgroundColor: Colors.transparent,
-                  barrierColor: const Color(0xC0000000),
-                  enableDrag: false,
-                  context: context,
-                  builder: (context) {
-                    return WebViewAware(
-                      child: GestureDetector(
-                        onTap: () {
-                          FocusScope.of(context).unfocus();
-                          FocusManager.instance.primaryFocus?.unfocus();
-                        },
-                        child: Padding(
-                          padding: MediaQuery.viewInsetsOf(context),
-                          child: SizedBox(
-                            height: MediaQuery.sizeOf(context).height * 0.5,
-                            child: const SelectLanguageComponentWidget(),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ).then((value) => safeSetState(() {}));
-              },
-              child: Text(
-                FFLocalizations.of(context).getText(
-                  '3hp3ppc9' /* Clock-in/out Time */,
-                ),
-                style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Outfit',
-                      color: Colors.white,
-                      fontSize: 22.0,
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.w600,
+      builder: (context) => StreamBuilder<List<HolidayStorageRecord>>(
+        stream: queryHolidayStorageRecord(
+          singleRecord: true,
+        ),
+        builder: (context, snapshot) {
+          // Customize what your widget looks like when it's loading.
+          if (!snapshot.hasData) {
+            return Scaffold(
+              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+              body: Center(
+                child: SizedBox(
+                  width: 50.0,
+                  height: 50.0,
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      FlutterFlowTheme.of(context).primary,
                     ),
+                  ),
+                ),
               ),
-            ),
-            actions: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 15.0, 0.0),
-                child: InkWell(
+            );
+          }
+          List<HolidayStorageRecord> checkInStatusPageHolidayStorageRecordList =
+              snapshot.data!;
+          // Return an empty Container when the item does not exist.
+          if (snapshot.data!.isEmpty) {
+            return Container();
+          }
+          final checkInStatusPageHolidayStorageRecord =
+              checkInStatusPageHolidayStorageRecordList.isNotEmpty
+                  ? checkInStatusPageHolidayStorageRecordList.first
+                  : null;
+
+          return GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+              FocusManager.instance.primaryFocus?.unfocus();
+            },
+            child: Scaffold(
+              key: scaffoldKey,
+              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+              appBar: AppBar(
+                backgroundColor: const Color(0xFFFF6500),
+                automaticallyImplyLeading: false,
+                leading: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 30.0,
+                  borderWidth: 1.0,
+                  buttonSize: 60.0,
+                  icon: const Icon(
+                    Icons.arrow_back_rounded,
+                    color: Colors.white,
+                    size: 30.0,
+                  ),
+                  onPressed: () async {
+                    context.pushNamed('DashboardCheckin');
+                  },
+                ),
+                title: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
                   hoverColor: Colors.transparent,
@@ -236,6 +221,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                     await showModalBottomSheet(
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
+                      barrierColor: const Color(0xC0000000),
                       enableDrag: false,
                       context: context,
                       builder: (context) {
@@ -247,9 +233,9 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                             },
                             child: Padding(
                               padding: MediaQuery.viewInsetsOf(context),
-                              child: const SizedBox(
-                                height: double.infinity,
-                                child: StatusCompnentWidget(),
+                              child: SizedBox(
+                                height: MediaQuery.sizeOf(context).height * 0.5,
+                                child: const SelectLanguageComponentWidget(),
                               ),
                             ),
                           ),
@@ -257,30 +243,29 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                       },
                     ).then((value) => safeSetState(() {}));
                   },
-                  child: const FaIcon(
-                    FontAwesomeIcons.exclamationTriangle,
-                    color: Colors.white,
-                    size: 35.0,
+                  child: Text(
+                    FFLocalizations.of(context).getText(
+                      '3hp3ppc9' /* Clock-in/out Time */,
+                    ),
+                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                          fontFamily: 'Outfit',
+                          color: Colors.white,
+                          fontSize: 22.0,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.w600,
+                        ),
                   ),
                 ),
-              ),
-            ],
-            centerTitle: true,
-            elevation: 10.0,
-          ),
-          body: SafeArea(
-            top: true,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                if (false)
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      if (functions.checkYearHoliday(getCurrentTimestamp)!) {
+                actions: [
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 15.0, 0.0),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
@@ -295,905 +280,956 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                 },
                                 child: Padding(
                                   padding: MediaQuery.viewInsetsOf(context),
-                                  child: const PDFViewerWidget(
-                                    pdfUrl:
-                                        'https://firebasestorage.googleapis.com/v0/b/flut-flow-test.appspot.com/o/AnnouncementPDF%2F%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B8%AB%E0%B8%A2%E0%B8%B8%E0%B8%94%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9E%E0%B8%93%E0%B8%B5%20%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B52568.pdf?alt=media&token=8bd45d24-e555-4e59-9ebe-1eb0ac4ebfc5',
+                                  child: const SizedBox(
+                                    height: double.infinity,
+                                    child: StatusCompnentWidget(),
                                   ),
                                 ),
                               ),
                             );
                           },
                         ).then((value) => safeSetState(() {}));
-                      } else {
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          enableDrag: false,
-                          context: context,
-                          builder: (context) {
-                            return WebViewAware(
-                              child: GestureDetector(
-                                onTap: () {
-                                  FocusScope.of(context).unfocus();
-                                  FocusManager.instance.primaryFocus?.unfocus();
-                                },
-                                child: Padding(
-                                  padding: MediaQuery.viewInsetsOf(context),
-                                  child: const PDFViewerWidget(
-                                    pdfUrl:
-                                        'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/%5BSkooldio%20x%20Srisawad%5D%20OCR%20Pre%20Workshop%20Instruction.pdf?alt=media&token=d27e9997-532d-45e3-9bf5-b469687bbfa0',
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ).then((value) => safeSetState(() {}));
-                      }
-                    },
-                    child: Container(
-                      decoration: const BoxDecoration(),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 6.0, 0.0),
-                            child: Icon(
-                              Icons.read_more_sharp,
-                              color: Color(0xFFF46506),
-                              size: 32.0,
-                            ),
-                          ),
-                          Text(
-                            functions.checkYearHoliday(getCurrentTimestamp)!
-                                ? FFLocalizations.of(context).getVariableText(
-                                    enText: 'Holidays for the Year 2024',
-                                    viText: 'Thông báo nghỉ lễ năm 2024',
-                                    thText:
-                                        'ประกาศวันหยุดตามประเพณี ประจำปี 2567',
-                                  )
-                                : FFLocalizations.of(context).getVariableText(
-                                    enText: 'Holidays for the Year 2025',
-                                    viText: 'Thông báo nghỉ lễ năm 2025',
-                                    thText:
-                                        'ประกาศวันหยุดตามประเพณี ประจำปี  2568',
-                                  ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                        ],
+                      },
+                      child: const FaIcon(
+                        FontAwesomeIcons.exclamationTriangle,
+                        color: Colors.white,
+                        size: 35.0,
                       ),
                     ),
                   ),
-                if (false)
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
-                    child: Container(
-                      width: double.infinity,
-                      color: const Color(0x00000000),
-                      child: ExpandableNotifier(
-                        controller: _model.expandableExpandableController,
-                        child: ExpandablePanel(
-                          header: Text(
-                            FFLocalizations.of(context).getText(
-                              'sgu2ax3u' /* ** Branches with special opera... */,
-                            ),
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  color: const Color(0xFFFF0000),
-                                  fontSize: 15.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w900,
-                                ),
-                          ),
-                          collapsed: Container(
-                            width: double.infinity,
-                            height: 20.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'w7q9015u' /* Tap to read more */,
-                              ),
-                              textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: const Color(0xFF95A1AC),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
+                ],
+                centerTitle: true,
+                elevation: 10.0,
+              ),
+              body: SafeArea(
+                top: true,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    if (checkInStatusPageHolidayStorageRecord?.urlFileHoliday !=
+                            null &&
+                        checkInStatusPageHolidayStorageRecord?.urlFileHoliday !=
+                            '')
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            enableDrag: false,
+                            context: context,
+                            builder: (context) {
+                              return WebViewAware(
+                                child: GestureDetector(
+                                  onTap: () {
+                                    FocusScope.of(context).unfocus();
+                                    FocusManager.instance.primaryFocus
+                                        ?.unfocus();
+                                  },
+                                  child: Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: PDFViewerWidget(
+                                      pdfUrl:
+                                          checkInStatusPageHolidayStorageRecord!
+                                              .urlFileHoliday,
+                                    ),
                                   ),
-                            ),
-                          ),
-                          expanded: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'wul16n1i' /* - ให้บันทึกเวลาในโปรเเกรมอรุณส... */,
                                 ),
+                              );
+                            },
+                          ).then((value) => safeSetState(() {}));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 5.0, 6.0, 5.0),
+                                child: Icon(
+                                  Icons.read_more_sharp,
+                                  color: Color(0xFFF46506),
+                                  size: 32.0,
+                                ),
+                              ),
+                              Text(
+                                '${FFLocalizations.of(context).getVariableText(
+                                  enText:
+                                      'Announcement of Traditional Holidays for the Year ',
+                                  viText:
+                                      'Thông báo ngày nghỉ lễ truyền thống năm ',
+                                  thText: 'ประกาศวันหยุดตามประเพณี ประจำปี  ',
+                                )}${functions.checkYearHolidayCopy(getCurrentTimestamp, FFAppState().appLanguage).toString()}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Readex Pro',
-                                      color: const Color(0xFF090F13),
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),
                             ],
                           ),
-                          theme: const ExpandableThemeData(
-                            tapHeaderToExpand: true,
-                            tapBodyToExpand: false,
-                            tapBodyToCollapse: false,
-                            headerAlignment:
-                                ExpandablePanelHeaderAlignment.center,
-                            hasIcon: true,
+                        ),
+                      ),
+                    if (false)
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            12.0, 0.0, 12.0, 0.0),
+                        child: Container(
+                          width: double.infinity,
+                          color: const Color(0x00000000),
+                          child: ExpandableNotifier(
+                            controller: _model.expandableExpandableController,
+                            child: ExpandablePanel(
+                              header: Text(
+                                FFLocalizations.of(context).getText(
+                                  'sgu2ax3u' /* ** Branches with special opera... */,
+                                ),
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .titleLarge
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color: const Color(0xFFFF0000),
+                                      fontSize: 15.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w900,
+                                    ),
+                              ),
+                              collapsed: Container(
+                                width: double.infinity,
+                                height: 20.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'w7q9015u' /* Tap to read more */,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: const Color(0xFF95A1AC),
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                              ),
+                              expanded: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      'wul16n1i' /* - ให้บันทึกเวลาในโปรเเกรมอรุณส... */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: const Color(0xFF090F13),
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                              theme: const ExpandableThemeData(
+                                tapHeaderToExpand: true,
+                                tapBodyToExpand: false,
+                                tapBodyToCollapse: false,
+                                headerAlignment:
+                                    ExpandablePanelHeaderAlignment.center,
+                                hasIcon: true,
+                              ),
+                            ),
                           ),
                         ),
                       ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Align(
+                            alignment: const Alignment(0.0, 0),
+                            child: TabBar(
+                              labelColor: const Color(0xFF4B39EF),
+                              unselectedLabelColor:
+                                  FlutterFlowTheme.of(context).secondaryText,
+                              labelStyle: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                              unselectedLabelStyle: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                              indicatorColor: const Color(0xFF39D2C0),
+                              tabs: [
+                                Tab(
+                                  text: FFLocalizations.of(context).getText(
+                                    'jyaqtfcn' /* Current month */,
+                                  ),
+                                ),
+                                Tab(
+                                  text: FFLocalizations.of(context).getText(
+                                    'fhhi2ptj' /* Last month */,
+                                  ),
+                                ),
+                              ],
+                              controller: _model.tabBarController,
+                              onTap: (i) async {
+                                [() async {}, () async {}][i]();
+                              },
+                            ),
+                          ),
+                          Expanded(
+                            child: TabBarView(
+                              controller: _model.tabBarController,
+                              children: [
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Container(
+                                      width: double.infinity,
+                                      height: 50.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 10.0, 0.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Expanded(
+                                                  flex: 2,
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(10.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: SelectionArea(
+                                                        child: Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        '5ele6qy2' /* Date */,
+                                                      ),
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            fontSize: 14.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                    )),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: SelectionArea(
+                                                      child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'xskemw5s' /* Clock in */,
+                                                    ),
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  )),
+                                                ),
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: SelectionArea(
+                                                      child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'b5odvrkg' /* Clock out */,
+                                                    ),
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  )),
+                                                ),
+                                                Expanded(
+                                                  flex: 3,
+                                                  child: SelectionArea(
+                                                      child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '913wcxla' /* Status */,
+                                                    ),
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  )),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Divider(
+                                            thickness: 1.0,
+                                            color: FlutterFlowTheme.of(context)
+                                                .grayIcon,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Builder(
+                                        builder: (context) {
+                                          final checkinHistoryListItem = _model
+                                              .checkinHistoryCurrentMonthData
+                                              .toList();
+
+                                          return ListView.builder(
+                                            padding: const EdgeInsets.fromLTRB(
+                                              0,
+                                              12.0,
+                                              0,
+                                              24.0,
+                                            ),
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.vertical,
+                                            itemCount:
+                                                checkinHistoryListItem.length,
+                                            itemBuilder: (context,
+                                                checkinHistoryListItemIndex) {
+                                              final checkinHistoryListItemItem =
+                                                  checkinHistoryListItem[
+                                                      checkinHistoryListItemIndex];
+                                              return Container(
+                                                width: double.infinity,
+                                                height: 35.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Expanded(
+                                                          flex: 2,
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: SelectionArea(
+                                                                child: AutoSizeText(
+                                                              checkinHistoryListItemItem
+                                                                  .date,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .start,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    fontSize:
+                                                                        12.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                  ),
+                                                            )),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          flex: 1,
+                                                          child: SelectionArea(
+                                                              child:
+                                                                  AutoSizeText(
+                                                            checkinHistoryListItemItem
+                                                                .checkIn,
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  fontSize:
+                                                                      12.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                          )),
+                                                        ),
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: SelectionArea(
+                                                                child: AutoSizeText(
+                                                              checkinHistoryListItemItem
+                                                                  .checkOut,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    fontSize:
+                                                                        12.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                  ),
+                                                            )),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          flex: 3,
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        40.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      Container(
+                                                                    width: 16.0,
+                                                                    height:
+                                                                        16.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color:
+                                                                          colorFromCssString(
+                                                                        checkinHistoryListItemItem
+                                                                            .color,
+                                                                        defaultColor:
+                                                                            Colors.black,
+                                                                      ),
+                                                                      shape: BoxShape
+                                                                          .circle,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Expanded(
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            4.0,
+                                                                            0.0),
+                                                                    child: SelectionArea(
+                                                                        child: Text(
+                                                                      checkinHistoryListItemItem
+                                                                          .status,
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .start,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Readex Pro',
+                                                                            fontSize:
+                                                                                12.0,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                          ),
+                                                                    )),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Container(
+                                      width: double.infinity,
+                                      height: 50.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 10.0, 0.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Expanded(
+                                                  flex: 2,
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(10.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: SelectionArea(
+                                                        child: Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'nkl89n6f' /* Date */,
+                                                      ),
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            fontSize: 14.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                    )),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: SelectionArea(
+                                                      child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'fzgyk444' /* Clock in */,
+                                                    ),
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  )),
+                                                ),
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: SelectionArea(
+                                                      child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '04vegjgh' /* Clock out */,
+                                                    ),
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  )),
+                                                ),
+                                                Expanded(
+                                                  flex: 3,
+                                                  child: SelectionArea(
+                                                      child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'umt6f8p4' /* Status */,
+                                                    ),
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  )),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Divider(
+                                            thickness: 1.0,
+                                            color: FlutterFlowTheme.of(context)
+                                                .grayIcon,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Builder(
+                                        builder: (context) {
+                                          final checkinHistoryLastListItem =
+                                              _model.checkinHistoryLastMonthData
+                                                  .toList();
+
+                                          return ListView.builder(
+                                            padding: const EdgeInsets.fromLTRB(
+                                              0,
+                                              12.0,
+                                              0,
+                                              24.0,
+                                            ),
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.vertical,
+                                            itemCount:
+                                                checkinHistoryLastListItem
+                                                    .length,
+                                            itemBuilder: (context,
+                                                checkinHistoryLastListItemIndex) {
+                                              final checkinHistoryLastListItemItem =
+                                                  checkinHistoryLastListItem[
+                                                      checkinHistoryLastListItemIndex];
+                                              return Container(
+                                                width: double.infinity,
+                                                height: 35.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Expanded(
+                                                          flex: 2,
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: SelectionArea(
+                                                                child: AutoSizeText(
+                                                              checkinHistoryLastListItemItem
+                                                                  .date,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .start,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    fontSize:
+                                                                        12.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                  ),
+                                                            )),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          flex: 1,
+                                                          child: SelectionArea(
+                                                              child:
+                                                                  AutoSizeText(
+                                                            checkinHistoryLastListItemItem
+                                                                .checkIn,
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  fontSize:
+                                                                      12.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                          )),
+                                                        ),
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: SelectionArea(
+                                                                child: AutoSizeText(
+                                                              checkinHistoryLastListItemItem
+                                                                  .checkOut,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    fontSize:
+                                                                        12.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                  ),
+                                                            )),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          flex: 3,
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        40.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      Container(
+                                                                    width: 16.0,
+                                                                    height:
+                                                                        16.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color:
+                                                                          colorFromCssString(
+                                                                        checkinHistoryLastListItemItem
+                                                                            .color,
+                                                                        defaultColor:
+                                                                            Colors.black,
+                                                                      ),
+                                                                      shape: BoxShape
+                                                                          .circle,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Expanded(
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            4.0,
+                                                                            0.0),
+                                                                    child: SelectionArea(
+                                                                        child: Text(
+                                                                      checkinHistoryLastListItemItem
+                                                                          .status,
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .start,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Readex Pro',
+                                                                            fontSize:
+                                                                                12.0,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                          ),
+                                                                    )),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                Expanded(
-                  child: Column(
-                    children: [
-                      Align(
-                        alignment: const Alignment(0.0, 0),
-                        child: TabBar(
-                          labelColor: const Color(0xFF4B39EF),
-                          unselectedLabelColor:
-                              FlutterFlowTheme.of(context).secondaryText,
-                          labelStyle:
-                              FlutterFlowTheme.of(context).titleMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                          unselectedLabelStyle:
-                              FlutterFlowTheme.of(context).titleMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                          indicatorColor: const Color(0xFF39D2C0),
-                          tabs: [
-                            Tab(
-                              text: FFLocalizations.of(context).getText(
-                                'jyaqtfcn' /* Current month */,
-                              ),
-                            ),
-                            Tab(
-                              text: FFLocalizations.of(context).getText(
-                                'fhhi2ptj' /* Last month */,
-                              ),
-                            ),
-                          ],
-                          controller: _model.tabBarController,
-                          onTap: (i) async {
-                            [() async {}, () async {}][i]();
-                          },
-                        ),
-                      ),
-                      Expanded(
-                        child: TabBarView(
-                          controller: _model.tabBarController,
-                          children: [
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Container(
-                                  width: double.infinity,
-                                  height: 50.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Expanded(
-                                              flex: 2,
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: SelectionArea(
-                                                    child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '5ele6qy2' /* วันที่ */,
-                                                  ),
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                )),
-                                              ),
-                                            ),
-                                            Expanded(
-                                              flex: 1,
-                                              child: SelectionArea(
-                                                  child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'xskemw5s' /* เข้างาน */,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                              )),
-                                            ),
-                                            Expanded(
-                                              flex: 1,
-                                              child: SelectionArea(
-                                                  child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'b5odvrkg' /* ออกงาน */,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                              )),
-                                            ),
-                                            Expanded(
-                                              flex: 3,
-                                              child: SelectionArea(
-                                                  child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '913wcxla' /* สถานะ */,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                              )),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Divider(
-                                        thickness: 1.0,
-                                        color: FlutterFlowTheme.of(context)
-                                            .grayIcon,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Builder(
-                                    builder: (context) {
-                                      final checkinHistoryListItem = _model
-                                          .checkinHistoryCurrentMonthData
-                                          .toList();
-
-                                      return ListView.builder(
-                                        padding: const EdgeInsets.fromLTRB(
-                                          0,
-                                          12.0,
-                                          0,
-                                          24.0,
-                                        ),
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount:
-                                            checkinHistoryListItem.length,
-                                        itemBuilder: (context,
-                                            checkinHistoryListItemIndex) {
-                                          final checkinHistoryListItemItem =
-                                              checkinHistoryListItem[
-                                                  checkinHistoryListItemIndex];
-                                          return Container(
-                                            width: double.infinity,
-                                            height: 35.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Expanded(
-                                                      flex: 2,
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: SelectionArea(
-                                                            child: AutoSizeText(
-                                                          checkinHistoryListItemItem
-                                                              .date,
-                                                          textAlign:
-                                                              TextAlign.start,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                fontSize: 12.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
-                                                        )),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      flex: 1,
-                                                      child: SelectionArea(
-                                                          child: AutoSizeText(
-                                                        checkinHistoryListItemItem
-                                                            .checkIn,
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Readex Pro',
-                                                              fontSize: 12.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                            ),
-                                                      )),
-                                                    ),
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: SelectionArea(
-                                                            child: AutoSizeText(
-                                                          checkinHistoryListItemItem
-                                                              .checkOut,
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                fontSize: 12.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
-                                                        )),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      flex: 3,
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    40.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0),
-                                                              child: Container(
-                                                                width: 16.0,
-                                                                height: 16.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color:
-                                                                      colorFromCssString(
-                                                                    checkinHistoryListItemItem
-                                                                        .color,
-                                                                    defaultColor:
-                                                                        Colors
-                                                                            .black,
-                                                                  ),
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Expanded(
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            4.0,
-                                                                            0.0),
-                                                                child:
-                                                                    SelectionArea(
-                                                                        child:
-                                                                            Text(
-                                                                  checkinHistoryListItemItem
-                                                                      .status,
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .start,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
-                                                                        fontSize:
-                                                                            12.0,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w600,
-                                                                      ),
-                                                                )),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Container(
-                                  width: double.infinity,
-                                  height: 50.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Expanded(
-                                              flex: 2,
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: SelectionArea(
-                                                    child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'nkl89n6f' /* Date */,
-                                                  ),
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                )),
-                                              ),
-                                            ),
-                                            Expanded(
-                                              flex: 1,
-                                              child: SelectionArea(
-                                                  child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'fzgyk444' /* Clock in */,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                              )),
-                                            ),
-                                            Expanded(
-                                              flex: 1,
-                                              child: SelectionArea(
-                                                  child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '04vegjgh' /* Clock out */,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                              )),
-                                            ),
-                                            Expanded(
-                                              flex: 3,
-                                              child: SelectionArea(
-                                                  child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'umt6f8p4' /* Status */,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                              )),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Divider(
-                                        thickness: 1.0,
-                                        color: FlutterFlowTheme.of(context)
-                                            .grayIcon,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Builder(
-                                    builder: (context) {
-                                      final checkinHistoryLastListItem = _model
-                                          .checkinHistoryLastMonthData
-                                          .toList();
-
-                                      return ListView.builder(
-                                        padding: const EdgeInsets.fromLTRB(
-                                          0,
-                                          12.0,
-                                          0,
-                                          24.0,
-                                        ),
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount:
-                                            checkinHistoryLastListItem.length,
-                                        itemBuilder: (context,
-                                            checkinHistoryLastListItemIndex) {
-                                          final checkinHistoryLastListItemItem =
-                                              checkinHistoryLastListItem[
-                                                  checkinHistoryLastListItemIndex];
-                                          return Container(
-                                            width: double.infinity,
-                                            height: 35.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Expanded(
-                                                      flex: 2,
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: SelectionArea(
-                                                            child: AutoSizeText(
-                                                          checkinHistoryLastListItemItem
-                                                              .date,
-                                                          textAlign:
-                                                              TextAlign.start,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                fontSize: 12.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
-                                                        )),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      flex: 1,
-                                                      child: SelectionArea(
-                                                          child: AutoSizeText(
-                                                        checkinHistoryLastListItemItem
-                                                            .checkIn,
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Readex Pro',
-                                                              fontSize: 12.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                            ),
-                                                      )),
-                                                    ),
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: SelectionArea(
-                                                            child: AutoSizeText(
-                                                          checkinHistoryLastListItemItem
-                                                              .checkOut,
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                fontSize: 12.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
-                                                        )),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      flex: 3,
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    40.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0),
-                                                              child: Container(
-                                                                width: 16.0,
-                                                                height: 16.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color:
-                                                                      colorFromCssString(
-                                                                    checkinHistoryLastListItemItem
-                                                                        .color,
-                                                                    defaultColor:
-                                                                        Colors
-                                                                            .black,
-                                                                  ),
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Expanded(
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            4.0,
-                                                                            0.0),
-                                                                child:
-                                                                    SelectionArea(
-                                                                        child:
-                                                                            Text(
-                                                                  checkinHistoryLastListItemItem
-                                                                      .status,
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .start,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
-                                                                        fontSize:
-                                                                            12.0,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w600,
-                                                                      ),
-                                                                )),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

@@ -13,6 +13,8 @@ import 'schema/key_storage1_record.dart';
 import 'schema/application_config_record.dart';
 import 'schema/sawad_form_services_v_n_record.dart';
 import 'schema/sawad_announcement_record.dart';
+import 'schema/key_storage2_record.dart';
+import 'schema/holiday_storage_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -29,6 +31,8 @@ export 'schema/key_storage1_record.dart';
 export 'schema/application_config_record.dart';
 export 'schema/sawad_form_services_v_n_record.dart';
 export 'schema/sawad_announcement_record.dart';
+export 'schema/key_storage2_record.dart';
+export 'schema/holiday_storage_record.dart';
 
 /// Functions to query UserLocationLogRecords (as a Stream and as a Future).
 Future<int> queryUserLocationLogRecordCount({
@@ -321,6 +325,80 @@ Future<List<SawadAnnouncementRecord>> querySawadAnnouncementRecordOnce({
     queryCollectionOnce(
       SawadAnnouncementRecord.collection,
       SawadAnnouncementRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query KeyStorage2Records (as a Stream and as a Future).
+Future<int> queryKeyStorage2RecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      KeyStorage2Record.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<KeyStorage2Record>> queryKeyStorage2Record({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      KeyStorage2Record.collection,
+      KeyStorage2Record.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<KeyStorage2Record>> queryKeyStorage2RecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      KeyStorage2Record.collection,
+      KeyStorage2Record.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query HolidayStorageRecords (as a Stream and as a Future).
+Future<int> queryHolidayStorageRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      HolidayStorageRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<HolidayStorageRecord>> queryHolidayStorageRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      HolidayStorageRecord.collection,
+      HolidayStorageRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<HolidayStorageRecord>> queryHolidayStorageRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      HolidayStorageRecord.collection,
+      HolidayStorageRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

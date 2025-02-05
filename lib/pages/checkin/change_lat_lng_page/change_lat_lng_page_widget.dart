@@ -1688,7 +1688,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                 text:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  '68dxb7jg' /* บันทึก */,
+                                                  '68dxb7jg' /* Save  */,
                                                 ),
                                                 options: FFButtonOptions(
                                                   width: 140.0,

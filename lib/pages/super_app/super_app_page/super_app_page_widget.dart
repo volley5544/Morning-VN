@@ -1,11 +1,10 @@
-import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/loading_scene/loading_scene_widget.dart';
 import '/components/select_language_component_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/pages/checkin/loading_scene/loading_scene_widget.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
@@ -54,25 +53,21 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
 
         return;
       }
-      _model.apiResultGetProfile = await GetUserProfileAPICall.call(
-        apiUrl: FFAppState().apiUrlAppState,
-        token: FFAppState().accessToken,
+      if (!FFAppState().isProduction) {
+        return;
+      }
+      await actions.getBackgroundLocation(
+        FFAppState().employeeID,
+        FFAppState().ProfilePhoneNumber,
+        isAndroid ? 'Android' : 'iOS',
+        '123456789',
       );
-
-      FFAppState().profilePositionName =
-          GetUserProfileAPICall.profliePositionName(
-        (_model.apiResultGetProfile?.jsonBody ?? ''),
-      )!;
-      safeSetState(() {});
-      FFAppState().ProfilePhoneNumber =
-          GetUserProfileAPICall.profilePhoneNumber(
-        (_model.apiResultGetProfile?.jsonBody ?? ''),
-      )!;
-      safeSetState(() {});
-      FFAppState().branchCode = GetUserProfileAPICall.profileBranchCode(
-        (_model.apiResultGetProfile?.jsonBody ?? ''),
-      )!;
-      safeSetState(() {});
+      await actions.periodicGetLocation(
+        FFAppState().employeeID,
+        FFAppState().ProfilePhoneNumber,
+        isAndroid ? 'Android' : 'iOS',
+        '123456789',
+      );
     });
 
     animationsMap.addAll({
@@ -351,6 +346,20 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                             onTap: () async {
                               HapticFeedback.mediumImpact();
                               await actions.a22();
+                              FFAppState().isLogin = false;
+                              FFAppState().accessToken = '';
+                              safeSetState(() {});
+                              FFAppState().username = '';
+                              FFAppState().employeeID = '';
+                              safeSetState(() {});
+                              FFAppState().profilePositionName = '';
+                              FFAppState().profileStartDate = '';
+                              FFAppState().branchCode = '';
+                              safeSetState(() {});
+                              FFAppState().profileBranchName = '';
+                              FFAppState().profileBranchCode = '';
+                              safeSetState(() {});
+                              Navigator.pop(context);
 
                               context.pushNamed('loginPage');
                             },
@@ -1192,7 +1201,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                                       0.0,
                                                                 ),
                                                           ),
-                                                          showBadge: true,
+                                                          showBadge: false,
                                                           shape: badges
                                                               .BadgeShape
                                                               .circle,
@@ -1241,6 +1250,84 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                                   context)
                                                               .getText(
                                                             'tq9b43jh' /* Leave Request */,
+                                                          ),
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                fontSize: 12.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                                InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    HapticFeedback
+                                                        .mediumImpact();
+
+                                                    context.pushNamed(
+                                                        'SearchEmployeeTrackingPage');
+                                                  },
+                                                  child: Container(
+                                                    width: 100.0,
+                                                    height: 100.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                    ),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      5.0),
+                                                          child: Container(
+                                                            width: 50.0,
+                                                            height: 50.0,
+                                                            clipBehavior:
+                                                                Clip.antiAlias,
+                                                            decoration:
+                                                                const BoxDecoration(
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            ),
+                                                            child: Image.asset(
+                                                              'assets/images/Marketing_Tracking-Links_Site_0409.png',
+                                                              fit: BoxFit
+                                                                  .contain,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'bex75qrc' /* Location
+ พนักงาน */
+                                                            ,
                                                           ),
                                                           textAlign:
                                                               TextAlign.center,

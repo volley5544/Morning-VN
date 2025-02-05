@@ -1,12 +1,12 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/loading/loading_widget.dart';
-import '/components/show_checkin_image/show_checkin_image_widget.dart';
+import '/components/loading_scene/loading_scene_widget.dart';
+import '/components/url_link/url_link_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pages/checkin/loading_scene/loading_scene_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -52,13 +52,65 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                   FocusScope.of(dialogContext).unfocus();
                   FocusManager.instance.primaryFocus?.unfocus();
                 },
-                child: const LoadingWidget(),
+                child: const LoadingSceneWidget(),
               ),
             ),
           );
         },
       );
 
+      _model.getUserProfileAPI = await GetUserProfileAPICall.call(
+        apiUrl: FFAppState().apiUrlAppState,
+        token: FFAppState().accessToken,
+      );
+
+      if ((_model.getUserProfileAPI?.statusCode ?? 200) != 200) {
+        if (GetUserProfileAPICall.code(
+              (_model.getUserProfileAPI?.jsonBody ?? ''),
+            ) !=
+            '440') {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return WebViewAware(
+                child: AlertDialog(
+                  content: Text('${FFLocalizations.of(context).getVariableText(
+                    enText: 'Error encountered(',
+                    viText: 'Đã xảy ra lỗi(',
+                    thText: 'พบข้อผิดพลาด(',
+                  )}${(_model.getUserProfileAPI?.statusCode ?? 200).toString()})'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+          Navigator.pop(context);
+          return;
+        }
+        FFAppState().isLogin = false;
+        FFAppState().accessToken = '';
+        safeSetState(() {});
+        FFAppState().username = '';
+        FFAppState().employeeID = '';
+        safeSetState(() {});
+        FFAppState().profilePositionName = '';
+        FFAppState().profileStartDate = '';
+        FFAppState().branchCode = '';
+        safeSetState(() {});
+        FFAppState().profileBranchName = '';
+        FFAppState().profileBranchCode = '';
+        safeSetState(() {});
+        Navigator.pop(context);
+
+        context.pushNamed('loginPage');
+
+        return;
+      }
       FFAppState().multiApprove = false;
       safeSetState(() {});
       _model.getLeaveListApprove = await GetLeaveListApproveCall.call(
@@ -72,9 +124,11 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
           builder: (alertDialogContext) {
             return WebViewAware(
               child: AlertDialog(
-                content: Text('${GetLeaveListApproveCall.message(
-                  (_model.getLeaveListApprove?.jsonBody ?? ''),
-                )}'),
+                content: Text('${FFLocalizations.of(context).getVariableText(
+                  enText: 'Error encountered(',
+                  viText: 'Đã xảy ra lỗi(',
+                  thText: 'พบข้อผิดพลาด(',
+                )}${(_model.getLeaveListApprove?.statusCode ?? 200).toString()})'),
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
@@ -553,34 +607,10 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                               }
                                               return;
                                             }
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return WebViewAware(
-                                                  child: AlertDialog(
-                                                    content: Text(
-                                                        SaveStatusLeaveCall
-                                                            .message(
-                                                      (_model.leaveListApproveAllAPIOutput
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                    )!),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: const Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
-                                              },
-                                            );
                                             Navigator.pop(context);
 
                                             context
-                                                .goNamed('ApprovedLeavePage');
+                                                .pushNamed('ApprovedLeavePage');
 
                                             if (shouldSetState) {
                                               safeSetState(() {});
@@ -696,7 +726,12 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                             _model.approveLeaveData.toList();
 
                         return ListView.builder(
-                          padding: EdgeInsets.zero,
+                          padding: const EdgeInsets.fromLTRB(
+                            0,
+                            0,
+                            0,
+                            50.0,
+                          ),
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           itemCount: listApproveData.length,
@@ -1958,9 +1993,9 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                                 MediaQuery.viewInsetsOf(context),
                                                                             child:
                                                                                 SizedBox(
-                                                                              height: MediaQuery.sizeOf(context).height * 0.7,
-                                                                              child: ShowCheckinImageWidget(
-                                                                                leaveImage: FFAppState().leaveDocImgPathList,
+                                                                              height: double.infinity,
+                                                                              child: UrlLinkWidget(
+                                                                                leaveDoc: FFAppState().leaveDocImgPathListNew,
                                                                               ),
                                                                             ),
                                                                           ),
@@ -2170,7 +2205,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                     Navigator.pop(
                                                                         context);
 
-                                                                    context.goNamed(
+                                                                    context.pushNamed(
                                                                         'ApprovedLeavePage');
 
                                                                     if (shouldSetState) {
@@ -2413,7 +2448,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                     Navigator.pop(
                                                                         context);
 
-                                                                    context.goNamed(
+                                                                    context.pushNamed(
                                                                         'ApprovedLeavePage');
 
                                                                     if (shouldSetState) {

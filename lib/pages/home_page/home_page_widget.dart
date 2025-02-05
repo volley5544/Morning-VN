@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
@@ -47,6 +48,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           return;
         }
       }
+
+      await actions.getBackgroundLocation(
+        FFAppState().employeeID,
+        FFAppState().ProfilePhoneNumber,
+        isAndroid ? 'Android' : 'iOS',
+        '123456789',
+      );
+      await actions.periodicGetLocation(
+        FFAppState().employeeID,
+        FFAppState().ProfilePhoneNumber,
+        isAndroid ? 'Android' : 'iOS',
+        '123456789',
+      );
     });
   }
 

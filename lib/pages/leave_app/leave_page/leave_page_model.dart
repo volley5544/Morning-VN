@@ -18,6 +18,8 @@ class LeavePageModel extends FlutterFlowModel<LeavePageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Backend Call - API (getUserProfileAPI)] action in LeavePage widget.
+  ApiCallResponse? getUserProfileAPI;
   // Stores action output result for [Backend Call - API (getLeaveList)] action in LeavePage widget.
   ApiCallResponse? leaveListAPIOutput;
 

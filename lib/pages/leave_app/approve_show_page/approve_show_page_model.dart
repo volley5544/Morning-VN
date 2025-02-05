@@ -58,6 +58,8 @@ class ApproveShowPageModel extends FlutterFlowModel<ApproveShowPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Backend Call - API (getUserProfileAPI)] action in ApproveShowPage widget.
+  ApiCallResponse? getUserProfileAPI;
   // Stores action output result for [Backend Call - API (getAllLeave)] action in ApproveShowPage widget.
   ApiCallResponse? getAllLeave;
   // Stores action output result for [Custom Action - convertToMonthNamberCopy] action in ApproveShowPage widget.
