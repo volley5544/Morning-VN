@@ -430,9 +430,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // LeavePage
   {
     '96do8hcg': {
-      'en': 'รายการลา',
-      'th': '',
-      'vi': '',
+      'en': 'Leave List',
+      'th': 'รายการลา',
+      'vi': 'Danh sách nghỉ phép',
     },
     'hvcoykrb': {
       'en': 'All',
@@ -724,7 +724,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'khbxc7ss': {
       'en': 'Approval request list',
       'th': 'รายการขออนุมัติ',
-      'vi': '',
+      'vi': 'Danh sách yêu cầu phê duyệt',
     },
     '8docfjnz': {
       'en': 'Please select the month you want to search for',

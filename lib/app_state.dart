@@ -881,6 +881,12 @@ class FFAppState extends ChangeNotifier {
   set isProduction(bool value) {
     _isProduction = value;
   }
+
+  bool _isInApp = false;
+  bool get isInApp => _isInApp;
+  set isInApp(bool value) {
+    _isInApp = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

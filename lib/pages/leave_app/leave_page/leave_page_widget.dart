@@ -272,12 +272,12 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                 ),
                 title: Text(
                   FFLocalizations.of(context).getText(
-                    '96do8hcg' /* รายการลา */,
+                    '96do8hcg' /* Leave List */,
                   ),
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                         fontFamily: 'Outfit',
                         color: Colors.white,
-                        fontSize: 30.0,
+                        fontSize: 22.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.w600,
                       ),
