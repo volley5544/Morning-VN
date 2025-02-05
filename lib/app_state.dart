@@ -887,6 +887,12 @@ class FFAppState extends ChangeNotifier {
   set isInApp(bool value) {
     _isInApp = value;
   }
+
+  bool _isLoginNew = false;
+  bool get isLoginNew => _isLoginNew;
+  set isLoginNew(bool value) {
+    _isLoginNew = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

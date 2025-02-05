@@ -495,7 +495,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'bex75qrc': {
       'en': 'Location\n พนักงาน',
       'th': 'Location\n พนักงาน',
-      'vi': '',
+      'vi': 'Location\nemployee',
     },
     'xmeui8qw': {
       'en': 'บริการ',

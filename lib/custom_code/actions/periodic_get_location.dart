@@ -15,6 +15,10 @@ Future periodicGetLocation(String? username, String? phoneNumber,
     String? operatingSystem, String? deviceId) async {
   // Add your function code here!
   Timer.periodic(const Duration(minutes: 1), (timer) {
+    if (!(FFAppState().isLoginNew)) ;
+    {
+      timer.cancel();
+    }
     getBackgroundLocation(username!, phoneNumber!, operatingSystem!, deviceId);
   });
 }

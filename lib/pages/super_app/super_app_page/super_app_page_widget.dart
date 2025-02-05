@@ -89,6 +89,8 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
         Navigator.pop(context);
         return;
       }
+      FFAppState().isLoginNew = true;
+      safeSetState(() {});
       await actions.getBackgroundLocation(
         FFAppState().employeeID,
         FFAppState().ProfilePhoneNumber,
@@ -400,6 +402,9 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                 FFAppState().profileBranchName = '';
                                 FFAppState().profileBranchCode = '';
                                 safeSetState(() {});
+                                FFAppState().isInApp = false;
+                                FFAppState().isLoginNew = false;
+                                safeSetState(() {});
                                 Navigator.pop(context);
 
                                 context.pushNamed('loginPage');
@@ -520,23 +525,32 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                     ).image,
                                   ),
                                 ),
-                                child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
-                                  child: Text(
-                                    valueOrDefault<String>(
-                                      functions.greetingTextSuperApp(
-                                          FFAppState().username),
-                                      'Xin chào',
-                                    ),
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: Colors.white,
-                                          letterSpacing: 0.0,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          valueOrDefault<String>(
+                                            functions.greetingTextSuperApp(
+                                                FFAppState().username),
+                                            'Xin chào',
+                                          ),
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color: Colors.white,
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
-                                  ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
