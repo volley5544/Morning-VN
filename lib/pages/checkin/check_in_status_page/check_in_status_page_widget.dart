@@ -347,35 +347,43 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                           ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 5.0, 6.0, 5.0),
-                                child: Icon(
-                                  Icons.read_more_sharp,
-                                  color: Color(0xFFF46506),
-                                  size: 32.0,
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                8.0, 0.0, 8.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 5.0, 6.0, 5.0),
+                                  child: Icon(
+                                    Icons.read_more_sharp,
+                                    color: Color(0xFFF46506),
+                                    size: 32.0,
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                '${FFLocalizations.of(context).getVariableText(
-                                  enText: 'Traditional Holidays for the Year ',
-                                  viText:
-                                      'Thông báo ngày nghỉ lễ truyền thống năm ',
-                                  thText: 'ประกาศวันหยุดตามประเพณี ประจำปี ',
-                                )}${functions.checkYearHolidayCopy(getCurrentTimestamp, FFAppState().appLanguage).toString()}',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
-                            ],
+                                Expanded(
+                                  child: Text(
+                                    '${FFLocalizations.of(context).getVariableText(
+                                      enText:
+                                          'Traditional Holidays for the Year ',
+                                      viText:
+                                          'Thông báo ngày nghỉ lễ theo truyền thống',
+                                      thText:
+                                          'ประกาศวันหยุดตามประเพณี ประจำปี ',
+                                    )}${functions.checkYearHolidayCopy(getCurrentTimestamp, FFAppState().appLanguage).toString()}',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

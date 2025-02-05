@@ -344,38 +344,44 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 5.0, 0.0, 5.0),
-                                    child: Icon(
-                                      Icons.download_rounded,
-                                      color: Color(0xFFFF6500),
-                                      size: 24.0,
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    8.0, 0.0, 8.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 5.0, 0.0, 5.0),
+                                      child: Icon(
+                                        Icons.download_rounded,
+                                        color: Color(0xFFFF6500),
+                                        size: 24.0,
+                                      ),
                                     ),
-                                  ),
-                                  SelectionArea(
-                                      child: Text(
-                                    '${FFLocalizations.of(context).getVariableText(
-                                      enText:
-                                          'Traditional Holidays for the Year',
-                                      viText:
-                                          'Thông báo ngày nghỉ lễ truyền thống năm ',
-                                      thText:
-                                          'ประกาศวันหยุดตามประเพณี ประจำปี ',
-                                    )}${functions.checkYearHolidayCopy(getCurrentTimestamp, FFAppState().appLanguage).toString()}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                  )),
-                                ],
+                                    Expanded(
+                                      child: SelectionArea(
+                                          child: Text(
+                                        '${FFLocalizations.of(context).getVariableText(
+                                          enText:
+                                              'Traditional Holidays for the Year',
+                                          viText:
+                                              'Thông báo ngày nghỉ lễ theo truyền thống',
+                                          thText:
+                                              'ประกาศวันหยุดตามประเพณี ประจำปี ',
+                                        )}${functions.checkYearHolidayCopy(getCurrentTimestamp, FFAppState().appLanguage).toString()}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      )),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
