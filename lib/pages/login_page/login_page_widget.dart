@@ -1149,6 +1149,20 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                           ?.jsonBody ??
                                                       ''),
                                                 )}';
+                                                FFAppState().roleName =
+                                                    '${GetUserProfileAPICall.rolename(
+                                                  (_model.getUserProfile
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )}';
+                                                FFAppState().profileLevel =
+                                                    '${GetUserProfileAPICall.gpslevel(
+                                                  (_model.getUserProfile
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )}';
+                                                safeSetState(() {});
+                                                FFAppState().isLogin = true;
                                                 safeSetState(() {});
                                                 _model.customFirebaseAuthen =
                                                     await actions.checkFirebase(

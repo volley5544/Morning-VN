@@ -1265,7 +1265,7 @@ class _EmployeeCheckinPageVolWidgetState
                                               (_model.workCheckApiOutput
                                                       ?.jsonBody ??
                                                   ''),
-                                            )?.toString()}' !=
+                                            )}' !=
                                             '200') {
                                           await showDialog(
                                             context: context,
@@ -1277,7 +1277,7 @@ class _EmployeeCheckinPageVolWidgetState
                                                     (_model.workCheckApiOutput
                                                             ?.jsonBody ??
                                                         ''),
-                                                  )?.toString()}) ${WorkCheckAPICall.messagelayer1(
+                                                  )}) ${WorkCheckAPICall.messagelayer1(
                                                     (_model.workCheckApiOutput
                                                             ?.jsonBody ??
                                                         ''),

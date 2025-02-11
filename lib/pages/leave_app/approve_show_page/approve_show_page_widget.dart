@@ -67,8 +67,27 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
       if ((_model.getUserProfileAPI?.statusCode ?? 200) != 200) {
         if (GetUserProfileAPICall.code(
               (_model.getUserProfileAPI?.jsonBody ?? ''),
-            ) !=
+            ) ==
             '440') {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return WebViewAware(
+                child: AlertDialog(
+                  content: Text('${GetUserProfileAPICall.message(
+                    (_model.getUserProfileAPI?.jsonBody ?? ''),
+                  )}'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+        } else {
           await showDialog(
             context: context,
             builder: (alertDialogContext) {
@@ -92,6 +111,8 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
           Navigator.pop(context);
           return;
         }
+
+        await actions.a22();
         FFAppState().isLogin = false;
         FFAppState().accessToken = '';
         safeSetState(() {});
@@ -102,8 +123,13 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
         FFAppState().profileStartDate = '';
         FFAppState().branchCode = '';
         safeSetState(() {});
+        FFAppState().profileHiredDate = '';
+        safeSetState(() {});
         FFAppState().profileBranchName = '';
         FFAppState().profileBranchCode = '';
+        safeSetState(() {});
+        FFAppState().isInApp = false;
+        FFAppState().isLoginNew = false;
         safeSetState(() {});
         Navigator.pop(context);
 
@@ -117,27 +143,76 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
       );
 
       if ((_model.getAllLeave?.statusCode ?? 200) != 200) {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return WebViewAware(
-              child: AlertDialog(
-                content: Text('${FFLocalizations.of(context).getVariableText(
-                  enText: 'Error encountered(',
-                  viText: 'Đã xảy ra lỗi(',
-                  thText: 'พบข้อผิดพลาด(',
-                )}${(_model.getAllLeave?.statusCode ?? 200).toString()})'),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
-                  ),
-                ],
-              ),
-            );
-          },
-        );
+        if (GetAllLeaveCall.statuslayer(
+              (_model.getAllLeave?.jsonBody ?? ''),
+            ) ==
+            '440') {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return WebViewAware(
+                child: AlertDialog(
+                  content: Text('${GetAllLeaveCall.message(
+                    (_model.getAllLeave?.jsonBody ?? ''),
+                  )}'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+        } else {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return WebViewAware(
+                child: AlertDialog(
+                  content: Text('${FFLocalizations.of(context).getVariableText(
+                    enText: 'Error encountered(',
+                    viText: 'Đã xảy ra lỗi(',
+                    thText: 'พบข้อผิดพลาด(',
+                  )}${(_model.getAllLeave?.statusCode ?? 200).toString()})'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+          Navigator.pop(context);
+          return;
+        }
+
+        await actions.a22();
+        FFAppState().isLogin = false;
+        FFAppState().accessToken = '';
+        safeSetState(() {});
+        FFAppState().username = '';
+        FFAppState().employeeID = '';
+        safeSetState(() {});
+        FFAppState().profilePositionName = '';
+        FFAppState().profileStartDate = '';
+        FFAppState().branchCode = '';
+        safeSetState(() {});
+        FFAppState().profileHiredDate = '';
+        safeSetState(() {});
+        FFAppState().profileBranchName = '';
+        FFAppState().profileBranchCode = '';
+        safeSetState(() {});
+        FFAppState().isInApp = false;
+        FFAppState().isLoginNew = false;
+        safeSetState(() {});
         Navigator.pop(context);
+
+        context.pushNamed('loginPage');
+
         return;
       }
       if (GetAllLeaveCall.statuslayer(

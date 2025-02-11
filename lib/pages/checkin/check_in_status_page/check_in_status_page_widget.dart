@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/checkin/status_compnent/status_compnent_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:expandable/expandable.dart';
@@ -70,32 +71,82 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
       );
 
       if ((_model.workCheckHistoryApiOutput?.statusCode ?? 200) != 200) {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return WebViewAware(
-              child: AlertDialog(
-                content: Text('${FFLocalizations.of(context).getVariableText(
-                  enText: 'Error encountered(',
-                  viText: 'Đã xảy ra lỗi(',
-                  thText: 'พบข้อผิดพลาด(',
-                )}${(_model.workCheckHistoryApiOutput?.statusCode ?? 200).toString()})'),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
-                  ),
-                ],
-              ),
-            );
-          },
-        );
+        if (WorkCheckHistoryAPICall.code(
+              (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
+            ) ==
+            '440') {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return WebViewAware(
+                child: AlertDialog(
+                  content: Text('${WorkCheckHistoryAPICall.message(
+                    (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
+                  )}'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+        } else {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return WebViewAware(
+                child: AlertDialog(
+                  content: Text('${FFLocalizations.of(context).getVariableText(
+                    enText: 'Error encountered(',
+                    viText: 'Đã xảy ra lỗi(',
+                    thText: 'พบข้อผิดพลาด(',
+                  )}${(_model.workCheckHistoryApiOutput?.statusCode ?? 200).toString()})'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+          Navigator.pop(context);
+          return;
+        }
+
+        await actions.a22();
+        FFAppState().isLogin = false;
+        FFAppState().accessToken = '';
+        safeSetState(() {});
+        FFAppState().username = '';
+        FFAppState().employeeID = '';
+        safeSetState(() {});
+        FFAppState().profilePositionName = '';
+        FFAppState().profileStartDate = '';
+        FFAppState().branchCode = '';
+        safeSetState(() {});
+        FFAppState().profileHiredDate = '';
+        safeSetState(() {});
+        FFAppState().profileBranchName = '';
+        FFAppState().profileBranchCode = '';
+        safeSetState(() {});
+        FFAppState().isInApp = false;
+        FFAppState().isLoginNew = false;
+        safeSetState(() {});
         Navigator.pop(context);
+
+        context.pushNamed('loginPage');
+
         return;
       }
-      if ('${WorkCheckHistoryAPICall.code(
+      if (getJsonField(
             (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
-          )?.toString()}' !=
+            r'''$.code''',
+          ).toString().toString() !=
           '200') {
         await showDialog(
           context: context,
@@ -363,24 +414,22 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                     size: 32.0,
                                   ),
                                 ),
-                                Expanded(
-                                  child: Text(
-                                    '${FFLocalizations.of(context).getVariableText(
-                                      enText:
-                                          'Traditional Holidays for the Year ',
-                                      viText:
-                                          'Thông báo ngày nghỉ lễ theo truyền thống',
-                                      thText:
-                                          'ประกาศวันหยุดตามประเพณี ประจำปี ',
-                                    )}${functions.checkYearHolidayCopy(getCurrentTimestamp, FFAppState().appLanguage).toString()}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                  ),
+                                Text(
+                                  '${FFLocalizations.of(context).getVariableText(
+                                    enText:
+                                        'Traditional Holidays for the Year ',
+                                    viText:
+                                        'Thông báo ngày nghỉ lễ theo truyền thống ',
+                                    thText: 'ประกาศวันหยุดตามประเพณี ประจำปี ',
+                                  )}${functions.checkYearHolidayCopy(getCurrentTimestamp, FFAppState().appLanguage).toString()}',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 12.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                 ),
                               ],
                             ),

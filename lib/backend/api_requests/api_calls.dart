@@ -251,7 +251,8 @@ class WorkCheckAPICall {
     );
   }
 
-  static int? statuslayer1(dynamic response) => castToType<int>(getJsonField(
+  static String? statuslayer1(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.code''',
       ));
@@ -621,7 +622,7 @@ class WorkCheckHistoryAPICall {
     );
   }
 
-  static int? code(dynamic response) => castToType<int>(getJsonField(
+  static String? code(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.code''',
       ));
@@ -648,6 +649,14 @@ class WorkCheckHistoryAPICall {
           .map((x) => CheckinDataStruct.maybeFromMap(x))
           .withoutNulls
           .toList();
+  static dynamic lastMothCheck(dynamic response) => getJsonField(
+        response,
+        r'''$.results.last_month''',
+      );
+  static dynamic currentMothCheck(dynamic response) => getJsonField(
+        response,
+        r'''$.results.current_month''',
+      );
 }
 
 class GetLeaveListCall {
@@ -983,6 +992,14 @@ class GetUserProfileAPICall {
       castToType<String>(getJsonField(
         response,
         r'''$.results.branchName''',
+      ));
+  static String? rolename(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.UserRole[:].profile[:].role_name''',
+      ));
+  static String? gpslevel(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.results.gps_level''',
       ));
 }
 

@@ -210,6 +210,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                     color: Colors.white,
                     fontSize: 22.0,
                     letterSpacing: 0.0,
+                    fontWeight: FontWeight.w600,
                   ),
             ),
             actions: const [],
@@ -1089,30 +1090,90 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                           return;
                                         }
                                       } else {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return WebViewAware(
-                                              child: AlertDialog(
-                                                content: Text(
-                                                    '${FFLocalizations.of(context).getVariableText(
-                                                  enText: 'Error encountered(',
-                                                  viText: 'Đã xảy ra lỗi(',
-                                                  thText: 'พบข้อผิดพลาด(',
-                                                )}${(_model.locationCheckApi?.statusCode ?? 200).toString()})'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: const Text('Ok'),
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                        );
+                                        if (GetBranchLocationCall.code(
+                                              (_model.locationCheckApi
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            ) ==
+                                            '440') {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: Text(
+                                                      '${GetBranchLocationCall.message(
+                                                    (_model.locationCheckApi
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )}'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        } else {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: Text(
+                                                      '${FFLocalizations.of(context).getVariableText(
+                                                    enText:
+                                                        'Error encountered(',
+                                                    viText: 'Đã xảy ra lỗi(',
+                                                    thText: 'พบข้อผิดพลาด(',
+                                                  )}${(_model.locationCheckApi?.statusCode ?? 200).toString()})'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
+                                          Navigator.pop(context);
+                                          if (shouldSetState) {
+                                            safeSetState(() {});
+                                          }
+                                          return;
+                                        }
+
+                                        await actions.a22();
+                                        FFAppState().isLogin = false;
+                                        FFAppState().accessToken = '';
+                                        safeSetState(() {});
+                                        FFAppState().username = '';
+                                        FFAppState().employeeID = '';
+                                        safeSetState(() {});
+                                        FFAppState().profilePositionName = '';
+                                        FFAppState().profileStartDate = '';
+                                        FFAppState().branchCode = '';
+                                        safeSetState(() {});
+                                        FFAppState().profileHiredDate = '';
+                                        safeSetState(() {});
+                                        FFAppState().profileBranchName = '';
+                                        FFAppState().profileBranchCode = '';
+                                        safeSetState(() {});
+                                        FFAppState().isInApp = false;
+                                        FFAppState().isLoginNew = false;
+                                        safeSetState(() {});
                                         Navigator.pop(context);
+
+                                        context.pushNamed('loginPage');
+
                                         if (shouldSetState) {
                                           safeSetState(() {});
                                         }
@@ -1653,27 +1714,109 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                       return;
                                                     }
                                                   } else {
-                                                    await showDialog(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return WebViewAware(
-                                                          child: AlertDialog(
-                                                            content: Text(
-                                                                'พบข้อผิดพลาด(${(_model.updateBranchLocation?.statusCode ?? 200).toString()})'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext),
-                                                                child:
-                                                                    const Text('Ok'),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        );
-                                                      },
-                                                    );
+                                                    if (UpdateBranchLocationCall
+                                                            .code(
+                                                          (_model.updateBranchLocation
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                        ) ==
+                                                        '440') {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return WebViewAware(
+                                                            child: AlertDialog(
+                                                              content: Text(
+                                                                  '${UpdateBranchLocationCall.message(
+                                                                (_model.updateBranchLocation
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )}'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: const Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+                                                    } else {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return WebViewAware(
+                                                            child: AlertDialog(
+                                                              content: Text(
+                                                                  '${FFLocalizations.of(context).getVariableText(
+                                                                enText:
+                                                                    'Error encountered(',
+                                                                viText:
+                                                                    'Đã xảy ra lỗi(',
+                                                                thText:
+                                                                    'พบข้อผิดพลาด(',
+                                                              )}${(_model.updateBranchLocation?.statusCode ?? 200).toString()})'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: const Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+                                                      Navigator.pop(context);
+                                                      if (shouldSetState) {
+                                                        safeSetState(() {});
+                                                      }
+                                                      return;
+                                                    }
+
+                                                    await actions.a22();
+                                                    FFAppState().isLogin =
+                                                        false;
+                                                    FFAppState().accessToken =
+                                                        '';
+                                                    safeSetState(() {});
+                                                    FFAppState().username = '';
+                                                    FFAppState().employeeID =
+                                                        '';
+                                                    safeSetState(() {});
+                                                    FFAppState()
+                                                        .profilePositionName = '';
+                                                    FFAppState()
+                                                        .profileStartDate = '';
+                                                    FFAppState().branchCode =
+                                                        '';
+                                                    safeSetState(() {});
+                                                    FFAppState()
+                                                        .profileHiredDate = '';
+                                                    safeSetState(() {});
+                                                    FFAppState()
+                                                        .profileBranchName = '';
+                                                    FFAppState()
+                                                        .profileBranchCode = '';
+                                                    safeSetState(() {});
+                                                    FFAppState().isInApp =
+                                                        false;
+                                                    FFAppState().isLoginNew =
+                                                        false;
+                                                    safeSetState(() {});
+                                                    Navigator.pop(context);
+
+                                                    context
+                                                        .pushNamed('loginPage');
+
                                                     if (shouldSetState) {
                                                       safeSetState(() {});
                                                     }

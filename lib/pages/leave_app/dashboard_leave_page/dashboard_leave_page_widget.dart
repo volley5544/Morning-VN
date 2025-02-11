@@ -64,8 +64,27 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
       if ((_model.getUserProfileAPI?.statusCode ?? 200) != 200) {
         if (GetUserProfileAPICall.code(
               (_model.getUserProfileAPI?.jsonBody ?? ''),
-            ) !=
+            ) ==
             '440') {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return WebViewAware(
+                child: AlertDialog(
+                  content: Text('${GetUserProfileAPICall.message(
+                    (_model.getUserProfileAPI?.jsonBody ?? ''),
+                  )}'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+        } else {
           await showDialog(
             context: context,
             builder: (alertDialogContext) {
@@ -89,6 +108,8 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
           Navigator.pop(context);
           return;
         }
+
+        await actions.a22();
         FFAppState().isLogin = false;
         FFAppState().accessToken = '';
         safeSetState(() {});
@@ -103,6 +124,9 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
         safeSetState(() {});
         FFAppState().profileBranchName = '';
         FFAppState().profileBranchCode = '';
+        safeSetState(() {});
+        FFAppState().isInApp = false;
+        FFAppState().isLoginNew = false;
         safeSetState(() {});
         Navigator.pop(context);
 

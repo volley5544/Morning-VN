@@ -12,6 +12,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -175,6 +176,8 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                     size: 35.0,
                                   ),
                                   onPressed: () async {
+                                    HapticFeedback.lightImpact();
+                                    await actions.a22();
                                     FFAppState().isLogin = false;
                                     FFAppState().accessToken = '';
                                     safeSetState(() {});
@@ -185,8 +188,13 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                     FFAppState().profileStartDate = '';
                                     FFAppState().branchCode = '';
                                     safeSetState(() {});
+                                    FFAppState().profileHiredDate = '';
+                                    safeSetState(() {});
                                     FFAppState().profileBranchName = '';
                                     FFAppState().profileBranchCode = '';
+                                    safeSetState(() {});
+                                    FFAppState().isInApp = false;
+                                    FFAppState().isLoginNew = false;
                                     safeSetState(() {});
                                     Navigator.pop(context);
 
@@ -639,8 +647,32 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                               (_model.getUserProfile
                                                       ?.jsonBody ??
                                                   ''),
-                                            ) !=
+                                            ) ==
                                             '440') {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: Text(
+                                                      '${GetUserProfileAPICall.message(
+                                                    (_model.getUserProfile
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )}'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        } else {
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
@@ -670,6 +702,8 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                           }
                                           return;
                                         }
+
+                                        await actions.a22();
                                         FFAppState().isLogin = false;
                                         FFAppState().accessToken = '';
                                         safeSetState(() {});
@@ -680,9 +714,15 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                         FFAppState().profileStartDate = '';
                                         FFAppState().branchCode = '';
                                         safeSetState(() {});
+                                        FFAppState().profileHiredDate = '';
+                                        safeSetState(() {});
                                         FFAppState().profileBranchName = '';
                                         FFAppState().profileBranchCode = '';
                                         safeSetState(() {});
+                                        FFAppState().isInApp = false;
+                                        FFAppState().isLoginNew = false;
+                                        safeSetState(() {});
+                                        Navigator.pop(context);
 
                                         context.pushNamed('loginPage');
 
@@ -742,6 +782,10 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                           '${GetUserProfileAPICall.profileBranchCode(
                                         (_model.getUserProfile?.jsonBody ?? ''),
                                       )}';
+                                      FFAppState().profileLevel =
+                                          '${GetUserProfileAPICall.gpslevel(
+                                        (_model.getUserProfile?.jsonBody ?? ''),
+                                      )}';
                                       safeSetState(() {});
                                       FFAppState().profileHiredDate =
                                           '${GetUserProfileAPICall.profileHiredDate(
@@ -760,6 +804,10 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                       FFAppState().profileServiceDurationDD =
                                           GetUserProfileAPICall
                                               .profileServiceDurationMM(
+                                        (_model.getUserProfile?.jsonBody ?? ''),
+                                      )!;
+                                      FFAppState().roleName =
+                                          GetUserProfileAPICall.rolename(
                                         (_model.getUserProfile?.jsonBody ?? ''),
                                       )!;
                                       safeSetState(() {});

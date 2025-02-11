@@ -120,7 +120,7 @@ class _UrlLinkWidgetState extends State<UrlLinkWidget>
                       tabs: [
                         Tab(
                           text: FFLocalizations.of(context).getText(
-                            'di2hpfkd' /* รายละเอียดไฟล์แนบ */,
+                            'di2hpfkd' /* Attachment details */,
                           ),
                         ),
                       ],
@@ -232,7 +232,14 @@ class _UrlLinkWidgetState extends State<UrlLinkWidget>
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
-                                            'กดเพื่อดูรายละเอียดไฟล์แนบที่ ${(leaveDocListIndex + 1).toString()}',
+                                            '${FFLocalizations.of(context).getVariableText(
+                                              enText:
+                                                  'Click to view attachment detail ',
+                                              viText:
+                                                  'Nhấp để xem chi tiết tệp đính kèm ',
+                                              thText:
+                                                  'กดเพื่อดูรายละเอียดไฟล์แนบที่ ',
+                                            )}${(leaveDocListIndex + 1).toString()}',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(

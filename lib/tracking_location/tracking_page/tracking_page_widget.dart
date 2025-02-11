@@ -441,7 +441,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              'f4i8hze7' /* Location พนักงาน */,
+              'f4i8hze7' /* employee Location  */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
@@ -497,7 +497,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                 flex: 3,
                                 child: Text(
                                   FFLocalizations.of(context).getText(
-                                    '623ekfqn' /* รหัสพนักงาน : */,
+                                    '623ekfqn' /* employee_id :  */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -552,7 +552,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                 flex: 3,
                                 child: Text(
                                   FFLocalizations.of(context).getText(
-                                    'yt2d1r9c' /* ชื่อพนักงาน :  */,
+                                    'yt2d1r9c' /* employee name :  */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -610,7 +610,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                 flex: 3,
                                 child: Text(
                                   FFLocalizations.of(context).getText(
-                                    'ag8e9bht' /* ตำแหน่ง :  */,
+                                    'ag8e9bht' /* position : */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -668,7 +668,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                 flex: 3,
                                 child: Text(
                                   FFLocalizations.of(context).getText(
-                                    'flp6d1t0' /* จำนวนLocation :  */,
+                                    'flp6d1t0' /* total Location :  */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -688,7 +688,20 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                     children: [
                                       Flexible(
                                         child: Text(
-                                          '${'${(widget.data?.elementAtOrNull(widget.index!))?.data.length.toString()}'} ที่ (${functions.showDateBE(_model.dateIndex)})',
+                                          '${'${(widget.data?.elementAtOrNull(widget.index!))?.data.length.toString()}'}${() {
+                                            if (FFLocalizations.of(context)
+                                                    .languageCode ==
+                                                'th') {
+                                              return 'ที่';
+                                            } else if (FFLocalizations.of(
+                                                        context)
+                                                    .languageCode ==
+                                                'en') {
+                                              return 'at';
+                                            } else {
+                                              return 'Tại';
+                                            }
+                                          }()} (${functions.showDateBE(_model.dateIndex)})',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(

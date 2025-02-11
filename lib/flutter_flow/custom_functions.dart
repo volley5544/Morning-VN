@@ -263,7 +263,7 @@ String? greetingTextSuperApp(String? name) {
   // ตัดคำตามช่องว่างและดึงคำแรก
   String firstName = name.split(' ').first;
 
-  return 'Xin chào bạn$firstName';
+  return '$firstName';
 }
 
 bool? checkYearHoliday(DateTime? dateNow) {
@@ -769,4 +769,109 @@ int? getIndexOfSomethingList(
   String? somethingValue,
 ) {
   return somethingList!.indexOf(somethingValue!);
+}
+
+bool? checkChangLocationFunction(
+  List<String>? empList,
+  String? empID,
+) {
+  if (empList! == null || empID! == null) {
+    return null;
+  }
+
+  if (empList!.contains(empID!)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+bool? getSpecificIndexFromJson(
+  dynamic jsonData,
+  String? menuName,
+  String? level,
+) {
+  if (jsonData == null) {
+    print('Invalid input: jsonData ');
+    return false;
+  }
+
+  try {
+    // Check if jsonData is already a Map
+    Map<String, dynamic> jsonMap;
+    if (jsonData is String) {
+      // If jsonData is a string, decode it to a Map
+      jsonMap = jsonDecode(jsonData);
+    } else if (jsonData is Map<String, dynamic>) {
+      // If jsonData is already a Map, use it directly
+      jsonMap = jsonData;
+    } else {
+      print('Invalid jsonData type.');
+      return false;
+    }
+    String? listMenuVisible = '';
+    String? listMenuName = 'menuName';
+    switch (level) {
+      case 'HO':
+        listMenuVisible = 'menuHO';
+        break;
+      case 'branch':
+        listMenuVisible = 'menuBranch';
+        break;
+      case 'ASM':
+        listMenuVisible = 'menuASM';
+        break;
+      case 'GBM':
+        listMenuVisible = 'menuGBM';
+        break;
+      case 'Assistant':
+        listMenuVisible = 'menuAssistant';
+        break;
+      default:
+        listMenuVisible = 'menuHO'; // Optional: Handle unexpected values
+    }
+
+    // Check if the listMenuVisible exists in the map and is a List
+    if (jsonMap.containsKey(listMenuVisible) &&
+        jsonMap[listMenuVisible] is List) {
+      List<dynamic> rawData = jsonMap[listMenuVisible] as List<dynamic>;
+
+      // Check if the listMenuName exists in the map and is a List
+      if (listMenuName != null &&
+          jsonMap.containsKey(listMenuName) &&
+          jsonMap[listMenuName] is List) {
+        List<dynamic> rawData2 = jsonMap[listMenuName] as List<dynamic>;
+
+        // Convert List<dynamic> to List<bool>
+        List<bool> data = rawData.map((item) => item == true).toList();
+        //print('dataFromJson: $data');
+
+        // Check for valid index and that menuName is present in rawData2
+        if (rawData2.contains(menuName)) {
+          int menuIndex = rawData2.indexOf(menuName);
+
+          // Return the boolean value at the calculated index
+          if (menuIndex >= 0 && menuIndex < data.length) {
+            return data[menuIndex];
+          } else {
+            print('menuName index is out of range.');
+            return false;
+          }
+        } else {
+          print('Index or menuName is invalid.');
+          return false;
+        }
+      } else {
+        print('listMenuName not found or not a list.');
+        return false;
+      }
+    } else {
+      print('listMenuVisible not found or not a list.');
+      return false;
+    }
+  } catch (e) {
+    // Print error if JSON decoding fails
+    print('Error decoding JSON: $e');
+    return false;
+  }
 }

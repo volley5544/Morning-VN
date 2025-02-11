@@ -5,6 +5,7 @@ import '/components/p_d_f_viewer/p_d_f_viewer_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -60,8 +61,27 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
       if ((_model.getUserProfileAPI?.statusCode ?? 200) != 200) {
         if (GetUserProfileAPICall.code(
               (_model.getUserProfileAPI?.jsonBody ?? ''),
-            ) !=
+            ) ==
             '440') {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return WebViewAware(
+                child: AlertDialog(
+                  content: Text('${GetUserProfileAPICall.message(
+                    (_model.getUserProfileAPI?.jsonBody ?? ''),
+                  )}'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+        } else {
           await showDialog(
             context: context,
             builder: (alertDialogContext) {
@@ -85,6 +105,8 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
           Navigator.pop(context);
           return;
         }
+
+        await actions.a22();
         FFAppState().isLogin = false;
         FFAppState().accessToken = '';
         safeSetState(() {});
@@ -95,8 +117,13 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
         FFAppState().profileStartDate = '';
         FFAppState().branchCode = '';
         safeSetState(() {});
+        FFAppState().profileHiredDate = '';
+        safeSetState(() {});
         FFAppState().profileBranchName = '';
         FFAppState().profileBranchCode = '';
+        safeSetState(() {});
+        FFAppState().isInApp = false;
+        FFAppState().isLoginNew = false;
         safeSetState(() {});
         Navigator.pop(context);
 
@@ -110,27 +137,77 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
       );
 
       if ((_model.leaveListAPIOutput?.statusCode ?? 200) != 200) {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return WebViewAware(
-              child: AlertDialog(
-                content: Text('${FFLocalizations.of(context).getVariableText(
-                  enText: 'Error encountered(',
-                  viText: 'Đã xảy ra lỗi(',
-                  thText: 'พบข้อผิดพลาด(',
-                )}${(_model.getUserProfileAPI?.statusCode ?? 200).toString()})'),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
-                  ),
-                ],
-              ),
-            );
-          },
-        );
+        if (getJsonField(
+              (_model.leaveListAPIOutput?.jsonBody ?? ''),
+              r'''$.code''',
+            ).toString().toString() ==
+            '440') {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return WebViewAware(
+                child: AlertDialog(
+                  content: Text('${GetLeaveListCall.message(
+                    (_model.leaveListAPIOutput?.jsonBody ?? ''),
+                  )}'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+        } else {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return WebViewAware(
+                child: AlertDialog(
+                  content: Text('${FFLocalizations.of(context).getVariableText(
+                    enText: 'Error encountered(',
+                    viText: 'Đã xảy ra lỗi(',
+                    thText: 'พบข้อผิดพลาด(',
+                  )}${(_model.getUserProfileAPI?.statusCode ?? 200).toString()})'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+          Navigator.pop(context);
+          return;
+        }
+
+        await actions.a22();
+        FFAppState().isLogin = false;
+        FFAppState().accessToken = '';
+        safeSetState(() {});
+        FFAppState().username = '';
+        FFAppState().employeeID = '';
+        safeSetState(() {});
+        FFAppState().profilePositionName = '';
+        FFAppState().profileStartDate = '';
+        FFAppState().branchCode = '';
+        safeSetState(() {});
+        FFAppState().profileHiredDate = '';
+        safeSetState(() {});
+        FFAppState().profileBranchName = '';
+        FFAppState().profileBranchCode = '';
+        safeSetState(() {});
+        FFAppState().isInApp = false;
+        FFAppState().isLoginNew = false;
+        safeSetState(() {});
         Navigator.pop(context);
+
+        context.pushNamed('loginPage');
+
         return;
       }
       if (getJsonField(
@@ -340,50 +417,49 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                               )
                             ],
                           ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 5.0, 0.0, 5.0),
-                                      child: Icon(
-                                        Icons.download_rounded,
-                                        color: Color(0xFFFF6500),
-                                        size: 24.0,
-                                      ),
+                          child: Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 0.0, 8.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 5.0, 0.0, 5.0),
+                                    child: Icon(
+                                      Icons.download_rounded,
+                                      color: Color(0xFFFF6500),
+                                      size: 24.0,
                                     ),
-                                    Expanded(
-                                      child: SelectionArea(
-                                          child: Text(
-                                        '${FFLocalizations.of(context).getVariableText(
-                                          enText:
-                                              'Traditional Holidays for the Year',
-                                          viText:
-                                              'Thông báo ngày nghỉ lễ theo truyền thống',
-                                          thText:
-                                              'ประกาศวันหยุดตามประเพณี ประจำปี ',
-                                        )}${functions.checkYearHolidayCopy(getCurrentTimestamp, FFAppState().appLanguage).toString()}',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      )),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                  Align(
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    child: SelectionArea(
+                                        child: Text(
+                                      '${FFLocalizations.of(context).getVariableText(
+                                        enText:
+                                            'Traditional Holidays for the Year ',
+                                        viText:
+                                            'Thông báo ngày nghỉ lễ theo truyền thống ',
+                                        thText:
+                                            'ประกาศวันหยุดตามประเพณี ประจำปี ',
+                                      )}${functions.checkYearHolidayCopy(getCurrentTimestamp, FFAppState().appLanguage).toString()}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            fontSize: 12.0,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    )),
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
                         ),
                       ),

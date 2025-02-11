@@ -3,6 +3,7 @@ import '/components/loading/loading_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -333,29 +334,89 @@ class _ConfirmCancelLeaveComponentWidgetState
                                             ?.statusCode ??
                                         200) !=
                                     200) {
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return WebViewAware(
-                                        child: AlertDialog(
-                                          content: Text(
-                                              'พบข้อผิดพลาด (${SaveStatusLeaveCall.message(
-                                            (_model.leaveListCancelAPIOutput
-                                                    ?.jsonBody ??
-                                                ''),
-                                          )})'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: const Text('Ok'),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                  );
+                                  if (SaveStatusLeaveCall.code(
+                                        (_model.leaveListCancelAPIOutput
+                                                ?.jsonBody ??
+                                            ''),
+                                      ) ==
+                                      '440') {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return WebViewAware(
+                                          child: AlertDialog(
+                                            content: Text(
+                                                '${SaveStatusLeaveCall.message(
+                                              (_model.leaveListCancelAPIOutput
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            )}'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Ok'),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return WebViewAware(
+                                          child: AlertDialog(
+                                            content: Text(
+                                                '${FFLocalizations.of(context).getVariableText(
+                                              enText: 'Error encountered (',
+                                              viText: 'Đã xảy ra lỗi (',
+                                              thText: 'พบข้อผิดพลาด (',
+                                            )}${SaveStatusLeaveCall.message(
+                                              (_model.leaveListCancelAPIOutput
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            )})'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Ok'),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+                                    Navigator.pop(context);
+                                    if (shouldSetState) safeSetState(() {});
+                                    return;
+                                  }
+
+                                  await actions.a22();
+                                  FFAppState().isLogin = false;
+                                  FFAppState().accessToken = '';
+                                  safeSetState(() {});
+                                  FFAppState().username = '';
+                                  FFAppState().employeeID = '';
+                                  safeSetState(() {});
+                                  FFAppState().profilePositionName = '';
+                                  FFAppState().profileStartDate = '';
+                                  FFAppState().branchCode = '';
+                                  safeSetState(() {});
+                                  FFAppState().profileHiredDate = '';
+                                  safeSetState(() {});
+                                  FFAppState().profileBranchName = '';
+                                  FFAppState().profileBranchCode = '';
+                                  safeSetState(() {});
+                                  FFAppState().isInApp = false;
+                                  FFAppState().isLoginNew = false;
+                                  safeSetState(() {});
                                   Navigator.pop(context);
+
+                                  context.pushNamed('loginPage');
+
                                   if (shouldSetState) safeSetState(() {});
                                   return;
                                 }

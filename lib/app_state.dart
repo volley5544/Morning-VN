@@ -893,6 +893,24 @@ class FFAppState extends ChangeNotifier {
   set isLoginNew(bool value) {
     _isLoginNew = value;
   }
+
+  String _roleName = '';
+  String get roleName => _roleName;
+  set roleName(String value) {
+    _roleName = value;
+  }
+
+  dynamic _roleMenuJson;
+  dynamic get roleMenuJson => _roleMenuJson;
+  set roleMenuJson(dynamic value) {
+    _roleMenuJson = value;
+  }
+
+  String _profileLevel = '';
+  String get profileLevel => _profileLevel;
+  set profileLevel(String value) {
+    _profileLevel = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

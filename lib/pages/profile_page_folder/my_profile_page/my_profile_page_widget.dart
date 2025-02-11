@@ -64,6 +64,19 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
               children: [
                 Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
+                  height: () {
+                    if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                      return 380.0;
+                    } else if (MediaQuery.sizeOf(context).width <
+                        kBreakpointMedium) {
+                      return (MediaQuery.sizeOf(context).height * 0.36);
+                    } else if (MediaQuery.sizeOf(context).width <
+                        kBreakpointLarge) {
+                      return (MediaQuery.sizeOf(context).height * 0.36);
+                    } else {
+                      return (MediaQuery.sizeOf(context).height * 0.36);
+                    }
+                  }(),
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     image: DecorationImage(
@@ -153,8 +166,62 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                           elevation: 2.0,
                                           shape: const CircleBorder(),
                                           child: Container(
-                                            width: 140.0,
-                                            height: 140.0,
+                                            width: () {
+                                              if (MediaQuery.sizeOf(context)
+                                                      .width <
+                                                  kBreakpointSmall) {
+                                                return 140.0;
+                                              } else if (MediaQuery.sizeOf(
+                                                          context)
+                                                      .width <
+                                                  kBreakpointMedium) {
+                                                return (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width *
+                                                    0.25);
+                                              } else if (MediaQuery.sizeOf(
+                                                          context)
+                                                      .width <
+                                                  kBreakpointLarge) {
+                                                return (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width *
+                                                    0.25);
+                                              } else {
+                                                return (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width *
+                                                    0.25);
+                                              }
+                                            }(),
+                                            height: () {
+                                              if (MediaQuery.sizeOf(context)
+                                                      .width <
+                                                  kBreakpointSmall) {
+                                                return 140.0;
+                                              } else if (MediaQuery.sizeOf(
+                                                          context)
+                                                      .width <
+                                                  kBreakpointMedium) {
+                                                return (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width *
+                                                    0.25);
+                                              } else if (MediaQuery.sizeOf(
+                                                          context)
+                                                      .width <
+                                                  kBreakpointLarge) {
+                                                return (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width *
+                                                    0.25);
+                                              } else {
+                                                return (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width *
+                                                    0.25);
+                                              }
+                                            }(),
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -205,8 +272,64 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                                 ),
                                                 transitionOnUserGestures: true,
                                                 child: Container(
-                                                  width: 125.0,
-                                                  height: 125.0,
+                                                  width: () {
+                                                    if (MediaQuery.sizeOf(
+                                                                context)
+                                                            .width <
+                                                        kBreakpointSmall) {
+                                                      return 125.0;
+                                                    } else if (MediaQuery
+                                                                .sizeOf(context)
+                                                            .width <
+                                                        kBreakpointMedium) {
+                                                      return (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.22);
+                                                    } else if (MediaQuery
+                                                                .sizeOf(context)
+                                                            .width <
+                                                        kBreakpointLarge) {
+                                                      return (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.22);
+                                                    } else {
+                                                      return (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.22);
+                                                    }
+                                                  }(),
+                                                  height: () {
+                                                    if (MediaQuery.sizeOf(
+                                                                context)
+                                                            .width <
+                                                        kBreakpointSmall) {
+                                                      return 125.0;
+                                                    } else if (MediaQuery
+                                                                .sizeOf(context)
+                                                            .width <
+                                                        kBreakpointMedium) {
+                                                      return (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.22);
+                                                    } else if (MediaQuery
+                                                                .sizeOf(context)
+                                                            .width <
+                                                        kBreakpointLarge) {
+                                                      return (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.22);
+                                                    } else {
+                                                      return (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.22);
+                                                    }
+                                                  }(),
                                                   clipBehavior: Clip.antiAlias,
                                                   decoration: const BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -226,11 +349,69 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                         ),
                                       ),
                                       Align(
-                                        alignment:
-                                            const AlignmentDirectional(0.25, 1.0),
+                                        alignment: AlignmentDirectional(
+                                            valueOrDefault<double>(
+                                              () {
+                                                if (MediaQuery.sizeOf(context)
+                                                        .width <
+                                                    kBreakpointSmall) {
+                                                  return 0.25;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointMedium) {
+                                                  return 0.18;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointLarge) {
+                                                  return 0.18;
+                                                } else {
+                                                  return 0.18;
+                                                }
+                                              }(),
+                                              0.0,
+                                            ),
+                                            1.0),
                                         child: Container(
-                                          width: 50.0,
-                                          height: 50.0,
+                                          width: () {
+                                            if (MediaQuery.sizeOf(context)
+                                                    .width <
+                                                kBreakpointSmall) {
+                                              return 50.0;
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                kBreakpointMedium) {
+                                              return 70.0;
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                kBreakpointLarge) {
+                                              return 70.0;
+                                            } else {
+                                              return 70.0;
+                                            }
+                                          }(),
+                                          height: () {
+                                            if (MediaQuery.sizeOf(context)
+                                                    .width <
+                                                kBreakpointSmall) {
+                                              return 50.0;
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                kBreakpointMedium) {
+                                              return 70.0;
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                kBreakpointLarge) {
+                                              return 70.0;
+                                            } else {
+                                              return 70.0;
+                                            }
+                                          }(),
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
@@ -238,11 +419,47 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                           ),
                                           child: FlutterFlowIconButton(
                                             borderRadius: 30.0,
-                                            buttonSize: 40.0,
-                                            icon: const Icon(
+                                            buttonSize: () {
+                                              if (MediaQuery.sizeOf(context)
+                                                      .width <
+                                                  kBreakpointSmall) {
+                                                return 60.0;
+                                              } else if (MediaQuery.sizeOf(
+                                                          context)
+                                                      .width <
+                                                  kBreakpointMedium) {
+                                                return 80.0;
+                                              } else if (MediaQuery.sizeOf(
+                                                          context)
+                                                      .width <
+                                                  kBreakpointLarge) {
+                                                return 80.0;
+                                              } else {
+                                                return 80.0;
+                                              }
+                                            }(),
+                                            icon: Icon(
                                               Icons.camera_alt,
-                                              color: Color(0xFF0039E3),
-                                              size: 30.0,
+                                              color: const Color(0xFF0039E3),
+                                              size: () {
+                                                if (MediaQuery.sizeOf(context)
+                                                        .width <
+                                                    kBreakpointSmall) {
+                                                  return 30.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointMedium) {
+                                                  return 50.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointLarge) {
+                                                  return 50.0;
+                                                } else {
+                                                  return 50.0;
+                                                }
+                                              }(),
                                             ),
                                             onPressed: () async {
                                               var shouldSetState = false;
@@ -514,6 +731,19 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                 ),
                 Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
+                  height: () {
+                    if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                      return 250.0;
+                    } else if (MediaQuery.sizeOf(context).width <
+                        kBreakpointMedium) {
+                      return (MediaQuery.sizeOf(context).height * 0.30);
+                    } else if (MediaQuery.sizeOf(context).width <
+                        kBreakpointLarge) {
+                      return (MediaQuery.sizeOf(context).height * 0.30);
+                    } else {
+                      return (MediaQuery.sizeOf(context).height * 0.30);
+                    }
+                  }(),
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),

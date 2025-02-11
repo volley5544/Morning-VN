@@ -78,27 +78,76 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
       );
 
       if ((_model.getLocationApiOutput?.statusCode ?? 200) != 200) {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return WebViewAware(
-              child: AlertDialog(
-                content: Text('${FFLocalizations.of(context).getVariableText(
-                  enText: 'Connection Error Found (',
-                  viText: 'Lỗi kết nối (',
-                  thText: 'พบข้อผิดพลาด Connection (',
-                )}${(_model.getLocationApiOutput?.statusCode ?? 200).toString()})'),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
-                  ),
-                ],
-              ),
-            );
-          },
-        );
+        if (GetLocationCall.code(
+              (_model.getLocationApiOutput?.jsonBody ?? ''),
+            ) ==
+            '440') {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return WebViewAware(
+                child: AlertDialog(
+                  content: Text('${GetLocationCall.message(
+                    (_model.getLocationApiOutput?.jsonBody ?? ''),
+                  )}'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+        } else {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return WebViewAware(
+                child: AlertDialog(
+                  content: Text('${FFLocalizations.of(context).getVariableText(
+                    enText: 'Connection Error Found (',
+                    viText: 'Lỗi kết nối (',
+                    thText: 'พบข้อผิดพลาด Connection (',
+                  )}${(_model.getLocationApiOutput?.statusCode ?? 200).toString()})'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+          Navigator.pop(context);
+          return;
+        }
+
+        await actions.a22();
+        FFAppState().isLogin = false;
+        FFAppState().accessToken = '';
+        safeSetState(() {});
+        FFAppState().username = '';
+        FFAppState().employeeID = '';
+        safeSetState(() {});
+        FFAppState().profilePositionName = '';
+        FFAppState().profileStartDate = '';
+        FFAppState().branchCode = '';
+        safeSetState(() {});
+        FFAppState().profileHiredDate = '';
+        safeSetState(() {});
+        FFAppState().profileBranchName = '';
+        FFAppState().profileBranchCode = '';
+        safeSetState(() {});
+        FFAppState().isInApp = false;
+        FFAppState().isLoginNew = false;
+        safeSetState(() {});
         Navigator.pop(context);
+
+        context.pushNamed('loginPage');
+
         return;
       }
       if ('${GetLocationCall.code(
@@ -1316,48 +1365,114 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                           ?.statusCode ??
                                                       200) !=
                                                   200) {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return WebViewAware(
-                                                      child: AlertDialog(
-                                                        content: Text(
-                                                            '${FFLocalizations.of(context).getVariableText(
-                                                          enText:
-                                                              'An error has occurred (',
-                                                          viText:
-                                                              'Đã xảy ra lỗi (',
-                                                          thText:
-                                                              'พบข้อผิดพลาด (',
-                                                        )}${WorkCheckAPICall.statuslayer1(
-                                                          (_model.workCheckApi
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        )?.toString()})'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: const Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    );
-                                                  },
-                                                );
+                                                if ('${WorkCheckAPICall.statuslayer1(
+                                                      (_model.workCheckApi
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    )}' ==
+                                                    '440') {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: Text(
+                                                              '${WorkCheckAPICall.messagelayer1(
+                                                            (_model.workCheckApi
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                          )}'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: const Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                } else {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: Text(
+                                                              '${FFLocalizations.of(context).getVariableText(
+                                                            enText:
+                                                                'An error has occurred (',
+                                                            viText:
+                                                                'Đã xảy ra lỗi (',
+                                                            thText:
+                                                                'พบข้อผิดพลาด (',
+                                                          )}${WorkCheckAPICall.statuslayer1(
+                                                            (_model.workCheckApi
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                          )})'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: const Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                  Navigator.pop(context);
+                                                  if (shouldSetState) {
+                                                    safeSetState(() {});
+                                                  }
+                                                  return;
+                                                }
+
+                                                await actions.a22();
+                                                FFAppState().isLogin = false;
+                                                FFAppState().accessToken = '';
+                                                safeSetState(() {});
+                                                FFAppState().username = '';
+                                                FFAppState().employeeID = '';
+                                                safeSetState(() {});
+                                                FFAppState()
+                                                    .profilePositionName = '';
+                                                FFAppState().profileStartDate =
+                                                    '';
+                                                FFAppState().branchCode = '';
+                                                safeSetState(() {});
+                                                FFAppState().profileHiredDate =
+                                                    '';
+                                                safeSetState(() {});
+                                                FFAppState().profileBranchName =
+                                                    '';
+                                                FFAppState().profileBranchCode =
+                                                    '';
+                                                safeSetState(() {});
+                                                FFAppState().isInApp = false;
+                                                FFAppState().isLoginNew = false;
+                                                safeSetState(() {});
                                                 Navigator.pop(context);
+
+                                                context.pushNamed('loginPage');
+
                                                 if (shouldSetState) {
                                                   safeSetState(() {});
                                                 }
                                                 return;
                                               }
-                                              if ('${WorkCheckAPICall.statuslayer1(
+                                              if (getJsonField(
                                                     (_model.workCheckApi
                                                             ?.jsonBody ??
                                                         ''),
-                                                  )?.toString()}' !=
+                                                    r'''$.code''',
+                                                  ).toString() !=
                                                   '200') {
                                                 await showDialog(
                                                   context: context,

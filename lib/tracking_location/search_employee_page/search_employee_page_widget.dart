@@ -72,12 +72,12 @@ class _SearchEmployeePageWidgetState extends State<SearchEmployeePageWidget> {
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              'gozi20be' /* Search Branch */,
+              'gozi20be' /* Search employee */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
                   color: Colors.white,
-                  fontSize: 32.0,
+                  fontSize: 24.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                 ),
@@ -140,7 +140,7 @@ class _SearchEmployeePageWidgetState extends State<SearchEmployeePageWidget> {
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'itqjp3vu' /* Type Keyword */,
+                                        'itqjp3vu' /* search by employee id/name */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium

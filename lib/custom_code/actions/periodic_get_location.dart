@@ -14,11 +14,30 @@ import 'dart:async';
 Future periodicGetLocation(String? username, String? phoneNumber,
     String? operatingSystem, String? deviceId) async {
   // Add your function code here!
-  Timer.periodic(const Duration(minutes: 1), (timer) {
-    if (!(FFAppState().isLoginNew)) ;
-    {
-      timer.cancel();
+  bool checker = true;
+  Timer? mainTimer2;
+
+  Timer.periodic(const Duration(seconds: 5), (timer) {
+    print('in 5 sexc');
+    if (checker) {
+      checker = false;
+      mainTimer2 = Timer.periodic(const Duration(seconds: 30), (timer2) {
+        getBackgroundLocation(
+            username!, phoneNumber!, operatingSystem!, deviceId);
+        print('FFAppState().isLoginNew : ${FFAppState().isLoginNew}');
+        checker = true;
+        if (mainTimer2 != null) {
+          mainTimer2?.cancel();
+          mainTimer2 = null;
+        }
+      });
     }
-    getBackgroundLocation(username!, phoneNumber!, operatingSystem!, deviceId);
+
+    if (!(FFAppState().isLoginNew)) {
+      print('timeer Cancel');
+      timer.cancel();
+      mainTimer2?.cancel();
+      mainTimer2 = null;
+    }
   });
 }

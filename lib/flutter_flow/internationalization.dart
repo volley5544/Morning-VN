@@ -478,9 +478,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': 'Dịch vụ',
     },
     'wbuyhzyn': {
-      'en': 'Check-in',
-      'th': 'เช็คอิน',
-      'vi': 'Check-in',
+      'en': 'Check in-out',
+      'th': 'ลงชื่อเข้า-ออกงาน',
+      'vi': 'Chấm Công Vào - Ra',
     },
     'vhpaflcj': {
       'en': '1',
@@ -493,14 +493,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': 'Đơn xin nghỉ',
     },
     'bex75qrc': {
-      'en': 'Location\n พนักงาน',
-      'th': 'Location\n พนักงาน',
-      'vi': 'Location\nemployee',
-    },
-    'xmeui8qw': {
-      'en': 'บริการ',
-      'th': '',
-      'vi': 'Dịch vụ',
+      'en': 'Location\nemployee',
+      'th': 'สถานที่ตั้ง\nพนักงาน',
+      'vi': 'Vị trí\nnhân viên',
     },
     'weds1r6d': {
       'en': 'Incentive สาขา',
@@ -1054,7 +1049,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ud7qpnr0': {
       'en': 'Change Lat,Lng',
-      'th': '',
+      'th': 'เปลี่ยนละติจูด, ลองจิจูด',
       'vi': 'Thay đổi Lat, Lng',
     },
     '2j9o1nc7': {
@@ -2423,39 +2418,39 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // SearchEmployeeTrackingPage
   {
     'e8yzmbdd': {
-      'en': 'รหัสพนักงาน :',
+      'en': 'employee id :',
       'th': 'รหัสพนักงาน :',
-      'vi': 'รหัสพนักงาน :',
+      'vi': 'ID nhân viên :',
     },
     'iu7lrlws': {
-      'en': 'ชื่อพนักงาน : ',
-      'th': 'ชื่อพนักงาน : ',
-      'vi': 'ชื่อพนักงาน : ',
+      'en': 'employee name :',
+      'th': 'ชื่อพนักงาน',
+      'vi': 'tên nhân viên :',
     },
     'e2m0eiqi': {
-      'en': 'ตำแหน่ง : ',
-      'th': 'ตำแหน่ง : ',
-      'vi': 'ตำแหน่ง : ',
+      'en': 'position : ',
+      'th': 'ตำแหน่ง :',
+      'vi': 'chức vụ :',
     },
     'vf440o5l': {
       'en': 'Branch Code : ',
-      'th': 'Branch Code : ',
-      'vi': 'Branch Code : ',
+      'th': 'รหัสสาขา :',
+      'vi': 'Mã chi nhánh:',
     },
     '9tole3jd': {
-      'en': 'วันที่ Location : ',
-      'th': 'วันที่ Location : ',
-      'vi': 'วันที่ Location : ',
+      'en': 'Location date : ',
+      'th': 'วันที่สถานที่ :',
+      'vi': 'Địa điểm ngày:',
     },
     'p3h99xdd': {
-      'en': 'ตรวจสอบ Location',
-      'th': 'ตรวจสอบ Location',
-      'vi': 'ตรวจสอบ Location',
+      'en': 'check Location',
+      'th': 'ตรวจสอบตำแหน่ง',
+      'vi': 'kiểm tra Vị trí',
     },
     'qg2ql6g5': {
-      'en': 'Location พนักงาน',
-      'th': 'Location พนักงาน',
-      'vi': 'Location พนักงาน',
+      'en': 'employee Location ',
+      'th': 'สถานที่ตั้งพนักงาน',
+      'vi': 'Vị trí nhân viên',
     },
     'v59z0rjv': {
       'en': 'Home',
@@ -2466,9 +2461,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // searchEmployeePage
   {
     'itqjp3vu': {
-      'en': 'Type Keyword',
-      'th': 'ประเภทคำสำคัญ',
-      'vi': 'Loại từ khóa',
+      'en': 'search by employee id/name',
+      'th': 'ค้นหาด้วย รหัส/ชื่อพนักงาน',
+      'vi': 'tìm kiếm theo id/tên nhân viên',
     },
     '4drr4nd1': {
       'en': 'Search',
@@ -2481,9 +2476,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': 'Vui lòng nhập ít nhất 3 ký tự vào từ khóa tìm kiếm của bạn',
     },
     'gozi20be': {
-      'en': 'Search Branch',
-      'th': 'ค้นหาสาขา',
-      'vi': 'Tìm kiếm chi nhánh',
+      'en': 'Search employee',
+      'th': 'ค้นหาพนักงาน',
+      'vi': 'Tìm kiếm nhân viên',
     },
     'mtf2p93f': {
       'en': 'Home',
@@ -2494,29 +2489,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // TrackingPage
   {
     '623ekfqn': {
-      'en': 'รหัสพนักงาน :',
+      'en': 'employee_id : ',
       'th': 'รหัสพนักงาน :',
-      'vi': 'employee_id : ',
+      'vi': 'ID nhân viên :',
     },
     'yt2d1r9c': {
-      'en': 'ชื่อพนักงาน : ',
+      'en': 'employee name : ',
       'th': 'ชื่อพนักงาน : ',
-      'vi': 'name :',
+      'vi': 'tên nhân viên :',
     },
     'ag8e9bht': {
-      'en': 'ตำแหน่ง : ',
+      'en': 'position :',
       'th': 'ตำแหน่ง : ',
-      'vi': 'position :',
+      'vi': 'chức vụ :',
     },
     'flp6d1t0': {
-      'en': 'จำนวนLocation : ',
-      'th': 'จำนวนLocation : ',
-      'vi': 'Location',
+      'en': 'total Location : ',
+      'th': 'รวมที่ตั้ง :',
+      'vi': 'Tổng số Địa điểm:',
     },
     'f4i8hze7': {
-      'en': 'Location พนักงาน',
-      'th': 'Location พนักงาน',
-      'vi': 'Location พนักงาน',
+      'en': 'employee Location ',
+      'th': 'สถานที่ตั้งพนักงาน',
+      'vi': 'Vị trí nhân viên',
     },
     't3wriooj': {
       'en': 'Home',
@@ -2764,17 +2759,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // urlLink
   {
     'di2hpfkd': {
-      'en': 'รายละเอียดไฟล์แนบ',
+      'en': 'Attachment details',
       'th': 'รายละเอียดไฟล์แนบ',
-      'vi': 'รายละเอียดไฟล์แนบ',
+      'vi': 'Chi tiết tệp đính kèm',
     },
   },
   // DatailLeaveRequet
   {
     'a4obaq6u': {
-      'en': 'รายละเอียดการลา',
+      'en': 'Leave details',
       'th': 'รายละเอียดการลา',
-      'vi': 'รายละเอียดการลา',
+      'vi': 'Chi tiết nghỉ phép',
     },
     'p7onmop6': {
       'en': 'ประเภทการลา',

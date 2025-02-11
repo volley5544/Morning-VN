@@ -24,3 +24,4 @@ export 'batch_update2.dart' show batchUpdate2;
 export 'convert_to_month_namber.dart' show convertToMonthNamber;
 export 'a3.dart' show a3;
 export 'a4.dart' show a4;
+export 'get_data_from_collection.dart' show getDataFromCollection;

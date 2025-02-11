@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/loading/loading_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -59,6 +60,9 @@ class _SearchEmployeeTrackingPageWidgetState
         },
       );
 
+      FFAppState().EmpProfileLocationSelected =
+          TrackingEmployeeDataModelStruct();
+      safeSetState(() {});
       _model.apiUserOutput =
           await TrackingApiGroup.getEmployeeListApiCall.call();
 
@@ -203,7 +207,7 @@ class _SearchEmployeeTrackingPageWidgetState
             ),
             title: Text(
               FFLocalizations.of(context).getText(
-                'qg2ql6g5' /* Location พนักงาน */,
+                'qg2ql6g5' /* employee Location  */,
               ),
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                     fontFamily: 'Outfit',
@@ -278,7 +282,20 @@ class _SearchEmployeeTrackingPageWidgetState
                                             (FFAppState().EmpProfileLocationSelected.fullprofile !=
                                                 '')
                                         ? FFAppState().EmpProfileLocationSelected.fullprofile
-                                        : 'เลือกพนักงาน',
+                                        : () {
+                                            if (FFLocalizations.of(context)
+                                                    .languageCode ==
+                                                'th') {
+                                              return 'เลือกพนักงาน';
+                                            } else if (FFLocalizations.of(
+                                                        context)
+                                                    .languageCode ==
+                                                'en') {
+                                              return 'select employee';
+                                            } else {
+                                              return 'chọn nhân viên';
+                                            }
+                                          }(),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -328,7 +345,7 @@ class _SearchEmployeeTrackingPageWidgetState
                                     flex: 3,
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        'e8yzmbdd' /* รหัสพนักงาน : */,
+                                        'e8yzmbdd' /* employee id : */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -384,7 +401,7 @@ class _SearchEmployeeTrackingPageWidgetState
                                     flex: 3,
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        'iu7lrlws' /* ชื่อพนักงาน :  */,
+                                        'iu7lrlws' /* employee name : */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -440,7 +457,7 @@ class _SearchEmployeeTrackingPageWidgetState
                                     flex: 3,
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        'e2m0eiqi' /* ตำแหน่ง :  */,
+                                        'e2m0eiqi' /* position :  */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -568,7 +585,7 @@ class _SearchEmployeeTrackingPageWidgetState
                                   flex: 3,
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      '9tole3jd' /* วันที่ Location :  */,
+                                      '9tole3jd' /* Location date :  */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -661,7 +678,21 @@ class _SearchEmployeeTrackingPageWidgetState
                                                 ? functions.showDateBE(_model
                                                     .datePicked
                                                     ?.toString())
-                                                : 'กรุณาเลือกวันที่',
+                                                : () {
+                                                    if (FFLocalizations.of(
+                                                                context)
+                                                            .languageCode ==
+                                                        'th') {
+                                                      return 'เลือกวันที่ ...';
+                                                    } else if (FFLocalizations
+                                                                .of(context)
+                                                            .languageCode ==
+                                                        'en') {
+                                                      return 'select date ...';
+                                                    } else {
+                                                      return 'chọn một ngày ..';
+                                                    }
+                                                  }(),
                                             'กรุณาเลือกวันที่',
                                           ),
                                           textAlign: TextAlign.center,
@@ -754,11 +785,11 @@ class _SearchEmployeeTrackingPageWidgetState
                                       return WebViewAware(
                                         child: AlertDialog(
                                           content: Text(
-                                              '${TrackingApiGroup.getLocationEmployeeAPICall.code(
-                                                    (_model.getUserLocations
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  )?.toString()}'),
+                                              '${TrackingApiGroup.getLocationEmployeeAPICall.message(
+                                            (_model.getUserLocations
+                                                    ?.jsonBody ??
+                                                ''),
+                                          )}'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
@@ -814,7 +845,7 @@ class _SearchEmployeeTrackingPageWidgetState
                                 if (shouldSetState) safeSetState(() {});
                               },
                               text: FFLocalizations.of(context).getText(
-                                'p3h99xdd' /* ตรวจสอบ Location */,
+                                'p3h99xdd' /* check Location */,
                               ),
                               icon: const Icon(
                                 Icons.not_listed_location_outlined,

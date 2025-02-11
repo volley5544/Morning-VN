@@ -68,7 +68,7 @@ class _DatailLeaveRequetWidgetState extends State<DatailLeaveRequetWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
-                      'a4obaq6u' /* รายละเอียดการลา */,
+                      'a4obaq6u' /* Leave details */,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Readex Pro',

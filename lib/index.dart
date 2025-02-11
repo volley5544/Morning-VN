@@ -4,7 +4,7 @@ export '/pages/login_page/login_page_widget.dart' show LoginPageWidget;
 export '/pages/pin_page/pin_page_widget.dart' show PinPageWidget;
 export '/pages/set_pin_page/set_pin_page_widget.dart' show SetPinPageWidget;
 export '/pages/checkin/testlogin/testlogin_widget.dart' show TestloginWidget;
-export '/pages/dashboard_checkin/dashboard_checkin_widget.dart'
+export '/pages/checkin/dashboard_checkin/dashboard_checkin_widget.dart'
     show DashboardCheckinWidget;
 export '/pages/leave_app/dashboard_leave_page/dashboard_leave_page_widget.dart'
     show DashboardLeavePageWidget;

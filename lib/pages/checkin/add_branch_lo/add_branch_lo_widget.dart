@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -812,28 +813,83 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
 
                             Navigator.pop(context);
                           } else {
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return WebViewAware(
-                                  child: AlertDialog(
-                                    content: Text(
-                                        '${FFLocalizations.of(context).getVariableText(
-                                      enText: 'Error encountered (',
-                                      viText: 'Đã xảy ra lỗi (',
-                                      thText: 'พบข้อผิดพลาด (',
-                                    )}${(_model.createBranchLocation?.statusCode ?? 200).toString()})'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: const Text('Ok'),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            );
+                            if (CreateBranchLocationCall.code(
+                                  (_model.createBranchLocation?.jsonBody ?? ''),
+                                ) ==
+                                '440') {
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return WebViewAware(
+                                    child: AlertDialog(
+                                      content: Text(
+                                          '${CreateBranchLocationCall.message(
+                                        (_model.createBranchLocation
+                                                ?.jsonBody ??
+                                            ''),
+                                      )}'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: const Text('Ok'),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              );
+                            } else {
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return WebViewAware(
+                                    child: AlertDialog(
+                                      content: Text(
+                                          '${FFLocalizations.of(context).getVariableText(
+                                        enText: 'Error encountered (',
+                                        viText: 'Đã xảy ra lỗi (',
+                                        thText: 'พบข้อผิดพลาด (',
+                                      )}${(_model.createBranchLocation?.statusCode ?? 200).toString()})'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: const Text('Ok'),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              );
+                              Navigator.pop(context);
+                              if (shouldSetState) safeSetState(() {});
+                              return;
+                            }
+
+                            await actions.a22();
+                            FFAppState().isLogin = false;
+                            FFAppState().accessToken = '';
+                            safeSetState(() {});
+                            FFAppState().username = '';
+                            FFAppState().employeeID = '';
+                            safeSetState(() {});
+                            FFAppState().profilePositionName = '';
+                            FFAppState().profileStartDate = '';
+                            FFAppState().branchCode = '';
+                            safeSetState(() {});
+                            FFAppState().profileHiredDate = '';
+                            safeSetState(() {});
+                            FFAppState().profileBranchName = '';
+                            FFAppState().profileBranchCode = '';
+                            safeSetState(() {});
+                            FFAppState().isInApp = false;
+                            FFAppState().isLoginNew = false;
+                            safeSetState(() {});
+                            Navigator.pop(context);
+
+                            context.pushNamed('loginPage');
+
                             if (shouldSetState) safeSetState(() {});
                             return;
                           }

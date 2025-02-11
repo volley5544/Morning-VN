@@ -16,6 +16,8 @@ class SuperAppPageModel extends FlutterFlowModel<SuperAppPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Custom Action - getDataFromCollection] action in superAppPage widget.
+  dynamic roleMenuJson;
   // State field(s) for PageViewBanner widget.
   PageController? pageViewBannerController;
 

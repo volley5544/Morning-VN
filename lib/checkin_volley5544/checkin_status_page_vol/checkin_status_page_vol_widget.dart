@@ -88,7 +88,7 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
       }
       if ('${WorkCheckHistoryAPICall.code(
             (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
-          )?.toString()}' !=
+          )}' !=
           '200') {
         Navigator.pop(context);
         await showDialog(
@@ -99,7 +99,7 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                 content: Text(
                     'พบข้อผิดพลาดConnection (${WorkCheckHistoryAPICall.code(
                   (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
-                )?.toString()}) ${WorkCheckHistoryAPICall.message(
+                )}) ${WorkCheckHistoryAPICall.message(
                   (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
                 )}'),
                 actions: [
@@ -280,7 +280,7 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                                             (_model.workCheckHistoryApiOutput
                                                     ?.jsonBody ??
                                                 ''),
-                                          )?.toString()}' ==
+                                          )}' ==
                                           '200') {
                                         return SizedBox(
                                           height: 200.0,
@@ -337,7 +337,7 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                                             (_model.workCheckHistoryApiOutput
                                                     ?.jsonBody ??
                                                 ''),
-                                          )?.toString()}' ==
+                                          )}' ==
                                           '200') {
                                         return SizedBox(
                                           height: 200.0,

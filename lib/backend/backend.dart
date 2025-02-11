@@ -15,6 +15,8 @@ import 'schema/sawad_form_services_v_n_record.dart';
 import 'schema/sawad_announcement_record.dart';
 import 'schema/key_storage2_record.dart';
 import 'schema/holiday_storage_record.dart';
+import 'schema/chg_location_perm_record.dart';
+import 'schema/role_menu_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -33,6 +35,8 @@ export 'schema/sawad_form_services_v_n_record.dart';
 export 'schema/sawad_announcement_record.dart';
 export 'schema/key_storage2_record.dart';
 export 'schema/holiday_storage_record.dart';
+export 'schema/chg_location_perm_record.dart';
+export 'schema/role_menu_record.dart';
 
 /// Functions to query UserLocationLogRecords (as a Stream and as a Future).
 Future<int> queryUserLocationLogRecordCount({
@@ -399,6 +403,80 @@ Future<List<HolidayStorageRecord>> queryHolidayStorageRecordOnce({
     queryCollectionOnce(
       HolidayStorageRecord.collection,
       HolidayStorageRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query ChgLocationPermRecords (as a Stream and as a Future).
+Future<int> queryChgLocationPermRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ChgLocationPermRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ChgLocationPermRecord>> queryChgLocationPermRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ChgLocationPermRecord.collection,
+      ChgLocationPermRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ChgLocationPermRecord>> queryChgLocationPermRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ChgLocationPermRecord.collection,
+      ChgLocationPermRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query RoleMenuRecords (as a Stream and as a Future).
+Future<int> queryRoleMenuRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      RoleMenuRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<RoleMenuRecord>> queryRoleMenuRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      RoleMenuRecord.collection,
+      RoleMenuRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<RoleMenuRecord>> queryRoleMenuRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      RoleMenuRecord.collection,
+      RoleMenuRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
