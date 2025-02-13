@@ -876,7 +876,7 @@ class FFAppState extends ChangeNotifier {
     polyMapTimeList.insert(index, value);
   }
 
-  bool _isProduction = false;
+  bool _isProduction = true;
   bool get isProduction => _isProduction;
   set isProduction(bool value) {
     _isProduction = value;

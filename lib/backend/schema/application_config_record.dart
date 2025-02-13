@@ -25,9 +25,21 @@ class ApplicationConfigRecord extends FirestoreRecord {
   String get buildNumber => _buildNumber ?? '';
   bool hasBuildNumber() => _buildNumber != null;
 
+  // "version_ios" field.
+  String? _versionIos;
+  String get versionIos => _versionIos ?? '';
+  bool hasVersionIos() => _versionIos != null;
+
+  // "build_number_ios" field.
+  String? _buildNumberIos;
+  String get buildNumberIos => _buildNumberIos ?? '';
+  bool hasBuildNumberIos() => _buildNumberIos != null;
+
   void _initializeFields() {
     _version = snapshotData['version'] as String?;
     _buildNumber = snapshotData['build_number'] as String?;
+    _versionIos = snapshotData['version_ios'] as String?;
+    _buildNumberIos = snapshotData['build_number_ios'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -68,11 +80,15 @@ class ApplicationConfigRecord extends FirestoreRecord {
 Map<String, dynamic> createApplicationConfigRecordData({
   String? version,
   String? buildNumber,
+  String? versionIos,
+  String? buildNumberIos,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'version': version,
       'build_number': buildNumber,
+      'version_ios': versionIos,
+      'build_number_ios': buildNumberIos,
     }.withoutNulls,
   );
 
@@ -85,12 +101,15 @@ class ApplicationConfigRecordDocumentEquality
 
   @override
   bool equals(ApplicationConfigRecord? e1, ApplicationConfigRecord? e2) {
-    return e1?.version == e2?.version && e1?.buildNumber == e2?.buildNumber;
+    return e1?.version == e2?.version &&
+        e1?.buildNumber == e2?.buildNumber &&
+        e1?.versionIos == e2?.versionIos &&
+        e1?.buildNumberIos == e2?.buildNumberIos;
   }
 
   @override
-  int hash(ApplicationConfigRecord? e) =>
-      const ListEquality().hash([e?.version, e?.buildNumber]);
+  int hash(ApplicationConfigRecord? e) => const ListEquality()
+      .hash([e?.version, e?.buildNumber, e?.versionIos, e?.buildNumberIos]);
 
   @override
   bool isValidKey(Object? o) => o is ApplicationConfigRecord;

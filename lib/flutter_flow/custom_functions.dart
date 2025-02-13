@@ -875,3 +875,22 @@ bool? getSpecificIndexFromJson(
     return false;
   }
 }
+
+dynamic getListDataFromJsonList(
+  dynamic jsonData,
+  String? listName,
+) {
+  Map<String, dynamic> mapDataInput = jsonDecode(jsonData!);
+  dynamic jsonOutput = jsonEncode(mapDataInput[listName!]);
+  return jsonOutput;
+}
+
+bool? containsValueInJsonList(
+  dynamic listFromJson,
+  String? value,
+  String? listName,
+) {
+  dynamic inputList = jsonDecode(listFromJson!);
+
+  return inputList[listName!].contains(value!);
+}

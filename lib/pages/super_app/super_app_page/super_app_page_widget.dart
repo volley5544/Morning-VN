@@ -105,34 +105,9 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
         Navigator.pop(context);
         return;
       }
-      FFAppState().isLoginNew = true;
-      FFAppState().isTrackingList = (getJsonField(
-        FFAppState().roleMenuJson,
-        r'''$.isTracking''',
-        true,
-      ) as List)
-          .map<String>((s) => s.toString())
-          .toList()
-          .toList()
-          .cast<String>();
-      safeSetState(() {});
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return WebViewAware(
-            child: AlertDialog(
-              content: Text(FFAppState().isTrackingList.length.toString()),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            ),
-          );
-        },
-      );
-      if (FFAppState().isTrackingList.contains(FFAppState().profileLevel)) {
+      if (!(!functions.containsValueInJsonList(FFAppState().roleMenuJson,
+              FFAppState().profileLevel, 'isTracking')! &&
+          false)) {
         await actions.getBackgroundLocation(
           FFAppState().employeeID,
           '${FFAppState().ProfilePhoneNumber}',

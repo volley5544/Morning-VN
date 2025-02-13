@@ -28,6 +28,7 @@ Future<String> a3() async {
 
   _identifier = identifier!;
   return _identifier;
+  //return 'wow';
 }
 // Set your action name, define your arguments and return parameter,
 // and then add the boilerplate code using the green button on the right!

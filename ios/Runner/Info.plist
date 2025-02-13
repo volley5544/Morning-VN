@@ -65,7 +65,10 @@
     <string>In order to take a picture or video, this app requires permission to access the camera.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>In order to upload data, this app requires permission to access the photo library.</string>
-
+	<key>NSLocationAlwaysUsageDescription</key>
+    <string>We need to track your location even when the app is in the background.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>We need continuous access to your location for accurate tracking.</string>
 
 
 	<key>UILaunchStoryboardName</key>
