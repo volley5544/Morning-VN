@@ -105,6 +105,8 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
         Navigator.pop(context);
         return;
       }
+      FFAppState().isLoginNew = true;
+      safeSetState(() {});
       await actions.getBackgroundLocation(
         FFAppState().employeeID,
         '${FFAppState().ProfilePhoneNumber}',
