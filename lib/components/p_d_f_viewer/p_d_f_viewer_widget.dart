@@ -63,15 +63,15 @@ class _PDFViewerWidgetState extends State<PDFViewerWidget> {
                 text: FFLocalizations.of(context).getText(
                   '8hrqora5' /*  */,
                 ),
-                icon: const FaIcon(
+                icon: FaIcon(
                   FontAwesomeIcons.times,
                   color: Color(0xFFFF0000),
                   size: 40.0,
                 ),
                 options: FFButtonOptions(
                   height: 40.0,
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                  iconPadding: const EdgeInsets.all(0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  iconPadding: EdgeInsets.all(0.0),
                   color: Colors.transparent,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Readex Pro',

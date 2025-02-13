@@ -37,7 +37,7 @@ class _PolyMapWidgetComponentWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return Container(
       width: double.infinity,
       height: double.infinity,
       child: custom_widgets.PolylineExample(

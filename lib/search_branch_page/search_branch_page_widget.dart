@@ -53,14 +53,14 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: const Color(0xFFFF6500),
+          backgroundColor: Color(0xFFFF6500),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -81,14 +81,14 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
                   fontWeight: FontWeight.w600,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 8.0,
         ),
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -118,14 +118,14 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 8.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.textController,
                                     focusNode: _model.textFieldFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
                                       '_model.textController',
-                                      const Duration(milliseconds: 100),
+                                      Duration(milliseconds: 100),
                                       () => safeSetState(() {}),
                                     ),
                                     autofocus: false,
@@ -151,7 +151,7 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
                                       focusedBorder: InputBorder.none,
                                       errorBorder: InputBorder.none,
                                       focusedErrorBorder: InputBorder.none,
-                                      prefixIcon: const Icon(
+                                      prefixIcon: Icon(
                                         Icons.search_outlined,
                                       ),
                                     ),
@@ -181,11 +181,11 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
                                 options: FFButtonOptions(
                                   width: 100.0,
                                   height: 50.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 16.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: const Color(0xFFFF6500),
+                                  color: Color(0xFFFF6500),
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
@@ -197,7 +197,7 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                               ),
-                          ].divide(const SizedBox(width: 8.0)),
+                          ].divide(SizedBox(width: 8.0)),
                         ),
                       ),
                       Expanded(
@@ -206,7 +206,7 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
                             if (true) {
                               return Container(
                                 width: double.infinity,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Builder(
                                   builder: (context) {
                                     final dataList =
@@ -246,7 +246,7 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
                                                 child: Container(
                                                   width: double.infinity,
                                                   height: 60.0,
-                                                  decoration: const BoxDecoration(),
+                                                  decoration: BoxDecoration(),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -256,7 +256,7 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     12.0,
                                                                     0.0,
@@ -297,14 +297,14 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
                               return Container(
                                 width: double.infinity,
                                 height: double.infinity,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
                                       width: double.infinity,
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
                                           'gztk5uiq' /* Please enter at least 3 charac... */,
@@ -314,13 +314,13 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              color: const Color(0xCC646464),
+                                              color: Color(0xCC646464),
                                               fontSize: 20.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
-                                  ].addToEnd(const SizedBox(height: 200.0)),
+                                  ].addToEnd(SizedBox(height: 200.0)),
                                 ),
                               );
                             }
@@ -328,9 +328,9 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
                         ),
                       ),
                     ]
-                        .divide(const SizedBox(height: 12.0))
-                        .addToStart(const SizedBox(height: 12.0))
-                        .addToEnd(const SizedBox(height: 24.0)),
+                        .divide(SizedBox(height: 12.0))
+                        .addToStart(SizedBox(height: 12.0))
+                        .addToEnd(SizedBox(height: 24.0)),
                   ),
                 ),
               ],

@@ -53,7 +53,7 @@ class _CheckinDataTableComponentWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -65,7 +65,7 @@ class _CheckinDataTableComponentWidgetState
                   Expanded(
                     flex: 5,
                     child: Container(
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           '16oepeuj' /* วันที่ */,
@@ -81,7 +81,7 @@ class _CheckinDataTableComponentWidgetState
                   Expanded(
                     flex: 3,
                     child: Container(
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           '0zrm148v' /* เข้างาน */,
@@ -97,7 +97,7 @@ class _CheckinDataTableComponentWidgetState
                   Expanded(
                     flex: 3,
                     child: Container(
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'sj9ejuz4' /* ออกงาน */,
@@ -113,7 +113,7 @@ class _CheckinDataTableComponentWidgetState
                   Expanded(
                     flex: 5,
                     child: Container(
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'quvmv0kc' /* สถานะ */,
@@ -137,7 +137,7 @@ class _CheckinDataTableComponentWidgetState
                     widget.checkinHistoryData!.toList();
 
                 return ListView.builder(
-                  padding: const EdgeInsets.fromLTRB(
+                  padding: EdgeInsets.fromLTRB(
                     0,
                     0,
                     0,
@@ -163,10 +163,10 @@ class _CheckinDataTableComponentWidgetState
                           Expanded(
                             flex: 5,
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 0.0, 0.0),
                               child: Container(
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Text(
                                   valueOrDefault<String>(
                                     checkinHistoryListItemItem.dateName,
@@ -186,7 +186,7 @@ class _CheckinDataTableComponentWidgetState
                           Expanded(
                             flex: 3,
                             child: Container(
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Text(
                                 valueOrDefault<String>(
                                   checkinHistoryListItemItem.checkIn,
@@ -205,7 +205,7 @@ class _CheckinDataTableComponentWidgetState
                           Expanded(
                             flex: 3,
                             child: Container(
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Text(
                                 valueOrDefault<String>(
                                   checkinHistoryListItemItem.checkOut,
@@ -224,7 +224,7 @@ class _CheckinDataTableComponentWidgetState
                           Expanded(
                             flex: 5,
                             child: Container(
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -242,13 +242,13 @@ class _CheckinDataTableComponentWidgetState
                                   ),
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Container(
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 4.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
@@ -279,7 +279,7 @@ class _CheckinDataTableComponentWidgetState
               },
             ),
           ),
-        ].addToStart(const SizedBox(height: 12.0)),
+        ].addToStart(SizedBox(height: 12.0)),
       ),
     );
   }

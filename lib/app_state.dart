@@ -911,6 +911,36 @@ class FFAppState extends ChangeNotifier {
   set profileLevel(String value) {
     _profileLevel = value;
   }
+
+  /// List of level get tracking
+  List<String> _isTrackingList = [];
+  List<String> get isTrackingList => _isTrackingList;
+  set isTrackingList(List<String> value) {
+    _isTrackingList = value;
+  }
+
+  void addToIsTrackingList(String value) {
+    isTrackingList.add(value);
+  }
+
+  void removeFromIsTrackingList(String value) {
+    isTrackingList.remove(value);
+  }
+
+  void removeAtIndexFromIsTrackingList(int index) {
+    isTrackingList.removeAt(index);
+  }
+
+  void updateIsTrackingListAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    isTrackingList[index] = updateFn(_isTrackingList[index]);
+  }
+
+  void insertAtIndexInIsTrackingList(int index, String value) {
+    isTrackingList.insert(index, value);
+  }
 }
 
 void _safeInit(Function() initializeField) {

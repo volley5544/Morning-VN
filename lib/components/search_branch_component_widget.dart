@@ -55,7 +55,7 @@ class _SearchBranchComponentWidgetState
         color: FlutterFlowTheme.of(context).secondaryBackground,
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -83,14 +83,14 @@ class _SearchBranchComponentWidgetState
                               ),
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 8.0, 0.0),
                               child: TextFormField(
                                 controller: _model.textController,
                                 focusNode: _model.textFieldFocusNode,
                                 onChanged: (_) => EasyDebounce.debounce(
                                   '_model.textController',
-                                  const Duration(milliseconds: 100),
+                                  Duration(milliseconds: 100),
                                   () => safeSetState(() {}),
                                 ),
                                 autofocus: false,
@@ -115,7 +115,7 @@ class _SearchBranchComponentWidgetState
                                   focusedBorder: InputBorder.none,
                                   errorBorder: InputBorder.none,
                                   focusedErrorBorder: InputBorder.none,
-                                  prefixIcon: const Icon(
+                                  prefixIcon: Icon(
                                     Icons.search_outlined,
                                   ),
                                 ),
@@ -131,12 +131,12 @@ class _SearchBranchComponentWidgetState
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 8.0)),
+                      ].divide(SizedBox(width: 8.0)),
                     ),
                   ),
                   Container(
                     width: double.infinity,
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Builder(
                       builder: (context) {
                         final dataList = widget.dataList!.toList();
@@ -169,7 +169,7 @@ class _SearchBranchComponentWidgetState
                                     child: Container(
                                       width: double.infinity,
                                       height: 60.0,
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -177,7 +177,7 @@ class _SearchBranchComponentWidgetState
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               dataListItem.branchName,
@@ -208,9 +208,9 @@ class _SearchBranchComponentWidgetState
                     ),
                   ),
                 ]
-                    .divide(const SizedBox(height: 12.0))
-                    .addToStart(const SizedBox(height: 12.0))
-                    .addToEnd(const SizedBox(height: 24.0)),
+                    .divide(SizedBox(height: 12.0))
+                    .addToStart(SizedBox(height: 12.0))
+                    .addToEnd(SizedBox(height: 24.0)),
               ),
             ),
           ],

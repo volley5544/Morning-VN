@@ -58,7 +58,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
               },
               child: Padding(
                 padding: MediaQuery.viewInsetsOf(context),
-                child: const SizedBox(
+                child: Container(
                   height: double.infinity,
                   child: LoadingWidget(),
                 ),
@@ -104,8 +104,8 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 500.0.ms,
-            begin: const Offset(0.0, 25.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 25.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -123,8 +123,8 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 500.0.ms,
-            begin: const Offset(0.0, 25.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 25.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -142,8 +142,8 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 500.0.ms,
-            begin: const Offset(0.0, 25.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 25.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -161,8 +161,8 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 500.0.ms,
-            begin: const Offset(0.0, 25.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 25.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -195,7 +195,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        drawer: SizedBox(
+        drawer: Container(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
             elevation: 16.0,
@@ -203,7 +203,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Visibility(
                   visible: responsiveVisibility(
                     context: context,
@@ -213,11 +213,11 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 100.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 100.0),
                     child: Container(
                       width: 100.0,
                       height: double.infinity,
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Builder(
                         builder: (context) {
                           final list30DaysDateTimeListItem = functions
@@ -342,8 +342,8 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                                       list30DaysDateTimeListItemItem))!
                                               ? FlutterFlowTheme.of(context)
                                                   .secondaryBackground
-                                              : const Color(0xFFDFDFDF),
-                                          const Color(0xFFDFDFDF),
+                                              : Color(0xFFDFDFDF),
+                                          Color(0xFFDFDFDF),
                                         ),
                                         borderRadius: BorderRadius.circular(
                                             valueOrDefault<double>(
@@ -358,7 +358,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                           color: functions.getDateFormat(
                                                       list30DaysDateTimeListItemItem) ==
                                                   _model.dateIndex
-                                              ? const Color(0xFFFF6500)
+                                              ? Color(0xFFFF6500)
                                               : Colors.transparent,
                                           width: functions.getDateFormat(
                                                       list30DaysDateTimeListItemItem) ==
@@ -374,12 +374,12 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                         children: [
                                           Text(
                                             valueOrDefault<String>(
-                                              valueOrDefault<String>(
+                                              '${valueOrDefault<String>(
                                                 functions.showDateBE(
                                                     list30DaysDateTimeListItemItem
                                                         .toString()),
                                                 '22/01/68',
-                                              ),
+                                              )}',
                                               '22/01/68',
                                             ),
                                             style: FlutterFlowTheme.of(context)
@@ -398,8 +398,8 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .primaryText
-                                                        : const Color(0xFF969696),
-                                                    const Color(0xFF969696),
+                                                        : Color(0xFF969696),
+                                                    Color(0xFF969696),
                                                   ),
                                                   fontSize: 18.0,
                                                   letterSpacing: 0.0,
@@ -423,7 +423,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
           ),
         ),
         appBar: AppBar(
-          backgroundColor: const Color(0xFFFF6500),
+          backgroundColor: Color(0xFFFF6500),
           automaticallyImplyLeading: false,
           leading: InkWell(
             splashColor: Colors.transparent,
@@ -433,7 +433,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
             onTap: () async {
               context.safePop();
             },
-            child: const Icon(
+            child: Icon(
               Icons.arrow_back,
               color: Color(0xFBFFFFFF),
               size: 30.0,
@@ -450,7 +450,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 10.0,
         ),
@@ -459,7 +459,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -479,13 +479,13 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Expanded(
+                              Expanded(
                                 flex: 1,
                                 child: Icon(
                                   Icons.grid_3x3,
@@ -511,7 +511,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                               Expanded(
                                 flex: 5,
                                 child: Text(
-                                  FFAppState().EmpProfileLocationSelected.employeeId,
+                                  '${FFAppState().EmpProfileLocationSelected.employeeId}',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -534,13 +534,13 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Expanded(
+                              Expanded(
                                 flex: 1,
                                 child: Icon(
                                   Icons.person,
@@ -566,9 +566,9 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                               Expanded(
                                 flex: 5,
                                 child: Container(
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Text(
-                                    FFAppState().EmpProfileLocationSelected.nameTh,
+                                    '${FFAppState().EmpProfileLocationSelected.nameTh}',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -592,13 +592,13 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Expanded(
+                              Expanded(
                                 flex: 1,
                                 child: Icon(
                                   Icons.work,
@@ -624,9 +624,9 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                               Expanded(
                                 flex: 5,
                                 child: Container(
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Text(
-                                    FFAppState().EmpProfileLocationSelected.position,
+                                    '${FFAppState().EmpProfileLocationSelected.position}',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -650,13 +650,13 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Expanded(
+                              Expanded(
                                 flex: 1,
                                 child: Icon(
                                   Icons.location_on_sharp,
@@ -682,7 +682,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                               Expanded(
                                 flex: 5,
                                 child: Container(
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
@@ -719,7 +719,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                       ))
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
@@ -730,7 +730,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                               scaffoldKey.currentState!
                                                   .openDrawer();
                                             },
-                                            child: const Icon(
+                                            child: Icon(
                                               Icons.calendar_month_rounded,
                                               color: Color(0xFFFF6500),
                                               size: 30.0,
@@ -746,15 +746,15 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                         ),
                       ).animateOnPageLoad(
                           animationsMap['containerOnPageLoadAnimation4']!),
-                      const Divider(
+                      Divider(
                         thickness: 2.0,
                       ),
-                    ].addToStart(const SizedBox(height: 8.0)),
+                    ].addToStart(SizedBox(height: 8.0)),
                   ),
                 ),
                 Expanded(
                   child: Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -767,7 +767,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                             child: Container(
                               width: 100.0,
                               height: double.infinity,
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Builder(
                                 builder: (context) {
                                   final list30DaysDateTimeListItem = functions
@@ -777,7 +777,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                       [];
 
                                   return ListView.builder(
-                                    padding: const EdgeInsets.fromLTRB(
+                                    padding: EdgeInsets.fromLTRB(
                                       0,
                                       8.0,
                                       0,
@@ -896,8 +896,8 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                                       ? FlutterFlowTheme.of(
                                                               context)
                                                           .secondaryBackground
-                                                      : const Color(0xFFDFDFDF),
-                                                  const Color(0xFFDFDFDF),
+                                                      : Color(0xFFDFDFDF),
+                                                  Color(0xFFDFDFDF),
                                                 ),
                                                 borderRadius:
                                                     BorderRadius.circular(
@@ -913,7 +913,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                                   color: functions.getDateFormat(
                                                               list30DaysDateTimeListItemItem) ==
                                                           _model.dateIndex
-                                                      ? const Color(0xFFFF6500)
+                                                      ? Color(0xFFFF6500)
                                                       : Colors.transparent,
                                                   width: functions.getDateFormat(
                                                               list30DaysDateTimeListItemItem) ==
@@ -929,12 +929,12 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                                 children: [
                                                   Text(
                                                     valueOrDefault<String>(
-                                                      valueOrDefault<String>(
+                                                      '${valueOrDefault<String>(
                                                         functions.showDateBE(
                                                             list30DaysDateTimeListItemItem
                                                                 .toString()),
                                                         '22/01/68',
-                                                      ),
+                                                      )}',
                                                       '22/01/68',
                                                     ),
                                                     style: FlutterFlowTheme.of(
@@ -957,9 +957,9 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                                                 ? FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText
-                                                                : const Color(
+                                                                : Color(
                                                                     0xFF969696),
-                                                            const Color(0xFF969696),
+                                                            Color(0xFF969696),
                                                           ),
                                                           fontSize: 18.0,
                                                           letterSpacing: 0.0,
@@ -981,7 +981,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                           context: context,
                           phone: false,
                         ))
-                          const VerticalDivider(
+                          VerticalDivider(
                             thickness: 2.0,
                           ),
                         Expanded(
@@ -994,7 +994,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                             child: wrapWithModel(
                               model: _model.polyMapWidgetComponentModel,
                               updateCallback: () => safeSetState(() {}),
-                              child: const PolyMapWidgetComponentWidget(),
+                              child: PolyMapWidgetComponentWidget(),
                             ),
                           ),
                         ),
@@ -1002,7 +1002,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                     ),
                   ),
                 ),
-              ].addToEnd(const SizedBox(height: 12.0)),
+              ].addToEnd(SizedBox(height: 12.0)),
             ),
           ),
         ),

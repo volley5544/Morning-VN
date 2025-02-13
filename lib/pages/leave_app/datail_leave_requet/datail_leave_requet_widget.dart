@@ -56,7 +56,7 @@ class _DatailLeaveRequetWidgetState extends State<DatailLeaveRequetWidget> {
         color: FlutterFlowTheme.of(context).secondaryBackground,
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(12.0, 15.0, 12.0, 15.0),
+        padding: EdgeInsetsDirectional.fromSTEB(12.0, 15.0, 12.0, 15.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -65,7 +65,7 @@ class _DatailLeaveRequetWidgetState extends State<DatailLeaveRequetWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'a4obaq6u' /* Leave details */,
@@ -79,7 +79,7 @@ class _DatailLeaveRequetWidgetState extends State<DatailLeaveRequetWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                   child: FlutterFlowIconButton(
                     borderRadius: 8.0,
                     buttonSize: 40.0,
@@ -109,7 +109,7 @@ class _DatailLeaveRequetWidgetState extends State<DatailLeaveRequetWidget> {
                         leaveDetailItem[leaveDetailItemIndex];
                     return Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 8.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 8.0, 8.0),
                       child: Container(
                         width: 100.0,
                         height: 100.0,
@@ -118,7 +118,7 @@ class _DatailLeaveRequetWidgetState extends State<DatailLeaveRequetWidget> {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 10.0, 10.0, 10.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -155,10 +155,10 @@ class _DatailLeaveRequetWidgetState extends State<DatailLeaveRequetWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          getJsonField(
+                                          '${getJsonField(
                                             leaveDetailItemItem,
                                             r'''$.LEAVE_NAME''',
-                                          ).toString(),
+                                          ).toString()}',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -203,10 +203,10 @@ class _DatailLeaveRequetWidgetState extends State<DatailLeaveRequetWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          getJsonField(
+                                          '${getJsonField(
                                             leaveDetailItemItem,
                                             r'''$.LEAVE_DATE''',
-                                          ).toString(),
+                                          ).toString()}',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -251,10 +251,10 @@ class _DatailLeaveRequetWidgetState extends State<DatailLeaveRequetWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          getJsonField(
+                                          '${getJsonField(
                                             leaveDetailItemItem,
                                             r'''$.LEAVE_PERIOD''',
-                                          ).toString(),
+                                          ).toString()}',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(

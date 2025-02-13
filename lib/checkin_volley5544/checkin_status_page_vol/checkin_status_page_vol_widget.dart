@@ -42,7 +42,7 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
             elevation: 0,
             insetPadding: EdgeInsets.zero,
             backgroundColor: Colors.transparent,
-            alignment: const AlignmentDirectional(0.0, 0.0)
+            alignment: AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
             child: WebViewAware(
               child: GestureDetector(
@@ -50,7 +50,7 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                   FocusScope.of(dialogContext).unfocus();
                   FocusManager.instance.primaryFocus?.unfocus();
                 },
-                child: const SizedBox(
+                child: Container(
                   height: double.infinity,
                   child: LoadingWidget(),
                 ),
@@ -77,7 +77,7 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
+                    child: Text('Ok'),
                   ),
                 ],
               ),
@@ -105,7 +105,7 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
+                    child: Text('Ok'),
                   ),
                 ],
               ),
@@ -157,7 +157,7 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           appBar: AppBar(
-            backgroundColor: const Color(0xFFFF843D),
+            backgroundColor: Color(0xFFFF843D),
             automaticallyImplyLeading: false,
             leading: FlutterFlowIconButton(
               borderColor: Colors.transparent,
@@ -197,7 +197,7 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                   await showModalBottomSheet(
                     isScrollControlled: true,
                     backgroundColor: Colors.transparent,
-                    barrierColor: const Color(0xBE000000),
+                    barrierColor: Color(0xBE000000),
                     context: context,
                     builder: (context) {
                       return WebViewAware(
@@ -208,9 +208,9 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                           },
                           child: Padding(
                             padding: MediaQuery.viewInsetsOf(context),
-                            child: SizedBox(
+                            child: Container(
                               height: MediaQuery.sizeOf(context).height * 0.8,
-                              child: const StatusCompnentWidget(),
+                              child: StatusCompnentWidget(),
                             ),
                           ),
                         ),
@@ -232,7 +232,7 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                   child: Column(
                     children: [
                       Align(
-                        alignment: const Alignment(0.0, 0),
+                        alignment: Alignment(0.0, 0),
                         child: TabBar(
                           labelColor: FlutterFlowTheme.of(context).primaryText,
                           unselectedLabelColor:
@@ -282,7 +282,7 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                                                 ''),
                                           )}' ==
                                           '200') {
-                                        return SizedBox(
+                                        return Container(
                                           height: 200.0,
                                           child: wrapWithModel(
                                             model: _model
@@ -313,13 +313,13 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Readex Pro',
-                                                    color: const Color(0xB357636C),
+                                                    color: Color(0xB357636C),
                                                     fontSize: 24.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
                                                   ),
                                             ),
-                                          ].addToEnd(const SizedBox(height: 100.0)),
+                                          ].addToEnd(SizedBox(height: 100.0)),
                                         );
                                       }
                                     },
@@ -339,7 +339,7 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                                                 ''),
                                           )}' ==
                                           '200') {
-                                        return SizedBox(
+                                        return Container(
                                           height: 200.0,
                                           child: wrapWithModel(
                                             model: _model
@@ -369,13 +369,13 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Readex Pro',
-                                                    color: const Color(0xB357636C),
+                                                    color: Color(0xB357636C),
                                                     fontSize: 24.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
                                                   ),
                                             ),
-                                          ].addToEnd(const SizedBox(height: 100.0)),
+                                          ].addToEnd(SizedBox(height: 100.0)),
                                         );
                                       }
                                     },

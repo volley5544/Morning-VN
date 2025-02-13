@@ -40,7 +40,7 @@ class _TestCalendarWidgetState extends State<TestCalendarWidget> {
             elevation: 0,
             insetPadding: EdgeInsets.zero,
             backgroundColor: Colors.transparent,
-            alignment: const AlignmentDirectional(0.0, 0.0)
+            alignment: AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
             child: WebViewAware(
               child: GestureDetector(
@@ -48,7 +48,7 @@ class _TestCalendarWidgetState extends State<TestCalendarWidget> {
                   FocusScope.of(dialogContext).unfocus();
                   FocusManager.instance.primaryFocus?.unfocus();
                 },
-                child: const LoadingWidget(),
+                child: LoadingWidget(),
               ),
             ),
           );
@@ -101,14 +101,14 @@ class _TestCalendarWidgetState extends State<TestCalendarWidget> {
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           appBar: AppBar(
-            backgroundColor: const Color(0xFFFF6500),
+            backgroundColor: Color(0xFFFF6500),
             automaticallyImplyLeading: false,
             leading: FlutterFlowIconButton(
               borderColor: Colors.transparent,
               borderRadius: 30.0,
               borderWidth: 1.0,
               buttonSize: 60.0,
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_back_rounded,
                 color: Colors.white,
                 size: 30.0,
@@ -128,7 +128,7 @@ class _TestCalendarWidgetState extends State<TestCalendarWidget> {
                     letterSpacing: 0.0,
                   ),
             ),
-            actions: const [],
+            actions: [],
             centerTitle: true,
             elevation: 2.0,
           ),
@@ -138,7 +138,7 @@ class _TestCalendarWidgetState extends State<TestCalendarWidget> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
+                Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: MediaQuery.sizeOf(context).height * 0.6,
                   child: custom_widgets.CalendarPage(
@@ -158,10 +158,10 @@ class _TestCalendarWidgetState extends State<TestCalendarWidget> {
                     },
                   ),
                 ),
-                if (FFAppState().dateSelect.isNotEmpty)
+                if (FFAppState().dateSelect.length > 0)
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 100.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 100.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -181,7 +181,7 @@ class _TestCalendarWidgetState extends State<TestCalendarWidget> {
                                   TextButton(
                                     onPressed: () =>
                                         Navigator.pop(alertDialogContext),
-                                    child: const Text('Ok'),
+                                    child: Text('Ok'),
                                   ),
                                 ],
                               ),
@@ -201,7 +201,7 @@ class _TestCalendarWidgetState extends State<TestCalendarWidget> {
                                   TextButton(
                                     onPressed: () =>
                                         Navigator.pop(alertDialogContext),
-                                    child: const Text('Ok'),
+                                    child: Text('Ok'),
                                   ),
                                 ],
                               ),
@@ -221,7 +221,7 @@ class _TestCalendarWidgetState extends State<TestCalendarWidget> {
                                   TextButton(
                                     onPressed: () =>
                                         Navigator.pop(alertDialogContext),
-                                    child: const Text('Ok'),
+                                    child: Text('Ok'),
                                   ),
                                 ],
                               ),

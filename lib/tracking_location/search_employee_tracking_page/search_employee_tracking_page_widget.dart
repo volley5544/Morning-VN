@@ -45,7 +45,7 @@ class _SearchEmployeeTrackingPageWidgetState
             elevation: 0,
             insetPadding: EdgeInsets.zero,
             backgroundColor: Colors.transparent,
-            alignment: const AlignmentDirectional(0.0, 0.0)
+            alignment: AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
             child: WebViewAware(
               child: GestureDetector(
@@ -53,7 +53,7 @@ class _SearchEmployeeTrackingPageWidgetState
                   FocusScope.of(dialogContext).unfocus();
                   FocusManager.instance.primaryFocus?.unfocus();
                 },
-                child: const LoadingWidget(),
+                child: LoadingWidget(),
               ),
             ),
           );
@@ -77,8 +77,8 @@ class _SearchEmployeeTrackingPageWidgetState
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 500.0.ms,
-            begin: const Offset(0.0, 25.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 25.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -96,8 +96,8 @@ class _SearchEmployeeTrackingPageWidgetState
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 500.0.ms,
-            begin: const Offset(0.0, 25.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 25.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -115,8 +115,8 @@ class _SearchEmployeeTrackingPageWidgetState
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 500.0.ms,
-            begin: const Offset(0.0, 25.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 25.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -134,8 +134,8 @@ class _SearchEmployeeTrackingPageWidgetState
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 500.0.ms,
-            begin: const Offset(0.0, 25.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 25.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -153,8 +153,8 @@ class _SearchEmployeeTrackingPageWidgetState
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 500.0.ms,
-            begin: const Offset(0.0, 25.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 25.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -189,7 +189,7 @@ class _SearchEmployeeTrackingPageWidgetState
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           appBar: AppBar(
-            backgroundColor: const Color(0xFFFF6500),
+            backgroundColor: Color(0xFFFF6500),
             automaticallyImplyLeading: false,
             leading: InkWell(
               splashColor: Colors.transparent,
@@ -199,7 +199,7 @@ class _SearchEmployeeTrackingPageWidgetState
               onTap: () async {
                 context.safePop();
               },
-              child: const Icon(
+              child: Icon(
                 Icons.arrow_back,
                 color: Color(0xFBFFFFFF),
                 size: 30.0,
@@ -216,7 +216,7 @@ class _SearchEmployeeTrackingPageWidgetState
                     letterSpacing: 0.0,
                   ),
             ),
-            actions: const [],
+            actions: [],
             centerTitle: true,
             elevation: 10.0,
           ),
@@ -225,7 +225,7 @@ class _SearchEmployeeTrackingPageWidgetState
             child: Container(
               width: double.infinity,
               height: double.infinity,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -258,13 +258,13 @@ class _SearchEmployeeTrackingPageWidgetState
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Expanded(
+                              Expanded(
                                 flex: 1,
                                 child: Icon(
                                   Icons.check_circle_outline,
@@ -275,13 +275,13 @@ class _SearchEmployeeTrackingPageWidgetState
                               Expanded(
                                 flex: 8,
                                 child: Align(
-                                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                                  alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Text(
-                                    (FFAppState().EmpProfileLocationSelected.fullprofile !=
+                                    ('${FFAppState().EmpProfileLocationSelected.fullprofile}' !=
                                                 'null') &&
-                                            (FFAppState().EmpProfileLocationSelected.fullprofile !=
+                                            ('${FFAppState().EmpProfileLocationSelected.fullprofile}' !=
                                                 '')
-                                        ? FFAppState().EmpProfileLocationSelected.fullprofile
+                                        ? '${FFAppState().EmpProfileLocationSelected.fullprofile}'
                                         : () {
                                             if (FFLocalizations.of(context)
                                                     .languageCode ==
@@ -311,10 +311,10 @@ class _SearchEmployeeTrackingPageWidgetState
                         ),
                       ),
                     ),
-                    const Divider(
+                    Divider(
                       thickness: 1.0,
                     ),
-                    if (FFAppState().EmpProfileLocationSelected.employeeId !=
+                    if ('${FFAppState().EmpProfileLocationSelected.employeeId}' !=
                         'null')
                       Column(
                         mainAxisSize: MainAxisSize.max,
@@ -327,13 +327,13 @@ class _SearchEmployeeTrackingPageWidgetState
                                   .secondaryBackground,
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   10.0, 0.0, 10.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  const Expanded(
+                                  Expanded(
                                     flex: 1,
                                     child: Icon(
                                       Icons.grid_3x3,
@@ -383,13 +383,13 @@ class _SearchEmployeeTrackingPageWidgetState
                                   .secondaryBackground,
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   10.0, 0.0, 10.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  const Expanded(
+                                  Expanded(
                                     flex: 1,
                                     child: Icon(
                                       Icons.person,
@@ -439,13 +439,13 @@ class _SearchEmployeeTrackingPageWidgetState
                                   .secondaryBackground,
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   10.0, 0.0, 10.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  const Expanded(
+                                  Expanded(
                                     flex: 1,
                                     child: Icon(
                                       Icons.work,
@@ -495,13 +495,13 @@ class _SearchEmployeeTrackingPageWidgetState
                                   .secondaryBackground,
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   10.0, 0.0, 10.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  const Expanded(
+                                  Expanded(
                                     flex: 1,
                                     child: Icon(
                                       Icons.home_rounded,
@@ -549,7 +549,7 @@ class _SearchEmployeeTrackingPageWidgetState
                             'null') &&
                         (FFAppState().EmpProfileLocationSelected.employeeId !=
                             ''))
-                      const Divider(
+                      Divider(
                         thickness: 1.0,
                       ),
                     if ((FFAppState().EmpProfileLocationSelected.employeeId !=
@@ -558,7 +558,7 @@ class _SearchEmployeeTrackingPageWidgetState
                             ''))
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Container(
                           width: double.infinity,
                           height: 40.0,
@@ -567,13 +567,13 @@ class _SearchEmployeeTrackingPageWidgetState
                                 .secondaryBackground,
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 10.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                const Expanded(
+                                Expanded(
                                   flex: 1,
                                   child: Icon(
                                     Icons.date_range_rounded,
@@ -604,7 +604,7 @@ class _SearchEmployeeTrackingPageWidgetState
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      final datePickedDate =
+                                      final _datePickedDate =
                                           await showDatePicker(
                                         context: context,
                                         initialDate: getCurrentTimestamp,
@@ -650,13 +650,18 @@ class _SearchEmployeeTrackingPageWidgetState
                                         },
                                       );
 
-                                      if (datePickedDate != null) {
+                                      if (_datePickedDate != null) {
                                         safeSetState(() {
                                           _model.datePicked = DateTime(
-                                            datePickedDate.year,
-                                            datePickedDate.month,
-                                            datePickedDate.day,
+                                            _datePickedDate.year,
+                                            _datePickedDate.month,
+                                            _datePickedDate.day,
                                           );
+                                        });
+                                      } else if (_model.datePicked != null) {
+                                        safeSetState(() {
+                                          _model.datePicked =
+                                              getCurrentTimestamp;
                                         });
                                       }
                                     },
@@ -666,12 +671,12 @@ class _SearchEmployeeTrackingPageWidgetState
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                         border: Border.all(
-                                          color: const Color(0xFF757575),
+                                          color: Color(0xFF757575),
                                         ),
                                       ),
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           valueOrDefault<String>(
                                             _model.datePicked != null
@@ -700,7 +705,7 @@ class _SearchEmployeeTrackingPageWidgetState
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Readex Pro',
-                                                color: const Color(0xFF757575),
+                                                color: Color(0xFF757575),
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
@@ -716,7 +721,7 @@ class _SearchEmployeeTrackingPageWidgetState
                       ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -728,13 +733,13 @@ class _SearchEmployeeTrackingPageWidgetState
                                       .EmpProfileLocationSelected
                                       .employeeId !=
                                   ''))
-                            const Divider(
+                            Divider(
                               thickness: 1.0,
                             ),
                           if (_model.datePicked != null)
                             FFButtonWidget(
                               onPressed: () async {
-                                var shouldSetState = false;
+                                var _shouldSetState = false;
                                 _model.getUserLocations = await TrackingApiGroup
                                     .getLocationEmployeeAPICall
                                     .call(
@@ -749,7 +754,7 @@ class _SearchEmployeeTrackingPageWidgetState
                                   ),
                                 );
 
-                                shouldSetState = true;
+                                _shouldSetState = true;
                                 if ((_model.getUserLocations?.statusCode ??
                                         200) !=
                                     200) {
@@ -764,14 +769,14 @@ class _SearchEmployeeTrackingPageWidgetState
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: const Text('Ok'),
+                                              child: Text('Ok'),
                                             ),
                                           ],
                                         ),
                                       );
                                     },
                                   );
-                                  if (shouldSetState) safeSetState(() {});
+                                  if (_shouldSetState) safeSetState(() {});
                                   return;
                                 }
                                 if ('${TrackingApiGroup.getLocationEmployeeAPICall.code(
@@ -794,14 +799,14 @@ class _SearchEmployeeTrackingPageWidgetState
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: const Text('Ok'),
+                                              child: Text('Ok'),
                                             ),
                                           ],
                                         ),
                                       );
                                     },
                                   );
-                                  if (shouldSetState) safeSetState(() {});
+                                  if (_shouldSetState) safeSetState(() {});
                                   return;
                                 }
 
@@ -842,22 +847,22 @@ class _SearchEmployeeTrackingPageWidgetState
                                   }.withoutNulls,
                                 );
 
-                                if (shouldSetState) safeSetState(() {});
+                                if (_shouldSetState) safeSetState(() {});
                               },
                               text: FFLocalizations.of(context).getText(
                                 'p3h99xdd' /* check Location */,
                               ),
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.not_listed_location_outlined,
                                 size: 24.0,
                               ),
                               options: FFButtonOptions(
                                 height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: const Color(0xFF213BFF),
+                                color: Color(0xFF213BFF),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
@@ -873,10 +878,10 @@ class _SearchEmployeeTrackingPageWidgetState
                       ),
                     ),
                     if (_model.datePicked != null)
-                      const Divider(
+                      Divider(
                         thickness: 1.0,
                       ),
-                  ].addToStart(const SizedBox(height: 12.0)),
+                  ].addToStart(SizedBox(height: 12.0)),
                 ),
               ),
             ),

@@ -46,7 +46,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
               },
               child: Padding(
                 padding: MediaQuery.viewInsetsOf(context),
-                child: const LoadingSceneWidget(),
+                child: LoadingSceneWidget(),
               ),
             ),
           );
@@ -74,7 +74,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -95,7 +95,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -137,10 +137,10 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
       );
 
       if ((_model.leaveListAPIOutput?.statusCode ?? 200) != 200) {
-        if (getJsonField(
+        if ('${getJsonField(
               (_model.leaveListAPIOutput?.jsonBody ?? ''),
               r'''$.code''',
-            ).toString().toString() ==
+            ).toString().toString()}' ==
             '440') {
           await showDialog(
             context: context,
@@ -153,7 +153,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -174,7 +174,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -210,10 +210,10 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
 
         return;
       }
-      if (getJsonField(
+      if ('${getJsonField(
             (_model.leaveListAPIOutput?.jsonBody ?? ''),
             r'''$.code''',
-          ).toString().toString() !=
+          ).toString().toString()}' !=
           '200') {
         await showDialog(
           context: context,
@@ -227,7 +227,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
+                    child: Text('Ok'),
                   ),
                 ],
               ),
@@ -254,7 +254,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
+                    child: Text('Ok'),
                   ),
                 ],
               ),
@@ -331,14 +331,14 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
               appBar: AppBar(
-                backgroundColor: const Color(0xFFFF6500),
+                backgroundColor: Color(0xFFFF6500),
                 automaticallyImplyLeading: false,
                 leading: FlutterFlowIconButton(
                   borderColor: Colors.transparent,
                   borderRadius: 30.0,
                   borderWidth: 1.0,
                   buttonSize: 60.0,
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.arrow_back_rounded,
                     color: Colors.white,
                     size: 30.0,
@@ -359,7 +359,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                         fontWeight: FontWeight.w600,
                       ),
                 ),
-                actions: const [],
+                actions: [],
                 centerTitle: true,
                 elevation: 8.0,
               ),
@@ -406,7 +406,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            boxShadow: const [
+                            boxShadow: [
                               BoxShadow(
                                 blurRadius: 4.0,
                                 color: Color(0x33000000),
@@ -418,16 +418,16 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                             ],
                           ),
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 8.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  const Padding(
+                                  Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 5.0, 0.0, 5.0),
                                     child: Icon(
@@ -437,7 +437,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: SelectionArea(
                                         child: Text(
                                       '${FFLocalizations.of(context).getVariableText(
@@ -465,7 +465,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                       ),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 0.0, 20.0, 0.0),
                         child: Builder(
                           builder: (context) {
@@ -473,7 +473,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                                 _model.listLeaveData.toList();
 
                             return ListView.builder(
-                              padding: const EdgeInsets.fromLTRB(
+                              padding: EdgeInsets.fromLTRB(
                                 0,
                                 0,
                                 0,
@@ -486,7 +486,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                                 final listLeaveDataItemItem =
                                     listLeaveDataItem[listLeaveDataItemIndex];
                                 return Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       2.0, 10.0, 0.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -589,7 +589,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
-                                        boxShadow: const [
+                                        boxShadow: [
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x33000000),
@@ -599,7 +599,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                                             ),
                                           )
                                         ],
-                                        borderRadius: const BorderRadius.only(
+                                        borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(0.0),
                                           bottomRight: Radius.circular(0.0),
                                           topLeft: Radius.circular(0.0),
@@ -611,7 +611,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 0.0),
                                             child: Text(
                                               getJsonField(
@@ -635,10 +635,10 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 10.0, 0.0),
                                                   child: Container(
@@ -669,7 +669,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 10.0, 0.0, 0.0),
                                                 child: Container(

@@ -47,7 +47,7 @@ class _CalendarPageWidgetState extends State<CalendarPageWidget> {
             elevation: 0,
             insetPadding: EdgeInsets.zero,
             backgroundColor: Colors.transparent,
-            alignment: const AlignmentDirectional(0.0, 0.0)
+            alignment: AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
             child: WebViewAware(
               child: GestureDetector(
@@ -55,7 +55,7 @@ class _CalendarPageWidgetState extends State<CalendarPageWidget> {
                   FocusScope.of(dialogContext).unfocus();
                   FocusManager.instance.primaryFocus?.unfocus();
                 },
-                child: const LoadingWidget(),
+                child: LoadingWidget(),
               ),
             ),
           );
@@ -113,14 +113,14 @@ class _CalendarPageWidgetState extends State<CalendarPageWidget> {
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           appBar: AppBar(
-            backgroundColor: const Color(0xFFFF6500),
+            backgroundColor: Color(0xFFFF6500),
             automaticallyImplyLeading: false,
             leading: FlutterFlowIconButton(
               borderColor: Colors.transparent,
               borderRadius: 30.0,
               borderWidth: 1.0,
               buttonSize: 60.0,
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_back_rounded,
                 color: Colors.white,
                 size: 30.0,
@@ -138,7 +138,7 @@ class _CalendarPageWidgetState extends State<CalendarPageWidget> {
                     fontWeight: FontWeight.w600,
                   ),
             ),
-            actions: const [],
+            actions: [],
             centerTitle: true,
             elevation: 8.0,
           ),
@@ -150,15 +150,15 @@ class _CalendarPageWidgetState extends State<CalendarPageWidget> {
                 Container(
                   width: double.infinity,
                   height: 400.0,
-                  decoration: const BoxDecoration(),
-                  child: SizedBox(
+                  decoration: BoxDecoration(),
+                  child: Container(
                     width: double.infinity,
                     height: double.infinity,
                     child: custom_widgets.LeaveCalendarWidget(
                       width: double.infinity,
                       height: double.infinity,
-                      todayColor: const Color(0xFFFF843D),
-                      selectedColor: const Color(0xFFFF843D),
+                      todayColor: Color(0xFFFF843D),
+                      selectedColor: Color(0xFFFF843D),
                       selectedTextColor:
                           FlutterFlowTheme.of(context).secondaryBackground,
                       holidaysList:
@@ -202,7 +202,7 @@ class _CalendarPageWidgetState extends State<CalendarPageWidget> {
                                   TextButton(
                                     onPressed: () =>
                                         Navigator.pop(alertDialogContext),
-                                    child: const Text('Ok'),
+                                    child: Text('Ok'),
                                   ),
                                 ],
                               ),
@@ -215,10 +215,10 @@ class _CalendarPageWidgetState extends State<CalendarPageWidget> {
                       ),
                       options: FFButtonOptions(
                         height: 40.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -231,7 +231,7 @@ class _CalendarPageWidgetState extends State<CalendarPageWidget> {
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(1.0, 1.0),
+                      alignment: AlignmentDirectional(1.0, 1.0),
                       child: FFButtonWidget(
                         onPressed: () async {},
                         text: FFLocalizations.of(context).getText(
@@ -239,9 +239,9 @@ class _CalendarPageWidgetState extends State<CalendarPageWidget> {
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:

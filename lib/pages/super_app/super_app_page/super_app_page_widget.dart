@@ -56,7 +56,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
             elevation: 0,
             insetPadding: EdgeInsets.zero,
             backgroundColor: Colors.transparent,
-            alignment: const AlignmentDirectional(0.0, 0.0)
+            alignment: AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
             child: WebViewAware(
               child: GestureDetector(
@@ -64,7 +64,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                   FocusScope.of(dialogContext).unfocus();
                   FocusManager.instance.primaryFocus?.unfocus();
                 },
-                child: const SizedBox(
+                child: Container(
                   height: double.infinity,
                   child: LoadingWidget(),
                 ),
@@ -106,18 +106,42 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
         return;
       }
       FFAppState().isLoginNew = true;
+      FFAppState().isTrackingList = (getJsonField(
+        FFAppState().roleMenuJson,
+        r'''$.isTracking''',
+        true,
+      ) as List)
+          .map<String>((s) => s.toString())
+          .toList()
+          .toList()
+          .cast<String>();
       safeSetState(() {});
-      if (!((FFAppState().roleName == 'GPS_NONTRACK') ||
-          (FFAppState().roleName == 'GPS_ALL'))) {
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return WebViewAware(
+            child: AlertDialog(
+              content: Text(FFAppState().isTrackingList.length.toString()),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            ),
+          );
+        },
+      );
+      if (FFAppState().isTrackingList.contains(FFAppState().profileLevel)) {
         await actions.getBackgroundLocation(
           FFAppState().employeeID,
-          FFAppState().ProfilePhoneNumber,
+          '${FFAppState().ProfilePhoneNumber}',
           isAndroid ? 'Android' : 'iOS',
           FFAppState().Uid,
         );
         await actions.periodicGetLocation(
           FFAppState().employeeID,
-          FFAppState().ProfilePhoneNumber,
+          '${FFAppState().ProfilePhoneNumber}',
           isAndroid ? 'Android' : 'iOS',
           FFAppState().Uid,
         );
@@ -136,8 +160,8 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
             curve: Curves.elasticOut,
             delay: 0.0.ms,
             duration: 900.0.ms,
-            begin: const Offset(0.0, -57.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, -57.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.elasticOut,
@@ -156,8 +180,8 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
             curve: Curves.elasticOut,
             delay: 0.0.ms,
             duration: 900.0.ms,
-            begin: const Offset(0.0, -57.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, -57.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.elasticOut,
@@ -193,7 +217,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            drawer: SizedBox(
+            drawer: Container(
               width: 310.0,
               child: Drawer(
                 elevation: 16.0,
@@ -201,26 +225,26 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: MediaQuery.sizeOf(context).height * 1.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFF261E1E),
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
                           child: Container(
                             height: 210.0,
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 15.0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
@@ -274,7 +298,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                         ),
                         Container(
                           height: 50.0,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Text(
                             '${FFLocalizations.of(context).getVariableText(
                               enText: '',
@@ -293,7 +317,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                 ),
                           ),
                         ),
-                        SizedBox(
+                        Container(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           height: 60.0,
                           child: custom_widgets.ShowDateTimeDash(
@@ -302,7 +326,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                             currentTime: getCurrentTimestamp,
                           ),
                         ),
-                        SizedBox(
+                        Container(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           height: 80.0,
                           child: custom_widgets.ShowTimeDash(
@@ -310,10 +334,10 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                             height: 80.0,
                           ),
                         ),
-                        const Spacer(flex: 2),
+                        Spacer(flex: 2),
                         Container(
                           width: double.infinity,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -331,7 +355,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                   await showModalBottomSheet(
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
-                                    barrierColor: const Color(0xC0000000),
+                                    barrierColor: Color(0xC0000000),
                                     enableDrag: false,
                                     context: context,
                                     builder: (context) {
@@ -345,12 +369,12 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                           child: Padding(
                                             padding: MediaQuery.viewInsetsOf(
                                                 context),
-                                            child: SizedBox(
+                                            child: Container(
                                               height: MediaQuery.sizeOf(context)
                                                       .height *
                                                   0.5,
                                               child:
-                                                  const SelectLanguageComponentWidget(),
+                                                  SelectLanguageComponentWidget(),
                                             ),
                                           ),
                                         ),
@@ -382,12 +406,12 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                           .secondaryBackground,
                                       size: 20.0,
                                     ),
-                                    tileColor: const Color(0xFF261E1E),
+                                    tileColor: Color(0xFF261E1E),
                                     dense: false,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 12.0, 0.0),
-                                    shape: const RoundedRectangleBorder(
+                                    shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
@@ -456,12 +480,12 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                           .secondaryBackground,
                                       size: 20.0,
                                     ),
-                                    tileColor: const Color(0xFF261E1E),
+                                    tileColor: Color(0xFF261E1E),
                                     dense: false,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 12.0, 0.0),
-                                    shape: const RoundedRectangleBorder(
+                                    shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
@@ -479,7 +503,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                             ],
                           ),
                         ),
-                      ].addToEnd(const SizedBox(height: 50.0)),
+                      ].addToEnd(SizedBox(height: 50.0)),
                     ),
                   ),
                 ),
@@ -528,16 +552,16 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                       return Container(
                         width: double.infinity,
                         height: 135.0,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Colors.white,
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 15.0, 0.0, 0.0),
                           child: Stack(
                             children: [
                               Align(
-                                alignment: const AlignmentDirectional(0.0, -0.2),
+                                alignment: AlignmentDirectional(0.0, -0.2),
                                 child: Container(
                                   width:
                                       MediaQuery.sizeOf(context).width * 0.64,
@@ -557,7 +581,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                       Expanded(
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             '${FFLocalizations.of(context).getVariableText(
                                               enText: 'Hello ',
@@ -581,7 +605,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(-0.95, 0.8),
+                                alignment: AlignmentDirectional(-0.95, 0.8),
                                 child: Container(
                                   width: 60.0,
                                   height: 60.0,
@@ -594,14 +618,14 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                     width: 120.0,
                                     height: 120.0,
                                     clipBehavior: Clip.antiAlias,
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                     ),
                                     child: CachedNetworkImage(
                                       fadeInDuration:
-                                          const Duration(milliseconds: 500),
+                                          Duration(milliseconds: 500),
                                       fadeOutDuration:
-                                          const Duration(milliseconds: 500),
+                                          Duration(milliseconds: 500),
                                       imageUrl: valueOrDefault<String>(
                                         containerUserCustomRecord?.profileImg,
                                         'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
@@ -618,7 +642,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 20.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -633,7 +657,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                       onTap: () async {
                                         scaffoldKey.currentState!.openDrawer();
                                       },
-                                      child: const Icon(
+                                      child: Icon(
                                         Icons.dehaze,
                                         color: Color(0xFFFF8700),
                                         size: 30.0,
@@ -656,9 +680,9 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                         ),
                                         showBadge: true,
                                         shape: badges.BadgeShape.circle,
-                                        badgeColor: const Color(0xFFFF0005),
+                                        badgeColor: Color(0xFFFF0005),
                                         elevation: 4.0,
-                                        padding: const EdgeInsets.all(8.0),
+                                        padding: EdgeInsets.all(8.0),
                                         position: badges.BadgePosition.topEnd(),
                                         animationType:
                                             badges.BadgeAnimationType.scale,
@@ -668,7 +692,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                           borderRadius: 30.0,
                                           borderWidth: 1.0,
                                           buttonSize: 50.0,
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.notifications,
                                             color: Color(0xFFFF8700),
                                             size: 40.0,
@@ -685,11 +709,11 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, -0.2),
+                                alignment: AlignmentDirectional(0.0, -0.2),
                                 child: Container(
                                   width: MediaQuery.sizeOf(context).width * 0.6,
                                   height: 100.0,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -697,7 +721,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                       if (false)
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
                                               'uwsaa34m' /* Thẻ môi giới bảo hiểm sẽ hết h... */,
@@ -718,7 +742,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                       if (false)
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
                                               'na0wb65k' /* Thẻ môi giới bảo hiểm phi nhân... */,
@@ -799,13 +823,13 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                           .toList() ??
                                       [];
 
-                              return SizedBox(
+                              return Container(
                                 width: double.infinity,
                                 height: 300.0,
                                 child: Stack(
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 40.0),
                                       child: PageView.builder(
                                         controller: _model
@@ -878,13 +902,13 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                       return WebViewAware(
                                                         child: AlertDialog(
                                                           content:
-                                                              const Text('กดปุ่ม'),
+                                                              Text('กดปุ่ม'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext),
-                                                              child: const Text('Ok'),
+                                                              child: Text('Ok'),
                                                             ),
                                                           ],
                                                         ),
@@ -937,9 +961,9 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                       ),
                                     ),
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 1.0),
+                                      alignment: AlignmentDirectional(0.0, 1.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 10.0),
                                         child: smooth_page_indicator
                                             .SmoothPageIndicator(
@@ -960,12 +984,12 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                 .animateToPage(
                                               i,
                                               duration:
-                                                  const Duration(milliseconds: 500),
+                                                  Duration(milliseconds: 500),
                                               curve: Curves.ease,
                                             );
                                             safeSetState(() {});
                                           },
-                                          effect: const smooth_page_indicator
+                                          effect: smooth_page_indicator
                                               .ExpandingDotsEffect(
                                             expansionFactor: 2.0,
                                             spacing: 8.0,
@@ -997,13 +1021,13 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
-                      child: SizedBox(
+                      child: Container(
                         width: double.infinity,
                         height: 300.0,
                         child: Stack(
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 40.0),
                               child: PageView(
                                 controller: _model.pageViewController ??=
@@ -1018,9 +1042,9 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                     onTap: () async {},
                                     child: CachedNetworkImage(
                                       fadeInDuration:
-                                          const Duration(milliseconds: 500),
+                                          Duration(milliseconds: 500),
                                       fadeOutDuration:
-                                          const Duration(milliseconds: 500),
+                                          Duration(milliseconds: 500),
                                       imageUrl: '',
                                       width: 100.0,
                                       height: 100.0,
@@ -1031,9 +1055,9 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 1.0),
+                              alignment: AlignmentDirectional(0.0, 1.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 10.0),
                                 child:
                                     smooth_page_indicator.SmoothPageIndicator(
@@ -1045,13 +1069,13 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                     await _model.pageViewController!
                                         .animateToPage(
                                       i,
-                                      duration: const Duration(milliseconds: 500),
+                                      duration: Duration(milliseconds: 500),
                                       curve: Curves.ease,
                                     );
                                     safeSetState(() {});
                                   },
                                   effect:
-                                      const smooth_page_indicator.ExpandingDotsEffect(
+                                      smooth_page_indicator.ExpandingDotsEffect(
                                     expansionFactor: 2.0,
                                     spacing: 8.0,
                                     radius: 16.0,
@@ -1071,11 +1095,11 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: 800.0,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [Color(0xFFFF8100), Color(0xFFFFC38A)],
                             stops: [0.0, 1.0],
@@ -1096,7 +1120,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 30.0, 10.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
@@ -1119,7 +1143,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
-                                        boxShadow: const [
+                                        boxShadow: [
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x33000000),
@@ -1139,7 +1163,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 20.0, 0.0, 0.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
@@ -1205,7 +1229,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 18.0, 12.0, 10.0),
                                               child: GridView(
@@ -1316,7 +1340,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1378,7 +1402,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                                 clipBehavior: Clip
                                                                     .antiAlias,
                                                                 decoration:
-                                                                    const BoxDecoration(
+                                                                    BoxDecoration(
                                                                   shape: BoxShape
                                                                       .circle,
                                                                 ),
@@ -1495,11 +1519,11 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                               shape: badges
                                                                   .BadgeShape
                                                                   .circle,
-                                                              badgeColor: const Color(
+                                                              badgeColor: Color(
                                                                   0xFFFF0005),
                                                               elevation: 4.0,
                                                               padding:
-                                                                  const EdgeInsets
+                                                                  EdgeInsets
                                                                       .all(8.0),
                                                               position: badges
                                                                       .BadgePosition
@@ -1510,7 +1534,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                               toAnimate: true,
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -1567,7 +1591,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                                   clipBehavior:
                                                                       Clip.antiAlias,
                                                                   decoration:
-                                                                      const BoxDecoration(
+                                                                      BoxDecoration(
                                                                     shape: BoxShape
                                                                         .circle,
                                                                   ),
@@ -1659,7 +1683,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1721,7 +1745,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                                 clipBehavior: Clip
                                                                     .antiAlias,
                                                                 decoration:
-                                                                    const BoxDecoration(
+                                                                    BoxDecoration(
                                                                   shape: BoxShape
                                                                       .circle,
                                                                 ),
@@ -1792,12 +1816,12 @@ employee */
                                         desktop: false,
                                       ))
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 30.0, 10.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         height: 175.0,
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: FutureBuilder<
                                             List<SawadFormServicesVNRecord>>(
                                           future:
@@ -1833,7 +1857,7 @@ employee */
                                                 snapshot.data!;
 
                                             return ListView.separated(
-                                              padding: const EdgeInsets.fromLTRB(
+                                              padding: EdgeInsets.fromLTRB(
                                                 10.0,
                                                 0,
                                                 10.0,
@@ -1845,14 +1869,14 @@ employee */
                                                   listViewSawadFormServicesVNRecordList
                                                       .length,
                                               separatorBuilder: (_, __) =>
-                                                  const SizedBox(width: 30.0),
+                                                  SizedBox(width: 30.0),
                                               itemBuilder:
                                                   (context, listViewIndex) {
                                                 final listViewSawadFormServicesVNRecord =
                                                     listViewSawadFormServicesVNRecordList[
                                                         listViewIndex];
                                                 return Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 5.0, 0.0, 5.0),
                                                   child: InkWell(
@@ -1868,7 +1892,7 @@ employee */
                                                       currentUserLocationValue =
                                                           await getCurrentUserLocation(
                                                               defaultLocation:
-                                                                  const LatLng(0.0,
+                                                                  LatLng(0.0,
                                                                       0.0));
                                                       HapticFeedback
                                                           .mediumImpact();
@@ -1878,7 +1902,7 @@ employee */
                                                         backgroundColor:
                                                             Colors.transparent,
                                                         barrierColor:
-                                                            const Color(0x00000000),
+                                                            Color(0x00000000),
                                                         context: context,
                                                         builder: (context) {
                                                           return WebViewAware(
@@ -1898,7 +1922,7 @@ employee */
                                                                     .viewInsetsOf(
                                                                         context),
                                                                 child:
-                                                                    const SizedBox(
+                                                                    Container(
                                                                   height: double
                                                                       .infinity,
                                                                   child:
@@ -1984,21 +2008,21 @@ employee */
                                         phone: false,
                                       ))
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 30.0, 10.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         height:
                                             MediaQuery.sizeOf(context).height *
                                                 0.15,
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: ListView(
                                           padding: EdgeInsets.zero,
                                           shrinkWrap: true,
                                           scrollDirection: Axis.horizontal,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 5.0, 0.0, 5.0),
                                               child: InkWell(
@@ -2011,7 +2035,7 @@ employee */
                                                   currentUserLocationValue =
                                                       await getCurrentUserLocation(
                                                           defaultLocation:
-                                                              const LatLng(0.0, 0.0));
+                                                              LatLng(0.0, 0.0));
                                                   HapticFeedback.mediumImpact();
                                                   unawaited(
                                                     () async {}(),
@@ -2052,12 +2076,12 @@ employee */
                                         desktop: false,
                                       ))
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 10.0, 30.0),
                                       child: Container(
                                         width: double.infinity,
                                         height: 195.0,
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: StreamBuilder<
                                             List<SawadAnnouncementRecord>>(
                                           stream: querySawadAnnouncementRecord(
@@ -2091,7 +2115,7 @@ employee */
                                                 snapshot.data!;
 
                                             return ListView.builder(
-                                              padding: const EdgeInsets.fromLTRB(
+                                              padding: EdgeInsets.fromLTRB(
                                                 10.0,
                                                 0,
                                                 10.0,
@@ -2109,20 +2133,20 @@ employee */
                                                         listViewIndex];
                                                 return Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, -1.0),
-                                                  child: SizedBox(
+                                                  child: Container(
                                                     width: 330.0,
                                                     height: double.infinity,
                                                     child: Stack(
                                                       children: [
                                                         Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   -1.0, 0.0),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         10.0,
@@ -2136,7 +2160,7 @@ employee */
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryBackground,
-                                                                boxShadow: const [
+                                                                boxShadow: [
                                                                   BoxShadow(
                                                                     blurRadius:
                                                                         4.0,
@@ -2150,7 +2174,7 @@ employee */
                                                                   )
                                                                 ],
                                                                 borderRadius:
-                                                                    const BorderRadius
+                                                                    BorderRadius
                                                                         .only(
                                                                   bottomLeft: Radius
                                                                       .circular(
@@ -2177,7 +2201,7 @@ employee */
                                                                   Expanded(
                                                                     child:
                                                                         Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           10.0,
                                                                           5.0,
@@ -2235,7 +2259,7 @@ employee */
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -2249,20 +2273,20 @@ employee */
                                                                           130.0,
                                                                       decoration:
                                                                           BoxDecoration(
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFFFFE4D2),
                                                                         borderRadius:
                                                                             BorderRadius.circular(12.0),
                                                                       ),
                                                                       child:
                                                                           Align(
-                                                                        alignment: const AlignmentDirectional(
+                                                                        alignment: AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                         child:
                                                                             Padding(
                                                                           padding:
-                                                                              const EdgeInsets.all(8.0),
+                                                                              EdgeInsets.all(8.0),
                                                                           child:
                                                                               InkWell(
                                                                             splashColor:
@@ -2296,7 +2320,7 @@ employee */
                                                             .newAnnouncement)
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, -1.0),
                                                             child: Container(
                                                               width: 60.0,
@@ -2304,7 +2328,7 @@ employee */
                                                               clipBehavior: Clip
                                                                   .antiAlias,
                                                               decoration:
-                                                                  const BoxDecoration(
+                                                                  BoxDecoration(
                                                                 shape: BoxShape
                                                                     .circle,
                                                               ),
@@ -2332,21 +2356,21 @@ employee */
                                         phone: false,
                                       ))
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 10.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         height:
                                             MediaQuery.sizeOf(context).height *
                                                 0.15,
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: ListView(
                                           padding: EdgeInsets.zero,
                                           shrinkWrap: true,
                                           scrollDirection: Axis.horizontal,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 0.0, 0.0, 0.0),
                                               child: Container(
@@ -2356,7 +2380,7 @@ employee */
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryBackground,
-                                                  boxShadow: const [
+                                                  boxShadow: [
                                                     BoxShadow(
                                                       blurRadius: 4.0,
                                                       color: Color(0x230E151B),
@@ -2380,7 +2404,7 @@ employee */
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     10.0,
                                                                     10.0,
@@ -2457,7 +2481,7 @@ employee */
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -2469,7 +2493,7 @@ employee */
                                                         decoration:
                                                             BoxDecoration(
                                                           color:
-                                                              const Color(0xFFFFE4D2),
+                                                              Color(0xFFFFE4D2),
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
@@ -2477,11 +2501,11 @@ employee */
                                                         ),
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   0.0, 0.0),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsets.all(
+                                                                EdgeInsets.all(
                                                                     8.0),
                                                             child: InkWell(
                                                               splashColor: Colors

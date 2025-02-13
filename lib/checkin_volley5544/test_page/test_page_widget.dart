@@ -41,7 +41,7 @@ class _TestPageWidgetState extends State<TestPageWidget> {
             elevation: 0,
             insetPadding: EdgeInsets.zero,
             backgroundColor: Colors.transparent,
-            alignment: const AlignmentDirectional(0.0, 0.0)
+            alignment: AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
             child: WebViewAware(
               child: GestureDetector(
@@ -49,7 +49,7 @@ class _TestPageWidgetState extends State<TestPageWidget> {
                   FocusScope.of(dialogContext).unfocus();
                   FocusManager.instance.primaryFocus?.unfocus();
                 },
-                child: const LoadingWidget(),
+                child: LoadingWidget(),
               ),
             ),
           );
@@ -120,7 +120,7 @@ class _TestPageWidgetState extends State<TestPageWidget> {
                     letterSpacing: 0.0,
                   ),
             ),
-            actions: const [],
+            actions: [],
             centerTitle: false,
             elevation: 2.0,
           ),
@@ -132,15 +132,15 @@ class _TestPageWidgetState extends State<TestPageWidget> {
                 Container(
                   width: double.infinity,
                   height: 400.0,
-                  decoration: const BoxDecoration(),
-                  child: SizedBox(
+                  decoration: BoxDecoration(),
+                  child: Container(
                     width: double.infinity,
                     height: double.infinity,
                     child: custom_widgets.LeaveCalendarWidget(
                       width: double.infinity,
                       height: double.infinity,
-                      todayColor: const Color(0xFFFF843D),
-                      selectedColor: const Color(0xFFFF843D),
+                      todayColor: Color(0xFFFF843D),
+                      selectedColor: Color(0xFFFF843D),
                       selectedTextColor:
                           FlutterFlowTheme.of(context).secondaryBackground,
                       holidaysList:
@@ -180,7 +180,7 @@ class _TestPageWidgetState extends State<TestPageWidget> {
                               TextButton(
                                 onPressed: () =>
                                     Navigator.pop(alertDialogContext),
-                                child: const Text('Ok'),
+                                child: Text('Ok'),
                               ),
                             ],
                           ),
@@ -194,9 +194,9 @@ class _TestPageWidgetState extends State<TestPageWidget> {
                   options: FFButtonOptions(
                     height: 40.0,
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Readex Pro',

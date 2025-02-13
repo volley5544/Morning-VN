@@ -44,14 +44,14 @@ class _GuideBookPageWidgetState extends State<GuideBookPageWidget> {
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           appBar: AppBar(
-            backgroundColor: const Color(0xFFFF6500),
+            backgroundColor: Color(0xFFFF6500),
             automaticallyImplyLeading: false,
             leading: FlutterFlowIconButton(
               borderColor: Colors.transparent,
               borderRadius: 30.0,
               borderWidth: 1.0,
               buttonSize: 60.0,
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_back_rounded,
                 color: Colors.white,
                 size: 30.0,
@@ -71,7 +71,7 @@ class _GuideBookPageWidgetState extends State<GuideBookPageWidget> {
                     fontWeight: FontWeight.w600,
                   ),
             ),
-            actions: const [],
+            actions: [],
             centerTitle: true,
             elevation: 8.0,
           ),
@@ -83,7 +83,7 @@ class _GuideBookPageWidgetState extends State<GuideBookPageWidget> {
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
-              child: const FlutterFlowPdfViewer(
+              child: FlutterFlowPdfViewer(
                 networkPath:
                     'https://firebasestorage.googleapis.com/v0/b/flut-flow-test.appspot.com/o/guidebook%2F%E0%B8%84%E0%B8%B9%E0%B9%88%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%9E%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88%20update%2011.2022.pdf?alt=media&token=4c7ba969-0613-460f-b850-34579d024688',
                 height: 300.0,

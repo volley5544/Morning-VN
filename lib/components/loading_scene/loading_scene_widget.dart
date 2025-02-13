@@ -37,13 +37,13 @@ class _LoadingSceneWidgetState extends State<LoadingSceneWidget> {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: Color(0x80000000),
       ),
       child: Stack(
         children: [
           Align(
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: Image.asset(
               'assets/images/Spin-1s-200px_(1).gif',
               width: 120.0,
@@ -52,7 +52,7 @@ class _LoadingSceneWidgetState extends State<LoadingSceneWidget> {
             ),
           ),
           Align(
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: Image.asset(
               'assets/images/Load-54x54-02.gif',
               width: 50.0,

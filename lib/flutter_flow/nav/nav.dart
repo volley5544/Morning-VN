@@ -77,70 +77,70 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const NavBarPage() : const LoginPageWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const NavBarPage() : const LoginPageWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : LoginPageWidget(),
         ),
         FFRoute(
           name: 'HomePage',
           path: '/homePage',
-          builder: (context, params) => const HomePageWidget(),
+          builder: (context, params) => HomePageWidget(),
         ),
         FFRoute(
           name: 'loginPage',
           path: '/loginPage',
-          builder: (context, params) => const LoginPageWidget(),
+          builder: (context, params) => LoginPageWidget(),
         ),
         FFRoute(
           name: 'pinPage',
           path: '/pinPage',
-          builder: (context, params) => const PinPageWidget(),
+          builder: (context, params) => PinPageWidget(),
         ),
         FFRoute(
           name: 'setPinPage',
           path: '/setPinPage',
-          builder: (context, params) => const SetPinPageWidget(),
+          builder: (context, params) => SetPinPageWidget(),
         ),
         FFRoute(
           name: 'testlogin',
           path: '/testlogin',
-          builder: (context, params) => const TestloginWidget(),
+          builder: (context, params) => TestloginWidget(),
         ),
         FFRoute(
           name: 'DashboardCheckin',
           path: '/dashboardCheckin',
-          builder: (context, params) => const DashboardCheckinWidget(),
+          builder: (context, params) => DashboardCheckinWidget(),
         ),
         FFRoute(
           name: 'DashboardLeavePage',
           path: '/dashboardLeavePage',
-          builder: (context, params) => const DashboardLeavePageWidget(),
+          builder: (context, params) => DashboardLeavePageWidget(),
         ),
         FFRoute(
           name: 'CheckInStatusPage',
           path: '/checkInStatusPage',
-          builder: (context, params) => const CheckInStatusPageWidget(),
+          builder: (context, params) => CheckInStatusPageWidget(),
         ),
         FFRoute(
           name: 'LeavePage',
           path: '/leavePage',
-          builder: (context, params) => const LeavePageWidget(),
+          builder: (context, params) => LeavePageWidget(),
         ),
         FFRoute(
           name: 'superAppPage',
           path: '/superAppPage',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'superAppPage')
-              : const SuperAppPageWidget(),
+              ? NavBarPage(initialPage: 'superAppPage')
+              : SuperAppPageWidget(),
         ),
         FFRoute(
           name: 'EmpolyeeCheckin',
           path: '/empolyeeCheckin',
-          builder: (context, params) => const EmpolyeeCheckinWidget(),
+          builder: (context, params) => EmpolyeeCheckinWidget(),
         ),
         FFRoute(
           name: 'AddLeavePage',
@@ -196,7 +196,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'leaveShowPage',
           path: '/leaveShowPage',
-          builder: (context, params) => const LeaveShowPageWidget(),
+          builder: (context, params) => LeaveShowPageWidget(),
         ),
         FFRoute(
           name: 'EditLeavePage',
@@ -236,19 +236,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ChangeLatLngPage',
           path: '/changeLatLngPage',
-          builder: (context, params) => const ChangeLatLngPageWidget(),
+          builder: (context, params) => ChangeLatLngPageWidget(),
         ),
         FFRoute(
           name: 'MyProfilePage',
           path: '/myProfilePage',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'MyProfilePage')
-              : const MyProfilePageWidget(),
+              ? NavBarPage(initialPage: 'MyProfilePage')
+              : MyProfilePageWidget(),
         ),
         FFRoute(
           name: 'GuideBookPage',
           path: '/guideBookPage',
-          builder: (context, params) => const GuideBookPageWidget(),
+          builder: (context, params) => GuideBookPageWidget(),
         ),
         FFRoute(
           name: 'NotificationPage',
@@ -263,27 +263,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'SuccessCheckinPage',
           path: '/successCheckinPage',
-          builder: (context, params) => const SuccessCheckinPageWidget(),
+          builder: (context, params) => SuccessCheckinPageWidget(),
         ),
         FFRoute(
           name: 'EmployeeCheckinPageVol',
           path: '/employeeCheckinPageVol',
-          builder: (context, params) => const EmployeeCheckinPageVolWidget(),
+          builder: (context, params) => EmployeeCheckinPageVolWidget(),
         ),
         FFRoute(
           name: 'CheckinStatusPageVol',
           path: '/checkinStatusPageVol',
-          builder: (context, params) => const CheckinStatusPageVolWidget(),
+          builder: (context, params) => CheckinStatusPageVolWidget(),
         ),
         FFRoute(
           name: 'TestPage',
           path: '/testPage',
-          builder: (context, params) => const TestPageWidget(),
+          builder: (context, params) => TestPageWidget(),
         ),
         FFRoute(
           name: 'Test2Page',
           path: '/test2Page',
-          builder: (context, params) => const Test2PageWidget(),
+          builder: (context, params) => Test2PageWidget(),
         ),
         FFRoute(
           name: 'searchBranchPage',
@@ -300,32 +300,32 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'testCalendar',
           path: '/testCalendar',
-          builder: (context, params) => const TestCalendarWidget(),
+          builder: (context, params) => TestCalendarWidget(),
         ),
         FFRoute(
           name: 'CancelPage',
           path: '/cancelPage',
-          builder: (context, params) => const CancelPageWidget(),
+          builder: (context, params) => CancelPageWidget(),
         ),
         FFRoute(
           name: 'ConfirmEmailPage',
           path: '/confirmEmailPage',
-          builder: (context, params) => const ConfirmEmailPageWidget(),
+          builder: (context, params) => ConfirmEmailPageWidget(),
         ),
         FFRoute(
           name: 'ApprovedLeavePage',
           path: '/approvedLeavePage',
-          builder: (context, params) => const ApprovedLeavePageWidget(),
+          builder: (context, params) => ApprovedLeavePageWidget(),
         ),
         FFRoute(
           name: 'ApproveShowPage',
           path: '/approveShowPage',
-          builder: (context, params) => const ApproveShowPageWidget(),
+          builder: (context, params) => ApproveShowPageWidget(),
         ),
         FFRoute(
           name: 'AddResignPage',
           path: '/addResignPage',
-          builder: (context, params) => const AddResignPageWidget(),
+          builder: (context, params) => AddResignPageWidget(),
         ),
         FFRoute(
           name: 'formServicePage',
@@ -354,17 +354,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ApproveShowPage5544',
           path: '/approveShowPage5544',
-          builder: (context, params) => const ApproveShowPage5544Widget(),
+          builder: (context, params) => ApproveShowPage5544Widget(),
         ),
         FFRoute(
           name: 'leaveShowPage5544',
           path: '/leaveShowPage5544',
-          builder: (context, params) => const LeaveShowPage5544Widget(),
+          builder: (context, params) => LeaveShowPage5544Widget(),
         ),
         FFRoute(
           name: 'SearchEmployeeTrackingPage',
           path: '/searchEmployeeTrackingPage',
-          builder: (context, params) => const SearchEmployeeTrackingPageWidget(),
+          builder: (context, params) => SearchEmployeeTrackingPageWidget(),
         ),
         FFRoute(
           name: 'searchEmployeePage',
@@ -634,7 +634,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

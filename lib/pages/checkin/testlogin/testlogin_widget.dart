@@ -53,18 +53,18 @@ class _TestloginWidgetState extends State<TestloginWidget> {
             Stack(
               children: [
                 Align(
-                  alignment: const AlignmentDirectional(0.18, -6.05),
+                  alignment: AlignmentDirectional(0.18, -6.05),
                   child: Container(
                     width: 260.0,
                     height: 100.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFFCC0CF4),
                       shape: BoxShape.rectangle,
                     ),
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(2.02, 1.68),
+                  alignment: AlignmentDirectional(2.02, 1.68),
                   child: Container(
                     width: 272.0,
                     height: 272.0,
@@ -75,11 +75,11 @@ class _TestloginWidgetState extends State<TestloginWidget> {
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(-2.27, 0.0),
+                  alignment: AlignmentDirectional(-2.27, 0.0),
                   child: Container(
                     width: 311.0,
                     height: 311.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFFFF6C2A),
                       shape: BoxShape.circle,
                     ),
@@ -109,7 +109,7 @@ class _TestloginWidgetState extends State<TestloginWidget> {
               ],
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -117,7 +117,7 @@ class _TestloginWidgetState extends State<TestloginWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
                       child: Container(
                         width: 100.0,
                         height: 142.0,
@@ -131,7 +131,7 @@ class _TestloginWidgetState extends State<TestloginWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   18.0, 8.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -142,7 +142,7 @@ class _TestloginWidgetState extends State<TestloginWidget> {
                                     size: 24.0,
                                   ),
                                   Expanded(
-                                    child: SizedBox(
+                                    child: Container(
                                       width: 200.0,
                                       child: TextFormField(
                                         controller:
@@ -171,7 +171,7 @@ class _TestloginWidgetState extends State<TestloginWidget> {
                                                     letterSpacing: 0.0,
                                                   ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 1.0,
                                             ),
@@ -179,7 +179,7 @@ class _TestloginWidgetState extends State<TestloginWidget> {
                                                 BorderRadius.circular(8.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 1.0,
                                             ),
@@ -231,7 +231,7 @@ class _TestloginWidgetState extends State<TestloginWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   18.0, 0.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -242,7 +242,7 @@ class _TestloginWidgetState extends State<TestloginWidget> {
                                     size: 24.0,
                                   ),
                                   Expanded(
-                                    child: SizedBox(
+                                    child: Container(
                                       width: 200.0,
                                       child: TextFormField(
                                         controller:
@@ -271,7 +271,7 @@ class _TestloginWidgetState extends State<TestloginWidget> {
                                                     letterSpacing: 0.0,
                                                   ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 1.0,
                                             ),
@@ -279,7 +279,7 @@ class _TestloginWidgetState extends State<TestloginWidget> {
                                                 BorderRadius.circular(8.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 1.0,
                                             ),
@@ -339,7 +339,7 @@ class _TestloginWidgetState extends State<TestloginWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -347,7 +347,7 @@ class _TestloginWidgetState extends State<TestloginWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(90.0, 0.0, 90.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(90.0, 0.0, 90.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () {
                           print('Button pressed ...');
@@ -357,11 +357,11 @@ class _TestloginWidgetState extends State<TestloginWidget> {
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: const Color(0xFFFD7115),
+                          color: Color(0xFFFD7115),
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Readex Pro',
@@ -380,9 +380,9 @@ class _TestloginWidgetState extends State<TestloginWidget> {
             ),
             Expanded(
               child: Align(
-                alignment: const AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'ul7spu9i' /* Copyright ©2024.  Srisawad Cor... */,

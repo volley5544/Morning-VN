@@ -82,14 +82,14 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: const Color(0xFFFF6500),
+          backgroundColor: Color(0xFFFF6500),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -109,7 +109,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                   fontWeight: FontWeight.w600,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 8.0,
         ),
@@ -133,7 +133,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 15.0, 20.0, 10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -155,14 +155,14 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 15.0, 0.0, 15.0, 0.0),
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 1.0,
                               height: 60.0,
                               decoration: BoxDecoration(
-                                color: const Color(0xFFF5F5F5),
-                                boxShadow: const [
+                                color: Color(0xFFF5F5F5),
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x33000000),
@@ -175,7 +175,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(10.0),
+                                padding: EdgeInsets.all(10.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -196,7 +196,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 15.0, 20.0, 10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -218,7 +218,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 15.0, 0.0, 15.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -269,10 +269,10 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     elevation: 2.0,
-                                    borderColor: const Color(0xFFBDBDBD),
+                                    borderColor: Color(0xFFBDBDBD),
                                     borderWidth: 2.0,
                                     borderRadius: 8.0,
-                                    margin: const EdgeInsets.all(10.0),
+                                    margin: EdgeInsets.all(10.0),
                                     hidesUnderline: true,
                                     isOverButton: false,
                                     isSearchable: false,
@@ -283,12 +283,12 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                             ),
                           ),
                           Container(
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 15.0, 20.0, 10.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -318,7 +318,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                   color: FlutterFlowTheme.of(context).alternate,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 10.0, 20.0, 10.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -340,15 +340,15 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       15.0, 0.0, 15.0, 0.0),
                                   child: Container(
                                     width:
                                         MediaQuery.sizeOf(context).width * 1.0,
                                     height: 60.0,
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFFF5F5F5),
-                                      boxShadow: const [
+                                      color: Color(0xFFF5F5F5),
+                                      boxShadow: [
                                         BoxShadow(
                                           blurRadius: 4.0,
                                           color: Color(0x33000000),
@@ -361,12 +361,12 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
+                                      padding: EdgeInsets.all(10.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Expanded(
-                                            child: SizedBox(
+                                            child: Container(
                                               width: 200.0,
                                               child: TextFormField(
                                                 controller:
@@ -405,7 +405,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                                           ),
                                                   enabledBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -415,7 +415,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                                   ),
                                                   focusedBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x00000000),
                                                       width: 1.0,
                                                     ),
@@ -450,7 +450,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor: Color(0xFFF5F5F5),
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -481,7 +481,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 15.0, 20.0, 10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -503,16 +503,16 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 15.0, 0.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: 60.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFF5F5F5),
-                                  boxShadow: const [
+                                  color: Color(0xFFF5F5F5),
+                                  boxShadow: [
                                     BoxShadow(
                                       blurRadius: 4.0,
                                       color: Color(0x33000000),
@@ -524,9 +524,9 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                   ],
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
+                                  padding: EdgeInsets.all(10.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -540,7 +540,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                               AutovalidateMode.disabled,
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: TextFormField(
                                               controller: _model
                                                   .phoneNumberTextController,
@@ -573,12 +573,12 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                                 focusedErrorBorder:
                                                     InputBorder.none,
                                                 filled: true,
-                                                fillColor: const Color(0xFFF5F5F5),
+                                                fillColor: Color(0xFFF5F5F5),
                                                 contentPadding:
-                                                    const EdgeInsetsDirectional
+                                                    EdgeInsetsDirectional
                                                         .fromSTEB(20.0, 0.0,
                                                             24.0, 0.0),
-                                                prefixIcon: const Icon(
+                                                prefixIcon: Icon(
                                                   Icons.phone_android,
                                                   color: Color(0xFF0A0A0A),
                                                 ),
@@ -588,7 +588,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Readex Pro',
-                                                    color: const Color(0xFF0A0A0A),
+                                                    color: Color(0xFF0A0A0A),
                                                     fontSize: 15.0,
                                                     letterSpacing: 0.0,
                                                   ),
@@ -610,7 +610,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 15.0, 20.0, 10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -632,7 +632,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 15.0, 0.0, 15.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -660,7 +660,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                         'trc3jz7r' /* กรุณากรอก... */,
                                       ),
                                       enabledBorder: UnderlineInputBorder(
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0x33000000),
                                           width: 1.0,
                                         ),
@@ -668,7 +668,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       focusedBorder: UnderlineInputBorder(
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -676,7 +676,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       errorBorder: UnderlineInputBorder(
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -684,7 +684,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       focusedErrorBorder: UnderlineInputBorder(
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -692,9 +692,9 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       filled: true,
-                                      fillColor: const Color(0xFFF5F5F5),
+                                      fillColor: Color(0xFFF5F5F5),
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 0.0, 24.0, 25.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -718,7 +718,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 15.0, 20.0, 10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -740,7 +740,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 15.0, 0.0, 15.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -753,16 +753,16 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                     text: FFLocalizations.of(context).getText(
                                       'zoen0z04' /* [Attach image file] */,
                                     ),
-                                    icon: const Icon(
+                                    icon: Icon(
                                       Icons.attach_file,
                                       size: 15.0,
                                     ),
                                     options: FFButtonOptions(
                                       height: 60.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -775,7 +775,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                       elevation: 2.0,
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0xFFBDBDBD),
                                         width: 2.0,
                                       ),
@@ -786,9 +786,9 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                               ],
                             ),
                           ),
-                          if (widget.leaveDocument!.isNotEmpty)
+                          if (widget.leaveDocument!.length > 0)
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   15.0, 15.0, 15.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -801,13 +801,13 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                             widget.leaveDocument?.toList() ??
                                                 [];
 
-                                        return SizedBox(
+                                        return Container(
                                           width: double.infinity,
                                           height: 500.0,
                                           child: Stack(
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 50.0),
                                                 child: PageView.builder(
@@ -842,10 +842,10 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                                 ),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 10.0),
                                                   child: smooth_page_indicator
@@ -867,7 +867,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                                           .pageViewController!
                                                           .animateToPage(
                                                         i,
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 500),
                                                         curve: Curves.ease,
                                                       );
@@ -881,7 +881,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                                       dotWidth: 16.0,
                                                       dotHeight: 16.0,
                                                       dotColor:
-                                                          const Color(0xFF9E9E9E),
+                                                          Color(0xFF9E9E9E),
                                                       activeDotColor:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -909,7 +909,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                   .secondaryBackground,
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   25.0, 0.0, 25.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -925,12 +925,12 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                       options: FFButtonOptions(
                                         width: 90.0,
                                         height: 60.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
-                                        color: const Color(0xFF00968A),
+                                        color: Color(0xFF00968A),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
@@ -948,11 +948,11 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                               ),
                             ),
                           ),
-                        ].addToEnd(const SizedBox(height: 100.0)),
+                        ].addToEnd(SizedBox(height: 100.0)),
                       ),
                     ),
                   ),
-                ].addToEnd(const SizedBox(height: 100.0)),
+                ].addToEnd(SizedBox(height: 100.0)),
               ),
             ],
           ),

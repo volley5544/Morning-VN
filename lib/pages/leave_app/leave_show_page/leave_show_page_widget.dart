@@ -54,7 +54,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
               },
               child: Padding(
                 padding: MediaQuery.viewInsetsOf(context),
-                child: const LoadingSceneWidget(),
+                child: LoadingSceneWidget(),
               ),
             ),
           );
@@ -82,7 +82,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -103,7 +103,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -145,10 +145,10 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
       );
 
       if ((_model.leaveHistoryListAPIOutput?.statusCode ?? 200) != 200) {
-        if (getJsonField(
+        if ('${getJsonField(
               (_model.leaveHistoryListAPIOutput?.jsonBody ?? ''),
               r'''$.code''',
-            ).toString().toString() ==
+            ).toString().toString()}' ==
             '440') {
           await showDialog(
             context: context,
@@ -161,7 +161,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -182,7 +182,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -218,10 +218,10 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
 
         return;
       }
-      if (getJsonField(
+      if ('${getJsonField(
             (_model.leaveHistoryListAPIOutput?.jsonBody ?? ''),
             r'''$.code''',
-          ).toString().toString() !=
+          ).toString().toString()}' !=
           '200') {
         await showDialog(
           context: context,
@@ -234,7 +234,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
+                    child: Text('Ok'),
                   ),
                 ],
               ),
@@ -244,19 +244,19 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
         Navigator.pop(context);
         return;
       }
-      _model.selectMonth = actions.convertToMonthNamberCopy(
+      _model.selectMonth = await actions.convertToMonthNamberCopy(
         getCurrentTimestamp,
       );
-      _model.selectMonthNumber = actions.convertToMonthNamber(
+      _model.selectMonthNumber = await actions.convertToMonthNamber(
         _model.selectMonth,
       );
       FFAppState().selectMonthViewLeaveShow = _model.selectMonthNumber!;
       safeSetState(() {});
       _model.leaveHistoryList = 'null' ==
-              getJsonField(
+              '${getJsonField(
                 (_model.leaveHistoryListAPIOutput?.jsonBody ?? ''),
                 r'''$.results.current_year.leave_list[*].list_date[*]''',
-              ).toString().toString()
+              ).toString().toString()}'
           ? FFAppState().emptyJson
           : getJsonField(
               (_model.leaveHistoryListAPIOutput?.jsonBody ?? ''),
@@ -298,14 +298,14 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           appBar: AppBar(
-            backgroundColor: const Color(0xFFFF6500),
+            backgroundColor: Color(0xFFFF6500),
             automaticallyImplyLeading: false,
             leading: FlutterFlowIconButton(
               borderColor: Colors.transparent,
               borderRadius: 30.0,
               borderWidth: 1.0,
               buttonSize: 60.0,
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_back_rounded,
                 color: Colors.white,
                 size: 30.0,
@@ -325,7 +325,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                     fontWeight: FontWeight.w600,
                   ),
             ),
-            actions: const [],
+            actions: [],
             centerTitle: true,
             elevation: 8.0,
           ),
@@ -335,7 +335,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
                   child: Container(
                     width: double.infinity,
                     height: 50.0,
@@ -345,7 +345,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                         BoxShadow(
                           blurRadius: 1.0,
                           color: FlutterFlowTheme.of(context).primaryText,
-                          offset: const Offset(
+                          offset: Offset(
                             0.0,
                             1.0,
                           ),
@@ -374,7 +374,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                         ],
                         onChanged: (val) async {
                           safeSetState(() => _model.yearSelectValue = val);
-                          actions.convertToMonthNamber(
+                          await actions.convertToMonthNamber(
                             _model.yearSelectValue,
                           );
                           FFAppState().selectYearViewLeaveShow =
@@ -383,12 +383,12 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                           _model.leaveHistoryList = () {
                             if (_model.yearSelectValue == 'current_year') {
                               return ('null' ==
-                                      getJsonField(
+                                      '${getJsonField(
                                         (_model.leaveHistoryListAPIOutput
                                                 ?.jsonBody ??
                                             ''),
                                         r'''$.results.current_year.leave_list[*].list_date[*]''',
-                                      ).toString()
+                                      ).toString()}'
                                   ? FFAppState().emptyJson
                                   : getJsonField(
                                       (_model.leaveHistoryListAPIOutput
@@ -400,12 +400,12 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                             } else if (_model.yearSelectValue ==
                                 'previous_year') {
                               return ('null' ==
-                                      getJsonField(
+                                      '${getJsonField(
                                         (_model.leaveHistoryListAPIOutput
                                                 ?.jsonBody ??
                                             ''),
                                         r'''$.results.previous_year.leave_list[*].list_date[*]''',
-                                      ).toString()
+                                      ).toString()}'
                                   ? FFAppState().emptyJson
                                   : getJsonField(
                                       (_model.leaveHistoryListAPIOutput
@@ -416,12 +416,12 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                     )!);
                             } else {
                               return ('null' ==
-                                      getJsonField(
+                                      '${getJsonField(
                                         (_model.leaveHistoryListAPIOutput
                                                 ?.jsonBody ??
                                             ''),
                                         r'''$.results.next_year.leave_list[*].list_date[*]''',
-                                      ).toString()
+                                      ).toString()}'
                                   ? FFAppState().emptyJson
                                   : getJsonField(
                                       (_model.leaveHistoryListAPIOutput
@@ -447,7 +447,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                         hintText: FFLocalizations.of(context).getText(
                           '8docfjnz' /* Please select the month you wa... */,
                         ),
-                        icon: const FaIcon(
+                        icon: FaIcon(
                           FontAwesomeIcons.solidCalendarAlt,
                           size: 15.0,
                         ),
@@ -456,7 +456,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                         borderColor: Colors.transparent,
                         borderWidth: 0.0,
                         borderRadius: 0.0,
-                        margin: const EdgeInsetsDirectional.fromSTEB(
+                        margin: EdgeInsetsDirectional.fromSTEB(
                             160.0, 4.0, 12.0, 4.0),
                         hidesUnderline: true,
                         isSearchable: false,
@@ -536,7 +536,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                     hintText: FFLocalizations.of(context).getText(
                       'hnu9wndq' /* Please select the month you wa... */,
                     ),
-                    icon: const FaIcon(
+                    icon: FaIcon(
                       FontAwesomeIcons.solidCalendarAlt,
                       size: 15.0,
                     ),
@@ -546,7 +546,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                     borderWidth: 0.0,
                     borderRadius: 0.0,
                     margin:
-                        const EdgeInsetsDirectional.fromSTEB(160.0, 4.0, 12.0, 4.0),
+                        EdgeInsetsDirectional.fromSTEB(160.0, 4.0, 12.0, 4.0),
                     hidesUnderline: true,
                     isSearchable: false,
                     isMultiSelect: false,
@@ -555,7 +555,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                   child: Column(
                     children: [
                       Align(
-                        alignment: const Alignment(0.0, 0),
+                        alignment: Alignment(0.0, 0),
                         child: TabBar(
                           labelColor: FlutterFlowTheme.of(context).primaryText,
                           unselectedLabelColor:
@@ -592,7 +592,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                           children: [
                             Container(
                               width: MediaQuery.sizeOf(context).width * 0.9,
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Builder(
                                 builder: (context) {
                                   final leaveItem =
@@ -616,7 +616,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                             ).toString(),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 16.0, 8.0, 8.0),
                                           child: Material(
                                             color: Colors.transparent,
@@ -630,7 +630,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
-                                                boxShadow: const [
+                                                boxShadow: [
                                                   BoxShadow(
                                                     blurRadius: 4.0,
                                                     color: Colors.transparent,
@@ -644,7 +644,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                     BorderRadius.circular(12.0),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 8.0, 10.0),
                                                 child: Column(
@@ -663,7 +663,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                         Expanded(
                                                           child: Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Column(
                                                               mainAxisSize:
@@ -675,12 +675,12 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                               children: [
                                                                 Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           -1.0,
                                                                           0.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             10.0,
@@ -688,12 +688,12 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             5.0),
                                                                     child: SelectionArea(
                                                                         child: AutoSizeText(
-                                                                      getJsonField(
+                                                                      '${getJsonField(
                                                                         _model
                                                                             .leaveHistoryList
                                                                             .elementAtOrNull(leaveItemIndex),
                                                                         r'''$.full_name''',
-                                                                      ).toString(),
+                                                                      ).toString()}',
                                                                       textAlign:
                                                                           TextAlign
                                                                               .start,
@@ -728,7 +728,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -772,7 +772,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             child:
                                                                                 Padding(
                                                                               padding: MediaQuery.viewInsetsOf(context),
-                                                                              child: SizedBox(
+                                                                              child: Container(
                                                                                 height: MediaQuery.sizeOf(context).height * 0.7,
                                                                                 child: DatailLeaveRequetWidget(
                                                                                   detailList: getJsonField(
@@ -815,7 +815,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   15.0,
@@ -832,7 +832,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                             flex: 2,
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           5.0,
                                                                           0.0,
@@ -885,13 +885,13 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                 SelectionArea(
                                                                     child:
                                                                         AutoSizeText(
-                                                                  getJsonField(
+                                                                  '${getJsonField(
                                                                     _model
                                                                         .leaveHistoryList
                                                                         .elementAtOrNull(
                                                                             leaveItemIndex),
                                                                     r'''$.LEAVE_NAME''',
-                                                                  ).toString(),
+                                                                  ).toString()}',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -914,7 +914,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   3.0,
@@ -931,7 +931,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                             flex: 2,
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           5.0,
                                                                           0.0,
@@ -984,13 +984,13 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                 SelectionArea(
                                                                     child:
                                                                         AutoSizeText(
-                                                                  getJsonField(
+                                                                  '${getJsonField(
                                                                     _model
                                                                         .leaveHistoryList
                                                                         .elementAtOrNull(
                                                                             leaveItemIndex),
                                                                     r'''$.CREATE_DATETIME''',
-                                                                  ).toString(),
+                                                                  ).toString()}',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -1013,7 +1013,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   3.0,
@@ -1030,7 +1030,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                             flex: 2,
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           5.0,
                                                                           0.0,
@@ -1118,7 +1118,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   3.0,
@@ -1135,7 +1135,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                             flex: 2,
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           5.0,
                                                                           0.0,
@@ -1188,13 +1188,13 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                 SelectionArea(
                                                                     child:
                                                                         AutoSizeText(
-                                                                  getJsonField(
+                                                                  '${getJsonField(
                                                                     _model
                                                                         .leaveHistoryList
                                                                         .elementAtOrNull(
                                                                             leaveItemIndex),
                                                                     r'''$.LEAVE_COUNT_DAY''',
-                                                                  ).toString(),
+                                                                  ).toString()}',
                                                                   textAlign:
                                                                       TextAlign
                                                                           .start,
@@ -1220,7 +1220,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   3.0,
@@ -1237,7 +1237,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                             flex: 2,
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           5.0,
                                                                           0.0,
@@ -1290,13 +1290,13 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                 SelectionArea(
                                                                     child:
                                                                         AutoSizeText(
-                                                                  getJsonField(
+                                                                  '${getJsonField(
                                                                     _model
                                                                         .leaveHistoryList
                                                                         .elementAtOrNull(
                                                                             leaveItemIndex),
                                                                     r'''$.LEAVE_PERIOD_NAME''',
-                                                                  ).toString(),
+                                                                  ).toString()}',
                                                                   textAlign:
                                                                       TextAlign
                                                                           .start,
@@ -1322,7 +1322,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   3.0,
@@ -1339,7 +1339,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                             flex: 2,
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           5.0,
                                                                           0.0,
@@ -1392,13 +1392,13 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                 SelectionArea(
                                                                     child:
                                                                         AutoSizeText(
-                                                                  getJsonField(
+                                                                  '${getJsonField(
                                                                     _model
                                                                         .leaveHistoryList
                                                                         .elementAtOrNull(
                                                                             leaveItemIndex),
                                                                     r'''$.LEAVE_REASON''',
-                                                                  ).toString()
+                                                                  ).toString()}'
                                                                       .maybeHandleOverflow(
                                                                     maxChars:
                                                                         200,
@@ -1428,7 +1428,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -1445,7 +1445,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                             flex: 2,
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           5.0,
                                                                           0.0,
@@ -1541,7 +1541,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -1558,7 +1558,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                             flex: 2,
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           5.0,
                                                                           0.0,
@@ -1614,13 +1614,13 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                 SelectionArea(
                                                                     child:
                                                                         AutoSizeText(
-                                                                  getJsonField(
+                                                                  '${getJsonField(
                                                                     _model
                                                                         .leaveHistoryList
                                                                         .elementAtOrNull(
                                                                             leaveItemIndex),
                                                                     r'''$.LEAVE_STATUS''',
-                                                                  ).toString(),
+                                                                  ).toString()}',
                                                                   textAlign:
                                                                       TextAlign
                                                                           .start,
@@ -1646,7 +1646,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   3.0,
@@ -1663,7 +1663,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                             flex: 1,
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           5.0,
                                                                           0.0,
@@ -1715,7 +1715,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                               children: [
                                                                 Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           -1.0,
                                                                           0.0),
                                                                   child:
@@ -1749,7 +1749,9 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                       safeSetState(
                                                                           () {});
                                                                       if (FFAppState()
-                                                                              .leaveDocImgPathListNew.isEmpty) {
+                                                                              .leaveDocImgPathListNew
+                                                                              .length <=
+                                                                          0) {
                                                                         await showDialog(
                                                                           context:
                                                                               context,
@@ -1765,7 +1767,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: const Text('Ok'),
+                                                                                    child: Text('Ok'),
                                                                                   ),
                                                                                 ],
                                                                               ),
@@ -1812,7 +1814,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                           safeSetState(
                                                                               () {}));
                                                                     },
-                                                                    child: const Icon(
+                                                                    child: Icon(
                                                                       Icons
                                                                           .attach_file,
                                                                       color: Colors
@@ -1831,7 +1833,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                     if (true)
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     12.0,
@@ -1854,7 +1856,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                 ).toString())
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -1948,7 +1950,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                       .getText(
                                                                     'lroplpyc' /* Edit */,
                                                                   ),
-                                                                  icon: const FaIcon(
+                                                                  icon: FaIcon(
                                                                     FontAwesomeIcons
                                                                         .edit,
                                                                     size: 22.0,
@@ -1959,19 +1961,19 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                         130.0,
                                                                     height:
                                                                         40.0,
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
                                                                     iconPadding:
-                                                                        const EdgeInsetsDirectional.fromSTEB(
+                                                                        EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF00968A),
                                                                     textStyle: FlutterFlowTheme.of(
                                                                             context)
@@ -1991,7 +1993,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                     elevation:
                                                                         2.0,
                                                                     borderSide:
-                                                                        const BorderSide(
+                                                                        BorderSide(
                                                                       color: Colors
                                                                           .transparent,
                                                                       width:
@@ -2062,7 +2064,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                     .getText(
                                                                   'db2tvi6z' /* Cancel */,
                                                                 ),
-                                                                icon: const Icon(
+                                                                icon: Icon(
                                                                   Icons.cancel,
                                                                   size: 22.0,
                                                                 ),
@@ -2070,19 +2072,19 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                     FFButtonOptions(
                                                                   width: 130.0,
                                                                   height: 40.0,
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           0.0,
                                                                           16.0,
                                                                           0.0),
-                                                                  iconPadding: const EdgeInsetsDirectional
+                                                                  iconPadding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFFB32A33),
                                                                   textStyle: FlutterFlowTheme.of(
                                                                           context)
@@ -2098,7 +2100,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                   elevation:
                                                                       0.0,
                                                                   borderSide:
-                                                                      const BorderSide(
+                                                                      BorderSide(
                                                                     width: 0.5,
                                                                   ),
                                                                   borderRadius:

@@ -43,20 +43,20 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
         color: FlutterFlowTheme.of(context).secondaryBackground,
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         '7ul9r41x' /* สถานะทั้งหมด */,
@@ -73,13 +73,13 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(1.0, -1.0),
+                        alignment: AlignmentDirectional(1.0, -1.0),
                         child: FlutterFlowIconButton(
                           borderColor: Colors.transparent,
                           borderRadius: 30.0,
                           borderWidth: 1.0,
                           buttonSize: 60.0,
-                          icon: const FaIcon(
+                          icon: FaIcon(
                             FontAwesomeIcons.times,
                             color: Color(0xFFFF0004),
                             size: 40.0,
@@ -100,14 +100,14 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                 Expanded(
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'mqn06a20' /* เช็คอินเข้า-ออกงาน จะมีเเถบเเล... */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
-                            color: const Color(0xFF535455),
+                            color: Color(0xFF535455),
                             fontSize: 14.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
@@ -118,7 +118,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
               ],
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 18.0, 10.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(10.0, 18.0, 10.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -126,7 +126,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   Container(
                     width: 30.0,
                     height: 30.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFF39A6EF),
                       shape: BoxShape.circle,
                     ),
@@ -134,7 +134,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'kh7en1yk' /* วันหยุดเเละวันหยุดตามประเพณี */,
@@ -152,7 +152,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 18.0, 10.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(10.0, 18.0, 10.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -160,7 +160,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   Container(
                     width: 30.0,
                     height: 30.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFFABABAB),
                       shape: BoxShape.circle,
                     ),
@@ -168,7 +168,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           '0il619bg' /* ขาดงาน */,
@@ -186,7 +186,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 18.0, 10.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(10.0, 18.0, 10.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -194,7 +194,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   Container(
                     width: 30.0,
                     height: 30.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Colors.black,
                       shape: BoxShape.circle,
                     ),
@@ -202,7 +202,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           '3py39tbc' /* ลงเวลาไม่ครบ(ไม่เช็คเอาท์ออกงา... */,
@@ -220,7 +220,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 18.0, 10.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(10.0, 18.0, 10.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -228,7 +228,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   Container(
                     width: 30.0,
                     height: 30.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFFF3530F),
                       shape: BoxShape.circle,
                     ),
@@ -236,7 +236,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'q4nj7lx7' /* เข้างานไม่ครบจำนวน(ทำงานไม่ครบ... */,
@@ -254,7 +254,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 18.0, 10.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(10.0, 18.0, 10.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -262,7 +262,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   Container(
                     width: 30.0,
                     height: 30.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFFFF0004),
                       shape: BoxShape.circle,
                     ),
@@ -270,7 +270,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           '0g6rkfn2' /* สาย (เช็คอินหลังเวลาเข้างาน) */,
@@ -288,7 +288,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 18.0, 10.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(10.0, 18.0, 10.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -296,7 +296,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   Container(
                     width: 30.0,
                     height: 30.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFFFFF90C),
                       shape: BoxShape.circle,
                     ),
@@ -304,7 +304,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'fn4vqph9' /* ออกก่อนเวลา (เช็คเอาท์ก่อนเวลา... */,
@@ -322,7 +322,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 18.0, 10.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(10.0, 18.0, 10.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -330,7 +330,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   Container(
                     width: 30.0,
                     height: 30.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFF1CF62B),
                       shape: BoxShape.circle,
                     ),
@@ -338,7 +338,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           '5qzqlkly' /* ปกติ */,

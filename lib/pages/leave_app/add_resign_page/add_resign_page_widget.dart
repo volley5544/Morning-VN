@@ -74,14 +74,14 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: const Color(0xFFFF6500),
+          backgroundColor: Color(0xFFFF6500),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -102,7 +102,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                   fontWeight: FontWeight.w600,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -120,7 +120,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                     Container(
                       width: double.infinity,
                       height: MediaQuery.sizeOf(context).height * 0.75,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         color: Colors.white,
                       ),
                       child: SingleChildScrollView(
@@ -129,7 +129,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 15.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -138,7 +138,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: TextFormField(
                                         controller: _model.textController1,
@@ -159,7 +159,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                                     letterSpacing: 0.0,
                                                   ),
                                           enabledBorder: UnderlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 1.0,
                                             ),
@@ -167,7 +167,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                                 BorderRadius.circular(8.0),
                                           ),
                                           focusedBorder: UnderlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 1.0,
                                             ),
@@ -175,7 +175,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                                 BorderRadius.circular(8.0),
                                           ),
                                           errorBorder: UnderlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 1.0,
                                             ),
@@ -184,7 +184,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                           ),
                                           focusedErrorBorder:
                                               UnderlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 1.0,
                                             ),
@@ -192,7 +192,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                                 BorderRadius.circular(8.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0xFFF5F5F5),
+                                          fillColor: Color(0xFFF5F5F5),
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -212,7 +212,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 15.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -221,7 +221,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                 children: [
                                   Align(
                                     alignment:
-                                        const AlignmentDirectional(-0.35, -0.09),
+                                        AlignmentDirectional(-0.35, -0.09),
                                     child: SelectionArea(
                                         child: Text(
                                       FFLocalizations.of(context).getText(
@@ -240,7 +240,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 15.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -253,29 +253,29 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       text: FFLocalizations.of(context).getText(
                                         '9rswm622' /* ระบุวันที่ */,
                                       ),
-                                      icon: const FaIcon(
+                                      icon: FaIcon(
                                         FontAwesomeIcons.solidCalendarAlt,
                                         size: 15.0,
                                       ),
                                       options: FFButtonOptions(
                                         width: 90.0,
                                         height: 60.0,
-                                        padding: const EdgeInsets.all(0.0),
+                                        padding: EdgeInsets.all(0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: Colors.white,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              color: const Color(0xFF0A0A0A),
+                                              color: Color(0xFF0A0A0A),
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
                                             ),
                                         elevation: 2.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0xFFBDBDBD),
                                           width: 2.0,
                                         ),
@@ -288,7 +288,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 15.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -297,7 +297,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                 children: [
                                   Align(
                                     alignment:
-                                        const AlignmentDirectional(-0.35, -0.09),
+                                        AlignmentDirectional(-0.35, -0.09),
                                     child: SelectionArea(
                                         child: Text(
                                       FFLocalizations.of(context).getText(
@@ -316,7 +316,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 15.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -324,7 +324,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 250.0, 0.0),
                                       child: FlutterFlowCheckboxGroup(
                                         options: [
@@ -343,7 +343,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                             FlutterFlowTheme.of(context)
                                                 .primary,
                                         checkColor: Colors.white,
-                                        checkboxBorderColor: const Color(0xFF95A1AC),
+                                        checkboxBorderColor: Color(0xFF95A1AC),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -369,7 +369,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         20.0, 5.0, 1.0, 10.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -379,7 +379,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                           CrossAxisAlignment.end,
                                       children: [
                                         Align(
-                                          alignment: const AlignmentDirectional(
+                                          alignment: AlignmentDirectional(
                                               -0.35, -0.09),
                                           child: SelectionArea(
                                               child: Text(
@@ -399,7 +399,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         20.0, 0.0, 15.0, 10.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -430,7 +430,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                                       ),
                                               enabledBorder:
                                                   UnderlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 2.0,
                                                 ),
@@ -439,7 +439,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                               ),
                                               focusedBorder:
                                                   UnderlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 2.0,
                                                 ),
@@ -447,7 +447,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                                     BorderRadius.circular(8.0),
                                               ),
                                               errorBorder: UnderlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 2.0,
                                                 ),
@@ -456,7 +456,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                               ),
                                               focusedErrorBorder:
                                                   UnderlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 2.0,
                                                 ),
@@ -464,9 +464,9 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                                     BorderRadius.circular(8.0),
                                               ),
                                               filled: true,
-                                              fillColor: const Color(0xFFF5F5F5),
+                                              fillColor: Color(0xFFF5F5F5),
                                               contentPadding:
-                                                  const EdgeInsetsDirectional
+                                                  EdgeInsetsDirectional
                                                       .fromSTEB(20.0, 24.0,
                                                           24.0, 24.0),
                                             ),
@@ -474,7 +474,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Readex Pro',
-                                                  color: const Color(0xFF0A0A0A),
+                                                  color: Color(0xFF0A0A0A),
                                                   fontSize: 15.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
@@ -491,7 +491,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 10.0, 10.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -500,7 +500,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                 children: [
                                   Align(
                                     alignment:
-                                        const AlignmentDirectional(-0.35, -0.09),
+                                        AlignmentDirectional(-0.35, -0.09),
                                     child: SelectionArea(
                                         child: Text(
                                       FFLocalizations.of(context).getText(
@@ -519,7 +519,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 15.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -528,7 +528,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           2.0, 10.0, 0.0, 0.0),
                                       child: TextFormField(
                                         controller: _model
@@ -556,11 +556,11 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                                   .bodySmall
                                                   .override(
                                                     fontFamily: 'Readex Pro',
-                                                    color: const Color(0xFF0A0A0A),
+                                                    color: Color(0xFF0A0A0A),
                                                     letterSpacing: 0.0,
                                                   ),
                                           enabledBorder: UnderlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 2.0,
                                             ),
@@ -568,7 +568,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                                 BorderRadius.circular(8.0),
                                           ),
                                           focusedBorder: UnderlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 2.0,
                                             ),
@@ -576,7 +576,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                                 BorderRadius.circular(8.0),
                                           ),
                                           errorBorder: UnderlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 2.0,
                                             ),
@@ -585,7 +585,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                           ),
                                           focusedErrorBorder:
                                               UnderlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 2.0,
                                             ),
@@ -593,9 +593,9 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                                 BorderRadius.circular(8.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0xFFF5F5F5),
+                                          fillColor: Color(0xFFF5F5F5),
                                           contentPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 0.0, 24.0, 0.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -617,7 +617,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 10.0, 10.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -626,7 +626,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                 children: [
                                   Align(
                                     alignment:
-                                        const AlignmentDirectional(-0.35, -0.09),
+                                        AlignmentDirectional(-0.35, -0.09),
                                     child: SelectionArea(
                                         child: Text(
                                       FFLocalizations.of(context).getText(
@@ -645,7 +645,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 15.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -686,7 +686,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       borderColor: Colors.transparent,
                                       borderWidth: 0.0,
                                       borderRadius: 0.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 4.0, 12.0, 4.0),
                                       isSearchable: false,
                                       isMultiSelect: false,
@@ -696,7 +696,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 15.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -737,7 +737,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       borderColor: Colors.transparent,
                                       borderWidth: 0.0,
                                       borderRadius: 0.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 4.0, 12.0, 4.0),
                                       disabled: _model.provinceDropDownValue ==
                                               null ||
@@ -750,7 +750,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 15.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -787,7 +787,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       borderColor: Colors.transparent,
                                       borderWidth: 0.0,
                                       borderRadius: 0.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 4.0, 12.0, 4.0),
                                       disabled: _model.districtDropDownValue ==
                                               null ||
@@ -800,7 +800,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 15.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -836,7 +836,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       borderColor: Colors.transparent,
                                       borderWidth: 0.0,
                                       borderRadius: 0.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 4.0, 12.0, 4.0),
                                       disabled: _model.districtDropDownValue ==
                                               null ||
@@ -849,7 +849,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 15.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -875,7 +875,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                               letterSpacing: 0.0,
                                             ),
                                         enabledBorder: UnderlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -883,7 +883,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedBorder: UnderlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -891,7 +891,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         errorBorder: UnderlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -900,7 +900,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                         ),
                                         focusedErrorBorder:
                                             UnderlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -908,16 +908,16 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         filled: true,
-                                        fillColor: const Color(0xFFF5F5F5),
+                                        fillColor: Color(0xFFF5F5F5),
                                         contentPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 20.0, 24.0, 24.0, 24.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Readex Pro',
-                                            color: const Color(0xFF0A0A0A),
+                                            color: Color(0xFF0A0A0A),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
@@ -931,7 +931,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 15.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -957,7 +957,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                               letterSpacing: 0.0,
                                             ),
                                         enabledBorder: UnderlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -965,7 +965,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedBorder: UnderlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -973,7 +973,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         errorBorder: UnderlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -982,7 +982,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                         ),
                                         focusedErrorBorder:
                                             UnderlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -990,16 +990,16 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         filled: true,
-                                        fillColor: const Color(0xFFF5F5F5),
+                                        fillColor: Color(0xFFF5F5F5),
                                         contentPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 20.0, 24.0, 24.0, 24.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Readex Pro',
-                                            color: const Color(0xFF0A0A0A),
+                                            color: Color(0xFF0A0A0A),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
@@ -1014,7 +1014,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 5.0, 10.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -1023,7 +1023,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                 children: [
                                   Align(
                                     alignment:
-                                        const AlignmentDirectional(-0.35, -0.09),
+                                        AlignmentDirectional(-0.35, -0.09),
                                     child: SelectionArea(
                                         child: Text(
                                       FFLocalizations.of(context).getText(
@@ -1042,7 +1042,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 15.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -1085,10 +1085,10 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       ),
                                       fillColor: Colors.white,
                                       elevation: 2.0,
-                                      borderColor: const Color(0xFFBDBDBD),
+                                      borderColor: Color(0xFFBDBDBD),
                                       borderWidth: 2.0,
                                       borderRadius: 8.0,
-                                      margin: const EdgeInsets.all(10.0),
+                                      margin: EdgeInsets.all(10.0),
                                       hidesUnderline: true,
                                       isSearchable: false,
                                       isMultiSelect: false,
@@ -1098,7 +1098,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 5.0, 1.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -1107,7 +1107,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                 children: [
                                   Align(
                                     alignment:
-                                        const AlignmentDirectional(-0.35, -0.09),
+                                        AlignmentDirectional(-0.35, -0.09),
                                     child: SelectionArea(
                                         child: Text(
                                       FFLocalizations.of(context).getText(
@@ -1126,7 +1126,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 15.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -1134,7 +1134,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 250.0, 0.0),
                                       child: FlutterFlowCheckboxGroup(
                                         options: [
@@ -1153,7 +1153,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                             FlutterFlowTheme.of(context)
                                                 .primary,
                                         checkColor: Colors.white,
-                                        checkboxBorderColor: const Color(0xFF95A1AC),
+                                        checkboxBorderColor: Color(0xFF95A1AC),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -1169,9 +1169,9 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, -1.0),
+                              alignment: AlignmentDirectional(0.0, -1.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 10.0, 10.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -1194,7 +1194,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 15.0, 120.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -1220,7 +1220,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                               letterSpacing: 0.0,
                                             ),
                                         enabledBorder: UnderlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -1228,7 +1228,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedBorder: UnderlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -1236,7 +1236,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         errorBorder: UnderlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -1245,7 +1245,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                         ),
                                         focusedErrorBorder:
                                             UnderlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -1253,16 +1253,16 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         filled: true,
-                                        fillColor: const Color(0xFFF5F5F5),
+                                        fillColor: Color(0xFFF5F5F5),
                                         contentPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 20.0, 24.0, 24.0, 24.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Readex Pro',
-                                            color: const Color(0xFF0A0A0A),
+                                            color: Color(0xFF0A0A0A),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
@@ -1285,18 +1285,18 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
               Container(
                 width: double.infinity,
                 height: MediaQuery.sizeOf(context).height * 0.15,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: Colors.white,
                 ),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Expanded(
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {},
                             text: FFLocalizations.of(context).getText(
@@ -1305,11 +1305,11 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 60.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 24.0, 24.0, 24.0),
-                              color: const Color(0xFF00968A),
+                              color: Color(0xFF00968A),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
@@ -1320,7 +1320,7 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                     fontWeight: FontWeight.w500,
                                   ),
                               elevation: 2.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 2.0,
                               ),

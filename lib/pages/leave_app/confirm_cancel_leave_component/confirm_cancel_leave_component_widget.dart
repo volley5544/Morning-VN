@@ -19,7 +19,7 @@ class ConfirmCancelLeaveComponentWidget extends StatefulWidget {
     this.leaveName,
     this.isFromCancelPage,
     required this.leaveStatus,
-  }) : leaveID = leaveID ?? '';
+  }) : this.leaveID = leaveID ?? '';
 
   final String leaveID;
   final String? employeeID;
@@ -63,7 +63,7 @@ class _ConfirmCancelLeaveComponentWidgetState
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -76,7 +76,7 @@ class _ConfirmCancelLeaveComponentWidgetState
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -84,7 +84,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -107,12 +107,12 @@ class _ConfirmCancelLeaveComponentWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Expanded(
-                            child: SizedBox(
+                            child: Container(
                               width: double.infinity,
                               child: TextFormField(
                                 controller: _model.reasonCancelTextController,
@@ -131,28 +131,28 @@ class _ConfirmCancelLeaveComponentWidgetState
                                         letterSpacing: 0.0,
                                       ),
                                   enabledBorder: UnderlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 2.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   focusedBorder: UnderlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 2.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   errorBorder: UnderlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 2.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   focusedErrorBorder: UnderlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 2.0,
                                     ),
@@ -162,7 +162,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                                   fillColor: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                   contentPadding:
-                                      const EdgeInsetsDirectional.fromSTEB(
+                                      EdgeInsetsDirectional.fromSTEB(
                                           20.0, 40.0, 24.0, 0.0),
                                 ),
                                 style: FlutterFlowTheme.of(context)
@@ -201,11 +201,11 @@ class _ConfirmCancelLeaveComponentWidgetState
                               options: FFButtonOptions(
                                 width: 130.0,
                                 height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: const Color(0xFFB32A33),
+                                color: Color(0xFFB32A33),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
@@ -216,7 +216,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                                       fontWeight: FontWeight.w600,
                                     ),
                                 elevation: 1.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   width: 0.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
@@ -229,7 +229,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                           children: [
                             FFButtonWidget(
                               onPressed: () async {
-                                var shouldSetState = false;
+                                var _shouldSetState = false;
                                 if (!(_model.reasonCancelTextController.text !=
                                         '')) {
                                   await showDialog(
@@ -250,14 +250,14 @@ class _ConfirmCancelLeaveComponentWidgetState
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: const Text('Ok'),
+                                              child: Text('Ok'),
                                             ),
                                           ],
                                         ),
                                       );
                                     },
                                   );
-                                  if (shouldSetState) safeSetState(() {});
+                                  if (_shouldSetState) safeSetState(() {});
                                   return;
                                 }
                                 var confirmDialogResponse =
@@ -282,14 +282,14 @@ class _ConfirmCancelLeaveComponentWidgetState
                                                         Navigator.pop(
                                                             alertDialogContext,
                                                             false),
-                                                    child: const Text('Cancel'),
+                                                    child: Text('Cancel'),
                                                   ),
                                                   TextButton(
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext,
                                                             true),
-                                                    child: const Text('Confirm'),
+                                                    child: Text('Confirm'),
                                                   ),
                                                 ],
                                               ),
@@ -298,7 +298,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                                         ) ??
                                         false;
                                 if (!confirmDialogResponse) {
-                                  if (shouldSetState) safeSetState(() {});
+                                  if (_shouldSetState) safeSetState(() {});
                                   return;
                                 }
                                 showModalBottomSheet(
@@ -311,7 +311,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: const LoadingWidget(),
+                                        child: LoadingWidget(),
                                       ),
                                     );
                                   },
@@ -329,7 +329,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                                       _model.reasonCancelTextController.text,
                                 );
 
-                                shouldSetState = true;
+                                _shouldSetState = true;
                                 if ((_model.leaveListCancelAPIOutput
                                             ?.statusCode ??
                                         200) !=
@@ -355,7 +355,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
                                                     alertDialogContext),
-                                                child: const Text('Ok'),
+                                                child: Text('Ok'),
                                               ),
                                             ],
                                           ),
@@ -382,7 +382,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
                                                     alertDialogContext),
-                                                child: const Text('Ok'),
+                                                child: Text('Ok'),
                                               ),
                                             ],
                                           ),
@@ -390,7 +390,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                                       },
                                     );
                                     Navigator.pop(context);
-                                    if (shouldSetState) safeSetState(() {});
+                                    if (_shouldSetState) safeSetState(() {});
                                     return;
                                   }
 
@@ -417,15 +417,15 @@ class _ConfirmCancelLeaveComponentWidgetState
 
                                   context.pushNamed('loginPage');
 
-                                  if (shouldSetState) safeSetState(() {});
+                                  if (_shouldSetState) safeSetState(() {});
                                   return;
                                 }
-                                if (getJsonField(
+                                if ('${getJsonField(
                                       (_model.leaveListCancelAPIOutput
                                               ?.jsonBody ??
                                           ''),
                                       r'''$.code''',
-                                    ).toString() !=
+                                    ).toString()}' !=
                                     '200') {
                                   await showDialog(
                                     context: context,
@@ -442,7 +442,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: const Text('Ok'),
+                                              child: Text('Ok'),
                                             ),
                                           ],
                                         ),
@@ -450,7 +450,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                                     },
                                   );
                                   Navigator.pop(context);
-                                  if (shouldSetState) safeSetState(() {});
+                                  if (_shouldSetState) safeSetState(() {});
                                   return;
                                 }
                                 await showDialog(
@@ -468,7 +468,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                                           TextButton(
                                             onPressed: () => Navigator.pop(
                                                 alertDialogContext),
-                                            child: const Text('Ok'),
+                                            child: Text('Ok'),
                                           ),
                                         ],
                                       ),
@@ -483,7 +483,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                                   context.pushNamed('ApproveShowPage');
                                 }
 
-                                if (shouldSetState) safeSetState(() {});
+                                if (_shouldSetState) safeSetState(() {});
                               },
                               text: FFLocalizations.of(context).getText(
                                 'm27y9t0n' /* OK */,
@@ -491,11 +491,11 @@ class _ConfirmCancelLeaveComponentWidgetState
                               options: FFButtonOptions(
                                 width: 130.0,
                                 height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: const Color(0xFF00968A),
+                                color: Color(0xFF00968A),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(

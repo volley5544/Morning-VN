@@ -77,8 +77,8 @@ class _PinPageWidgetState extends State<PinPageWidget>
             curve: Curves.easeInOut,
             delay: 1100.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(1.0, 1.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -139,7 +139,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
               child: Container(
                 width: double.infinity,
                 height: MediaQuery.sizeOf(context).height * 1.0,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [Colors.white, Color(0xFFFF9E35)],
                     stops: [0.0, 1.0],
@@ -153,7 +153,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                     Container(
                       width: double.infinity,
                       height: 50.0,
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -162,7 +162,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 0.0, 0.0),
                                 child: FlutterFlowIconButton(
                                   borderColor: Colors.transparent,
@@ -222,7 +222,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 0.0, 0.0),
                                   child: FlutterFlowIconButton(
                                     borderColor: Colors.transparent,
@@ -241,7 +241,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 20.0, 0.0),
                                   child: SelectionArea(
                                       child: Text(
@@ -265,7 +265,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                     Container(
                       width: double.infinity,
                       height: 50.0,
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                     ),
                     InkWell(
                       splashColor: Colors.transparent,
@@ -276,7 +276,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
-                          barrierColor: const Color(0xC0000000),
+                          barrierColor: Color(0xC0000000),
                           enableDrag: false,
                           context: context,
                           builder: (context) {
@@ -288,10 +288,10 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                 },
                                 child: Padding(
                                   padding: MediaQuery.viewInsetsOf(context),
-                                  child: SizedBox(
+                                  child: Container(
                                     height:
                                         MediaQuery.sizeOf(context).height * 0.5,
-                                    child: const SelectLanguageComponentWidget(),
+                                    child: SelectLanguageComponentWidget(),
                                   ),
                                 ),
                               ),
@@ -309,12 +309,12 @@ class _PinPageWidgetState extends State<PinPageWidget>
                         animationsMap['imageOnPageLoadAnimation']!),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
@@ -335,7 +335,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -354,12 +354,12 @@ class _PinPageWidgetState extends State<PinPageWidget>
                           Container(
                             width: double.infinity,
                             height: 200.0,
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 32.0, 12.0, 0.0),
                                   child: PinCodeTextField(
                                     autoDisposeControllers: false,
@@ -390,7 +390,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                       fieldHeight: 55.0,
                                       fieldWidth: 50.0,
                                       borderWidth: 2.0,
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(12.0),
                                         bottomRight: Radius.circular(12.0),
                                         topLeft: Radius.circular(12.0),
@@ -399,12 +399,12 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                       shape: PinCodeFieldShape.box,
                                       activeColor: Colors.white,
                                       inactiveColor: Colors.white,
-                                      selectedColor: const Color(0x66FFFFFF),
+                                      selectedColor: Color(0x66FFFFFF),
                                     ),
                                     controller: _model.pinCodeController,
                                     onChanged: (_) {},
                                     onCompleted: (_) async {
-                                      var shouldSetState = false;
+                                      var _shouldSetState = false;
                                       if (!((String appBuildNumber,
                                               String latestBuildNumber) {
                                         return int.parse(appBuildNumber) >=
@@ -434,7 +434,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               ),
@@ -442,9 +442,8 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                           },
                                         );
                                         await actions.terminateAppAction();
-                                        if (shouldSetState) {
+                                        if (_shouldSetState)
                                           safeSetState(() {});
-                                        }
                                         return;
                                       }
                                       if (_model.pinCodeController!.text !=
@@ -472,16 +471,15 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               ),
                                             );
                                           },
                                         );
-                                        if (shouldSetState) {
+                                        if (_shouldSetState)
                                           safeSetState(() {});
-                                        }
                                         return;
                                       }
                                       await requestPermission(
@@ -491,14 +489,14 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                         _model.backgroundLocationCheck =
                                             await actions
                                                 .backgroundLocationCheck();
-                                        shouldSetState = true;
+                                        _shouldSetState = true;
                                         if (!_model.backgroundLocationCheck!) {
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return WebViewAware(
                                                 child: AlertDialog(
-                                                  content: const Text(
+                                                  content: Text(
                                                       'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
                                                   actions: [
                                                     TextButton(
@@ -506,7 +504,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                                           Navigator.pop(
                                                               alertDialogContext),
                                                       child:
-                                                          const Text('Open Setting'),
+                                                          Text('Open Setting'),
                                                     ),
                                                   ],
                                                 ),
@@ -523,30 +521,29 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
                                               child: AlertDialog(
-                                                content: const Text(
+                                                content: Text(
                                                     'Vui lòng cho phép truy cập vị trí của bạn để theo dõi công việc của bạn'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               ),
                                             );
                                           },
                                         );
-                                        if (shouldSetState) {
+                                        if (_shouldSetState)
                                           safeSetState(() {});
-                                        }
                                         return;
                                       }
 
                                       _model.permissionRequestOutput =
                                           await actions
                                               .backgroundLocationPermission();
-                                      shouldSetState = true;
+                                      _shouldSetState = true;
                                       if (!_model.permissionRequestOutput!) {
                                         safeSetState(() {
                                           _model.pinCodeController?.clear();
@@ -556,42 +553,41 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
                                               child: AlertDialog(
-                                                content: const Text(
+                                                content: Text(
                                                     'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               ),
                                             );
                                           },
                                         );
-                                        if (shouldSetState) {
+                                        if (_shouldSetState)
                                           safeSetState(() {});
-                                        }
                                         return;
                                       }
                                       _model.checkGpsEnable =
                                           await actions.checkGpsServiceEnable();
-                                      shouldSetState = true;
+                                      _shouldSetState = true;
                                       if (!_model.checkGpsEnable!) {
                                         await showDialog(
                                           context: context,
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
                                               child: AlertDialog(
-                                                content: const Text(
+                                                content: Text(
                                                     'Vui lòng bật GPS trước khi tiếp tục'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               ),
@@ -601,7 +597,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                         await actions.enableGpsService();
                                         _model.checkGpsEnable2 = await actions
                                             .checkGpsServiceEnable();
-                                        shouldSetState = true;
+                                        _shouldSetState = true;
                                         if (!_model.checkGpsEnable2!) {
                                           safeSetState(() {
                                             _model.pinCodeController?.clear();
@@ -611,23 +607,22 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                             builder: (alertDialogContext) {
                                               return WebViewAware(
                                                 child: AlertDialog(
-                                                  content: const Text(
+                                                  content: Text(
                                                       'Vui lòng bật GPS trước khi tiếp tục'),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 ),
                                               );
                                             },
                                           );
-                                          if (shouldSetState) {
+                                          if (_shouldSetState)
                                             safeSetState(() {});
-                                          }
                                           return;
                                         }
                                       }
@@ -639,7 +634,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                         token: FFAppState().accessToken,
                                       );
 
-                                      shouldSetState = true;
+                                      _shouldSetState = true;
                                       if ((_model.getUserProfile?.statusCode ??
                                               200) !=
                                           200) {
@@ -665,7 +660,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 ),
@@ -690,16 +685,15 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 ),
                                               );
                                             },
                                           );
-                                          if (shouldSetState) {
+                                          if (_shouldSetState)
                                             safeSetState(() {});
-                                          }
                                           return;
                                         }
 
@@ -726,16 +720,15 @@ class _PinPageWidgetState extends State<PinPageWidget>
 
                                         context.pushNamed('loginPage');
 
-                                        if (shouldSetState) {
+                                        if (_shouldSetState)
                                           safeSetState(() {});
-                                        }
                                         return;
                                       }
-                                      if (getJsonField(
+                                      if ('${getJsonField(
                                             (_model.getUserProfile?.jsonBody ??
                                                 ''),
                                             r'''$.status''',
-                                          ).toString() !=
+                                          ).toString()}' !=
                                           '200') {
                                         await showDialog(
                                           context: context,
@@ -754,16 +747,15 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               ),
                                             );
                                           },
                                         );
-                                        if (shouldSetState) {
+                                        if (_shouldSetState)
                                           safeSetState(() {});
-                                        }
                                         return;
                                       }
                                       FFAppState().profilePositionName =
@@ -807,14 +799,14 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                         (_model.getUserProfile?.jsonBody ?? ''),
                                       )!;
                                       FFAppState().roleName =
-                                          GetUserProfileAPICall.rolename(
+                                          '${GetUserProfileAPICall.rolename(
                                         (_model.getUserProfile?.jsonBody ?? ''),
-                                      )!;
+                                      )}';
                                       safeSetState(() {});
 
                                       context.goNamed('superAppPage');
 
-                                      if (shouldSetState) safeSetState(() {});
+                                      if (_shouldSetState) safeSetState(() {});
                                     },
                                     autovalidateMode:
                                         AutovalidateMode.onUserInteraction,

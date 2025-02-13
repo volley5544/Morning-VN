@@ -47,7 +47,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
             elevation: 0,
             insetPadding: EdgeInsets.zero,
             backgroundColor: Colors.transparent,
-            alignment: const AlignmentDirectional(0.0, 0.0)
+            alignment: AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
             child: WebViewAware(
               child: GestureDetector(
@@ -55,7 +55,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                   FocusScope.of(dialogContext).unfocus();
                   FocusManager.instance.primaryFocus?.unfocus();
                 },
-                child: const SizedBox(
+                child: Container(
                   height: double.infinity,
                   child: LoadingSceneWidget(),
                 ),
@@ -86,7 +86,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -107,7 +107,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -143,10 +143,10 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
 
         return;
       }
-      if (getJsonField(
+      if ('${getJsonField(
             (_model.workCheckHistoryApiOutput?.jsonBody ?? ''),
             r'''$.code''',
-          ).toString().toString() !=
+          ).toString().toString()}' !=
           '200') {
         await showDialog(
           context: context,
@@ -159,7 +159,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
+                    child: Text('Ok'),
                   ),
                 ],
               ),
@@ -247,14 +247,14 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
               appBar: AppBar(
-                backgroundColor: const Color(0xFFFF6500),
+                backgroundColor: Color(0xFFFF6500),
                 automaticallyImplyLeading: false,
                 leading: FlutterFlowIconButton(
                   borderColor: Colors.transparent,
                   borderRadius: 30.0,
                   borderWidth: 1.0,
                   buttonSize: 60.0,
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.arrow_back_rounded,
                     color: Colors.white,
                     size: 30.0,
@@ -272,7 +272,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                     await showModalBottomSheet(
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
-                      barrierColor: const Color(0xC0000000),
+                      barrierColor: Color(0xC0000000),
                       enableDrag: false,
                       context: context,
                       builder: (context) {
@@ -284,9 +284,9 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                             },
                             child: Padding(
                               padding: MediaQuery.viewInsetsOf(context),
-                              child: SizedBox(
+                              child: Container(
                                 height: MediaQuery.sizeOf(context).height * 0.5,
-                                child: const SelectLanguageComponentWidget(),
+                                child: SelectLanguageComponentWidget(),
                               ),
                             ),
                           ),
@@ -310,7 +310,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                 actions: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 15.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 15.0, 0.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -331,7 +331,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                 },
                                 child: Padding(
                                   padding: MediaQuery.viewInsetsOf(context),
-                                  child: const SizedBox(
+                                  child: Container(
                                     height: double.infinity,
                                     child: StatusCompnentWidget(),
                                   ),
@@ -341,7 +341,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                           },
                         ).then((value) => safeSetState(() {}));
                       },
-                      child: const FaIcon(
+                      child: FaIcon(
                         FontAwesomeIcons.exclamationTriangle,
                         color: Colors.white,
                         size: 35.0,
@@ -399,13 +399,13 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                 .secondaryBackground,
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 8.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Padding(
+                                Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 5.0, 6.0, 5.0),
                                   child: Icon(
@@ -438,11 +438,11 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                       ),
                     if (false)
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Container(
                           width: double.infinity,
-                          color: const Color(0x00000000),
+                          color: Color(0x00000000),
                           child: ExpandableNotifier(
                             controller: _model.expandableExpandableController,
                             child: ExpandablePanel(
@@ -455,7 +455,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                     .titleLarge
                                     .override(
                                       fontFamily: 'Outfit',
-                                      color: const Color(0xFFFF0000),
+                                      color: Color(0xFFFF0000),
                                       fontSize: 15.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w900,
@@ -477,7 +477,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Readex Pro',
-                                        color: const Color(0xFF95A1AC),
+                                        color: Color(0xFF95A1AC),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
                                       ),
@@ -494,14 +494,14 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          color: const Color(0xFF090F13),
+                                          color: Color(0xFF090F13),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
                                         ),
                                   ),
                                 ],
                               ),
-                              theme: const ExpandableThemeData(
+                              theme: ExpandableThemeData(
                                 tapHeaderToExpand: true,
                                 tapBodyToExpand: false,
                                 tapBodyToCollapse: false,
@@ -517,9 +517,9 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                       child: Column(
                         children: [
                           Align(
-                            alignment: const Alignment(0.0, 0),
+                            alignment: Alignment(0.0, 0),
                             child: TabBar(
-                              labelColor: const Color(0xFF4B39EF),
+                              labelColor: Color(0xFF4B39EF),
                               unselectedLabelColor:
                                   FlutterFlowTheme.of(context).secondaryText,
                               labelStyle: FlutterFlowTheme.of(context)
@@ -536,7 +536,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
                                   ),
-                              indicatorColor: const Color(0xFF39D2C0),
+                              indicatorColor: Color(0xFF39D2C0),
                               tabs: [
                                 Tab(
                                   text: FFLocalizations.of(context).getText(
@@ -574,7 +574,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -585,7 +585,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                   flex: 2,
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: SelectionArea(
@@ -693,7 +693,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                               .toList();
 
                                           return ListView.builder(
-                                            padding: const EdgeInsets.fromLTRB(
+                                            padding: EdgeInsets.fromLTRB(
                                               0,
                                               12.0,
                                               0,
@@ -733,7 +733,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                           flex: 2,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -791,7 +791,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -825,7 +825,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                           flex: 3,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         40.0,
                                                                         0.0,
@@ -843,7 +843,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                       .start,
                                                               children: [
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -871,7 +871,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -931,7 +931,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -942,7 +942,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                   flex: 2,
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: SelectionArea(
@@ -1050,7 +1050,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                   .toList();
 
                                           return ListView.builder(
-                                            padding: const EdgeInsets.fromLTRB(
+                                            padding: EdgeInsets.fromLTRB(
                                               0,
                                               12.0,
                                               0,
@@ -1091,7 +1091,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                           flex: 2,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -1149,7 +1149,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -1183,7 +1183,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                           flex: 3,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         40.0,
                                                                         0.0,
@@ -1201,7 +1201,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                       .start,
                                                               children: [
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1229,7 +1229,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,

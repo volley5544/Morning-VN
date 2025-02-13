@@ -84,7 +84,7 @@ class _ShowCheckinImageNewWidgetState extends State<ShowCheckinImageNewWidget> {
         FlutterFlowIconButton(
           borderRadius: 30.0,
           buttonSize: 75.0,
-          icon: const Icon(
+          icon: Icon(
             Icons.cancel_outlined,
             color: Color(0xFFFF0000),
             size: 35.0,

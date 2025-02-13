@@ -37,13 +37,13 @@ class _LoadingWidgetState extends State<LoadingWidget> {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: Color(0x80000000),
       ),
       child: Stack(
         children: [
           Align(
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: Image.asset(
               'assets/images/Spin-1s-200px_(1).gif',
               width: 120.0,

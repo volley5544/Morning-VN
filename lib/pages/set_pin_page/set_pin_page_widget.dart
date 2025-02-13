@@ -51,7 +51,7 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -67,7 +67,7 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(44.0, 8.0, 44.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(44.0, 8.0, 44.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'e81wxbhr' /* This Pin will Use to Enter App... */,
@@ -81,7 +81,7 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 32.0, 12.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 32.0, 12.0, 0.0),
                       child: PinCodeTextField(
                         autoDisposeControllers: false,
                         appContext: context,
@@ -106,7 +106,7 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                           fieldHeight: 55.0,
                           fieldWidth: 50.0,
                           borderWidth: 2.0,
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(12.0),
                             bottomRight: Radius.circular(12.0),
                             topLeft: Radius.circular(12.0),
@@ -130,7 +130,7 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 44.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 44.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     HapticFeedback.mediumImpact();
@@ -143,12 +143,12 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                               viText: 'Vui lòng nhập mã PIN',
                               thText: 'กรุณาใส่พิน',
                             ),
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: Colors.white,
                             ),
                           ),
-                          duration: const Duration(milliseconds: 3000),
-                          backgroundColor: const Color(0xCC000000),
+                          duration: Duration(milliseconds: 3000),
+                          backgroundColor: Color(0xCC000000),
                         ),
                       );
                       return;
@@ -170,7 +170,7 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                                 TextButton(
                                   onPressed: () =>
                                       Navigator.pop(alertDialogContext),
-                                  child: const Text('Ok'),
+                                  child: Text('Ok'),
                                 ),
                               ],
                             ),
@@ -191,9 +191,9 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                   options: FFButtonOptions(
                     width: 270.0,
                     height: 50.0,
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primaryText,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Readex Pro',
@@ -201,7 +201,7 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                           letterSpacing: 0.0,
                         ),
                     elevation: 2.0,
-                    borderSide: const BorderSide(
+                    borderSide: BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),

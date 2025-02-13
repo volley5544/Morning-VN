@@ -51,7 +51,7 @@ class _EmployeeCheckinPageVolWidgetState
             elevation: 0,
             insetPadding: EdgeInsets.zero,
             backgroundColor: Colors.transparent,
-            alignment: const AlignmentDirectional(0.0, 0.0)
+            alignment: AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
             child: WebViewAware(
               child: GestureDetector(
@@ -59,7 +59,7 @@ class _EmployeeCheckinPageVolWidgetState
                   FocusScope.of(dialogContext).unfocus();
                   FocusManager.instance.primaryFocus?.unfocus();
                 },
-                child: const SizedBox(
+                child: Container(
                   height: double.infinity,
                   child: LoadingWidget(),
                 ),
@@ -86,7 +86,7 @@ class _EmployeeCheckinPageVolWidgetState
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
+                    child: Text('Ok'),
                   ),
                 ],
               ),
@@ -112,7 +112,7 @@ class _EmployeeCheckinPageVolWidgetState
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
+                    child: Text('Ok'),
                   ),
                 ],
               ),
@@ -130,7 +130,7 @@ class _EmployeeCheckinPageVolWidgetState
       Navigator.pop(context);
     });
 
-    getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
+    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
         .then((loc) => safeSetState(() => currentUserLocationValue = loc));
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -175,7 +175,7 @@ class _EmployeeCheckinPageVolWidgetState
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             appBar: AppBar(
-              backgroundColor: const Color(0xFFFF843D),
+              backgroundColor: Color(0xFFFF843D),
               automaticallyImplyLeading: false,
               leading: FlutterFlowIconButton(
                 borderRadius: 8.0,
@@ -211,7 +211,7 @@ class _EmployeeCheckinPageVolWidgetState
                       size: 30.0,
                     ),
                     onPressed: () async {
-                      var shouldSetState = false;
+                      var _shouldSetState = false;
                       showDialog(
                         context: context,
                         builder: (dialogContext) {
@@ -219,7 +219,7 @@ class _EmployeeCheckinPageVolWidgetState
                             elevation: 0,
                             insetPadding: EdgeInsets.zero,
                             backgroundColor: Colors.transparent,
-                            alignment: const AlignmentDirectional(0.0, 0.0)
+                            alignment: AlignmentDirectional(0.0, 0.0)
                                 .resolve(Directionality.of(context)),
                             child: WebViewAware(
                               child: GestureDetector(
@@ -227,7 +227,7 @@ class _EmployeeCheckinPageVolWidgetState
                                   FocusScope.of(dialogContext).unfocus();
                                   FocusManager.instance.primaryFocus?.unfocus();
                                 },
-                                child: const SizedBox(
+                                child: Container(
                                   height: double.infinity,
                                   child: LoadingWidget(),
                                 ),
@@ -275,7 +275,7 @@ class _EmployeeCheckinPageVolWidgetState
                       if (!((_model.uploadedLocalFile2.bytes?.isNotEmpty ??
                               false))) {
                         Navigator.pop(context);
-                        if (shouldSetState) safeSetState(() {});
+                        if (_shouldSetState) safeSetState(() {});
                         return;
                       }
                       _model.uploadedImageOutput1 =
@@ -283,13 +283,13 @@ class _EmployeeCheckinPageVolWidgetState
                         'CheckinImage',
                         _model.uploadedLocalFile2,
                       );
-                      shouldSetState = true;
+                      _shouldSetState = true;
                       if (!(_model.uploadedImageOutput1 != null &&
                           _model.uploadedImageOutput1 != '')) {
                         Navigator.pop(context);
                         ScaffoldMessenger.of(context).clearSnackBars();
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
+                          SnackBar(
                             content: Text(
                               'ถ่ายภาพล้มเหลว กรุณาลองใหม่อีกครั้ง',
                               style: TextStyle(
@@ -300,7 +300,7 @@ class _EmployeeCheckinPageVolWidgetState
                             backgroundColor: Color(0xC0000000),
                           ),
                         );
-                        if (shouldSetState) safeSetState(() {});
+                        if (_shouldSetState) safeSetState(() {});
                         return;
                       }
                       FFAppState().imgURLTemp = functions
@@ -309,7 +309,7 @@ class _EmployeeCheckinPageVolWidgetState
                       Navigator.pop(context);
                       ScaffoldMessenger.of(context).clearSnackBars();
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
+                        SnackBar(
                           content: Text(
                             'ถ่ายภาพสำเร็จ!',
                             style: TextStyle(
@@ -320,7 +320,7 @@ class _EmployeeCheckinPageVolWidgetState
                           backgroundColor: Color(0xC0000000),
                         ),
                       );
-                      if (shouldSetState) safeSetState(() {});
+                      if (_shouldSetState) safeSetState(() {});
                     },
                   ),
                 ),
@@ -336,9 +336,9 @@ class _EmployeeCheckinPageVolWidgetState
                   Container(
                     width: double.infinity,
                     height: 30.0,
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'zmdkvqhu' /* วันจันทร์ , 2 ธันวาคม 2567 */,
@@ -356,7 +356,7 @@ class _EmployeeCheckinPageVolWidgetState
                   Container(
                     width: double.infinity,
                     height: 50.0,
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'i8gdmckz' /* 13 : 41 : 35 น. */,
@@ -377,7 +377,7 @@ class _EmployeeCheckinPageVolWidgetState
                   Container(
                     width: double.infinity,
                     height: 200.0,
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -388,7 +388,7 @@ class _EmployeeCheckinPageVolWidgetState
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            boxShadow: const [
+                            boxShadow: [
                               BoxShadow(
                                 blurRadius: 4.0,
                                 color: Color(0x33000000),
@@ -400,13 +400,13 @@ class _EmployeeCheckinPageVolWidgetState
                             ],
                             borderRadius: BorderRadius.circular(12.0),
                           ),
-                          child: SizedBox(
+                          child: Container(
                             width: double.infinity,
                             height: double.infinity,
                             child: Stack(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.all(6.0),
+                                  padding: EdgeInsets.all(6.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -461,7 +461,7 @@ class _EmployeeCheckinPageVolWidgetState
                                         FFAppState().imgURLTemp) !=
                                     '')
                                   Align(
-                                    alignment: const AlignmentDirectional(1.0, -1.0),
+                                    alignment: AlignmentDirectional(1.0, -1.0),
                                     child: Builder(
                                       builder: (context) => InkWell(
                                         splashColor: Colors.transparent,
@@ -476,7 +476,7 @@ class _EmployeeCheckinPageVolWidgetState
                                                         (alertDialogContext) {
                                                       return WebViewAware(
                                                         child: AlertDialog(
-                                                          content: const Text(
+                                                          content: Text(
                                                               'คุณต้องการจะลบรูปภาพที่ถ่ายหรือไม่?'),
                                                           actions: [
                                                             TextButton(
@@ -484,7 +484,7 @@ class _EmployeeCheckinPageVolWidgetState
                                                                   Navigator.pop(
                                                                       alertDialogContext,
                                                                       false),
-                                                              child: const Text(
+                                                              child: Text(
                                                                   'Cancel'),
                                                             ),
                                                             TextButton(
@@ -492,7 +492,7 @@ class _EmployeeCheckinPageVolWidgetState
                                                                   Navigator.pop(
                                                                       alertDialogContext,
                                                                       true),
-                                                              child: const Text(
+                                                              child: Text(
                                                                   'Confirm'),
                                                             ),
                                                           ],
@@ -512,7 +512,7 @@ class _EmployeeCheckinPageVolWidgetState
                                                 insetPadding: EdgeInsets.zero,
                                                 backgroundColor:
                                                     Colors.transparent,
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                         0.0, 0.0)
                                                     .resolve(Directionality.of(
                                                         context)),
@@ -526,7 +526,7 @@ class _EmployeeCheckinPageVolWidgetState
                                                           .instance.primaryFocus
                                                           ?.unfocus();
                                                     },
-                                                    child: const SizedBox(
+                                                    child: Container(
                                                       height: double.infinity,
                                                       child: LoadingWidget(),
                                                     ),
@@ -544,7 +544,7 @@ class _EmployeeCheckinPageVolWidgetState
                                           safeSetState(() {});
                                           Navigator.pop(context);
                                         },
-                                        child: const Icon(
+                                        child: Icon(
                                           Icons.close_outlined,
                                           color: Color(0xFFFF0000),
                                           size: 30.0,
@@ -561,14 +561,14 @@ class _EmployeeCheckinPageVolWidgetState
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 12.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -592,7 +592,7 @@ class _EmployeeCheckinPageVolWidgetState
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         4.0, 0.0, 4.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
@@ -633,7 +633,7 @@ class _EmployeeCheckinPageVolWidgetState
                                                   padding:
                                                       MediaQuery.viewInsetsOf(
                                                           context),
-                                                  child: SizedBox(
+                                                  child: Container(
                                                     height: MediaQuery.sizeOf(
                                                                 context)
                                                             .height *
@@ -671,10 +671,10 @@ class _EmployeeCheckinPageVolWidgetState
                                         ),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               _model.indexBranch != null
@@ -722,7 +722,7 @@ class _EmployeeCheckinPageVolWidgetState
                                           child: Padding(
                                             padding: MediaQuery.viewInsetsOf(
                                                 context),
-                                            child: SizedBox(
+                                            child: Container(
                                               height: MediaQuery.sizeOf(context)
                                                       .height *
                                                   0.8,
@@ -768,7 +768,7 @@ class _EmployeeCheckinPageVolWidgetState
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         4.0, 0.0, 4.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
@@ -824,7 +824,7 @@ class _EmployeeCheckinPageVolWidgetState
                                       borderColor: Colors.transparent,
                                       borderWidth: 0.0,
                                       borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 12.0, 0.0),
                                       hidesUnderline: true,
                                       disabled:
@@ -855,7 +855,7 @@ class _EmployeeCheckinPageVolWidgetState
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       4.0, 0.0, 4.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -871,7 +871,7 @@ class _EmployeeCheckinPageVolWidgetState
                                 ),
                                 Expanded(
                                   flex: 2,
-                                  child: SizedBox(
+                                  child: Container(
                                     width: 200.0,
                                     child: TextFormField(
                                       controller: _model.textController,
@@ -899,7 +899,7 @@ class _EmployeeCheckinPageVolWidgetState
                                               letterSpacing: 0.0,
                                             ),
                                         enabledBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -907,7 +907,7 @@ class _EmployeeCheckinPageVolWidgetState
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -953,7 +953,7 @@ class _EmployeeCheckinPageVolWidgetState
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 12.0, 24.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -964,8 +964,8 @@ class _EmployeeCheckinPageVolWidgetState
                                         currentUserLocationValue =
                                             await getCurrentUserLocation(
                                                 defaultLocation:
-                                                    const LatLng(0.0, 0.0));
-                                        var shouldSetState = false;
+                                                    LatLng(0.0, 0.0));
+                                        var _shouldSetState = false;
                                         if (functions.convertImgPathToString(
                                                 FFAppState().imgURLTemp) ==
                                             '') {
@@ -1025,9 +1025,8 @@ class _EmployeeCheckinPageVolWidgetState
                                           if (!((_model.uploadedLocalFile1.bytes
                                                       ?.isNotEmpty ??
                                                   false))) {
-                                            if (shouldSetState) {
+                                            if (_shouldSetState)
                                               safeSetState(() {});
-                                            }
                                             return;
                                           }
                                           _model.uploadedImageOutput2 =
@@ -1036,7 +1035,7 @@ class _EmployeeCheckinPageVolWidgetState
                                             'CheckinImage',
                                             _model.uploadedLocalFile1,
                                           );
-                                          shouldSetState = true;
+                                          _shouldSetState = true;
                                           if (!(_model.uploadedImageOutput2 !=
                                                   null &&
                                               _model.uploadedImageOutput2 !=
@@ -1045,7 +1044,7 @@ class _EmployeeCheckinPageVolWidgetState
                                                 .clearSnackBars();
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
-                                              const SnackBar(
+                                              SnackBar(
                                                 content: Text(
                                                   'ถ่ายภาพล้มเหลว กรุณาลองใหม่อีกครั้ง',
                                                   style: TextStyle(
@@ -1058,9 +1057,8 @@ class _EmployeeCheckinPageVolWidgetState
                                                     Color(0xC0000000),
                                               ),
                                             );
-                                            if (shouldSetState) {
+                                            if (_shouldSetState)
                                               safeSetState(() {});
-                                            }
                                             return;
                                           }
                                           FFAppState().imgURLTemp =
@@ -1071,7 +1069,7 @@ class _EmployeeCheckinPageVolWidgetState
                                               .clearSnackBars();
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
-                                            const SnackBar(
+                                            SnackBar(
                                               content: Text(
                                                 'ถ่ายภาพสำเร็จ!',
                                                 style: TextStyle(
@@ -1097,7 +1095,7 @@ class _EmployeeCheckinPageVolWidgetState
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               ),
@@ -1111,23 +1109,22 @@ class _EmployeeCheckinPageVolWidgetState
                                             builder: (alertDialogContext) {
                                               return WebViewAware(
                                                 child: AlertDialog(
-                                                  content: const Text(
+                                                  content: Text(
                                                       'กรุณาเลือกสถานที่เช็คอิน'),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 ),
                                               );
                                             },
                                           );
-                                          if (shouldSetState) {
+                                          if (_shouldSetState)
                                             safeSetState(() {});
-                                          }
                                           return;
                                         }
                                         if (!functions
@@ -1138,23 +1135,22 @@ class _EmployeeCheckinPageVolWidgetState
                                             builder: (alertDialogContext) {
                                               return WebViewAware(
                                                 child: AlertDialog(
-                                                  content: const Text(
+                                                  content: Text(
                                                       'กรุณาเปิด GPS ก่อนทำการเช็คอิน'),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 ),
                                               );
                                             },
                                           );
-                                          if (shouldSetState) {
+                                          if (_shouldSetState)
                                             safeSetState(() {});
-                                          }
                                           return;
                                         }
                                         _model.checkUserIsInRadius =
@@ -1186,30 +1182,29 @@ class _EmployeeCheckinPageVolWidgetState
                                                       (_model.dropDownValue!)))
                                               ?.radius,
                                         );
-                                        shouldSetState = true;
+                                        _shouldSetState = true;
                                         if (!_model.checkUserIsInRadius!) {
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return WebViewAware(
                                                 child: AlertDialog(
-                                                  content: const Text(
+                                                  content: Text(
                                                       'คุณไม่อยู่ในระยะเช็คอิน กรุณาอยู่ใกล้กับสถานที่เช็คอินที่คุณเลือก'),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 ),
                                               );
                                             },
                                           );
-                                          if (shouldSetState) {
+                                          if (_shouldSetState)
                                             safeSetState(() {});
-                                          }
                                           return;
                                         }
                                         _model.workCheckApiOutput =
@@ -1232,7 +1227,7 @@ class _EmployeeCheckinPageVolWidgetState
                                           branch: _model.dropDownValue,
                                         );
 
-                                        shouldSetState = true;
+                                        _shouldSetState = true;
                                         if ((_model.workCheckApiOutput
                                                     ?.statusCode ??
                                                 200) !=
@@ -1249,16 +1244,15 @@ class _EmployeeCheckinPageVolWidgetState
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 ),
                                               );
                                             },
                                           );
-                                          if (shouldSetState) {
+                                          if (_shouldSetState)
                                             safeSetState(() {});
-                                          }
                                           return;
                                         }
                                         if ('${WorkCheckAPICall.statuslayer1(
@@ -1287,16 +1281,15 @@ class _EmployeeCheckinPageVolWidgetState
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 ),
                                               );
                                             },
                                           );
-                                          if (shouldSetState) {
+                                          if (_shouldSetState)
                                             safeSetState(() {});
-                                          }
                                           return;
                                         }
                                         await showDialog(
@@ -1304,34 +1297,33 @@ class _EmployeeCheckinPageVolWidgetState
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
                                               child: AlertDialog(
-                                                content: const Text('ลงเวลาสำเร็จ!'),
+                                                content: Text('ลงเวลาสำเร็จ!'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               ),
                                             );
                                           },
                                         );
-                                        if (shouldSetState) {
+                                        if (_shouldSetState)
                                           safeSetState(() {});
-                                        }
                                       },
                                       text: FFLocalizations.of(context).getText(
                                         'vsxa3kfb' /* ลงเวลา */,
                                       ),
                                       options: FFButtonOptions(
                                         height: 50.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
-                                        color: const Color(0xFF39D260),
+                                        color: Color(0xFF39D260),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
@@ -1359,7 +1351,7 @@ class _EmployeeCheckinPageVolWidgetState
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
-                    child: SizedBox(
+                    child: Container(
                       width: double.infinity,
                       height: MediaQuery.sizeOf(context).height * 0.25,
                       child: custom_widgets.DrawCircleMap(

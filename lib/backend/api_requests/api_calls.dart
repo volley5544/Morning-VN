@@ -34,13 +34,13 @@ class GetEmployeeListApiCall {
       apiUrl: apiUrl,
     );
 
-    const ffApiRequestBody = '''
+    final ffApiRequestBody = '''
 {
   "branch_code": "<branch_code>"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'GetEmployeeListApi',
-      apiUrl: '$baseUrl/api/users/vn',
+      apiUrl: '${baseUrl}/api/users/vn',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ class GetLocationEmployeeAPICall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'GetLocationEmployeeAPI',
-      apiUrl: '$baseUrl/api/data/user-location-vn',
+      apiUrl: '${baseUrl}/api/data/user-location-vn',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -137,14 +137,14 @@ class AuthenAPICall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "username": "$username",
-  "password": "$password",
-  "uid": "$uid",
-  "project_name" : "$projectName"
+  "username": "${username}",
+  "password": "${password}",
+  "uid": "${uid}",
+  "project_name" : "${projectName}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'authenAPI',
-      apiUrl: '$apiUrl/api/login',
+      apiUrl: '${apiUrl}/api/login',
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
@@ -225,19 +225,19 @@ class WorkCheckAPICall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "latitude": "$latitude",
-  "longitude": "$longitude",
-  "url_img": "$urlImg",
-  "branch": "$branch",
-  "remark": "$remark"
+  "latitude": "${latitude}",
+  "longitude": "${longitude}",
+  "url_img": "${urlImg}",
+  "branch": "${branch}",
+  "remark": "${remark}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'workCheckAPI',
-      apiUrl: '$apiUrl/api/check-in/work-check',
+      apiUrl: '${apiUrl}/api/check-in/work-check',
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -316,19 +316,19 @@ class GetLocationCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "latitude": "$latitude",
-  "longitude": "$longitude",
-  "url_img": "$urlImg",
-  "branch": "$branch",
-  "remark": "$remark"
+  "latitude": "${latitude}",
+  "longitude": "${longitude}",
+  "url_img": "${urlImg}",
+  "branch": "${branch}",
+  "remark": "${remark}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'GetLocation',
-      apiUrl: '$apiUrl/api/location/list',
+      apiUrl: '${apiUrl}/api/location/list',
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -377,17 +377,17 @@ class GetBranchLocationCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "latitude": "$latitude",
-  "longitude": "$longitude",
-  "branch_code": "$branchCode"
+  "latitude": "${latitude}",
+  "longitude": "${longitude}",
+  "branch_code": "${branchCode}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'getBranchLocation',
-      apiUrl: '$apiUrl/api/hr/location/get-branch-location',
+      apiUrl: '${apiUrl}/api/hr/location/get-branch-location',
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -456,18 +456,18 @@ class UpdateBranchLocationCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "latitude": "$latitude",
-  "longitude": "$longitude",
-  "branch_code": "$branchCode",
-  "branch_name": "$branchName"
+  "latitude": "${latitude}",
+  "longitude": "${longitude}",
+  "branch_code": "${branchCode}",
+  "branch_name": "${branchName}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'updateBranchLocation',
-      apiUrl: '$apiUrl/api/hr/location/update-branch-location',
+      apiUrl: '${apiUrl}/api/hr/location/update-branch-location',
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -533,20 +533,20 @@ class CreateBranchLocationCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "latitude": "$latitude",
-  "longitude": "$longitude",
-  "branch_code": "$branchCode",
-  "branch_name": "$branchName",
-  "area_code": "$areaCode",
-  "region_code": "$regionCode"
+  "latitude": "${latitude}",
+  "longitude": "${longitude}",
+  "branch_code": "${branchCode}",
+  "branch_name": "${branchName}",
+  "area_code": "${areaCode}",
+  "region_code": "${regionCode}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'createBranchLocation',
-      apiUrl: '$apiUrl/api/hr/location/create-branch-location',
+      apiUrl: '${apiUrl}/api/hr/location/create-branch-location',
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -605,11 +605,11 @@ class WorkCheckHistoryAPICall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'workCheckHistoryAPI',
-      apiUrl: '$apiUrl/api/check-in/work-check-history',
+      apiUrl: '${apiUrl}/api/check-in/work-check-history',
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       bodyType: BodyType.NONE,
@@ -666,11 +666,11 @@ class GetLeaveListCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getLeaveList',
-      apiUrl: '$apiUrl/api/leave/get-list',
+      apiUrl: '${apiUrl}/api/leave/get-list',
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       bodyType: BodyType.NONE,
@@ -753,11 +753,11 @@ class GetLeaveHistoryCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getLeaveHistory',
-      apiUrl: '$apiUrl/api/leave/history',
+      apiUrl: '${apiUrl}/api/leave/history',
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       bodyType: BodyType.NONE,
@@ -840,21 +840,21 @@ class SaveLeaveCall {
 
     final ffApiRequestBody = '''
 {
-  "leave_type": "$leaveType",
-  "leave_start_date": "$leaveStartDate",
-  "leave_end_date": "$leaveEndDate",
-  "leave_period": "$leavePeriod",
-  "leave_reason": "$leaveReason",
-  "leave_document": "$leaveDocument",
-  "leave_date": $leaveDate
+  "leave_type": "${leaveType}",
+  "leave_start_date": "${leaveStartDate}",
+  "leave_end_date": "${leaveEndDate}",
+  "leave_period": "${leavePeriod}",
+  "leave_reason": "${leaveReason}",
+  "leave_document": "${leaveDocument}",
+  "leave_date": ${leaveDate}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'saveLeave',
-      apiUrl: '$apiUrl/api/leave/save',
+      apiUrl: '${apiUrl}/api/leave/save',
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -891,18 +891,18 @@ class GetUserProfileAPICall {
     String? apiUrl = '',
     String? token = '',
   }) async {
-    const ffApiRequestBody = '''
+    final ffApiRequestBody = '''
 {
   "username": <username>,
   "password": <password>
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'getUserProfileAPI',
-      apiUrl: '$apiUrl/api/user-profile',
+      apiUrl: '${apiUrl}/api/user-profile',
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -1010,11 +1010,11 @@ class GetLeaveListApproveCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getLeaveListApprove',
-      apiUrl: '$apiUrl/api/leave/get-list-approve',
+      apiUrl: '${apiUrl}/api/leave/get-list-approve',
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       bodyType: BodyType.NONE,
@@ -1077,11 +1077,11 @@ class GetAllLeaveCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getAllLeave',
-      apiUrl: '$apiUrl/api/leave/get-all-leave',
+      apiUrl: '${apiUrl}/api/leave/get-all-leave',
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       bodyType: BodyType.NONE,
@@ -1155,11 +1155,11 @@ class GetAllLeaveCopyCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getAllLeave Copy',
-      apiUrl: '$apiUrl/api/leave/get-all-leave',
+      apiUrl: '${apiUrl}/api/leave/get-all-leave',
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       bodyType: BodyType.NONE,
@@ -1208,17 +1208,17 @@ class SaveStatusLeaveCall {
 
     final ffApiRequestBody = '''
 {
-  "id": $id,
+  "id": ${id},
   "status": "${escapeStringForJson(status)}",
   "reason": "${escapeStringForJson(reason)}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'saveStatusLeave',
-      apiUrl: '$apiUrl/api/leave/save-status',
+      apiUrl: '${apiUrl}/api/leave/save-status',
       callType: ApiCallType.POST,
       headers: {
         'ContentType': 'application/json; charset=utf-8,',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       body: ffApiRequestBody,

@@ -144,7 +144,7 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color error = const Color(0xFFFF5963);
   late Color info = const Color(0xFFFFFFFF);
 
-  late Color grayIcon = const Color(0xFF95A1AC);
+  late Color grayIcon = Color(0xFF95A1AC);
 }
 
 abstract class Typography {
@@ -317,7 +317,7 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color error = const Color(0xFFFF5963);
   late Color info = const Color(0xFFFFFFFF);
 
-  late Color grayIcon = const Color(0xFF2BB516);
+  late Color grayIcon = Color(0xFF2BB516);
 }
 
 extension TextStyleHelper on TextStyle {

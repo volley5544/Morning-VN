@@ -45,7 +45,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
             elevation: 0,
             insetPadding: EdgeInsets.zero,
             backgroundColor: Colors.transparent,
-            alignment: const AlignmentDirectional(0.0, 0.0)
+            alignment: AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
             child: WebViewAware(
               child: GestureDetector(
@@ -53,7 +53,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                   FocusScope.of(dialogContext).unfocus();
                   FocusManager.instance.primaryFocus?.unfocus();
                 },
-                child: const LoadingWidget(),
+                child: LoadingWidget(),
               ),
             ),
           );
@@ -77,7 +77,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
+                    child: Text('Ok'),
                   ),
                 ],
               ),
@@ -86,10 +86,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
         );
         return;
       }
-      if (getJsonField(
+      if ('${getJsonField(
             (_model.getAllLeave?.jsonBody ?? ''),
             r'''$.code''',
-          ).toString().toString() !=
+          ).toString().toString()}' !=
           '200') {
         Navigator.pop(context);
         await showDialog(
@@ -103,7 +103,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
+                    child: Text('Ok'),
                   ),
                 ],
               ),
@@ -123,7 +123,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
+                  child: Text('Ok'),
                 ),
               ],
             ),
@@ -166,7 +166,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
+                  child: Text('Ok'),
                 ),
               ],
             ),
@@ -185,7 +185,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),
-                  child: const Text('Ok'),
+                  child: Text('Ok'),
                 ),
               ],
             ),
@@ -225,14 +225,14 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             appBar: AppBar(
-              backgroundColor: const Color(0xFFFF6500),
+              backgroundColor: Color(0xFFFF6500),
               automaticallyImplyLeading: false,
               leading: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
                 borderRadius: 30.0,
                 borderWidth: 1.0,
                 buttonSize: 60.0,
-                icon: const Icon(
+                icon: Icon(
                   Icons.arrow_back_rounded,
                   color: Colors.white,
                   size: 30.0,
@@ -253,7 +253,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: true,
               elevation: 2.0,
             ),
@@ -263,7 +263,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -298,7 +298,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                           hintText: FFLocalizations.of(context).getText(
                             '8kjl5vqv' /* Please select the month you wa... */,
                           ),
-                          icon: const FaIcon(
+                          icon: FaIcon(
                             FontAwesomeIcons.solidCalendarAlt,
                             size: 15.0,
                           ),
@@ -307,7 +307,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                           borderColor: Colors.transparent,
                           borderWidth: 0.0,
                           borderRadius: 0.0,
-                          margin: const EdgeInsetsDirectional.fromSTEB(
+                          margin: EdgeInsetsDirectional.fromSTEB(
                               160.0, 4.0, 12.0, 4.0),
                           hidesUnderline: true,
                           isSearchable: false,
@@ -384,7 +384,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                           hintText: FFLocalizations.of(context).getText(
                             'bm324v3m' /* Please select the month you wa... */,
                           ),
-                          icon: const FaIcon(
+                          icon: FaIcon(
                             FontAwesomeIcons.solidCalendarAlt,
                             size: 15.0,
                           ),
@@ -393,7 +393,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                           borderColor: Colors.transparent,
                           borderWidth: 0.0,
                           borderRadius: 0.0,
-                          margin: const EdgeInsetsDirectional.fromSTEB(
+                          margin: EdgeInsetsDirectional.fromSTEB(
                               160.0, 4.0, 12.0, 4.0),
                           hidesUnderline: true,
                           isSearchable: false,
@@ -406,7 +406,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                     child: Column(
                       children: [
                         Align(
-                          alignment: const Alignment(0.0, 0),
+                          alignment: Alignment(0.0, 0),
                           child: TabBar(
                             labelColor: Colors.black,
                             labelStyle:
@@ -415,7 +415,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
                                     ),
-                            unselectedLabelStyle: const TextStyle(),
+                            unselectedLabelStyle: TextStyle(),
                             indicatorColor:
                                 FlutterFlowTheme.of(context).secondary,
                             tabs: [
@@ -451,14 +451,14 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                 scrollDirection: Axis.vertical,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 16.0, 8.0, 8.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: 290.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0x80C29999),
-                                        boxShadow: const [
+                                        color: Color(0x80C29999),
+                                        boxShadow: [
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x33000000),
@@ -472,7 +472,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                             BorderRadius.circular(8.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 0.0, 8.0, 10.0),
                                         child: SingleChildScrollView(
                                           child: Column(
@@ -481,10 +481,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 MainAxisAlignment.start,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 10.0, 0.0, 5.0),
                                                   child: SelectionArea(
@@ -509,7 +509,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 15.0, 0.0, 3.0),
                                                 child: Row(
@@ -522,7 +522,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -599,7 +599,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Row(
@@ -612,7 +612,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -689,7 +689,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Row(
@@ -702,7 +702,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -779,7 +779,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Row(
@@ -792,7 +792,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -871,7 +871,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Row(
@@ -884,7 +884,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -963,7 +963,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Row(
@@ -976,7 +976,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -1055,7 +1055,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 16.0, 0.0, 0.0),
                                                 child: Row(
@@ -1078,7 +1078,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                 .getText(
                                                               'bnsywkq5' /* Cancel */,
                                                             ),
-                                                            icon: const Icon(
+                                                            icon: Icon(
                                                               Icons.cancel,
                                                               size: 22.0,
                                                             ),
@@ -1087,20 +1087,20 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                               width: 130.0,
                                                               height: 40.0,
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
                                                               iconPadding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFFB32A33),
                                                               textStyle:
                                                                   FlutterFlowTheme.of(
@@ -1120,7 +1120,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       ),
                                                               elevation: 2.0,
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Colors
                                                                     .transparent,
                                                                 width: 2.0,
@@ -1151,14 +1151,14 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                 scrollDirection: Axis.vertical,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 16.0, 8.0, 8.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: 260.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0x80C29999),
-                                        boxShadow: const [
+                                        color: Color(0x80C29999),
+                                        boxShadow: [
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x33000000),
@@ -1172,7 +1172,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                             BorderRadius.circular(8.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 12.0, 10.0),
                                         child: SingleChildScrollView(
                                           child: Column(
@@ -1181,10 +1181,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 MainAxisAlignment.start,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 10.0, 0.0, 5.0),
                                                   child: SelectionArea(
@@ -1209,7 +1209,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 15.0, 0.0, 3.0),
                                                 child: Row(
@@ -1222,7 +1222,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -1299,7 +1299,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Row(
@@ -1312,7 +1312,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -1389,7 +1389,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Row(
@@ -1402,7 +1402,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -1479,7 +1479,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Row(
@@ -1492,7 +1492,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -1571,7 +1571,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Row(
@@ -1584,7 +1584,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -1663,7 +1663,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Row(
@@ -1676,7 +1676,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -1768,14 +1768,14 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                 scrollDirection: Axis.vertical,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 16.0, 8.0, 8.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: 260.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0x80C29999),
-                                        boxShadow: const [
+                                        color: Color(0x80C29999),
+                                        boxShadow: [
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x33000000),
@@ -1789,7 +1789,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                             BorderRadius.circular(8.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 12.0, 10.0),
                                         child: SingleChildScrollView(
                                           child: Column(
@@ -1798,10 +1798,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 MainAxisAlignment.start,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 10.0, 0.0, 5.0),
                                                   child: SelectionArea(
@@ -1826,7 +1826,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 15.0, 0.0, 3.0),
                                                 child: Row(
@@ -1839,7 +1839,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -1916,7 +1916,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Row(
@@ -1929,7 +1929,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -2006,7 +2006,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Row(
@@ -2019,7 +2019,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -2096,7 +2096,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Row(
@@ -2109,7 +2109,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -2188,7 +2188,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Row(
@@ -2201,7 +2201,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -2280,7 +2280,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Row(
@@ -2293,7 +2293,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -2372,7 +2372,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Row(
@@ -2385,7 +2385,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                       flex: 2,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,

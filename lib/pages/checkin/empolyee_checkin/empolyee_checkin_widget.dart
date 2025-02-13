@@ -52,7 +52,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
             elevation: 0,
             insetPadding: EdgeInsets.zero,
             backgroundColor: Colors.transparent,
-            alignment: const AlignmentDirectional(0.0, 0.0)
+            alignment: AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
             child: WebViewAware(
               child: GestureDetector(
@@ -60,7 +60,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                   FocusScope.of(dialogContext).unfocus();
                   FocusManager.instance.primaryFocus?.unfocus();
                 },
-                child: const SizedBox(
+                child: Container(
                   height: double.infinity,
                   child: LoadingWidget(),
                 ),
@@ -93,7 +93,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -114,7 +114,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -165,7 +165,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
+                    child: Text('Ok'),
                   ),
                 ],
               ),
@@ -184,7 +184,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
       Navigator.pop(context);
     });
 
-    getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
+    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
         .then((loc) => safeSetState(() => currentUserLocationValue = loc));
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -227,14 +227,14 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           appBar: AppBar(
-            backgroundColor: const Color(0xFFFF6500),
+            backgroundColor: Color(0xFFFF6500),
             automaticallyImplyLeading: false,
             leading: FlutterFlowIconButton(
               borderColor: Colors.transparent,
               borderRadius: 30.0,
               borderWidth: 1.0,
               buttonSize: 60.0,
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_back_rounded,
                 color: Colors.white,
                 size: 30.0,
@@ -252,7 +252,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                 await showModalBottomSheet(
                   isScrollControlled: true,
                   backgroundColor: Colors.transparent,
-                  barrierColor: const Color(0xC0000000),
+                  barrierColor: Color(0xC0000000),
                   enableDrag: false,
                   context: context,
                   builder: (context) {
@@ -264,9 +264,9 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                         },
                         child: Padding(
                           padding: MediaQuery.viewInsetsOf(context),
-                          child: SizedBox(
+                          child: Container(
                             height: MediaQuery.sizeOf(context).height * 0.5,
-                            child: const SelectLanguageComponentWidget(),
+                            child: SelectLanguageComponentWidget(),
                           ),
                         ),
                       ),
@@ -289,14 +289,14 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
             ),
             actions: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    var shouldSetState = false;
+                    var _shouldSetState = false;
                     HapticFeedback.mediumImpact();
                     showModalBottomSheet(
                       isScrollControlled: true,
@@ -312,7 +312,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                             },
                             child: Padding(
                               padding: MediaQuery.viewInsetsOf(context),
-                              child: const SizedBox(
+                              child: Container(
                                 height: double.infinity,
                                 child: LoadingSceneWidget(),
                               ),
@@ -360,7 +360,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                     if (!((_model.uploadedLocalFile1.bytes?.isNotEmpty ??
                             false))) {
                       Navigator.pop(context);
-                      if (shouldSetState) safeSetState(() {});
+                      if (_shouldSetState) safeSetState(() {});
                       return;
                     }
                     _model.uploadFirebaseStorageAction =
@@ -368,7 +368,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                       'Checkin',
                       _model.uploadedLocalFile1,
                     );
-                    shouldSetState = true;
+                    _shouldSetState = true;
                     if (!(_model.uploadFirebaseStorageAction != null &&
                         _model.uploadFirebaseStorageAction != '')) {
                       Navigator.pop(context);
@@ -377,29 +377,29 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                         builder: (alertDialogContext) {
                           return WebViewAware(
                             child: AlertDialog(
-                              content: const Text(
+                              content: Text(
                                   'ไม่สามารถอัพโหลดรูปได้ กรุณาลองอีกครั้ง'),
                               actions: [
                                 TextButton(
                                   onPressed: () =>
                                       Navigator.pop(alertDialogContext),
-                                  child: const Text('Ok'),
+                                  child: Text('Ok'),
                                 ),
                               ],
                             ),
                           );
                         },
                       );
-                      if (shouldSetState) safeSetState(() {});
+                      if (_shouldSetState) safeSetState(() {});
                       return;
                     }
                     FFAppState().imgURLTemp = functions
                         .stringToImgPath(_model.uploadFirebaseStorageAction)!;
                     safeSetState(() {});
                     Navigator.pop(context);
-                    if (shouldSetState) safeSetState(() {});
+                    if (_shouldSetState) safeSetState(() {});
                   },
-                  child: const FaIcon(
+                  child: FaIcon(
                     FontAwesomeIcons.camera,
                     color: Colors.white,
                     size: 40.0,
@@ -433,7 +433,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Expanded(
-                                  child: SizedBox(
+                                  child: Container(
                                     width: double.infinity,
                                     height: 30.0,
                                     child: custom_widgets.ShowDateTime(
@@ -443,7 +443,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(
+                                Container(
                                   width: double.infinity,
                                   height: 60.0,
                                   child: custom_widgets.ShowTime(
@@ -460,7 +460,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -473,14 +473,14 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                         ))
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   70.0, 10.0, 70.0, 10.0),
                               child: Container(
                                 width: double.infinity,
                                 height: 220.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  boxShadow: const [
+                                  boxShadow: [
                                     BoxShadow(
                                       blurRadius: 4.0,
                                       color: Color(0x33000000),
@@ -495,9 +495,9 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                 child: Stack(
                                   children: [
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsets.all(10.0),
+                                        padding: EdgeInsets.all(10.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -555,11 +555,11 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                         '')
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(1.0, -1.0),
+                                            AlignmentDirectional(1.0, -1.0),
                                         child: Builder(
                                           builder: (context) => Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 20.0, 0.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
@@ -576,7 +576,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                             return WebViewAware(
                                                               child:
                                                                   AlertDialog(
-                                                                content: const Text(
+                                                                content: Text(
                                                                     'คุณต้องการจะลบรูปหรือไม่?'),
                                                                 actions: [
                                                                   TextButton(
@@ -584,7 +584,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                                         Navigator.pop(
                                                                             alertDialogContext,
                                                                             false),
-                                                                    child: const Text(
+                                                                    child: Text(
                                                                         'ยกเลิก'),
                                                                   ),
                                                                   TextButton(
@@ -592,7 +592,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                                         Navigator.pop(
                                                                             alertDialogContext,
                                                                             true),
-                                                                    child: const Text(
+                                                                    child: Text(
                                                                         'ตกลง'),
                                                                   ),
                                                                 ],
@@ -614,7 +614,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                       backgroundColor:
                                                           Colors.transparent,
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                                   0.0, 0.0)
                                                               .resolve(
                                                                   Directionality.of(
@@ -631,7 +631,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                                 ?.unfocus();
                                                           },
                                                           child:
-                                                              const LoadingWidget(),
+                                                              LoadingWidget(),
                                                         ),
                                                       ),
                                                     );
@@ -646,7 +646,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                 FFAppState().update(() {});
                                                 Navigator.pop(context);
                                               },
-                                              child: const FaIcon(
+                                              child: FaIcon(
                                                 FontAwesomeIcons.times,
                                                 color: Color(0xFFDE1013),
                                                 size: 30.0,
@@ -674,13 +674,13 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                 .secondaryBackground,
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 12.0, 12.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -692,7 +692,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                         await showModalBottomSheet(
                                           isScrollControlled: true,
                                           backgroundColor: Colors.transparent,
-                                          barrierColor: const Color(0xC0000000),
+                                          barrierColor: Color(0xC0000000),
                                           enableDrag: false,
                                           context: context,
                                           builder: (context) {
@@ -709,7 +709,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                   padding:
                                                       MediaQuery.viewInsetsOf(
                                                           context),
-                                                  child: SizedBox(
+                                                  child: Container(
                                                     height: MediaQuery.sizeOf(
                                                                 context)
                                                             .height *
@@ -825,7 +825,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                       borderWidth: 0.0,
                                                       borderRadius: 8.0,
                                                       margin:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -851,7 +851,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 12.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -882,7 +882,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Expanded(
-                                                  child: SizedBox(
+                                                  child: Container(
                                                     width: 200.0,
                                                     child: TextFormField(
                                                       controller:
@@ -929,7 +929,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                         enabledBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 1.0,
@@ -942,7 +942,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                         focusedBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 1.0,
@@ -1014,7 +1014,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 10.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -1023,15 +1023,15 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 8.0, 0.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
                                               currentUserLocationValue =
                                                   await getCurrentUserLocation(
                                                       defaultLocation:
-                                                          const LatLng(0.0, 0.0));
-                                              var shouldSetState = false;
+                                                          LatLng(0.0, 0.0));
+                                              var _shouldSetState = false;
                                               if (functions
                                                       .convertImgPathToString(
                                                           FFAppState()
@@ -1059,7 +1059,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       ),
@@ -1127,9 +1127,8 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                             ?.isNotEmpty ??
                                                         false))) {
                                                   Navigator.pop(context);
-                                                  if (shouldSetState) {
+                                                  if (_shouldSetState)
                                                     safeSetState(() {});
-                                                  }
                                                   return;
                                                 }
                                                 _model.uploadFirebaseStorageAction2 =
@@ -1138,7 +1137,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                   'Checkin',
                                                   _model.uploadedLocalFile2,
                                                 );
-                                                shouldSetState = true;
+                                                _shouldSetState = true;
                                                 if (!(_model.uploadFirebaseStorageAction2 !=
                                                         null &&
                                                     _model.uploadFirebaseStorageAction2 !=
@@ -1165,7 +1164,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext),
-                                                              child: const Text('Ok'),
+                                                              child: Text('Ok'),
                                                             ),
                                                           ],
                                                         ),
@@ -1173,9 +1172,8 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                     },
                                                   );
                                                   Navigator.pop(context);
-                                                  if (shouldSetState) {
+                                                  if (_shouldSetState)
                                                     safeSetState(() {});
-                                                  }
                                                   return;
                                                 }
                                                 FFAppState().imgURLTemp = functions
@@ -1209,16 +1207,15 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       ),
                                                     );
                                                   },
                                                 );
-                                                if (shouldSetState) {
+                                                if (_shouldSetState)
                                                   safeSetState(() {});
-                                                }
                                                 return;
                                               }
                                               if (!functions
@@ -1246,16 +1243,15 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       ),
                                                     );
                                                   },
                                                 );
-                                                if (shouldSetState) {
+                                                if (_shouldSetState)
                                                   safeSetState(() {});
-                                                }
                                                 return;
                                               }
                                               _model.checkUserIsInRadius =
@@ -1290,7 +1286,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                             .dropDownBranchValue!)))
                                                     ?.radius,
                                               );
-                                              shouldSetState = true;
+                                              _shouldSetState = true;
                                               if (!_model
                                                   .checkUserIsInRadius!) {
                                                 await showDialog(
@@ -1315,16 +1311,15 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       ),
                                                     );
                                                   },
                                                 );
-                                                if (shouldSetState) {
+                                                if (_shouldSetState)
                                                   safeSetState(() {});
-                                                }
                                                 return;
                                               }
                                               _model.workCheckApi =
@@ -1360,7 +1355,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                     FFAppState().apiUrlAppState,
                                               );
 
-                                              shouldSetState = true;
+                                              _shouldSetState = true;
                                               if ((_model.workCheckApi
                                                           ?.statusCode ??
                                                       200) !=
@@ -1388,7 +1383,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext),
-                                                              child: const Text('Ok'),
+                                                              child: Text('Ok'),
                                                             ),
                                                           ],
                                                         ),
@@ -1420,7 +1415,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext),
-                                                              child: const Text('Ok'),
+                                                              child: Text('Ok'),
                                                             ),
                                                           ],
                                                         ),
@@ -1428,9 +1423,8 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                     },
                                                   );
                                                   Navigator.pop(context);
-                                                  if (shouldSetState) {
+                                                  if (_shouldSetState)
                                                     safeSetState(() {});
-                                                  }
                                                   return;
                                                 }
 
@@ -1462,17 +1456,16 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
 
                                                 context.pushNamed('loginPage');
 
-                                                if (shouldSetState) {
+                                                if (_shouldSetState)
                                                   safeSetState(() {});
-                                                }
                                                 return;
                                               }
-                                              if (getJsonField(
+                                              if ('${getJsonField(
                                                     (_model.workCheckApi
                                                             ?.jsonBody ??
                                                         ''),
                                                     r'''$.code''',
-                                                  ).toString() !=
+                                                  ).toString()}' !=
                                                   '200') {
                                                 await showDialog(
                                                   context: context,
@@ -1491,7 +1484,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       ),
@@ -1499,9 +1492,8 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                   },
                                                 );
                                                 Navigator.pop(context);
-                                                if (shouldSetState) {
+                                                if (_shouldSetState)
                                                   safeSetState(() {});
-                                                }
                                                 return;
                                               }
                                               await showDialog(
@@ -1520,7 +1512,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                           onPressed: () =>
                                                               Navigator.pop(
                                                                   alertDialogContext),
-                                                          child: const Text('Ok'),
+                                                          child: Text('Ok'),
                                                         ),
                                                       ],
                                                     ),
@@ -1531,9 +1523,8 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                               context.pushNamed(
                                                   'CheckInStatusPage');
 
-                                              if (shouldSetState) {
+                                              if (_shouldSetState)
                                                 safeSetState(() {});
-                                              }
                                             },
                                             text: FFLocalizations.of(context)
                                                 .getText(
@@ -1544,12 +1535,12 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                       .width *
                                                   0.3,
                                               height: 40.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 0.0, 16.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: const Color(0xFF08DC07),
+                                              color: Color(0xFF08DC07),
                                               textStyle: FlutterFlowTheme.of(
                                                       context)
                                                   .titleSmall
@@ -1567,8 +1558,8 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                         ),
                                       ),
                                     ]
-                                        .addToStart(const SizedBox(width: 12.0))
-                                        .addToEnd(const SizedBox(width: 12.0)),
+                                        .addToStart(SizedBox(width: 12.0))
+                                        .addToEnd(SizedBox(width: 12.0)),
                                   ),
                                 ),
                               ],
@@ -1589,7 +1580,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                           ),
-                          child: SizedBox(
+                          child: Container(
                             width: double.infinity,
                             height: MediaQuery.sizeOf(context).height * 0.25,
                             child: custom_widgets.DrawCircleMap(

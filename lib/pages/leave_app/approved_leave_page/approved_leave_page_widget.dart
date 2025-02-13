@@ -45,7 +45,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
             elevation: 0,
             insetPadding: EdgeInsets.zero,
             backgroundColor: Colors.transparent,
-            alignment: const AlignmentDirectional(0.0, 0.0)
+            alignment: AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
             child: WebViewAware(
               child: GestureDetector(
@@ -53,7 +53,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                   FocusScope.of(dialogContext).unfocus();
                   FocusManager.instance.primaryFocus?.unfocus();
                 },
-                child: const LoadingSceneWidget(),
+                child: LoadingSceneWidget(),
               ),
             ),
           );
@@ -81,7 +81,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -102,7 +102,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -161,7 +161,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -182,7 +182,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -236,7 +236,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
+                    child: Text('Ok'),
                   ),
                 ],
               ),
@@ -279,14 +279,14 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             appBar: AppBar(
-              backgroundColor: const Color(0xFFFF6500),
+              backgroundColor: Color(0xFFFF6500),
               automaticallyImplyLeading: false,
               leading: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
                 borderRadius: 30.0,
                 borderWidth: 1.0,
                 buttonSize: 60.0,
-                icon: const Icon(
+                icon: Icon(
                   Icons.arrow_back_rounded,
                   color: Colors.white,
                   size: 30.0,
@@ -307,7 +307,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: true,
               elevation: 2.0,
             ),
@@ -317,21 +317,21 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Container(
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Colors.white,
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 10.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 16.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
@@ -352,15 +352,15 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                   text: FFLocalizations.of(context).getText(
                                     'npr1uom5' /* Approve many people */,
                                   ),
-                                  icon: const Icon(
+                                  icon: Icon(
                                     Icons.check,
                                     size: 18.0,
                                   ),
                                   options: FFButtonOptions(
                                     height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 0.0, 10.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -373,7 +373,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                           fontWeight: FontWeight.normal,
                                         ),
                                     elevation: 2.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -385,16 +385,16 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 10.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -468,13 +468,13 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                 children: [
                                   Expanded(
                                     child: Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 10.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            var shouldSetState = false;
+                                            var _shouldSetState = false;
                                             if (functions
                                                     .returnMapListFromBoolList(
                                                         GetLeaveListApproveCall
@@ -486,7 +486,9 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                         FFAppState()
                                                             .selectApproveList
                                                             .toList(),
-                                                        true).isEmpty) {
+                                                        true)
+                                                    .length <=
+                                                0) {
                                               await showDialog(
                                                 context: context,
                                                 builder: (alertDialogContext) {
@@ -508,16 +510,15 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                           onPressed: () =>
                                                               Navigator.pop(
                                                                   alertDialogContext),
-                                                          child: const Text('Ok'),
+                                                          child: Text('Ok'),
                                                         ),
                                                       ],
                                                     ),
                                                   );
                                                 },
                                               );
-                                              if (shouldSetState) {
+                                              if (_shouldSetState)
                                                 safeSetState(() {});
-                                              }
                                               return;
                                             }
                                             var confirmDialogResponse =
@@ -539,7 +540,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                     Navigator.pop(
                                                                         alertDialogContext,
                                                                         false),
-                                                                child: const Text(
+                                                                child: Text(
                                                                     'Cancel'),
                                                               ),
                                                               TextButton(
@@ -547,7 +548,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                     Navigator.pop(
                                                                         alertDialogContext,
                                                                         true),
-                                                                child: const Text(
+                                                                child: Text(
                                                                     'Confirm'),
                                                               ),
                                                             ],
@@ -557,9 +558,8 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                     ) ??
                                                     false;
                                             if (!confirmDialogResponse) {
-                                              if (shouldSetState) {
+                                              if (_shouldSetState)
                                                 safeSetState(() {});
-                                              }
                                               return;
                                             }
                                             showModalBottomSheet(
@@ -583,7 +583,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                           .viewInsetsOf(
                                                               context),
                                                       child:
-                                                          const LoadingSceneWidget(),
+                                                          LoadingSceneWidget(),
                                                     ),
                                                   ),
                                                 );
@@ -612,7 +612,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                               reason: '',
                                             );
 
-                                            shouldSetState = true;
+                                            _shouldSetState = true;
                                             if ((_model.leaveListApproveAllAPIOutput
                                                         ?.statusCode ??
                                                     200) !=
@@ -640,7 +640,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       ),
@@ -672,7 +672,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       ),
@@ -680,9 +680,8 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                   },
                                                 );
                                                 Navigator.pop(context);
-                                                if (shouldSetState) {
+                                                if (_shouldSetState)
                                                   safeSetState(() {});
-                                                }
                                                 return;
                                               }
 
@@ -714,17 +713,16 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
 
                                               context.pushNamed('loginPage');
 
-                                              if (shouldSetState) {
+                                              if (_shouldSetState)
                                                 safeSetState(() {});
-                                              }
                                               return;
                                             }
-                                            if (getJsonField(
+                                            if ('${getJsonField(
                                                   (_model.leaveListApproveAllAPIOutput
                                                           ?.jsonBody ??
                                                       ''),
                                                   r'''$.code''',
-                                                ).toString() !=
+                                                ).toString()}' !=
                                                 '200') {
                                               await showDialog(
                                                 context: context,
@@ -743,7 +741,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                           onPressed: () =>
                                                               Navigator.pop(
                                                                   alertDialogContext),
-                                                          child: const Text('Ok'),
+                                                          child: Text('Ok'),
                                                         ),
                                                       ],
                                                     ),
@@ -751,9 +749,8 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                 },
                                               );
                                               Navigator.pop(context);
-                                              if (shouldSetState) {
+                                              if (_shouldSetState)
                                                 safeSetState(() {});
-                                              }
                                               return;
                                             }
                                             Navigator.pop(context);
@@ -761,27 +758,26 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                             context
                                                 .pushNamed('ApprovedLeavePage');
 
-                                            if (shouldSetState) {
+                                            if (_shouldSetState)
                                               safeSetState(() {});
-                                            }
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
                                             '8v1skjen' /* Approve selected */,
                                           ),
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.check_circle_outline,
                                             size: 18.0,
                                           ),
                                           options: FFButtonOptions(
                                             height: 40.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0xFF00968A),
+                                            color: Color(0xFF00968A),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall
@@ -792,7 +788,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                       letterSpacing: 0.0,
                                                     ),
                                             elevation: 3.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -805,7 +801,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                   ),
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 16.0, 0.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
@@ -831,10 +827,10 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                         options: FFButtonOptions(
                                           height: 40.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 0.0, 5.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .error,
@@ -850,7 +846,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                         FontWeight.normal,
                                                   ),
                                           elevation: 2.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -875,7 +871,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                             _model.approveLeaveData.toList();
 
                         return ListView.builder(
-                          padding: const EdgeInsets.fromLTRB(
+                          padding: EdgeInsets.fromLTRB(
                             0,
                             0,
                             0,
@@ -889,14 +885,14 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                 listApproveData[listApproveDataIndex];
                             return Container(
                               width: MediaQuery.sizeOf(context).width * 1.0,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 color: Colors.white,
                               ),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 10.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -997,7 +993,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                   BorderRadius.circular(8.0),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       8.0, 0.0, 8.0, 10.0),
                                               child: Column(
@@ -1007,7 +1003,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(3.0, 5.0,
                                                                 0.0, 0.0),
                                                     child: Row(
@@ -1094,7 +1090,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -1129,7 +1125,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                         flex: 7,
                                                                         child:
                                                                             Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               5.0,
                                                                               0.0,
                                                                               0.0,
@@ -1151,7 +1147,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                     ],
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             7.0,
                                                                             0.0,
@@ -1217,7 +1213,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             7.0,
                                                                             0.0,
@@ -1286,7 +1282,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                   ),
                                                                   if (false)
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           7.0,
                                                                           0.0,
                                                                           0.0,
@@ -1307,7 +1303,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                               children: [
                                                                                 Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                                   child: SelectionArea(
                                                                                       child: Text(
                                                                                     FFLocalizations.of(context).getText(
@@ -1362,7 +1358,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 10.0,
                                                                 0.0, 3.0),
                                                     child: Row(
@@ -1376,7 +1372,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                           flex: 1,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         5.0,
                                                                         0.0,
@@ -1463,7 +1459,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                         flex: 1,
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       5.0,
                                                                       0.0,
@@ -1538,7 +1534,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 3.0,
                                                                 0.0, 0.0),
                                                     child: Row(
@@ -1552,7 +1548,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                           flex: 1,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         5.0,
                                                                         0.0,
@@ -1627,7 +1623,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 3.0,
                                                                 0.0, 0.0),
                                                     child: Row(
@@ -1641,7 +1637,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                           flex: 1,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         5.0,
                                                                         0.0,
@@ -1720,7 +1716,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 3.0,
                                                                 0.0, 0.0),
                                                     child: Row(
@@ -1734,7 +1730,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                           flex: 1,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         5.0,
                                                                         0.0,
@@ -1813,7 +1809,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 3.0,
                                                                 0.0, 0.0),
                                                     child: Row(
@@ -1827,7 +1823,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                           flex: 1,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         5.0,
                                                                         0.0,
@@ -1906,7 +1902,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 3.0,
                                                                 0.0, 0.0),
                                                     child: Row(
@@ -1920,7 +1916,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                           flex: 1,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         5.0,
                                                                         0.0,
@@ -1999,7 +1995,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 3.0,
                                                                 0.0, 5.0),
                                                     child: Row(
@@ -2013,7 +2009,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                           flex: 1,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         5.0,
                                                                         0.0,
@@ -2084,7 +2080,9 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                   safeSetState(
                                                                       () {});
                                                                   if (FFAppState()
-                                                                          .leaveDocImgPathListNew.isEmpty) {
+                                                                          .leaveDocImgPathListNew
+                                                                          .length <=
+                                                                      0) {
                                                                     await showDialog(
                                                                       context:
                                                                           context,
@@ -2102,7 +2100,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                             actions: [
                                                                               TextButton(
                                                                                 onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                child: const Text('Ok'),
+                                                                                child: Text('Ok'),
                                                                               ),
                                                                             ],
                                                                           ),
@@ -2156,7 +2154,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                       safeSetState(
                                                                           () {}));
                                                                 },
-                                                                child: const Icon(
+                                                                child: Icon(
                                                                   Icons
                                                                       .attach_file,
                                                                   color: Colors
@@ -2172,7 +2170,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 10.0,
                                                                 0.0, 0.0),
                                                     child: Row(
@@ -2186,7 +2184,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                           flex: 1,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -2200,7 +2198,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                 FFButtonWidget(
                                                                   onPressed:
                                                                       () async {
-                                                                    var shouldSetState =
+                                                                    var _shouldSetState =
                                                                         false;
                                                                     var confirmDialogResponse =
                                                                         await showDialog<bool>(
@@ -2216,11 +2214,11 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                                     actions: [
                                                                                       TextButton(
                                                                                         onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                        child: const Text('Cancel'),
+                                                                                        child: Text('Cancel'),
                                                                                       ),
                                                                                       TextButton(
                                                                                         onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                        child: const Text('Confirm'),
+                                                                                        child: Text('Confirm'),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -2229,10 +2227,9 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                             ) ??
                                                                             false;
                                                                     if (!confirmDialogResponse) {
-                                                                      if (shouldSetState) {
+                                                                      if (_shouldSetState)
                                                                         safeSetState(
                                                                             () {});
-                                                                      }
                                                                       return;
                                                                     }
                                                                     showModalBottomSheet(
@@ -2258,7 +2255,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                             child:
                                                                                 Padding(
                                                                               padding: MediaQuery.viewInsetsOf(context),
-                                                                              child: const LoadingWidget(),
+                                                                              child: LoadingWidget(),
                                                                             ),
                                                                           ),
                                                                         );
@@ -2283,7 +2280,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                           '',
                                                                     );
 
-                                                                    shouldSetState =
+                                                                    _shouldSetState =
                                                                         true;
                                                                     if ((_model.saveStatusLeave?.statusCode ??
                                                                             200) !=
@@ -2307,7 +2304,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: const Text('Ok'),
+                                                                                    child: Text('Ok'),
                                                                                   ),
                                                                                 ],
                                                                               ),
@@ -2328,7 +2325,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: const Text('Ok'),
+                                                                                    child: Text('Ok'),
                                                                                   ),
                                                                                 ],
                                                                               ),
@@ -2337,10 +2334,9 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                         );
                                                                         Navigator.pop(
                                                                             context);
-                                                                        if (shouldSetState) {
+                                                                        if (_shouldSetState)
                                                                           safeSetState(
                                                                               () {});
-                                                                        }
                                                                         return;
                                                                       }
 
@@ -2391,17 +2387,16 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                       context.pushNamed(
                                                                           'loginPage');
 
-                                                                      if (shouldSetState) {
+                                                                      if (_shouldSetState)
                                                                         safeSetState(
                                                                             () {});
-                                                                      }
                                                                       return;
                                                                     }
-                                                                    if (getJsonField(
+                                                                    if ('${getJsonField(
                                                                           (_model.saveStatusLeave?.jsonBody ??
                                                                               ''),
                                                                           r'''$.code''',
-                                                                        ).toString() !=
+                                                                        ).toString()}' !=
                                                                         '200') {
                                                                       await showDialog(
                                                                         context:
@@ -2417,7 +2412,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                               actions: [
                                                                                 TextButton(
                                                                                   onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                  child: const Text('Ok'),
+                                                                                  child: Text('Ok'),
                                                                                 ),
                                                                               ],
                                                                             ),
@@ -2426,10 +2421,9 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                       );
                                                                       Navigator.pop(
                                                                           context);
-                                                                      if (shouldSetState) {
+                                                                      if (_shouldSetState)
                                                                         safeSetState(
                                                                             () {});
-                                                                      }
                                                                       return;
                                                                     }
                                                                     Navigator.pop(
@@ -2438,17 +2432,16 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                     context.pushNamed(
                                                                         'ApprovedLeavePage');
 
-                                                                    if (shouldSetState) {
+                                                                    if (_shouldSetState)
                                                                       safeSetState(
                                                                           () {});
-                                                                    }
                                                                   },
                                                                   text: FFLocalizations.of(
                                                                           context)
                                                                       .getText(
                                                                     'cxtkyf9c' /* Approve */,
                                                                   ),
-                                                                  icon: const FaIcon(
+                                                                  icon: FaIcon(
                                                                     FontAwesomeIcons
                                                                         .checkCircle,
                                                                     size: 20.0,
@@ -2457,19 +2450,19 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                       FFButtonOptions(
                                                                     height:
                                                                         40.0,
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10.0,
                                                                             0.0,
                                                                             10.0,
                                                                             0.0),
                                                                     iconPadding:
-                                                                        const EdgeInsetsDirectional.fromSTEB(
+                                                                        EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF00968A),
                                                                     textStyle: FlutterFlowTheme.of(
                                                                             context)
@@ -2489,7 +2482,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                     elevation:
                                                                         2.0,
                                                                     borderSide:
-                                                                        const BorderSide(
+                                                                        BorderSide(
                                                                       color: Colors
                                                                           .transparent,
                                                                       width:
@@ -2513,7 +2506,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10.0,
                                                                             0.0,
@@ -2523,7 +2516,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                     FFButtonWidget(
                                                                   onPressed:
                                                                       () async {
-                                                                    var shouldSetState =
+                                                                    var _shouldSetState =
                                                                         false;
                                                                     var confirmDialogResponse =
                                                                         await showDialog<bool>(
@@ -2539,11 +2532,11 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                                     actions: [
                                                                                       TextButton(
                                                                                         onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                        child: const Text('Cancel'),
+                                                                                        child: Text('Cancel'),
                                                                                       ),
                                                                                       TextButton(
                                                                                         onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                        child: const Text('Confirm'),
+                                                                                        child: Text('Confirm'),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -2552,10 +2545,9 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                             ) ??
                                                                             false;
                                                                     if (!confirmDialogResponse) {
-                                                                      if (shouldSetState) {
+                                                                      if (_shouldSetState)
                                                                         safeSetState(
                                                                             () {});
-                                                                      }
                                                                       return;
                                                                     }
                                                                     showModalBottomSheet(
@@ -2581,7 +2573,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                             child:
                                                                                 Padding(
                                                                               padding: MediaQuery.viewInsetsOf(context),
-                                                                              child: const LoadingWidget(),
+                                                                              child: LoadingWidget(),
                                                                             ),
                                                                           ),
                                                                         );
@@ -2606,7 +2598,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                           '',
                                                                     );
 
-                                                                    shouldSetState =
+                                                                    _shouldSetState =
                                                                         true;
                                                                     if ((_model.saveStatusLeaveNotApprove?.statusCode ??
                                                                             200) !=
@@ -2630,7 +2622,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: const Text('Ok'),
+                                                                                    child: Text('Ok'),
                                                                                   ),
                                                                                 ],
                                                                               ),
@@ -2651,7 +2643,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: const Text('Ok'),
+                                                                                    child: Text('Ok'),
                                                                                   ),
                                                                                 ],
                                                                               ),
@@ -2660,10 +2652,9 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                         );
                                                                         Navigator.pop(
                                                                             context);
-                                                                        if (shouldSetState) {
+                                                                        if (_shouldSetState)
                                                                           safeSetState(
                                                                               () {});
-                                                                        }
                                                                         return;
                                                                       }
 
@@ -2714,17 +2705,16 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                       context.pushNamed(
                                                                           'loginPage');
 
-                                                                      if (shouldSetState) {
+                                                                      if (_shouldSetState)
                                                                         safeSetState(
                                                                             () {});
-                                                                      }
                                                                       return;
                                                                     }
-                                                                    if (getJsonField(
+                                                                    if ('${getJsonField(
                                                                           (_model.saveStatusLeaveNotApprove?.jsonBody ??
                                                                               ''),
                                                                           r'''$.code''',
-                                                                        ).toString() !=
+                                                                        ).toString()}' !=
                                                                         '200') {
                                                                       await showDialog(
                                                                         context:
@@ -2740,7 +2730,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                               actions: [
                                                                                 TextButton(
                                                                                   onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                  child: const Text('Ok'),
+                                                                                  child: Text('Ok'),
                                                                                 ),
                                                                               ],
                                                                             ),
@@ -2749,10 +2739,9 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                       );
                                                                       Navigator.pop(
                                                                           context);
-                                                                      if (shouldSetState) {
+                                                                      if (_shouldSetState)
                                                                         safeSetState(
                                                                             () {});
-                                                                      }
                                                                       return;
                                                                     }
                                                                     Navigator.pop(
@@ -2761,17 +2750,16 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                     context.pushNamed(
                                                                         'ApprovedLeavePage');
 
-                                                                    if (shouldSetState) {
+                                                                    if (_shouldSetState)
                                                                       safeSetState(
                                                                           () {});
-                                                                    }
                                                                   },
                                                                   text: FFLocalizations.of(
                                                                           context)
                                                                       .getText(
                                                                     'efs1tfam' /* Do not approve */,
                                                                   ),
-                                                                  icon: const FaIcon(
+                                                                  icon: FaIcon(
                                                                     FontAwesomeIcons
                                                                         .ban,
                                                                     size: 18.0,
@@ -2780,19 +2768,19 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                       FFButtonOptions(
                                                                     height:
                                                                         40.0,
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10.0,
                                                                             0.0,
                                                                             10.0,
                                                                             0.0),
                                                                     iconPadding:
-                                                                        const EdgeInsetsDirectional.fromSTEB(
+                                                                        EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFFF46506),
                                                                     textStyle: FlutterFlowTheme.of(
                                                                             context)
@@ -2812,7 +2800,7 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                     elevation:
                                                                         2.0,
                                                                     borderSide:
-                                                                        const BorderSide(
+                                                                        BorderSide(
                                                                       color: Colors
                                                                           .transparent,
                                                                       width:

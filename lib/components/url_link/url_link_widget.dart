@@ -57,7 +57,7 @@ class _UrlLinkWidgetState extends State<UrlLinkWidget>
       height: 461.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
             blurRadius: 4.0,
             color: Color(0x33000000),
@@ -71,12 +71,12 @@ class _UrlLinkWidgetState extends State<UrlLinkWidget>
         shape: BoxShape.rectangle,
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -101,7 +101,7 @@ class _UrlLinkWidgetState extends State<UrlLinkWidget>
               child: Column(
                 children: [
                   Align(
-                    alignment: const Alignment(0.0, 0),
+                    alignment: Alignment(0.0, 0),
                     child: TabBar(
                       labelColor: FlutterFlowTheme.of(context).primaryText,
                       unselectedLabelColor:
@@ -221,7 +221,7 @@ class _UrlLinkWidgetState extends State<UrlLinkWidget>
                                             blurRadius: 4.0,
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
-                                            offset: const Offset(
+                                            offset: Offset(
                                               2.0,
                                               1.0,
                                             ),
@@ -249,7 +249,7 @@ class _UrlLinkWidgetState extends State<UrlLinkWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 0.0, 0.0),
                                             child: Icon(
                                               Icons.attach_file,

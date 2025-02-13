@@ -44,7 +44,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       currentUserLocationValue =
-          await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
+          await getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0));
       showDialog(
         context: context,
         builder: (dialogContext) {
@@ -52,7 +52,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
             elevation: 0,
             insetPadding: EdgeInsets.zero,
             backgroundColor: Colors.transparent,
-            alignment: const AlignmentDirectional(0.0, 0.0)
+            alignment: AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
             child: WebViewAware(
               child: GestureDetector(
@@ -60,7 +60,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                   FocusScope.of(dialogContext).unfocus();
                   FocusManager.instance.primaryFocus?.unfocus();
                 },
-                child: const LoadingWidget(),
+                child: LoadingWidget(),
               ),
             ),
           );
@@ -89,7 +89,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
+                    child: Text('Ok'),
                   ),
                 ],
               ),
@@ -129,8 +129,8 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
             curve: Curves.easeInOut,
             delay: 750.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 50.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 50.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -149,8 +149,8 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
             curve: Curves.easeInOut,
             delay: 1250.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 50.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 50.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -185,14 +185,14 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
           resizeToAvoidBottomInset: false,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           appBar: AppBar(
-            backgroundColor: const Color(0xFFFF6500),
+            backgroundColor: Color(0xFFFF6500),
             automaticallyImplyLeading: false,
             leading: FlutterFlowIconButton(
               borderColor: Colors.transparent,
               borderRadius: 30.0,
               borderWidth: 1.0,
               buttonSize: 60.0,
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_back_rounded,
                 color: Colors.white,
                 size: 30.0,
@@ -213,7 +213,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                     fontWeight: FontWeight.w600,
                   ),
             ),
-            actions: const [],
+            actions: [],
             centerTitle: true,
             elevation: 2.0,
           ),
@@ -258,7 +258,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                           .secondaryBackground,
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 10.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -295,7 +295,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                               onChanged: (_) =>
                                                   EasyDebounce.debounce(
                                                 '_model.branchCodeInputTextController',
-                                                const Duration(milliseconds: 100),
+                                                Duration(milliseconds: 100),
                                                 () => safeSetState(() {}),
                                               ),
                                               autofocus: false,
@@ -319,20 +319,20 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                     .bodySmall
                                                     .override(
                                                       fontFamily: 'Readex Pro',
-                                                      color: const Color(0xFF57636C),
+                                                      color: Color(0xFF57636C),
                                                       fontSize: 14.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                     ),
                                                 enabledBorder:
-                                                    const UnderlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     topLeft:
                                                         Radius.circular(4.0),
                                                     topRight:
@@ -340,13 +340,13 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                   ),
                                                 ),
                                                 focusedBorder:
-                                                    const UnderlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     topLeft:
                                                         Radius.circular(4.0),
                                                     topRight:
@@ -354,13 +354,13 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                   ),
                                                 ),
                                                 errorBorder:
-                                                    const UnderlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     topLeft:
                                                         Radius.circular(4.0),
                                                     topRight:
@@ -368,13 +368,13 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                   ),
                                                 ),
                                                 focusedErrorBorder:
-                                                    const UnderlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     topLeft:
                                                         Radius.circular(4.0),
                                                     topRight:
@@ -409,7 +409,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                           .secondaryBackground,
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 10.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -444,7 +444,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                               onChanged: (_) =>
                                                   EasyDebounce.debounce(
                                                 '_model.latInputTextController',
-                                                const Duration(milliseconds: 100),
+                                                Duration(milliseconds: 100),
                                                 () => safeSetState(() {}),
                                               ),
                                               autofocus: false,
@@ -468,20 +468,20 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                     .bodySmall
                                                     .override(
                                                       fontFamily: 'Readex Pro',
-                                                      color: const Color(0xFF57636C),
+                                                      color: Color(0xFF57636C),
                                                       fontSize: 14.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                     ),
                                                 enabledBorder:
-                                                    const UnderlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     topLeft:
                                                         Radius.circular(4.0),
                                                     topRight:
@@ -489,13 +489,13 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                   ),
                                                 ),
                                                 focusedBorder:
-                                                    const UnderlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     topLeft:
                                                         Radius.circular(4.0),
                                                     topRight:
@@ -503,13 +503,13 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                   ),
                                                 ),
                                                 errorBorder:
-                                                    const UnderlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     topLeft:
                                                         Radius.circular(4.0),
                                                     topRight:
@@ -517,13 +517,13 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                   ),
                                                 ),
                                                 focusedErrorBorder:
-                                                    const UnderlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     topLeft:
                                                         Radius.circular(4.0),
                                                     topRight:
@@ -558,7 +558,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                           .secondaryBackground,
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 10.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -593,7 +593,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                               onChanged: (_) =>
                                                   EasyDebounce.debounce(
                                                 '_model.lngInputTextController',
-                                                const Duration(milliseconds: 100),
+                                                Duration(milliseconds: 100),
                                                 () => safeSetState(() {}),
                                               ),
                                               autofocus: false,
@@ -617,20 +617,20 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                     .bodySmall
                                                     .override(
                                                       fontFamily: 'Readex Pro',
-                                                      color: const Color(0xFF57636C),
+                                                      color: Color(0xFF57636C),
                                                       fontSize: 14.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                     ),
                                                 enabledBorder:
-                                                    const UnderlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     topLeft:
                                                         Radius.circular(4.0),
                                                     topRight:
@@ -638,13 +638,13 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                   ),
                                                 ),
                                                 focusedBorder:
-                                                    const UnderlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     topLeft:
                                                         Radius.circular(4.0),
                                                     topRight:
@@ -652,13 +652,13 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                   ),
                                                 ),
                                                 errorBorder:
-                                                    const UnderlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     topLeft:
                                                         Radius.circular(4.0),
                                                     topRight:
@@ -666,13 +666,13 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                   ),
                                                 ),
                                                 focusedErrorBorder:
-                                                    const UnderlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     topLeft:
                                                         Radius.circular(4.0),
                                                     topRight:
@@ -702,11 +702,11 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                               ).animateOnPageLoad(
                                   animationsMap['wrapOnPageLoadAnimation']!),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Builder(
                                   builder: (context) => FFButtonWidget(
                                     onPressed: () async {
-                                      var shouldSetState = false;
+                                      var _shouldSetState = false;
                                       if (!(_model.branchCodeInputTextController
                                                   .text !=
                                               '')) {
@@ -729,16 +729,15 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               ),
                                             );
                                           },
                                         );
-                                        if (shouldSetState) {
+                                        if (_shouldSetState)
                                           safeSetState(() {});
-                                        }
                                         return;
                                       }
                                       if (!(_model.latInputTextController.text !=
@@ -762,16 +761,15 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               ),
                                             );
                                           },
                                         );
-                                        if (shouldSetState) {
+                                        if (_shouldSetState)
                                           safeSetState(() {});
-                                        }
                                         return;
                                       }
                                       if (!(_model.lngInputTextController.text !=
@@ -795,16 +793,15 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               ),
                                             );
                                           },
                                         );
-                                        if (shouldSetState) {
+                                        if (_shouldSetState)
                                           safeSetState(() {});
-                                        }
                                         return;
                                       }
                                       if (!(((functions.changeToDouble(_model.latInputTextController.text)! <= 90.0) &&
@@ -845,7 +842,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               ),
@@ -858,9 +855,8 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                           _model.latInputTextController
                                               ?.clear();
                                         });
-                                        if (shouldSetState) {
+                                        if (_shouldSetState)
                                           safeSetState(() {});
-                                        }
                                         return;
                                       }
                                       FFAppState().changeBranchCode = _model
@@ -877,7 +873,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                             elevation: 0,
                                             insetPadding: EdgeInsets.zero,
                                             backgroundColor: Colors.transparent,
-                                            alignment: const AlignmentDirectional(
+                                            alignment: AlignmentDirectional(
                                                     0.0, 0.0)
                                                 .resolve(
                                                     Directionality.of(context)),
@@ -890,7 +886,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                       .instance.primaryFocus
                                                       ?.unfocus();
                                                 },
-                                                child: const LoadingWidget(),
+                                                child: LoadingWidget(),
                                               ),
                                             ),
                                           );
@@ -909,7 +905,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                             .branchCodeInputTextController.text,
                                       );
 
-                                      shouldSetState = true;
+                                      _shouldSetState = true;
                                       if ((_model.locationCheckApi
                                                   ?.statusCode ??
                                               200) ==
@@ -966,7 +962,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                 _model.lngInputTextController
                                                     .text),
                                           );
-                                          shouldSetState = true;
+                                          _shouldSetState = true;
                                           unawaited(
                                             () async {
                                               await _model
@@ -1010,7 +1006,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 ),
@@ -1076,7 +1072,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 ),
@@ -1084,9 +1080,8 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                             },
                                           );
                                           Navigator.pop(context);
-                                          if (shouldSetState) {
+                                          if (_shouldSetState)
                                             safeSetState(() {});
-                                          }
                                           return;
                                         }
                                       } else {
@@ -1112,7 +1107,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 ),
@@ -1137,7 +1132,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 ),
@@ -1145,9 +1140,8 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                             },
                                           );
                                           Navigator.pop(context);
-                                          if (shouldSetState) {
+                                          if (_shouldSetState)
                                             safeSetState(() {});
-                                          }
                                           return;
                                         }
 
@@ -1174,13 +1168,12 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
 
                                         context.pushNamed('loginPage');
 
-                                        if (shouldSetState) {
+                                        if (_shouldSetState)
                                           safeSetState(() {});
-                                        }
                                         return;
                                       }
 
-                                      if (shouldSetState) safeSetState(() {});
+                                      if (_shouldSetState) safeSetState(() {});
                                     },
                                     text: FFLocalizations.of(context).getText(
                                       'eq31tpvr' /* Search */,
@@ -1188,10 +1181,10 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                     options: FFButtonOptions(
                                       width: 130.0,
                                       height: 40.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -1203,7 +1196,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                             letterSpacing: 0.0,
                                           ),
                                       elevation: 2.0,
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -1221,7 +1214,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                       .secondaryBackground,
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 10.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -1255,7 +1248,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Readex Pro',
-                                                color: const Color(0xFF4C525A),
+                                                color: Color(0xFF4C525A),
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
@@ -1282,7 +1275,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                           return Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              const Divider(
+                              Divider(
                                 thickness: 1.0,
                                 color: Colors.black,
                               ),
@@ -1299,7 +1292,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),
-                              const Divider(
+                              Divider(
                                 thickness: 1.0,
                                 color: Colors.black,
                               ),
@@ -1308,11 +1301,11 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                   width: double.infinity,
                                   height:
                                       MediaQuery.sizeOf(context).height * 0.3,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     color: Colors.white,
                                   ),
                                   child: Builder(builder: (context) {
-                                    final googleMapMarker =
+                                    final _googleMapMarker =
                                         functions.combineLatLngFunction(
                                             GetBranchLocationCall.latitude(
                                               (_model.locationCheckApi
@@ -1342,10 +1335,10 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                     ''),
                                               ))!,
                                       markers: [
-                                        if (googleMapMarker != null)
+                                        if (_googleMapMarker != null)
                                           FlutterFlowMarker(
-                                            googleMapMarker.serialize(),
-                                            googleMapMarker,
+                                            _googleMapMarker.serialize(),
+                                            _googleMapMarker,
                                           ),
                                       ],
                                       markerColor: GoogleMarkerColor.red,
@@ -1364,7 +1357,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                   }),
                                 ),
                               ),
-                              const Divider(
+                              Divider(
                                 thickness: 1.0,
                                 color: Colors.black,
                               ),
@@ -1381,7 +1374,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),
-                              const Divider(
+                              Divider(
                                 thickness: 1.0,
                                 color: Colors.black,
                               ),
@@ -1390,11 +1383,11 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                   width: double.infinity,
                                   height:
                                       MediaQuery.sizeOf(context).height * 0.3,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     color: Colors.white,
                                   ),
                                   child: Builder(builder: (context) {
-                                    final googleMapMarker =
+                                    final _googleMapMarker =
                                         functions.combineLatLngFunction(
                                             _model.latInputTextController.text,
                                             _model.lngInputTextController.text);
@@ -1410,10 +1403,10 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                   _model.lngInputTextController
                                                       .text)!,
                                       markers: [
-                                        if (googleMapMarker != null)
+                                        if (_googleMapMarker != null)
                                           FlutterFlowMarker(
-                                            googleMapMarker.serialize(),
-                                            googleMapMarker,
+                                            _googleMapMarker.serialize(),
+                                            _googleMapMarker,
                                           ),
                                       ],
                                       markerColor: GoogleMarkerColor.red,
@@ -1454,14 +1447,14 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                           ) ==
                           '200') {
                         return Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 10.0),
                                   child: Container(
                                     width: double.infinity,
@@ -1471,7 +1464,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                           .secondaryBackground,
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 20.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -1483,11 +1476,11 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                           Expanded(
                                             flex: 1,
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(5.0, 0.0, 0.0, 0.0),
                                               child: FFButtonWidget(
                                                 onPressed: () async {
-                                                  var shouldSetState = false;
+                                                  var _shouldSetState = false;
                                                   HapticFeedback.mediumImpact();
                                                   if (!(_model.branchCodeInputTextController
                                                               .text !=
@@ -1498,7 +1491,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                           (alertDialogContext) {
                                                         return WebViewAware(
                                                           child: AlertDialog(
-                                                            content: const Text(
+                                                            content: Text(
                                                                 'กรุณาใส่ BranchCode'),
                                                             actions: [
                                                               TextButton(
@@ -1506,16 +1499,15 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                                     Navigator.pop(
                                                                         alertDialogContext),
                                                                 child:
-                                                                    const Text('Ok'),
+                                                                    Text('Ok'),
                                                               ),
                                                             ],
                                                           ),
                                                         );
                                                       },
                                                     );
-                                                    if (shouldSetState) {
+                                                    if (_shouldSetState)
                                                       safeSetState(() {});
-                                                    }
                                                     return;
                                                   }
                                                   if (!(_model.latInputTextController
@@ -1527,7 +1519,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                           (alertDialogContext) {
                                                         return WebViewAware(
                                                           child: AlertDialog(
-                                                            content: const Text(
+                                                            content: Text(
                                                                 'กรุณาใส่ Latitude'),
                                                             actions: [
                                                               TextButton(
@@ -1535,16 +1527,15 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                                     Navigator.pop(
                                                                         alertDialogContext),
                                                                 child:
-                                                                    const Text('Ok'),
+                                                                    Text('Ok'),
                                                               ),
                                                             ],
                                                           ),
                                                         );
                                                       },
                                                     );
-                                                    if (shouldSetState) {
+                                                    if (_shouldSetState)
                                                       safeSetState(() {});
-                                                    }
                                                     return;
                                                   }
                                                   if (!(_model.lngInputTextController
@@ -1556,7 +1547,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                           (alertDialogContext) {
                                                         return WebViewAware(
                                                           child: AlertDialog(
-                                                            content: const Text(
+                                                            content: Text(
                                                                 'กรุณาใส่ Longitude'),
                                                             actions: [
                                                               TextButton(
@@ -1564,16 +1555,15 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                                     Navigator.pop(
                                                                         alertDialogContext),
                                                                 child:
-                                                                    const Text('Ok'),
+                                                                    Text('Ok'),
                                                               ),
                                                             ],
                                                           ),
                                                         );
                                                       },
                                                     );
-                                                    if (shouldSetState) {
+                                                    if (_shouldSetState)
                                                       safeSetState(() {});
-                                                    }
                                                     return;
                                                   }
                                                   var confirmDialogResponse =
@@ -1584,21 +1574,21 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                               return WebViewAware(
                                                                 child:
                                                                     AlertDialog(
-                                                                  content: const Text(
+                                                                  content: Text(
                                                                       'ยืนยันเปลี่ยนพิกัด'),
                                                                   actions: [
                                                                     TextButton(
                                                                       onPressed: () => Navigator.pop(
                                                                           alertDialogContext,
                                                                           false),
-                                                                      child: const Text(
+                                                                      child: Text(
                                                                           'ยกเลิก'),
                                                                     ),
                                                                     TextButton(
                                                                       onPressed: () => Navigator.pop(
                                                                           alertDialogContext,
                                                                           true),
-                                                                      child: const Text(
+                                                                      child: Text(
                                                                           'ยืนยัน'),
                                                                     ),
                                                                   ],
@@ -1608,9 +1598,8 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                           ) ??
                                                           false;
                                                   if (!confirmDialogResponse) {
-                                                    if (shouldSetState) {
+                                                    if (_shouldSetState)
                                                       safeSetState(() {});
-                                                    }
                                                     return;
                                                   }
                                                   _model.updateBranchLocation =
@@ -1638,7 +1627,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                     ),
                                                   );
 
-                                                  shouldSetState = true;
+                                                  _shouldSetState = true;
                                                   if ((_model.updateBranchLocation
                                                               ?.statusCode ??
                                                           200) ==
@@ -1656,14 +1645,14 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                             (alertDialogContext) {
                                                           return WebViewAware(
                                                             child: AlertDialog(
-                                                              content: const Text(
+                                                              content: Text(
                                                                   'เปลี่ยนพิกัดเรียบร้อย'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
                                                                       Navigator.pop(
                                                                           alertDialogContext),
-                                                                  child: const Text(
+                                                                  child: Text(
                                                                       'Ok'),
                                                                 ),
                                                               ],
@@ -1700,7 +1689,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                                   onPressed: () =>
                                                                       Navigator.pop(
                                                                           alertDialogContext),
-                                                                  child: const Text(
+                                                                  child: Text(
                                                                       'Ok'),
                                                                 ),
                                                               ],
@@ -1708,9 +1697,8 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                           );
                                                         },
                                                       );
-                                                      if (shouldSetState) {
+                                                      if (_shouldSetState)
                                                         safeSetState(() {});
-                                                      }
                                                       return;
                                                     }
                                                   } else {
@@ -1738,7 +1726,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                                   onPressed: () =>
                                                                       Navigator.pop(
                                                                           alertDialogContext),
-                                                                  child: const Text(
+                                                                  child: Text(
                                                                       'Ok'),
                                                                 ),
                                                               ],
@@ -1767,7 +1755,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                                   onPressed: () =>
                                                                       Navigator.pop(
                                                                           alertDialogContext),
-                                                                  child: const Text(
+                                                                  child: Text(
                                                                       'Ok'),
                                                                 ),
                                                               ],
@@ -1776,9 +1764,8 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                         },
                                                       );
                                                       Navigator.pop(context);
-                                                      if (shouldSetState) {
+                                                      if (_shouldSetState)
                                                         safeSetState(() {});
-                                                      }
                                                       return;
                                                     }
 
@@ -1817,16 +1804,14 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                     context
                                                         .pushNamed('loginPage');
 
-                                                    if (shouldSetState) {
+                                                    if (_shouldSetState)
                                                       safeSetState(() {});
-                                                    }
                                                     return;
                                                   }
 
                                                   Navigator.pop(context);
-                                                  if (shouldSetState) {
+                                                  if (_shouldSetState)
                                                     safeSetState(() {});
-                                                  }
                                                 },
                                                 text:
                                                     FFLocalizations.of(context)
@@ -1836,14 +1821,14 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                 options: FFButtonOptions(
                                                   width: 140.0,
                                                   height: 40.0,
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 0.0),
                                                   iconPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
-                                                  color: const Color(0xFF24D200),
+                                                  color: Color(0xFF24D200),
                                                   textStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -1855,7 +1840,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                             letterSpacing: 0.0,
                                                           ),
                                                   elevation: 2.0,
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1.0,
                                                   ),

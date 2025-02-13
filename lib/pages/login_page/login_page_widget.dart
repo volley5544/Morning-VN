@@ -250,17 +250,17 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(
+                      Container(
                         width: double.infinity,
                         height: MediaQuery.sizeOf(context).height * 0.44,
                         child: Stack(
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.5,
                                 height: MediaQuery.sizeOf(context).width * 0.5,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                     colors: [
                                       Color(0xFF1E0098),
@@ -276,11 +276,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                   'containerOnPageLoadAnimation1']!),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.7,
                                 height: MediaQuery.sizeOf(context).width * 0.7,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                     colors: [
                                       Color(0xFF0006B4),
@@ -296,11 +296,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                   'containerOnPageLoadAnimation2']!),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.8,
                                 height: MediaQuery.sizeOf(context).width * 0.8,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                     colors: [
                                       Color(0xFFD63C00),
@@ -312,12 +312,12 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                   ),
                                   shape: BoxShape.circle,
                                 ),
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                               ).animateOnPageLoad(animationsMap[
                                   'containerOnPageLoadAnimation3']!),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -331,7 +331,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                     width: 220.0,
                                     height: 200.0,
                                     fit: BoxFit.cover,
-                                    alignment: const Alignment(0.0, 0.0),
+                                    alignment: Alignment(0.0, 0.0),
                                   ),
                                 ),
                               ).animateOnPageLoad(
@@ -341,7 +341,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 0.0, 20.0, 10.0),
                         child: Container(
                           width: double.infinity,
@@ -357,7 +357,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 8.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.usernameTextController,
@@ -406,7 +406,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 8.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.passwordTextController,
@@ -482,15 +482,15 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 40.0, 0.0, 0.0),
                                   child: Container(
                                     width: 190.0,
                                     height: 40.0,
                                     decoration: BoxDecoration(
-                                      gradient: const LinearGradient(
+                                      gradient: LinearGradient(
                                         colors: [
                                           Color(0xFFD63C00),
                                           Color(0xFFFFA071)
@@ -501,21 +501,21 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                       ),
                                       borderRadius: BorderRadius.circular(20.0),
                                     ),
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Expanded(
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
                                                 currentUserLocationValue =
                                                     await getCurrentUserLocation(
                                                         defaultLocation:
-                                                            const LatLng(0.0, 0.0));
-                                                var shouldSetState = false;
+                                                            LatLng(0.0, 0.0));
+                                                var _shouldSetState = false;
                                                 if (!((String appBuildNumber,
                                                         String latestBuildNumber) {
                                                   return int.parse(
@@ -550,7 +550,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext),
-                                                              child: const Text('Ok'),
+                                                              child: Text('Ok'),
                                                             ),
                                                           ],
                                                         ),
@@ -559,9 +559,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                   );
                                                   await actions
                                                       .terminateAppAction();
-                                                  if (shouldSetState) {
+                                                  if (_shouldSetState)
                                                     safeSetState(() {});
-                                                  }
                                                   return;
                                                 }
                                                 if (_model.usernameTextController
@@ -597,15 +596,14 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                                     0.0,
                                                               ),
                                                         ),
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 3000),
                                                         backgroundColor:
-                                                            const Color(0xB3090F13),
+                                                            Color(0xB3090F13),
                                                       ),
                                                     );
-                                                    if (shouldSetState) {
+                                                    if (_shouldSetState)
                                                       safeSetState(() {});
-                                                    }
                                                     return;
                                                   }
                                                 } else {
@@ -635,15 +633,14 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                                   0.0,
                                                             ),
                                                       ),
-                                                      duration: const Duration(
+                                                      duration: Duration(
                                                           milliseconds: 3000),
                                                       backgroundColor:
-                                                          const Color(0xB3090F13),
+                                                          Color(0xB3090F13),
                                                     ),
                                                   );
-                                                  if (shouldSetState) {
+                                                  if (_shouldSetState)
                                                     safeSetState(() {});
-                                                  }
                                                   return;
                                                 }
 
@@ -654,7 +651,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                   _model.backgroundLocationCheck =
                                                       await actions
                                                           .backgroundLocationCheck();
-                                                  shouldSetState = true;
+                                                  _shouldSetState = true;
                                                   if (!_model
                                                       .backgroundLocationCheck!) {
                                                     await showDialog(
@@ -663,14 +660,14 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                           (alertDialogContext) {
                                                         return WebViewAware(
                                                           child: AlertDialog(
-                                                            content: const Text(
+                                                            content: Text(
                                                                 'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
                                                             actions: [
                                                               TextButton(
                                                                 onPressed: () =>
                                                                     Navigator.pop(
                                                                         alertDialogContext),
-                                                                child: const Text(
+                                                                child: Text(
                                                                     'Open Setting'),
                                                               ),
                                                             ],
@@ -686,30 +683,29 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         (alertDialogContext) {
                                                       return WebViewAware(
                                                         child: AlertDialog(
-                                                          content: const Text(
+                                                          content: Text(
                                                               'Vui lòng cho phép truy cập vị trí của bạn để theo dõi công việc của bạn'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext),
-                                                              child: const Text('Ok'),
+                                                              child: Text('Ok'),
                                                             ),
                                                           ],
                                                         ),
                                                       );
                                                     },
                                                   );
-                                                  if (shouldSetState) {
+                                                  if (_shouldSetState)
                                                     safeSetState(() {});
-                                                  }
                                                   return;
                                                 }
 
                                                 _model.permissionRequestOutput =
                                                     await actions
                                                         .backgroundLocationPermission();
-                                                shouldSetState = true;
+                                                _shouldSetState = true;
                                                 if (!_model
                                                     .permissionRequestOutput!) {
                                                   await showDialog(
@@ -718,29 +714,28 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         (alertDialogContext) {
                                                       return WebViewAware(
                                                         child: AlertDialog(
-                                                          content: const Text(
+                                                          content: Text(
                                                               'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext),
-                                                              child: const Text('Ok'),
+                                                              child: Text('Ok'),
                                                             ),
                                                           ],
                                                         ),
                                                       );
                                                     },
                                                   );
-                                                  if (shouldSetState) {
+                                                  if (_shouldSetState)
                                                     safeSetState(() {});
-                                                  }
                                                   return;
                                                 }
                                                 _model.checkGpsEnable =
                                                     await actions
                                                         .checkGpsServiceEnable();
-                                                shouldSetState = true;
+                                                _shouldSetState = true;
                                                 if (!_model.checkGpsEnable!) {
                                                   await showDialog(
                                                     context: context,
@@ -748,14 +743,14 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         (alertDialogContext) {
                                                       return WebViewAware(
                                                         child: AlertDialog(
-                                                          content: const Text(
+                                                          content: Text(
                                                               'Vui lòng bật GPS trước khi tiếp tục'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext),
-                                                              child: const Text('Ok'),
+                                                              child: Text('Ok'),
                                                             ),
                                                           ],
                                                         ),
@@ -767,7 +762,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                   _model.checkGpsEnable2 =
                                                       await actions
                                                           .checkGpsServiceEnable();
-                                                  shouldSetState = true;
+                                                  _shouldSetState = true;
                                                   if (!_model
                                                       .checkGpsEnable2!) {
                                                     await showDialog(
@@ -776,7 +771,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                           (alertDialogContext) {
                                                         return WebViewAware(
                                                           child: AlertDialog(
-                                                            content: const Text(
+                                                            content: Text(
                                                                 'Vui lòng bật GPS trước khi tiếp tục'),
                                                             actions: [
                                                               TextButton(
@@ -784,16 +779,15 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                                     Navigator.pop(
                                                                         alertDialogContext),
                                                                 child:
-                                                                    const Text('Ok'),
+                                                                    Text('Ok'),
                                                               ),
                                                             ],
                                                           ),
                                                         );
                                                       },
                                                     );
-                                                    if (shouldSetState) {
+                                                    if (_shouldSetState)
                                                       safeSetState(() {});
-                                                    }
                                                     return;
                                                   }
                                                 }
@@ -813,7 +807,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                   uid: FFAppState().Uid,
                                                 );
 
-                                                shouldSetState = true;
+                                                _shouldSetState = true;
                                                 if ((_model.authAPIOutput
                                                             ?.statusCode ??
                                                         200) ==
@@ -844,7 +838,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                                 .primaryText,
                                                           ),
                                                         ),
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 4000),
                                                         backgroundColor:
                                                             FlutterFlowTheme.of(
@@ -852,9 +846,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                                 .secondary,
                                                       ),
                                                     );
-                                                    if (shouldSetState) {
+                                                    if (_shouldSetState)
                                                       safeSetState(() {});
-                                                    }
                                                     return;
                                                   }
                                                   await showDialog(
@@ -877,25 +870,24 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext),
-                                                              child: const Text('Ok'),
+                                                              child: Text('Ok'),
                                                             ),
                                                           ],
                                                         ),
                                                       );
                                                     },
                                                   );
-                                                  if (shouldSetState) {
+                                                  if (_shouldSetState)
                                                     safeSetState(() {});
-                                                  }
                                                   return;
                                                 }
 
-                                                if (getJsonField(
+                                                if ('${getJsonField(
                                                       (_model.authAPIOutput
                                                               ?.jsonBody ??
                                                           ''),
                                                       r'''$.status''',
-                                                    ).toString() ==
+                                                    ).toString()}' ==
                                                     '200') {
                                                 } else {
                                                   await showDialog(
@@ -915,16 +907,15 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext),
-                                                              child: const Text('Ok'),
+                                                              child: Text('Ok'),
                                                             ),
                                                           ],
                                                         ),
                                                       );
                                                     },
                                                   );
-                                                  if (shouldSetState) {
+                                                  if (_shouldSetState)
                                                     safeSetState(() {});
-                                                  }
                                                   return;
                                                 }
 
@@ -993,16 +984,15 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                                     Navigator.pop(
                                                                         alertDialogContext),
                                                                 child:
-                                                                    const Text('Ok'),
+                                                                    Text('Ok'),
                                                               ),
                                                             ],
                                                           ),
                                                         );
                                                       },
                                                     );
-                                                    if (shouldSetState) {
+                                                    if (_shouldSetState)
                                                       safeSetState(() {});
-                                                    }
                                                     return;
                                                   }
                                                 }
@@ -1021,7 +1011,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       FFAppState().accessToken,
                                                 );
 
-                                                shouldSetState = true;
+                                                _shouldSetState = true;
                                                 if ((_model.getUserProfile
                                                             ?.statusCode ??
                                                         200) !=
@@ -1046,24 +1036,23 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext),
-                                                              child: const Text('Ok'),
+                                                              child: Text('Ok'),
                                                             ),
                                                           ],
                                                         ),
                                                       );
                                                     },
                                                   );
-                                                  if (shouldSetState) {
+                                                  if (_shouldSetState)
                                                     safeSetState(() {});
-                                                  }
                                                   return;
                                                 }
-                                                if (getJsonField(
+                                                if ('${getJsonField(
                                                       (_model.getUserProfile
                                                               ?.jsonBody ??
                                                           ''),
                                                       r'''$.status''',
-                                                    ).toString() !=
+                                                    ).toString()}' !=
                                                     '200') {
                                                   await showDialog(
                                                     context: context,
@@ -1083,38 +1072,37 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext),
-                                                              child: const Text('Ok'),
+                                                              child: Text('Ok'),
                                                             ),
                                                           ],
                                                         ),
                                                       );
                                                     },
                                                   );
-                                                  if (shouldSetState) {
+                                                  if (_shouldSetState)
                                                     safeSetState(() {});
-                                                  }
                                                   return;
                                                 }
                                                 FFAppState()
                                                         .profilePositionName =
-                                                    '${GetUserProfileAPICall.profliePositionName(
+                                                    '${'${GetUserProfileAPICall.profliePositionName(
                                                   (_model.getUserProfile
                                                           ?.jsonBody ??
                                                       ''),
-                                                )}';
+                                                )}'}';
                                                 FFAppState()
                                                         .ProfilePhoneNumber =
-                                                    '${GetUserProfileAPICall.profilePhoneNumber(
+                                                    '${'${GetUserProfileAPICall.profilePhoneNumber(
                                                   (_model.getUserProfile
                                                           ?.jsonBody ??
                                                       ''),
-                                                )}';
+                                                )}'}';
                                                 FFAppState().profileBranchName =
-                                                    '${GetUserProfileAPICall.profileBranchName(
+                                                    '${'${GetUserProfileAPICall.profileBranchName(
                                                   (_model.getUserProfile
                                                           ?.jsonBody ??
                                                       ''),
-                                                )}';
+                                                )}'}';
                                                 FFAppState().profileBranchCode =
                                                     '${GetUserProfileAPICall.profileBranchCode(
                                                   (_model.getUserProfile
@@ -1123,11 +1111,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                 )}';
                                                 safeSetState(() {});
                                                 FFAppState().profileHiredDate =
-                                                    '${GetUserProfileAPICall.profileHiredDate(
+                                                    '${'${GetUserProfileAPICall.profileHiredDate(
                                                   (_model.getUserProfile
                                                           ?.jsonBody ??
                                                       ''),
-                                                )}';
+                                                )}'}';
                                                 FFAppState()
                                                         .profileServiceDurationYY =
                                                     '${GetUserProfileAPICall.profileServiceDurationYY(
@@ -1150,11 +1138,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       ''),
                                                 )}';
                                                 FFAppState().roleName =
-                                                    '${GetUserProfileAPICall.rolename(
+                                                    '${'${GetUserProfileAPICall.rolename(
                                                   (_model.getUserProfile
                                                           ?.jsonBody ??
                                                       ''),
-                                                )}';
+                                                )}'}';
                                                 FFAppState().profileLevel =
                                                     '${GetUserProfileAPICall.gpslevel(
                                                   (_model.getUserProfile
@@ -1168,13 +1156,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                     await actions.checkFirebase(
                                                   '${_model.usernameTextController.text}@srisawadvn.com',
                                                 );
-                                                shouldSetState = true;
+                                                _shouldSetState = true;
                                                 if (_model
                                                         .customFirebaseAuthen ==
                                                     'Create') {
                                                   _model.userUID = await actions
                                                       .checkUserFirebase();
-                                                  shouldSetState = true;
+                                                  _shouldSetState = true;
 
                                                   var userCustomRecordReference =
                                                       UserCustomRecord
@@ -1211,14 +1199,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                                     'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/blank-profile-picture-gc19a78ed8_1280.png?alt=media&token=6c3c82ce-a6ae-4b2e-b264-303820c6b65e',
                                                               ),
                                                               userCustomRecordReference);
-                                                  shouldSetState = true;
+                                                  _shouldSetState = true;
                                                 }
 
                                                 context.goNamed('setPinPage');
 
-                                                if (shouldSetState) {
+                                                if (_shouldSetState)
                                                   safeSetState(() {});
-                                                }
                                               },
                                               text: FFLocalizations.of(context)
                                                   .getText(
@@ -1227,14 +1214,14 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                               options: FFButtonOptions(
                                                 width: double.infinity,
                                                 height: double.infinity,
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 0.0),
                                                 iconPadding:
-                                                    const EdgeInsetsDirectional
+                                                    EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
-                                                color: const Color(0x00FFFFFF),
+                                                color: Color(0x00FFFFFF),
                                                 textStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
@@ -1245,7 +1232,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                           letterSpacing: 0.0,
                                                         ),
                                                 elevation: 2.0,
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -1270,7 +1257,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                       ),
                       Expanded(
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.0, 1.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
                               'f6exf55c' /* Copyright ©2024.  Srisawad Cor... */,
@@ -1279,7 +1266,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: const Color(0xFF607D8B),
+                                  color: Color(0xFF607D8B),
                                   fontSize: 13.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,

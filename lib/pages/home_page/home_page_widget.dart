@@ -51,13 +51,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
       await actions.getBackgroundLocation(
         FFAppState().employeeID,
-        FFAppState().ProfilePhoneNumber,
+        '${FFAppState().ProfilePhoneNumber}',
         isAndroid ? 'Android' : 'iOS',
         '123456789',
       );
       await actions.periodicGetLocation(
         FFAppState().employeeID,
-        FFAppState().ProfilePhoneNumber,
+        '${FFAppState().ProfilePhoneNumber}',
         isAndroid ? 'Android' : 'iOS',
         '123456789',
       );
@@ -82,15 +82,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFFFEDE0),
+        backgroundColor: Color(0xFFFFEDE0),
         appBar: AppBar(
-          backgroundColor: const Color(0xFFFF843D),
+          backgroundColor: Color(0xFFFF843D),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderRadius: 20.0,
             borderWidth: 1.0,
             buttonSize: 40.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.logout_sharp,
               color: Colors.white,
               size: 30.0,
@@ -122,26 +122,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 15.0, 12.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -177,7 +177,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   Container(
                     width: double.infinity,
                     height: 250.0,
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: FutureBuilder<List<ImageLinkStorageRecord>>(
                       future: queryImageLinkStorageRecordOnce(
                         singleRecord: true,
@@ -211,7 +211,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     .toList() ??
                                 [];
 
-                            return SizedBox(
+                            return Container(
                               width: double.infinity,
                               height: 180.0,
                               child: CarouselSlider.builder(
@@ -225,7 +225,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .accent4,
-                                        boxShadow: const [
+                                        boxShadow: [
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x33000000),
@@ -291,9 +291,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   scrollDirection: Axis.horizontal,
                                   autoPlay: true,
                                   autoPlayAnimationDuration:
-                                      const Duration(milliseconds: 500),
+                                      Duration(milliseconds: 500),
                                   autoPlayInterval:
-                                      const Duration(milliseconds: (500 + 5000)),
+                                      Duration(milliseconds: (500 + 5000)),
                                   autoPlayCurve: Curves.linear,
                                   pauseAutoPlayInFiniteScroll: true,
                                   onPageChanged: (index, _) =>
@@ -308,7 +308,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 30.0, 12.0, 12.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 30.0, 12.0, 12.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -330,11 +330,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   Container(
                     width: double.infinity,
                     height: 300.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFFFFEDE0),
                     ),
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, 1.0),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: FutureBuilder<List<ImageLinkStorageRecord>>(
                         future: queryImageLinkStorageRecordOnce(
                           singleRecord: true,
@@ -369,13 +369,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       .toList() ??
                                   [];
 
-                              return SizedBox(
+                              return Container(
                                 width: double.infinity,
                                 height: 500.0,
                                 child: Stack(
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 40.0),
                                       child: PageView.builder(
                                         controller:
@@ -435,9 +435,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       ),
                                     ),
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 1.0),
+                                      alignment: AlignmentDirectional(0.0, 1.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 0.0, 16.0),
                                         child: smooth_page_indicator
                                             .SmoothPageIndicator(
@@ -457,7 +457,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 .animateToPage(
                                               i,
                                               duration:
-                                                  const Duration(milliseconds: 500),
+                                                  Duration(milliseconds: 500),
                                               curve: Curves.ease,
                                             );
                                             safeSetState(() {});

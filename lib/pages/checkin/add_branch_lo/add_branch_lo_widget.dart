@@ -75,7 +75,7 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
       height: double.infinity,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(15.0),
@@ -83,7 +83,7 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -92,11 +92,11 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                   child: Container(
                     width: 50.0,
                     height: 5.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFFDADADA),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(20.0),
@@ -120,7 +120,7 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                     FlutterFlowIconButton(
                       borderRadius: 8.0,
                       buttonSize: 40.0,
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back,
                         color: Color(0xFF7E7C7C),
                         size: 24.0,
@@ -134,7 +134,7 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                 Expanded(
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 41.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 41.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -162,21 +162,21 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
               color: FlutterFlowTheme.of(context).alternate,
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 10.0, 12.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 10.0, 12.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 8.0, 0.0),
                               child: TextFormField(
                                 controller: _model.textController1,
@@ -250,14 +250,14 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 10.0, 12.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 10.0, 12.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 8.0, 0.0),
                               child: TextFormField(
                                 controller: _model.textController2,
@@ -331,14 +331,14 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 10.0, 12.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 10.0, 12.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 8.0, 0.0),
                               child: TextFormField(
                                 controller: _model.textController3,
@@ -412,14 +412,14 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 10.0, 12.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 10.0, 12.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 8.0, 0.0),
                               child: TextFormField(
                                 controller: _model.textController4,
@@ -495,14 +495,14 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 10.0, 12.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 10.0, 12.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 8.0, 0.0),
                               child: TextFormField(
                                 controller: _model.textController5,
@@ -578,14 +578,14 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 10.0, 12.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 10.0, 12.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 8.0, 0.0),
                               child: TextFormField(
                                 controller: _model.textController6,
@@ -661,10 +661,10 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          var shouldSetState = false;
+                          var _shouldSetState = false;
                           if (!((_model.textController4.text != '') &&
                               (_model.textController5.text != '') &&
                               (_model.textController6.text != ''))) {
@@ -684,14 +684,14 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                                       TextButton(
                                         onPressed: () =>
                                             Navigator.pop(alertDialogContext),
-                                        child: const Text('Ok'),
+                                        child: Text('Ok'),
                                       ),
                                     ],
                                   ),
                                 );
                               },
                             );
-                            if (shouldSetState) safeSetState(() {});
+                            if (_shouldSetState) safeSetState(() {});
                             return;
                           }
                           var confirmDialogResponse = await showDialog<bool>(
@@ -748,9 +748,9 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                               regionCode: _model.textController6.text,
                             );
 
-                            shouldSetState = true;
+                            _shouldSetState = true;
                           } else {
-                            if (shouldSetState) safeSetState(() {});
+                            if (_shouldSetState) safeSetState(() {});
                             return;
                           }
 
@@ -777,7 +777,7 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: const Text('Ok'),
+                                          child: Text('Ok'),
                                         ),
                                       ],
                                     ),
@@ -800,14 +800,14 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: const Text('Ok'),
+                                          child: Text('Ok'),
                                         ),
                                       ],
                                     ),
                                   );
                                 },
                               );
-                              if (shouldSetState) safeSetState(() {});
+                              if (_shouldSetState) safeSetState(() {});
                               return;
                             }
 
@@ -832,7 +832,7 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: const Text('Ok'),
+                                          child: Text('Ok'),
                                         ),
                                       ],
                                     ),
@@ -855,7 +855,7 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: const Text('Ok'),
+                                          child: Text('Ok'),
                                         ),
                                       ],
                                     ),
@@ -863,7 +863,7 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                                 },
                               );
                               Navigator.pop(context);
-                              if (shouldSetState) safeSetState(() {});
+                              if (_shouldSetState) safeSetState(() {});
                               return;
                             }
 
@@ -890,11 +890,11 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
 
                             context.pushNamed('loginPage');
 
-                            if (shouldSetState) safeSetState(() {});
+                            if (_shouldSetState) safeSetState(() {});
                             return;
                           }
 
-                          if (shouldSetState) safeSetState(() {});
+                          if (_shouldSetState) safeSetState(() {});
                         },
                         text: FFLocalizations.of(context).getText(
                           'po0mmgz2' /* Add Branch */,
@@ -908,9 +908,9 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                         options: FFButtonOptions(
                           width: 270.0,
                           height: 50.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 5.0, 0.0),
                           color: FlutterFlowTheme.of(context).primaryText,
                           textStyle:
@@ -923,7 +923,7 @@ class _AddBranchLoWidgetState extends State<AddBranchLoWidget> {
                                     fontWeight: FontWeight.normal,
                                   ),
                           elevation: 2.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

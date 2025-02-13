@@ -18,7 +18,7 @@ class LeaveCalendarComponentWidget extends StatefulWidget {
     this.endDate,
     required this.previousYear,
     this.previousYearSelectableDates,
-  }) : currentYearSelectableDates = currentYearSelectableDates ?? '';
+  }) : this.currentYearSelectableDates = currentYearSelectableDates ?? '';
 
   final List<String>? holidayList;
   final String? currentYear;
@@ -67,14 +67,14 @@ class _LeaveCalendarComponentWidgetState
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
       ),
-      child: SizedBox(
+      child: Container(
         width: double.infinity,
         height: double.infinity,
         child: custom_widgets.LeaveCalendarWidget(
           width: double.infinity,
           height: double.infinity,
-          todayColor: const Color(0xFFFF843D),
-          selectedColor: const Color(0xFFFF843D),
+          todayColor: Color(0xFFFF843D),
+          selectedColor: Color(0xFFFF843D),
           selectedTextColor: FlutterFlowTheme.of(context).secondaryBackground,
           holidaysList: widget.holidayList,
           currentDate: getCurrentTimestamp,

@@ -46,7 +46,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
               },
               child: Padding(
                 padding: MediaQuery.viewInsetsOf(context),
-                child: const SizedBox(
+                child: Container(
                   height: double.infinity,
                   child: LoadingWidget(),
                 ),
@@ -77,7 +77,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -98,7 +98,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
-                      child: const Text('Ok'),
+                      child: Text('Ok'),
                     ),
                   ],
                 ),
@@ -149,7 +149,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
-                    child: const Text('Ok'),
+                    child: Text('Ok'),
                   ),
                 ],
               ),
@@ -183,14 +183,14 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: const Color(0xFFFF6500),
+          backgroundColor: Color(0xFFFF6500),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -211,7 +211,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                   fontWeight: FontWeight.w600,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 8.0,
         ),
@@ -259,7 +259,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                   Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: 70.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFFFF6500),
                       boxShadow: [
                         BoxShadow(
@@ -273,7 +273,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                       ],
                     ),
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'km99di9u' /* Menu */,
@@ -291,10 +291,10 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                     ),
                   ),
                   Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 44.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 44.0),
                       child: Wrap(
                         spacing: 10.0,
                         runSpacing: 10.0,
@@ -319,7 +319,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x33000000),
@@ -383,7 +383,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x33000000),
@@ -447,7 +447,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
-                                  boxShadow: const [
+                                  boxShadow: [
                                     BoxShadow(
                                       blurRadius: 4.0,
                                       color: Color(0x33000000),
@@ -460,7 +460,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(4.0),
+                                  padding: EdgeInsets.all(4.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -479,7 +479,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                                       ),
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             'k5qkxo1i' /* Leave approval */,
@@ -521,7 +521,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
-                                  boxShadow: const [
+                                  boxShadow: [
                                     BoxShadow(
                                       blurRadius: 4.0,
                                       color: Color(0x33000000),

@@ -90,9 +90,9 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 10.0),
                           child: StreamBuilder<List<UserCustomRecord>>(
                             stream: queryUserCustomRecord(
@@ -144,23 +144,23 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                               .primaryText,
                                         ),
                                       ),
-                                      duration: const Duration(milliseconds: 4000),
+                                      duration: Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context)
                                               .secondary,
                                     ),
                                   );
                                 },
-                                child: SizedBox(
+                                child: Container(
                                   width: MediaQuery.sizeOf(context).width * 1.0,
                                   height:
                                       MediaQuery.sizeOf(context).height * 0.22,
                                   child: Stack(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     children: [
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.9),
+                                            AlignmentDirectional(0.0, 0.9),
                                         child: Material(
                                           color: Colors.transparent,
                                           elevation: 2.0,
@@ -229,7 +229,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                               shape: BoxShape.circle,
                                             ),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
@@ -331,7 +331,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                                     }
                                                   }(),
                                                   clipBehavior: Clip.antiAlias,
-                                                  decoration: const BoxDecoration(
+                                                  decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: Image.network(
@@ -440,7 +440,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                             }(),
                                             icon: Icon(
                                               Icons.camera_alt,
-                                              color: const Color(0xFF0039E3),
+                                              color: Color(0xFF0039E3),
                                               size: () {
                                                 if (MediaQuery.sizeOf(context)
                                                         .width <
@@ -462,7 +462,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                               }(),
                                             ),
                                             onPressed: () async {
-                                              var shouldSetState = false;
+                                              var _shouldSetState = false;
                                               showModalBottomSheet(
                                                 isScrollControlled: true,
                                                 backgroundColor:
@@ -483,7 +483,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                                         padding: MediaQuery
                                                             .viewInsetsOf(
                                                                 context),
-                                                        child: const SizedBox(
+                                                        child: Container(
                                                           height:
                                                               double.infinity,
                                                           child:
@@ -554,9 +554,8 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                                           .bytes?.isNotEmpty ??
                                                       false))) {
                                                 Navigator.pop(context);
-                                                if (shouldSetState) {
+                                                if (_shouldSetState)
                                                   safeSetState(() {});
-                                                }
                                                 return;
                                               }
                                               _model.uploadFirebaseStorageAction =
@@ -565,7 +564,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                                 'UsersProfileImage',
                                                 _model.uploadedLocalFile,
                                               );
-                                              shouldSetState = true;
+                                              _shouldSetState = true;
                                               if (!(_model.uploadFirebaseStorageAction !=
                                                       null &&
                                                   _model.uploadFirebaseStorageAction !=
@@ -577,23 +576,22 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                                       (alertDialogContext) {
                                                     return WebViewAware(
                                                       child: AlertDialog(
-                                                        content: const Text(
+                                                        content: Text(
                                                             'ไม่สามารถอัพโหลดรูปได้ กรุณาลองอีกครั้ง'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       ),
                                                     );
                                                   },
                                                 );
-                                                if (shouldSetState) {
+                                                if (_shouldSetState)
                                                   safeSetState(() {});
-                                                }
                                                 return;
                                               }
                                               if (stackUserCustomRecord
@@ -606,7 +604,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                                       stackUserCustomRecord
                                                           ?.profileImg),
                                                 );
-                                                shouldSetState = true;
+                                                _shouldSetState = true;
                                                 if (_model
                                                     .checkProfileImgIsAvailable!) {
                                                   await FirebaseStorage.instance
@@ -635,9 +633,8 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                               });
 
                                               Navigator.pop(context);
-                                              if (shouldSetState) {
+                                              if (_shouldSetState)
                                                 safeSetState(() {});
-                                              }
                                             },
                                           ),
                                         ),
@@ -652,7 +649,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           height: 50.0,
@@ -663,7 +660,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                           child: Visibility(
                             visible: FFAppState().username != 'null',
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 5.0, 0.0, 0.0),
                               child: Text(
                                 '${FFLocalizations.of(context).getVariableText(
@@ -676,7 +673,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Outfit',
-                                      color: const Color(0xFF0039E3),
+                                      color: Color(0xFF0039E3),
                                       fontSize: 24.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
@@ -688,22 +685,22 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                       ),
                       if (FFAppState().profilePositionName != '')
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 30.0),
                           child: Container(
                             width: 300.0,
                             height: 45.0,
                             decoration: BoxDecoration(
-                              color: const Color(0xFFFFD57C),
+                              color: Color(0xFFFFD57C),
                               borderRadius: BorderRadius.circular(18.0),
                             ),
                             child: Visibility(
                               visible:
                                   FFAppState().profilePositionName != '',
                               child: Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 12.0, 0.0),
                                   child: Text(
                                     FFAppState().profilePositionName,
@@ -753,7 +750,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               25.0, 0.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -762,7 +759,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                             children: [
                               if (FFAppState().employeeID != '')
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 10.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -786,7 +783,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                 ),
                               if (FFAppState().profileBranchCode != '')
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 10.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -809,7 +806,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                   ),
                                 ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 10.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -839,7 +836,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                               ),
                               if (false)
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 10.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -883,7 +880,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                   ),
                                 ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 10.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -919,7 +916,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                               ),
                               if (false)
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 10.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -943,7 +940,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                 ),
                               if (false)
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 10.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -967,7 +964,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                 ),
                               if (false)
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       40.0, 0.0, 40.0, 15.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -977,7 +974,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                         flex: 1,
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   30.0, 0.0, 30.0, 0.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
@@ -991,12 +988,12 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                             options: FFButtonOptions(
                                               width: 135.0,
                                               height: 35.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 0.0, 16.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: const Color(0xFF0039E3),
+                                              color: Color(0xFF0039E3),
                                               textStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall

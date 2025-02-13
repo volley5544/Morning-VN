@@ -45,14 +45,14 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: const Color(0xFFFF6500),
+          backgroundColor: Color(0xFFFF6500),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -73,7 +73,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                   fontWeight: FontWeight.w600,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -97,7 +97,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(0.0),
                             bottomRight: Radius.circular(0.0),
                             topLeft: Radius.circular(16.0),
@@ -105,13 +105,13 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 10.0, 16.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -129,7 +129,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 0.0, 8.0, 10.0),
                                         child: SingleChildScrollView(
                                           primary: false,
@@ -139,7 +139,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                                                 MainAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 10.0, 0.0, 0.0),
                                                 child: Row(
@@ -172,7 +172,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 10.0, 0.0, 10.0),
                                                 child: Row(
@@ -183,7 +183,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                                                   children: [
                                                     Expanded(
                                                       child: Padding(
-                                                        padding: const EdgeInsets.all(
+                                                        padding: EdgeInsets.all(
                                                             10.0),
                                                         child: TextFormField(
                                                           controller: _model
@@ -213,7 +213,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                                                             enabledBorder:
                                                                 UnderlineInputBorder(
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Color(
                                                                     0x00000000),
                                                                 width: 2.0,
@@ -226,7 +226,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                                                             focusedBorder:
                                                                 UnderlineInputBorder(
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Color(
                                                                     0x00000000),
                                                                 width: 2.0,
@@ -239,7 +239,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                                                             errorBorder:
                                                                 UnderlineInputBorder(
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Color(
                                                                     0x00000000),
                                                                 width: 2.0,
@@ -252,7 +252,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                                                             focusedErrorBorder:
                                                                 UnderlineInputBorder(
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Color(
                                                                     0x00000000),
                                                                 width: 2.0,
@@ -266,7 +266,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                                                             fillColor:
                                                                 Colors.white,
                                                             contentPadding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         20.0,
                                                                         40.0,
@@ -303,7 +303,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   20.0,
                                                                   0.0,
@@ -326,20 +326,20 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                                                               width: 130.0,
                                                               height: 40.0,
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
                                                               iconPadding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF00968A),
                                                               textStyle:
                                                                   FlutterFlowTheme.of(
@@ -359,7 +359,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                                                                       ),
                                                               elevation: 2.0,
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Colors
                                                                     .transparent,
                                                                 width: 1.0,
@@ -392,20 +392,20 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                                                             width: 130.0,
                                                             height: 40.0,
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
                                                                         0.0,
                                                                         0.0),
                                                             iconPadding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
                                                                         0.0,
                                                                         0.0),
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFFB32A33),
                                                             textStyle:
                                                                 FlutterFlowTheme.of(
@@ -426,7 +426,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                                                                     ),
                                                             elevation: 2.0,
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Colors
                                                                   .transparent,
                                                               width: 2.0,
@@ -459,7 +459,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(0.0),
                             bottomRight: Radius.circular(0.0),
                             topLeft: Radius.circular(16.0),
@@ -472,7 +472,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(0.0),
                             bottomRight: Radius.circular(0.0),
                             topLeft: Radius.circular(16.0),
@@ -485,7 +485,7 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(0.0),
                             bottomRight: Radius.circular(0.0),
                             topLeft: Radius.circular(16.0),

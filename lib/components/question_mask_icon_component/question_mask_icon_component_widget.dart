@@ -52,8 +52,8 @@ class _QuestionMaskIconComponentWidgetState
             borderRadius: 20.0,
             borderWidth: 1.0,
             buttonSize: 40.0,
-            fillColor: const Color(0xFFFF9000),
-            icon: const Icon(
+            fillColor: Color(0xFFFF9000),
+            icon: Icon(
               Icons.question_mark_sharp,
               color: Colors.white,
               size: 24.0,

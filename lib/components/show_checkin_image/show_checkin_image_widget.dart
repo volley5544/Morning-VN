@@ -48,13 +48,13 @@ class _ShowCheckinImageWidgetState extends State<ShowCheckinImageWidget> {
       builder: (context) {
         final leaveimagelist = widget.leaveImage?.toList() ?? [];
 
-        return SizedBox(
+        return Container(
           width: double.infinity,
           height: 500.0,
           child: Stack(
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
                 child: PageView.builder(
                   controller: _model.pageViewController ??= PageController(
                       initialPage: max(0, min(0, leaveimagelist.length - 1))),
@@ -108,7 +108,7 @@ class _ShowCheckinImageWidgetState extends State<ShowCheckinImageWidget> {
                         FlutterFlowIconButton(
                           borderRadius: 30.0,
                           buttonSize: 75.0,
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.cancel_outlined,
                             color: Color(0xFFFF0000),
                             size: 35.0,
@@ -123,9 +123,9 @@ class _ShowCheckinImageWidgetState extends State<ShowCheckinImageWidget> {
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                   child: smooth_page_indicator.SmoothPageIndicator(
                     controller: _model.pageViewController ??= PageController(
                         initialPage: max(0, min(0, leaveimagelist.length - 1))),
@@ -134,7 +134,7 @@ class _ShowCheckinImageWidgetState extends State<ShowCheckinImageWidget> {
                     onDotClicked: (i) async {
                       await _model.pageViewController!.animateToPage(
                         i,
-                        duration: const Duration(milliseconds: 500),
+                        duration: Duration(milliseconds: 500),
                         curve: Curves.ease,
                       );
                       safeSetState(() {});
@@ -145,7 +145,7 @@ class _ShowCheckinImageWidgetState extends State<ShowCheckinImageWidget> {
                       radius: 16.0,
                       dotWidth: 16.0,
                       dotHeight: 16.0,
-                      dotColor: const Color(0xFF9E9E9E),
+                      dotColor: Color(0xFF9E9E9E),
                       activeDotColor: FlutterFlowTheme.of(context).primary,
                       paintStyle: PaintingStyle.fill,
                     ),

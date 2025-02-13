@@ -64,8 +64,8 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
             curve: Curves.easeInOut,
             delay: 150.0.ms,
             duration: 500.0.ms,
-            begin: const Offset(0.0, -100.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, -100.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -84,8 +84,8 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 500.0.ms,
-            begin: const Offset(-100.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-100.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -104,8 +104,8 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
             curve: Curves.easeInOut,
             delay: 150.0.ms,
             duration: 500.0.ms,
-            begin: const Offset(0.0, -100.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, -100.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -165,14 +165,14 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             appBar: AppBar(
-              backgroundColor: const Color(0xFFFF6500),
+              backgroundColor: Color(0xFFFF6500),
               automaticallyImplyLeading: false,
               leading: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
                 borderRadius: 30.0,
                 borderWidth: 1.0,
                 buttonSize: 60.0,
-                icon: const Icon(
+                icon: Icon(
                   Icons.arrow_back_rounded,
                   color: Colors.white,
                   size: 30.0,
@@ -193,7 +193,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: true,
               elevation: 8.0,
             ),
@@ -205,11 +205,11 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                   Container(
                     width: double.infinity,
                     height: 70.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFFFF6500),
                     ),
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -229,7 +229,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                     TextButton(
                                       onPressed: () =>
                                           Navigator.pop(alertDialogContext),
-                                      child: const Text('Ok'),
+                                      child: Text('Ok'),
                                     ),
                                   ],
                                 ),
@@ -253,7 +253,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                     TextButton(
                                       onPressed: () =>
                                           Navigator.pop(alertDialogContext),
-                                      child: const Text('Ok'),
+                                      child: Text('Ok'),
                                     ),
                                   ],
                                 ),
@@ -281,10 +281,10 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                   ).animateOnPageLoad(
                       animationsMap['containerOnPageLoadAnimation1']!),
                   Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 44.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 44.0),
                       child: Wrap(
                         spacing: 8.0,
                         runSpacing: 8.0,
@@ -309,7 +309,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x33000000),
@@ -322,7 +322,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     4.0, 4.0, 4.0, 4.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -338,9 +338,9 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                       ),
                                     ),
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 12.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
@@ -350,7 +350,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                               .titleMedium
                                               .override(
                                                 fontFamily: 'Readex Pro',
-                                                color: const Color(0xFF101213),
+                                                color: Color(0xFF101213),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
@@ -377,7 +377,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x33000000),
@@ -390,7 +390,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     4.0, 4.0, 4.0, 4.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -406,9 +406,9 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                       ),
                                     ),
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 12.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
@@ -418,7 +418,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                               .titleMedium
                                               .override(
                                                 fontFamily: 'Readex Pro',
-                                                color: const Color(0xFF101213),
+                                                color: Color(0xFF101213),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
@@ -450,7 +450,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
-                                  boxShadow: const [
+                                  boxShadow: [
                                     BoxShadow(
                                       blurRadius: 4.0,
                                       color: Color(0x33000000),
@@ -463,7 +463,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       4.0, 4.0, 4.0, 4.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -482,10 +482,10 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                       ),
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 12.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
@@ -495,7 +495,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                                 .titleMedium
                                                 .override(
                                                   fontFamily: 'Readex Pro',
-                                                  color: const Color(0xFF101213),
+                                                  color: Color(0xFF101213),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                 ),

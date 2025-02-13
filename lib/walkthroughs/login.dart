@@ -22,7 +22,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         contents: [
           TargetContent(
             align: ContentAlign.top,
-            builder: (context, __) => const Action2SheetSimpleWidget(),
+            builder: (context, __) => Action2SheetSimpleWidget(),
           ),
         ],
       ),
@@ -37,7 +37,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         contents: [
           TargetContent(
             align: ContentAlign.top,
-            builder: (context, __) => const Action2SheetSimpleWidget(),
+            builder: (context, __) => Action2SheetSimpleWidget(),
           ),
         ],
       ),
@@ -52,7 +52,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         contents: [
           TargetContent(
             align: ContentAlign.top,
-            builder: (context, __) => const Action2SheetSimpleWidget(),
+            builder: (context, __) => Action2SheetSimpleWidget(),
           ),
         ],
       ),

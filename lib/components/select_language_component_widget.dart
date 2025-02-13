@@ -47,7 +47,7 @@ class _SelectLanguageComponentWidgetState
         color: FlutterFlowTheme.of(context).secondaryBackground,
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,11 +64,11 @@ class _SelectLanguageComponentWidgetState
                   ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
               child: Container(
                 width: double.infinity,
                 height: 45.0,
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: FlutterFlowDropDown<String>(
                   controller: _model.dropDownValueController ??=
                       FormFieldController<String>(
@@ -107,7 +107,7 @@ class _SelectLanguageComponentWidgetState
                   borderColor: Colors.transparent,
                   borderWidth: 0.0,
                   borderRadius: 8.0,
-                  margin: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                  margin: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                   hidesUnderline: true,
                   isOverButton: false,
                   isSearchable: false,
@@ -116,7 +116,7 @@ class _SelectLanguageComponentWidgetState
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
               child: FFButtonWidget(
                 onPressed: () async {
                   setAppLanguage(context, _model.dropDownValue!);
@@ -130,9 +130,9 @@ class _SelectLanguageComponentWidgetState
                 options: FFButtonOptions(
                   width: double.infinity,
                   height: 50.0,
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                   iconPadding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Readex Pro',
@@ -144,7 +144,7 @@ class _SelectLanguageComponentWidgetState
                 ),
               ),
             ),
-          ].addToStart(const SizedBox(height: 24.0)),
+          ].addToStart(SizedBox(height: 24.0)),
         ),
       ),
     );
