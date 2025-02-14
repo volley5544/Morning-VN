@@ -1,3 +1,4 @@
 NSLocationWhenInUseUsageDescription = "Please allow to access your location to tracking your work";
 NSLocationAlwaysUsageDescription = "We need to track your location even when the app is in the background.";
 NSLocationAlwaysAndWhenInUseUsageDescription = "We need continuous access to your location for accurate tracking.";
+UIBackgroundModes = "This app need access to run background";
