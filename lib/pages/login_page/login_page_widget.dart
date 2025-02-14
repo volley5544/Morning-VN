@@ -67,6 +67,23 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
         FFAppState().Uid = _model.iOSidentifierForVendor1st!;
         safeSetState(() {});
       }
+
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return WebViewAware(
+            child: AlertDialog(
+              content: Text(FFAppState().Uid),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            ),
+          );
+        },
+      );
     });
 
     _model.usernameTextController ??= TextEditingController();

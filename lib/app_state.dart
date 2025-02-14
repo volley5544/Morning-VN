@@ -50,6 +50,9 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _appLanguage = prefs.getString('ff_appLanguage') ?? _appLanguage;
     });
+    _safeInit(() {
+      _Uid = prefs.getString('ff_Uid') ?? _Uid;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -741,6 +744,7 @@ class FFAppState extends ChangeNotifier {
   String get Uid => _Uid;
   set Uid(String value) {
     _Uid = value;
+    prefs.setString('ff_Uid', value);
   }
 
   String _profileServiceDurationYY = '';

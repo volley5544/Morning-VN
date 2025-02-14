@@ -2835,11 +2835,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
       'vi': '',
     },
-    '4n778wpv': {
-      'en': 'This app need access to run background',
-      'th': '',
-      'vi': '',
-    },
     'fr4soeui': {
       'en': '',
       'th': '',
