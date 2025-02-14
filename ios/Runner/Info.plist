@@ -69,6 +69,11 @@
     <string>We need to track your location even when the app is in the background.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
     <string>We need continuous access to your location for accurate tracking.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+    		<string>fetch</string>
+    		<string>location</string>
+	</array>
 
 
 	<key>UILaunchStoryboardName</key>
