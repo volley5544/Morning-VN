@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/permissions_util.dart';
+import '/index.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,9 @@ export 'pin_page_model.dart';
 
 class PinPageWidget extends StatefulWidget {
   const PinPageWidget({super.key});
+
+  static String routeName = 'pinPage';
+  static String routePath = '/pinPage';
 
   @override
   State<PinPageWidget> createState() => _PinPageWidgetState();
@@ -61,6 +65,8 @@ class _PinPageWidgetState extends State<PinPageWidget>
       FFAppState().apiUrlAppState = _model.apiKeyStorage!.apiUrl;
       safeSetState(() {});
     });
+
+    _model.pinCodeFocusNode ??= FocusNode();
 
     animationsMap.addAll({
       'imageOnPageLoadAnimation': AnimationInfo(
@@ -198,7 +204,8 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                     safeSetState(() {});
                                     Navigator.pop(context);
 
-                                    context.pushNamed('loginPage');
+                                    context
+                                        .pushNamed(LoginPageWidget.routeName);
                                   },
                                 ),
                               ),
@@ -377,6 +384,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                         MainAxisAlignment.spaceEvenly,
                                     enableActiveFill: true,
                                     autoFocus: false,
+                                    focusNode: _model.pinCodeFocusNode,
                                     enablePinAutofill: true,
                                     errorTextSpace: 16.0,
                                     showCursor: false,
@@ -718,7 +726,8 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                         safeSetState(() {});
                                         Navigator.pop(context);
 
-                                        context.pushNamed('loginPage');
+                                        context.pushNamed(
+                                            LoginPageWidget.routeName);
 
                                         if (_shouldSetState)
                                           safeSetState(() {});
@@ -804,7 +813,8 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                       )}';
                                       safeSetState(() {});
 
-                                      context.goNamed('superAppPage');
+                                      context.goNamed(
+                                          SuperAppPageWidget.routeName);
 
                                       if (_shouldSetState) safeSetState(() {});
                                     },

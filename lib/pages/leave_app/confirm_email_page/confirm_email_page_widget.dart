@@ -9,6 +9,9 @@ export 'confirm_email_page_model.dart';
 class ConfirmEmailPageWidget extends StatefulWidget {
   const ConfirmEmailPageWidget({super.key});
 
+  static String routeName = 'ConfirmEmailPage';
+  static String routePath = '/confirmEmailPage';
+
   @override
   State<ConfirmEmailPageWidget> createState() => _ConfirmEmailPageWidgetState();
 }

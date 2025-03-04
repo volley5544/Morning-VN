@@ -1,4 +1,5 @@
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'set_pin_page_widget.dart' show SetPinPageWidget;
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,7 @@ class SetPinPageModel extends FlutterFlowModel<SetPinPageWidget> {
 
   // State field(s) for PinCode widget.
   TextEditingController? pinCodeController;
+  FocusNode? pinCodeFocusNode;
   String? Function(BuildContext, String?)? pinCodeControllerValidator;
 
   @override
@@ -16,6 +18,7 @@ class SetPinPageModel extends FlutterFlowModel<SetPinPageWidget> {
 
   @override
   void dispose() {
+    pinCodeFocusNode?.dispose();
     pinCodeController?.dispose();
   }
 }

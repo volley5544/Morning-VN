@@ -8,6 +8,7 @@ import '/walkthroughs/login.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/permissions_util.dart';
+import '/index.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:flutter/material.dart';
@@ -20,6 +21,9 @@ export 'login_page_model.dart';
 
 class LoginPageWidget extends StatefulWidget {
   const LoginPageWidget({super.key});
+
+  static String routeName = 'loginPage';
+  static String routePath = '/loginPage';
 
   @override
   State<LoginPageWidget> createState() => _LoginPageWidgetState();
@@ -67,23 +71,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
         FFAppState().Uid = _model.iOSidentifierForVendor1st!;
         safeSetState(() {});
       }
-
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return WebViewAware(
-            child: AlertDialog(
-              content: Text(FFAppState().Uid),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            ),
-          );
-        },
-      );
     });
 
     _model.usernameTextController ??= TextEditingController();
@@ -1219,7 +1206,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                   _shouldSetState = true;
                                                 }
 
-                                                context.goNamed('setPinPage');
+                                                context.goNamed(
+                                                    SetPinPageWidget.routeName);
 
                                                 if (_shouldSetState)
                                                   safeSetState(() {});

@@ -25,6 +25,9 @@ export 'employee_checkin_page_vol_model.dart';
 class EmployeeCheckinPageVolWidget extends StatefulWidget {
   const EmployeeCheckinPageVolWidget({super.key});
 
+  static String routeName = 'EmployeeCheckinPageVol';
+  static String routePath = '/employeeCheckinPageVol';
+
   @override
   State<EmployeeCheckinPageVolWidget> createState() =>
       _EmployeeCheckinPageVolWidgetState();

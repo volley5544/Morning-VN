@@ -7,9 +7,10 @@ import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
-import '/index.dart';
 import '/main.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+
+import '/index.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -86,65 +87,65 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? NavBarPage() : LoginPageWidget(),
         ),
         FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
+          name: HomePageWidget.routeName,
+          path: HomePageWidget.routePath,
           builder: (context, params) => HomePageWidget(),
         ),
         FFRoute(
-          name: 'loginPage',
-          path: '/loginPage',
+          name: LoginPageWidget.routeName,
+          path: LoginPageWidget.routePath,
           builder: (context, params) => LoginPageWidget(),
         ),
         FFRoute(
-          name: 'pinPage',
-          path: '/pinPage',
+          name: PinPageWidget.routeName,
+          path: PinPageWidget.routePath,
           builder: (context, params) => PinPageWidget(),
         ),
         FFRoute(
-          name: 'setPinPage',
-          path: '/setPinPage',
+          name: SetPinPageWidget.routeName,
+          path: SetPinPageWidget.routePath,
           builder: (context, params) => SetPinPageWidget(),
         ),
         FFRoute(
-          name: 'testlogin',
-          path: '/testlogin',
+          name: TestloginWidget.routeName,
+          path: TestloginWidget.routePath,
           builder: (context, params) => TestloginWidget(),
         ),
         FFRoute(
-          name: 'DashboardCheckin',
-          path: '/dashboardCheckin',
+          name: DashboardCheckinWidget.routeName,
+          path: DashboardCheckinWidget.routePath,
           builder: (context, params) => DashboardCheckinWidget(),
         ),
         FFRoute(
-          name: 'DashboardLeavePage',
-          path: '/dashboardLeavePage',
+          name: DashboardLeavePageWidget.routeName,
+          path: DashboardLeavePageWidget.routePath,
           builder: (context, params) => DashboardLeavePageWidget(),
         ),
         FFRoute(
-          name: 'CheckInStatusPage',
-          path: '/checkInStatusPage',
+          name: CheckInStatusPageWidget.routeName,
+          path: CheckInStatusPageWidget.routePath,
           builder: (context, params) => CheckInStatusPageWidget(),
         ),
         FFRoute(
-          name: 'LeavePage',
-          path: '/leavePage',
+          name: LeavePageWidget.routeName,
+          path: LeavePageWidget.routePath,
           builder: (context, params) => LeavePageWidget(),
         ),
         FFRoute(
-          name: 'superAppPage',
-          path: '/superAppPage',
+          name: SuperAppPageWidget.routeName,
+          path: SuperAppPageWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'superAppPage')
               : SuperAppPageWidget(),
         ),
         FFRoute(
-          name: 'EmpolyeeCheckin',
-          path: '/empolyeeCheckin',
+          name: EmpolyeeCheckinWidget.routeName,
+          path: EmpolyeeCheckinWidget.routePath,
           builder: (context, params) => EmpolyeeCheckinWidget(),
         ),
         FFRoute(
-          name: 'AddLeavePage',
-          path: '/addLeavePage',
+          name: AddLeavePageWidget.routeName,
+          path: AddLeavePageWidget.routePath,
           builder: (context, params) => AddLeavePageWidget(
             leaveName: params.getParam(
               'leaveName',
@@ -194,13 +195,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'leaveShowPage',
-          path: '/leaveShowPage',
+          name: LeaveShowPageWidget.routeName,
+          path: LeaveShowPageWidget.routePath,
           builder: (context, params) => LeaveShowPageWidget(),
         ),
         FFRoute(
-          name: 'EditLeavePage',
-          path: '/editLeavePage',
+          name: EditLeavePageWidget.routeName,
+          path: EditLeavePageWidget.routePath,
           builder: (context, params) => EditLeavePageWidget(
             leaveID: params.getParam(
               'leaveID',
@@ -234,25 +235,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'ChangeLatLngPage',
-          path: '/changeLatLngPage',
+          name: ChangeLatLngPageWidget.routeName,
+          path: ChangeLatLngPageWidget.routePath,
           builder: (context, params) => ChangeLatLngPageWidget(),
         ),
         FFRoute(
-          name: 'MyProfilePage',
-          path: '/myProfilePage',
+          name: MyProfilePageWidget.routeName,
+          path: MyProfilePageWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'MyProfilePage')
               : MyProfilePageWidget(),
         ),
         FFRoute(
-          name: 'GuideBookPage',
-          path: '/guideBookPage',
+          name: GuideBookPageWidget.routeName,
+          path: GuideBookPageWidget.routePath,
           builder: (context, params) => GuideBookPageWidget(),
         ),
         FFRoute(
-          name: 'NotificationPage',
-          path: '/notificationPage',
+          name: NotificationPageWidget.routeName,
+          path: NotificationPageWidget.routePath,
           builder: (context, params) => NotificationPageWidget(
             leaveType: params.getParam(
               'leaveType',
@@ -261,33 +262,33 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'SuccessCheckinPage',
-          path: '/successCheckinPage',
+          name: SuccessCheckinPageWidget.routeName,
+          path: SuccessCheckinPageWidget.routePath,
           builder: (context, params) => SuccessCheckinPageWidget(),
         ),
         FFRoute(
-          name: 'EmployeeCheckinPageVol',
-          path: '/employeeCheckinPageVol',
+          name: EmployeeCheckinPageVolWidget.routeName,
+          path: EmployeeCheckinPageVolWidget.routePath,
           builder: (context, params) => EmployeeCheckinPageVolWidget(),
         ),
         FFRoute(
-          name: 'CheckinStatusPageVol',
-          path: '/checkinStatusPageVol',
+          name: CheckinStatusPageVolWidget.routeName,
+          path: CheckinStatusPageVolWidget.routePath,
           builder: (context, params) => CheckinStatusPageVolWidget(),
         ),
         FFRoute(
-          name: 'TestPage',
-          path: '/testPage',
+          name: TestPageWidget.routeName,
+          path: TestPageWidget.routePath,
           builder: (context, params) => TestPageWidget(),
         ),
         FFRoute(
-          name: 'Test2Page',
-          path: '/test2Page',
+          name: Test2PageWidget.routeName,
+          path: Test2PageWidget.routePath,
           builder: (context, params) => Test2PageWidget(),
         ),
         FFRoute(
-          name: 'searchBranchPage',
-          path: '/searchBranchPage',
+          name: SearchBranchPageWidget.routeName,
+          path: SearchBranchPageWidget.routePath,
           builder: (context, params) => SearchBranchPageWidget(
             dataList: params.getParam<ListLocationCheckInStruct>(
               'dataList',
@@ -298,38 +299,38 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'testCalendar',
-          path: '/testCalendar',
+          name: TestCalendarWidget.routeName,
+          path: TestCalendarWidget.routePath,
           builder: (context, params) => TestCalendarWidget(),
         ),
         FFRoute(
-          name: 'CancelPage',
-          path: '/cancelPage',
+          name: CancelPageWidget.routeName,
+          path: CancelPageWidget.routePath,
           builder: (context, params) => CancelPageWidget(),
         ),
         FFRoute(
-          name: 'ConfirmEmailPage',
-          path: '/confirmEmailPage',
+          name: ConfirmEmailPageWidget.routeName,
+          path: ConfirmEmailPageWidget.routePath,
           builder: (context, params) => ConfirmEmailPageWidget(),
         ),
         FFRoute(
-          name: 'ApprovedLeavePage',
-          path: '/approvedLeavePage',
+          name: ApprovedLeavePageWidget.routeName,
+          path: ApprovedLeavePageWidget.routePath,
           builder: (context, params) => ApprovedLeavePageWidget(),
         ),
         FFRoute(
-          name: 'ApproveShowPage',
-          path: '/approveShowPage',
+          name: ApproveShowPageWidget.routeName,
+          path: ApproveShowPageWidget.routePath,
           builder: (context, params) => ApproveShowPageWidget(),
         ),
         FFRoute(
-          name: 'AddResignPage',
-          path: '/addResignPage',
+          name: AddResignPageWidget.routeName,
+          path: AddResignPageWidget.routePath,
           builder: (context, params) => AddResignPageWidget(),
         ),
         FFRoute(
-          name: 'formServicePage',
-          path: '/formServicePage',
+          name: FormServicePageWidget.routeName,
+          path: FormServicePageWidget.routePath,
           builder: (context, params) => FormServicePageWidget(
             formServiceName: params.getParam(
               'formServiceName',
@@ -342,8 +343,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'CalendarPage',
-          path: '/calendarPage',
+          name: CalendarPageWidget.routeName,
+          path: CalendarPageWidget.routePath,
           builder: (context, params) => CalendarPageWidget(
             leaveType: params.getParam(
               'leaveType',
@@ -352,23 +353,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'ApproveShowPage5544',
-          path: '/approveShowPage5544',
+          name: ApproveShowPage5544Widget.routeName,
+          path: ApproveShowPage5544Widget.routePath,
           builder: (context, params) => ApproveShowPage5544Widget(),
         ),
         FFRoute(
-          name: 'leaveShowPage5544',
-          path: '/leaveShowPage5544',
+          name: LeaveShowPage5544Widget.routeName,
+          path: LeaveShowPage5544Widget.routePath,
           builder: (context, params) => LeaveShowPage5544Widget(),
         ),
         FFRoute(
-          name: 'SearchEmployeeTrackingPage',
-          path: '/searchEmployeeTrackingPage',
+          name: SearchEmployeeTrackingPageWidget.routeName,
+          path: SearchEmployeeTrackingPageWidget.routePath,
           builder: (context, params) => SearchEmployeeTrackingPageWidget(),
         ),
         FFRoute(
-          name: 'searchEmployeePage',
-          path: '/searchEmployeePage',
+          name: SearchEmployeePageWidget.routeName,
+          path: SearchEmployeePageWidget.routePath,
           builder: (context, params) => SearchEmployeePageWidget(
             dataList: params.getParam<TrackingEmployeeDataModelStruct>(
               'dataList',
@@ -380,8 +381,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'TrackingPage',
-          path: '/trackingPage',
+          name: TrackingPageWidget.routeName,
+          path: TrackingPageWidget.routePath,
           builder: (context, params) => TrackingPageWidget(
             selectDate: params.getParam(
               'selectDate',

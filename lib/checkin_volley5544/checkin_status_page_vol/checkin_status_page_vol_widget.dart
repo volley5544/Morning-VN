@@ -17,6 +17,9 @@ export 'checkin_status_page_vol_model.dart';
 class CheckinStatusPageVolWidget extends StatefulWidget {
   const CheckinStatusPageVolWidget({super.key});
 
+  static String routeName = 'CheckinStatusPageVol';
+  static String routePath = '/checkinStatusPageVol';
+
   @override
   State<CheckinStatusPageVolWidget> createState() =>
       _CheckinStatusPageVolWidgetState();

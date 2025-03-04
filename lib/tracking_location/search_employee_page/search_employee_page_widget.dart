@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'search_employee_page_model.dart';
@@ -16,6 +17,9 @@ class SearchEmployeePageWidget extends StatefulWidget {
   });
 
   final List<TrackingEmployeeDataModelStruct>? dataList;
+
+  static String routeName = 'searchEmployeePage';
+  static String routePath = '/searchEmployeePage';
 
   @override
   State<SearchEmployeePageWidget> createState() =>
@@ -67,7 +71,7 @@ class _SearchEmployeePageWidgetState extends State<SearchEmployeePageWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              context.pushNamed('superAppPage');
+              context.pushNamed(SuperAppPageWidget.routeName);
             },
           ),
           title: Text(

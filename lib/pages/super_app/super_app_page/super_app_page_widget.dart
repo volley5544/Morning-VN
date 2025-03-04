@@ -10,6 +10,7 @@ import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
@@ -28,6 +29,9 @@ export 'super_app_page_model.dart';
 
 class SuperAppPageWidget extends StatefulWidget {
   const SuperAppPageWidget({super.key});
+
+  static String routeName = 'superAppPage';
+  static String routePath = '/superAppPage';
 
   @override
   State<SuperAppPageWidget> createState() => _SuperAppPageWidgetState();
@@ -78,7 +82,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
         if (!FFAppState().fromSetPin) {
           Navigator.pop(context);
 
-          context.goNamed('setPinPage');
+          context.goNamed(SetPinPageWidget.routeName);
 
           return;
         }
@@ -86,7 +90,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
         if (!FFAppState().fromPinPage) {
           Navigator.pop(context);
 
-          context.goNamed('pinPage');
+          context.goNamed(PinPageWidget.routeName);
 
           return;
         }
@@ -107,9 +111,8 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
       }
       FFAppState().isLoginNew = true;
       safeSetState(() {});
-      if (!(!functions.containsValueInJsonList(FFAppState().roleMenuJson,
-              FFAppState().profileLevel, 'isTracking')! &&
-          false)) {
+      if (!functions.containsValueInJsonList(FFAppState().roleMenuJson,
+          FFAppState().profileLevel, 'isTracking')!) {
         await actions.getBackgroundLocation(
           FFAppState().employeeID,
           '${FFAppState().ProfilePhoneNumber}',
@@ -431,7 +434,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                   safeSetState(() {});
                                   Navigator.pop(context);
 
-                                  context.pushNamed('loginPage');
+                                  context.pushNamed(LoginPageWidget.routeName);
                                 },
                                 child: Material(
                                   color: Colors.transparent,
@@ -677,7 +680,9 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                           onPressed: () async {
                                             HapticFeedback.mediumImpact();
 
-                                            context.goNamed('NotificationPage');
+                                            context.goNamed(
+                                                NotificationPageWidget
+                                                    .routeName);
                                           },
                                         ).animateOnPageLoad(animationsMap[
                                             'iconButtonOnPageLoadAnimation']!),
@@ -1196,7 +1201,8 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
                                               context.pushNamed(
-                                                  'CheckinStatusPageVol');
+                                                  CheckinStatusPageVolWidget
+                                                      .routeName);
                                             },
                                             child: Divider(
                                               color:
@@ -1300,7 +1306,8 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                             .mediumImpact();
 
                                                         context.goNamed(
-                                                            'DashboardCheckin');
+                                                            DashboardCheckinWidget
+                                                                .routeName);
                                                       },
                                                       child: Container(
                                                         width: 100.0,
@@ -1457,7 +1464,8 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                         );
 
                                                         context.goNamed(
-                                                            'DashboardLeavePage');
+                                                            DashboardLeavePageWidget
+                                                                .routeName);
                                                       },
                                                       child: Container(
                                                         width: 100.0,
@@ -1643,7 +1651,8 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                             .mediumImpact();
 
                                                         context.pushNamed(
-                                                            'SearchEmployeeTrackingPage');
+                                                            SearchEmployeeTrackingPageWidget
+                                                                .routeName);
                                                       },
                                                       child: Container(
                                                         width: 100.0,
@@ -1921,7 +1930,8 @@ employee */
                                                       Navigator.pop(context);
 
                                                       context.pushNamed(
-                                                        'formServicePage',
+                                                        FormServicePageWidget
+                                                            .routeName,
                                                         queryParameters: {
                                                           'formServiceName':
                                                               serializeParam(

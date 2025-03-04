@@ -14,6 +14,9 @@ export 'test2_page_model.dart';
 class Test2PageWidget extends StatefulWidget {
   const Test2PageWidget({super.key});
 
+  static String routeName = 'Test2Page';
+  static String routePath = '/test2Page';
+
   @override
   State<Test2PageWidget> createState() => _Test2PageWidgetState();
 }

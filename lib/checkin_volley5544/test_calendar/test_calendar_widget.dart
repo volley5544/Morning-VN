@@ -16,6 +16,9 @@ export 'test_calendar_model.dart';
 class TestCalendarWidget extends StatefulWidget {
   const TestCalendarWidget({super.key});
 
+  static String routeName = 'testCalendar';
+  static String routePath = '/testCalendar';
+
   @override
   State<TestCalendarWidget> createState() => _TestCalendarWidgetState();
 }

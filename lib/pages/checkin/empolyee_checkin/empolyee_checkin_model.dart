@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/index.dart';
 import 'empolyee_checkin_widget.dart' show EmpolyeeCheckinWidget;
 import 'package:flutter/material.dart';
 

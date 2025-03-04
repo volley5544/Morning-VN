@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,9 @@ export 'dashboard_leave_page_model.dart';
 
 class DashboardLeavePageWidget extends StatefulWidget {
   const DashboardLeavePageWidget({super.key});
+
+  static String routeName = 'DashboardLeavePage';
+  static String routePath = '/dashboardLeavePage';
 
   @override
   State<DashboardLeavePageWidget> createState() =>
@@ -130,7 +134,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
         safeSetState(() {});
         Navigator.pop(context);
 
-        context.pushNamed('loginPage');
+        context.pushNamed(LoginPageWidget.routeName);
 
         return;
       }
@@ -196,7 +200,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              context.goNamed('superAppPage');
+              context.goNamed(SuperAppPageWidget.routeName);
             },
           ),
           title: Text(
@@ -311,7 +315,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.goNamed('LeavePage');
+                              context.goNamed(LeavePageWidget.routeName);
                             },
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 0.45,
@@ -375,7 +379,7 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                                 'Leave_Request',
                               );
 
-                              context.goNamed('leaveShowPage');
+                              context.goNamed(LeaveShowPageWidget.routeName);
                             },
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 0.45,
@@ -439,7 +443,8 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                context.goNamed('ApprovedLeavePage');
+                                context
+                                    .goNamed(ApprovedLeavePageWidget.routeName);
                               },
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.45,
@@ -513,7 +518,8 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                context.goNamed('ApproveShowPage');
+                                context
+                                    .goNamed(ApproveShowPageWidget.routeName);
                               },
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.45,

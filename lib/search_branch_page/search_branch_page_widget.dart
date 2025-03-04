@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'search_branch_page_model.dart';
@@ -16,6 +17,9 @@ class SearchBranchPageWidget extends StatefulWidget {
   });
 
   final List<ListLocationCheckInStruct>? dataList;
+
+  static String routeName = 'searchBranchPage';
+  static String routePath = '/searchBranchPage';
 
   @override
   State<SearchBranchPageWidget> createState() => _SearchBranchPageWidgetState();
@@ -66,7 +70,7 @@ class _SearchBranchPageWidgetState extends State<SearchBranchPageWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              context.pushNamed('superAppPage');
+              context.pushNamed(SuperAppPageWidget.routeName);
             },
           ),
           title: Text(

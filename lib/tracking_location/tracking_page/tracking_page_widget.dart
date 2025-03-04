@@ -25,6 +25,9 @@ class TrackingPageWidget extends StatefulWidget {
   final List<TrackingEmployeeDataLocationModelStruct>? data;
   final int? index;
 
+  static String routeName = 'TrackingPage';
+  static String routePath = '/trackingPage';
+
   @override
   State<TrackingPageWidget> createState() => _TrackingPageWidgetState();
 }
@@ -282,7 +285,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                       context.pop();
                                     }
                                     context.pushNamed(
-                                      'TrackingPage',
+                                      TrackingPageWidget.routeName,
                                       queryParameters: {
                                         'selectDate': serializeParam(
                                           widget.selectDate,
@@ -833,7 +836,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                               context.pop();
                                             }
                                             context.pushNamed(
-                                              'TrackingPage',
+                                              TrackingPageWidget.routeName,
                                               queryParameters: {
                                                 'selectDate': serializeParam(
                                                   widget.selectDate,

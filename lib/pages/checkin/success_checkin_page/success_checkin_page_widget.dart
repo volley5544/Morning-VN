@@ -9,6 +9,9 @@ export 'success_checkin_page_model.dart';
 class SuccessCheckinPageWidget extends StatefulWidget {
   const SuccessCheckinPageWidget({super.key});
 
+  static String routeName = 'SuccessCheckinPage';
+  static String routePath = '/successCheckinPage';
+
   @override
   State<SuccessCheckinPageWidget> createState() =>
       _SuccessCheckinPageWidgetState();

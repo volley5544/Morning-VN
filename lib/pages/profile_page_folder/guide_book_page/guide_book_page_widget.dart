@@ -2,12 +2,16 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_pdf_viewer.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'guide_book_page_model.dart';
 export 'guide_book_page_model.dart';
 
 class GuideBookPageWidget extends StatefulWidget {
   const GuideBookPageWidget({super.key});
+
+  static String routeName = 'GuideBookPage';
+  static String routePath = '/guideBookPage';
 
   @override
   State<GuideBookPageWidget> createState() => _GuideBookPageWidgetState();
@@ -57,7 +61,7 @@ class _GuideBookPageWidgetState extends State<GuideBookPageWidget> {
                 size: 30.0,
               ),
               onPressed: () async {
-                context.pushNamed('MyProfilePage');
+                context.pushNamed(MyProfilePageWidget.routeName);
               },
             ),
             title: Text(

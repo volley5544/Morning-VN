@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -14,6 +15,9 @@ export 'dashboard_checkin_model.dart';
 
 class DashboardCheckinWidget extends StatefulWidget {
   const DashboardCheckinWidget({super.key});
+
+  static String routeName = 'DashboardCheckin';
+  static String routePath = '/dashboardCheckin';
 
   @override
   State<DashboardCheckinWidget> createState() => _DashboardCheckinWidgetState();
@@ -178,7 +182,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                   size: 30.0,
                 ),
                 onPressed: () async {
-                  context.pushNamed('superAppPage');
+                  context.pushNamed(SuperAppPageWidget.routeName);
                 },
               ),
               title: Text(
@@ -301,7 +305,8 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed('EmpolyeeCheckin');
+                              context
+                                  .pushNamed(EmpolyeeCheckinWidget.routeName);
                             },
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 0.45,
@@ -369,7 +374,8 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed('CheckInStatusPage');
+                              context
+                                  .pushNamed(CheckInStatusPageWidget.routeName);
                             },
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 0.45,
@@ -442,7 +448,8 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                context.pushNamed('ChangeLatLngPage');
+                                context.pushNamed(
+                                    ChangeLatLngPageWidget.routeName);
                               },
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.45,

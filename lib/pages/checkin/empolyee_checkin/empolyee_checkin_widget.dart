@@ -15,6 +15,7 @@ import '/pages/checkin/serch_branch_component_checkin/serch_branch_component_che
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -27,6 +28,9 @@ export 'empolyee_checkin_model.dart';
 
 class EmpolyeeCheckinWidget extends StatefulWidget {
   const EmpolyeeCheckinWidget({super.key});
+
+  static String routeName = 'EmpolyeeCheckin';
+  static String routePath = '/empolyeeCheckin';
 
   @override
   State<EmpolyeeCheckinWidget> createState() => _EmpolyeeCheckinWidgetState();
@@ -146,7 +150,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
         safeSetState(() {});
         Navigator.pop(context);
 
-        context.pushNamed('loginPage');
+        context.pushNamed(LoginPageWidget.routeName);
 
         return;
       }
@@ -1454,7 +1458,8 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                 safeSetState(() {});
                                                 Navigator.pop(context);
 
-                                                context.pushNamed('loginPage');
+                                                context.pushNamed(
+                                                    LoginPageWidget.routeName);
 
                                                 if (_shouldSetState)
                                                   safeSetState(() {});
@@ -1521,7 +1526,8 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                               );
 
                                               context.pushNamed(
-                                                  'CheckInStatusPage');
+                                                  CheckInStatusPageWidget
+                                                      .routeName);
 
                                               if (_shouldSetState)
                                                 safeSetState(() {});

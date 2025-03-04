@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'notification_page_model.dart';
 export 'notification_page_model.dart';
@@ -12,6 +13,9 @@ class NotificationPageWidget extends StatefulWidget {
   });
 
   final String? leaveType;
+
+  static String routeName = 'NotificationPage';
+  static String routePath = '/notificationPage';
 
   @override
   State<NotificationPageWidget> createState() => _NotificationPageWidgetState();
@@ -59,7 +63,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              context.pushNamed('superAppPage');
+              context.pushNamed(SuperAppPageWidget.routeName);
             },
           ),
           title: Text(

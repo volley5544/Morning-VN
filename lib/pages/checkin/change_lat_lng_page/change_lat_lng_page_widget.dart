@@ -10,6 +10,7 @@ import '/pages/checkin/add_branch_lo/add_branch_lo_widget.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -22,6 +23,9 @@ export 'change_lat_lng_page_model.dart';
 
 class ChangeLatLngPageWidget extends StatefulWidget {
   const ChangeLatLngPageWidget({super.key});
+
+  static String routeName = 'ChangeLatLngPage';
+  static String routePath = '/changeLatLngPage';
 
   @override
   State<ChangeLatLngPageWidget> createState() => _ChangeLatLngPageWidgetState();
@@ -97,7 +101,7 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
           },
         );
 
-        context.goNamed('superAppPage');
+        context.goNamed(SuperAppPageWidget.routeName);
 
         return;
       }
@@ -1166,7 +1170,8 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                         safeSetState(() {});
                                         Navigator.pop(context);
 
-                                        context.pushNamed('loginPage');
+                                        context.pushNamed(
+                                            LoginPageWidget.routeName);
 
                                         if (_shouldSetState)
                                           safeSetState(() {});
@@ -1801,8 +1806,9 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                     safeSetState(() {});
                                                     Navigator.pop(context);
 
-                                                    context
-                                                        .pushNamed('loginPage');
+                                                    context.pushNamed(
+                                                        LoginPageWidget
+                                                            .routeName);
 
                                                     if (_shouldSetState)
                                                       safeSetState(() {});

@@ -11,6 +11,7 @@ import '/pages/leave_app/confirm_cancel_leave_component/confirm_cancel_leave_com
 import '/pages/leave_app/datail_leave_requet/datail_leave_requet_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -23,6 +24,9 @@ export 'leave_show_page_model.dart';
 
 class LeaveShowPageWidget extends StatefulWidget {
   const LeaveShowPageWidget({super.key});
+
+  static String routeName = 'leaveShowPage';
+  static String routePath = '/leaveShowPage';
 
   @override
   State<LeaveShowPageWidget> createState() => _LeaveShowPageWidgetState();
@@ -135,7 +139,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
         safeSetState(() {});
         Navigator.pop(context);
 
-        context.pushNamed('loginPage');
+        context.pushNamed(LoginPageWidget.routeName);
 
         return;
       }
@@ -214,7 +218,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
         safeSetState(() {});
         Navigator.pop(context);
 
-        context.pushNamed('loginPage');
+        context.pushNamed(LoginPageWidget.routeName);
 
         return;
       }
@@ -311,7 +315,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                 size: 30.0,
               ),
               onPressed: () async {
-                context.goNamed('DashboardLeavePage');
+                context.goNamed(DashboardLeavePageWidget.routeName);
               },
             ),
             title: Text(
@@ -1871,7 +1875,8 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
 
                                                                     context
                                                                         .pushNamed(
-                                                                      'EditLeavePage',
+                                                                      EditLeavePageWidget
+                                                                          .routeName,
                                                                       queryParameters:
                                                                           {
                                                                         'leaveID':

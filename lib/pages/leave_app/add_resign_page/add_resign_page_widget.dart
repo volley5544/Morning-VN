@@ -15,6 +15,9 @@ export 'add_resign_page_model.dart';
 class AddResignPageWidget extends StatefulWidget {
   const AddResignPageWidget({super.key});
 
+  static String routeName = 'AddResignPage';
+  static String routePath = '/addResignPage';
+
   @override
   State<AddResignPageWidget> createState() => _AddResignPageWidgetState();
 }

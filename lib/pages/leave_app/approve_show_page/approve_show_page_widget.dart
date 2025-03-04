@@ -9,6 +9,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/pages/leave_app/confirm_cancel_leave_component/confirm_cancel_leave_component_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -19,6 +20,9 @@ export 'approve_show_page_model.dart';
 
 class ApproveShowPageWidget extends StatefulWidget {
   const ApproveShowPageWidget({super.key});
+
+  static String routeName = 'ApproveShowPage';
+  static String routePath = '/approveShowPage';
 
   @override
   State<ApproveShowPageWidget> createState() => _ApproveShowPageWidgetState();
@@ -133,7 +137,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
         safeSetState(() {});
         Navigator.pop(context);
 
-        context.pushNamed('loginPage');
+        context.pushNamed(LoginPageWidget.routeName);
 
         return;
       }
@@ -211,7 +215,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
         safeSetState(() {});
         Navigator.pop(context);
 
-        context.pushNamed('loginPage');
+        context.pushNamed(LoginPageWidget.routeName);
 
         return;
       }
@@ -336,7 +340,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                   size: 30.0,
                 ),
                 onPressed: () async {
-                  context.goNamed('DashboardLeavePage');
+                  context.goNamed(DashboardLeavePageWidget.routeName);
                 },
               ),
               title: Text(
@@ -1505,7 +1509,8 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
                                                                         .pop();
 
                                                                     context.pushNamed(
-                                                                        'ApproveShowPage');
+                                                                        ApproveShowPageWidget
+                                                                            .routeName);
                                                                   },
                                                                   text: FFLocalizations.of(
                                                                           context)

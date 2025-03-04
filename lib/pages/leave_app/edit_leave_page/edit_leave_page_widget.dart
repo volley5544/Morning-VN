@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/index.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
@@ -31,6 +32,9 @@ class EditLeavePageWidget extends StatefulWidget {
   final String? leaveReason;
   final String? userPhoneNumber;
   final List<String>? leaveDocument;
+
+  static String routeName = 'EditLeavePage';
+  static String routePath = '/editLeavePage';
 
   @override
   State<EditLeavePageWidget> createState() => _EditLeavePageWidgetState();
@@ -95,7 +99,7 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              context.pushNamed('leaveShowPage');
+              context.pushNamed(LeaveShowPageWidget.routeName);
             },
           ),
           title: Text(
@@ -917,7 +921,8 @@ class _EditLeavePageWidgetState extends State<EditLeavePageWidget> {
                                   Expanded(
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        context.pushNamed('leaveShowPage');
+                                        context.pushNamed(
+                                            LeaveShowPageWidget.routeName);
                                       },
                                       text: FFLocalizations.of(context).getText(
                                         'jegp9wff' /* Save */,

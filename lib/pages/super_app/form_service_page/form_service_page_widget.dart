@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -18,6 +19,9 @@ class FormServicePageWidget extends StatefulWidget {
 
   final String? formServiceName;
   final String? formServiceUrl;
+
+  static String routeName = 'formServicePage';
+  static String routePath = '/formServicePage';
 
   @override
   State<FormServicePageWidget> createState() => _FormServicePageWidgetState();
@@ -94,7 +98,7 @@ class _FormServicePageWidgetState extends State<FormServicePageWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              context.pushNamed('superAppPage');
+              context.pushNamed(SuperAppPageWidget.routeName);
             },
           ),
           title: Text(

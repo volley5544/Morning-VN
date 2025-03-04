@@ -1,6 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'pin_page_widget.dart' show PinPageWidget;
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,7 @@ class PinPageModel extends FlutterFlowModel<PinPageWidget> {
   KeyStorage2Record? apiKeyStorage;
   // State field(s) for PinCode widget.
   TextEditingController? pinCodeController;
+  FocusNode? pinCodeFocusNode;
   String? Function(BuildContext, String?)? pinCodeControllerValidator;
   // Stores action output result for [Custom Action - backgroundLocationCheck] action in PinCode widget.
   bool? backgroundLocationCheck;
@@ -32,6 +34,7 @@ class PinPageModel extends FlutterFlowModel<PinPageWidget> {
 
   @override
   void dispose() {
+    pinCodeFocusNode?.dispose();
     pinCodeController?.dispose();
   }
 }

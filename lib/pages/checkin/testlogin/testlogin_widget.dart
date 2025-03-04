@@ -8,6 +8,9 @@ export 'testlogin_model.dart';
 class TestloginWidget extends StatefulWidget {
   const TestloginWidget({super.key});
 
+  static String routeName = 'testlogin';
+  static String routePath = '/testlogin';
+
   @override
   State<TestloginWidget> createState() => _TestloginWidgetState();
 }

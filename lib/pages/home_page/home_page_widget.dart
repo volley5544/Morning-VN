@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
@@ -16,6 +17,9 @@ export 'home_page_model.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({super.key});
+
+  static String routeName = 'HomePage';
+  static String routePath = '/homePage';
 
   @override
   State<HomePageWidget> createState() => _HomePageWidgetState();
@@ -37,13 +41,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       setDarkModeSetting(context, ThemeMode.light);
       if (FFAppState().isLogin) {
         if (!FFAppState().fromSetPin) {
-          context.goNamed('setPinPage');
+          context.goNamed(SetPinPageWidget.routeName);
 
           return;
         }
       } else {
         if (!FFAppState().fromPinPage) {
-          context.goNamed('pinPage');
+          context.goNamed(PinPageWidget.routeName);
 
           return;
         }
@@ -108,7 +112,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               FFAppState().employeeID = '';
               safeSetState(() {});
 
-              context.goNamedAuth('loginPage', context.mounted);
+              context.goNamedAuth(LoginPageWidget.routeName, context.mounted);
             },
           ),
           title: Text(
@@ -152,7 +156,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  context.pushNamed('DashboardCheckin');
+                                  context.pushNamed(
+                                      DashboardCheckinWidget.routeName);
                                 },
                                 child: Text(
                                   FFLocalizations.of(context).getText(

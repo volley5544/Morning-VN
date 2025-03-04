@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -415,7 +416,7 @@ class _ConfirmCancelLeaveComponentWidgetState
                                   safeSetState(() {});
                                   Navigator.pop(context);
 
-                                  context.pushNamed('loginPage');
+                                  context.pushNamed(LoginPageWidget.routeName);
 
                                   if (_shouldSetState) safeSetState(() {});
                                   return;
@@ -478,9 +479,11 @@ class _ConfirmCancelLeaveComponentWidgetState
                                 Navigator.pop(context);
                                 if (widget.isFromCancelPage ==
                                     'leaveShowPage') {
-                                  context.pushNamed('leaveShowPage');
+                                  context
+                                      .pushNamed(LeaveShowPageWidget.routeName);
                                 } else {
-                                  context.pushNamed('ApproveShowPage');
+                                  context.pushNamed(
+                                      ApproveShowPageWidget.routeName);
                                 }
 
                                 if (_shouldSetState) safeSetState(() {});

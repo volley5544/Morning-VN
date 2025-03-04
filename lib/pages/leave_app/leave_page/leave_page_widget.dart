@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +17,9 @@ export 'leave_page_model.dart';
 
 class LeavePageWidget extends StatefulWidget {
   const LeavePageWidget({super.key});
+
+  static String routeName = 'LeavePage';
+  static String routePath = '/leavePage';
 
   @override
   State<LeavePageWidget> createState() => _LeavePageWidgetState();
@@ -127,7 +131,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
         safeSetState(() {});
         Navigator.pop(context);
 
-        context.pushNamed('loginPage');
+        context.pushNamed(LoginPageWidget.routeName);
 
         return;
       }
@@ -206,7 +210,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
         safeSetState(() {});
         Navigator.pop(context);
 
-        context.pushNamed('loginPage');
+        context.pushNamed(LoginPageWidget.routeName);
 
         return;
       }
@@ -344,7 +348,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                     size: 30.0,
                   ),
                   onPressed: () async {
-                    context.pushNamed('DashboardLeavePage');
+                    context.pushNamed(DashboardLeavePageWidget.routeName);
                   },
                 ),
                 title: Text(
@@ -495,7 +499,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
                                       context.pushNamed(
-                                        'AddLeavePage',
+                                        AddLeavePageWidget.routeName,
                                         queryParameters: {
                                           'leaveName': serializeParam(
                                             getJsonField(

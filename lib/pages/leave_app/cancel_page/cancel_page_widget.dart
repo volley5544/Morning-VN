@@ -11,6 +11,9 @@ export 'cancel_page_model.dart';
 class CancelPageWidget extends StatefulWidget {
   const CancelPageWidget({super.key});
 
+  static String routeName = 'CancelPage';
+  static String routePath = '/cancelPage';
+
   @override
   State<CancelPageWidget> createState() => _CancelPageWidgetState();
 }

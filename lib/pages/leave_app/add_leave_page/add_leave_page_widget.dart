@@ -12,6 +12,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
@@ -49,6 +50,9 @@ class AddLeavePageWidget extends StatefulWidget {
   final List<dynamic>? leavePeriods;
   final String? previousYear;
   final String? previousYearSelectableDates;
+
+  static String routeName = 'AddLeavePage';
+  static String routePath = '/addLeavePage';
 
   @override
   State<AddLeavePageWidget> createState() => _AddLeavePageWidgetState();
@@ -176,7 +180,7 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                   size: 30.0,
                 ),
                 onPressed: () async {
-                  context.goNamed('LeavePage');
+                  context.goNamed(LeavePageWidget.routeName);
                 },
               ),
               title: Text(
@@ -2038,7 +2042,8 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                     }
 
                                                     context.goNamed(
-                                                        'leaveShowPage');
+                                                        LeaveShowPageWidget
+                                                            .routeName);
                                                   } else {
                                                     await showDialog(
                                                       context: context,

@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -19,6 +20,9 @@ export 'approve_show_page5544_model.dart';
 
 class ApproveShowPage5544Widget extends StatefulWidget {
   const ApproveShowPage5544Widget({super.key});
+
+  static String routeName = 'ApproveShowPage5544';
+  static String routePath = '/approveShowPage5544';
 
   @override
   State<ApproveShowPage5544Widget> createState() =>
@@ -238,7 +242,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                   size: 30.0,
                 ),
                 onPressed: () async {
-                  context.goNamed('DashboardLeavePage');
+                  context.goNamed(DashboardLeavePageWidget.routeName);
                 },
               ),
               title: Text(

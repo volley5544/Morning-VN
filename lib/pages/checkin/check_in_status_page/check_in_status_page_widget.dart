@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/checkin/status_compnent/status_compnent_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,9 @@ export 'check_in_status_page_model.dart';
 
 class CheckInStatusPageWidget extends StatefulWidget {
   const CheckInStatusPageWidget({super.key});
+
+  static String routeName = 'CheckInStatusPage';
+  static String routePath = '/checkInStatusPage';
 
   @override
   State<CheckInStatusPageWidget> createState() =>
@@ -139,7 +143,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
         safeSetState(() {});
         Navigator.pop(context);
 
-        context.pushNamed('loginPage');
+        context.pushNamed(LoginPageWidget.routeName);
 
         return;
       }
@@ -260,7 +264,7 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                     size: 30.0,
                   ),
                   onPressed: () async {
-                    context.pushNamed('DashboardCheckin');
+                    context.pushNamed(DashboardCheckinWidget.routeName);
                   },
                 ),
                 title: InkWell(

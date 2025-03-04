@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,6 +12,9 @@ export 'set_pin_page_model.dart';
 
 class SetPinPageWidget extends StatefulWidget {
   const SetPinPageWidget({super.key});
+
+  static String routeName = 'setPinPage';
+  static String routePath = '/setPinPage';
 
   @override
   State<SetPinPageWidget> createState() => _SetPinPageWidgetState();
@@ -25,6 +29,8 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SetPinPageModel());
+
+    _model.pinCodeFocusNode ??= FocusNode();
   }
 
   @override
@@ -95,6 +101,7 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         enableActiveFill: false,
                         autoFocus: true,
+                        focusNode: _model.pinCodeFocusNode,
                         enablePinAutofill: true,
                         errorTextSpace: 16.0,
                         showCursor: false,
@@ -183,7 +190,7 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                     FFAppState().fromSetPin = true;
                     FFAppState().update(() {});
 
-                    context.goNamed('superAppPage');
+                    context.goNamed(SuperAppPageWidget.routeName);
                   },
                   text: FFLocalizations.of(context).getText(
                     '67idg0p8' /* Confirm */,

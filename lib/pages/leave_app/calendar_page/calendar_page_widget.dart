@@ -23,6 +23,9 @@ class CalendarPageWidget extends StatefulWidget {
 
   final String? leaveType;
 
+  static String routeName = 'CalendarPage';
+  static String routePath = '/calendarPage';
+
   @override
   State<CalendarPageWidget> createState() => _CalendarPageWidgetState();
 }

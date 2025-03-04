@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -18,6 +19,9 @@ export 'my_profile_page_model.dart';
 
 class MyProfilePageWidget extends StatefulWidget {
   const MyProfilePageWidget({super.key});
+
+  static String routeName = 'MyProfilePage';
+  static String routePath = '/myProfilePage';
 
   @override
   State<MyProfilePageWidget> createState() => _MyProfilePageWidgetState();
@@ -134,23 +138,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                 focusColor: Colors.transparent,
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        FFAppState().profilePositionName,
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                        ),
-                                      ),
-                                      duration: Duration(milliseconds: 4000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondary,
-                                    ),
-                                  );
-                                },
+                                onTap: () async {},
                                 child: Container(
                                   width: MediaQuery.sizeOf(context).width * 1.0,
                                   height:
@@ -978,8 +966,9 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                                   30.0, 0.0, 30.0, 0.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
-                                              context
-                                                  .pushNamed('GuideBookPage');
+                                              context.pushNamed(
+                                                  GuideBookPageWidget
+                                                      .routeName);
                                             },
                                             text: FFLocalizations.of(context)
                                                 .getText(
