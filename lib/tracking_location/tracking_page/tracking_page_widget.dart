@@ -378,12 +378,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                         children: [
                                           Text(
                                             valueOrDefault<String>(
-                                              '${valueOrDefault<String>(
-                                                functions.showDateBE(
-                                                    list30DaysDateTimeListItemItem
-                                                        .toString()),
-                                                '22/01/68',
-                                              )}',
+                                              '${functions.showDateChrist(list30DaysDateTimeListItemItem.toString())}',
                                               '22/01/68',
                                             ),
                                             style: FlutterFlowTheme.of(context)
@@ -705,7 +700,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                             } else {
                                               return 'Tại';
                                             }
-                                          }()} (${functions.showDateBE(_model.dateIndex)})',
+                                          }()} (${functions.showDateChrist(_model.dateIndex)})',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -933,12 +928,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                                 children: [
                                                   Text(
                                                     valueOrDefault<String>(
-                                                      '${valueOrDefault<String>(
-                                                        functions.showDateBE(
-                                                            list30DaysDateTimeListItemItem
-                                                                .toString()),
-                                                        '22/01/68',
-                                                      )}',
+                                                      '${functions.showDateChrist(list30DaysDateTimeListItemItem.toString())}',
                                                       '22/01/68',
                                                     ),
                                                     style: FlutterFlowTheme.of(
