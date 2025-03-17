@@ -684,9 +684,9 @@ class _SearchEmployeeTrackingPageWidgetState
                                         child: Text(
                                           valueOrDefault<String>(
                                             _model.datePicked != null
-                                                ? functions.showDateBE(_model
-                                                    .datePicked
-                                                    ?.toString())
+                                                ? functions.showDateChrist(
+                                                    _model.datePicked
+                                                        ?.toString())
                                                 : () {
                                                     if (FFLocalizations.of(
                                                                 context)

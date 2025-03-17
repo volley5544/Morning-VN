@@ -1,3 +1,4 @@
+import '';
 import '/backend/backend.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/loading_scene/loading_scene_widget.dart';
@@ -284,7 +285,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                               enText: '',
                               viText: 'Bạn',
                               thText: 'คุณ',
-                            )}${FFAppState().username}',
+                            )}  ${FFAppState().username}',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(

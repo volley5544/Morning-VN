@@ -804,7 +804,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                       )!;
                                       FFAppState().profileServiceDurationDD =
                                           GetUserProfileAPICall
-                                              .profileServiceDurationMM(
+                                              .profileServiceDurationDD(
                                         (_model.getUserProfile?.jsonBody ?? ''),
                                       )!;
                                       FFAppState().roleName =

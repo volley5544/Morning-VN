@@ -923,6 +923,26 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                   return;
                                                 }
 
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        content: Text(
+                                                            'เข้ามาถึงนี้แล้ว'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                );
                                                 FFAppState().isLogin = true;
                                                 FFAppState().username =
                                                     '${AuthenAPICall.nameth(

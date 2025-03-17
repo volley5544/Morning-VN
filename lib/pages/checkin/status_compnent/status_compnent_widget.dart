@@ -59,7 +59,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                         EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        '7ul9r41x' /* สถานะทั้งหมด */,
+                        '7ul9r41x' /* All status */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
@@ -103,7 +103,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                         EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        'mqn06a20' /* เช็คอินเข้า-ออกงาน จะมีเเถบเเล... */,
+                        'mqn06a20' /* Check-in/out of work will have... */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
@@ -137,7 +137,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                           EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'kh7en1yk' /* วันหยุดเเละวันหยุดตามประเพณี */,
+                          'kh7en1yk' /* Holidays and traditional holid... */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
@@ -171,7 +171,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                           EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          '0il619bg' /* ขาดงาน */,
+                          '0il619bg' /* Missing work */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
@@ -205,7 +205,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                           EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          '3py39tbc' /* ลงเวลาไม่ครบ(ไม่เช็คเอาท์ออกงา... */,
+                          '3py39tbc' /* Incomplete time entry (not che... */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
@@ -239,7 +239,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                           EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'q4nj7lx7' /* เข้างานไม่ครบจำนวน(ทำงานไม่ครบ... */,
+                          'q4nj7lx7' /* Incomplete attendance (incompl... */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
@@ -273,7 +273,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                           EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          '0g6rkfn2' /* สาย (เช็คอินหลังเวลาเข้างาน) */,
+                          '0g6rkfn2' /* Late (check in after work hour... */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
@@ -307,7 +307,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                           EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'fn4vqph9' /* ออกก่อนเวลา (เช็คเอาท์ก่อนเวลา... */,
+                          'fn4vqph9' /* Early check-out (check out bef... */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
@@ -341,7 +341,7 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                           EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          '5qzqlkly' /* ปกติ */,
+                          '5qzqlkly' /* normal */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',

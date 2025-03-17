@@ -31,6 +31,10 @@ class FFAppState extends ChangeNotifier {
       _employeeID = prefs.getString('ff_employeeID') ?? _employeeID;
     });
     _safeInit(() {
+      _profileStartDate =
+          prefs.getString('ff_profileStartDate') ?? _profileStartDate;
+    });
+    _safeInit(() {
       _brachListNew = prefs.getStringList('ff_brachListNew') ?? _brachListNew;
     });
     _safeInit(() {
@@ -201,6 +205,7 @@ class FFAppState extends ChangeNotifier {
   String get profileStartDate => _profileStartDate;
   set profileStartDate(String value) {
     _profileStartDate = value;
+    prefs.setString('ff_profileStartDate', value);
   }
 
   String _branchCode = '';

@@ -752,6 +752,22 @@ DateTime? parseStringToDateTime(String? datetimeStr) {
   return DateTime.parse(datetimeStr!);
 }
 
+String? showDateChrist(String? inputDateStr) {
+  DateTime inputDate = DateTime.parse(inputDateStr!);
+  // DateTime newDate =
+  // DateTime(inputDate!.year + 543, inputDate!.month, inputDate!.day);
+
+  // Create a DateFormat instance with the Thai locale and B.E. era
+//   final thaiDateFormat = DateFormat.yMd('th').add_y();
+  final christDateFormat = DateFormat('dd/MM/y');
+
+  // Format the date in Thai style with B.E. era
+  String formattedDate = christDateFormat.format(inputDate);
+
+  print(formattedDate); // Output: "13 กุมภาพันธ์ 2539"
+  return formattedDate;
+}
+
 String? getDateFormat(DateTime? inputDate) {
   return DateFormat('yyyy-MM-dd').format(inputDate!);
   ;
