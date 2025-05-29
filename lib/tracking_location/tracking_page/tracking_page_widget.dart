@@ -1,4 +1,3 @@
-import '';
 import '/backend/schema/structs/index.dart';
 import '/components/loading/loading_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -9,6 +8,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'tracking_page_model.dart';
@@ -384,7 +384,18 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Readex Pro',
+                                                  font: GoogleFonts.readexPro(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   color: valueOrDefault<Color>(
                                                     functions.containStringInListString(
                                                             widget.data
@@ -402,6 +413,16 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                                   ),
                                                   fontSize: 18.0,
                                                   letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                 ),
                                           ),
                                         ],
@@ -443,10 +464,19 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
               'f4i8hze7' /* employee Location  */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Outfit',
+                  font: GoogleFonts.outfit(
+                    fontWeight:
+                        FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                  ),
                   color: Colors.white,
                   fontSize: 22.0,
                   letterSpacing: 0.0,
+                  fontWeight:
+                      FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                  fontStyle:
+                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                 ),
           ),
           actions: [],
@@ -501,9 +531,24 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Readex Pro',
+                                        font: GoogleFonts.readexPro(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 13.0,
                                         letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
                                       ),
                                 ),
                               ),
@@ -514,9 +559,24 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Readex Pro',
+                                        font: GoogleFonts.readexPro(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 13.0,
                                         letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
                                       ),
                                 ),
                               ),
@@ -556,9 +616,24 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Readex Pro',
+                                        font: GoogleFonts.readexPro(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 13.0,
                                         letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
                                       ),
                                 ),
                               ),
@@ -571,9 +646,26 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Readex Pro',
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
                                           fontSize: 13.0,
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
                                         ),
                                   ),
                                 ),
@@ -614,9 +706,24 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Readex Pro',
+                                        font: GoogleFonts.readexPro(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 13.0,
                                         letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
                                       ),
                                 ),
                               ),
@@ -629,9 +736,26 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Readex Pro',
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
                                           fontSize: 13.0,
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
                                         ),
                                   ),
                                 ),
@@ -672,9 +796,24 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Readex Pro',
+                                        font: GoogleFonts.readexPro(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 13.0,
                                         letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
                                       ),
                                 ),
                               ),
@@ -704,9 +843,28 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Readex Pro',
+                                                font: GoogleFonts.readexPro(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
                                                 fontSize: 13.0,
                                                 letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
                                               ),
                                         ),
                                       ),
@@ -935,8 +1093,19 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
+                                                          font: GoogleFonts
+                                                              .readexPro(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           color: valueOrDefault<
                                                               Color>(
                                                             functions.containStringInListString(
@@ -957,6 +1126,16 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                                           ),
                                                           fontSize: 18.0,
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                   ),
                                                 ],

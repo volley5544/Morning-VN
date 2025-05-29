@@ -1,4 +1,3 @@
-import '';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
@@ -10,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/checkin/status_compnent/status_compnent_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'checkin_status_page_vol_model.dart';
@@ -181,10 +181,20 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                 'gldh814t' /* รายการเช็คอิน */,
               ),
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
+                    font: GoogleFonts.outfit(
+                      fontWeight: FlutterFlowTheme.of(context)
+                          .headlineMedium
+                          .fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                    ),
                     color: Colors.white,
                     fontSize: 22.0,
                     letterSpacing: 0.0,
+                    fontWeight:
+                        FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
             ),
             actions: [
@@ -243,13 +253,39 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                               FlutterFlowTheme.of(context).secondaryText,
                           labelStyle:
                               FlutterFlowTheme.of(context).titleMedium.override(
-                                    fontFamily: 'Readex Pro',
+                                    font: GoogleFonts.readexPro(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontStyle,
                                   ),
                           unselectedLabelStyle:
                               FlutterFlowTheme.of(context).titleMedium.override(
-                                    fontFamily: 'Readex Pro',
+                                    font: GoogleFonts.readexPro(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontStyle,
                                   ),
                           indicatorColor: FlutterFlowTheme.of(context).primary,
                           tabs: [
@@ -316,11 +352,24 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Readex Pro',
+                                                    font: GoogleFonts.readexPro(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
                                                     color: Color(0xB357636C),
                                                     fontSize: 24.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
                                                   ),
                                             ),
                                           ].addToEnd(SizedBox(height: 100.0)),
@@ -372,11 +421,24 @@ class _CheckinStatusPageVolWidgetState extends State<CheckinStatusPageVolWidget>
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Readex Pro',
+                                                    font: GoogleFonts.readexPro(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
                                                     color: Color(0xB357636C),
                                                     fontSize: 24.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
                                                   ),
                                             ),
                                           ].addToEnd(SizedBox(height: 100.0)),

@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'success_checkin_page_model.dart';
 export 'success_checkin_page_model.dart';
@@ -74,11 +75,18 @@ class _SuccessCheckinPageWidgetState extends State<SuccessCheckinPageWidget> {
                   'a4jv1rkh' /* Success! */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Outfit',
+                      font: GoogleFonts.outfit(
+                        fontWeight: FontWeight.w500,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontStyle,
+                      ),
                       color: Colors.white,
                       fontSize: 32.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w500,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                     ),
               ),
               Padding(
@@ -88,11 +96,17 @@ class _SuccessCheckinPageWidgetState extends State<SuccessCheckinPageWidget> {
                     'dm3qluv6' /* Checkin Successful */,
                   ),
                   style: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Outfit',
+                        font: GoogleFonts.outfit(
+                          fontWeight: FontWeight.w300,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                        ),
                         color: Colors.white,
                         fontSize: 20.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.w300,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).titleSmall.fontStyle,
                       ),
                 ),
               ),
@@ -122,11 +136,19 @@ class _SuccessCheckinPageWidgetState extends State<SuccessCheckinPageWidget> {
                           color: Colors.white,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Outfit',
+                                    font: GoogleFonts.outfit(
+                                      fontWeight: FontWeight.normal,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
                                     color: Color(0xFF39D2C0),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
                                   ),
                           elevation: 3.0,
                           borderSide: BorderSide(
@@ -156,11 +178,19 @@ class _SuccessCheckinPageWidgetState extends State<SuccessCheckinPageWidget> {
                           color: Colors.white,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Outfit',
+                                    font: GoogleFonts.outfit(
+                                      fontWeight: FontWeight.normal,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
                                     color: Color(0xFFF0CE00),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
                                   ),
                           elevation: 3.0,
                           borderSide: BorderSide(

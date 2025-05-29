@@ -7,6 +7,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'search_employee_page_model.dart';
 export 'search_employee_page_model.dart';
 
@@ -79,11 +80,17 @@ class _SearchEmployeePageWidgetState extends State<SearchEmployeePageWidget> {
               'gozi20be' /* Search employee */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Outfit',
+                  font: GoogleFonts.outfit(
+                    fontWeight: FontWeight.w600,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                  ),
                   color: Colors.white,
                   fontSize: 24.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
+                  fontStyle:
+                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                 ),
           ),
           actions: [],
@@ -139,8 +146,25 @@ class _SearchEmployeePageWidgetState extends State<SearchEmployeePageWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
@@ -149,8 +173,25 @@ class _SearchEmployeePageWidgetState extends State<SearchEmployeePageWidget> {
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
                                           ),
                                       enabledBorder: InputBorder.none,
                                       focusedBorder: InputBorder.none,
@@ -163,8 +204,25 @@ class _SearchEmployeePageWidgetState extends State<SearchEmployeePageWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Readex Pro',
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
                                         ),
                                     validator: _model.textControllerValidator
                                         .asValidator(context),
@@ -194,9 +252,24 @@ class _SearchEmployeePageWidgetState extends State<SearchEmployeePageWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Readex Pro',
+                                        font: GoogleFonts.readexPro(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontStyle,
+                                        ),
                                         color: Colors.white,
                                         letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontStyle,
                                       ),
                                   elevation: 0.0,
                                   borderRadius: BorderRadius.circular(8.0),
@@ -277,10 +350,27 @@ class _SearchEmployeePageWidgetState extends State<SearchEmployeePageWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Noto Sans Thai',
+                                                                font: GoogleFonts
+                                                                    .notoSansThai(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 letterSpacing:
                                                                     0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                               ),
                                                         ),
                                                       ),
@@ -322,10 +412,27 @@ class _SearchEmployeePageWidgetState extends State<SearchEmployeePageWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               color: Color(0xCC646464),
                                               fontSize: 20.0,
                                               letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                       ),
                                     ),

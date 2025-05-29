@@ -1,4 +1,3 @@
-import '';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
@@ -14,6 +13,7 @@ import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'approve_show_page5544_model.dart';
@@ -251,11 +251,18 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                   'a6b4w1e2' /* List */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Outfit',
+                      font: GoogleFonts.outfit(
+                        fontWeight: FontWeight.w600,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontStyle,
+                      ),
                       color: Colors.white,
                       fontSize: 22.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w600,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                     ),
               ),
               actions: [],
@@ -296,9 +303,22 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                           height: 50.0,
                           textStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
+                                    font: GoogleFonts.readexPro(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     color: Colors.black,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                           hintText: FFLocalizations.of(context).getText(
                             '8kjl5vqv' /* Please select the month you wa... */,
@@ -382,9 +402,22 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                           height: 50.0,
                           textStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
+                                    font: GoogleFonts.readexPro(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     color: Colors.black,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                           hintText: FFLocalizations.of(context).getText(
                             'bm324v3m' /* Please select the month you wa... */,
@@ -416,9 +449,17 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                             labelColor: Colors.black,
                             labelStyle:
                                 FlutterFlowTheme.of(context).bodyLarge.override(
-                                      fontFamily: 'Readex Pro',
+                                      font: GoogleFonts.readexPro(
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .fontStyle,
+                                      ),
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontStyle,
                                     ),
                             unselectedLabelStyle: TextStyle(),
                             indicatorColor:
@@ -503,12 +544,26 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
+                                                          font: GoogleFonts
+                                                              .readexPro(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                   )),
                                                 ),
@@ -551,8 +606,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -560,6 +623,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -586,8 +653,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -595,6 +670,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -641,8 +720,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -650,6 +737,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -676,8 +767,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -685,6 +784,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -731,8 +834,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -740,6 +851,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -766,8 +881,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -775,6 +898,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -821,8 +948,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -830,6 +965,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -858,8 +997,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -867,6 +1014,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -913,8 +1064,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -922,6 +1081,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -950,8 +1113,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -959,6 +1130,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -1005,8 +1180,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -1014,6 +1197,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -1042,8 +1229,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -1051,6 +1246,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -1112,8 +1311,14 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                           context)
                                                                       .titleSmall
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontStyle,
+                                                                        ),
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
@@ -1122,6 +1327,9 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontStyle,
                                                                       ),
                                                               elevation: 2.0,
                                                               borderSide:
@@ -1203,12 +1411,26 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
+                                                          font: GoogleFonts
+                                                              .readexPro(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                   )),
                                                 ),
@@ -1251,8 +1473,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -1260,6 +1490,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -1286,8 +1520,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -1295,6 +1537,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -1341,8 +1587,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -1350,6 +1604,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -1376,8 +1634,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -1385,6 +1651,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -1431,8 +1701,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -1440,6 +1718,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -1466,8 +1748,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -1475,6 +1765,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -1521,8 +1815,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -1530,6 +1832,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -1558,8 +1864,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -1567,6 +1881,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -1613,8 +1931,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -1622,6 +1948,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -1650,8 +1980,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -1659,6 +1997,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -1705,8 +2047,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -1714,6 +2064,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -1742,8 +2096,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -1751,6 +2113,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -1820,12 +2186,26 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
+                                                          font: GoogleFonts
+                                                              .readexPro(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                   )),
                                                 ),
@@ -1868,8 +2248,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -1877,6 +2265,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -1903,8 +2295,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -1912,6 +2312,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -1958,8 +2362,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -1967,6 +2379,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -1993,8 +2409,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -2002,6 +2426,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -2048,8 +2476,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -2057,6 +2493,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -2083,8 +2523,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -2092,6 +2540,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -2138,8 +2590,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -2147,6 +2607,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -2175,8 +2639,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -2184,6 +2656,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -2230,8 +2706,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -2239,6 +2723,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -2267,8 +2755,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -2276,6 +2772,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -2322,8 +2822,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -2331,6 +2839,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -2359,8 +2871,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -2368,6 +2888,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],
@@ -2414,8 +2938,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -2423,6 +2955,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -2451,8 +2987,16 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -2460,6 +3004,10 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ],

@@ -1,4 +1,3 @@
-import '';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/loading_scene/loading_scene_widget.dart';
@@ -16,6 +15,7 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'check_in_status_page_model.dart';
@@ -304,11 +304,19 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                       '3hp3ppc9' /* Clock-in/out Time */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          fontFamily: 'Outfit',
+                          font: GoogleFonts.outfit(
+                            fontWeight: FontWeight.w600,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .headlineMedium
+                                .fontStyle,
+                          ),
                           color: Colors.white,
                           fontSize: 22.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .fontStyle,
                         ),
                   ),
                 ),
@@ -430,10 +438,19 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Readex Pro',
+                                        font: GoogleFonts.readexPro(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 12.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
                                       ),
                                 ),
                               ],
@@ -459,11 +476,19 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .titleLarge
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      font: GoogleFonts.outfit(
+                                        fontWeight: FontWeight.w900,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .fontStyle,
+                                      ),
                                       color: Color(0xFFFF0000),
                                       fontSize: 15.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w900,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .fontStyle,
                                     ),
                               ),
                               collapsed: Container(
@@ -481,10 +506,19 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Readex Pro',
+                                        font: GoogleFonts.readexPro(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
                                         color: Color(0xFF95A1AC),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
                                       ),
                                 ),
                               ),
@@ -498,10 +532,20 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Readex Pro',
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
                                           color: Color(0xFF090F13),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
                                         ),
                                   ),
                                 ],
@@ -530,16 +574,32 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                               labelStyle: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
-                                    fontFamily: 'Readex Pro',
+                                    font: GoogleFonts.readexPro(
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontStyle,
                                   ),
                               unselectedLabelStyle: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
-                                    fontFamily: 'Readex Pro',
+                                    font: GoogleFonts.readexPro(
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontStyle,
                                   ),
                               indicatorColor: Color(0xFF39D2C0),
                               tabs: [
@@ -606,12 +666,26 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                               .of(context)
                                                           .bodyMedium
                                                           .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
+                                                            font: GoogleFonts
+                                                                .readexPro(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                            ),
                                                             fontSize: 14.0,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.w600,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                           ),
                                                     )),
                                                   ),
@@ -629,11 +703,24 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
+                                                          font: GoogleFonts
+                                                              .readexPro(
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w600,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                   )),
                                                 ),
@@ -650,11 +737,24 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
+                                                          font: GoogleFonts
+                                                              .readexPro(
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w600,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                   )),
                                                 ),
@@ -671,11 +771,24 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
+                                                          font: GoogleFonts
+                                                              .readexPro(
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w600,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                   )),
                                                 ),
@@ -755,8 +868,16 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -764,6 +885,10 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ),
@@ -781,8 +906,16 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -790,6 +923,10 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ),
@@ -813,8 +950,16 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -822,6 +967,10 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ),
@@ -893,14 +1042,19 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                               context)
                                                                           .bodyMedium
                                                                           .override(
-                                                                            fontFamily:
-                                                                                'Readex Pro',
+                                                                            font:
+                                                                                GoogleFonts.readexPro(
+                                                                              fontWeight: FontWeight.w600,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                            ),
                                                                             fontSize:
                                                                                 12.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
                                                                                 FontWeight.w600,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                           ),
                                                                     )),
                                                                   ),
@@ -963,12 +1117,26 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                               .of(context)
                                                           .bodyMedium
                                                           .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
+                                                            font: GoogleFonts
+                                                                .readexPro(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                            ),
                                                             fontSize: 14.0,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.w600,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                           ),
                                                     )),
                                                   ),
@@ -986,11 +1154,24 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
+                                                          font: GoogleFonts
+                                                              .readexPro(
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w600,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                   )),
                                                 ),
@@ -1007,11 +1188,24 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
+                                                          font: GoogleFonts
+                                                              .readexPro(
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w600,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                   )),
                                                 ),
@@ -1028,11 +1222,24 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
+                                                          font: GoogleFonts
+                                                              .readexPro(
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w600,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                   )),
                                                 ),
@@ -1113,8 +1320,16 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -1122,6 +1337,10 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ),
@@ -1139,8 +1358,16 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       12.0,
                                                                   letterSpacing:
@@ -1148,6 +1375,10 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ),
@@ -1171,8 +1402,16 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -1180,6 +1419,10 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ),
@@ -1251,14 +1494,19 @@ class _CheckInStatusPageWidgetState extends State<CheckInStatusPageWidget>
                                                                               context)
                                                                           .bodyMedium
                                                                           .override(
-                                                                            fontFamily:
-                                                                                'Readex Pro',
+                                                                            font:
+                                                                                GoogleFonts.readexPro(
+                                                                              fontWeight: FontWeight.w600,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                            ),
                                                                             fontSize:
                                                                                 12.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
                                                                                 FontWeight.w600,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                           ),
                                                                     )),
                                                                   ),

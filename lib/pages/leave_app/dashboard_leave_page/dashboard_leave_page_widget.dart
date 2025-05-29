@@ -8,6 +8,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'dashboard_leave_page_model.dart';
@@ -208,11 +209,17 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
               'awoy36wg' /* Leave list */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Outfit',
+                  font: GoogleFonts.outfit(
+                    fontWeight: FontWeight.w600,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                  ),
                   color: Colors.white,
                   fontSize: 28.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
+                  fontStyle:
+                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                 ),
           ),
           actions: [],
@@ -285,11 +292,19 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                         style: FlutterFlowTheme.of(context)
                             .headlineMedium
                             .override(
-                              fontFamily: 'Outfit',
+                              font: GoogleFonts.outfit(
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .fontStyle,
+                              ),
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .headlineMedium
+                                  .fontStyle,
                             ),
                       ),
                     ),
@@ -356,12 +371,22 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .override(
-                                          fontFamily: 'Readex Pro',
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMedium
+                                                    .fontStyle,
+                                          ),
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleMedium
+                                                  .fontStyle,
                                         ),
                                   ),
                                 ],
@@ -421,12 +446,22 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .override(
-                                          fontFamily: 'Readex Pro',
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMedium
+                                                    .fontStyle,
+                                          ),
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleMedium
+                                                  .fontStyle,
                                         ),
                                   ),
                                 ],
@@ -493,13 +528,24 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .titleMedium
                                               .override(
-                                                fontFamily: 'Readex Pro',
+                                                font: GoogleFonts.readexPro(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleMedium
+                                                          .fontStyle,
+                                                ),
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontStyle,
                                               ),
                                         ),
                                       ),
@@ -560,12 +606,22 @@ class _DashboardLeavePageWidgetState extends State<DashboardLeavePageWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                            ),
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMedium
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ],

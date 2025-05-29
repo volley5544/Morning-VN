@@ -1,4 +1,3 @@
-import '';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
@@ -9,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'test_calendar_model.dart';
@@ -126,10 +126,20 @@ class _TestCalendarWidgetState extends State<TestCalendarWidget> {
                 'p284fx26' /* calendar */,
               ),
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
+                    font: GoogleFonts.outfit(
+                      fontWeight: FlutterFlowTheme.of(context)
+                          .headlineMedium
+                          .fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                    ),
                     color: Colors.white,
                     fontSize: 22.0,
                     letterSpacing: 0.0,
+                    fontWeight:
+                        FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
             ),
             actions: [],
@@ -236,10 +246,18 @@ class _TestCalendarWidgetState extends State<TestCalendarWidget> {
                       child: Text(
                         FFAppState().dateSelect.length.toString(),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
+                              font: GoogleFonts.readexPro(
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
                               fontSize: 16.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
                             ),
                       ),
                     ),

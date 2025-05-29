@@ -40,8 +40,8 @@ class EmployeeCheckinPageVolModel
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  bool isDataUploading1 = false;
-  FFUploadedFile uploadedLocalFile1 =
+  bool isDataUploading_uploadDataEdm2 = false;
+  FFUploadedFile uploadedLocalFile_uploadDataEdm2 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
   // Stores action output result for [Custom Action - uploadFileFirebaseStorage] action in Button widget.
@@ -50,8 +50,8 @@ class EmployeeCheckinPageVolModel
   bool? checkUserIsInRadius;
   // Stores action output result for [Backend Call - API (workCheckAPI)] action in Button widget.
   ApiCallResponse? workCheckApiOutput;
-  bool isDataUploading2 = false;
-  FFUploadedFile uploadedLocalFile2 =
+  bool isDataUploading_uploadDataEdm = false;
+  FFUploadedFile uploadedLocalFile_uploadDataEdm =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
   // Stores action output result for [Custom Action - uploadFileFirebaseStorage] action in IconButton widget.

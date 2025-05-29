@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'cancel_page_model.dart';
@@ -73,11 +74,17 @@ class _CancelPageWidgetState extends State<CancelPageWidget> {
               'obkfjorb' /* ยกเลิกการลา */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Outfit',
+                  font: GoogleFonts.outfit(
+                    fontWeight: FontWeight.w600,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                  ),
                   color: Colors.white,
                   fontSize: 22.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
+                  fontStyle:
+                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                 ),
           ),
           actions: [],
@@ -162,18 +169,32 @@ class _CancelPageWidgetState extends State<CancelPageWidget> {
                                                           .getText(
                                                         'q5k9ngwl' /* ยืนยันยกเลิกการลา */,
                                                       ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
-                                                            fontSize: 20.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                          ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .readexPro(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                fontSize: 20.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
                                                     )),
                                                   ],
                                                 ),
@@ -212,10 +233,25 @@ class _CancelPageWidgetState extends State<CancelPageWidget> {
                                                                         context)
                                                                     .bodySmall
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
+                                                                      font: GoogleFonts
+                                                                          .readexPro(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .bodySmall
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodySmall
+                                                                            .fontStyle,
+                                                                      ),
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodySmall
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodySmall
+                                                                          .fontStyle,
                                                                     ),
                                                             enabledBorder:
                                                                 UnderlineInputBorder(
@@ -284,14 +320,26 @@ class _CancelPageWidgetState extends State<CancelPageWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
+                                                                font: GoogleFonts
+                                                                    .readexPro(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 fontSize: 15.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                               ),
                                                           maxLines: 4,
                                                           validator: _model
@@ -384,8 +432,14 @@ class _CancelPageWidgetState extends State<CancelPageWidget> {
                                                                           context)
                                                                       .titleSmall
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontStyle,
+                                                                        ),
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
@@ -394,6 +448,9 @@ class _CancelPageWidgetState extends State<CancelPageWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontStyle,
                                                                       ),
                                                               elevation: 2.0,
                                                               borderSide:
@@ -450,8 +507,14 @@ class _CancelPageWidgetState extends State<CancelPageWidget> {
                                                                         context)
                                                                     .titleSmall
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
+                                                                      font: GoogleFonts
+                                                                          .readexPro(
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: Colors
                                                                           .white,
                                                                       fontSize:
@@ -461,6 +524,10 @@ class _CancelPageWidgetState extends State<CancelPageWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .fontStyle,
                                                                     ),
                                                             elevation: 2.0,
                                                             borderSide:

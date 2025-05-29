@@ -1,4 +1,3 @@
-import '';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/loading/loading_widget.dart';
@@ -22,6 +21,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'empolyee_checkin_model.dart';
@@ -284,11 +284,18 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                   'dib97xps' /* Clock in/Clock out */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Outfit',
+                      font: GoogleFonts.outfit(
+                        fontWeight: FontWeight.w600,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontStyle,
+                      ),
                       color: Colors.white,
                       fontSize: 22.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w600,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                     ),
               ),
             ),
@@ -334,7 +341,8 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                     if (selectedMedia != null &&
                         selectedMedia.every((m) =>
                             validateFileFormat(m.storagePath, context))) {
-                      safeSetState(() => _model.isDataUploading1 = true);
+                      safeSetState(() => _model
+                          .isDataUploading_uploadCheckinImageAction = true);
                       var selectedUploadedFiles = <FFUploadedFile>[];
 
                       try {
@@ -348,12 +356,12 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                 ))
                             .toList();
                       } finally {
-                        _model.isDataUploading1 = false;
+                        _model.isDataUploading_uploadCheckinImageAction = false;
                       }
                       if (selectedUploadedFiles.length ==
                           selectedMedia.length) {
                         safeSetState(() {
-                          _model.uploadedLocalFile1 =
+                          _model.uploadedLocalFile_uploadCheckinImageAction =
                               selectedUploadedFiles.first;
                         });
                       } else {
@@ -362,7 +370,8 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                       }
                     }
 
-                    if (!((_model.uploadedLocalFile1.bytes?.isNotEmpty ??
+                    if (!((_model.uploadedLocalFile_uploadCheckinImageAction.bytes
+                                ?.isNotEmpty ??
                             false))) {
                       Navigator.pop(context);
                       if (_shouldSetState) safeSetState(() {});
@@ -371,7 +380,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                     _model.uploadFirebaseStorageAction =
                         await actions.uploadFileFirebaseStorage(
                       'Checkin',
-                      _model.uploadedLocalFile1,
+                      _model.uploadedLocalFile_uploadCheckinImageAction,
                     );
                     _shouldSetState = true;
                     if (!(_model.uploadFirebaseStorageAction != null &&
@@ -761,9 +770,22 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Readex Pro',
+                                                    font: GoogleFonts.readexPro(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
                                                   ),
                                             ),
                                           ],
@@ -798,13 +820,25 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                                   context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
+                                                                font: GoogleFonts
+                                                                    .readexPro(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                               ),
                                                       hintText:
                                                           FFLocalizations.of(
@@ -872,9 +906,21 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Readex Pro',
+                                                  font: GoogleFonts.readexPro(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                 ),
                                           ),
                                         ],
@@ -904,13 +950,30 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                                     context)
                                                                 .labelMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
                                                                 ),
                                                         hintText:
                                                             FFLocalizations.of(
@@ -923,13 +986,25 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                                     context)
                                                                 .labelMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
                                                                 ),
                                                         enabledBorder:
                                                             OutlineInputBorder(
@@ -994,11 +1069,25 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                               .of(context)
                                                           .bodyMedium
                                                           .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
+                                                            font: GoogleFonts
+                                                                .readexPro(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                            ),
                                                             letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.w600,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                           ),
                                                       cursorColor:
                                                           FlutterFlowTheme.of(
@@ -1082,7 +1171,8 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                             m.storagePath,
                                                             context))) {
                                                   safeSetState(() => _model
-                                                      .isDataUploading2 = true);
+                                                          .isDataUploading_uploadCheckinImageAction2 =
+                                                      true);
                                                   var selectedUploadedFiles =
                                                       <FFUploadedFile>[];
 
@@ -1109,14 +1199,14 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                                 ))
                                                             .toList();
                                                   } finally {
-                                                    _model.isDataUploading2 =
+                                                    _model.isDataUploading_uploadCheckinImageAction2 =
                                                         false;
                                                   }
                                                   if (selectedUploadedFiles
                                                           .length ==
                                                       selectedMedia.length) {
                                                     safeSetState(() {
-                                                      _model.uploadedLocalFile2 =
+                                                      _model.uploadedLocalFile_uploadCheckinImageAction2 =
                                                           selectedUploadedFiles
                                                               .first;
                                                     });
@@ -1126,10 +1216,8 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                   }
                                                 }
 
-                                                if (!((_model
-                                                            .uploadedLocalFile2
-                                                            .bytes
-                                                            ?.isNotEmpty ??
+                                                if (!((_model.uploadedLocalFile_uploadCheckinImageAction2
+                                                            .bytes?.isNotEmpty ??
                                                         false))) {
                                                   Navigator.pop(context);
                                                   if (_shouldSetState)
@@ -1140,7 +1228,8 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                     await actions
                                                         .uploadFileFirebaseStorage(
                                                   'Checkin',
-                                                  _model.uploadedLocalFile2,
+                                                  _model
+                                                      .uploadedLocalFile_uploadCheckinImageAction2,
                                                 );
                                                 _shouldSetState = true;
                                                 if (!(_model.uploadFirebaseStorageAction2 !=
@@ -1552,10 +1641,23 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                       context)
                                                   .titleSmall
                                                   .override(
-                                                    fontFamily: 'Readex Pro',
+                                                    font: GoogleFonts.readexPro(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontStyle,
+                                                    ),
                                                     color: Colors.white,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall
+                                                            .fontStyle,
                                                   ),
                                               elevation: 8.0,
                                               borderRadius:

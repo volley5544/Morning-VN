@@ -28,8 +28,8 @@ class EmpolyeeCheckinModel extends FlutterFlowModel<EmpolyeeCheckinWidget> {
 
   // Stores action output result for [Backend Call - API (GetLocation)] action in EmpolyeeCheckin widget.
   ApiCallResponse? getLocationApiOutput;
-  bool isDataUploading1 = false;
-  FFUploadedFile uploadedLocalFile1 =
+  bool isDataUploading_uploadCheckinImageAction = false;
+  FFUploadedFile uploadedLocalFile_uploadCheckinImageAction =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
   // Stores action output result for [Custom Action - uploadFileFirebaseStorage] action in Icon widget.
@@ -43,8 +43,8 @@ class EmpolyeeCheckinModel extends FlutterFlowModel<EmpolyeeCheckinWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  bool isDataUploading2 = false;
-  FFUploadedFile uploadedLocalFile2 =
+  bool isDataUploading_uploadCheckinImageAction2 = false;
+  FFUploadedFile uploadedLocalFile_uploadCheckinImageAction2 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
   // Stores action output result for [Custom Action - uploadFileFirebaseStorage] action in Button widget.

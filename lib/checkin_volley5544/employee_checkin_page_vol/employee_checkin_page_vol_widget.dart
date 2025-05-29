@@ -1,4 +1,3 @@
-import '';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/loading/loading_widget.dart';
@@ -18,6 +17,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'employee_checkin_page_vol_model.dart';
@@ -198,10 +198,22 @@ class _EmployeeCheckinPageVolWidgetState
                   'daobyp58' /* เช็คอินเข้า - ออกงาน */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Outfit',
+                      font: GoogleFonts.outfit(
+                        fontWeight: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontWeight,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontStyle,
+                      ),
                       color: Colors.white,
                       fontSize: 22.0,
                       letterSpacing: 0.0,
+                      fontWeight: FlutterFlowTheme.of(context)
+                          .headlineMedium
+                          .fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                     ),
               ),
               actions: [
@@ -248,7 +260,8 @@ class _EmployeeCheckinPageVolWidgetState
                       if (selectedMedia != null &&
                           selectedMedia.every((m) =>
                               validateFileFormat(m.storagePath, context))) {
-                        safeSetState(() => _model.isDataUploading2 = true);
+                        safeSetState(
+                            () => _model.isDataUploading_uploadDataEdm = true);
                         var selectedUploadedFiles = <FFUploadedFile>[];
 
                         try {
@@ -262,12 +275,12 @@ class _EmployeeCheckinPageVolWidgetState
                                   ))
                               .toList();
                         } finally {
-                          _model.isDataUploading2 = false;
+                          _model.isDataUploading_uploadDataEdm = false;
                         }
                         if (selectedUploadedFiles.length ==
                             selectedMedia.length) {
                           safeSetState(() {
-                            _model.uploadedLocalFile2 =
+                            _model.uploadedLocalFile_uploadDataEdm =
                                 selectedUploadedFiles.first;
                           });
                         } else {
@@ -276,7 +289,8 @@ class _EmployeeCheckinPageVolWidgetState
                         }
                       }
 
-                      if (!((_model.uploadedLocalFile2.bytes?.isNotEmpty ??
+                      if (!((_model.uploadedLocalFile_uploadDataEdm.bytes
+                                  ?.isNotEmpty ??
                               false))) {
                         Navigator.pop(context);
                         if (_shouldSetState) safeSetState(() {});
@@ -285,7 +299,7 @@ class _EmployeeCheckinPageVolWidgetState
                       _model.uploadedImageOutput1 =
                           await actions.uploadFileFirebaseStorage(
                         'CheckinImage',
-                        _model.uploadedLocalFile2,
+                        _model.uploadedLocalFile_uploadDataEdm,
                       );
                       _shouldSetState = true;
                       if (!(_model.uploadedImageOutput1 != null &&
@@ -349,10 +363,18 @@ class _EmployeeCheckinPageVolWidgetState
                         ),
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
+                              font: GoogleFonts.readexPro(
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
                               fontSize: 18.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
                             ),
                       ),
                     ),
@@ -367,10 +389,18 @@ class _EmployeeCheckinPageVolWidgetState
                       ),
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
+                            font: GoogleFonts.readexPro(
+                              fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
                             fontSize: 36.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
                           ),
                     ),
                   ),
@@ -589,9 +619,26 @@ class _EmployeeCheckinPageVolWidgetState
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ),
@@ -605,8 +652,25 @@ class _EmployeeCheckinPageVolWidgetState
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ),
@@ -687,14 +751,34 @@ class _EmployeeCheckinPageVolWidgetState
                                                           _model.indexBranch!)!
                                                       .branchName
                                                   : 'เลือกสาขา',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.readexPro(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                             ),
                                           ),
                                         ),
@@ -765,9 +849,26 @@ class _EmployeeCheckinPageVolWidgetState
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ),
@@ -781,8 +882,25 @@ class _EmployeeCheckinPageVolWidgetState
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ),
@@ -808,9 +926,26 @@ class _EmployeeCheckinPageVolWidgetState
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
@@ -852,9 +987,26 @@ class _EmployeeCheckinPageVolWidgetState
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Readex Pro',
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
                                           fontSize: 15.0,
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
                                         ),
                                   ),
                                 ),
@@ -868,8 +1020,25 @@ class _EmployeeCheckinPageVolWidgetState
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Readex Pro',
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
                                         ),
                                   ),
                                 ),
@@ -887,9 +1056,26 @@ class _EmployeeCheckinPageVolWidgetState
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontStyle,
+                                              ),
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
                                             ),
                                         hintText:
                                             FFLocalizations.of(context).getText(
@@ -898,9 +1084,26 @@ class _EmployeeCheckinPageVolWidgetState
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontStyle,
+                                              ),
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
                                             ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -943,9 +1146,26 @@ class _EmployeeCheckinPageVolWidgetState
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                       cursorColor: FlutterFlowTheme.of(context)
                                           .primaryText,
@@ -986,8 +1206,9 @@ class _EmployeeCheckinPageVolWidgetState
                                                   validateFileFormat(
                                                       m.storagePath,
                                                       context))) {
-                                            safeSetState(() =>
-                                                _model.isDataUploading1 = true);
+                                            safeSetState(() => _model
+                                                    .isDataUploading_uploadDataEdm2 =
+                                                true);
                                             var selectedUploadedFiles =
                                                 <FFUploadedFile>[];
 
@@ -1012,12 +1233,13 @@ class _EmployeeCheckinPageVolWidgetState
                                                               ))
                                                       .toList();
                                             } finally {
-                                              _model.isDataUploading1 = false;
+                                              _model.isDataUploading_uploadDataEdm2 =
+                                                  false;
                                             }
                                             if (selectedUploadedFiles.length ==
                                                 selectedMedia.length) {
                                               safeSetState(() {
-                                                _model.uploadedLocalFile1 =
+                                                _model.uploadedLocalFile_uploadDataEdm2 =
                                                     selectedUploadedFiles.first;
                                               });
                                             } else {
@@ -1026,8 +1248,8 @@ class _EmployeeCheckinPageVolWidgetState
                                             }
                                           }
 
-                                          if (!((_model.uploadedLocalFile1.bytes
-                                                      ?.isNotEmpty ??
+                                          if (!((_model.uploadedLocalFile_uploadDataEdm2
+                                                      .bytes?.isNotEmpty ??
                                                   false))) {
                                             if (_shouldSetState)
                                               safeSetState(() {});
@@ -1037,7 +1259,8 @@ class _EmployeeCheckinPageVolWidgetState
                                               await actions
                                                   .uploadFileFirebaseStorage(
                                             'CheckinImage',
-                                            _model.uploadedLocalFile1,
+                                            _model
+                                                .uploadedLocalFile_uploadDataEdm2,
                                           );
                                           _shouldSetState = true;
                                           if (!(_model.uploadedImageOutput2 !=
@@ -1331,9 +1554,26 @@ class _EmployeeCheckinPageVolWidgetState
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
+                                              ),
                                               color: Colors.white,
                                               letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontStyle,
                                             ),
                                         elevation: 0.0,
                                         borderRadius:

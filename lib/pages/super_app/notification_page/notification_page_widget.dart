@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'notification_page_model.dart';
 export 'notification_page_model.dart';
 
@@ -71,10 +72,15 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
               'jhipmg5z' /* การแจ้งเตือน */,
             ),
             style: FlutterFlowTheme.of(context).titleLarge.override(
-                  fontFamily: 'Outfit',
+                  font: GoogleFonts.outfit(
+                    fontWeight: FontWeight.w600,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                  ),
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
+                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
                 ),
           ),
           actions: [],
@@ -115,11 +121,19 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Readex Pro',
+                                      font: GoogleFonts.readexPro(
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
                                       color: Color(0xFFFF6500),
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
                               ),
                               Text(
@@ -129,8 +143,21 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Readex Pro',
+                                      font: GoogleFonts.readexPro(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
                                       letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
                               ),
                             ],
@@ -146,9 +173,17 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Readex Pro',
+                                      font: GoogleFonts.readexPro(
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
                               ),
                               Text(
@@ -158,8 +193,21 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Readex Pro',
+                                      font: GoogleFonts.readexPro(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
                                       letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
                               ),
                             ],

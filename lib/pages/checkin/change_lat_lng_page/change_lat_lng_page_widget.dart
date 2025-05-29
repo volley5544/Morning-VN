@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'change_lat_lng_page_model.dart';
@@ -210,11 +211,17 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                 'ud7qpnr0' /* Change Lat,Lng */,
               ),
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
+                    font: GoogleFonts.outfit(
+                      fontWeight: FontWeight.w600,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                    ),
                     color: Colors.white,
                     fontSize: 22.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
             ),
             actions: [],
@@ -282,10 +289,23 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Readex Pro',
+                                                    font: GoogleFonts.readexPro(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
                                                   ),
                                             ),
                                           ),
@@ -305,14 +325,35 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                labelStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font:
+                                                          GoogleFonts.readexPro(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
                                                 hintText:
                                                     FFLocalizations.of(context)
                                                         .getText(
@@ -322,12 +363,26 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                         context)
                                                     .bodySmall
                                                     .override(
-                                                      fontFamily: 'Readex Pro',
+                                                      font:
+                                                          GoogleFonts.readexPro(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .fontStyle,
+                                                      ),
                                                       color: Color(0xFF57636C),
                                                       fontSize: 14.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .fontStyle,
                                                     ),
                                                 enabledBorder:
                                                     UnderlineInputBorder(
@@ -386,14 +441,34 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                   ),
                                                 ),
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.readexPro(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                               textAlign: TextAlign.start,
                                               validator: _model
                                                   .branchCodeInputTextControllerValidator
@@ -431,10 +506,23 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Readex Pro',
+                                                    font: GoogleFonts.readexPro(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
                                                   ),
                                             ),
                                           ),
@@ -454,14 +542,35 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                labelStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font:
+                                                          GoogleFonts.readexPro(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
                                                 hintText:
                                                     FFLocalizations.of(context)
                                                         .getText(
@@ -471,12 +580,26 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                         context)
                                                     .bodySmall
                                                     .override(
-                                                      fontFamily: 'Readex Pro',
+                                                      font:
+                                                          GoogleFonts.readexPro(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .fontStyle,
+                                                      ),
                                                       color: Color(0xFF57636C),
                                                       fontSize: 14.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .fontStyle,
                                                     ),
                                                 enabledBorder:
                                                     UnderlineInputBorder(
@@ -535,14 +658,34 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                   ),
                                                 ),
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.readexPro(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                               textAlign: TextAlign.start,
                                               validator: _model
                                                   .latInputTextControllerValidator
@@ -580,10 +723,23 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Readex Pro',
+                                                    font: GoogleFonts.readexPro(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
                                                   ),
                                             ),
                                           ),
@@ -603,14 +759,35 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                labelStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font:
+                                                          GoogleFonts.readexPro(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
                                                 hintText:
                                                     FFLocalizations.of(context)
                                                         .getText(
@@ -620,12 +797,26 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                         context)
                                                     .bodySmall
                                                     .override(
-                                                      fontFamily: 'Readex Pro',
+                                                      font:
+                                                          GoogleFonts.readexPro(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .fontStyle,
+                                                      ),
                                                       color: Color(0xFF57636C),
                                                       fontSize: 14.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .fontStyle,
                                                     ),
                                                 enabledBorder:
                                                     UnderlineInputBorder(
@@ -684,14 +875,34 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                   ),
                                                 ),
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.readexPro(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                               textAlign: TextAlign.start,
                                               validator: _model
                                                   .lngInputTextControllerValidator
@@ -1196,9 +1407,26 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontStyle,
+                                            ),
                                             color: Colors.white,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontStyle,
                                           ),
                                       elevation: 2.0,
                                       borderSide: BorderSide(
@@ -1235,10 +1463,21 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Readex Pro',
+                                                font: GoogleFonts.readexPro(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
                                               ),
                                         ),
                                       ),
@@ -1252,11 +1491,22 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Readex Pro',
+                                                font: GoogleFonts.readexPro(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
                                                 color: Color(0xFF4C525A),
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
                                               ),
                                         ),
                                       ),
@@ -1291,10 +1541,18 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Readex Pro',
+                                      font: GoogleFonts.readexPro(
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
                                       fontSize: 15.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
                               ),
                               Divider(
@@ -1373,10 +1631,18 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Readex Pro',
+                                      font: GoogleFonts.readexPro(
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
                                       fontSize: 15.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
                               ),
                               Divider(
@@ -1840,10 +2106,31 @@ class _ChangeLatLngPageWidgetState extends State<ChangeLatLngPageWidget>
                                                               context)
                                                           .titleSmall
                                                           .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
+                                                            font: GoogleFonts
+                                                                .readexPro(
+                                                              fontWeight:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontWeight,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontStyle,
+                                                            ),
                                                             color: Colors.white,
                                                             letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
                                                           ),
                                                   elevation: 2.0,
                                                   borderSide: BorderSide(

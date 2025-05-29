@@ -1,4 +1,3 @@
-import '';
 import '/backend/api_requests/api_calls.dart';
 import '/components/loading_scene/loading_scene_widget.dart';
 import '/components/url_link/url_link_widget.dart';
@@ -18,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'leave_show_page_model.dart';
@@ -324,10 +324,16 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                 'khbxc7ss' /* Approval request list */,
               ),
               style: FlutterFlowTheme.of(context).titleLarge.override(
-                    fontFamily: 'Outfit',
+                    font: GoogleFonts.outfit(
+                      fontWeight: FontWeight.w600,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                    ),
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
             ),
             actions: [],
@@ -445,9 +451,22 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                         height: 50.0,
                         textStyle:
                             FlutterFlowTheme.of(context).bodyMedium.override(
-                                  fontFamily: 'Readex Pro',
+                                  font: GoogleFonts.readexPro(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                                   color: Colors.black,
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
                                 ),
                         hintText: FFLocalizations.of(context).getText(
                           '8docfjnz' /* Please select the month you wa... */,
@@ -534,9 +553,21 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                     width: double.infinity,
                     height: 50.0,
                     textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Readex Pro',
+                          font: GoogleFonts.readexPro(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
                           color: Colors.black,
                           letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                         ),
                     hintText: FFLocalizations.of(context).getText(
                       'hnu9wndq' /* Please select the month you wa... */,
@@ -567,15 +598,31 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                               FlutterFlowTheme.of(context).secondaryText,
                           labelStyle:
                               FlutterFlowTheme.of(context).titleMedium.override(
-                                    fontFamily: 'Readex Pro',
+                                    font: GoogleFonts.readexPro(
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontStyle,
                                   ),
                           unselectedLabelStyle:
                               FlutterFlowTheme.of(context).titleMedium.override(
-                                    fontFamily: 'Readex Pro',
+                                    font: GoogleFonts.readexPro(
+                                      fontWeight: FontWeight.normal,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontStyle,
                                   ),
                           indicatorColor: FlutterFlowTheme.of(context).primary,
                           tabs: [
@@ -706,14 +753,19 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                               context)
                                                                           .bodyMedium
                                                                           .override(
-                                                                            fontFamily:
-                                                                                'Readex Pro',
+                                                                            font:
+                                                                                GoogleFonts.readexPro(
+                                                                              fontWeight: FontWeight.normal,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                            ),
                                                                             fontSize:
                                                                                 16.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
                                                                                 FontWeight.normal,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                           ),
                                                                     )),
                                                                   ),
@@ -805,10 +857,21 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             context)
                                                                         .bodyMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
                                                                           letterSpacing:
                                                                               0.0,
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -863,14 +926,22 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             context)
                                                                         .bodyMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   )),
                                                                 ],
@@ -901,14 +972,23 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 )),
                                                               ],
@@ -962,14 +1042,22 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             context)
                                                                         .bodyMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   )),
                                                                 ],
@@ -1000,14 +1088,23 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 )),
                                                               ],
@@ -1061,14 +1158,22 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             context)
                                                                         .bodyMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   )),
                                                                 ],
@@ -1105,14 +1210,23 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 )),
                                                               ],
@@ -1166,14 +1280,22 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             context)
                                                                         .bodyMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   )),
                                                                 ],
@@ -1207,14 +1329,23 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 )),
                                                               ],
@@ -1268,14 +1399,22 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             context)
                                                                         .bodyMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   )),
                                                                 ],
@@ -1309,14 +1448,23 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 )),
                                                               ],
@@ -1370,14 +1518,22 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             context)
                                                                         .bodyMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   )),
                                                                 ],
@@ -1415,14 +1571,23 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 )),
                                                               ],
@@ -1479,14 +1644,22 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             context)
                                                                         .bodyMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   )),
                                                                 ],
@@ -1527,14 +1700,22 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             context)
                                                                         .bodyMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   )),
                                                                 ),
@@ -1592,14 +1773,22 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             context)
                                                                         .bodyMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   )),
                                                                 ],
@@ -1633,14 +1822,23 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 )),
                                                               ],
@@ -1694,14 +1892,22 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             context)
                                                                         .bodyMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   )),
                                                                 ],
@@ -1985,8 +2191,13 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             context)
                                                                         .titleSmall
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                          ),
                                                                           color:
                                                                               Colors.white,
                                                                           fontSize:
@@ -1995,6 +2206,9 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontStyle,
                                                                         ),
                                                                     elevation:
                                                                         2.0,
@@ -2096,12 +2310,25 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                           context)
                                                                       .titleSmall
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontStyle,
+                                                                        ),
                                                                         color: Colors
                                                                             .white,
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontStyle,
                                                                       ),
                                                                   elevation:
                                                                       0.0,

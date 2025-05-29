@@ -6,6 +6,7 @@ import '/index.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'set_pin_page_model.dart';
 export 'set_pin_page_model.dart';
@@ -67,8 +68,21 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                       ),
                       style:
                           FlutterFlowTheme.of(context).headlineSmall.override(
-                                fontFamily: 'Outfit',
+                                font: GoogleFonts.outfit(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .fontStyle,
+                                ),
                                 letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .headlineSmall
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .headlineSmall
+                                    .fontStyle,
                               ),
                     ),
                     Padding(
@@ -80,8 +94,21 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                         ),
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodySmall.override(
-                              fontFamily: 'Readex Pro',
+                              font: GoogleFonts.readexPro(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .fontStyle,
+                              ),
                               letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .fontStyle,
                             ),
                       ),
                     ),
@@ -94,9 +121,22 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                         length: 6,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Readex Pro',
+                                  font: GoogleFonts.readexPro(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                                   color: FlutterFlowTheme.of(context).primary,
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
                                 ),
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         enableActiveFill: false,
@@ -203,9 +243,21 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primaryText,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Readex Pro',
+                          font: GoogleFonts.readexPro(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .fontStyle,
+                          ),
                           color: FlutterFlowTheme.of(context).primaryBackground,
                           letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .titleSmall
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleSmall.fontStyle,
                         ),
                     elevation: 2.0,
                     borderSide: BorderSide(

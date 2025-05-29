@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'url_link_model.dart';
 export 'url_link_model.dart';
@@ -108,13 +109,39 @@ class _UrlLinkWidgetState extends State<UrlLinkWidget>
                           FlutterFlowTheme.of(context).secondaryText,
                       labelStyle:
                           FlutterFlowTheme.of(context).titleMedium.override(
-                                fontFamily: 'Readex Pro',
+                                font: GoogleFonts.readexPro(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .fontStyle,
+                                ),
                                 letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .fontStyle,
                               ),
                       unselectedLabelStyle:
                           FlutterFlowTheme.of(context).titleMedium.override(
-                                fontFamily: 'Readex Pro',
+                                font: GoogleFonts.readexPro(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .fontStyle,
+                                ),
                                 letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .fontStyle,
                               ),
                       indicatorColor: FlutterFlowTheme.of(context).primary,
                       tabs: [
@@ -243,8 +270,29 @@ class _UrlLinkWidgetState extends State<UrlLinkWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Readex Pro',
+                                                  font: GoogleFonts.readexPro(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                 ),
                                           ),
                                           Padding(

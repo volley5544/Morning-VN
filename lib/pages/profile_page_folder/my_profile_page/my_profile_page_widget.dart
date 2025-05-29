@@ -12,6 +12,7 @@ import '/index.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'my_profile_page_model.dart';
@@ -496,7 +497,8 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                                           m.storagePath,
                                                           context))) {
                                                 safeSetState(() => _model
-                                                    .isDataUploading = true);
+                                                        .isDataUploading_uploadProfileImageAction =
+                                                    true);
                                                 var selectedUploadedFiles =
                                                     <FFUploadedFile>[];
 
@@ -521,14 +523,14 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                                               ))
                                                           .toList();
                                                 } finally {
-                                                  _model.isDataUploading =
+                                                  _model.isDataUploading_uploadProfileImageAction =
                                                       false;
                                                 }
                                                 if (selectedUploadedFiles
                                                         .length ==
                                                     selectedMedia.length) {
                                                   safeSetState(() {
-                                                    _model.uploadedLocalFile =
+                                                    _model.uploadedLocalFile_uploadProfileImageAction =
                                                         selectedUploadedFiles
                                                             .first;
                                                   });
@@ -538,7 +540,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                                 }
                                               }
 
-                                              if (!((_model.uploadedLocalFile
+                                              if (!((_model.uploadedLocalFile_uploadProfileImageAction
                                                           .bytes?.isNotEmpty ??
                                                       false))) {
                                                 Navigator.pop(context);
@@ -550,7 +552,8 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                                   await actions
                                                       .uploadFileFirebaseStorage(
                                                 'UsersProfileImage',
-                                                _model.uploadedLocalFile,
+                                                _model
+                                                    .uploadedLocalFile_uploadProfileImageAction,
                                               );
                                               _shouldSetState = true;
                                               if (!(_model.uploadFirebaseStorageAction !=
@@ -612,8 +615,9 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                                         .uploadFirebaseStorageAction),
                                               ));
                                               safeSetState(() {
-                                                _model.isDataUploading = false;
-                                                _model.uploadedLocalFile =
+                                                _model.isDataUploading_uploadProfileImageAction =
+                                                    false;
+                                                _model.uploadedLocalFile_uploadProfileImageAction =
                                                     FFUploadedFile(
                                                         bytes:
                                                             Uint8List.fromList(
@@ -640,7 +644,6 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: 50.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -660,11 +663,19 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      font: GoogleFonts.outfit(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
                                       color: Color(0xFF0039E3),
                                       fontSize: 24.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
                               ),
                             ),
@@ -695,10 +706,20 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Readex Pro',
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
                                         ),
                                   ),
                                 ),
@@ -761,9 +782,19 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                       ),
                                     ],
@@ -788,9 +819,19 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                       ),
                                     ],
@@ -820,9 +861,19 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                       ),
                                     ],
@@ -865,9 +916,19 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                       ),
                                     ],
@@ -901,9 +962,19 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                       ),
                                     ],
@@ -925,9 +996,19 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                       ),
                                     ],
@@ -949,9 +1030,19 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                       ),
                                     ],
@@ -990,15 +1081,35 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
                                               iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color: Color(0xFF0039E3),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        color: Colors.white,
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              textStyle: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleSmall
+                                                  .override(
+                                                    font: GoogleFonts.readexPro(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontStyle,
+                                                    ),
+                                                    color: Colors.white,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall
+                                                            .fontStyle,
+                                                  ),
                                               elevation: 0.0,
                                               borderRadius:
                                                   BorderRadius.circular(8.0),

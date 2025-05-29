@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'status_compnent_model.dart';
 export 'status_compnent_model.dart';
 
@@ -62,10 +63,18 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                         '7ul9r41x' /* All status */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
+                            font: GoogleFonts.readexPro(
+                              fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
                             fontSize: 20.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
                           ),
                     ),
                   ),
@@ -106,11 +115,19 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                         'mqn06a20' /* Check-in/out of work will have... */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
+                            font: GoogleFonts.readexPro(
+                              fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
                             color: Color(0xFF535455),
                             fontSize: 14.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
                           ),
                     ),
                   ),
@@ -140,10 +157,18 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                           'kh7en1yk' /* Holidays and traditional holid... */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
+                              font: GoogleFonts.readexPro(
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
                               fontSize: 15.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
                             ),
                       ),
                     ),
@@ -174,10 +199,18 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                           '0il619bg' /* Missing work */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
+                              font: GoogleFonts.readexPro(
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
                               fontSize: 15.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
                             ),
                       ),
                     ),
@@ -208,10 +241,18 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                           '3py39tbc' /* Incomplete time entry (not che... */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
+                              font: GoogleFonts.readexPro(
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
                               fontSize: 15.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
                             ),
                       ),
                     ),
@@ -242,10 +283,18 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                           'q4nj7lx7' /* Incomplete attendance (incompl... */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
+                              font: GoogleFonts.readexPro(
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
                               fontSize: 15.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
                             ),
                       ),
                     ),
@@ -276,10 +325,18 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                           '0g6rkfn2' /* Late (check in after work hour... */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
+                              font: GoogleFonts.readexPro(
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
                               fontSize: 15.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
                             ),
                       ),
                     ),
@@ -310,10 +367,18 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                           'fn4vqph9' /* Early check-out (check out bef... */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
+                              font: GoogleFonts.readexPro(
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
                               fontSize: 15.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
                             ),
                       ),
                     ),
@@ -344,10 +409,18 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
                           '5qzqlkly' /* normal */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
+                              font: GoogleFonts.readexPro(
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
                               fontSize: 15.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
                             ),
                       ),
                     ),

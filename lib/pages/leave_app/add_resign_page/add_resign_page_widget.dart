@@ -8,6 +8,7 @@ import '/flutter_flow/form_field_controller.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'add_resign_page_model.dart';
 export 'add_resign_page_model.dart';
@@ -98,11 +99,17 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
               'ui4tf8f1' /* ยื่นเรื่องขออนุมัติลาออก */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Outfit',
+                  font: GoogleFonts.outfit(
+                    fontWeight: FontWeight.w600,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                  ),
                   color: Colors.white,
                   fontSize: 22.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
+                  fontStyle:
+                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                 ),
           ),
           actions: [],
@@ -154,13 +161,32 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                               .getText(
                                             '1p6xvu7s' /* [Some hint text...] */,
                                           ),
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmall
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    letterSpacing: 0.0,
-                                                  ),
+                                          hintStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .bodySmall
+                                              .override(
+                                                font: GoogleFonts.readexPro(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodySmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodySmall
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontStyle,
+                                              ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0x00000000),
@@ -200,9 +226,26 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                         textAlign: TextAlign.start,
                                         validator: _model
@@ -233,9 +276,26 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     )),
                                   ),
@@ -271,11 +331,21 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight: FontWeight.normal,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
+                                              ),
                                               color: Color(0xFF0A0A0A),
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontStyle,
                                             ),
                                         elevation: 2.0,
                                         borderSide: BorderSide(
@@ -309,9 +379,26 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     )),
                                   ),
@@ -350,8 +437,25 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                         initialized:
                                             _model.checkboxGroupValues1 != null,
@@ -392,9 +496,30 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Readex Pro',
+                                                  font: GoogleFonts.readexPro(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   fontSize: 15.0,
                                                   letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                 ),
                                           )),
                                         ),
@@ -423,14 +548,34 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                                       .getText(
                                                 'xgafgfqt' /* ระบุ... */,
                                               ),
-                                              hintStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              hintStyle: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodySmall
+                                                  .override(
+                                                    font: GoogleFonts.readexPro(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .fontStyle,
+                                                    ),
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodySmall
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodySmall
+                                                            .fontStyle,
+                                                  ),
                                               enabledBorder:
                                                   UnderlineInputBorder(
                                                 borderSide: BorderSide(
@@ -476,11 +621,24 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Readex Pro',
+                                                  font: GoogleFonts.readexPro(
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   color: Color(0xFF0A0A0A),
                                                   fontSize: 15.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                 ),
                                             validator: _model
                                                 .reasonToLeaveEtcTextFieldTextControllerValidator
@@ -512,9 +670,26 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     )),
                                   ),
@@ -541,27 +716,56 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                         autofocus: false,
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    letterSpacing: 0.0,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                  ),
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .bodyMedium
+                                              .override(
+                                                font: GoogleFonts.readexPro(
+                                                  fontWeight: FontWeight.normal,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.normal,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                           hintText: FFLocalizations.of(context)
                                               .getText(
                                             '5s6i0679' /* กรุณากรอก... */,
                                           ),
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmall
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    color: Color(0xFF0A0A0A),
-                                                    letterSpacing: 0.0,
-                                                  ),
+                                          hintStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .bodySmall
+                                              .override(
+                                                font: GoogleFonts.readexPro(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodySmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodySmall
+                                                          .fontStyle,
+                                                ),
+                                                color: Color(0xFF0A0A0A),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontStyle,
+                                              ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0x00000000),
@@ -604,10 +808,20 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight: FontWeight.normal,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                         textAlign: TextAlign.start,
                                         validator: _model
@@ -638,9 +852,26 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     )),
                                   ),
@@ -676,9 +907,26 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             color: Colors.black,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
@@ -727,9 +975,26 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             color: Colors.black,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
@@ -777,9 +1042,26 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             color: Colors.black,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
@@ -826,9 +1108,26 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             color: Colors.black,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
@@ -874,8 +1173,25 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontStyle,
+                                              ),
                                               letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .fontStyle,
                                             ),
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
@@ -919,11 +1235,21 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight: FontWeight.normal,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             color: Color(0xFF0A0A0A),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                       validator: _model
                                           .batchRoadTextFieldTextControllerValidator
@@ -956,8 +1282,25 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontStyle,
+                                              ),
                                               letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .fontStyle,
                                             ),
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
@@ -1001,11 +1344,21 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight: FontWeight.normal,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             color: Color(0xFF0A0A0A),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                       keyboardType: TextInputType.phone,
                                       validator: _model
@@ -1035,9 +1388,26 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     )),
                                   ),
@@ -1076,11 +1446,21 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight: FontWeight.normal,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             color: Colors.black,
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
@@ -1119,9 +1499,26 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     )),
                                   ),
@@ -1160,8 +1557,25 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                         initialized:
                                             _model.checkboxGroupValues2 != null,
@@ -1187,9 +1601,26 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     )),
                                   ],
@@ -1219,8 +1650,25 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontStyle,
+                                              ),
                                               letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .fontStyle,
                                             ),
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
@@ -1264,11 +1712,21 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight: FontWeight.normal,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             color: Color(0xFF0A0A0A),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                       validator: _model
                                           .returnAssetTextFieldTextControllerValidator
@@ -1316,11 +1774,19 @@ class _AddResignPageWidgetState extends State<AddResignPageWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Readex Pro',
+                                    font: GoogleFonts.readexPro(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
                                     color: Colors.white,
                                     fontSize: 15.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
                                   ),
                               elevation: 2.0,
                               borderSide: BorderSide(

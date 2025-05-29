@@ -1,4 +1,3 @@
-import '';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
@@ -19,6 +18,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'add_leave_page_model.dart';
@@ -189,10 +189,16 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                   'vz6y5of2' /* Submit approval request */,
                 ),
                 style: FlutterFlowTheme.of(context).titleLarge.override(
-                      fontFamily: 'Outfit',
+                      font: GoogleFonts.outfit(
+                        fontWeight: FontWeight.w600,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                      ),
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w600,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
                     ),
               ),
               actions: [],
@@ -236,10 +242,22 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Outfit',
+                                                  font: GoogleFonts.outfit(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   fontSize: 15.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                 ),
                                           ),
                                         ],
@@ -275,14 +293,35 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                             children: [
                                               Text(
                                                 '${widget.leaveName}',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font:
+                                                          GoogleFonts.readexPro(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
                                               ),
                                             ],
                                           ),
@@ -345,16 +384,28 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                   .getText(
                                                 '85a5yekq' /* Time Period : */,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        fontSize: 15.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.outfit(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    fontSize: 15.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                             ),
                                           ),
                                         ],
@@ -400,9 +451,31 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Outfit',
+                                                        font:
+                                                            GoogleFonts.outfit(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         fontSize: 15.0,
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
                                                       ),
                                               hintText:
                                                   FFLocalizations.of(context)
@@ -670,14 +743,27 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                                 .of(context)
                                                             .bodyMedium
                                                             .override(
-                                                              fontFamily:
-                                                                  'Outfit',
+                                                              font: GoogleFonts
+                                                                  .outfit(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
                                                               fontSize: 15.0,
                                                               letterSpacing:
                                                                   0.0,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w600,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                             ),
                                                       ),
                                                     ),
@@ -769,8 +855,14 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Outfit',
+                                                                      font: GoogleFonts
+                                                                          .outfit(
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       fontSize:
                                                                           15.0,
                                                                       letterSpacing:
@@ -778,6 +870,10 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                             ],
@@ -855,14 +951,22 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                                             context)
                                                                         .bodyMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
                                                                           fontSize:
                                                                               15.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.w600,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   ),
                                                                 ],
@@ -908,10 +1012,14 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Outfit',
+                                                                              font: GoogleFonts.outfit(
+                                                                                fontWeight: FontWeight.w600,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                              ),
                                                                               fontSize: 15.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w600,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                             ),
                                                                       ),
                                                                     ],
@@ -968,10 +1076,14 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                                                 thText: 'ใส่จำนวนวันที่ต้องการลา',
                                                                               )}',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Readex Pro',
+                                                                                  font: GoogleFonts.readexPro(
+                                                                                    fontWeight: FontWeight.w600,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   fontSize: 15.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.w600,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ],
@@ -1003,10 +1115,22 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Outfit',
+                                                  font: GoogleFonts.outfit(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   fontSize: 15.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                 ),
                                           ),
                                         ],
@@ -1079,8 +1203,17 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                                       context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Outfit',
+                                                                    font: GoogleFonts
+                                                                        .outfit(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryText,
@@ -1088,6 +1221,14 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                                         15.0,
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                     lineHeight:
                                                                         2.0,
                                                                   ),
@@ -1115,18 +1256,37 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                                 0xFF0A0A0A),
                                                           ),
                                                         ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Readex Pro',
-                                                              color: Color(
-                                                                  0xFF0A0A0A),
-                                                              fontSize: 15.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: Color(
+                                                                      0xFF0A0A0A),
+                                                                  fontSize:
+                                                                      15.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
                                                         maxLength: 10,
                                                         buildCounter: (context,
                                                                 {required currentLength,
@@ -1171,10 +1331,22 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Outfit',
+                                                  font: GoogleFonts.outfit(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   fontSize: 15.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                 ),
                                           ),
                                         ],
@@ -1196,17 +1368,39 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 isDense: false,
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                labelStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .labelMedium
+                                                    .override(
+                                                      font: GoogleFonts.outfit(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .primaryText,
-                                                          fontSize: 15.0,
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                      fontSize: 15.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .fontStyle,
+                                                    ),
                                                 hintText:
                                                     FFLocalizations.of(context)
                                                         .getText(
@@ -1263,9 +1457,31 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Outfit',
+                                                        font:
+                                                            GoogleFonts.outfit(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         fontSize: 15.0,
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
                                                         lineHeight: 3.0,
                                                       ),
                                               textAlign: TextAlign.start,
@@ -1293,10 +1509,22 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Outfit',
+                                                  font: GoogleFonts.outfit(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   fontSize: 15.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                 ),
                                           ),
                                         ],
@@ -1329,7 +1557,8 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                             m.storagePath,
                                                             context))) {
                                                   safeSetState(() => _model
-                                                      .isDataUploading = true);
+                                                          .isDataUploading_uploadMedia59b =
+                                                      true);
                                                   var selectedUploadedFiles =
                                                       <FFUploadedFile>[];
 
@@ -1364,14 +1593,14 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                     ScaffoldMessenger.of(
                                                             context)
                                                         .hideCurrentSnackBar();
-                                                    _model.isDataUploading =
+                                                    _model.isDataUploading_uploadMedia59b =
                                                         false;
                                                   }
                                                   if (selectedUploadedFiles
                                                           .length ==
                                                       selectedMedia.length) {
                                                     safeSetState(() {
-                                                      _model.uploadedLocalFiles =
+                                                      _model.uploadedLocalFiles_uploadMedia59b =
                                                           selectedUploadedFiles;
                                                     });
                                                     showUploadMessage(
@@ -1388,7 +1617,8 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                     await actions
                                                         .uploadMultipleFileFirebaseStorage(
                                                   'leave',
-                                                  _model.uploadedLocalFiles
+                                                  _model
+                                                      .uploadedLocalFiles_uploadMedia59b
                                                       .toList(),
                                                 );
                                                 _shouldSetState = true;
@@ -1476,7 +1706,16 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                         context)
                                                     .titleSmall
                                                     .override(
-                                                      fontFamily: 'Readex Pro',
+                                                      font:
+                                                          GoogleFonts.readexPro(
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontStyle,
+                                                      ),
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1484,6 +1723,11 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.normal,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontStyle,
                                                     ),
                                                 elevation: 2.0,
                                                 borderSide: BorderSide(
@@ -1498,7 +1742,9 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                         ],
                                       ),
                                     ),
-                                    if (_model.uploadedLocalFiles.length > 0)
+                                    if (_model.uploadedLocalFiles_uploadMedia59b
+                                            .length >
+                                        0)
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             15.0, 15.0, 15.0, 0.0),
@@ -1789,7 +2035,7 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                                 .length >=
                                                             3)) {
                                                       if (_model
-                                                              .uploadedLocalFiles
+                                                              .uploadedLocalFiles_uploadMedia59b
                                                               .length <=
                                                           0) {
                                                         await showDialog(
@@ -1956,7 +2202,7 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                           .reasonToLeaveTextController
                                                           .text,
                                                       leaveDocument: _model
-                                                                  .uploadedLocalFiles
+                                                                  .uploadedLocalFiles_uploadMedia59b
                                                                   .length >
                                                               0
                                                           ? functions.imgPathListToString(functions
@@ -2105,10 +2351,31 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                                               context)
                                                           .titleSmall
                                                           .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
+                                                            font: GoogleFonts
+                                                                .readexPro(
+                                                              fontWeight:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontWeight,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontStyle,
+                                                            ),
                                                             color: Colors.white,
                                                             letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
                                                           ),
                                                   elevation: 0.0,
                                                   borderRadius:
@@ -2146,10 +2413,18 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    font: GoogleFonts.outfit(
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 15.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                             ),
                           ],
@@ -2189,10 +2464,19 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        font: GoogleFonts.outfit(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 15.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
                                       ),
                                 ),
                               ],
@@ -2224,10 +2508,20 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Outfit',
+                                            font: GoogleFonts.outfit(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ],
@@ -2267,10 +2561,21 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Readex Pro',
+                                                font: GoogleFonts.readexPro(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
                                                 fontSize: 15.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
                                               ),
                                         ),
                                       ],

@@ -1,4 +1,3 @@
-import '';
 import '/backend/backend.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/loading_scene/loading_scene_widget.dart';
@@ -22,6 +21,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -246,12 +246,21 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Readex Pro',
+                                        font: GoogleFonts.readexPro(
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
                                       ),
                                 ),
                                 Text(
@@ -261,12 +270,21 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Readex Pro',
+                                        font: GoogleFonts.readexPro(
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
                                       ),
                                 ),
                               ],
@@ -278,7 +296,6 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                           color: FlutterFlowTheme.of(context).alternate,
                         ),
                         Container(
-                          height: 50.0,
                           decoration: BoxDecoration(),
                           child: Text(
                             '${FFLocalizations.of(context).getVariableText(
@@ -289,12 +306,20 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Readex Pro',
+                                  font: GoogleFonts.readexPro(
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                   fontSize: 24.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
                                 ),
                           ),
                         ),
@@ -373,12 +398,22 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .titleLarge
                                           .override(
-                                            fontFamily: 'Outfit',
+                                            font: GoogleFonts.outfit(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .fontStyle,
+                                            ),
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
                                             fontSize: 20.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontStyle,
                                           ),
                                     ),
                                     trailing: Icon(
@@ -447,12 +482,22 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .titleLarge
                                           .override(
-                                            fontFamily: 'Outfit',
+                                            font: GoogleFonts.outfit(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .fontStyle,
+                                            ),
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
                                             fontSize: 20.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontStyle,
                                           ),
                                     ),
                                     trailing: FaIcon(
@@ -573,10 +618,31 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Readex Pro',
+                                                  font: GoogleFonts.readexPro(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   color: Colors.white,
                                                   fontSize: 12.0,
                                                   letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                 ),
                                           ),
                                         ),
@@ -654,9 +720,28 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Readex Pro',
+                                                font: GoogleFonts.readexPro(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
                                                 color: Colors.white,
                                                 letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
                                               ),
                                         ),
                                         showBadge: true,
@@ -713,12 +798,33 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Readex Pro',
+                                                  font: GoogleFonts.readexPro(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .alternate,
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                 ),
                                           ),
                                         ),
@@ -734,12 +840,33 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Readex Pro',
+                                                  font: GoogleFonts.readexPro(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .alternate,
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                 ),
                                           ),
                                         ),
@@ -1160,38 +1287,51 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                     .getText(
                                                   '08ugcqdn' /* Service */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          fontSize: () {
-                                                            if (MediaQuery.sizeOf(
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font:
+                                                          GoogleFonts.readexPro(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      fontSize: () {
+                                                        if (MediaQuery.sizeOf(
+                                                                    context)
+                                                                .width <
+                                                            kBreakpointSmall) {
+                                                          return 20.0;
+                                                        } else if (MediaQuery
+                                                                    .sizeOf(
                                                                         context)
-                                                                    .width <
-                                                                kBreakpointSmall) {
-                                                              return 20.0;
-                                                            } else if (MediaQuery
-                                                                        .sizeOf(
-                                                                            context)
-                                                                    .width <
-                                                                kBreakpointMedium) {
-                                                              return 32.0;
-                                                            } else if (MediaQuery
-                                                                        .sizeOf(
-                                                                            context)
-                                                                    .width <
-                                                                kBreakpointLarge) {
-                                                              return 32.0;
-                                                            } else {
-                                                              return 32.0;
-                                                            }
-                                                          }(),
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
+                                                                .width <
+                                                            kBreakpointMedium) {
+                                                          return 32.0;
+                                                        } else if (MediaQuery
+                                                                    .sizeOf(
+                                                                        context)
+                                                                .width <
+                                                            kBreakpointLarge) {
+                                                          return 32.0;
+                                                        } else {
+                                                          return 32.0;
+                                                        }
+                                                      }(),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
                                               ),
                                             ),
                                           ),
@@ -1412,8 +1552,17 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         () {
                                                                       if (MediaQuery.sizeOf(context)
@@ -1434,6 +1583,14 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                                     }(),
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           ],
@@ -1493,12 +1650,27 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
+                                                                      font: GoogleFonts
+                                                                          .readexPro(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: Colors
                                                                           .white,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                               showBadge: false,
@@ -1603,8 +1775,17 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         () {
                                                                       if (MediaQuery.sizeOf(context)
@@ -1625,6 +1806,14 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                                     }(),
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           ],
@@ -1760,8 +1949,17 @@ employee */
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         () {
                                                                       if (MediaQuery.sizeOf(context)
@@ -1782,6 +1980,14 @@ employee */
                                                                     }(),
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           ],
@@ -2217,9 +2423,14 @@ employee */
                                                                                 Text(
                                                                               listViewSawadAnnouncementRecord.title,
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Readex Pro',
+                                                                                    font: GoogleFonts.readexPro(
+                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                    ),
                                                                                     fontSize: 18.0,
                                                                                     letterSpacing: 0.0,
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -2230,8 +2441,13 @@ employee */
                                                                           Text(
                                                                             listViewSawadAnnouncementRecord.announceDate,
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Readex Pro',
+                                                                                  font: GoogleFonts.readexPro(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           ),
                                                                           Text(
@@ -2239,8 +2455,13 @@ employee */
                                                                             textAlign:
                                                                                 TextAlign.start,
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Readex Pro',
+                                                                                  font: GoogleFonts.readexPro(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ],
@@ -2416,12 +2637,29 @@ employee */
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         18.0,
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                             Divider(
@@ -2439,10 +2677,27 @@ employee */
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                             Text(
@@ -2458,10 +2713,27 @@ employee */
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           ],

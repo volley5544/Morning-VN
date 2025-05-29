@@ -1,4 +1,3 @@
-import '';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/loading/loading_widget.dart';
@@ -15,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'approved_leave_page_model.dart';
@@ -305,11 +305,18 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                   'v5174jja' /* Leave approval list */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Outfit',
+                      font: GoogleFonts.outfit(
+                        fontWeight: FontWeight.w600,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontStyle,
+                      ),
                       color: Colors.white,
                       fontSize: 18.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w600,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                     ),
               ),
               actions: [],
@@ -371,11 +378,21 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Readex Pro',
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight: FontWeight.normal,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontStyle,
+                                          ),
                                           color: Colors.white,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontStyle,
                                         ),
                                     elevation: 2.0,
                                     borderSide: BorderSide(
@@ -443,11 +460,16 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                               safeSetState(() {});
                                             }
                                           },
-                                          side: BorderSide(
-                                            width: 2,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                          ),
+                                          side: (FlutterFlowTheme.of(context)
+                                                      .secondaryText !=
+                                                  null)
+                                              ? BorderSide(
+                                                  width: 2,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                )
+                                              : null,
                                           activeColor:
                                               FlutterFlowTheme.of(context)
                                                   .success,
@@ -460,8 +482,25 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                       ),
                                     ],
@@ -789,10 +828,32 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall
                                                     .override(
-                                                      fontFamily: 'Readex Pro',
+                                                      font:
+                                                          GoogleFonts.readexPro(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontStyle,
+                                                      ),
                                                       color: Colors.white,
                                                       fontSize: 14.0,
                                                       letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontStyle,
                                                     ),
                                             elevation: 3.0,
                                             borderSide: BorderSide(
@@ -841,17 +902,27 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .error,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    color: Colors.white,
-                                                    fontSize: 5.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                  ),
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                font: GoogleFonts.readexPro(
+                                                  fontWeight: FontWeight.normal,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontStyle,
+                                                ),
+                                                color: Colors.white,
+                                                fontSize: 5.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.normal,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
+                                              ),
                                           elevation: 2.0,
                                           borderSide: BorderSide(
                                             color: Colors.transparent,
@@ -1143,10 +1214,14 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                             textAlign:
                                                                                 TextAlign.start,
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Readex Pro',
+                                                                                  font: GoogleFonts.readexPro(
+                                                                                    fontWeight: FontWeight.normal,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   fontSize: 14.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.normal,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           )),
                                                                         ),
@@ -1183,10 +1258,14 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                                 ),
                                                                                 textAlign: TextAlign.start,
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Readex Pro',
+                                                                                      font: GoogleFonts.readexPro(
+                                                                                        fontWeight: FontWeight.normal,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      ),
                                                                                       fontSize: 12.0,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.normal,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
                                                                               )),
                                                                             ],
@@ -1207,10 +1286,14 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                                 listApproveDataItem.leaveStatusName,
                                                                                 textAlign: TextAlign.start,
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Readex Pro',
+                                                                                      font: GoogleFonts.readexPro(
+                                                                                        fontWeight: FontWeight.normal,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      ),
                                                                                       fontSize: 12.0,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.normal,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
                                                                               )),
                                                                             ],
@@ -1251,10 +1334,14 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                                 ),
                                                                                 textAlign: TextAlign.start,
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Readex Pro',
+                                                                                      font: GoogleFonts.readexPro(
+                                                                                        fontWeight: FontWeight.normal,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      ),
                                                                                       fontSize: 12.0,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.normal,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
                                                                               )),
                                                                             ],
@@ -1275,10 +1362,14 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                                 listApproveDataItem.nickName,
                                                                                 textAlign: TextAlign.start,
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Readex Pro',
+                                                                                      font: GoogleFonts.readexPro(
+                                                                                        fontWeight: FontWeight.normal,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      ),
                                                                                       fontSize: 12.0,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.normal,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
                                                                               )),
                                                                             ],
@@ -1318,10 +1409,14 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                                     ),
                                                                                     textAlign: TextAlign.start,
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: 'Readex Pro',
+                                                                                          font: GoogleFonts.readexPro(
+                                                                                            fontWeight: FontWeight.normal,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
                                                                                           fontSize: 12.0,
                                                                                           letterSpacing: 0.0,
                                                                                           fontWeight: FontWeight.normal,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                         ),
                                                                                   )),
                                                                                 ),
@@ -1343,10 +1438,14 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                                   ),
                                                                                   textAlign: TextAlign.start,
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: 'Readex Pro',
+                                                                                        font: GoogleFonts.readexPro(
+                                                                                          fontWeight: FontWeight.normal,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                        ),
                                                                                         fontSize: 12.0,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.normal,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                       ),
                                                                                 )),
                                                                               ],
@@ -1404,14 +1503,23 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 )),
                                                               ],
@@ -1439,8 +1547,14 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
+                                                                      font: GoogleFonts
+                                                                          .readexPro(
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       fontSize:
                                                                           12.0,
                                                                       letterSpacing:
@@ -1448,6 +1562,10 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               )),
                                                             ],
@@ -1491,8 +1609,14 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
+                                                                      font: GoogleFonts
+                                                                          .readexPro(
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       fontSize:
                                                                           12.0,
                                                                       letterSpacing:
@@ -1500,6 +1624,10 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               )),
                                                             ],
@@ -1523,8 +1651,16 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -1532,6 +1668,10 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ],
@@ -1580,14 +1720,23 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 )),
                                                               ],
@@ -1611,8 +1760,14 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
+                                                                      font: GoogleFonts
+                                                                          .readexPro(
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       fontSize:
                                                                           12.0,
                                                                       letterSpacing:
@@ -1620,6 +1775,10 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               )),
                                                             ],
@@ -1669,14 +1828,23 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 )),
                                                               ],
@@ -1704,8 +1872,14 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
+                                                                      font: GoogleFonts
+                                                                          .readexPro(
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       fontSize:
                                                                           12.0,
                                                                       letterSpacing:
@@ -1713,6 +1887,10 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               )),
                                                             ],
@@ -1762,14 +1940,23 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 )),
                                                               ],
@@ -1797,8 +1984,14 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
+                                                                      font: GoogleFonts
+                                                                          .readexPro(
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       fontSize:
                                                                           12.0,
                                                                       letterSpacing:
@@ -1806,6 +1999,10 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               )),
                                                             ],
@@ -1855,14 +2052,23 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 )),
                                                               ],
@@ -1890,8 +2096,14 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
+                                                                      font: GoogleFonts
+                                                                          .readexPro(
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       fontSize:
                                                                           12.0,
                                                                       letterSpacing:
@@ -1899,6 +2111,10 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               )),
                                                             ],
@@ -1948,14 +2164,23 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 )),
                                                               ],
@@ -1983,8 +2208,14 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
+                                                                      font: GoogleFonts
+                                                                          .readexPro(
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       fontSize:
                                                                           12.0,
                                                                       letterSpacing:
@@ -1992,6 +2223,10 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               )),
                                                             ],
@@ -2041,14 +2276,23 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 )),
                                                               ],
@@ -2477,8 +2721,13 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                             context)
                                                                         .titleSmall
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                          ),
                                                                           color:
                                                                               Colors.white,
                                                                           fontSize:
@@ -2487,6 +2736,9 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontStyle,
                                                                         ),
                                                                     elevation:
                                                                         2.0,
@@ -2797,8 +3049,13 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                             context)
                                                                         .titleSmall
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                          ),
                                                                           color:
                                                                               Colors.white,
                                                                           fontSize:
@@ -2807,6 +3064,9 @@ class _ApprovedLeavePageWidgetState extends State<ApprovedLeavePageWidget> {
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontStyle,
                                                                         ),
                                                                     elevation:
                                                                         2.0,

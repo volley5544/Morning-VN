@@ -8,6 +8,7 @@ import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'dashboard_checkin_model.dart';
@@ -59,7 +60,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
           VisibilityEffect(duration: 1.ms),
           FadeEffect(
             curve: Curves.easeInOut,
-            delay: 0.0.ms,
+            delay: 150.0.ms,
             duration: 500.0.ms,
             begin: 0.0,
             end: 1.0,
@@ -79,7 +80,7 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
           VisibilityEffect(duration: 1.ms),
           FadeEffect(
             curve: Curves.easeInOut,
-            delay: 0.0.ms,
+            delay: 300.0.ms,
             duration: 500.0.ms,
             begin: 0.0,
             end: 1.0,
@@ -99,8 +100,8 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
           VisibilityEffect(duration: 1.ms),
           FadeEffect(
             curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 600.0.ms,
+            delay: 150.0.ms,
+            duration: 500.0.ms,
             begin: 0.0,
             end: 1.0,
           ),
@@ -190,11 +191,18 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                   'wub2eo13' /* Check in - Check out */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Outfit',
+                      font: GoogleFonts.outfit(
+                        fontWeight: FontWeight.w600,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontStyle,
+                      ),
                       color: Colors.white,
                       fontSize: 28.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w600,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                     ),
               ),
               actions: [],
@@ -273,11 +281,19 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                           style: FlutterFlowTheme.of(context)
                               .headlineMedium
                               .override(
-                                fontFamily: 'Outfit',
+                                font: GoogleFonts.outfit(
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .fontStyle,
+                                ),
                                 color: Colors.white,
                                 fontSize: 22.0,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .fontStyle,
                               ),
                         ),
                       ),
@@ -354,10 +370,21 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .titleMedium
                                               .override(
-                                                fontFamily: 'Readex Pro',
+                                                font: GoogleFonts.readexPro(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleMedium
+                                                          .fontStyle,
+                                                ),
                                                 color: Color(0xFF101213),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontStyle,
                                               ),
                                         ),
                                       ),
@@ -423,10 +450,21 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .titleMedium
                                               .override(
-                                                fontFamily: 'Readex Pro',
+                                                font: GoogleFonts.readexPro(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleMedium
+                                                          .fontStyle,
+                                                ),
                                                 color: Color(0xFF101213),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontStyle,
                                               ),
                                         ),
                                       ),
@@ -501,10 +539,22 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .titleMedium
                                                 .override(
-                                                  fontFamily: 'Readex Pro',
+                                                  font: GoogleFonts.readexPro(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMedium
+                                                            .fontStyle,
+                                                  ),
                                                   color: Color(0xFF101213),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleMedium
+                                                          .fontStyle,
                                                 ),
                                           ),
                                         ),

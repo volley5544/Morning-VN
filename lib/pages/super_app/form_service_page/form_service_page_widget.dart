@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_web_view.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'form_service_page_model.dart';
 export 'form_service_page_model.dart';
@@ -107,10 +108,15 @@ class _FormServicePageWidgetState extends State<FormServicePageWidget> {
               '[form_service_name]',
             ),
             style: FlutterFlowTheme.of(context).titleLarge.override(
-                  fontFamily: 'Outfit',
+                  font: GoogleFonts.outfit(
+                    fontWeight: FontWeight.w600,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                  ),
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
+                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
                 ),
           ),
           actions: [],

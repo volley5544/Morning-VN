@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 class MyProfilePageModel extends FlutterFlowModel<MyProfilePageWidget> {
   ///  State fields for stateful widgets in this page.
 
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading_uploadProfileImageAction = false;
+  FFUploadedFile uploadedLocalFile_uploadProfileImageAction =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
   // Stores action output result for [Custom Action - uploadFileFirebaseStorage] action in IconButton widget.

@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'action2_sheet_simple_model.dart';
 export 'action2_sheet_simple_model.dart';
 
@@ -78,11 +79,17 @@ class _Action2SheetSimpleWidgetState extends State<Action2SheetSimpleWidget> {
                 iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                 color: Color(0xFFF1F4F8),
                 textStyle: FlutterFlowTheme.of(context).bodyLarge.override(
-                      fontFamily: 'Plus Jakarta Sans',
+                      font: GoogleFonts.plusJakartaSans(
+                        fontWeight: FontWeight.normal,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                      ),
                       color: Color(0xFF14181B),
                       fontSize: 16.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.normal,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                     ),
                 elevation: 2.0,
                 borderSide: BorderSide(
@@ -108,11 +115,17 @@ class _Action2SheetSimpleWidgetState extends State<Action2SheetSimpleWidget> {
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: Color(0xFFF1F4F8),
                   textStyle: FlutterFlowTheme.of(context).bodyLarge.override(
-                        fontFamily: 'Plus Jakarta Sans',
+                        font: GoogleFonts.plusJakartaSans(
+                          fontWeight: FontWeight.normal,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                        ),
                         color: Color(0xFF14181B),
                         fontSize: 16.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.normal,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                       ),
                   elevation: 2.0,
                   borderSide: BorderSide(
@@ -139,11 +152,17 @@ class _Action2SheetSimpleWidgetState extends State<Action2SheetSimpleWidget> {
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: Colors.white,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Lexend Deca',
+                        font: GoogleFonts.lexendDeca(
+                          fontWeight: FontWeight.normal,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                        ),
                         color: Color(0xFF57636C),
                         fontSize: 16.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.normal,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).titleSmall.fontStyle,
                       ),
                   elevation: 0.0,
                   borderSide: BorderSide(
