@@ -143,132 +143,376 @@ class _PinPageWidgetState extends State<PinPageWidget>
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: SafeArea(
               top: true,
-              child: Container(
-                width: double.infinity,
-                height: MediaQuery.sizeOf(context).height * 1.0,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Colors.white, Color(0xFFFF9E35)],
-                    stops: [0.0, 1.0],
-                    begin: AlignmentDirectional(0.0, -1.0),
-                    end: AlignmentDirectional(0, 1.0),
-                  ),
+              child: StreamBuilder<List<KeyStorage1Record>>(
+                stream: queryKeyStorage1Record(
+                  singleRecord: true,
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      height: 50.0,
-                      decoration: BoxDecoration(),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 0.0, 0.0, 0.0),
-                                child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 30.0,
-                                  borderWidth: 1.0,
-                                  buttonSize: 55.0,
-                                  icon: Icon(
-                                    Icons.logout,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 35.0,
-                                  ),
-                                  onPressed: () async {
-                                    HapticFeedback.lightImpact();
-                                    await actions.a22();
-                                    FFAppState().isLogin = false;
-                                    FFAppState().accessToken = '';
-                                    safeSetState(() {});
-                                    FFAppState().username = '';
-                                    FFAppState().employeeID = '';
-                                    safeSetState(() {});
-                                    FFAppState().profilePositionName = '';
-                                    FFAppState().profileStartDate = '';
-                                    FFAppState().branchCode = '';
-                                    safeSetState(() {});
-                                    FFAppState().profileHiredDate = '';
-                                    safeSetState(() {});
-                                    FFAppState().profileBranchName = '';
-                                    FFAppState().profileBranchCode = '';
-                                    safeSetState(() {});
-                                    FFAppState().isInApp = false;
-                                    FFAppState().isLoginNew = false;
-                                    safeSetState(() {});
-                                    Navigator.pop(context);
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            FlutterFlowTheme.of(context).primary,
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                  List<KeyStorage1Record> containerKeyStorage1RecordList =
+                      snapshot.data!;
+                  // Return an empty Container when the item does not exist.
+                  if (snapshot.data!.isEmpty) {
+                    return Container();
+                  }
+                  final containerKeyStorage1Record =
+                      containerKeyStorage1RecordList.isNotEmpty
+                          ? containerKeyStorage1RecordList.first
+                          : null;
 
-                                    context
-                                        .pushNamed(LoginPageWidget.routeName);
-                                  },
+                  return Container(
+                    width: double.infinity,
+                    height: MediaQuery.sizeOf(context).height * 1.0,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Colors.white, Color(0xFFFF9E35)],
+                        stops: [0.0, 1.0],
+                        begin: AlignmentDirectional(0.0, -1.0),
+                        end: AlignmentDirectional(0, 1.0),
+                      ),
+                    ),
+                    child: StreamBuilder<List<KeyStorage2Record>>(
+                      stream: queryKeyStorage2Record(
+                        singleRecord: true,
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
                                 ),
                               ),
-                              SelectionArea(
-                                  child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'fi8l0tpk' /* Logout */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      font: GoogleFonts.readexPro(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
+                            ),
+                          );
+                        }
+                        List<KeyStorage2Record>
+                            columnfifthKeyStorage2RecordList = snapshot.data!;
+                        // Return an empty Container when the item does not exist.
+                        if (snapshot.data!.isEmpty) {
+                          return Container();
+                        }
+                        final columnfifthKeyStorage2Record =
+                            columnfifthKeyStorage2RecordList.isNotEmpty
+                                ? columnfifthKeyStorage2RecordList.first
+                                : null;
+
+                        return Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Container(
+                              width: double.infinity,
+                              height: 50.0,
+                              decoration: BoxDecoration(),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            12.0, 0.0, 0.0, 0.0),
+                                        child: FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 30.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 55.0,
+                                          icon: Icon(
+                                            Icons.logout,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 35.0,
+                                          ),
+                                          onPressed: () async {
+                                            HapticFeedback.lightImpact();
+                                            await actions.a22();
+                                            FFAppState().isLogin = false;
+                                            FFAppState().accessToken = '';
+                                            safeSetState(() {});
+                                            FFAppState().username = '';
+                                            FFAppState().employeeID = '';
+                                            safeSetState(() {});
+                                            FFAppState().profilePositionName =
+                                                '';
+                                            FFAppState().profileStartDate = '';
+                                            FFAppState().branchCode = '';
+                                            safeSetState(() {});
+                                            FFAppState().profileHiredDate = '';
+                                            safeSetState(() {});
+                                            FFAppState().profileBranchName = '';
+                                            FFAppState().profileBranchCode = '';
+                                            safeSetState(() {});
+                                            FFAppState().isInApp = false;
+                                            FFAppState().isLoginNew = false;
+                                            safeSetState(() {});
+                                            Navigator.pop(context);
+
+                                            context.pushNamed(
+                                                LoginPageWidget.routeName);
+                                          },
+                                        ),
                                       ),
-                                      fontSize: 14.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                              )),
-                            ],
-                          ),
-                          if (false)
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 0.0, 0.0, 0.0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30.0,
-                                    borderWidth: 1.0,
-                                    buttonSize: 55.0,
-                                    icon: Icon(
-                                      Icons.app_blocking_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 33.0,
-                                    ),
-                                    onPressed: () {
-                                      print('IconButton pressed ...');
-                                    },
+                                      SelectionArea(
+                                          child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'fi8l0tpk' /* Logout */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                              fontSize: 14.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                      )),
+                                    ],
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 20.0, 0.0),
-                                  child: SelectionArea(
-                                      child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'el0vuhmy' /* Clear Cache */,
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      var confirmDialogResponse =
+                                          await showDialog<bool>(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return WebViewAware(
+                                                    child: AlertDialog(
+                                                      content: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getVariableText(
+                                                        enText:
+                                                            'Do you want to clear your data?',
+                                                        viText:
+                                                            'Bạn có muốn xóa dữ liệu của mình không?',
+                                                        thText:
+                                                            'คุณต้องการล้างข้อมูลใช่หรือไม่',
+                                                      )),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  false),
+                                                          child: Text('Cancel'),
+                                                        ),
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  true),
+                                                          child:
+                                                              Text('Confirm'),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                },
+                                              ) ??
+                                              false;
+                                      if (!confirmDialogResponse) {
+                                        return;
+                                      }
+                                      await actions.clearAllAppDataCopy();
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return WebViewAware(
+                                            child: AlertDialog(
+                                              content: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getVariableText(
+                                                enText:
+                                                    'Clear cache successfully, please close the app and reopen it.',
+                                                viText:
+                                                    'Xóa bộ nhớ đệm thành công, vui lòng đóng ứng dụng và mở lại.',
+                                                thText:
+                                                    'เคลียร์แคชเรียบร้อยกรุณาปิดแอปเปิดใหม่',
+                                              )),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 0.0, 0.0),
+                                          child: FlutterFlowIconButton(
+                                            borderColor: Colors.transparent,
+                                            borderRadius: 30.0,
+                                            borderWidth: 1.0,
+                                            buttonSize: 55.0,
+                                            icon: Icon(
+                                              Icons.app_blocking_rounded,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 33.0,
+                                            ),
+                                            onPressed: () {
+                                              print('IconButton pressed ...');
+                                            },
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 20.0, 0.0),
+                                          child: SelectionArea(
+                                              child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              'el0vuhmy' /* Clear Cache */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  font: GoogleFonts.readexPro(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  fontSize: 14.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                          )),
+                                        ),
+                                      ],
                                     ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              width: double.infinity,
+                              height: 50.0,
+                              decoration: BoxDecoration(),
+                            ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                await showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  barrierColor: Color(0xC0000000),
+                                  enableDrag: false,
+                                  context: context,
+                                  builder: (context) {
+                                    return WebViewAware(
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          FocusScope.of(context).unfocus();
+                                          FocusManager.instance.primaryFocus
+                                              ?.unfocus();
+                                        },
+                                        child: Padding(
+                                          padding:
+                                              MediaQuery.viewInsetsOf(context),
+                                          child: Container(
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.5,
+                                            child:
+                                                SelectLanguageComponentWidget(),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ).then((value) => safeSetState(() {}));
+                              },
+                              child: Image.asset(
+                                'assets/images/ArunSawadQR.png',
+                                width: 140.0,
+                                height: 140.0,
+                                fit: BoxFit.fitHeight,
+                              ),
+                            ).animateOnPageLoad(
+                                animationsMap['imageOnPageLoadAnimation']!),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 12.0, 0.0, 0.0),
+                              child: Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 10.0, 0.0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'ayr2w6ox' /* Welcome to ArunSawad */,
+                                    ),
+                                    textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -282,7 +526,8 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                          fontSize: 14.0,
+                                          color: Colors.black,
+                                          fontSize: 28.0,
                                           letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
@@ -293,619 +538,628 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                  )),
-                                ),
-                              ],
-                            ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      height: 50.0,
-                      decoration: BoxDecoration(),
-                    ),
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          barrierColor: Color(0xC0000000),
-                          enableDrag: false,
-                          context: context,
-                          builder: (context) {
-                            return WebViewAware(
-                              child: GestureDetector(
-                                onTap: () {
-                                  FocusScope.of(context).unfocus();
-                                  FocusManager.instance.primaryFocus?.unfocus();
-                                },
-                                child: Padding(
-                                  padding: MediaQuery.viewInsetsOf(context),
-                                  child: Container(
-                                    height:
-                                        MediaQuery.sizeOf(context).height * 0.5,
-                                    child: SelectLanguageComponentWidget(),
                                   ),
                                 ),
                               ),
-                            );
-                          },
-                        ).then((value) => safeSetState(() {}));
-                      },
-                      child: Image.asset(
-                        'assets/images/ArunSawadQR.png',
-                        width: 140.0,
-                        height: 140.0,
-                        fit: BoxFit.fitHeight,
-                      ),
-                    ).animateOnPageLoad(
-                        animationsMap['imageOnPageLoadAnimation']!),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 0.0, 10.0, 0.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'ayr2w6ox' /* Welcome to ArunSawad */,
                             ),
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  font: GoogleFonts.readexPro(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                                  color: Colors.black,
-                                  fontSize: 28.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            FFLocalizations.of(context).getText(
-                              'm6g8fmaa' /* Enter Pin to Use App */,
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .headlineSmall
-                                .override(
-                                  font: GoogleFonts.outfit(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 24.0, 0.0, 0.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      'm6g8fmaa' /* Enter Pin to Use App */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
                                         .headlineSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .fontStyle,
-                                  ),
-                                  color: Colors.black,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontStyle,
-                                ),
-                          ),
-                          Container(
-                            width: double.infinity,
-                            height: 200.0,
-                            decoration: BoxDecoration(),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 32.0, 12.0, 0.0),
-                                  child: PinCodeTextField(
-                                    autoDisposeControllers: false,
-                                    appContext: context,
-                                    length: 6,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
                                         .override(
-                                          font: GoogleFonts.readexPro(
+                                          font: GoogleFonts.outfit(
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
-                                                    .titleSmall
+                                                    .headlineSmall
                                                     .fontWeight,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .titleSmall
+                                                    .headlineSmall
                                                     .fontStyle,
                                           ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                          color: Colors.black,
                                           letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
-                                                  .titleSmall
+                                                  .headlineSmall
                                                   .fontWeight,
                                           fontStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .titleSmall
+                                                  .headlineSmall
                                                   .fontStyle,
                                         ),
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    enableActiveFill: true,
-                                    autoFocus: false,
-                                    focusNode: _model.pinCodeFocusNode,
-                                    enablePinAutofill: true,
-                                    errorTextSpace: 16.0,
-                                    showCursor: false,
-                                    cursorColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    obscureText: true,
-                                    obscuringCharacter: '●',
-                                    hintCharacter: '*',
-                                    keyboardType: TextInputType.number,
-                                    pinTheme: PinTheme(
-                                      fieldHeight: 55.0,
-                                      fieldWidth: 50.0,
-                                      borderWidth: 2.0,
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(12.0),
-                                        bottomRight: Radius.circular(12.0),
-                                        topLeft: Radius.circular(12.0),
-                                        topRight: Radius.circular(12.0),
-                                      ),
-                                      shape: PinCodeFieldShape.box,
-                                      activeColor: Colors.white,
-                                      inactiveColor: Colors.white,
-                                      selectedColor: Color(0x66FFFFFF),
-                                    ),
-                                    controller: _model.pinCodeController,
-                                    onChanged: (_) {},
-                                    onCompleted: (_) async {
-                                      var _shouldSetState = false;
-                                      if (!((String appBuildNumber,
-                                              String latestBuildNumber) {
-                                        return int.parse(appBuildNumber) >=
-                                            int.parse(latestBuildNumber);
-                                      }(
-                                          functions.getBuildNumber(
-                                              _model.getBuildVersion)!,
-                                          pinPageApplicationConfigRecord
-                                              .buildNumber))) {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return WebViewAware(
-                                              child: AlertDialog(
-                                                content: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getVariableText(
-                                                  enText:
-                                                      '\'Morning FM\' has a new version available in the store! Please update in the store before using the application.',
-                                                  viText:
-                                                      '\'Morning FM\' Có phiên bản mới trong cửa hàng!. Vui lòng cập nhật tại cửa hàng trước khi sử dụng ứng dụng',
-                                                  thText:
-                                                      '\'Morning FM\' มีเวอร์ชันใหม่ในร้านค้า! กรุณาอัปเดตที่ร้านค้าก่อนใช้งานแอปพลิเคชัน',
-                                                )),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
+                                  ),
+                                  Container(
+                                    width: double.infinity,
+                                    height: 200.0,
+                                    decoration: BoxDecoration(),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 32.0, 12.0, 0.0),
+                                          child: PinCodeTextField(
+                                            autoDisposeControllers: false,
+                                            appContext: context,
+                                            length: 6,
+                                            textStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .titleSmall
+                                                .override(
+                                                  font: GoogleFonts.readexPro(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall
+                                                            .fontStyle,
                                                   ),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                        );
-                                        await actions.terminateAppAction();
-                                        if (_shouldSetState)
-                                          safeSetState(() {});
-                                        return;
-                                      }
-                                      if (_model.pinCodeController!.text !=
-                                          FFAppState().pinCode) {
-                                        safeSetState(() {
-                                          _model.pinCodeController?.clear();
-                                        });
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return WebViewAware(
-                                              child: AlertDialog(
-                                                content: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getVariableText(
-                                                  enText:
-                                                      'Invalid PIN. Please try again.',
-                                                  viText:
-                                                      'mã pin không hợp lệ Vui lòng thử lại.',
-                                                  thText:
-                                                      'รหัส PIN ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง',
-                                                )),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                        );
-                                        if (_shouldSetState)
-                                          safeSetState(() {});
-                                        return;
-                                      }
-                                      await requestPermission(
-                                          locationPermission);
-                                      if (await getPermissionStatus(
-                                          locationPermission)) {
-                                        _model.backgroundLocationCheck =
-                                            await actions
-                                                .backgroundLocationCheck();
-                                        _shouldSetState = true;
-                                        if (!_model.backgroundLocationCheck!) {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return WebViewAware(
-                                                child: AlertDialog(
-                                                  content: Text(
-                                                      'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child:
-                                                          Text('Open Setting'),
-                                                    ),
-                                                  ],
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontStyle,
                                                 ),
-                                              );
-                                            },
-                                          );
-                                        }
-                                      } else {
-                                        safeSetState(() {
-                                          _model.pinCodeController?.clear();
-                                        });
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return WebViewAware(
-                                              child: AlertDialog(
-                                                content: Text(
-                                                    'Vui lòng cho phép truy cập vị trí của bạn để theo dõi công việc của bạn'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            enableActiveFill: true,
+                                            autoFocus: false,
+                                            focusNode: _model.pinCodeFocusNode,
+                                            enablePinAutofill: true,
+                                            errorTextSpace: 16.0,
+                                            showCursor: false,
+                                            cursorColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            obscureText: true,
+                                            obscuringCharacter: '●',
+                                            hintCharacter: '*',
+                                            keyboardType: TextInputType.number,
+                                            pinTheme: PinTheme(
+                                              fieldHeight: 55.0,
+                                              fieldWidth: 50.0,
+                                              borderWidth: 2.0,
+                                              borderRadius: BorderRadius.only(
+                                                bottomLeft:
+                                                    Radius.circular(12.0),
+                                                bottomRight:
+                                                    Radius.circular(12.0),
+                                                topLeft: Radius.circular(12.0),
+                                                topRight: Radius.circular(12.0),
                                               ),
-                                            );
-                                          },
-                                        );
-                                        if (_shouldSetState)
-                                          safeSetState(() {});
-                                        return;
-                                      }
+                                              shape: PinCodeFieldShape.box,
+                                              activeColor: Colors.white,
+                                              inactiveColor: Colors.white,
+                                              selectedColor: Color(0x66FFFFFF),
+                                            ),
+                                            controller:
+                                                _model.pinCodeController,
+                                            onChanged: (_) {},
+                                            onCompleted: (_) async {
+                                              var _shouldSetState = false;
+                                              if (!((String appBuildNumber,
+                                                      String latestBuildNumber) {
+                                                return int.parse(
+                                                        appBuildNumber) >=
+                                                    int.parse(
+                                                        latestBuildNumber);
+                                              }(
+                                                  functions.getBuildNumber(
+                                                      _model.getBuildVersion)!,
+                                                  pinPageApplicationConfigRecord
+                                                      .buildNumber))) {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        content: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getVariableText(
+                                                          enText:
+                                                              '\'Morning FM\' has a new version available in the store! Please update in the store before using the application.',
+                                                          viText:
+                                                              '\'Morning FM\' Có phiên bản mới trong cửa hàng!. Vui lòng cập nhật tại cửa hàng trước khi sử dụng ứng dụng',
+                                                          thText:
+                                                              '\'Morning FM\' มีเวอร์ชันใหม่ในร้านค้า! กรุณาอัปเดตที่ร้านค้าก่อนใช้งานแอปพลิเคชัน',
+                                                        )),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                                if (isiOS) {
+                                                  await launchURL(
+                                                      'https://testflight.apple.com/join/GG9nQqJR');
+                                                } else {
+                                                  await launchURL(
+                                                      'https://play.google.com/store/apps/details?id=com.srisawad.morningvn');
+                                                }
 
-                                      _model.permissionRequestOutput =
-                                          await actions
-                                              .backgroundLocationPermission();
-                                      _shouldSetState = true;
-                                      if (!_model.permissionRequestOutput!) {
-                                        safeSetState(() {
-                                          _model.pinCodeController?.clear();
-                                        });
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return WebViewAware(
-                                              child: AlertDialog(
-                                                content: Text(
-                                                    'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                        );
-                                        if (_shouldSetState)
-                                          safeSetState(() {});
-                                        return;
-                                      }
-                                      _model.checkGpsEnable =
-                                          await actions.checkGpsServiceEnable();
-                                      _shouldSetState = true;
-                                      if (!_model.checkGpsEnable!) {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return WebViewAware(
-                                              child: AlertDialog(
-                                                content: Text(
-                                                    'Vui lòng bật GPS trước khi tiếp tục'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                        );
-                                        await actions.enableGpsService();
-                                        _model.checkGpsEnable2 = await actions
-                                            .checkGpsServiceEnable();
-                                        _shouldSetState = true;
-                                        if (!_model.checkGpsEnable2!) {
-                                          safeSetState(() {
-                                            _model.pinCodeController?.clear();
-                                          });
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return WebViewAware(
-                                                child: AlertDialog(
-                                                  content: Text(
-                                                      'Vui lòng bật GPS trước khi tiếp tục'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
-                                            },
-                                          );
-                                          if (_shouldSetState)
-                                            safeSetState(() {});
-                                          return;
-                                        }
-                                      }
-                                      FFAppState().fromPinPage = true;
-                                      safeSetState(() {});
-                                      _model.getUserProfile =
-                                          await GetUserProfileAPICall.call(
-                                        apiUrl: FFAppState().apiUrlAppState,
-                                        token: FFAppState().accessToken,
-                                      );
+                                                await actions
+                                                    .terminateAppAction();
+                                                if (_shouldSetState)
+                                                  safeSetState(() {});
+                                                return;
+                                              }
+                                              if (_model.pinCodeController!
+                                                      .text !=
+                                                  FFAppState().pinCode) {
+                                                safeSetState(() {
+                                                  _model.pinCodeController
+                                                      ?.clear();
+                                                });
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        content: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getVariableText(
+                                                          enText:
+                                                              'Invalid PIN. Please try again.',
+                                                          viText:
+                                                              'mã pin không hợp lệ Vui lòng thử lại.',
+                                                          thText:
+                                                              'รหัส PIN ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง',
+                                                        )),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                                if (_shouldSetState)
+                                                  safeSetState(() {});
+                                                return;
+                                              }
+                                              await requestPermission(
+                                                  locationPermission);
+                                              FFAppState()
+                                                  .apiUrlAppState = FFAppState()
+                                                      .isProduction
+                                                  ? containerKeyStorage1Record!
+                                                      .apiUrl
+                                                  : columnfifthKeyStorage2Record!
+                                                      .apiUrl;
+                                              safeSetState(() {});
+                                              if (await getPermissionStatus(
+                                                  locationPermission)) {
+                                                _model.backgroundLocationCheck =
+                                                    await actions
+                                                        .backgroundLocationCheck();
+                                                _shouldSetState = true;
+                                                if (!_model
+                                                    .backgroundLocationCheck!) {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: Text(
+                                                              'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text(
+                                                                  'Open Setting'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                }
+                                              } else {
+                                                safeSetState(() {
+                                                  _model.pinCodeController
+                                                      ?.clear();
+                                                });
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        content: Text(
+                                                            'Vui lòng cho phép truy cập vị trí của bạn để theo dõi công việc của bạn'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                                if (_shouldSetState)
+                                                  safeSetState(() {});
+                                                return;
+                                              }
 
-                                      _shouldSetState = true;
-                                      if ((_model.getUserProfile?.statusCode ??
-                                              200) !=
-                                          200) {
-                                        if (GetUserProfileAPICall.code(
-                                              (_model.getUserProfile
-                                                      ?.jsonBody ??
-                                                  ''),
-                                            ) ==
-                                            '440') {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return WebViewAware(
-                                                child: AlertDialog(
-                                                  content: Text(
-                                                      '${GetUserProfileAPICall.message(
+                                              _model.permissionRequestOutput =
+                                                  await actions
+                                                      .backgroundLocationPermission();
+                                              _shouldSetState = true;
+                                              if (!_model
+                                                  .permissionRequestOutput!) {
+                                                safeSetState(() {
+                                                  _model.pinCodeController
+                                                      ?.clear();
+                                                });
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        content: Text(
+                                                            'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                                if (_shouldSetState)
+                                                  safeSetState(() {});
+                                                return;
+                                              }
+                                              _model.checkGpsEnable =
+                                                  await actions
+                                                      .checkGpsServiceEnable();
+                                              _shouldSetState = true;
+                                              if (!_model.checkGpsEnable!) {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        content: Text(
+                                                            'Vui lòng bật GPS trước khi tiếp tục'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                                await actions
+                                                    .enableGpsService();
+                                                _model.checkGpsEnable2 =
+                                                    await actions
+                                                        .checkGpsServiceEnable();
+                                                _shouldSetState = true;
+                                                if (!_model.checkGpsEnable2!) {
+                                                  safeSetState(() {
+                                                    _model.pinCodeController
+                                                        ?.clear();
+                                                  });
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: Text(
+                                                              'Vui lòng bật GPS trước khi tiếp tục'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                  if (_shouldSetState)
+                                                    safeSetState(() {});
+                                                  return;
+                                                }
+                                              }
+                                              FFAppState().fromPinPage = true;
+                                              safeSetState(() {});
+                                              _model.getUserProfile =
+                                                  await GetUserProfileAPICall
+                                                      .call(
+                                                apiUrl:
+                                                    FFAppState().apiUrlAppState,
+                                                token: FFAppState().accessToken,
+                                              );
+
+                                              _shouldSetState = true;
+                                              if ((_model.getUserProfile
+                                                          ?.statusCode ??
+                                                      200) !=
+                                                  200) {
+                                                if (GetUserProfileAPICall.code(
+                                                      (_model.getUserProfile
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    ) ==
+                                                    '440') {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: Text(
+                                                              '${GetUserProfileAPICall.message(
+                                                            (_model.getUserProfile
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                          )}'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                } else {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: Text(
+                                                              '${FFLocalizations.of(context).getVariableText(
+                                                            enText:
+                                                                'Error encountered(',
+                                                            viText:
+                                                                'Đã xảy ra lỗi(',
+                                                            thText:
+                                                                'พบข้อผิดพลาด(',
+                                                          )}${(_model.getUserProfile?.statusCode ?? 200).toString()})'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                  if (_shouldSetState)
+                                                    safeSetState(() {});
+                                                  return;
+                                                }
+
+                                                await actions.a22();
+                                                FFAppState().isLogin = false;
+                                                FFAppState().accessToken = '';
+                                                safeSetState(() {});
+                                                FFAppState().username = '';
+                                                FFAppState().employeeID = '';
+                                                safeSetState(() {});
+                                                FFAppState()
+                                                    .profilePositionName = '';
+                                                FFAppState().profileStartDate =
+                                                    '';
+                                                FFAppState().branchCode = '';
+                                                safeSetState(() {});
+                                                FFAppState().profileHiredDate =
+                                                    '';
+                                                safeSetState(() {});
+                                                FFAppState().profileBranchName =
+                                                    '';
+                                                FFAppState().profileBranchCode =
+                                                    '';
+                                                safeSetState(() {});
+                                                FFAppState().isInApp = false;
+                                                FFAppState().isLoginNew = false;
+                                                safeSetState(() {});
+                                                Navigator.pop(context);
+
+                                                context.pushNamed(
+                                                    LoginPageWidget.routeName);
+
+                                                if (_shouldSetState)
+                                                  safeSetState(() {});
+                                                return;
+                                              }
+                                              if ('${getJsonField(
                                                     (_model.getUserProfile
                                                             ?.jsonBody ??
                                                         ''),
-                                                  )}'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
+                                                    r'''$.status''',
+                                                  ).toString()}' !=
+                                                  '200') {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        content: Text(
+                                                            GetUserProfileAPICall
+                                                                .message(
+                                                          (_model.getUserProfile
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                        )!),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                                if (_shouldSetState)
+                                                  safeSetState(() {});
+                                                return;
+                                              }
+                                              FFAppState().profilePositionName =
+                                                  '${GetUserProfileAPICall.profliePositionName(
+                                                (_model.getUserProfile
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )}';
+                                              FFAppState().ProfilePhoneNumber =
+                                                  '${GetUserProfileAPICall.profilePhoneNumber(
+                                                (_model.getUserProfile
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )}';
+                                              FFAppState().profileBranchName =
+                                                  '${GetUserProfileAPICall.profileBranchName(
+                                                (_model.getUserProfile
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )}';
+                                              FFAppState().profileBranchCode =
+                                                  '${GetUserProfileAPICall.profileBranchCode(
+                                                (_model.getUserProfile
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )}';
+                                              FFAppState().profileLevel =
+                                                  '${GetUserProfileAPICall.gpslevel(
+                                                (_model.getUserProfile
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )}';
+                                              safeSetState(() {});
+                                              FFAppState().profileHiredDate =
+                                                  '${GetUserProfileAPICall.profileHiredDate(
+                                                (_model.getUserProfile
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )}';
+                                              FFAppState()
+                                                      .profileServiceDurationYY =
+                                                  GetUserProfileAPICall
+                                                      .profileServiceDurationYY(
+                                                (_model.getUserProfile
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )!;
+                                              FFAppState()
+                                                      .profileServiceDurationMM =
+                                                  GetUserProfileAPICall
+                                                      .profileServiceDurationMM(
+                                                (_model.getUserProfile
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )!;
+                                              FFAppState()
+                                                      .profileServiceDurationDD =
+                                                  GetUserProfileAPICall
+                                                      .profileServiceDurationDD(
+                                                (_model.getUserProfile
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )!;
+                                              FFAppState().roleName =
+                                                  '${GetUserProfileAPICall.rolename(
+                                                (_model.getUserProfile
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )}';
+                                              safeSetState(() {});
+
+                                              context.goNamed(
+                                                  SuperAppPageWidget.routeName);
+
+                                              if (_shouldSetState)
+                                                safeSetState(() {});
                                             },
-                                          );
-                                        } else {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return WebViewAware(
-                                                child: AlertDialog(
-                                                  content: Text(
-                                                      '${FFLocalizations.of(context).getVariableText(
-                                                    enText:
-                                                        'Error encountered(',
-                                                    viText: 'Đã xảy ra lỗi(',
-                                                    thText: 'พบข้อผิดพลาด(',
-                                                  )}${(_model.getUserProfile?.statusCode ?? 200).toString()})'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
-                                            },
-                                          );
-                                          if (_shouldSetState)
-                                            safeSetState(() {});
-                                          return;
-                                        }
-
-                                        await actions.a22();
-                                        FFAppState().isLogin = false;
-                                        FFAppState().accessToken = '';
-                                        safeSetState(() {});
-                                        FFAppState().username = '';
-                                        FFAppState().employeeID = '';
-                                        safeSetState(() {});
-                                        FFAppState().profilePositionName = '';
-                                        FFAppState().profileStartDate = '';
-                                        FFAppState().branchCode = '';
-                                        safeSetState(() {});
-                                        FFAppState().profileHiredDate = '';
-                                        safeSetState(() {});
-                                        FFAppState().profileBranchName = '';
-                                        FFAppState().profileBranchCode = '';
-                                        safeSetState(() {});
-                                        FFAppState().isInApp = false;
-                                        FFAppState().isLoginNew = false;
-                                        safeSetState(() {});
-                                        Navigator.pop(context);
-
-                                        context.pushNamed(
-                                            LoginPageWidget.routeName);
-
-                                        if (_shouldSetState)
-                                          safeSetState(() {});
-                                        return;
-                                      }
-                                      if ('${getJsonField(
-                                            (_model.getUserProfile?.jsonBody ??
-                                                ''),
-                                            r'''$.status''',
-                                          ).toString()}' !=
-                                          '200') {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return WebViewAware(
-                                              child: AlertDialog(
-                                                content: Text(
-                                                    GetUserProfileAPICall
-                                                        .message(
-                                                  (_model.getUserProfile
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                )!),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                        );
-                                        if (_shouldSetState)
-                                          safeSetState(() {});
-                                        return;
-                                      }
-                                      FFAppState().profilePositionName =
-                                          '${GetUserProfileAPICall.profliePositionName(
-                                        (_model.getUserProfile?.jsonBody ?? ''),
-                                      )}';
-                                      FFAppState().ProfilePhoneNumber =
-                                          '${GetUserProfileAPICall.profilePhoneNumber(
-                                        (_model.getUserProfile?.jsonBody ?? ''),
-                                      )}';
-                                      FFAppState().profileBranchName =
-                                          '${GetUserProfileAPICall.profileBranchName(
-                                        (_model.getUserProfile?.jsonBody ?? ''),
-                                      )}';
-                                      FFAppState().profileBranchCode =
-                                          '${GetUserProfileAPICall.profileBranchCode(
-                                        (_model.getUserProfile?.jsonBody ?? ''),
-                                      )}';
-                                      FFAppState().profileLevel =
-                                          '${GetUserProfileAPICall.gpslevel(
-                                        (_model.getUserProfile?.jsonBody ?? ''),
-                                      )}';
-                                      safeSetState(() {});
-                                      FFAppState().profileHiredDate =
-                                          '${GetUserProfileAPICall.profileHiredDate(
-                                        (_model.getUserProfile?.jsonBody ?? ''),
-                                      )}';
-                                      FFAppState().profileServiceDurationYY =
-                                          GetUserProfileAPICall
-                                              .profileServiceDurationYY(
-                                        (_model.getUserProfile?.jsonBody ?? ''),
-                                      )!;
-                                      FFAppState().profileServiceDurationMM =
-                                          GetUserProfileAPICall
-                                              .profileServiceDurationMM(
-                                        (_model.getUserProfile?.jsonBody ?? ''),
-                                      )!;
-                                      FFAppState().profileServiceDurationDD =
-                                          GetUserProfileAPICall
-                                              .profileServiceDurationDD(
-                                        (_model.getUserProfile?.jsonBody ?? ''),
-                                      )!;
-                                      FFAppState().roleName =
-                                          '${GetUserProfileAPICall.rolename(
-                                        (_model.getUserProfile?.jsonBody ?? ''),
-                                      )}';
-                                      safeSetState(() {});
-
-                                      context.goNamed(
-                                          SuperAppPageWidget.routeName);
-
-                                      if (_shouldSetState) safeSetState(() {});
-                                    },
-                                    autovalidateMode:
-                                        AutovalidateMode.onUserInteraction,
-                                    validator: _model.pinCodeControllerValidator
-                                        .asValidator(context),
+                                            autovalidateMode: AutovalidateMode
+                                                .onUserInteraction,
+                                            validator: _model
+                                                .pinCodeControllerValidator
+                                                .asValidator(context),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
+                          ],
+                        );
+                      },
                     ),
-                  ],
-                ),
+                  );
+                },
               ),
             ),
           ),

@@ -63,6 +63,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
 
       setDarkModeSetting(context, ThemeMode.light);
       _model.getBuildVersion = await actions.getBuildVersion();
+      _model.getBuildNumber = await actions.getBuildNumber1();
       if (isAndroid) {
         _model.androidIMEI1st = await actions.a3();
         FFAppState().Uid = _model.androidIMEI1st!;
@@ -328,7 +329,76 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                 focusColor: Colors.transparent,
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
-                                onTap: () async {},
+                                onTap: () async {
+                                  var confirmDialogResponse =
+                                      await showDialog<bool>(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getVariableText(
+                                                    enText:
+                                                        'Do you want to clear your data?',
+                                                    viText:
+                                                        'Bạn có muốn xóa dữ liệu của mình không?',
+                                                    thText:
+                                                        'คุณต้องการล้างข้อมูลใช่หรือไม่',
+                                                  )),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext,
+                                                              false),
+                                                      child: Text('Cancel'),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext,
+                                                              true),
+                                                      child: Text('Confirm'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          ) ??
+                                          false;
+                                  if (!confirmDialogResponse) {
+                                    return;
+                                  }
+                                  await actions.clearAllAppDataCopy();
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return WebViewAware(
+                                        child: AlertDialog(
+                                          content: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                            enText:
+                                                'Clear cache successfully, please close the app and reopen it.',
+                                            viText:
+                                                'Xóa bộ nhớ đệm thành công, vui lòng đóng ứng dụng và mở lại.',
+                                            thText:
+                                                'เคลียร์แคชเรียบร้อยกรุณาปิดแอปเปิดใหม่',
+                                          )),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Ok'),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(0.0),
                                   child: Image.asset(
@@ -701,6 +771,14 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                           );
                                                         },
                                                       );
+                                                      if (isiOS) {
+                                                        await launchURL(
+                                                            'https://testflight.apple.com/join/GG9nQqJR');
+                                                      } else {
+                                                        await launchURL(
+                                                            'https://play.google.com/store/apps/details?id=com.srisawad.morningvn');
+                                                      }
+
                                                       await actions
                                                           .terminateAppAction();
                                                       if (_shouldSetState)

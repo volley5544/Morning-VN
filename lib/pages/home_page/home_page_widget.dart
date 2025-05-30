@@ -5,14 +5,17 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
@@ -39,7 +42,41 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setAppLanguage(context, 'vi');
+      _model.appConfigOutput = await queryApplicationConfigRecordOnce(
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+      _model.getBuildVersion = await actions.getBuildVersion();
       setDarkModeSetting(context, ThemeMode.light);
+      if (!((String appBuildNumber, String latestBuildNumber) {
+        return int.parse(appBuildNumber) >= int.parse(latestBuildNumber);
+      }(functions.getBuildNumber(_model.getBuildVersion)!,
+          _model.appConfigOutput!.buildNumber))) {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return WebViewAware(
+              child: AlertDialog(
+                content: Text(FFLocalizations.of(context).getVariableText(
+                  enText:
+                      '\'Morning FM\' has a new version available in the store! Please update in the store before using the application.',
+                  viText:
+                      '\'Morning FM\' Có phiên bản mới trong cửa hàng!. Vui lòng cập nhật tại cửa hàng trước khi sử dụng ứng dụng',
+                  thText:
+                      '\'Morning FM\' มีเวอร์ชันใหม่ในร้านค้า! กรุณาอัปเดตที่ร้านค้าก่อนใช้งานแอปพลิเคชัน',
+                )),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: Text('Ok'),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+        await actions.terminateAppAction();
+        return;
+      }
       if (FFAppState().isLogin) {
         if (!FFAppState().fromSetPin) {
           context.goNamed(SetPinPageWidget.routeName);

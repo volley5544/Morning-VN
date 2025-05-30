@@ -3,8 +3,10 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -38,7 +40,49 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
     _model = createModel(context, () => DashboardCheckinModel());
 
     // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {});
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.appConfig = await queryApplicationConfigRecordOnce(
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+      _model.getBuildVersion = await actions.getBuildVersion();
+      if (!((String appBuildNumber, String latestBuildNumber) {
+        return int.parse(appBuildNumber) >= int.parse(latestBuildNumber);
+      }(functions.getBuildNumber(_model.getBuildVersion)!,
+          _model.appConfig!.buildNumber))) {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return WebViewAware(
+              child: AlertDialog(
+                content: Text(FFLocalizations.of(context).getVariableText(
+                  enText:
+                      '\'Morning FM\' has a new version available in the store! Please update in the store before using the application.',
+                  viText:
+                      '\'Morning FM\' Có phiên bản mới trong cửa hàng!. Vui lòng cập nhật tại cửa hàng trước khi sử dụng ứng dụng',
+                  thText:
+                      '\'Morning FM\' มีเวอร์ชันใหม่ในร้านค้า! กรุณาอัปเดตที่ร้านค้าก่อนใช้งานแอปพลิเคชัน',
+                )),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: Text('Ok'),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+        if (isiOS) {
+          await launchURL('https://testflight.apple.com/join/GG9nQqJR');
+        } else {
+          await launchURL(
+              'https://play.google.com/store/apps/details?id=com.srisawad.morningvn');
+        }
+
+        await actions.terminateAppAction();
+        return;
+      }
+    });
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation1': AnimationInfo(

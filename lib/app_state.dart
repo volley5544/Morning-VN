@@ -22,6 +22,9 @@ class FFAppState extends ChangeNotifier {
       _accessToken = prefs.getString('ff_accessToken') ?? _accessToken;
     });
     _safeInit(() {
+      _apiUrlAppState = prefs.getString('ff_apiUrlAppState') ?? _apiUrlAppState;
+    });
+    _safeInit(() {
       _pinCode = prefs.getString('ff_pinCode') ?? _pinCode;
     });
     _safeInit(() {
@@ -77,6 +80,7 @@ class FFAppState extends ChangeNotifier {
   String get apiUrlAppState => _apiUrlAppState;
   set apiUrlAppState(String value) {
     _apiUrlAppState = value;
+    prefs.setString('ff_apiUrlAppState', value);
   }
 
   bool _fromPinPage = false;

@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'home_page_widget.dart' show HomePageWidget;
@@ -24,6 +23,10 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Firestore Query - Query a collection] action in HomePage widget.
+  ApplicationConfigRecord? appConfigOutput;
+  // Stores action output result for [Custom Action - getBuildVersion] action in HomePage widget.
+  String? getBuildVersion;
   // State field(s) for Carousel widget.
   CarouselSliderController? carouselController;
   int carouselCurrentIndex = 0;

@@ -64,6 +64,8 @@ dependencies:
   flutter_cache_manager: 3.4.1
   flutter_plugin_android_lifecycle: 2.0.20
   flutter_polyline_points: ^1.0.0
+  flutter_secure_storage: ^8.0.0
+  flutter_secure_storage_windows: 2.0.0
   font_awesome_flutter: 10.7.0
   from_css_color: 2.0.0
   geolocator: 13.0.1

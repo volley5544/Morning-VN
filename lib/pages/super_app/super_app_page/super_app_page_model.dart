@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'super_app_page_widget.dart' show SuperAppPageWidget;
@@ -17,6 +18,10 @@ class SuperAppPageModel extends FlutterFlowModel<SuperAppPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Firestore Query - Query a collection] action in superAppPage widget.
+  ApplicationConfigRecord? appConfigOutput;
+  // Stores action output result for [Custom Action - getBuildVersion] action in superAppPage widget.
+  String? getBuildVersion;
   // Stores action output result for [Custom Action - getDataFromCollection] action in superAppPage widget.
   dynamic roleMenuJson;
   // State field(s) for PageViewBanner widget.
