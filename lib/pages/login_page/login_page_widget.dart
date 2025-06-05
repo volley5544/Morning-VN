@@ -922,14 +922,14 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                               child:
                                                                   AlertDialog(
                                                                 content: Text(
-                                                                    'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
+                                                                    'Để theo dõi công việc của bạn, Morning FM cần có quyền vị trí nền. Vui lòng chọn \"Cho phép mọi lúc\" trong cài đặt quyền ứng dụng.'),
                                                                 actions: [
                                                                   TextButton(
                                                                     onPressed: () =>
                                                                         Navigator.pop(
                                                                             alertDialogContext),
                                                                     child: Text(
-                                                                        'Open Setting'),
+                                                                        'Mở Cài Đặt'),
                                                                   ),
                                                                 ],
                                                               ),

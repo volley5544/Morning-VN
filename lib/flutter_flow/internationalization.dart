@@ -2790,7 +2790,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Miscellaneous
   {
     '80tv2pc9': {
-      'en': 'Please allow to access your location to tracking your work',
+      'en':
+          'Vui lòng cho phép truy cập vị trí của bạn để theo dõi bạn trong khi làm việc tại chỗ',
       'th': '',
       'vi': '',
     },

@@ -1,3 +1,3 @@
-NSLocationWhenInUseUsageDescription = "Please allow to access your location to tracking your work";
+NSLocationWhenInUseUsageDescription = "Vui lòng cho phép truy cập vị trí của bạn để theo dõi bạn trong khi làm việc tại chỗ";
 NSLocationAlwaysUsageDescription = "We need to track your location even when the app is in the background.";
 NSLocationAlwaysAndWhenInUseUsageDescription = "We need continuous access to your location for accurate tracking.";
