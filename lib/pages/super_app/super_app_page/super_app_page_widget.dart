@@ -86,8 +86,11 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
       _model.getBuildVersion = await actions.getBuildVersion();
       if (!((String appBuildNumber, String latestBuildNumber) {
         return int.parse(appBuildNumber) >= int.parse(latestBuildNumber);
-      }(functions.getBuildNumber(_model.getBuildVersion)!,
-          _model.appConfigOutput!.buildNumber))) {
+      }(
+          functions.getBuildNumber(_model.getBuildVersion)!,
+          (isiOS
+              ? _model.appConfigOutput!.buildNumberIos
+              : _model.appConfigOutput!.buildNumber)))) {
         await showDialog(
           context: context,
           builder: (alertDialogContext) {

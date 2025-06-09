@@ -669,8 +669,11 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                               }(
                                                   functions.getBuildNumber(
                                                       _model.getBuildVersion)!,
-                                                  pinPageApplicationConfigRecord
-                                                      .buildNumber))) {
+                                                  (isiOS
+                                                      ? pinPageApplicationConfigRecord
+                                                          .buildNumberIos
+                                                      : pinPageApplicationConfigRecord
+                                                          .buildNumber)))) {
                                                 await showDialog(
                                                   context: context,
                                                   builder:

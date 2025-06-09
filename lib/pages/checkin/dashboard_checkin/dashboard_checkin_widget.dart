@@ -47,8 +47,11 @@ class _DashboardCheckinWidgetState extends State<DashboardCheckinWidget>
       _model.getBuildVersion = await actions.getBuildVersion();
       if (!((String appBuildNumber, String latestBuildNumber) {
         return int.parse(appBuildNumber) >= int.parse(latestBuildNumber);
-      }(functions.getBuildNumber(_model.getBuildVersion)!,
-          _model.appConfig!.buildNumber))) {
+      }(
+          functions.getBuildNumber(_model.getBuildVersion)!,
+          (isiOS
+              ? _model.appConfig!.buildNumberIos
+              : _model.appConfig!.buildNumber)))) {
         await showDialog(
           context: context,
           builder: (alertDialogContext) {

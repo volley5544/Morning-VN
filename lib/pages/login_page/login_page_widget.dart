@@ -739,8 +739,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         functions.getBuildNumber(
                                                             _model
                                                                 .getBuildVersion)!,
-                                                        containerApplicationConfigRecord
-                                                            .buildNumber))) {
+                                                        (isiOS
+                                                            ? containerApplicationConfigRecord
+                                                                .buildNumberIos
+                                                            : containerApplicationConfigRecord
+                                                                .buildNumber)))) {
                                                       await showDialog(
                                                         context: context,
                                                         builder:
@@ -1279,9 +1282,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                     _model.getUserProfile =
                                                         await GetUserProfileAPICall
                                                             .call(
-                                                      apiUrl:
-                                                          loginPageKeyStorage2Record
-                                                              ?.apiUrl,
+                                                      apiUrl: FFAppState()
+                                                          .apiUrlAppState,
                                                       token: FFAppState()
                                                           .accessToken,
                                                     );
