@@ -962,9 +962,66 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                           );
                                                         },
                                                       );
-                                                      if (_shouldSetState)
-                                                        safeSetState(() {});
-                                                      return;
+                                                      await requestPermission(
+                                                          locationPermission);
+                                                      if (await getPermissionStatus(
+                                                          locationPermission)) {
+                                                        _model.backgroundLocationCheck2 =
+                                                            await actions
+                                                                .backgroundLocationCheck();
+                                                        _shouldSetState = true;
+                                                        if (!_model
+                                                            .backgroundLocationCheck2!) {
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return WebViewAware(
+                                                                child:
+                                                                    AlertDialog(
+                                                                  content: Text(
+                                                                      'Để theo dõi công việc của bạn, Morning FM cần có quyền vị trí nền. Vui lòng chọn \"Cho phép mọi lúc\" trong cài đặt quyền ứng dụng.'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: Text(
+                                                                          'Mở Cài Đặt'),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              );
+                                                            },
+                                                          );
+                                                        }
+                                                      } else {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return WebViewAware(
+                                                              child:
+                                                                  AlertDialog(
+                                                                content: Text(
+                                                                    'Vui lòng cho phép truy cập vị trí của bạn để theo dõi công việc của bạn'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
+                                                        if (_shouldSetState)
+                                                          safeSetState(() {});
+                                                        return;
+                                                      }
                                                     }
 
                                                     _model.permissionRequestOutput =
