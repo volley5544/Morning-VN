@@ -1,4 +1,4 @@
-package com.srisawad.morningvn
+package com.srisawad.arunsawadvn
 
 import io.flutter.embedding.android.FlutterActivity
 

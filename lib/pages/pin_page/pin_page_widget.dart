@@ -492,7 +492,7 @@ class _PinPageWidgetState extends State<PinPageWidget>
                                 ).then((value) => safeSetState(() {}));
                               },
                               child: Image.asset(
-                                'assets/images/ArunSawadQR.png',
+                                'assets/images/Logo-Morning_VN_HEAD_(2).png',
                                 width: 140.0,
                                 height: 140.0,
                                 fit: BoxFit.fitHeight,
