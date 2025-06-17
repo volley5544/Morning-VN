@@ -917,68 +917,28 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       _shouldSetState = true;
                                                       if (!_model
                                                           .backgroundLocationCheck!) {
-                                                        if (isiOS) {
-                                                          _model.backgroundLocationCheck2 =
-                                                              await actions
-                                                                  .backgroundLocationCheck();
-                                                          _shouldSetState =
-                                                              true;
-                                                        } else {
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return WebViewAware(
-                                                                child:
-                                                                    AlertDialog(
-                                                                  content: Text(
-                                                                      'Để theo dõi công việc của bạn, Morning FM cần có quyền vị trí nền. Vui lòng chọn \"Cho phép mọi lúc\" trong cài đặt quyền ứng dụng.'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Mở Cài Đặt'),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              );
-                                                            },
-                                                          );
-                                                          if (_shouldSetState)
-                                                            safeSetState(() {});
-                                                          return;
-                                                        }
-
-                                                        if (!_model
-                                                            .backgroundLocationCheck2!) {
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return WebViewAware(
-                                                                child:
-                                                                    AlertDialog(
-                                                                  content: Text(
-                                                                      'Để theo dõi công việc của bạn, Morning FM cần có quyền vị trí nền. Vui lòng chọn \"Cho phép mọi lúc\" trong cài đặt quyền ứng dụng.'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Mở Cài Đặt'),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              );
-                                                            },
-                                                          );
-                                                          if (_shouldSetState)
-                                                            safeSetState(() {});
-                                                          return;
-                                                        }
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return WebViewAware(
+                                                              child:
+                                                                  AlertDialog(
+                                                                content: Text(
+                                                                    'Để theo dõi công việc của bạn, Morning FM cần có quyền vị trí nền. Vui lòng chọn \"Cho phép mọi lúc\" trong cài đặt quyền ứng dụng.'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Mở Cài Đặt'),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
                                                       }
                                                     } else {
                                                       await showDialog(
@@ -988,7 +948,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                           return WebViewAware(
                                                             child: AlertDialog(
                                                               content: Text(
-                                                                  'Vui lòng cho phép truy cập vị trí của bạn để theo dõi công việc của bạn'),
+                                                                  'Vui lòng cho phép truyhạn để theo dõi công việc của bạn'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -1010,30 +970,66 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                     _shouldSetState = true;
                                                     if (!_model
                                                         .permissionRequestOutput!) {
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return WebViewAware(
-                                                            child: AlertDialog(
-                                                              content: Text(
-                                                                  'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
+                                                      if (isiOS) {
+                                                        _model.permissionRequestOutput2 =
+                                                            await actions
+                                                                .backgroundLocationPermission();
+                                                        _shouldSetState = true;
+                                                        if (!_model
+                                                            .permissionRequestOutput2!) {
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return WebViewAware(
+                                                                child:
+                                                                    AlertDialog(
+                                                                  content: Text(
+                                                                      'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
                                                                 ),
-                                                              ],
-                                                            ),
+                                                              );
+                                                            },
                                                           );
-                                                        },
-                                                      );
-                                                      if (_shouldSetState)
-                                                        safeSetState(() {});
-                                                      return;
+                                                          if (_shouldSetState)
+                                                            safeSetState(() {});
+                                                          return;
+                                                        }
+                                                      } else {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return WebViewAware(
+                                                              child:
+                                                                  AlertDialog(
+                                                                content: Text(
+                                                                    'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
+                                                        if (_shouldSetState)
+                                                          safeSetState(() {});
+                                                        return;
+                                                      }
                                                     }
                                                     _model.checkGpsEnable =
                                                         await actions
