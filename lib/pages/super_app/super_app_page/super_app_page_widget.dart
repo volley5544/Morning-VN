@@ -1871,8 +1871,14 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                                   .roleMenuJson,
                                                               FFAppState()
                                                                   .employeeID,
-                                                              'monitorTracking') ??
-                                                      true)
+                                                              'monitorTracking')! ||
+                                                      functions
+                                                          .getSpecificIndexFromJson(
+                                                              FFAppState()
+                                                                  .roleMenuJson,
+                                                              'Location employee',
+                                                              FFAppState()
+                                                                  .profileLevel)!)
                                                     InkWell(
                                                       splashColor:
                                                           Colors.transparent,

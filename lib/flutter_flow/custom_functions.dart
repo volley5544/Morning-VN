@@ -843,6 +843,15 @@ bool? getSpecificIndexFromJson(
       case 'Assistant':
         listMenuVisible = 'menuAssistant';
         break;
+      case 'Region':
+        listMenuVisible = 'menuRegion';
+        break;
+      case 'Area':
+        listMenuVisible = 'menuArea';
+        break;
+      case 'Branch':
+        listMenuVisible = 'menuBranch';
+        break;
       default:
         listMenuVisible = 'menuHO'; // Optional: Handle unexpected values
     }

@@ -829,7 +829,9 @@ class _PinPageWidgetState extends State<PinPageWidget>
 
                                               _model.permissionRequestOutput =
                                                   await actions
-                                                      .backgroundLocationPermission();
+                                                      .backgroundLocationPermission(
+                                                isiOS,
+                                              );
                                               _shouldSetState = true;
                                               if (!_model
                                                   .permissionRequestOutput!) {

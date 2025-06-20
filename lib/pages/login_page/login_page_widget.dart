@@ -966,14 +966,18 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
 
                                                     _model.permissionRequestOutput =
                                                         await actions
-                                                            .backgroundLocationPermission();
+                                                            .backgroundLocationPermission(
+                                                      isiOS,
+                                                    );
                                                     _shouldSetState = true;
                                                     if (!_model
                                                         .permissionRequestOutput!) {
                                                       if (isiOS) {
                                                         _model.permissionRequestOutput2 =
                                                             await actions
-                                                                .backgroundLocationPermission();
+                                                                .backgroundLocationPermission(
+                                                          isiOS,
+                                                        );
                                                         _shouldSetState = true;
                                                         if (!_model
                                                             .permissionRequestOutput2!) {
