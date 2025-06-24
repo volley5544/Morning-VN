@@ -23,10 +23,10 @@
   },
   "scripts": {
     "lint": "./node_modules/.bin/eslint --max-warnings=0 .",
-    "serve": "firebase -P arunsawad-vn-application emulators:start --only functions",
-    "shell": "firebase -P arunsawad-vn-application functions:shell",
+    "serve": "firebase -P arunsawad-vn-project emulators:start --only functions",
+    "shell": "firebase -P arunsawad-vn-project functions:shell",
     "start": "npm run shell",
-    "logs": "firebase -P arunsawad-vn-application functions:log",
+    "logs": "firebase -P arunsawad-vn-project functions:log",
     "compile": "cp ../../tsconfig.template.json ./tsconfig-compile.json && tsc --project tsconfig-compile.json"
   },
   "engines": {

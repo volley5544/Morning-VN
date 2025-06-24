@@ -151,7 +151,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
         Navigator.pop(context);
         return;
       }
-      if (!FFAppState().isProduction) {
+      if (FFDevEnvironmentValues().env != 'prd') {
         Navigator.pop(context);
         return;
       }

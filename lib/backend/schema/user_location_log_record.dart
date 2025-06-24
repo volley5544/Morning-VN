@@ -45,6 +45,31 @@ class UserLocationLogRecord extends FirestoreRecord {
   String get operatingSystem => _operatingSystem ?? '';
   bool hasOperatingSystem() => _operatingSystem != null;
 
+  // "email" field.
+  String? _email;
+  String get email => _email ?? '';
+  bool hasEmail() => _email != null;
+
+  // "display_name" field.
+  String? _displayName;
+  String get displayName => _displayName ?? '';
+  bool hasDisplayName() => _displayName != null;
+
+  // "photo_url" field.
+  String? _photoUrl;
+  String get photoUrl => _photoUrl ?? '';
+  bool hasPhotoUrl() => _photoUrl != null;
+
+  // "uid" field.
+  String? _uid;
+  String get uid => _uid ?? '';
+  bool hasUid() => _uid != null;
+
+  // "created_time" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  bool hasCreatedTime() => _createdTime != null;
+
   void _initializeFields() {
     _employeeId = snapshotData['employee_id'] as String?;
     _location = snapshotData['location'] as LatLng?;
@@ -52,6 +77,11 @@ class UserLocationLogRecord extends FirestoreRecord {
     _phoneNumber = snapshotData['phone_number'] as String?;
     _deviceId = snapshotData['device_id'] as String?;
     _operatingSystem = snapshotData['operating_system'] as String?;
+    _email = snapshotData['email'] as String?;
+    _displayName = snapshotData['display_name'] as String?;
+    _photoUrl = snapshotData['photo_url'] as String?;
+    _uid = snapshotData['uid'] as String?;
+    _createdTime = snapshotData['created_time'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -95,6 +125,11 @@ Map<String, dynamic> createUserLocationLogRecordData({
   String? phoneNumber,
   String? deviceId,
   String? operatingSystem,
+  String? email,
+  String? displayName,
+  String? photoUrl,
+  String? uid,
+  DateTime? createdTime,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -104,6 +139,11 @@ Map<String, dynamic> createUserLocationLogRecordData({
       'phone_number': phoneNumber,
       'device_id': deviceId,
       'operating_system': operatingSystem,
+      'email': email,
+      'display_name': displayName,
+      'photo_url': photoUrl,
+      'uid': uid,
+      'created_time': createdTime,
     }.withoutNulls,
   );
 
@@ -121,7 +161,12 @@ class UserLocationLogRecordDocumentEquality
         e1?.dateTime == e2?.dateTime &&
         e1?.phoneNumber == e2?.phoneNumber &&
         e1?.deviceId == e2?.deviceId &&
-        e1?.operatingSystem == e2?.operatingSystem;
+        e1?.operatingSystem == e2?.operatingSystem &&
+        e1?.email == e2?.email &&
+        e1?.displayName == e2?.displayName &&
+        e1?.photoUrl == e2?.photoUrl &&
+        e1?.uid == e2?.uid &&
+        e1?.createdTime == e2?.createdTime;
   }
 
   @override
@@ -131,7 +176,12 @@ class UserLocationLogRecordDocumentEquality
         e?.dateTime,
         e?.phoneNumber,
         e?.deviceId,
-        e?.operatingSystem
+        e?.operatingSystem,
+        e?.email,
+        e?.displayName,
+        e?.photoUrl,
+        e?.uid,
+        e?.createdTime
       ]);
 
   @override

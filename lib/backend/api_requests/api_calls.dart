@@ -212,6 +212,56 @@ class AuthenAPICall {
       ));
 }
 
+class GetEmployeeListCall {
+  static Future<ApiCallResponse> call({
+    String? apiUrl = '',
+    String? token = '',
+    String? employeeId = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "employee_id": "${employeeId}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetEmployeeList',
+      apiUrl: '${apiUrl}/api/hr/users/in-branch-range',
+      callType: ApiCallType.POST,
+      headers: {
+        'ContentType': 'application/json; charset=utf-8,',
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static String? code(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+  static String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  static List<TrackingEmployeeDataModelStruct>? data(dynamic response) =>
+      (getJsonField(
+        response,
+        r'''$.results.data[:]''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => TrackingEmployeeDataModelStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+}
+
 class WorkCheckAPICall {
   static Future<ApiCallResponse> call({
     String? apiUrl = '',
@@ -301,6 +351,59 @@ class WorkCheckAPICall {
         response,
         r'''$.user.start_date''',
       );
+}
+
+class GetLocationEmployeeCall {
+  static Future<ApiCallResponse> call({
+    String? apiUrl = '',
+    String? token = '',
+    String? employeeId = '',
+    String? dateTime = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "employee_id": "${employeeId}",
+  "date_time": "${dateTime}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetLocationEmployee',
+      apiUrl: '${apiUrl}/api/hr/users/check-gps',
+      callType: ApiCallType.POST,
+      headers: {
+        'ContentType': 'application/json; charset=utf-8,',
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static int? code(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+  static String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  static List<TrackingEmployeeDataLocationModelStruct>? data(
+          dynamic response) =>
+      (getJsonField(
+        response,
+        r'''$.results.data.data''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => TrackingEmployeeDataLocationModelStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
 }
 
 class GetLocationCall {
@@ -1001,6 +1104,10 @@ class GetUserProfileAPICall {
         response,
         r'''$.results.gps_level''',
       ));
+  static dynamic level(dynamic response) => getJsonField(
+        response,
+        r'''$.result.level''',
+      );
 }
 
 class GetLeaveListApproveCall {

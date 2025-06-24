@@ -9,10 +9,10 @@ class SearchEmployeeTrackingPageModel
     extends FlutterFlowModel<SearchEmployeeTrackingPageWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Backend Call - API (GetEmployeeListApi)] action in SearchEmployeeTrackingPage widget.
+  // Stores action output result for [Backend Call - API (GetEmployeeList)] action in SearchEmployeeTrackingPage widget.
   ApiCallResponse? apiUserOutput;
   DateTime? datePicked;
-  // Stores action output result for [Backend Call - API (GetLocationEmployeeAPI)] action in Button widget.
+  // Stores action output result for [Backend Call - API (GetLocationEmployee)] action in Button widget.
   ApiCallResponse? getUserLocations;
 
   @override

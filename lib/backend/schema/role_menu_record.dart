@@ -45,6 +45,36 @@ class RoleMenuRecord extends FirestoreRecord {
   List<bool> get menuAssistant => _menuAssistant ?? const [];
   bool hasMenuAssistant() => _menuAssistant != null;
 
+  // "email" field.
+  String? _email;
+  String get email => _email ?? '';
+  bool hasEmail() => _email != null;
+
+  // "display_name" field.
+  String? _displayName;
+  String get displayName => _displayName ?? '';
+  bool hasDisplayName() => _displayName != null;
+
+  // "photo_url" field.
+  String? _photoUrl;
+  String get photoUrl => _photoUrl ?? '';
+  bool hasPhotoUrl() => _photoUrl != null;
+
+  // "uid" field.
+  String? _uid;
+  String get uid => _uid ?? '';
+  bool hasUid() => _uid != null;
+
+  // "created_time" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  bool hasCreatedTime() => _createdTime != null;
+
+  // "phone_number" field.
+  String? _phoneNumber;
+  String get phoneNumber => _phoneNumber ?? '';
+  bool hasPhoneNumber() => _phoneNumber != null;
+
   void _initializeFields() {
     _menuName = getDataList(snapshotData['menuName']);
     _menuHo = getDataList(snapshotData['menuHo']);
@@ -52,6 +82,12 @@ class RoleMenuRecord extends FirestoreRecord {
     _menuGBM = getDataList(snapshotData['menuGBM']);
     _menuASM = getDataList(snapshotData['menuASM']);
     _menuAssistant = getDataList(snapshotData['menuAssistant']);
+    _email = snapshotData['email'] as String?;
+    _displayName = snapshotData['display_name'] as String?;
+    _photoUrl = snapshotData['photo_url'] as String?;
+    _uid = snapshotData['uid'] as String?;
+    _createdTime = snapshotData['created_time'] as DateTime?;
+    _phoneNumber = snapshotData['phone_number'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -88,9 +124,23 @@ class RoleMenuRecord extends FirestoreRecord {
       reference.path.hashCode == other.reference.path.hashCode;
 }
 
-Map<String, dynamic> createRoleMenuRecordData() {
+Map<String, dynamic> createRoleMenuRecordData({
+  String? email,
+  String? displayName,
+  String? photoUrl,
+  String? uid,
+  DateTime? createdTime,
+  String? phoneNumber,
+}) {
   final firestoreData = mapToFirestore(
-    <String, dynamic>{}.withoutNulls,
+    <String, dynamic>{
+      'email': email,
+      'display_name': displayName,
+      'photo_url': photoUrl,
+      'uid': uid,
+      'created_time': createdTime,
+      'phone_number': phoneNumber,
+    }.withoutNulls,
   );
 
   return firestoreData;
@@ -107,7 +157,13 @@ class RoleMenuRecordDocumentEquality implements Equality<RoleMenuRecord> {
         listEquality.equals(e1?.menuBranch, e2?.menuBranch) &&
         listEquality.equals(e1?.menuGBM, e2?.menuGBM) &&
         listEquality.equals(e1?.menuASM, e2?.menuASM) &&
-        listEquality.equals(e1?.menuAssistant, e2?.menuAssistant);
+        listEquality.equals(e1?.menuAssistant, e2?.menuAssistant) &&
+        e1?.email == e2?.email &&
+        e1?.displayName == e2?.displayName &&
+        e1?.photoUrl == e2?.photoUrl &&
+        e1?.uid == e2?.uid &&
+        e1?.createdTime == e2?.createdTime &&
+        e1?.phoneNumber == e2?.phoneNumber;
   }
 
   @override
@@ -117,7 +173,13 @@ class RoleMenuRecordDocumentEquality implements Equality<RoleMenuRecord> {
         e?.menuBranch,
         e?.menuGBM,
         e?.menuASM,
-        e?.menuAssistant
+        e?.menuAssistant,
+        e?.email,
+        e?.displayName,
+        e?.photoUrl,
+        e?.uid,
+        e?.createdTime,
+        e?.phoneNumber
       ]);
 
   @override

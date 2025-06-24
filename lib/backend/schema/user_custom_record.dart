@@ -40,12 +40,36 @@ class UserCustomRecord extends FirestoreRecord {
   DateTime? get createdDate => _createdDate;
   bool hasCreatedDate() => _createdDate != null;
 
+  // "display_name" field.
+  String? _displayName;
+  String get displayName => _displayName ?? '';
+  bool hasDisplayName() => _displayName != null;
+
+  // "photo_url" field.
+  String? _photoUrl;
+  String get photoUrl => _photoUrl ?? '';
+  bool hasPhotoUrl() => _photoUrl != null;
+
+  // "created_time" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  bool hasCreatedTime() => _createdTime != null;
+
+  // "phone_number" field.
+  String? _phoneNumber;
+  String get phoneNumber => _phoneNumber ?? '';
+  bool hasPhoneNumber() => _phoneNumber != null;
+
   void _initializeFields() {
     _eployeeId = snapshotData['eployee_id'] as String?;
     _email = snapshotData['email'] as String?;
     _profileImg = snapshotData['profile_img'] as String?;
     _uid = snapshotData['uid'] as String?;
     _createdDate = snapshotData['created_date'] as DateTime?;
+    _displayName = snapshotData['display_name'] as String?;
+    _photoUrl = snapshotData['photo_url'] as String?;
+    _createdTime = snapshotData['created_time'] as DateTime?;
+    _phoneNumber = snapshotData['phone_number'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -88,6 +112,10 @@ Map<String, dynamic> createUserCustomRecordData({
   String? profileImg,
   String? uid,
   DateTime? createdDate,
+  String? displayName,
+  String? photoUrl,
+  DateTime? createdTime,
+  String? phoneNumber,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -96,6 +124,10 @@ Map<String, dynamic> createUserCustomRecordData({
       'profile_img': profileImg,
       'uid': uid,
       'created_date': createdDate,
+      'display_name': displayName,
+      'photo_url': photoUrl,
+      'created_time': createdTime,
+      'phone_number': phoneNumber,
     }.withoutNulls,
   );
 
@@ -111,12 +143,25 @@ class UserCustomRecordDocumentEquality implements Equality<UserCustomRecord> {
         e1?.email == e2?.email &&
         e1?.profileImg == e2?.profileImg &&
         e1?.uid == e2?.uid &&
-        e1?.createdDate == e2?.createdDate;
+        e1?.createdDate == e2?.createdDate &&
+        e1?.displayName == e2?.displayName &&
+        e1?.photoUrl == e2?.photoUrl &&
+        e1?.createdTime == e2?.createdTime &&
+        e1?.phoneNumber == e2?.phoneNumber;
   }
 
   @override
-  int hash(UserCustomRecord? e) => const ListEquality()
-      .hash([e?.eployeeId, e?.email, e?.profileImg, e?.uid, e?.createdDate]);
+  int hash(UserCustomRecord? e) => const ListEquality().hash([
+        e?.eployeeId,
+        e?.email,
+        e?.profileImg,
+        e?.uid,
+        e?.createdDate,
+        e?.displayName,
+        e?.photoUrl,
+        e?.createdTime,
+        e?.phoneNumber
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is UserCustomRecord;

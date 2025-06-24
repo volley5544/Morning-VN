@@ -619,15 +619,15 @@ Future<FFFirestorePage<T>> queryCollectionPage<T>(
 
 // Creates a Firestore document representing the logged in user if it doesn't yet exist
 Future maybeCreateUser(User user) async {
-  final userRecord = UserCollectionRecord.collection.doc(user.uid);
+  final userRecord = UserLocationLogRecord.collection.doc(user.uid);
   final userExists = await userRecord.get().then((u) => u.exists);
   if (userExists) {
     currentUserDocument =
-        await UserCollectionRecord.getDocumentOnce(userRecord);
+        await UserLocationLogRecord.getDocumentOnce(userRecord);
     return;
   }
 
-  final userData = createUserCollectionRecordData(
+  final userData = createUserLocationLogRecordData(
     email: user.email ??
         FirebaseAuth.instance.currentUser?.email ??
         user.providerData.firstOrNull?.email,
@@ -641,10 +641,10 @@ Future maybeCreateUser(User user) async {
 
   await userRecord.set(userData);
   currentUserDocument =
-      UserCollectionRecord.getDocumentFromData(userData, userRecord);
+      UserLocationLogRecord.getDocumentFromData(userData, userRecord);
 }
 
 Future updateUserDocument({String? email}) async {
   await currentUserDocument?.reference
-      .update(createUserCollectionRecordData(email: email));
+      .update(createUserLocationLogRecordData(email: email));
 }
