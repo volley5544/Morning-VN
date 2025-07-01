@@ -80,22 +80,6 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
         },
       );
 
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return WebViewAware(
-            child: AlertDialog(
-              content: Text(FFAppState().profileLevel),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            ),
-          );
-        },
-      );
       _model.appConfigOutput = await queryApplicationConfigRecordOnce(
         singleRecord: true,
       ).then((s) => s.firstOrNull);
