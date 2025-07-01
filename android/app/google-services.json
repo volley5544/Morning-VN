@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "429713224818",
-    "project_id": "arunsawad-vn-project",
-    "storage_bucket": "arunsawad-vn-project.appspot.com"
+    "project_number": "171972195219",
+    "project_id": "arunsawad-vn-application",
+    "storage_bucket": "arunsawad-vn-application.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:429713224818:android:a6e17a7d9b591f487afeeb",
+        "mobilesdk_app_id": "1:171972195219:android:77570c0232a6dc4f156e66",
         "android_client_info": {
           "package_name": "com.srisawad.arunsawadvn"
         }
@@ -15,7 +15,45 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAFPzgVguyKmIhJgrBE7atgJ6OImAPusQw"
+          "current_key": "AIzaSyD_0GJ5y4orJ4F9gNGcS9-clssCg3z9l5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171972195219:android:8942bb89c36b163f156e66",
+        "android_client_info": {
+          "package_name": "com.srisawad.changebranchlocationweb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_0GJ5y4orJ4F9gNGcS9-clssCg3z9l5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171972195219:android:696105fef89f3f15156e66",
+        "android_client_info": {
+          "package_name": "com.srisawad.morningvn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_0GJ5y4orJ4F9gNGcS9-clssCg3z9l5s"
         }
       ],
       "services": {

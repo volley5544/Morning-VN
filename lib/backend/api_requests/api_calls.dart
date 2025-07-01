@@ -1104,10 +1104,10 @@ class GetUserProfileAPICall {
         response,
         r'''$.results.gps_level''',
       ));
-  static dynamic level(dynamic response) => getJsonField(
+  static String? level(dynamic response) => castToType<String>(getJsonField(
         response,
-        r'''$.result.level''',
-      );
+        r'''$.results.level''',
+      ));
 }
 
 class GetLeaveListApproveCall {

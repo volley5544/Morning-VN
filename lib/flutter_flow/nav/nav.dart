@@ -400,6 +400,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.int,
             ),
           ),
+        ),
+        FFRoute(
+          name: MobileHomePageWidget.routeName,
+          path: MobileHomePageWidget.routePath,
+          builder: (context, params) => MobileHomePageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

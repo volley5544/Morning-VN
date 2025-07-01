@@ -853,7 +853,7 @@ bool? getSpecificIndexFromJson(
         listMenuVisible = 'menuBranch';
         break;
       default:
-        listMenuVisible = 'menuHO'; // Optional: Handle unexpected values
+        listMenuVisible = ''; // Optional: Handle unexpected values
     }
 
     // Check if the listMenuVisible exists in the map and is a List
