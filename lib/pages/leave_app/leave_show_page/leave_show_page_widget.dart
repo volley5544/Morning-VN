@@ -153,7 +153,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
         if ('${getJsonField(
               (_model.leaveHistoryListAPIOutput?.jsonBody ?? ''),
               r'''$.code''',
-            ).toString().toString()}' ==
+            ).toString()}' ==
             '440') {
           await showDialog(
             context: context,
@@ -226,7 +226,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
       if ('${getJsonField(
             (_model.leaveHistoryListAPIOutput?.jsonBody ?? ''),
             r'''$.code''',
-          ).toString().toString()}' !=
+          ).toString()}' !=
           '200') {
         await showDialog(
           context: context,
@@ -261,7 +261,7 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
               '${getJsonField(
                 (_model.leaveHistoryListAPIOutput?.jsonBody ?? ''),
                 r'''$.results.current_year.leave_list[*].list_date[*]''',
-              ).toString().toString()}'
+              ).toString()}'
           ? FFAppState().emptyJson
           : getJsonField(
               (_model.leaveHistoryListAPIOutput?.jsonBody ?? ''),
@@ -297,8 +297,8 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: WillPopScope(
-        onWillPop: () async => false,
+      child: PopScope(
+        canPop: false,
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -1681,18 +1681,17 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                       SelectionArea(
                                                                           child:
                                                                               AutoSizeText(
-                                                                    functions.headApproveToStringFunction(
-                                                                        (getJsonField(
+                                                                    functions.headApproveToStringFunction((getJsonField(
                                                                       _model
                                                                           .leaveHistoryList
                                                                           .elementAtOrNull(
                                                                               leaveItemIndex),
                                                                       r'''$.HEAD_APPROVE''',
                                                                       true,
-                                                                    ) as List)
-                                                                            .map<String>((s) =>
-                                                                                s.toString())
-                                                                            .toList()),
+                                                                    ) as List?)
+                                                                        ?.map<String>((e) => e.toString())
+                                                                        .toList()
+                                                                        .cast<String>()),
                                                                     textAlign:
                                                                         TextAlign
                                                                             .start,
@@ -1952,9 +1951,10 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             .elementAtOrNull(leaveItemIndex),
                                                                         r'''$.LEAVE_DOCUMENT''',
                                                                         true,
-                                                                      ) as List)
-                                                                          .map<String>((s) => s.toString())
+                                                                      ) as List?)!
+                                                                          .map<String>((e) => e.toString())
                                                                           .toList()
+                                                                          .cast<String>()
                                                                           .toList()
                                                                           .cast<String>();
                                                                       safeSetState(
@@ -2146,9 +2146,10 @@ class _LeaveShowPageWidgetState extends State<LeaveShowPageWidget>
                                                                             _model.leaveHistoryList.elementAtOrNull(leaveItemIndex),
                                                                             r'''$.LEAVE_DOCUMENT''',
                                                                             true,
-                                                                          ) as List)
-                                                                              .map<String>((s) => s.toString())
-                                                                              .toList()),
+                                                                          ) as List?)
+                                                                              ?.map<String>((e) => e.toString())
+                                                                              .toList()
+                                                                              .cast<String>()),
                                                                           ParamType
                                                                               .String,
                                                                           isList:

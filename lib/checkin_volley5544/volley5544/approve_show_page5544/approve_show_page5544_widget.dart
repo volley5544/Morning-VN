@@ -94,7 +94,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
       if ('${getJsonField(
             (_model.getAllLeave?.jsonBody ?? ''),
             r'''$.code''',
-          ).toString().toString()}' !=
+          ).toString()}' !=
           '200') {
         Navigator.pop(context);
         await showDialog(
@@ -186,7 +186,7 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
               content: Text(getJsonField(
                 functions.decodingJson(_model.currentYearData?.approve),
                 r'''$.*.name''',
-              ).toString().toString()),
+              ).toString()),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),
@@ -224,8 +224,8 @@ class _ApproveShowPage5544WidgetState extends State<ApproveShowPage5544Widget>
           FocusScope.of(context).unfocus();
           FocusManager.instance.primaryFocus?.unfocus();
         },
-        child: WillPopScope(
-          onWillPop: () async => false,
+        child: PopScope(
+          canPop: false,
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,

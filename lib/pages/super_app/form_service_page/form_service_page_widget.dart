@@ -63,7 +63,11 @@ class _FormServicePageWidgetState extends State<FormServicePageWidget> {
         },
       ).then((value) => safeSetState(() {}));
 
-      await Future.delayed(const Duration(milliseconds: 2000));
+      await Future.delayed(
+        Duration(
+          milliseconds: 2000,
+        ),
+      );
       Navigator.pop(context);
     });
   }
@@ -82,8 +86,8 @@ class _FormServicePageWidgetState extends State<FormServicePageWidget> {
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: WillPopScope(
-        onWillPop: () async => false,
+      child: PopScope(
+        canPop: false,
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,

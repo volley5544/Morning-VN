@@ -94,7 +94,7 @@ class _LeaveShowPage5544WidgetState extends State<LeaveShowPage5544Widget>
       if ('${getJsonField(
             (_model.leaveHistoryListAPIOutput?.jsonBody ?? ''),
             r'''$.code''',
-          ).toString().toString()}' !=
+          ).toString()}' !=
           '200') {
         await showDialog(
           context: context,
@@ -129,7 +129,7 @@ class _LeaveShowPage5544WidgetState extends State<LeaveShowPage5544Widget>
               '${getJsonField(
                 (_model.leaveHistoryListAPIOutput?.jsonBody ?? ''),
                 r'''$.results.current_year.leave_list[*]''',
-              ).toString().toString()}'
+              ).toString()}'
           ? FFAppState().emptyJson
           : getJsonField(
               (_model.leaveHistoryListAPIOutput?.jsonBody ?? ''),
@@ -147,7 +147,7 @@ class _LeaveShowPage5544WidgetState extends State<LeaveShowPage5544Widget>
               content: Text(getJsonField(
                 (_model.leaveHistoryListAPIOutput?.jsonBody ?? ''),
                 r'''$.results.current_year.leave_list[*]''',
-              ).toString().toString()),
+              ).toString()),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),
@@ -184,8 +184,8 @@ class _LeaveShowPage5544WidgetState extends State<LeaveShowPage5544Widget>
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: WillPopScope(
-        onWillPop: () async => false,
+      child: PopScope(
+        canPop: false,
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -1500,18 +1500,17 @@ class _LeaveShowPage5544WidgetState extends State<LeaveShowPage5544Widget>
                                                                       SelectionArea(
                                                                           child:
                                                                               AutoSizeText(
-                                                                    functions.headApproveToStringFunction(
-                                                                        (getJsonField(
+                                                                    functions.headApproveToStringFunction((getJsonField(
                                                                       _model
                                                                           .leaveHistoryList
                                                                           .elementAtOrNull(
                                                                               leaveItemIndex),
                                                                       r'''$.list_date[*].HEAD_APPROVE''',
                                                                       true,
-                                                                    ) as List)
-                                                                            .map<String>((s) =>
-                                                                                s.toString())
-                                                                            .toList()),
+                                                                    ) as List?)
+                                                                        ?.map<String>((e) => e.toString())
+                                                                        .toList()
+                                                                        .cast<String>()),
                                                                     textAlign:
                                                                         TextAlign
                                                                             .start,

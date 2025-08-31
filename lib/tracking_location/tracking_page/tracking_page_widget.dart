@@ -96,7 +96,11 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
               .toList()
               .cast<String>();
       safeSetState(() {});
-      await Future.delayed(const Duration(milliseconds: 500));
+      await Future.delayed(
+        Duration(
+          milliseconds: 500,
+        ),
+      );
       Navigator.pop(context);
     });
 
@@ -196,8 +200,8 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: WillPopScope(
-        onWillPop: () async => false,
+      child: PopScope(
+        canPop: false,
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,

@@ -259,7 +259,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
               '${getJsonField(
                 (_model.getAllLeave?.jsonBody ?? ''),
                 r'''$.results.current_year.Approve[*].list_date[*]''',
-              ).toString().toString()}'
+              ).toString()}'
           ? FFAppState().emptyJson
           : getJsonField(
               (_model.getAllLeave?.jsonBody ?? ''),
@@ -272,7 +272,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
               '${getJsonField(
                 (_model.getAllLeave?.jsonBody ?? ''),
                 r'''$.results.current_year.NotApprove[*].list_date[*]''',
-              ).toString().toString()}'
+              ).toString()}'
           ? FFAppState().emptyJson
           : getJsonField(
               (_model.getAllLeave?.jsonBody ?? ''),
@@ -285,7 +285,7 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
               '${getJsonField(
                 (_model.getAllLeave?.jsonBody ?? ''),
                 r'''$.results.current_year.Cancel[*].list_date[*]''',
-              ).toString().toString()}'
+              ).toString()}'
           ? FFAppState().emptyJson
           : getJsonField(
               (_model.getAllLeave?.jsonBody ?? ''),
@@ -322,8 +322,8 @@ class _ApproveShowPageWidgetState extends State<ApproveShowPageWidget>
           FocusScope.of(context).unfocus();
           FocusManager.instance.primaryFocus?.unfocus();
         },
-        child: WillPopScope(
-          onWillPop: () async => false,
+        child: PopScope(
+          canPop: false,
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
