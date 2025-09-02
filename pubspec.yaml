@@ -31,8 +31,8 @@ dependencies:
   auto_size_text: 3.0.0
   background_location:
     git:
-      url: https://github.com/Almoullim/background_location.git
-      ref: master
+      url: https://github.com/zaave/background_location/
+      ref: fix-flutter-3.30-build
   badges: 2.0.2
   cached_network_image: 3.4.1
   cached_network_image_platform_interface: 4.1.1
