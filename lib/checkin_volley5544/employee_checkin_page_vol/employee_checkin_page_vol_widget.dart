@@ -272,6 +272,7 @@ class _EmployeeCheckinPageVolWidgetState
                                     height: m.dimensions?.height,
                                     width: m.dimensions?.width,
                                     blurHash: m.blurHash,
+                                    originalFilename: m.originalFilename,
                                   ))
                               .toList();
                         } finally {
@@ -726,6 +727,11 @@ class _EmployeeCheckinPageVolWidgetState
                                                   .elementAtOrNull(
                                                       _model.indexBranch!)!
                                                   .branchName;
+                                          _model.dropDownValue = _model
+                                              .listLocationData
+                                              .elementAtOrNull(
+                                                  _model.indexBranch!)!
+                                              .branchName;
                                         });
 
                                         safeSetState(() {});
@@ -833,6 +839,11 @@ class _EmployeeCheckinPageVolWidgetState
                                             .elementAtOrNull(
                                                 _model.indexBranchCopy!)!
                                             .branchName;
+                                    _model.dropDownValue = _model
+                                        .listLocationData
+                                        .elementAtOrNull(
+                                            _model.indexBranchCopy!)!
+                                        .branchName;
                                   });
                                 }
 
@@ -1230,6 +1241,8 @@ class _EmployeeCheckinPageVolWidgetState
                                                                     ?.width,
                                                                 blurHash:
                                                                     m.blurHash,
+                                                                originalFilename:
+                                                                    m.originalFilename,
                                                               ))
                                                       .toList();
                                             } finally {

@@ -8,7 +8,7 @@ class MyProfilePageModel extends FlutterFlowModel<MyProfilePageWidget> {
 
   bool isDataUploading_uploadProfileImageAction = false;
   FFUploadedFile uploadedLocalFile_uploadProfileImageAction =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
+      FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
 
   // Stores action output result for [Custom Action - uploadFileFirebaseStorage] action in IconButton widget.
   String? uploadFirebaseStorageAction;

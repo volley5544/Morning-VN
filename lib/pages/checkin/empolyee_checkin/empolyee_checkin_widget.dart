@@ -330,6 +330,7 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                     height: m.dimensions?.height,
                                     width: m.dimensions?.width,
                                     blurHash: m.blurHash,
+                                    originalFilename: m.originalFilename,
                                   ))
                               .toList();
                         } finally {
@@ -728,6 +729,11 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                     .elementAtOrNull(
                                                         _model.indexdata!)!
                                                     .branchName;
+                                            _model.dropDownBranchValue = _model
+                                                .listLocationData
+                                                .elementAtOrNull(
+                                                    _model.indexdata!)!
+                                                .branchName;
                                           });
                                         }
 
@@ -1186,6 +1192,8 @@ class _EmpolyeeCheckinWidgetState extends State<EmpolyeeCheckinWidget> {
                                                                         ?.width,
                                                                     blurHash: m
                                                                         .blurHash,
+                                                                    originalFilename:
+                                                                        m.originalFilename,
                                                                   ))
                                                               .toList();
                                                     } finally {

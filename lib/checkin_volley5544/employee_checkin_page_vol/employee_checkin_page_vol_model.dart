@@ -42,7 +42,7 @@ class EmployeeCheckinPageVolModel
   String? Function(BuildContext, String?)? textControllerValidator;
   bool isDataUploading_uploadDataEdm2 = false;
   FFUploadedFile uploadedLocalFile_uploadDataEdm2 =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
+      FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
 
   // Stores action output result for [Custom Action - uploadFileFirebaseStorage] action in Button widget.
   String? uploadedImageOutput2;
@@ -52,7 +52,7 @@ class EmployeeCheckinPageVolModel
   ApiCallResponse? workCheckApiOutput;
   bool isDataUploading_uploadDataEdm = false;
   FFUploadedFile uploadedLocalFile_uploadDataEdm =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
+      FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
 
   // Stores action output result for [Custom Action - uploadFileFirebaseStorage] action in IconButton widget.
   String? uploadedImageOutput1;
