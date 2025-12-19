@@ -27,3 +27,4 @@ export 'a4.dart' show a4;
 export 'get_data_from_collection.dart' show getDataFromCollection;
 export 'get_build_number1.dart' show getBuildNumber1;
 export 'clear_all_app_data_copy.dart' show clearAllAppDataCopy;
+export 'initial_background_fetch.dart' show initialBackgroundFetch;

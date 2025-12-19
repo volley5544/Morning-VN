@@ -159,18 +159,27 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
       safeSetState(() {});
       if (!functions.containsValueInJsonList(FFAppState().roleMenuJson,
           FFAppState().profileLevel, 'isTracking')!) {
-        await actions.getBackgroundLocation(
-          FFAppState().employeeID,
-          '${FFAppState().ProfilePhoneNumber}',
-          isAndroid ? 'Android' : 'iOS',
-          FFAppState().Uid,
-        );
-        await actions.periodicGetLocation(
-          FFAppState().employeeID,
-          '${FFAppState().ProfilePhoneNumber}',
-          isAndroid ? 'Android' : 'iOS',
-          FFAppState().Uid,
-        );
+        if (true) {
+          await actions.initialBackgroundFetch(
+            FFAppState().employeeID,
+            '${FFAppState().ProfilePhoneNumber}',
+            isAndroid ? 'Android' : 'iOS',
+            FFAppState().Uid,
+          );
+        } else {
+          await actions.getBackgroundLocation(
+            FFAppState().employeeID,
+            '${FFAppState().ProfilePhoneNumber}',
+            isAndroid ? 'Android' : 'iOS',
+            FFAppState().Uid,
+          );
+          await actions.periodicGetLocation(
+            FFAppState().employeeID,
+            '${FFAppState().ProfilePhoneNumber}',
+            isAndroid ? 'Android' : 'iOS',
+            FFAppState().Uid,
+          );
+        }
       }
       FFAppState().isInApp = true;
       safeSetState(() {});
