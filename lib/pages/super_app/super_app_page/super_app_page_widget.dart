@@ -2465,60 +2465,59 @@ employee */
                                                                           0.0,
                                                                           5.0),
                                                                       child:
-                                                                          OctoImage(
-                                                                        placeholderBuilder:
-                                                                            (_) =>
-                                                                                SizedBox.expand(
-                                                                          child:
-                                                                              Image(
-                                                                            image:
-                                                                                BlurHashImage(gridViewToolsMenuRecord.iconBlurHash),
-                                                                            fit:
-                                                                                BoxFit.cover,
+                                                                          ClipRRect(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(50.0),
+                                                                        child:
+                                                                            OctoImage(
+                                                                          placeholderBuilder: (_) =>
+                                                                              SizedBox.expand(
+                                                                            child:
+                                                                                Image(
+                                                                              image: BlurHashImage(gridViewToolsMenuRecord.iconBlurHash),
+                                                                              fit: BoxFit.cover,
+                                                                            ),
                                                                           ),
-                                                                        ),
-                                                                        image:
-                                                                            CachedNetworkImageProvider(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            gridViewToolsMenuRecord.icon,
-                                                                            'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/No_image_available.png?alt=media&token=747f40f7-2aba-4812-a2a9-686b16e9c47e',
+                                                                          image:
+                                                                              CachedNetworkImageProvider(
+                                                                            valueOrDefault<String>(
+                                                                              gridViewToolsMenuRecord.icon,
+                                                                              'https://firebasestorage.googleapis.com/v0/b/arunsawad-vn-application.appspot.com/o/No_image_available.png?alt=media&token=747f40f7-2aba-4812-a2a9-686b16e9c47e',
+                                                                            ),
                                                                           ),
+                                                                          width:
+                                                                              () {
+                                                                            if (MediaQuery.sizeOf(context).width <
+                                                                                kBreakpointSmall) {
+                                                                              return 50.0;
+                                                                            } else if (MediaQuery.sizeOf(context).width <
+                                                                                kBreakpointMedium) {
+                                                                              return 50.0;
+                                                                            } else if (MediaQuery.sizeOf(context).width <
+                                                                                kBreakpointLarge) {
+                                                                              return 50.0;
+                                                                            } else {
+                                                                              return (MediaQuery.sizeOf(context).width * 0.075);
+                                                                            }
+                                                                          }(),
+                                                                          height:
+                                                                              () {
+                                                                            if (MediaQuery.sizeOf(context).width <
+                                                                                kBreakpointSmall) {
+                                                                              return 50.0;
+                                                                            } else if (MediaQuery.sizeOf(context).width <
+                                                                                kBreakpointMedium) {
+                                                                              return 50.0;
+                                                                            } else if (MediaQuery.sizeOf(context).width <
+                                                                                kBreakpointLarge) {
+                                                                              return 50.0;
+                                                                            } else {
+                                                                              return (MediaQuery.sizeOf(context).width * 0.075);
+                                                                            }
+                                                                          }(),
+                                                                          fit: BoxFit
+                                                                              .cover,
                                                                         ),
-                                                                        width:
-                                                                            () {
-                                                                          if (MediaQuery.sizeOf(context).width <
-                                                                              kBreakpointSmall) {
-                                                                            return 50.0;
-                                                                          } else if (MediaQuery.sizeOf(context).width <
-                                                                              kBreakpointMedium) {
-                                                                            return 50.0;
-                                                                          } else if (MediaQuery.sizeOf(context).width <
-                                                                              kBreakpointLarge) {
-                                                                            return 50.0;
-                                                                          } else {
-                                                                            return (MediaQuery.sizeOf(context).width *
-                                                                                0.075);
-                                                                          }
-                                                                        }(),
-                                                                        height:
-                                                                            () {
-                                                                          if (MediaQuery.sizeOf(context).width <
-                                                                              kBreakpointSmall) {
-                                                                            return 50.0;
-                                                                          } else if (MediaQuery.sizeOf(context).width <
-                                                                              kBreakpointMedium) {
-                                                                            return 50.0;
-                                                                          } else if (MediaQuery.sizeOf(context).width <
-                                                                              kBreakpointLarge) {
-                                                                            return 50.0;
-                                                                          } else {
-                                                                            return (MediaQuery.sizeOf(context).width *
-                                                                                0.075);
-                                                                          }
-                                                                        }(),
-                                                                        fit: BoxFit
-                                                                            .cover,
                                                                       ),
                                                                     ),
                                                                     Text(
