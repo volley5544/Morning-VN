@@ -17,6 +17,7 @@ import 'schema/key_storage2_record.dart';
 import 'schema/holiday_storage_record.dart';
 import 'schema/chg_location_perm_record.dart';
 import 'schema/role_menu_record.dart';
+import 'schema/tools_menu_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -37,6 +38,7 @@ export 'schema/key_storage2_record.dart';
 export 'schema/holiday_storage_record.dart';
 export 'schema/chg_location_perm_record.dart';
 export 'schema/role_menu_record.dart';
+export 'schema/tools_menu_record.dart';
 
 /// Functions to query UserLocationLogRecords (as a Stream and as a Future).
 Future<int> queryUserLocationLogRecordCount({
@@ -477,6 +479,43 @@ Future<List<RoleMenuRecord>> queryRoleMenuRecordOnce({
     queryCollectionOnce(
       RoleMenuRecord.collection,
       RoleMenuRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query ToolsMenuRecords (as a Stream and as a Future).
+Future<int> queryToolsMenuRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ToolsMenuRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ToolsMenuRecord>> queryToolsMenuRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ToolsMenuRecord.collection,
+      ToolsMenuRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ToolsMenuRecord>> queryToolsMenuRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ToolsMenuRecord.collection,
+      ToolsMenuRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

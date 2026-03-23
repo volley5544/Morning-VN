@@ -497,6 +497,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'สถานที่ตั้ง\nพนักงาน',
       'vi': 'Vị trí\nnhân viên',
     },
+    'ueg2gmua': {
+      'en': 'Tools',
+      'th': 'เครื่องมือ',
+      'vi': 'Công cụ',
+    },
     'weds1r6d': {
       'en': 'Incentive สาขา',
       'th': '',
@@ -2618,6 +2623,34 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'v93shwqk': {
       'en': 'เมนูอื่นๆ',
+      'th': '',
+      'vi': '',
+    },
+  },
+  // successCollection
+  {
+    'vizkw3z7': {
+      'en': 'Page Title',
+      'th': '',
+      'vi': '',
+    },
+    '6qkyhbj8': {
+      'en': 'สำเร็จ!',
+      'th': '',
+      'vi': '',
+    },
+    'sulwheo3': {
+      'en': 'บันทึกข้อมูลเสร็จสิ้น',
+      'th': '',
+      'vi': '',
+    },
+    'b2zwyg36': {
+      'en': 'เมนู',
+      'th': '',
+      'vi': '',
+    },
+    'a3pzgbas': {
+      'en': 'Home',
       'th': '',
       'vi': '',
     },

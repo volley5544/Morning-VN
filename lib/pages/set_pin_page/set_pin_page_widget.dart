@@ -3,9 +3,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
+import 'package:flutter/services.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'set_pin_page_model.dart';
@@ -152,6 +152,9 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                           obscureText: false,
                           hintCharacter: '-',
                           keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
                           pinTheme: PinTheme(
                             fieldHeight: 55.0,
                             fieldWidth: 50.0,

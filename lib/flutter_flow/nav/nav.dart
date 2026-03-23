@@ -405,6 +405,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: MobileHomePageWidget.routeName,
           path: MobileHomePageWidget.routePath,
           builder: (context, params) => MobileHomePageWidget(),
+        ),
+        FFRoute(
+          name: SuccessCollectionWidget.routeName,
+          path: SuccessCollectionWidget.routePath,
+          builder: (context, params) => SuccessCollectionWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -604,6 +609,7 @@ class FFRoute {
           return transitionInfo.hasTransition
               ? CustomTransitionPage(
                   key: state.pageKey,
+                  name: state.name,
                   child: child,
                   transitionDuration: transitionInfo.duration,
                   transitionsBuilder:
@@ -621,7 +627,8 @@ class FFRoute {
                     child,
                   ),
                 )
-              : MaterialPage(key: state.pageKey, child: child);
+              : MaterialPage(
+                  key: state.pageKey, name: state.name, child: child);
         },
         routes: routes,
       );

@@ -28,3 +28,5 @@ export 'get_data_from_collection.dart' show getDataFromCollection;
 export 'get_build_number1.dart' show getBuildNumber1;
 export 'clear_all_app_data_copy.dart' show clearAllAppDataCopy;
 export 'initial_background_fetch.dart' show initialBackgroundFetch;
+export 'open_tableau_browser.dart' show openTableauBrowser;
+export 'open3_c_x_action.dart' show open3CXAction;

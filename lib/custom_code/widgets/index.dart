@@ -6,3 +6,5 @@ export 'draw_circle_map.dart' show DrawCircleMap;
 export 'calendar_page.dart' show CalendarPage;
 export 'leave_calendar_widget.dart' show LeaveCalendarWidget;
 export 'polyline_example.dart' show PolylineExample;
+export 'inapp_web_view_widget.dart' show InappWebViewWidget;
+export 'capture_picture_selfie_idcard.dart' show CapturePictureSelfieIdcard;

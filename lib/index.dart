@@ -70,3 +70,5 @@ export '/tracking_location/tracking_page/tracking_page_widget.dart'
     show TrackingPageWidget;
 export '/mobile_home_page/mobile_home_page_widget.dart'
     show MobileHomePageWidget;
+export '/success_collection/success_collection_widget.dart'
+    show SuccessCollectionWidget;
