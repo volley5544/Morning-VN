@@ -919,3 +919,96 @@ bool? containsValueInJsonList(
 
   return inputList[listName!].contains(value!);
 }
+
+DateTime? parseStringToDatetime(String? datetimeStr) {
+  return DateTime.parse(datetimeStr!);
+}
+
+String? showNumberWithComma(String? number) {
+  if ('${number}' == 'null' ||
+      '${number}' == '' ||
+      number == null ||
+      int.tryParse('${number}') == null) {
+    return '0';
+  }
+  RegExp reg = RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
+  String Function(Match) mathFunc = (Match match) => '${match[1]},';
+
+  String result = '$number'.replaceAllMapped(reg, mathFunc);
+
+  return result;
+}
+
+bool? checkPhoneNumberChar(String? text) {
+  bool isPhoneNumber = false;
+
+  if ((text!.length == 9 || text.length == 10) && (text![0] == "0")) {
+    isPhoneNumber = true;
+  }
+  return isPhoneNumber;
+}
+
+String? showCensorPhoneNumber(String? phoneNumber) {
+  if (phoneNumber!.length == 10) {
+    return '${phoneNumber![0]}${phoneNumber![1]}${phoneNumber![2]}-${phoneNumber![3]}${phoneNumber![4]}${phoneNumber![5]}-XXXX';
+  } else {
+    return '-';
+  }
+}
+
+String? returnNumberWithComma2Decimal(String? number) {
+  if ('${number}' == 'null' ||
+      '${number}' == '' ||
+      number == null ||
+      int.tryParse(number.replaceAll('-', '')) == null) {
+    return '0.00';
+  }
+
+  RegExp reg = RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
+  String Function(Match) mathFunc = (Match match) => '${match[1]},';
+
+  String result = '${double.parse(number!).toStringAsFixed(2)}'
+      .replaceAllMapped(reg, mathFunc);
+
+  return result!;
+}
+
+List<CollectionDataModelStruct>? selectedListSave(
+  List<CollectionDataModelStruct>? allList,
+  List<bool>? selectedList,
+) {
+  if (allList == null || selectedList == null) return null;
+
+  List<CollectionDataModelStruct> result = [];
+
+  for (int i = 0; i < allList.length && i < selectedList.length; i++) {
+    if (selectedList[i] == true) {
+      result.add(allList[i]);
+    }
+  }
+
+  return result;
+}
+
+int? countTrueInList(List<bool>? selectedList) {
+  if (selectedList == null) return null;
+
+  return selectedList.where((item) => item == true).length;
+}
+
+String? checkNullValueAndReturn(String? value) {
+  String text = '';
+  if (value! == 'null') {
+    text = '-';
+  } else {
+    text = value!;
+  }
+
+  return text;
+}
+
+String? removeCommaFromNumText(String? numberText) {
+  String result = numberText!.replaceAll(RegExp('[^A-Za-z0-9.]'), '');
+
+  return result;
+}

@@ -600,7 +600,7 @@ Map<String, dynamic> getListApproveFirestoreData(
   final firestoreData = mapToFirestore(listApprove.toMap());
 
   // Add any Firestore field values
-  listApprove.firestoreUtilData.fieldValues
+  mapToFirestore(listApprove.firestoreUtilData.fieldValues)
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;

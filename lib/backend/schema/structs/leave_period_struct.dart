@@ -151,7 +151,7 @@ Map<String, dynamic> getLeavePeriodFirestoreData(
   final firestoreData = mapToFirestore(leavePeriod.toMap());
 
   // Add any Firestore field values
-  leavePeriod.firestoreUtilData.fieldValues
+  mapToFirestore(leavePeriod.firestoreUtilData.fieldValues)
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;

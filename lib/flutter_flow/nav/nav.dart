@@ -410,6 +410,83 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: SuccessCollectionWidget.routeName,
           path: SuccessCollectionWidget.routePath,
           builder: (context, params) => SuccessCollectionWidget(),
+        ),
+        FFRoute(
+          name: LeadDashboardPageWidget.routeName,
+          path: LeadDashboardPageWidget.routePath,
+          builder: (context, params) => LeadDashboardPageWidget(),
+        ),
+        FFRoute(
+          name: LeadListPageWidget.routeName,
+          path: LeadListPageWidget.routePath,
+          builder: (context, params) => LeadListPageWidget(),
+        ),
+        FFRoute(
+          name: TabCollectionPageWidget.routeName,
+          path: TabCollectionPageWidget.routePath,
+          builder: (context, params) => TabCollectionPageWidget(),
+        ),
+        FFRoute(
+          name: ListCollectionPageWidget.routeName,
+          path: ListCollectionPageWidget.routePath,
+          builder: (context, params) => ListCollectionPageWidget(
+            dataFilter: params.getParam(
+              'dataFilter',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: CountCollectionDataModelStruct.fromSerializableMap,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: DetailCollectionPageWidget.routeName,
+          path: DetailCollectionPageWidget.routePath,
+          builder: (context, params) => DetailCollectionPageWidget(
+            idCard: params.getParam(
+              'idCard',
+              ParamType.String,
+            ),
+            dataFilter: params.getParam(
+              'dataFilter',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: CountCollectionDataModelStruct.fromSerializableMap,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: RemarkRP8PageWidget.routeName,
+          path: RemarkRP8PageWidget.routePath,
+          builder: (context, params) => RemarkRP8PageWidget(
+            contNoSelected: params.getParam(
+              'contNoSelected',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: CollectionDataModelStruct.fromSerializableMap,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: SaveCallCollectionPageWidget.routeName,
+          path: SaveCallCollectionPageWidget.routePath,
+          builder: (context, params) => SaveCallCollectionPageWidget(
+            contNoSelected: params.getParam<CollectionDataModelStruct>(
+              'contNoSelected',
+              ParamType.DataStruct,
+              isList: true,
+              structBuilder: CollectionDataModelStruct.fromSerializableMap,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: HistoryCollectionPageWidget.routeName,
+          path: HistoryCollectionPageWidget.routePath,
+          builder: (context, params) => HistoryCollectionPageWidget(
+            contNo: params.getParam(
+              'contNo',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

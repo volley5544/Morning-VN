@@ -72,3 +72,19 @@ export '/mobile_home_page/mobile_home_page_widget.dart'
     show MobileHomePageWidget;
 export '/success_collection/success_collection_widget.dart'
     show SuccessCollectionWidget;
+export '/lead/lead_dashboard_page/lead_dashboard_page_widget.dart'
+    show LeadDashboardPageWidget;
+export '/lead/lead_list_page/lead_list_page_widget.dart'
+    show LeadListPageWidget;
+export '/collection/tab_collection_page/tab_collection_page_widget.dart'
+    show TabCollectionPageWidget;
+export '/collection/list_collection_page/list_collection_page_widget.dart'
+    show ListCollectionPageWidget;
+export '/collection/detail_collection_page/detail_collection_page_widget.dart'
+    show DetailCollectionPageWidget;
+export '/collection/remark_r_p8_page/remark_r_p8_page_widget.dart'
+    show RemarkRP8PageWidget;
+export '/collection/save_call_collection_page/save_call_collection_page_widget.dart'
+    show SaveCallCollectionPageWidget;
+export '/collection/history_collection_page/history_collection_page_widget.dart'
+    show HistoryCollectionPageWidget;

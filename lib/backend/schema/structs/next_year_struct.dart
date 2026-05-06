@@ -225,7 +225,7 @@ Map<String, dynamic> getNextYearFirestoreData(
   final firestoreData = mapToFirestore(nextYear.toMap());
 
   // Add any Firestore field values
-  nextYear.firestoreUtilData.fieldValues
+  mapToFirestore(nextYear.firestoreUtilData.fieldValues)
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;

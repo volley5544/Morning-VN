@@ -199,7 +199,7 @@ Map<String, dynamic> getLeaveDateFirestoreData(
   final firestoreData = mapToFirestore(leaveDateStruct.toMap());
 
   // Add any Firestore field values
-  leaveDateStruct.firestoreUtilData.fieldValues
+  mapToFirestore(leaveDateStruct.firestoreUtilData.fieldValues)
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;

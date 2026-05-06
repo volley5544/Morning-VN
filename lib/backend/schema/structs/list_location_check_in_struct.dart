@@ -225,7 +225,7 @@ Map<String, dynamic> getListLocationCheckInFirestoreData(
   final firestoreData = mapToFirestore(listLocationCheckIn.toMap());
 
   // Add any Firestore field values
-  listLocationCheckIn.firestoreUtilData.fieldValues
+  mapToFirestore(listLocationCheckIn.firestoreUtilData.fieldValues)
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;

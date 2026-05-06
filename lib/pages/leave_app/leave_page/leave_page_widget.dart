@@ -629,12 +629,7 @@ class _LeavePageWidgetState extends State<LeavePageWidget> {
                                             ),
                                           )
                                         ],
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(0.0),
-                                          bottomRight: Radius.circular(0.0),
-                                          topLeft: Radius.circular(0.0),
-                                          topRight: Radius.circular(0.0),
-                                        ),
+                                        borderRadius: BorderRadius.only(),
                                       ),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,

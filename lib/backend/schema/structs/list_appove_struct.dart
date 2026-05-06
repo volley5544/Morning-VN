@@ -499,7 +499,7 @@ Map<String, dynamic> getListAppoveFirestoreData(
   final firestoreData = mapToFirestore(listAppove.toMap());
 
   // Add any Firestore field values
-  listAppove.firestoreUtilData.fieldValues
+  mapToFirestore(listAppove.firestoreUtilData.fieldValues)
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;

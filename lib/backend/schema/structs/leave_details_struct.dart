@@ -223,7 +223,7 @@ Map<String, dynamic> getLeaveDetailsFirestoreData(
   final firestoreData = mapToFirestore(leaveDetails.toMap());
 
   // Add any Firestore field values
-  leaveDetails.firestoreUtilData.fieldValues
+  mapToFirestore(leaveDetails.firestoreUtilData.fieldValues)
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;

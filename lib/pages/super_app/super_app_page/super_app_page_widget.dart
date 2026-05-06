@@ -482,12 +482,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                         EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 12.0, 0.0),
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(0.0),
-                                        bottomRight: Radius.circular(0.0),
-                                        topLeft: Radius.circular(0.0),
-                                        topRight: Radius.circular(0.0),
-                                      ),
+                                      borderRadius: BorderRadius.only(),
                                     ),
                                   ),
                                 ),
@@ -566,12 +561,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                         EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 12.0, 0.0),
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(0.0),
-                                        bottomRight: Radius.circular(0.0),
-                                        topLeft: Radius.circular(0.0),
-                                        topRight: Radius.circular(0.0),
-                                      ),
+                                      borderRadius: BorderRadius.only(),
                                     ),
                                   ),
                                 ),
@@ -1271,8 +1261,6 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                             end: AlignmentDirectional(-0.14, 1.0),
                           ),
                           borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(0.0),
-                            bottomRight: Radius.circular(0.0),
                             topLeft: Radius.circular(24.0),
                             topRight: Radius.circular(24.0),
                           ),
@@ -1418,7 +1406,11 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                       Colors.transparent,
                                                   highlightColor:
                                                       Colors.transparent,
-                                                  onTap: () async {},
+                                                  onTap: () async {
+                                                    context.pushNamed(
+                                                        TabCollectionPageWidget
+                                                            .routeName);
+                                                  },
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
@@ -2957,18 +2949,18 @@ employee */
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          28.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          12.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           12.0),
                                                                   topRight: Radius
                                                                       .circular(
                                                                           28.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          28.0),
+                                                                  bottomRight: Radius
+                                                                      .circular(
+                                                                          12.0),
                                                                 ),
                                                               ),
                                                               child: Row(

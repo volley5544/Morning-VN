@@ -948,6 +948,12 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInIsTrackingList(int index, String value) {
     isTrackingList.insert(index, value);
   }
+
+  String _apiUrlVnCollection = '';
+  String get apiUrlVnCollection => _apiUrlVnCollection;
+  set apiUrlVnCollection(String value) {
+    _apiUrlVnCollection = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

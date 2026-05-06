@@ -671,7 +671,7 @@ Map<String, dynamic> getListDateFirestoreData(
   final firestoreData = mapToFirestore(listDate.toMap());
 
   // Add any Firestore field values
-  listDate.firestoreUtilData.fieldValues
+  mapToFirestore(listDate.firestoreUtilData.fieldValues)
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;

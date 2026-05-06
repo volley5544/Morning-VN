@@ -200,7 +200,7 @@ Map<String, dynamic> getAllLeaveListFirestoreData(
   final firestoreData = mapToFirestore(allLeaveList.toMap());
 
   // Add any Firestore field values
-  allLeaveList.firestoreUtilData.fieldValues
+  mapToFirestore(allLeaveList.firestoreUtilData.fieldValues)
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;

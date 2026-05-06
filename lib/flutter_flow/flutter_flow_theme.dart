@@ -57,6 +57,11 @@ abstract class FlutterFlowTheme {
   late Color info;
 
   late Color grayIcon;
+  late Color lineColor;
+  late Color black600;
+  late Color tertiary400;
+  late Color gray200;
+  late Color customColor2;
 
   FFDesignTokens get designToken => FFDesignTokens(this);
 
@@ -147,7 +152,7 @@ class LightModeTheme extends FlutterFlowTheme {
   Color get tertiaryColor => tertiary;
 
   late Color primary = const Color(0xFF4B39EF);
-  late Color secondary = const Color(0xFF39D2C0);
+  late Color secondary = const Color(0xFFFF6500);
   late Color tertiary = const Color(0xFFEE8B60);
   late Color alternate = const Color(0xFFE0E3E7);
   late Color primaryText = const Color(0xFF14181B);
@@ -161,9 +166,14 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color success = const Color(0xFF249689);
   late Color warning = const Color(0xFFF9CF58);
   late Color error = const Color(0xFFFF5963);
-  late Color info = const Color(0xFFFFFFFF);
+  late Color info = const Color(0xFF1C4494);
 
   late Color grayIcon = const Color(0xFF95A1AC);
+  late Color lineColor = const Color(0xFFE0E3E7);
+  late Color black600 = const Color(0xFF090F13);
+  late Color tertiary400 = const Color(0xFF39D2C0);
+  late Color gray200 = const Color(0xFFDBE2E7);
+  late Color customColor2 = const Color(0xFF595DE0);
 }
 
 abstract class Typography {
@@ -352,6 +362,11 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color info = const Color(0xFFFFFFFF);
 
   late Color grayIcon = const Color(0xFF2BB516);
+  late Color lineColor = const Color(0xFFF942B6);
+  late Color black600 = const Color(0xFF98C224);
+  late Color tertiary400 = const Color(0xFF02D3A1);
+  late Color gray200 = const Color(0xFF7D6DF4);
+  late Color customColor2 = const Color(0xFF595DE0);
 }
 
 class FFDesignTokens {

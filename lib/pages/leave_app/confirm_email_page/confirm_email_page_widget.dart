@@ -110,8 +110,6 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                             borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(0.0),
-                              bottomRight: Radius.circular(0.0),
                               topLeft: Radius.circular(16.0),
                               topRight: Radius.circular(16.0),
                             ),
@@ -535,8 +533,6 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                             borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(0.0),
-                              bottomRight: Radius.circular(0.0),
                               topLeft: Radius.circular(16.0),
                               topRight: Radius.circular(16.0),
                             ),
@@ -548,8 +544,6 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                             borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(0.0),
-                              bottomRight: Radius.circular(0.0),
                               topLeft: Radius.circular(16.0),
                               topRight: Radius.circular(16.0),
                             ),
@@ -561,8 +555,6 @@ class _ConfirmEmailPageWidgetState extends State<ConfirmEmailPageWidget> {
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                             borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(0.0),
-                              bottomRight: Radius.circular(0.0),
                               topLeft: Radius.circular(16.0),
                               topRight: Radius.circular(16.0),
                             ),

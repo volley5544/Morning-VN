@@ -229,7 +229,7 @@ Map<String, dynamic> getOtherYearFirestoreData(
   final firestoreData = mapToFirestore(otherYear.toMap());
 
   // Add any Firestore field values
-  otherYear.firestoreUtilData.fieldValues
+  mapToFirestore(otherYear.firestoreUtilData.fieldValues)
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;

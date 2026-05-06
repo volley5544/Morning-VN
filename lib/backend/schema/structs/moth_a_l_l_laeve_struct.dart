@@ -241,7 +241,7 @@ Map<String, dynamic> getMothALLLaeveFirestoreData(
   );
 
   // Add any Firestore field values
-  mothALLLaeve.firestoreUtilData.fieldValues
+  mapToFirestore(mothALLLaeve.firestoreUtilData.fieldValues)
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;

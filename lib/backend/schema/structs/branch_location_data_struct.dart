@@ -302,7 +302,7 @@ Map<String, dynamic> getBranchLocationDataFirestoreData(
   final firestoreData = mapToFirestore(branchLocationData.toMap());
 
   // Add any Firestore field values
-  branchLocationData.firestoreUtilData.fieldValues
+  mapToFirestore(branchLocationData.firestoreUtilData.fieldValues)
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;

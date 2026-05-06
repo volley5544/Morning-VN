@@ -223,7 +223,7 @@ Map<String, dynamic> getCalendarDataFirestoreData(
   final firestoreData = mapToFirestore(calendarData.toMap());
 
   // Add any Firestore field values
-  calendarData.firestoreUtilData.fieldValues
+  mapToFirestore(calendarData.firestoreUtilData.fieldValues)
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;

@@ -234,7 +234,7 @@ Map<String, dynamic> getLeaveHistoryFirestoreData(
   final firestoreData = mapToFirestore(leaveHistory.toMap());
 
   // Add any Firestore field values
-  leaveHistory.firestoreUtilData.fieldValues
+  mapToFirestore(leaveHistory.firestoreUtilData.fieldValues)
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;

@@ -273,7 +273,7 @@ Map<String, dynamic> getTrackingEmployeeDataModelFirestoreData(
   final firestoreData = mapToFirestore(trackingEmployeeDataModel.toMap());
 
   // Add any Firestore field values
-  trackingEmployeeDataModel.firestoreUtilData.fieldValues
+  mapToFirestore(trackingEmployeeDataModel.firestoreUtilData.fieldValues)
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;

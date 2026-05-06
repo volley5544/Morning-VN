@@ -185,7 +185,7 @@ Map<String, dynamic> getApproveListDateDetailDataModelFirestoreData(
   final firestoreData = mapToFirestore(approveListDateDetailDataModel.toMap());
 
   // Add any Firestore field values
-  approveListDateDetailDataModel.firestoreUtilData.fieldValues
+  mapToFirestore(approveListDateDetailDataModel.firestoreUtilData.fieldValues)
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
