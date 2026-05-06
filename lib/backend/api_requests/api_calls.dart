@@ -352,6 +352,10 @@ class SaveCallCollectionCall {
     );
     final saveCall = _serializeList(saveCallList);
 
+    final ffApiRequestBody = '''
+{
+  "saveCall": ${saveCall}
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'save call collection',
       apiUrl: '${baseUrl}/api/collection/save_call_collection',
@@ -360,10 +364,9 @@ class SaveCallCollectionCall {
         'Content-Type': 'application/json',
         'Accept-Language': '${language}',
       },
-      params: {
-        'saveCall': saveCall,
-      },
-      bodyType: BodyType.MULTIPART,
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
