@@ -2152,7 +2152,7 @@ class _SaveCallCollectionPageWidgetState
                                 ),
                               if (_model.dropDownSaveCallValue != null &&
                                       _model.dropDownSaveCallValue != ''
-                                  ? ('PP' == 'PP')
+                                  ? ('${_model.dropDownSaveCallValue}' == 'PP')
                                   : false)
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -2985,7 +2985,140 @@ class _SaveCallCollectionPageWidgetState
                                                     _model.dropDownSaveCallValue !=
                                                         ''
                                                 ? ('PP' == 'PP')
-                                                : false) {}
+                                                : false) {
+                                              if (_model.checkboxValue!) {
+                                                if (!((_model.textController1
+                                                            .text !=
+                                                        '') &&
+                                                    (double.parse(_model
+                                                            .textController1
+                                                            .text) >
+                                                        0.0) &&
+                                                    (double.parse(_model
+                                                            .textController1
+                                                            .text) <
+                                                        double.parse(
+                                                            currentLoop1Item
+                                                                .arnow)))) {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: Text(() {
+                                                            if (FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode ==
+                                                                'th') {
+                                                              return 'ยอดเงินนัดชำระต้องไม่เกินยอดหนี้คงเหลือ';
+                                                            } else if (FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode ==
+                                                                'en') {
+                                                              return 'ยอดเงินนัดชำระต้องไม่เกินยอดหนี้คงเหลือ';
+                                                            } else if (FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode ==
+                                                                'vi') {
+                                                              return 'ยอดเงินนัดชำระต้องไม่เกินยอดหนี้คงเหลือ';
+                                                            } else {
+                                                              return 'ยอดเงินนัดชำระต้องไม่เกินยอดหนี้คงเหลือ';
+                                                            }
+                                                          }()),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                  _model.saveCall = [];
+                                                  safeSetState(() {});
+                                                  break;
+                                                }
+                                              } else {
+                                                if (!((_model
+                                                            .inputAmountPPComponentModels
+                                                            .getValueForKey(
+                                                          currentLoop1Item
+                                                              .contno,
+                                                          (m) => m
+                                                              .textController
+                                                              .text,
+                                                        ) !=
+                                                        '') &&
+                                                    (double.parse((_model
+                                                            .inputAmountPPComponentModels
+                                                            .getValueForKey(
+                                                          currentLoop1Item
+                                                              .contno,
+                                                          (m) => m
+                                                              .textController
+                                                              .text,
+                                                        )!)) >
+                                                        0.0) &&
+                                                    (double.parse((_model
+                                                            .inputAmountPPComponentModels
+                                                            .getValueForKey(
+                                                          currentLoop1Item
+                                                              .contno,
+                                                          (m) => m
+                                                              .textController
+                                                              .text,
+                                                        )!)) <
+                                                        double.parse(
+                                                            currentLoop1Item
+                                                                .arnow)))) {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: Text(() {
+                                                            if (FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode ==
+                                                                'th') {
+                                                              return 'กรุณาใส่ยอดเงินนัดชำระให้ครบทุกสัญญา และต้องไม่เกินยอดหนี้คงเหลือ';
+                                                            } else if (FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode ==
+                                                                'en') {
+                                                              return 'กรุณาใส่ยอดเงินนัดชำระให้ครบทุกสัญญา และต้องไม่เกินยอดหนี้คงเหลือ';
+                                                            } else if (FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode ==
+                                                                'vi') {
+                                                              return 'กรุณาใส่ยอดเงินนัดชำระให้ครบทุกสัญญา และต้องไม่เกินยอดหนี้คงเหลือ';
+                                                            } else {
+                                                              return 'กรุณาใส่ยอดเงินนัดชำระให้ครบทุกสัญญา และต้องไม่เกินยอดหนี้คงเหลือ';
+                                                            }
+                                                          }()),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                  _model.saveCall = [];
+                                                  safeSetState(() {});
+                                                  break;
+                                                }
+                                              }
+                                            }
                                             _model.addToSaveCall(
                                                 SaveCallCollectionDataModelStruct(
                                               contnoId: currentLoop1Item.id,
@@ -3024,7 +3157,12 @@ class _SaveCallCollectionPageWidgetState
                                             ));
                                             safeSetState(() {});
                                           }
-                                          await showDialog(
+                                          if (_model.saveCall.length <= 0) {
+                                            if (_shouldSetState)
+                                              safeSetState(() {});
+                                            return;
+                                          }
+                                          showDialog(
                                             context: context,
                                             builder: (dialogContext) {
                                               return Dialog(
@@ -3139,6 +3277,7 @@ class _SaveCallCollectionPageWidgetState
                                               safeSetState(() {});
                                             return;
                                           }
+                                          Navigator.pop(context);
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {

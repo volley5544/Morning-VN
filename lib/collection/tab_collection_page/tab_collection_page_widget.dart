@@ -66,7 +66,7 @@ class _TabCollectionPageWidgetState extends State<TabCollectionPageWidget>
       );
 
       FFAppState().apiUrlVnCollection =
-          'https://73db-2405-9800-b651-be18-784a-7ba-5d5f-dfb7.ngrok-free.app';
+          'https://ecac-115-31-145-24.ngrok-free.app';
       safeSetState(() {});
       _model.apiResult1wx = await CollectionVNGroup.getDataCountCall.call(
         branchCode: '',
