@@ -3367,6 +3367,25 @@ class _SaveCallCollectionPageWidgetState
                                               safeSetState(() {});
                                             return;
                                           }
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: Text(
+                                                      '${(_model.saveCall.firstOrNull?.toMap())?.toString()}'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
                                           showDialog(
                                             context: context,
                                             builder: (dialogContext) {
@@ -3400,10 +3419,8 @@ class _SaveCallCollectionPageWidgetState
                                               await CollectionVNGroup
                                                   .saveCallCollectionCall
                                                   .call(
-                                            saveCallList: _model.saveCall
+                                            saveCallJson: _model.saveCall
                                                 .map((e) => e.toMap())
-                                                .toList()
-                                                .map((e) => e.toString())
                                                 .toList(),
                                             url:
                                                 FFAppState().apiUrlVnCollection,

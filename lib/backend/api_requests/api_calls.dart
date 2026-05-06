@@ -342,7 +342,7 @@ class GetDataHistoryCall {
 
 class SaveCallCollectionCall {
   Future<ApiCallResponse> call({
-    List<String>? saveCallList,
+    dynamic saveCallJson,
     String? url = '',
     String? language = '',
   }) async {
@@ -350,8 +350,8 @@ class SaveCallCollectionCall {
       url: url,
       language: language,
     );
-    final saveCall = _serializeList(saveCallList);
 
+    final saveCall = _serializeJson(saveCallJson, true);
     final ffApiRequestBody = '''
 {
   "saveCall": ${saveCall}
