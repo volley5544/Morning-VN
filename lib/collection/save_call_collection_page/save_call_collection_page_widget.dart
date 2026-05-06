@@ -2121,10 +2121,15 @@ class _SaveCallCollectionPageWidgetState
                                                       valueOrDefault<String>(
                                                         _model.datePicked !=
                                                                 null
-                                                            ? functions
-                                                                .parseStringToDateTime(
-                                                                    '2026-05-05')
-                                                                ?.toString()
+                                                            ? dateTimeFormat(
+                                                                "yMd",
+                                                                functions
+                                                                    .parseStringToDateTime(
+                                                                        '2026-05-05'),
+                                                                locale: FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode,
+                                                              )
                                                             : 'เลือกวันนัดชำระ',
                                                         'date',
                                                       ),
@@ -2975,6 +2980,48 @@ class _SaveCallCollectionPageWidgetState
                                                         return 'กรุณาเลือกบันทึกผลการโทร';
                                                       } else {
                                                         return 'กรุณาเลือกบันทึกผลการโทร';
+                                                      }
+                                                    }()),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                            if (_shouldSetState)
+                                              safeSetState(() {});
+                                            return;
+                                          }
+                                          if (!(_model.datePicked != null)) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return WebViewAware(
+                                                  child: AlertDialog(
+                                                    content: Text(() {
+                                                      if (FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode ==
+                                                          'th') {
+                                                        return 'กรุณาเลือกวันนัดชำระ';
+                                                      } else if (FFLocalizations
+                                                                  .of(context)
+                                                              .languageCode ==
+                                                          'en') {
+                                                        return 'กรุณาเลือกวันนัดชำระ';
+                                                      } else if (FFLocalizations
+                                                                  .of(context)
+                                                              .languageCode ==
+                                                          'vi') {
+                                                        return 'กรุณาเลือกวันนัดชำระ';
+                                                      } else {
+                                                        return 'กรุณาเลือกวันนัดชำระ';
                                                       }
                                                     }()),
                                                     actions: [
