@@ -3044,7 +3044,8 @@ class _SaveCallCollectionPageWidgetState
                                                       null &&
                                                   _model.dropDownSaveCallValue !=
                                                       ''
-                                              ? ('PP' == 'PP')
+                                              ? ('${_model.dropDownSaveCallValue}' ==
+                                                  'PP')
                                               : false) {
                                             if (_model.checkboxValue!) {
                                               if (true) {
