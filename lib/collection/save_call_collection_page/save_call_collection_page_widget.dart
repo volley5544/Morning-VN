@@ -3191,6 +3191,24 @@ class _SaveCallCollectionPageWidgetState
                                             ));
                                             safeSetState(() {});
                                           }
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  content: Text('done loop'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
                                           if (_model.saveCall.length <= 0) {
                                             if (_shouldSetState)
                                               safeSetState(() {});
