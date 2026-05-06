@@ -1975,7 +1975,7 @@ class _SaveCallCollectionPageWidgetState
                                 ),
                               if (_model.dropDownSaveCallValue != null &&
                                       _model.dropDownSaveCallValue != ''
-                                  ? ('PP' == 'PP')
+                                  ? ('${_model.dropDownSaveCallValue}' == 'PP')
                                   : false)
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -2998,48 +2998,6 @@ class _SaveCallCollectionPageWidgetState
                                               safeSetState(() {});
                                             return;
                                           }
-                                          if (!(_model.datePicked != null)) {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return WebViewAware(
-                                                  child: AlertDialog(
-                                                    content: Text(() {
-                                                      if (FFLocalizations.of(
-                                                                  context)
-                                                              .languageCode ==
-                                                          'th') {
-                                                        return 'กรุณาเลือกวันนัดชำระ';
-                                                      } else if (FFLocalizations
-                                                                  .of(context)
-                                                              .languageCode ==
-                                                          'en') {
-                                                        return 'กรุณาเลือกวันนัดชำระ';
-                                                      } else if (FFLocalizations
-                                                                  .of(context)
-                                                              .languageCode ==
-                                                          'vi') {
-                                                        return 'กรุณาเลือกวันนัดชำระ';
-                                                      } else {
-                                                        return 'กรุณาเลือกวันนัดชำระ';
-                                                      }
-                                                    }()),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
-                                              },
-                                            );
-                                            if (_shouldSetState)
-                                              safeSetState(() {});
-                                            return;
-                                          }
                                           if (_model.dropDownSaveCallValue !=
                                                       null &&
                                                   _model.dropDownSaveCallValue !=
@@ -3047,6 +3005,48 @@ class _SaveCallCollectionPageWidgetState
                                               ? ('${_model.dropDownSaveCallValue}' ==
                                                   'PP')
                                               : false) {
+                                            if (!(_model.datePicked != null)) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return WebViewAware(
+                                                    child: AlertDialog(
+                                                      content: Text(() {
+                                                        if (FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode ==
+                                                            'th') {
+                                                          return 'กรุณาเลือกวันนัดชำระ';
+                                                        } else if (FFLocalizations
+                                                                    .of(context)
+                                                                .languageCode ==
+                                                            'en') {
+                                                          return 'กรุณาเลือกวันนัดชำระ';
+                                                        } else if (FFLocalizations
+                                                                    .of(context)
+                                                                .languageCode ==
+                                                            'vi') {
+                                                          return 'กรุณาเลือกวันนัดชำระ';
+                                                        } else {
+                                                          return 'กรุณาเลือกวันนัดชำระ';
+                                                        }
+                                                      }()),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: Text('Ok'),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                },
+                                              );
+                                              if (_shouldSetState)
+                                                safeSetState(() {});
+                                              return;
+                                            }
                                             if (_model.checkboxValue!) {
                                               if (true) {
                                                 if (_model
@@ -3308,13 +3308,8 @@ class _SaveCallCollectionPageWidgetState
                                                   FFAppState().employeeID,
                                               updatedUserid:
                                                   FFAppState().employeeID,
-                                              arappdate: dateTimeFormat(
-                                                "dd/mm/y",
-                                                _model.datePicked,
-                                                locale:
-                                                    FFLocalizations.of(context)
-                                                        .languageCode,
-                                              ),
+                                              arappdate:
+                                                  _model.datePicked?.toString(),
                                               ardesc:
                                                   _model.textController2.text,
                                               userid: FFAppState().employeeID,
