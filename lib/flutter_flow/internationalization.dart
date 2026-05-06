@@ -3351,7 +3351,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'mvs1py4s': {
-      'en': 'Option 1',
+      'en': '[5] ฝ่ายพัฒนาสินเชื่อ',
       'th': '',
       'vi': '',
     },
@@ -3376,7 +3376,42 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'uyvudk2q': {
-      'en': 'Option 1',
+      'en': '[5][CR] ติดต่อไม่ได้',
+      'th': '',
+      'vi': '',
+    },
+    '0n1kxkvn': {
+      'en': '[5][LD] LINE DOWN_สายเสีย, เบอร์ถูกระงับ',
+      'th': '',
+      'vi': '',
+    },
+    '89lojh5y': {
+      'en': '[5][NP] ไม่นัดชำระ',
+      'th': '',
+      'vi': '',
+    },
+    'znlp6urf': {
+      'en': '[5][PD] จ่ายครบยอดที่ต้องจัดเก็บ',
+      'th': '',
+      'vi': '',
+    },
+    'lvjfocyy': {
+      'en': '[5][PP] การนัดชำระ',
+      'th': '',
+      'vi': '',
+    },
+    'b9cqefw1': {
+      'en': '[5][PR] จ่ายบางส่วน',
+      'th': '',
+      'vi': '',
+    },
+    'zid92bab': {
+      'en': '[5][TEL] โทร.ติดตามลูกค้า_ไม่คิดค่าใช้จ่าย',
+      'th': '',
+      'vi': '',
+    },
+    'hwpmi3l2': {
+      'en': '[5][WN] WRONG NUMBER_เบอร์ผิด',
       'th': '',
       'vi': '',
     },

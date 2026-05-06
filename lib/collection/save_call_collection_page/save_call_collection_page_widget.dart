@@ -1738,11 +1738,10 @@ class _SaveCallCollectionPageWidgetState
                                                 FormFieldController<String>(
                                           _model.dropDownValue ??= '',
                                         ),
-                                        options:
-                                            List<String>.from(['Option 1']),
+                                        options: List<String>.from(['5']),
                                         optionLabels: [
                                           FFLocalizations.of(context).getText(
-                                            'mvs1py4s' /* Option 1 */,
+                                            'mvs1py4s' /* [5] ฝ่ายพัฒนาสินเชื่อ */,
                                           )
                                         ],
                                         onChanged: (val) => safeSetState(
@@ -1880,10 +1879,43 @@ class _SaveCallCollectionPageWidgetState
                                         child: FlutterFlowDropDown<String>(
                                           controller: _model
                                                   .dropDownSaveCallValueController ??=
-                                              FormFieldController<String>(null),
-                                          options: [
+                                              FormFieldController<String>(
+                                            _model.dropDownSaveCallValue ??= '',
+                                          ),
+                                          options: List<String>.from([
+                                            'CR',
+                                            'LD',
+                                            'NP',
+                                            'PD',
+                                            'PP',
+                                            'PR',
+                                            'TEL',
+                                            'WN'
+                                          ]),
+                                          optionLabels: [
                                             FFLocalizations.of(context).getText(
-                                              'uyvudk2q' /* Option 1 */,
+                                              'uyvudk2q' /* [5][CR] ติดต่อไม่ได้ */,
+                                            ),
+                                            FFLocalizations.of(context).getText(
+                                              '0n1kxkvn' /* [5][LD] LINE DOWN_สายเสีย, เบอ... */,
+                                            ),
+                                            FFLocalizations.of(context).getText(
+                                              '89lojh5y' /* [5][NP] ไม่นัดชำระ */,
+                                            ),
+                                            FFLocalizations.of(context).getText(
+                                              'znlp6urf' /* [5][PD] จ่ายครบยอดที่ต้องจัดเก... */,
+                                            ),
+                                            FFLocalizations.of(context).getText(
+                                              'lvjfocyy' /* [5][PP] การนัดชำระ */,
+                                            ),
+                                            FFLocalizations.of(context).getText(
+                                              'b9cqefw1' /* [5][PR] จ่ายบางส่วน */,
+                                            ),
+                                            FFLocalizations.of(context).getText(
+                                              'zid92bab' /* [5][TEL] โทร.ติดตามลูกค้า_ไม่ค... */,
+                                            ),
+                                            FFLocalizations.of(context).getText(
+                                              'hwpmi3l2' /* [5][WN] WRONG NUMBER_เบอร์ผิด */,
                                             )
                                           ],
                                           onChanged: (val) => safeSetState(() =>
@@ -2873,57 +2905,59 @@ class _SaveCallCollectionPageWidgetState
                                       builder: (context) => FFButtonWidget(
                                         onPressed: () async {
                                           var _shouldSetState = false;
-                                          if (_model.checkboxValue!) {
-                                            if (_model.dropDownSaveCallValue !=
-                                                        null &&
-                                                    _model.dropDownSaveCallValue !=
-                                                        ''
-                                                ? ('PP' == 'PP')
-                                                : false) {
-                                              if (_model.textController1.text ==
-                                                  '') {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return WebViewAware(
-                                                      child: AlertDialog(
-                                                        content: Text(() {
-                                                          if (FFLocalizations.of(
-                                                                      context)
-                                                                  .languageCode ==
-                                                              'th') {
-                                                            return 'กรุณาใส่ยอดเงินนัดชำระ';
-                                                          } else if (FFLocalizations
-                                                                      .of(
-                                                                          context)
-                                                                  .languageCode ==
-                                                              'en') {
-                                                            return 'กรุณาใส่ยอดเงินนัดชำระ';
-                                                          } else if (FFLocalizations
-                                                                      .of(context)
-                                                                  .languageCode ==
-                                                              'vi') {
-                                                            return 'กรุณาใส่ยอดเงินนัดชำระ';
-                                                          } else {
-                                                            return 'กรุณาใส่ยอดเงินนัดชำระ';
-                                                          }
-                                                        }()),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                                if (_shouldSetState)
-                                                  safeSetState(() {});
-                                                return;
+                                          if (_model.dropDownSaveCallValue !=
+                                                      null &&
+                                                  _model.dropDownSaveCallValue !=
+                                                      ''
+                                              ? ('PP' == 'PP')
+                                              : false) {
+                                            if (_model.checkboxValue!) {
+                                              if (true) {
+                                                if (_model
+                                                        .textController1.text ==
+                                                    '') {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          content: Text(() {
+                                                            if (FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode ==
+                                                                'th') {
+                                                              return 'กรุณาใส่ยอดเงินนัดชำระ';
+                                                            } else if (FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode ==
+                                                                'en') {
+                                                              return 'กรุณาใส่ยอดเงินนัดชำระ';
+                                                            } else if (FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode ==
+                                                                'vi') {
+                                                              return 'กรุณาใส่ยอดเงินนัดชำระ';
+                                                            } else {
+                                                              return 'กรุณาใส่ยอดเงินนัดชำระ';
+                                                            }
+                                                          }()),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                  if (_shouldSetState)
+                                                    safeSetState(() {});
+                                                  return;
+                                                }
                                               }
                                             }
                                           }
