@@ -2905,6 +2905,94 @@ class _SaveCallCollectionPageWidgetState
                                       builder: (context) => FFButtonWidget(
                                         onPressed: () async {
                                           var _shouldSetState = false;
+                                          if (!(_model.dropDownValue != null &&
+                                              _model.dropDownValue != '')) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return WebViewAware(
+                                                  child: AlertDialog(
+                                                    content: Text(() {
+                                                      if (FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode ==
+                                                          'th') {
+                                                        return 'กรุณาเลือกรหัสกลุ่ม';
+                                                      } else if (FFLocalizations
+                                                                  .of(context)
+                                                              .languageCode ==
+                                                          'en') {
+                                                        return 'กรุณาเลือกรหัสกลุ่ม';
+                                                      } else if (FFLocalizations
+                                                                  .of(context)
+                                                              .languageCode ==
+                                                          'vi') {
+                                                        return 'กรุณาเลือกรหัสกลุ่ม';
+                                                      } else {
+                                                        return 'กรุณาเลือกรหัสกลุ่ม';
+                                                      }
+                                                    }()),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                            if (_shouldSetState)
+                                              safeSetState(() {});
+                                            return;
+                                          }
+                                          if (!(_model.dropDownSaveCallValue !=
+                                                  null &&
+                                              _model.dropDownSaveCallValue !=
+                                                  '')) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return WebViewAware(
+                                                  child: AlertDialog(
+                                                    content: Text(() {
+                                                      if (FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode ==
+                                                          'th') {
+                                                        return 'กรุณาเลือกบันทึกผลการโทร';
+                                                      } else if (FFLocalizations
+                                                                  .of(context)
+                                                              .languageCode ==
+                                                          'en') {
+                                                        return 'กรุณาเลือกบันทึกผลการโทร';
+                                                      } else if (FFLocalizations
+                                                                  .of(context)
+                                                              .languageCode ==
+                                                          'vi') {
+                                                        return 'กรุณาเลือกบันทึกผลการโทร';
+                                                      } else {
+                                                        return 'กรุณาเลือกบันทึกผลการโทร';
+                                                      }
+                                                    }()),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                            if (_shouldSetState)
+                                              safeSetState(() {});
+                                            return;
+                                          }
                                           if (_model.dropDownSaveCallValue !=
                                                       null &&
                                                   _model.dropDownSaveCallValue !=
@@ -3179,15 +3267,26 @@ class _SaveCallCollectionPageWidgetState
                                               remgcode: _model.dropDownValue,
                                               remdetcode:
                                                   _model.dropDownSaveCallValue,
-                                              amount: _model.checkboxValue!
-                                                  ? _model.textController1.text
-                                                  : _model
-                                                      .inputAmountPPComponentModels
-                                                      .getValueForKey(
-                                                      currentLoop1Item.contno,
-                                                      (m) =>
-                                                          m.textController.text,
-                                                    ),
+                                              amount: _model
+                                                          .dropDownSaveCallValue ==
+                                                      'PP'
+                                                  ? (_model.checkboxValue!
+                                                      ? functions
+                                                          .removeCommaFromNumText(
+                                                              _model
+                                                                  .textController1
+                                                                  .text)
+                                                      : functions
+                                                          .removeCommaFromNumText(_model
+                                                              .inputAmountPPComponentModels
+                                                              .getValueForKey(
+                                                          currentLoop1Item
+                                                              .contno,
+                                                          (m) => m
+                                                              .textController
+                                                              .text,
+                                                        )))
+                                                  : '',
                                             ));
                                             safeSetState(() {});
                                           }
