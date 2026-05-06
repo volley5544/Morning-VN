@@ -3159,13 +3159,16 @@ class _SaveCallCollectionPageWidgetState
                                                 if (!((_model.textController1
                                                             .text !=
                                                         '') &&
-                                                    (double.parse(_model
-                                                            .textController1
-                                                            .text) >
+                                                    (double.parse((functions
+                                                            .removeCommaFromNumText(_model
+                                                                .textController1
+                                                                .text)!)) >
                                                         0.0) &&
-                                                    (double.parse(_model
-                                                            .textController1
-                                                            .text) <
+                                                    (double.parse((functions
+                                                            .removeCommaFromNumText(
+                                                                _model
+                                                                    .textController1
+                                                                    .text)!)) <
                                                         double.parse(
                                                             currentLoop1Item
                                                                 .arnow)))) {
@@ -3222,25 +3225,27 @@ class _SaveCallCollectionPageWidgetState
                                                               .text,
                                                         ) !=
                                                         '') &&
-                                                    (double.parse((_model
-                                                            .inputAmountPPComponentModels
-                                                            .getValueForKey(
+                                                    (double.parse((functions
+                                                            .removeCommaFromNumText(_model
+                                                                .inputAmountPPComponentModels
+                                                                .getValueForKey(
                                                           currentLoop1Item
                                                               .contno,
                                                           (m) => m
                                                               .textController
                                                               .text,
-                                                        )!)) >
+                                                        ))!)) >
                                                         0.0) &&
-                                                    (double.parse((_model
-                                                            .inputAmountPPComponentModels
-                                                            .getValueForKey(
+                                                    (double.parse((functions
+                                                            .removeCommaFromNumText(_model
+                                                                .inputAmountPPComponentModels
+                                                                .getValueForKey(
                                                           currentLoop1Item
                                                               .contno,
                                                           (m) => m
                                                               .textController
                                                               .text,
-                                                        )!)) <
+                                                        ))!)) <
                                                         double.parse(
                                                             currentLoop1Item
                                                                 .arnow)))) {
