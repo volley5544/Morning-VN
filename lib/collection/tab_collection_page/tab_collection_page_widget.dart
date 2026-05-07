@@ -74,6 +74,7 @@ class _TabCollectionPageWidgetState extends State<TabCollectionPageWidget>
         codeRegion: '',
         url: FFAppState().apiUrlVnCollection,
         language: FFLocalizations.of(context).languageCode,
+        token: FFAppState().accessToken,
       );
 
       if ((_model.apiResult1wx?.statusCode ?? 200) != 200) {

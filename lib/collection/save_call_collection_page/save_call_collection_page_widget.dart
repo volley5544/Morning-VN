@@ -77,6 +77,7 @@ class _SaveCallCollectionPageWidgetState
       _model.apiResulte17 = await CollectionVNGroup.getVloanDataCall.call(
         url: FFAppState().apiUrlVnCollection,
         language: FFLocalizations.of(context).languageCode,
+        token: FFAppState().accessToken,
       );
 
       if ((_model.apiResulte17?.statusCode ?? 200) != 200) {
@@ -3525,6 +3526,7 @@ class _SaveCallCollectionPageWidgetState
                                               language:
                                                   FFLocalizations.of(context)
                                                       .languageCode,
+                                              token: FFAppState().accessToken,
                                             );
 
                                             _shouldSetState = true;
@@ -3556,6 +3558,8 @@ class _SaveCallCollectionPageWidgetState
                                                   );
                                                 },
                                               );
+                                              _model.saveCall = [];
+                                              safeSetState(() {});
                                               Navigator.pop(context);
                                               if (_shouldSetState)
                                                 safeSetState(() {});
@@ -3592,6 +3596,8 @@ class _SaveCallCollectionPageWidgetState
                                                   );
                                                 },
                                               );
+                                              _model.saveCall = [];
+                                              safeSetState(() {});
                                               Navigator.pop(context);
                                               if (_shouldSetState)
                                                 safeSetState(() {});

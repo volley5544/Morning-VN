@@ -78,6 +78,7 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
         idCard: widget.idCard,
         url: FFAppState().apiUrlVnCollection,
         language: FFLocalizations.of(context).languageCode,
+        token: FFAppState().accessToken,
       );
 
       if ((_model.apiResultl77?.statusCode ?? 200) != 200) {

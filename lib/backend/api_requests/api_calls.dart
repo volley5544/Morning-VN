@@ -131,17 +131,21 @@ class CollectionVNGroup {
   static String getBaseUrl({
     String? url = '',
     String? language = '',
+    String? token = '',
   }) =>
       '${url}';
   static Map<String, String> headers = {
     'Content-Type': 'application/json',
     'Accept-Language': '[language]',
+    'Authorization': 'Bearer [token]',
   };
   static GetDataCountCall getDataCountCall = GetDataCountCall();
   static GetDataPersonCall getDataPersonCall = GetDataPersonCall();
   static GetDataListCall getDataListCall = GetDataListCall();
   static GetDataHistoryCall getDataHistoryCall = GetDataHistoryCall();
   static GetVloanDataCall getVloanDataCall = GetVloanDataCall();
+  static GetRemarkRPDropdownApiCall getRemarkRPDropdownApiCall =
+      GetRemarkRPDropdownApiCall();
   static SaveCallCollectionCall saveCallCollectionCall =
       SaveCallCollectionCall();
 }
@@ -153,10 +157,12 @@ class GetDataCountCall {
     String? codeRegion = '',
     String? url = '',
     String? language = '',
+    String? token = '',
   }) async {
     final baseUrl = CollectionVNGroup.getBaseUrl(
       url: url,
       language: language,
+      token: token,
     );
 
     final ffApiRequestBody = '''
@@ -172,6 +178,7 @@ class GetDataCountCall {
       headers: {
         'Content-Type': 'application/json',
         'Accept-Language': '${language}',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -201,10 +208,12 @@ class GetDataPersonCall {
     String? idCard = '',
     String? url = '',
     String? language = '',
+    String? token = '',
   }) async {
     final baseUrl = CollectionVNGroup.getBaseUrl(
       url: url,
       language: language,
+      token: token,
     );
 
     final ffApiRequestBody = '''
@@ -218,6 +227,7 @@ class GetDataPersonCall {
       headers: {
         'Content-Type': 'application/json',
         'Accept-Language': '${language}',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -255,10 +265,12 @@ class GetDataListCall {
     String? sortBy = '',
     String? url = '',
     String? language = '',
+    String? token = '',
   }) async {
     final baseUrl = CollectionVNGroup.getBaseUrl(
       url: url,
       language: language,
+      token: token,
     );
 
     final ffApiRequestBody = '''
@@ -280,6 +292,7 @@ class GetDataListCall {
       headers: {
         'Content-Type': 'application/json',
         'Accept-Language': '${language}',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -299,10 +312,12 @@ class GetDataHistoryCall {
     String? contNo = '',
     String? url = '',
     String? language = '',
+    String? token = '',
   }) async {
     final baseUrl = CollectionVNGroup.getBaseUrl(
       url: url,
       language: language,
+      token: token,
     );
 
     final ffApiRequestBody = '''
@@ -316,6 +331,7 @@ class GetDataHistoryCall {
       headers: {
         'Content-Type': 'application/json',
         'Accept-Language': '${language}',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -345,10 +361,12 @@ class GetVloanDataCall {
   Future<ApiCallResponse> call({
     String? url = '',
     String? language = '',
+    String? token = '',
   }) async {
     final baseUrl = CollectionVNGroup.getBaseUrl(
       url: url,
       language: language,
+      token: token,
     );
 
     return ApiManager.instance.makeApiCall(
@@ -358,6 +376,7 @@ class GetVloanDataCall {
       headers: {
         'Content-Type': 'application/json',
         'Accept-Language': '${language}',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       bodyType: BodyType.NONE,
@@ -381,15 +400,69 @@ class GetVloanDataCall {
           .toList();
 }
 
+class GetRemarkRPDropdownApiCall {
+  Future<ApiCallResponse> call({
+    String? url = '',
+    String? language = '',
+    String? token = '',
+  }) async {
+    final baseUrl = CollectionVNGroup.getBaseUrl(
+      url: url,
+      language: language,
+      token: token,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getRemarkRPDropdownApi',
+      apiUrl: '${baseUrl}/api/collection/drop-down',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-Language': '${language}',
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {},
+      bodyType: BodyType.NONE,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  List<RemarkDropdownRP8ModelStruct>? dataJson(dynamic response) =>
+      (getJsonField(
+        response,
+        r'''$.data.dropdown[:]''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => RemarkDropdownRP8ModelStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+  String? statusLayer1(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+  String? messageLayer1(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+}
+
 class SaveCallCollectionCall {
   Future<ApiCallResponse> call({
     dynamic saveCallJson,
     String? url = '',
     String? language = '',
+    String? token = '',
   }) async {
     final baseUrl = CollectionVNGroup.getBaseUrl(
       url: url,
       language: language,
+      token: token,
     );
 
     final saveCall = _serializeJson(saveCallJson, true);
@@ -404,6 +477,7 @@ class SaveCallCollectionCall {
       headers: {
         'Content-Type': 'application/json',
         'Accept-Language': '${language}',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       body: ffApiRequestBody,

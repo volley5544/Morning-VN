@@ -73,6 +73,7 @@ class _HistoryCollectionPageWidgetState
         contNo: widget.contNo,
         url: FFAppState().apiUrlVnCollection,
         language: FFLocalizations.of(context).languageCode,
+        token: FFAppState().accessToken,
       );
 
       if ((_model.apiResulti1b?.statusCode ?? 200) != 200) {
@@ -132,6 +133,7 @@ class _HistoryCollectionPageWidgetState
           .toList()
           .cast<HistoryCollectionDataModelStruct>();
       safeSetState(() {});
+      Navigator.pop(context);
     });
 
     animationsMap.addAll({

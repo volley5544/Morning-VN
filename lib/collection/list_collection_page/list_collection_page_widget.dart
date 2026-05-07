@@ -722,6 +722,7 @@ class _ListCollectionPageWidgetState extends State<ListCollectionPageWidget> {
                             sortBy: _model.sortbyDropdownValue,
                             url: FFAppState().apiUrlVnCollection,
                             language: FFLocalizations.of(context).languageCode,
+                            token: FFAppState().accessToken,
                           ),
                         ),
                         padding: EdgeInsets.fromLTRB(

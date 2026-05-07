@@ -12,6 +12,7 @@ export 'leave_details_struct.dart';
 export 'leave_history_struct.dart';
 export 'leave_list_data_struct.dart';
 export 'list_approve_struct.dart';
+export 'remark_dropdown_r_p8_model_struct.dart';
 export 'tracking_employee_data_model_struct.dart';
 export 'vloan_group_data_model_struct.dart';
 export 'all_leave_list_struct.dart';
