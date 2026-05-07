@@ -116,8 +116,10 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
           builder: (alertDialogContext) {
             return WebViewAware(
               child: AlertDialog(
-                content: Text(
-                    'พบข้อผิดพลาด Connection(${(_model.getRemarkDropdownOutput?.statusCode ?? 200).toString()})'),
+                content: Text('${getJsonField(
+                  (_model.getRemarkDropdownOutput?.jsonBody ?? ''),
+                  r'''$.message''',
+                ).toString()}'),
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),

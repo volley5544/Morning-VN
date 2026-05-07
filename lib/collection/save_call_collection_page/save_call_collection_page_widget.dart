@@ -3393,8 +3393,11 @@ class _SaveCallCollectionPageWidgetState
                                                     FFAppState().employeeID,
                                                 updatedUserid:
                                                     FFAppState().employeeID,
-                                                arappdate: _model.datePicked
-                                                    ?.toString(),
+                                                arappdate:
+                                                    _model.datePicked != null
+                                                        ? _model.datePicked
+                                                            ?.toString()
+                                                        : '',
                                                 ardesc:
                                                     _model.textController2.text,
                                                 userid: FFAppState().employeeID,
