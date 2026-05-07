@@ -1014,5 +1014,36 @@ String? removeCommaFromNumText(String? numberText) {
 }
 
 List<String>? dupeList(List<String>? inputList) {
-  return inputList.toSet().toList();
+  return inputList!.toSet().toList();
+}
+
+List<String>? createListVloan(
+  List<String>? remarkCodeList,
+  List<String>? remarkDetCodeList,
+  List<String>? remarkDetDescList,
+  String? remarkCodeInput,
+) {
+  List<String> outputList = [];
+
+  for (int i = 0; i < remarkCodeList!.length; i++) {
+    if (remarkCodeInput! == remarkCodeList![i]) {
+      outputList.add(
+          '[${remarkCodeList![i]}][${remarkDetCodeList![i]}] ${remarkDetDescList![i]}');
+    }
+  }
+
+  return outputList;
+}
+
+List<String>? combineList(
+  List<String>? list1,
+  List<String>? list2,
+) {
+  List<String> listString = [];
+
+  for (int i = 0; i < list1!.length; i++) {
+    listString.add('[${list1![i]}] ${list2![i]}');
+  }
+
+  return listString;
 }

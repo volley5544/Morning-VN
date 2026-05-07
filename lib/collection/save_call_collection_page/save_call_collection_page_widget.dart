@@ -136,6 +136,7 @@ class _SaveCallCollectionPageWidgetState
           .toList()
           .cast<VloanGroupDataModelStruct>();
       safeSetState(() {});
+      Navigator.pop(context);
     });
 
     _model.textController1 ??= TextEditingController();
@@ -1762,12 +1763,21 @@ class _SaveCallCollectionPageWidgetState
                                                   FormFieldController<String>(
                                             _model.dropDownValue ??= '',
                                           ),
-                                          options: List<String>.from(['5']),
-                                          optionLabels: [
-                                            FFLocalizations.of(context).getText(
-                                              'mvs1py4s' /* [5] ฝ่ายพัฒนาสินเชื่อ */,
-                                            )
-                                          ],
+                                          options: List<String>.from(functions
+                                              .dupeList(_model.vloanGroup
+                                                  .map((e) => e.remgcode)
+                                                  .toList())!),
+                                          optionLabels: functions.dupeList(
+                                              functions
+                                                  .combineList(
+                                                      _model.vloanGroup
+                                                          .map(
+                                                              (e) => e.remgcode)
+                                                          .toList(),
+                                                      _model.vloanGroup
+                                                          .map((e) => e.remdesc)
+                                                          .toList())
+                                                  ?.toList())!,
                                           onChanged: (val) => safeSetState(
                                               () => _model.dropDownValue = val),
                                           width: 200.0,
@@ -1913,50 +1923,24 @@ class _SaveCallCollectionPageWidgetState
                                               _model.dropDownSaveCallValue ??=
                                                   '',
                                             ),
-                                            options: List<String>.from([
-                                              'CR',
-                                              'LD',
-                                              'NP',
-                                              'PD',
-                                              'PP',
-                                              'PR',
-                                              'TEL',
-                                              'WN'
-                                            ]),
-                                            optionLabels: [
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'uyvudk2q' /* [5][CR] ติดต่อไม่ได้ */,
-                                              ),
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                '0n1kxkvn' /* [5][LD] LINE DOWN_สายเสีย, เบอ... */,
-                                              ),
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                '89lojh5y' /* [5][NP] ไม่นัดชำระ */,
-                                              ),
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'znlp6urf' /* [5][PD] จ่ายครบยอดที่ต้องจัดเก... */,
-                                              ),
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'lvjfocyy' /* [5][PP] การนัดชำระ */,
-                                              ),
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'b9cqefw1' /* [5][PR] จ่ายบางส่วน */,
-                                              ),
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'zid92bab' /* [5][TEL] โทร.ติดตามลูกค้า_ไม่ค... */,
-                                              ),
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'hwpmi3l2' /* [5][WN] WRONG NUMBER_เบอร์ผิด */,
-                                              )
-                                            ],
+                                            options: List<String>.from(_model
+                                                .vloanGroup
+                                                .map((e) => e.remdetcode)
+                                                .toList()),
+                                            optionLabels:
+                                                functions.createListVloan(
+                                                    _model.vloanGroup
+                                                        .map((e) => e.remgcode)
+                                                        .toList(),
+                                                    _model.vloanGroup
+                                                        .map(
+                                                            (e) => e.remdetcode)
+                                                        .toList(),
+                                                    _model.vloanGroup
+                                                        .map(
+                                                            (e) => e.remdetdesc)
+                                                        .toList(),
+                                                    _model.dropDownValue)!,
                                             onChanged: (val) => safeSetState(
                                                 () => _model
                                                         .dropDownSaveCallValue =
@@ -3382,10 +3366,28 @@ class _SaveCallCollectionPageWidgetState
                                                 contnoId: currentLoop1Item.id,
                                                 contno: currentLoop1Item.contno,
                                                 server: currentLoop1Item.dbname,
-                                                historyLeadStatus:
-                                                    _model.dropDownValue,
+                                                historyLeadStatus: _model
+                                                    .vloanGroup
+                                                    .elementAtOrNull(functions
+                                                        .getIndexOfSomethingList(
+                                                            _model.vloanGroup
+                                                                .map((e) => e
+                                                                    .remdetcode)
+                                                                .toList(),
+                                                            _model
+                                                                .dropDownSaveCallValue)!)
+                                                    ?.remdesc,
                                                 historyReasonName: _model
-                                                    .dropDownSaveCallValue,
+                                                    .vloanGroup
+                                                    .elementAtOrNull(functions
+                                                        .getIndexOfSomethingList(
+                                                            _model.vloanGroup
+                                                                .map((e) => e
+                                                                    .remdetcode)
+                                                                .toList(),
+                                                            _model
+                                                                .dropDownSaveCallValue)!)
+                                                    ?.remdetdesc,
                                                 createdUserid:
                                                     FFAppState().employeeID,
                                                 updatedUserid:
@@ -3395,9 +3397,26 @@ class _SaveCallCollectionPageWidgetState
                                                 ardesc:
                                                     _model.textController2.text,
                                                 userid: FFAppState().employeeID,
-                                                remgcode: _model.dropDownValue,
-                                                remdetcode: _model
-                                                    .dropDownSaveCallValue,
+                                                remgcode: _model.vloanGroup
+                                                    .elementAtOrNull(functions
+                                                        .getIndexOfSomethingList(
+                                                            _model.vloanGroup
+                                                                .map((e) => e
+                                                                    .remdetcode)
+                                                                .toList(),
+                                                            _model
+                                                                .dropDownSaveCallValue)!)
+                                                    ?.remgcode,
+                                                remdetcode: _model.vloanGroup
+                                                    .elementAtOrNull(functions
+                                                        .getIndexOfSomethingList(
+                                                            _model.vloanGroup
+                                                                .map((e) => e
+                                                                    .remdetcode)
+                                                                .toList(),
+                                                            _model
+                                                                .dropDownSaveCallValue)!)
+                                                    ?.remdetcode,
                                                 amount: _model
                                                             .dropDownSaveCallValue ==
                                                         'PP'
