@@ -13,6 +13,7 @@ export 'leave_history_struct.dart';
 export 'leave_list_data_struct.dart';
 export 'list_approve_struct.dart';
 export 'tracking_employee_data_model_struct.dart';
+export 'vloan_group_data_model_struct.dart';
 export 'all_leave_list_struct.dart';
 export 'branch_location_data_struct.dart';
 export 'calendar_data_struct.dart';

@@ -25,8 +25,21 @@ class SaveCallCollectionPageModel
           int index, Function(SaveCallCollectionDataModelStruct) updateFn) =>
       saveCall[index] = updateFn(saveCall[index]);
 
+  List<VloanGroupDataModelStruct> vloanGroup = [];
+  void addToVloanGroup(VloanGroupDataModelStruct item) => vloanGroup.add(item);
+  void removeFromVloanGroup(VloanGroupDataModelStruct item) =>
+      vloanGroup.remove(item);
+  void removeAtIndexFromVloanGroup(int index) => vloanGroup.removeAt(index);
+  void insertAtIndexInVloanGroup(int index, VloanGroupDataModelStruct item) =>
+      vloanGroup.insert(index, item);
+  void updateVloanGroupAtIndex(
+          int index, Function(VloanGroupDataModelStruct) updateFn) =>
+      vloanGroup[index] = updateFn(vloanGroup[index]);
+
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Backend Call - API (get vloan data)] action in SaveCallCollectionPage widget.
+  ApiCallResponse? apiResulte17;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;

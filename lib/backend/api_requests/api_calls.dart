@@ -141,6 +141,7 @@ class CollectionVNGroup {
   static GetDataPersonCall getDataPersonCall = GetDataPersonCall();
   static GetDataListCall getDataListCall = GetDataListCall();
   static GetDataHistoryCall getDataHistoryCall = GetDataHistoryCall();
+  static GetVloanDataCall getVloanDataCall = GetVloanDataCall();
   static SaveCallCollectionCall saveCallCollectionCall =
       SaveCallCollectionCall();
 }
@@ -166,7 +167,7 @@ class GetDataCountCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'get data count',
-      apiUrl: '${baseUrl}/api/collection/get_data_count',
+      apiUrl: '${baseUrl}/api/collection/get-data-count',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -212,7 +213,7 @@ class GetDataPersonCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'get data person',
-      apiUrl: '${baseUrl}/api/collection/get_data_person',
+      apiUrl: '${baseUrl}/api/collection/get-data-person',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -274,7 +275,7 @@ class GetDataListCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'get data list',
-      apiUrl: '${baseUrl}/api/collection/get_data_list',
+      apiUrl: '${baseUrl}/api/collection/get-data-list',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -310,7 +311,7 @@ class GetDataHistoryCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'get data history',
-      apiUrl: '${baseUrl}/api/collection/get_data_history',
+      apiUrl: '${baseUrl}/api/collection/get-data-history',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -340,6 +341,46 @@ class GetDataHistoryCall {
           .toList();
 }
 
+class GetVloanDataCall {
+  Future<ApiCallResponse> call({
+    String? url = '',
+    String? language = '',
+  }) async {
+    final baseUrl = CollectionVNGroup.getBaseUrl(
+      url: url,
+      language: language,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'get vloan data',
+      apiUrl: '${baseUrl}/api/collection/vloan-data',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-Language': '${language}',
+      },
+      params: {},
+      bodyType: BodyType.NONE,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  List<VloanGroupDataModelStruct>? data(dynamic response) => (getJsonField(
+        response,
+        r'''$.data''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => VloanGroupDataModelStruct.maybeFromMap(x))
+          .withoutNulls
+          .toList();
+}
+
 class SaveCallCollectionCall {
   Future<ApiCallResponse> call({
     dynamic saveCallJson,
@@ -358,7 +399,7 @@ class SaveCallCollectionCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'save call collection',
-      apiUrl: '${baseUrl}/api/collection/save_call_collection',
+      apiUrl: '${baseUrl}/api/collection/save-call-collection',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',

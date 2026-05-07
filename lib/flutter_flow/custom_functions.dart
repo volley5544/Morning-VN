@@ -1012,3 +1012,7 @@ String? removeCommaFromNumText(String? numberText) {
 
   return result;
 }
+
+List<String>? dupeList(List<String>? inputList) {
+  return inputList.toSet().toList();
+}
