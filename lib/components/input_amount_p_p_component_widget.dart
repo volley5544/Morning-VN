@@ -146,7 +146,7 @@ class _InputAmountPPComponentWidgetState
                             FlutterFlowTheme.of(context).labelMedium.fontStyle,
                       ),
                   hintText: FFLocalizations.of(context).getText(
-                    '9aa7eauz' /* จำนวนเงินที่นัดจ่าย */,
+                    '9aa7eauz' /* Amount to be paid */,
                   ),
                   hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
                         font: GoogleFonts.readexPro(

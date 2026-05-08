@@ -7,7 +7,12 @@ import 'loading_model.dart';
 export 'loading_model.dart';
 
 class LoadingWidget extends StatefulWidget {
-  const LoadingWidget({super.key});
+  const LoadingWidget({
+    super.key,
+    this.statusProcess,
+  });
+
+  final String? statusProcess;
 
   @override
   State<LoadingWidget> createState() => _LoadingWidgetState();
@@ -64,7 +69,10 @@ class _LoadingWidgetState extends State<LoadingWidget> {
               width: double.infinity,
               decoration: BoxDecoration(),
               child: Text(
-                FFAppState().statusProcess,
+                ('${FFAppState().statusProcess}' != 'null') &&
+                        ('${FFAppState().statusProcess}' != '')
+                    ? '${FFAppState().statusProcess}'
+                    : '',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       font: GoogleFonts.readexPro(

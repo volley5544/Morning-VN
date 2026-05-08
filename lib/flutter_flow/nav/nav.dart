@@ -424,7 +424,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: TabCollectionPageWidget.routeName,
           path: TabCollectionPageWidget.routePath,
-          builder: (context, params) => TabCollectionPageWidget(),
+          builder: (context, params) => TabCollectionPageWidget(
+            token: params.getParam(
+              'token',
+              ParamType.String,
+            ),
+            employeeId: params.getParam(
+              'employeeId',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: ListCollectionPageWidget.routeName,

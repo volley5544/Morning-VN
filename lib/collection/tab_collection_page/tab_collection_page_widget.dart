@@ -1,6 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/loading/loading_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -19,7 +18,14 @@ import 'tab_collection_page_model.dart';
 export 'tab_collection_page_model.dart';
 
 class TabCollectionPageWidget extends StatefulWidget {
-  const TabCollectionPageWidget({super.key});
+  const TabCollectionPageWidget({
+    super.key,
+    this.token,
+    this.employeeId,
+  });
+
+  final String? token;
+  final String? employeeId;
 
   static String routeName = 'tabCollectionPage';
   static String routePath = '/tabCollectionPage';
@@ -66,8 +72,14 @@ class _TabCollectionPageWidgetState extends State<TabCollectionPageWidget>
         },
       );
 
+      _model.urlCollection =
+          await UrlStorageRecord.getDocumentOnce(FFAppState().urlCollectionVN!);
       FFAppState().apiUrlVnCollection =
-          'https://ecac-115-31-145-24.ngrok-free.app';
+          FFDevEnvironmentValues.currentEnvironment == 'dev'
+              ? _model.urlCollection!.collectionVnDev
+              : _model.urlCollection!.collectionVn;
+      FFAppState().accessToken = widget.token!;
+      FFAppState().employeeID = widget.employeeId!;
       safeSetState(() {});
       _model.apiResult1wx = await CollectionVNGroup.getDataCountCall.call(
         branchCode: '',

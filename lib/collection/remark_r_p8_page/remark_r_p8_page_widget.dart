@@ -357,7 +357,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                               width: double.infinity,
                               decoration: BoxDecoration(),
                               child: Text(
-                                'ชื่อ สกุล',
+                                '${widget.contNoSelected?.name1} ${widget.contNoSelected?.name2}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -427,7 +427,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'bbfhc8qk' /* เลขที่สัญญา */,
+                                                  'bbfhc8qk' /* contract number */,
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -499,7 +499,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                     }
                                                   },
                                                   child: Text(
-                                                    'qqq',
+                                                    '${widget.contNoSelected?.contno}',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -554,7 +554,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                             8.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            '0sf1gtqh' /* วันที่ชำระล่าสุด */,
+                                            '0sf1gtqh' /* Last payment date */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -670,7 +670,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                   8.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              '5ldpnoan' /* วันที่ครบกำหนดชำระ */,
+                                              '5ldpnoan' /* Payment due date */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -794,7 +794,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'pf86b8am' /* วันค้าง/งวดค้าง */,
+                                                'pf86b8am' /* Overdue days/overdue payments */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -937,7 +937,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                   8.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              'of0oqb81' /* สถานะสัญญา (เป้าเริ่มต้น) */,
+                                              'of0oqb81' /* Contract status (initial targe... */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1058,7 +1058,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                   8.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              'j5k500hs' /* เป้าเร่งรัด */,
+                                              'j5k500hs' /* Accelerated target */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1179,7 +1179,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                   8.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              '119hsrwi' /* ยอดหนี้ค้างชำระ */,
+                                              '119hsrwi' /* Last paid date */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1306,7 +1306,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  '3t81sovh' /* ค่างวดที่ต้องชำระ */,
+                                                  '3t81sovh' /* Installments to be paid */,
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -1436,7 +1436,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  '4o3sjf3j' /* ข้อมูล ณ วันที่ */,
+                                                  '4o3sjf3j' /* Date of data */,
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -1571,7 +1571,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'qwyucek3' /* จำนวนครั้งที่บันทึกการโทร */,
+                                                  'qwyucek3' /* Number of recorded calls */,
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -1645,7 +1645,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                             .fromSTEB(5.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      '3 ${() {
+                                                      '${widget.contNoSelected?.historyCount} ${() {
                                                         if (FFLocalizations.of(
                                                                     context)
                                                                 .languageCode ==
@@ -1660,9 +1660,9 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                                     .of(context)
                                                                 .languageCode ==
                                                             'vi') {
-                                                          return 'ครั้ง';
+                                                          return 'lần';
                                                         } else {
-                                                          return 'ครั้ง';
+                                                          return 'times';
                                                         }
                                                       }()}',
                                                       style:
@@ -1715,7 +1715,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        'pncl6q8r' /* ผลการลงพื้นที่ */,
+                        'pncl6q8r' /* Results of the field visit */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             font: GoogleFonts.readexPro(
@@ -1757,7 +1757,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                         20.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        'fzn891qt' /* ผลการติดตามหนี้ */,
+                                        'fzn891qt' /* Debt collection results */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -1815,7 +1815,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                         ),
                                     hintText:
                                         FFLocalizations.of(context).getText(
-                                      'zx9krbjo' /* กรุณาเลือก */,
+                                      'zx9krbjo' /* select */,
                                     ),
                                     icon: Icon(
                                       Icons.keyboard_arrow_down_rounded,
@@ -1925,7 +1925,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'nr4z3zir' /* รายงาน */,
+                                                      'nr4z3zir' /* report */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -2009,7 +2009,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                       text: FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        'ooqiokyj' /* รายงานตามหนี้ */,
+                                                        'ooqiokyj' /* Debt based report */,
                                                       ),
                                                       options: FFButtonOptions(
                                                         width: 200.0,
@@ -2095,7 +2095,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                       20.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      '4a8s2gjs' /* ค่าพิกัด */,
+                                      '4a8s2gjs' /* location */,
                                     ),
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
@@ -2294,7 +2294,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                         20.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        'byt3lt4t' /* หมายเหตุ */,
+                                        'byt3lt4t' /* remark */,
                                       ),
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
@@ -2501,7 +2501,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                           0.0, 0.0, 0.0, 10.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          '2xsdvkh5' /* รูปภาพ */,
+                                          '2xsdvkh5' /* images */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -2946,7 +2946,10 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                               child: Container(
                                                 height: double.infinity,
                                                 width: double.infinity,
-                                                child: LoadingWidget(),
+                                                child: LoadingWidget(
+                                                  statusProcess: FFAppState()
+                                                      .statusProcess,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -2954,6 +2957,8 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                       },
                                     );
 
+                                    FFAppState().statusProcess = '';
+                                    safeSetState(() {});
                                     if (_model.imageUrlList.length <= 0) {
                                       _model.uploadFileUrlListOutput =
                                           await actions
@@ -2964,7 +2969,6 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                         (statusMessage) async {
                                           FFAppState().statusProcess =
                                               statusMessage!;
-                                          safeSetState(() {});
                                           safeSetState(() {});
                                         },
                                       );
@@ -2979,7 +2983,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                     if (_shouldSetState) safeSetState(() {});
                                   },
                                   text: FFLocalizations.of(context).getText(
-                                    'tssbb04y' /* บันทึกการลงพื้นที่ */,
+                                    'tssbb04y' /* save */,
                                   ),
                                   options: FFButtonOptions(
                                     height: 50.0,

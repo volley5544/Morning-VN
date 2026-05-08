@@ -1800,7 +1800,7 @@ class _SaveCallCollectionPageWidgetState
                                               ),
                                           hintText: FFLocalizations.of(context)
                                               .getText(
-                                            '6dq8s913' /* กรุณาเลือก */,
+                                            '6dq8s913' /* select */,
                                           ),
                                           icon: Icon(
                                             Icons.keyboard_arrow_down_rounded,
@@ -1843,7 +1843,7 @@ class _SaveCallCollectionPageWidgetState
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'dwfmhlj2' /* บันทึกผลการโทร */,
+                                                  'dwfmhlj2' /* Record call results */,
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -1968,7 +1968,7 @@ class _SaveCallCollectionPageWidgetState
                                             hintText:
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                              'efjjxxpy' /* กรุณาเลือก */,
+                                              'efjjxxpy' /* select */,
                                             ),
                                             icon: Icon(
                                               Icons.keyboard_arrow_down_rounded,
@@ -2018,7 +2018,7 @@ class _SaveCallCollectionPageWidgetState
                                                 Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'oengddle' /* วันนัดชำระ */,
+                                                    'oengddle' /* Payment date */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -2253,7 +2253,7 @@ class _SaveCallCollectionPageWidgetState
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      '5za6cm0j' /* ยอดที่นัดชำระ */,
+                                                      '5za6cm0j' /* Amount due for payment */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -2300,7 +2300,7 @@ class _SaveCallCollectionPageWidgetState
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'm01n81db' /* ใช้ยอดเดียวกันทุกสัญญา */,
+                                                            'm01n81db' /* same amount for all contracts. */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -2402,7 +2402,7 @@ class _SaveCallCollectionPageWidgetState
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          '75p7fcfo' /* จำนวนเงิน */,
+                                                          '75p7fcfo' /* Amount of money */,
                                                         ),
                                                         style: FlutterFlowTheme
                                                                 .of(context)
@@ -2526,7 +2526,7 @@ class _SaveCallCollectionPageWidgetState
                                                               FFLocalizations.of(
                                                                       context)
                                                                   .getText(
-                                                            '5eju5us4' /* จำนวนเงินที่นัดจ่าย */,
+                                                            '5eju5us4' /* Amount to be paid */,
                                                           ),
                                                           hintStyle:
                                                               FlutterFlowTheme.of(
@@ -2744,7 +2744,7 @@ class _SaveCallCollectionPageWidgetState
                                             Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'venh15gd' /* หมายเหตุ */,
+                                                'venh15gd' /* remark */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -2845,7 +2845,7 @@ class _SaveCallCollectionPageWidgetState
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                'q45n82y4' /* หมายเหตุ */,
+                                                'q45n82y4' /* remark */,
                                               ),
                                               hintStyle: FlutterFlowTheme.of(
                                                       context)
@@ -3628,7 +3628,7 @@ class _SaveCallCollectionPageWidgetState
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
-                                            'w3694y8p' /* บันทึกการโทร */,
+                                            'w3694y8p' /* save */,
                                           ),
                                           options: FFButtonOptions(
                                             height: 50.0,

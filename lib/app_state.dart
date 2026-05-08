@@ -960,6 +960,13 @@ class FFAppState extends ChangeNotifier {
   set statusProcess(String value) {
     _statusProcess = value;
   }
+
+  DocumentReference? _urlCollectionVN =
+      FirebaseFirestore.instance.doc('/urlStorage/iqROv2GzM3bKmLOtb9JL');
+  DocumentReference? get urlCollectionVN => _urlCollectionVN;
+  set urlCollectionVN(DocumentReference? value) {
+    _urlCollectionVN = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {
