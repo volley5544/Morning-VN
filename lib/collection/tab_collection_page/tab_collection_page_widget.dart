@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -210,26 +211,58 @@ class _TabCollectionPageWidgetState extends State<TabCollectionPageWidget>
                 context.safePop();
               },
             ),
-            title: Text(
-              FFLocalizations.of(context).getText(
-                '5j6iopjw' /* Debt type */,
-              ),
-              style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    font: GoogleFonts.outfit(
+            title: InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                _model.translateOutput = await actions.translateLanguage2(
+                  'สวัสดีชาวโลก',
+                  FFLocalizations.of(context).languageCode,
+                );
+                await showDialog(
+                  context: context,
+                  builder: (alertDialogContext) {
+                    return WebViewAware(
+                      child: AlertDialog(
+                        content: Text(_model.translateOutput!),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(alertDialogContext),
+                            child: Text('Ok'),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                );
+
+                safeSetState(() {});
+              },
+              child: Text(
+                FFLocalizations.of(context).getText(
+                  '5j6iopjw' /* Debt type */,
+                ),
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      font: GoogleFonts.outfit(
+                        fontWeight: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontWeight,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontStyle,
+                      ),
+                      color: Colors.white,
+                      fontSize: 22.0,
+                      letterSpacing: 0.0,
                       fontWeight: FlutterFlowTheme.of(context)
                           .headlineMedium
                           .fontWeight,
                       fontStyle:
                           FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                     ),
-                    color: Colors.white,
-                    fontSize: 22.0,
-                    letterSpacing: 0.0,
-                    fontWeight:
-                        FlutterFlowTheme.of(context).headlineMedium.fontWeight,
-                    fontStyle:
-                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
-                  ),
+              ),
             ),
             actions: [
               FlutterFlowIconButton(

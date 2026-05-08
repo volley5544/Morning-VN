@@ -26,6 +26,8 @@ class TabCollectionPageModel extends FlutterFlowModel<TabCollectionPageWidget> {
 
   // Stores action output result for [Backend Call - API (get data count)] action in tabCollectionPage widget.
   ApiCallResponse? apiResult1wx;
+  // Stores action output result for [Custom Action - translateLanguage2] action in Text widget.
+  String? translateOutput;
 
   @override
   void initState(BuildContext context) {}
