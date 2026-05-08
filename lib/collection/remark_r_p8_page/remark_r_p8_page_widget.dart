@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/structs/index.dart';
+import '/backend/backend.dart';
+import '/collection/branch_view_camera_component/branch_view_camera_component_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -9,6 +10,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -132,6 +134,11 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
         );
         return;
       }
+      _model.configRP8Data =
+          CollectionVNGroup.getRemarkRPDropdownApiCall.dataJson(
+        (_model.getRemarkDropdownOutput?.jsonBody ?? ''),
+      );
+      safeSetState(() {});
       Navigator.pop(context);
     });
 
@@ -288,7 +295,23 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                         FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
             ),
-            actions: [],
+            actions: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                child: wrapWithModel(
+                  model: _model.branchViewCameraComponentModel,
+                  updateCallback: () => safeSetState(() {}),
+                  updateOnChange: true,
+                  child: BranchViewCameraComponentWidget(
+                    currentFileAmount: _model.imageList.length,
+                    addFileToList: (fileOutput) async {
+                      _model.addToImageList(fileOutput);
+                      safeSetState(() {});
+                    },
+                  ),
+                ),
+              ),
+            ],
             centerTitle: true,
             elevation: 2.0,
           ),
@@ -1773,8 +1796,13 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                         FormFieldController<String>(
                                       _model.dropDownFollowupValue ??= '',
                                     ),
-                                    options: List<String>.from(<String>[]),
-                                    optionLabels: <String>[],
+                                    options: List<String>.from(_model
+                                        .configRP8Data!.dropdown
+                                        .map((e) => e.code)
+                                        .toList()),
+                                    optionLabels: _model.configRP8Data!.dropdown
+                                        .map((e) => e.description)
+                                        .toList(),
                                     onChanged: (val) => safeSetState(() =>
                                         _model.dropDownFollowupValue = val),
                                     width: 200.0,
@@ -2419,7 +2447,8 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                             ),
                                         textAlign: TextAlign.start,
                                         maxLines: null,
-                                        maxLength: 275,
+                                        maxLength: int.parse(
+                                            '${_model.configRP8Data?.remarkMaxLength}'),
                                         maxLengthEnforcement:
                                             MaxLengthEnforcement.enforced,
                                         cursorColor:
@@ -2685,8 +2714,232 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                           children: [
                             Expanded(
                               child: FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  var _shouldSetState = false;
+                                  if (!(_model.dropDownFollowupValue != null &&
+                                      _model.dropDownFollowupValue != '')) {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return WebViewAware(
+                                          child: AlertDialog(
+                                            content: Text(() {
+                                              if (FFLocalizations.of(context)
+                                                      .languageCode ==
+                                                  'th') {
+                                                return 'ผลการติดตามหนี้';
+                                              } else if (FFLocalizations.of(
+                                                          context)
+                                                      .languageCode ==
+                                                  'en') {
+                                                return 'ผลการติดตามหนี้';
+                                              } else if (FFLocalizations.of(
+                                                          context)
+                                                      .languageCode ==
+                                                  'vi') {
+                                                return 'ผลการติดตามหนี้';
+                                              } else {
+                                                return 'ผลการติดตามหนี้';
+                                              }
+                                            }()),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+                                    if (_shouldSetState) safeSetState(() {});
+                                    return;
+                                  }
+                                  if (!true) {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return WebViewAware(
+                                          child: AlertDialog(
+                                            content: Text(() {
+                                              if (FFLocalizations.of(context)
+                                                      .languageCode ==
+                                                  'th') {
+                                                return 'ผลการติดตามหนี้';
+                                              } else if (FFLocalizations.of(
+                                                          context)
+                                                      .languageCode ==
+                                                  'en') {
+                                                return 'ผลการติดตามหนี้';
+                                              } else if (FFLocalizations.of(
+                                                          context)
+                                                      .languageCode ==
+                                                  'vi') {
+                                                return 'ผลการติดตามหนี้';
+                                              } else {
+                                                return 'ผลการติดตามหนี้';
+                                              }
+                                            }()),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+                                    if (_shouldSetState) safeSetState(() {});
+                                    return;
+                                  }
+                                  if (_model
+                                          .remarkTextFieldTextController.text ==
+                                      '') {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return WebViewAware(
+                                          child: AlertDialog(
+                                            content: Text(() {
+                                              if (FFLocalizations.of(context)
+                                                      .languageCode ==
+                                                  'th') {
+                                                return 'กรุณากรอกหมายเหตุ';
+                                              } else if (FFLocalizations.of(
+                                                          context)
+                                                      .languageCode ==
+                                                  'en') {
+                                                return 'กรุณากรอกหมายเหตุ';
+                                              } else if (FFLocalizations.of(
+                                                          context)
+                                                      .languageCode ==
+                                                  'vi') {
+                                                return 'กรุณากรอกหมายเหตุ';
+                                              } else {
+                                                return 'กรุณากรอกหมายเหตุ';
+                                              }
+                                            }()),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+                                    if (_shouldSetState) safeSetState(() {});
+                                    return;
+                                  }
+                                  if (_model.imageList.length <= 0) {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return WebViewAware(
+                                          child: AlertDialog(
+                                            content: Text(() {
+                                              if (FFLocalizations.of(context)
+                                                      .languageCode ==
+                                                  'th') {
+                                                return 'กรุณาอัปโหลดรูปภาพอย่างน้อย 1 รูป';
+                                              } else if (FFLocalizations.of(
+                                                          context)
+                                                      .languageCode ==
+                                                  'en') {
+                                                return 'กรุณาอัปโหลดรูปภาพอย่างน้อย 1 รูป';
+                                              } else if (FFLocalizations.of(
+                                                          context)
+                                                      .languageCode ==
+                                                  'vi') {
+                                                return 'กรุณาอัปโหลดรูปภาพอย่างน้อย 1 รูป';
+                                              } else {
+                                                return 'กรุณาอัปโหลดรูปภาพอย่างน้อย 1 รูป';
+                                              }
+                                            }()),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+                                    if (_shouldSetState) safeSetState(() {});
+                                    return;
+                                  }
+                                  var confirmDialogResponse = await showDialog<
+                                          bool>(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return WebViewAware(
+                                            child: AlertDialog(
+                                              content: Text(() {
+                                                if (FFLocalizations.of(context)
+                                                        .languageCode ==
+                                                    'th') {
+                                                  return 'คุณต้องการจะบันทึกรายการหรือไม่?';
+                                                } else if (FFLocalizations.of(
+                                                            context)
+                                                        .languageCode ==
+                                                    'en') {
+                                                  return 'คุณต้องการจะบันทึกรายการหรือไม่?';
+                                                } else if (FFLocalizations.of(
+                                                            context)
+                                                        .languageCode ==
+                                                    'vi') {
+                                                  return 'คุณต้องการจะบันทึกรายการหรือไม่?';
+                                                } else {
+                                                  return 'คุณต้องการจะบันทึกรายการหรือไม่?';
+                                                }
+                                              }()),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          false),
+                                                  child: Text('Cancel'),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          true),
+                                                  child: Text('Confirm'),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      ) ??
+                                      false;
+                                  if (!confirmDialogResponse) {
+                                    if (_shouldSetState) safeSetState(() {});
+                                    return;
+                                  }
+                                  if (_model.imageUrlList.length <= 0) {
+                                    _model.uploadFileUrlListOutput =
+                                        await actions
+                                            .uploadMultipleFileFirebaseStorage(
+                                      'UploadFile/BranchView/Collection',
+                                      _model.imageList.toList(),
+                                    );
+                                    _shouldSetState = true;
+                                    _model.imageUrlList = _model
+                                        .uploadFileUrlListOutput!
+                                        .toList()
+                                        .cast<String>();
+                                    safeSetState(() {});
+                                  }
+                                  if (_shouldSetState) safeSetState(() {});
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   'tssbb04y' /* บันทึกการลงพื้นที่ */,

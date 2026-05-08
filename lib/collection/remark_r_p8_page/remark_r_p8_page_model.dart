@@ -1,4 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
+import '/collection/branch_view_camera_component/branch_view_camera_component_widget.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
@@ -16,6 +18,20 @@ class RemarkRP8PageModel extends FlutterFlowModel<RemarkRP8PageWidget> {
       imageList.insert(index, item);
   void updateImageListAtIndex(int index, Function(FFUploadedFile) updateFn) =>
       imageList[index] = updateFn(imageList[index]);
+
+  ConfigRP8ModelStruct? configRP8Data;
+  void updateConfigRP8DataStruct(Function(ConfigRP8ModelStruct) updateFn) {
+    updateFn(configRP8Data ??= ConfigRP8ModelStruct());
+  }
+
+  List<String> imageUrlList = [];
+  void addToImageUrlList(String item) => imageUrlList.add(item);
+  void removeFromImageUrlList(String item) => imageUrlList.remove(item);
+  void removeAtIndexFromImageUrlList(int index) => imageUrlList.removeAt(index);
+  void insertAtIndexInImageUrlList(int index, String item) =>
+      imageUrlList.insert(index, item);
+  void updateImageUrlListAtIndex(int index, Function(String) updateFn) =>
+      imageUrlList[index] = updateFn(imageUrlList[index]);
 
   ///  State fields for stateful widgets in this page.
 
@@ -36,9 +52,16 @@ class RemarkRP8PageModel extends FlutterFlowModel<RemarkRP8PageWidget> {
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();
+  // Stores action output result for [Custom Action - uploadMultipleFileFirebaseStorage] action in Button widget.
+  List<String>? uploadFileUrlListOutput;
+  // Model for BranchViewCameraComponent component.
+  late BranchViewCameraComponentModel branchViewCameraComponentModel;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    branchViewCameraComponentModel =
+        createModel(context, () => BranchViewCameraComponentModel());
+  }
 
   @override
   void dispose() {
@@ -47,5 +70,7 @@ class RemarkRP8PageModel extends FlutterFlowModel<RemarkRP8PageWidget> {
 
     remarkTextFieldFocusNode?.dispose();
     remarkTextFieldTextController?.dispose();
+
+    branchViewCameraComponentModel.dispose();
   }
 }

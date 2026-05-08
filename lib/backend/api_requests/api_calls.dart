@@ -432,16 +432,11 @@ class GetRemarkRPDropdownApiCall {
     );
   }
 
-  List<RemarkDropdownRP8ModelStruct>? dataJson(dynamic response) =>
-      (getJsonField(
+  ConfigRP8ModelStruct? dataJson(dynamic response) =>
+      ConfigRP8ModelStruct.maybeFromMap(getJsonField(
         response,
-        r'''$.data.dropdown[:]''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => RemarkDropdownRP8ModelStruct.maybeFromMap(x))
-          .withoutNulls
-          .toList();
+        r'''$.data''',
+      ));
   String? statusLayer1(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.code''',

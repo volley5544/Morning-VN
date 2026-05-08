@@ -5,6 +5,7 @@ export 'approve_list_date_detail_data_model_struct.dart';
 export 'approve_list_detail_data_model_struct.dart';
 export 'approve_list_month_data_model_struct.dart';
 export 'collection_data_model_struct.dart';
+export 'config_r_p8_model_struct.dart';
 export 'count_collection_data_model_struct.dart';
 export 'data_leave_all_struct.dart';
 export 'history_collection_data_model_struct.dart';
