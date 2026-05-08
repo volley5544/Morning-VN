@@ -1604,7 +1604,7 @@ class _AddLeavePageWidgetState extends State<AddLeavePageWidget> {
 
                                                 _model.firebaseuploadoutput =
                                                     await actions
-                                                        .uploadMultipleFileFirebaseStorage(
+                                                        .uploadMultipleFileFirebaseStorageCopy(
                                                   'leave',
                                                   _model
                                                       .uploadedLocalFiles_uploadMedia59b

@@ -3,13 +3,11 @@ import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/collection/blank_data_component/blank_data_component_widget.dart';
 import '/components/loading/loading_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -33,12 +31,10 @@ class HistoryCollectionPageWidget extends StatefulWidget {
 }
 
 class _HistoryCollectionPageWidgetState
-    extends State<HistoryCollectionPageWidget> with TickerProviderStateMixin {
+    extends State<HistoryCollectionPageWidget> {
   late HistoryCollectionPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -135,21 +131,6 @@ class _HistoryCollectionPageWidgetState
       safeSetState(() {});
       Navigator.pop(context);
     });
-
-    animationsMap.addAll({
-      'containerOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 300.0.ms,
-            duration: 400.0.ms,
-            begin: Offset(100.0, 0.0),
-            end: Offset(0.0, 0.0),
-          ),
-        ],
-      ),
-    });
   }
 
   @override
@@ -188,17 +169,9 @@ class _HistoryCollectionPageWidgetState
               },
             ),
             title: Text(
-              () {
-                if (FFLocalizations.of(context).languageCode == 'th') {
-                  return 'ประวัติการโทร';
-                } else if (FFLocalizations.of(context).languageCode == 'en') {
-                  return 'ประวัติการโทร';
-                } else if (FFLocalizations.of(context).languageCode == 'vi') {
-                  return 'ประวัติการโทร';
-                } else {
-                  return 'ประวัติการโทร';
-                }
-              }(),
+              FFLocalizations.of(context).getText(
+                '551ptzrn' /* call history */,
+              ),
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                     font: GoogleFonts.outfit(
                       fontWeight: FlutterFlowTheme.of(context)
@@ -282,7 +255,7 @@ class _HistoryCollectionPageWidgetState
                                                 child: Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    '6rho0epa' /* วันที่ - เวลา โทร */,
+                                                    '6rho0epa' /* date - time call */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -420,7 +393,7 @@ class _HistoryCollectionPageWidgetState
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'smsto4t6' /* รหัสกลุ่ม */,
+                                                      'smsto4t6' /* group code */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -562,7 +535,7 @@ class _HistoryCollectionPageWidgetState
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'iacmbkt2' /* บันทึกผลการโทร */,
+                                                      'iacmbkt2' /* Record call results */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -700,7 +673,7 @@ class _HistoryCollectionPageWidgetState
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'gz534y6d' /* วันนัดหมาย */,
+                                                      'gz534y6d' /* Appointment day */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -843,7 +816,7 @@ class _HistoryCollectionPageWidgetState
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      't9inzn6c' /* หมายเหตุ */,
+                                                      't9inzn6c' /* remark */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -968,8 +941,7 @@ class _HistoryCollectionPageWidgetState
                                   ),
                                 ),
                               ),
-                            ).animateOnPageLoad(
-                                animationsMap['containerOnPageLoadAnimation']!),
+                            ),
                           );
                         },
                       );

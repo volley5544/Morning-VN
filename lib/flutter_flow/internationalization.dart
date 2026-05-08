@@ -2631,8 +2631,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'vizkw3z7': {
       'en': 'Page Title',
-      'th': '',
-      'vi': '',
+      'th': 'บันทึกผลการโทร',
+      'vi': 'Ghi lại kết quả cuộc gọi',
     },
     '6qkyhbj8': {
       'en': 'สำเร็จ!',
@@ -2843,6 +2843,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
       'vi': '',
     },
+    '5j6iopjw': {
+      'en': 'Debt type',
+      'th': 'ประเภทหนี้',
+      'vi': 'Loại nợ',
+    },
     'yn2eyh8l': {
       'en': 'Home',
       'th': '',
@@ -2862,29 +2867,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     '2k6jtzmo': {
-      'en': 'ชื่อ',
-      'th': '',
-      'vi': '',
+      'en': 'name',
+      'th': 'ชื่อ',
+      'vi': 'tên',
     },
     'f8iies6c': {
-      'en': 'นามสกุล',
-      'th': '',
-      'vi': '',
+      'en': 'last name',
+      'th': 'นามสกุล',
+      'vi': 'họ',
     },
     'b7vv7blu': {
-      'en': 'เลขที่สัญญา',
-      'th': '',
-      'vi': '',
+      'en': 'contract number',
+      'th': 'หมายเลขสัญญา',
+      'vi': 'số hợp đồng',
     },
     '72564obp': {
-      'en': 'เลขทะเบียนรถ',
-      'th': '',
-      'vi': '',
+      'en': 'Vehicle registration',
+      'th': 'การลงทะเบียนยานพาหนะ',
+      'vi': 'Đăng ký xe',
     },
     've55ag3a': {
-      'en': 'เลขบัตรประชาชนลูกค้า',
-      'th': '',
-      'vi': '',
+      'en': 'id card',
+      'th': 'บัตรประจำตัวประชาชน',
+      'vi': 'thẻ căn cước',
     },
     'rwlf30kw': {
       'en': 'เรียงข้อมูลโดย',
@@ -2897,34 +2902,44 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'hic8xg02': {
-      'en': 'เรียง AR จากมากไปน้อย',
-      'th': '',
-      'vi': '',
+      'en': 'Debt balance',
+      'th': 'ยอดคงเหลือหนี้สิน',
+      'vi': 'Số dư nợ',
     },
     '3k7l6z19': {
-      'en': 'เรียงตามวันครบดิว',
-      'th': '',
-      'vi': '',
+      'en': 'day of due',
+      'th': 'วันครบกำหนดชำระ',
+      'vi': 'ngày đến hạn',
     },
     't5fcww5m': {
-      'en': 'ค้นหา',
-      'th': '',
-      'vi': '',
+      'en': 'search',
+      'th': 'ค้นหา',
+      'vi': 'tìm kiếm',
     },
     'fmkpbn54': {
-      'en': 'ค้นหา',
-      'th': '',
-      'vi': '',
+      'en': 'search',
+      'th': 'ค้นหา',
+      'vi': 'tìm kiếm',
     },
     'qodg8jbw': {
-      'en': 'ล้างค่า',
-      'th': '',
-      'vi': '',
+      'en': 'clear',
+      'th': 'ชัดเจน',
+      'vi': 'thông thoáng',
     },
     'xld4y1ld': {
-      'en': 'รายชื่อ',
-      'th': '',
-      'vi': '',
+      'en': 'List of names',
+      'th': 'รายชื่อ',
+      'vi': 'Danh sách tên',
+    },
+    'faxlqadc': {
+      'en': 'name',
+      'th': 'ชื่อ',
+      'vi': 'tên',
+    },
+    'dh0osv89': {
+      'en': 'vehicle registation',
+      'th': 'ทะเบียนรถ',
+      'vi': 'đăng ký xe',
     },
     'j985ko3w': {
       'en': 'ไม่พบข้อมูลในระบบ',
@@ -2940,29 +2955,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // detailCollectionPage
   {
     'zgmsnxvi': {
-      'en': 'ลงพื้นที่',
-      'th': '',
-      'vi': '',
+      'en': 'Visit the area',
+      'th': 'เยี่ยมชมพื้นที่นี้',
+      'vi': 'Hãy ghé thăm khu vực này.',
     },
     '1t6kbpgy': {
-      'en': 'บันทึกผลการโทร',
-      'th': '',
-      'vi': '',
+      'en': 'Record call results',
+      'th': 'บันทึกผลการโทร',
+      'vi': 'Ghi lại kết quả cuộc gọi',
     },
     'isl1effb': {
-      'en': 'ค้นหาเลขที่สัญญา',
-      'th': '',
-      'vi': '',
+      'en': 'search contract number',
+      'th': 'ค้นหาหมายเลขสัญญา',
+      'vi': 'tìm số hợp đồng',
     },
     '9cfhe6d1': {
-      'en': 'เลขที่สัญญา',
-      'th': '',
-      'vi': '',
+      'en': 'contract number',
+      'th': 'หมายเลขสัญญา',
+      'vi': 'số hợp đồng',
     },
     'wmwxx89a': {
-      'en': 'วันที่ครบกำหนดชำระ',
-      'th': '',
-      'vi': '',
+      'en': 'Payment due date',
+      'th': 'วันครบกำหนดชำระเงิน',
+      'vi': 'Ngày đến hạn thanh toán',
     },
     'x7jfzg3y': {
       'en': ':',
@@ -2970,9 +2985,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'scsmgzdh': {
-      'en': 'วันค้าง/งวดค้าง',
-      'th': '',
-      'vi': '',
+      'en': 'Overdue days/overdue payments',
+      'th': 'วันค้างชำระ/การชำระเงินล่าช้า',
+      'vi': 'Ngày quá hạn/thanh toán quá hạn',
     },
     'pkcwansg': {
       'en': ':',
@@ -2980,9 +2995,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'ru58x2l2': {
-      'en': 'สถานะสัญญา (เป้าเริ่มต้น)',
-      'th': '',
-      'vi': '',
+      'en': 'Contract status (initial target)',
+      'th': 'สถานะสัญญา (เป้าหมายเบื้องต้น)',
+      'vi': 'Tình trạng hợp đồng (mục tiêu ban đầu)',
     },
     '571egyff': {
       'en': ':',
@@ -2990,9 +3005,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'yd28ko66': {
-      'en': 'เป้าเร่งรัด',
-      'th': '',
-      'vi': '',
+      'en': 'Accelerated target',
+      'th': 'เป้าหมายเร่งด่วน',
+      'vi': 'Mục tiêu được đẩy nhanh',
     },
     'nutqt2i0': {
       'en': ':',
@@ -3000,9 +3015,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'mavoknuf': {
-      'en': 'วันที่ชำระล่าสุด',
-      'th': '',
-      'vi': '',
+      'en': 'Last paid date',
+      'th': 'วันที่ชำระเงินครั้งล่าสุด',
+      'vi': 'ngày thanh toán cuối cùng',
     },
     'q64lgh66': {
       'en': ':',
@@ -3010,9 +3025,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'vj7if0dt': {
-      'en': 'ยอดหนี้ค้างชำระ',
-      'th': '',
-      'vi': '',
+      'en': 'Outstanding debt amount',
+      'th': 'ยอดหนี้คงค้าง',
+      'vi': 'số tiền nợ chưa thanh toán',
     },
     '89o8ogqk': {
       'en': ':',
@@ -3020,9 +3035,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'x920nw6h': {
-      'en': 'ค่างวดที่ต้องชำระ',
-      'th': '',
-      'vi': '',
+      'en': 'Installments to be paid',
+      'th': 'งวดที่ต้องชำระ',
+      'vi': 'Các khoản trả góp',
     },
     'vmkivpaz': {
       'en': ':',
@@ -3030,9 +3045,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'c1q75ibx': {
-      'en': 'ข้อมูล ณ วันที่',
-      'th': '',
-      'vi': '',
+      'en': 'Date of data',
+      'th': 'วันที่ของข้อมูล',
+      'vi': 'ngày tháng dữ liệu',
     },
     't1aihnxm': {
       'en': ':',
@@ -3040,9 +3055,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'narosewg': {
-      'en': 'จำนวนครั้งที่บันทึกการโทร',
-      'th': '',
-      'vi': '',
+      'en': 'Number of recorded calls',
+      'th': 'จำนวนการบันทึกการโทร',
+      'vi': 'Số lượng cuộc gọi đã ghi âm',
     },
     'vsaja8aw': {
       'en': ':',
@@ -3050,9 +3065,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'jjdh6pjz': {
-      'en': 'ประวัติการโทร',
-      'th': '',
-      'vi': '',
+      'en': 'Call history',
+      'th': 'ประวัติการโทร',
+      'vi': 'Lịch sử cuộc gọi',
     },
     'ry4rcg9a': {
       'en': 'QR ชำระเงิน',
@@ -3230,15 +3245,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // SaveCallCollectionPage
   {
+    '1zz3ht28': {
+      'en': 'Record call results',
+      'th': 'บันทึกผลการโทร',
+      'vi': 'Ghi lại kết quả cuộc gọi',
+    },
     'g0hulow5': {
-      'en': 'เลขที่สัญญา',
-      'th': '',
-      'vi': '',
+      'en': 'contract number',
+      'th': 'หมายเลขสัญญา',
+      'vi': 'số hợp đồng',
     },
     'uiiwvigh': {
-      'en': 'วันที่ชำระล่าสุด',
-      'th': '',
-      'vi': '',
+      'en': 'Last paid date',
+      'th': 'วันที่ชำระเงินครั้งล่าสุด',
+      'vi': 'Ngày thanh toán cuối cùng',
     },
     'gv06b1ig': {
       'en': ':',
@@ -3246,9 +3266,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'qga7mxa9': {
-      'en': 'วันที่ครบกำหนดชำระ',
-      'th': '',
-      'vi': '',
+      'en': 'Payment due date',
+      'th': 'วันครบกำหนดชำระเงิน',
+      'vi': 'Ngày đến hạn thanh toán',
     },
     'itpm1nri': {
       'en': ':',
@@ -3256,9 +3276,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'rti3l79v': {
-      'en': 'วันค้าง/งวดค้าง',
-      'th': '',
-      'vi': '',
+      'en': 'Overdue days/overdue payments',
+      'th': 'วันค้างชำระ/การชำระเงินล่าช้า',
+      'vi': 'Ngày quá hạn/thanh toán quá hạn',
     },
     '6nbxsh0n': {
       'en': ':',
@@ -3266,9 +3286,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     '19v851j8': {
-      'en': 'สถานะสัญญา (เป้าเริ่มต้น)',
-      'th': '',
-      'vi': '',
+      'en': 'Contract status (initial target)',
+      'th': 'สถานะสัญญา (เป้าหมายเบื้องต้น)',
+      'vi': 'Tình trạng hợp đồng (mục tiêu ban đầu)',
     },
     'tseukh0a': {
       'en': ':',
@@ -3276,9 +3296,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     '4sw7io5b': {
-      'en': 'เป้าเร่งรัด',
-      'th': '',
-      'vi': '',
+      'en': 'Accelerated target',
+      'th': 'เป้าหมายเร่งด่วน',
+      'vi': 'Mục tiêu được đẩy nhanh',
     },
     'v3113nk7': {
       'en': ':',
@@ -3286,9 +3306,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'yrux09a2': {
-      'en': 'ยอดหนี้ค้างชำระ',
-      'th': '',
-      'vi': '',
+      'en': 'Outstanding debt amount',
+      'th': 'ยอดหนี้คงค้าง',
+      'vi': 'Số tiền nợ chưa thanh toán',
     },
     '53r99359': {
       'en': ':',
@@ -3296,9 +3316,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     '607447er': {
-      'en': 'ค่างวดที่ต้องชำระ',
-      'th': '',
-      'vi': '',
+      'en': 'Installments to be paid',
+      'th': 'งวดที่ต้องชำระ',
+      'vi': 'Các khoản trả góp',
     },
     's9eqc34j': {
       'en': ':',
@@ -3306,9 +3326,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     '4pik96we': {
-      'en': 'ข้อมูล ณ วันที่',
-      'th': '',
-      'vi': '',
+      'en': 'Date of data',
+      'th': 'วันที่ของข้อมูล',
+      'vi': 'Ngày dữ liệu',
     },
     'pvonr56b': {
       'en': ':',
@@ -3316,9 +3336,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'jdo2m9vc': {
-      'en': 'จำนวนครั้งที่บันทึกการโทร',
-      'th': '',
-      'vi': '',
+      'en': 'Number of recorded calls',
+      'th': 'จำนวนการบันทึกการโทร',
+      'vi': 'Số lượng cuộc gọi đã ghi âm',
     },
     'swjdchaf': {
       'en': ':',
@@ -3326,14 +3346,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'yq2tkp9y': {
-      'en': 'ผลการโทรติดตาม',
-      'th': '',
-      'vi': '',
+      'en': 'Follow-up call results',
+      'th': 'ผลการโทรติดตามผล',
+      'vi': 'Kết quả cuộc gọi tiếp theo',
     },
     'yd95i0lc': {
-      'en': 'รหัสกลุ่ม',
-      'th': '',
-      'vi': '',
+      'en': 'Group ID',
+      'th': 'รหัสกลุ่ม',
+      'vi': 'Mã nhóm',
     },
     'vku5p1uj': {
       'en': '*',
@@ -3434,9 +3454,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // historyCollectionPage
   {
     '6rho0epa': {
-      'en': 'วันที่ - เวลา โทร',
-      'th': '',
-      'vi': '',
+      'en': 'date - time call',
+      'th': 'วันที่ - เวลาโทร',
+      'vi': 'cuộc gọi ngày - giờ',
     },
     'pav5bsbx': {
       'en': ':',
@@ -3444,9 +3464,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'smsto4t6': {
-      'en': 'รหัสกลุ่ม',
-      'th': '',
-      'vi': '',
+      'en': 'group code',
+      'th': 'รหัสกลุ่ม',
+      'vi': 'mã nhóm',
     },
     'evfdnnw4': {
       'en': ':',
@@ -3454,9 +3474,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'iacmbkt2': {
-      'en': 'บันทึกผลการโทร',
-      'th': '',
-      'vi': '',
+      'en': 'Record call results',
+      'th': 'บันทึกผลการโทร',
+      'vi': 'Ghi lại kết quả cuộc gọi',
     },
     'frji2mrz': {
       'en': ':',
@@ -3464,9 +3484,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'gz534y6d': {
-      'en': 'วันนัดหมาย',
-      'th': '',
-      'vi': '',
+      'en': 'Appointment day',
+      'th': 'วันนัดหมาย',
+      'vi': 'Ngày hẹn',
     },
     'tbpb6uzc': {
       'en': ':',
@@ -3474,14 +3494,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     't9inzn6c': {
-      'en': 'หมายเหตุ',
-      'th': '',
-      'vi': '',
+      'en': 'remark',
+      'th': 'หมายเหตุ',
+      'vi': 'nhận xét',
     },
     'bt5c12qf': {
       'en': ':',
       'th': '',
       'vi': '',
+    },
+    '551ptzrn': {
+      'en': 'call history',
+      'th': 'ประวัติการโทร',
+      'vi': 'lịch sử cuộc gọi',
     },
     '7r6lb14m': {
       'en': 'Home',

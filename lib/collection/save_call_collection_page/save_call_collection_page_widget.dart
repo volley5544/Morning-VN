@@ -242,17 +242,9 @@ class _SaveCallCollectionPageWidgetState
               },
             ),
             title: Text(
-              () {
-                if (FFLocalizations.of(context).languageCode == 'th') {
-                  return 'บันทึกผลการโทร';
-                } else if (FFLocalizations.of(context).languageCode == 'en') {
-                  return 'บันทึกผลการโทร';
-                } else if (FFLocalizations.of(context).languageCode == 'vi') {
-                  return 'บันทึกผลการโทร';
-                } else {
-                  return 'บันทึกผลการโทร';
-                }
-              }(),
+              FFLocalizations.of(context).getText(
+                '1zz3ht28' /* Record call results */,
+              ),
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                     font: GoogleFonts.outfit(
                       fontWeight: FlutterFlowTheme.of(context)
@@ -441,7 +433,7 @@ class _SaveCallCollectionPageWidgetState
                                                                       FFLocalizations.of(
                                                                               context)
                                                                           .getText(
-                                                                        'g0hulow5' /* เลขที่สัญญา */,
+                                                                        'g0hulow5' /* contract number */,
                                                                       ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -528,7 +520,7 @@ class _SaveCallCollectionPageWidgetState
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'uiiwvigh' /* วันที่ชำระล่าสุด */,
+                                                                  'uiiwvigh' /* Last paid date */,
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -665,7 +657,7 @@ class _SaveCallCollectionPageWidgetState
                                                                   FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                    'qga7mxa9' /* วันที่ครบกำหนดชำระ */,
+                                                                    'qga7mxa9' /* Payment due date */,
                                                                   ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
@@ -794,7 +786,7 @@ class _SaveCallCollectionPageWidgetState
                                                                     FFLocalizations.of(
                                                                             context)
                                                                         .getText(
-                                                                      'rti3l79v' /* วันค้าง/งวดค้าง */,
+                                                                      'rti3l79v' /* Overdue days/overdue payments */,
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -914,7 +906,7 @@ class _SaveCallCollectionPageWidgetState
                                                                   FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                    '19v851j8' /* สถานะสัญญา (เป้าเริ่มต้น) */,
+                                                                    '19v851j8' /* Contract status (initial targe... */,
                                                                   ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
@@ -1042,7 +1034,7 @@ class _SaveCallCollectionPageWidgetState
                                                                   FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                    '4sw7io5b' /* เป้าเร่งรัด */,
+                                                                    '4sw7io5b' /* Accelerated target */,
                                                                   ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
@@ -1170,7 +1162,7 @@ class _SaveCallCollectionPageWidgetState
                                                                   FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                    'yrux09a2' /* ยอดหนี้ค้างชำระ */,
+                                                                    'yrux09a2' /* Outstanding debt amount */,
                                                                   ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
@@ -1306,7 +1298,7 @@ class _SaveCallCollectionPageWidgetState
                                                                       FFLocalizations.of(
                                                                               context)
                                                                           .getText(
-                                                                        '607447er' /* ค่างวดที่ต้องชำระ */,
+                                                                        '607447er' /* Installments to be paid */,
                                                                       ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -1425,7 +1417,7 @@ class _SaveCallCollectionPageWidgetState
                                                                       FFLocalizations.of(
                                                                               context)
                                                                           .getText(
-                                                                        '4pik96we' /* ข้อมูล ณ วันที่ */,
+                                                                        '4pik96we' /* Date of data */,
                                                                       ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -1545,7 +1537,7 @@ class _SaveCallCollectionPageWidgetState
                                                                       FFLocalizations.of(
                                                                               context)
                                                                           .getText(
-                                                                        'jdo2m9vc' /* จำนวนครั้งที่บันทึกการโทร */,
+                                                                        'jdo2m9vc' /* Number of recorded calls */,
                                                                       ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -1649,7 +1641,7 @@ class _SaveCallCollectionPageWidgetState
                               0.0, 0.0, 0.0, 10.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'yq2tkp9y' /* ผลการโทรติดตาม */,
+                              'yq2tkp9y' /* Follow-up call results */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -1695,7 +1687,7 @@ class _SaveCallCollectionPageWidgetState
                                             Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'yd95i0lc' /* รหัสกลุ่ม */,
+                                                'yd95i0lc' /* Group ID */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)

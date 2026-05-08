@@ -13,11 +13,9 @@ import 'dart:typed_data';
 import 'package:flutter/services.dart';
 import '/backend/firebase_storage/storage.dart'; // Imports firebase storage function
 
-Future<List<String>?> uploadMultipleFileFirebaseStorage(
-  BuildContext context,
+Future<List<String>?> uploadMultipleFileFirebaseStorageCopy(
   String? uploadedFolderName,
   List<FFUploadedFile>? file,
-  Future Function(String? statusMessage)? updateStatusProcessAction,
 ) async {
   // Add your function code here!
   //DateFormat dateFormat = DateFormat("yyyy-MM-dd-HH:mm:ss"); //yyyyMMddHHmmssSSS
@@ -28,15 +26,6 @@ Future<List<String>?> uploadMultipleFileFirebaseStorage(
   String folderName = dateFormat1.format(DateTime.now());
   for (int i = 0; i < file!.length; i++) {
     if (i < 5) {
-      await updateStatusProcessAction!(
-          FFLocalizations.of(context).languageCode == 'th'
-              ? 'กำลังอัปโหลดรูปภาพ ${i + 1}/${file!.length}'
-              : FFLocalizations.of(context).languageCode == 'en'
-                  ? 'Uploading Image ${i + 1}/${file!.length}'
-                  : FFLocalizations.of(context).languageCode == 'vi'
-                      ? 'Đang tải ảnh lên ${i + 1}/${file!.length}'
-                      : 'กำลังอัปโหลดรูปภาพ ${i + 1}/${file!.length}');
-
       String uniqueFileName = '${file![i].name!}'; //fileName + " " + timestamp;
 
       String pathUploaded =
@@ -46,5 +35,6 @@ Future<List<String>?> uploadMultipleFileFirebaseStorage(
     }
   }
   return fileUrlOutputList;
-  // Add your function code here!
 }
+// Set your action name, define your arguments and return parameter,
+// and then add the boilerplate code using the green button on the right!

@@ -1047,3 +1047,27 @@ List<String>? combineList(
 
   return listString;
 }
+
+String? translateLanguage(
+  String? text,
+  String? languageCode,
+) {
+  if (text == null || text.trim().isEmpty) return null;
+  if (languageCode == null || languageCode.trim().isEmpty) return null;
+
+  final String cleanText = text.trim();
+  final String cleanLang = languageCode.trim().toLowerCase();
+
+  // Build Google Translate free endpoint URL
+  // Use this as the API URL in a FlutterFlow API Call action
+  // Response path: $.sentences[*].trans  (join all segments)
+  final String encoded = Uri.encodeComponent(cleanText);
+  final String url = 'https://translate.googleapis.com/translate_a/single'
+      '?client=gtx'
+      '&sl=auto'
+      '&tl=$cleanLang'
+      '&dt=t'
+      '&q=$encoded';
+
+  return url;
+}

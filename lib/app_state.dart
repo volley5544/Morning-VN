@@ -954,6 +954,12 @@ class FFAppState extends ChangeNotifier {
   set apiUrlVnCollection(String value) {
     _apiUrlVnCollection = value;
   }
+
+  String _statusProcess = '';
+  String get statusProcess => _statusProcess;
+  set statusProcess(String value) {
+    _statusProcess = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

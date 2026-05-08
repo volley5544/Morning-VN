@@ -138,19 +138,19 @@ class _ListCollectionPageWidgetState extends State<ListCollectionPageWidget> {
                             ]),
                             optionLabels: [
                               FFLocalizations.of(context).getText(
-                                '2k6jtzmo' /* ชื่อ */,
+                                '2k6jtzmo' /* name */,
                               ),
                               FFLocalizations.of(context).getText(
-                                'f8iies6c' /* นามสกุล */,
+                                'f8iies6c' /* last name */,
                               ),
                               FFLocalizations.of(context).getText(
-                                'b7vv7blu' /* เลขที่สัญญา */,
+                                'b7vv7blu' /* contract number */,
                               ),
                               FFLocalizations.of(context).getText(
-                                '72564obp' /* เลขทะเบียนรถ */,
+                                '72564obp' /* Vehicle registration */,
                               ),
                               FFLocalizations.of(context).getText(
-                                've55ag3a' /* เลขบัตรประชาชนลูกค้า */,
+                                've55ag3a' /* id card */,
                               )
                             ],
                             onChanged: (val) =>
@@ -210,10 +210,10 @@ class _ListCollectionPageWidgetState extends State<ListCollectionPageWidget> {
                             options: List<String>.from(['ARNOW', 'DAYOFDUE']),
                             optionLabels: [
                               FFLocalizations.of(context).getText(
-                                'hic8xg02' /* เรียง AR จากมากไปน้อย */,
+                                'hic8xg02' /* Debt balance */,
                               ),
                               FFLocalizations.of(context).getText(
-                                '3k7l6z19' /* เรียงตามวันครบดิว */,
+                                '3k7l6z19' /* day of due */,
                               )
                             ],
                             onChanged: (val) async {
@@ -344,7 +344,7 @@ class _ListCollectionPageWidgetState extends State<ListCollectionPageWidget> {
                                           .fontStyle,
                                     ),
                                 hintText: FFLocalizations.of(context).getText(
-                                  't5fcww5m' /* ค้นหา */,
+                                  't5fcww5m' /* search */,
                                 ),
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodySmall
@@ -522,7 +522,7 @@ class _ListCollectionPageWidgetState extends State<ListCollectionPageWidget> {
                                 Navigator.pop(context);
                               },
                               text: FFLocalizations.of(context).getText(
-                                'fmkpbn54' /* ค้นหา */,
+                                'fmkpbn54' /* search */,
                               ),
                               options: FFButtonOptions(
                                 height: 35.0,
@@ -609,7 +609,7 @@ class _ListCollectionPageWidgetState extends State<ListCollectionPageWidget> {
                                 Navigator.pop(context);
                               },
                               text: FFLocalizations.of(context).getText(
-                                'qodg8jbw' /* ล้างค่า */,
+                                'qodg8jbw' /* clear */,
                               ),
                               options: FFButtonOptions(
                                 height: 35.0,
@@ -673,7 +673,7 @@ class _ListCollectionPageWidgetState extends State<ListCollectionPageWidget> {
                           EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'xld4y1ld' /* รายชื่อ */,
+                          'xld4y1ld' /* List of names */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               font: GoogleFonts.readexPro(
@@ -870,7 +870,11 @@ class _ListCollectionPageWidgetState extends State<ListCollectionPageWidget> {
                                                                   Expanded(
                                                                     flex: 2,
                                                                     child: Text(
-                                                                      'ชื่อ',
+                                                                      FFLocalizations.of(
+                                                                              context)
+                                                                          .getText(
+                                                                        'faxlqadc' /* name */,
+                                                                      ),
                                                                       textAlign:
                                                                           TextAlign
                                                                               .start,
@@ -981,7 +985,11 @@ class _ListCollectionPageWidgetState extends State<ListCollectionPageWidget> {
                                                                     flex: 2,
                                                                     child:
                                                                         AutoSizeText(
-                                                                      'ทะเบียนรถ',
+                                                                      FFLocalizations.of(
+                                                                              context)
+                                                                          .getText(
+                                                                        'dh0osv89' /* vehicle registation */,
+                                                                      ),
                                                                       textAlign:
                                                                           TextAlign
                                                                               .start,

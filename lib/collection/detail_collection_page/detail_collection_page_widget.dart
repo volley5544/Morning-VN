@@ -450,8 +450,25 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                       builder: (alertDialogContext) {
                                         return WebViewAware(
                                           child: AlertDialog(
-                                            content: Text(
-                                                'rp8 บันทึกได้ทีละสัญญาเท่านั้น'),
+                                            content: Text(() {
+                                              if (FFLocalizations.of(context)
+                                                      .languageCode ==
+                                                  'th') {
+                                                return 'rp8 บันทึกได้ทีละสัญญาเท่านั้น';
+                                              } else if (FFLocalizations.of(
+                                                          context)
+                                                      .languageCode ==
+                                                  'en') {
+                                                return 'RP8 can only record one contract at a time.';
+                                              } else if (FFLocalizations.of(
+                                                          context)
+                                                      .languageCode ==
+                                                  'vi') {
+                                                return 'RP8 chỉ có thể ghi nhận một hợp đồng tại một thời điểm.';
+                                              } else {
+                                                return 'RP8 can only record one contract at a time.';
+                                              }
+                                            }()),
                                             actions: [
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
@@ -482,7 +499,7 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                   );
                                 },
                                 text: FFLocalizations.of(context).getText(
-                                  'zgmsnxvi' /* ลงพื้นที่ */,
+                                  'zgmsnxvi' /* Visit the area */,
                                 ),
                                 options: FFButtonOptions(
                                   width:
@@ -526,6 +543,51 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                   animationsMap['buttonOnPageLoadAnimation1']!),
                               FFButtonWidget(
                                 onPressed: () async {
+                                  if (functions
+                                          .selectedListSave(
+                                              _model.dataCollectionPage
+                                                  .toList(),
+                                              _model.selectedList.toList())!
+                                          .length <=
+                                      0) {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return WebViewAware(
+                                          child: AlertDialog(
+                                            content: Text(() {
+                                              if (FFLocalizations.of(context)
+                                                      .languageCode ==
+                                                  'th') {
+                                                return 'กรุณาเลือกสัญญา';
+                                              } else if (FFLocalizations.of(
+                                                          context)
+                                                      .languageCode ==
+                                                  'en') {
+                                                return 'Please select a contract.';
+                                              } else if (FFLocalizations.of(
+                                                          context)
+                                                      .languageCode ==
+                                                  'vi') {
+                                                return 'Vui lòng chọn một hợp đồng.';
+                                              } else {
+                                                return 'Please select a contract.';
+                                              }
+                                            }()),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+                                    return;
+                                  }
+
                                   context.pushNamed(
                                     SaveCallCollectionPageWidget.routeName,
                                     queryParameters: {
@@ -540,7 +602,7 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                   );
                                 },
                                 text: FFLocalizations.of(context).getText(
-                                  '1t6kbpgy' /* บันทึกผลการโทร */,
+                                  '1t6kbpgy' /* Record call results */,
                                 ),
                                 options: FFButtonOptions(
                                   width:
@@ -635,7 +697,7 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                             ),
                                         hintText:
                                             FFLocalizations.of(context).getText(
-                                          'isl1effb' /* ค้นหาเลขที่สัญญา */,
+                                          'isl1effb' /* search contract number */,
                                         ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodySmall
@@ -847,7 +909,7 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                                                               padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                                                                               child: Text(
                                                                                 FFLocalizations.of(context).getText(
-                                                                                  '9cfhe6d1' /* เลขที่สัญญา */,
+                                                                                  '9cfhe6d1' /* contract number */,
                                                                                 ),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       font: GoogleFonts.readexPro(
@@ -985,7 +1047,7 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                                                     FFLocalizations.of(
                                                                             context)
                                                                         .getText(
-                                                                      'wmwxx89a' /* วันที่ครบกำหนดชำระ */,
+                                                                      'wmwxx89a' /* Payment due date */,
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -1099,7 +1161,7 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                                                     FFLocalizations.of(
                                                                             context)
                                                                         .getText(
-                                                                      'scsmgzdh' /* วันค้าง/งวดค้าง */,
+                                                                      'scsmgzdh' /* Overdue days/overdue payments */,
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -1213,7 +1275,7 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                                                     FFLocalizations.of(
                                                                             context)
                                                                         .getText(
-                                                                      'ru58x2l2' /* สถานะสัญญา (เป้าเริ่มต้น) */,
+                                                                      'ru58x2l2' /* Contract status (initial targe... */,
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -1327,7 +1389,7 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                                                     FFLocalizations.of(
                                                                             context)
                                                                         .getText(
-                                                                      'yd28ko66' /* เป้าเร่งรัด */,
+                                                                      'yd28ko66' /* Accelerated target */,
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -1441,7 +1503,7 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                                                     FFLocalizations.of(
                                                                             context)
                                                                         .getText(
-                                                                      'mavoknuf' /* วันที่ชำระล่าสุด */,
+                                                                      'mavoknuf' /* Last paid date */,
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -1555,7 +1617,7 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                                                     FFLocalizations.of(
                                                                             context)
                                                                         .getText(
-                                                                      'vj7if0dt' /* ยอดหนี้ค้างชำระ */,
+                                                                      'vj7if0dt' /* Outstanding debt amount */,
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -1674,7 +1736,7 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                                                           Text(
                                                                         FFLocalizations.of(context)
                                                                             .getText(
-                                                                          'x920nw6h' /* ค่างวดที่ต้องชำระ */,
+                                                                          'x920nw6h' /* Installments to be paid */,
                                                                         ),
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
@@ -1770,7 +1832,7 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                                                           Text(
                                                                         FFLocalizations.of(context)
                                                                             .getText(
-                                                                          'c1q75ibx' /* ข้อมูล ณ วันที่ */,
+                                                                          'c1q75ibx' /* Date of data */,
                                                                         ),
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
@@ -1869,7 +1931,7 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                                                     FFLocalizations.of(
                                                                             context)
                                                                         .getText(
-                                                                      'narosewg' /* จำนวนครั้งที่บันทึกการโทร */,
+                                                                      'narosewg' /* Number of recorded calls */,
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -2001,7 +2063,7 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                                                   text: FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                    'jjdh6pjz' /* ประวัติการโทร */,
+                                                                    'jjdh6pjz' /* Call history */,
                                                                   ),
                                                                   options:
                                                                       FFButtonOptions(

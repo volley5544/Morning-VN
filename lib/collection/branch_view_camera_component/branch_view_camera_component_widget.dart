@@ -163,6 +163,30 @@ class _BranchViewCameraComponentWidgetState
           _model.uploadedLocalFile_uploadDataBranchViewCamera = FFUploadedFile(
               bytes: Uint8List.fromList([]), originalFilename: '');
         });
+
+        ScaffoldMessenger.of(context).clearSnackBars();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              () {
+                if (FFLocalizations.of(context).languageCode == 'th') {
+                  return 'เลือกรูปสำเร็จ!';
+                } else if (FFLocalizations.of(context).languageCode == 'en') {
+                  return 'Select Image Success!';
+                } else if (FFLocalizations.of(context).languageCode == 'vi') {
+                  return 'Chọn hình ảnh thành công!';
+                } else {
+                  return 'เลือกรูปสำเร็จ!';
+                }
+              }(),
+              style: TextStyle(
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+              ),
+            ),
+            duration: Duration(milliseconds: 3000),
+            backgroundColor: Color(0xCB000000),
+          ),
+        );
       },
       child: Icon(
         Icons.camera_alt_rounded,

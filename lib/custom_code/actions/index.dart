@@ -16,6 +16,8 @@ export 'a8.dart' show a8;
 export 'distance_between.dart' show distanceBetween;
 export 'upload_multiple_file_firebase_storage.dart'
     show uploadMultipleFileFirebaseStorage;
+export 'upload_multiple_file_firebase_storage_copy.dart'
+    show uploadMultipleFileFirebaseStorageCopy;
 export 'a1.dart' show a1;
 export 'a2.dart' show a2;
 export 'a22.dart' show a22;
@@ -30,3 +32,4 @@ export 'clear_all_app_data_copy.dart' show clearAllAppDataCopy;
 export 'initial_background_fetch.dart' show initialBackgroundFetch;
 export 'open_tableau_browser.dart' show openTableauBrowser;
 export 'open3_c_x_action.dart' show open3CXAction;
+export 'translate_language2.dart' show translateLanguage2;

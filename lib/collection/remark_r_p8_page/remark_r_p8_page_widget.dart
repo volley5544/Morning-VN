@@ -2579,8 +2579,10 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             12.0),
-                                                    child: Image.network(
-                                                      'https://picsum.photos/seed/532/600',
+                                                    child: Image.memory(
+                                                      uploadedImgItem.bytes ??
+                                                          Uint8List.fromList(
+                                                              []),
                                                       width: 150.0,
                                                       height: 150.0,
                                                       fit: BoxFit.cover,
@@ -2713,170 +2715,14 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Expanded(
-                              child: FFButtonWidget(
-                                onPressed: () async {
-                                  var _shouldSetState = false;
-                                  if (!(_model.dropDownFollowupValue != null &&
-                                      _model.dropDownFollowupValue != '')) {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return WebViewAware(
-                                          child: AlertDialog(
-                                            content: Text(() {
-                                              if (FFLocalizations.of(context)
-                                                      .languageCode ==
-                                                  'th') {
-                                                return 'ผลการติดตามหนี้';
-                                              } else if (FFLocalizations.of(
-                                                          context)
-                                                      .languageCode ==
-                                                  'en') {
-                                                return 'ผลการติดตามหนี้';
-                                              } else if (FFLocalizations.of(
-                                                          context)
-                                                      .languageCode ==
-                                                  'vi') {
-                                                return 'ผลการติดตามหนี้';
-                                              } else {
-                                                return 'ผลการติดตามหนี้';
-                                              }
-                                            }()),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    );
-                                    if (_shouldSetState) safeSetState(() {});
-                                    return;
-                                  }
-                                  if (!true) {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return WebViewAware(
-                                          child: AlertDialog(
-                                            content: Text(() {
-                                              if (FFLocalizations.of(context)
-                                                      .languageCode ==
-                                                  'th') {
-                                                return 'ผลการติดตามหนี้';
-                                              } else if (FFLocalizations.of(
-                                                          context)
-                                                      .languageCode ==
-                                                  'en') {
-                                                return 'ผลการติดตามหนี้';
-                                              } else if (FFLocalizations.of(
-                                                          context)
-                                                      .languageCode ==
-                                                  'vi') {
-                                                return 'ผลการติดตามหนี้';
-                                              } else {
-                                                return 'ผลการติดตามหนี้';
-                                              }
-                                            }()),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    );
-                                    if (_shouldSetState) safeSetState(() {});
-                                    return;
-                                  }
-                                  if (_model
-                                          .remarkTextFieldTextController.text ==
-                                      '') {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return WebViewAware(
-                                          child: AlertDialog(
-                                            content: Text(() {
-                                              if (FFLocalizations.of(context)
-                                                      .languageCode ==
-                                                  'th') {
-                                                return 'กรุณากรอกหมายเหตุ';
-                                              } else if (FFLocalizations.of(
-                                                          context)
-                                                      .languageCode ==
-                                                  'en') {
-                                                return 'กรุณากรอกหมายเหตุ';
-                                              } else if (FFLocalizations.of(
-                                                          context)
-                                                      .languageCode ==
-                                                  'vi') {
-                                                return 'กรุณากรอกหมายเหตุ';
-                                              } else {
-                                                return 'กรุณากรอกหมายเหตุ';
-                                              }
-                                            }()),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    );
-                                    if (_shouldSetState) safeSetState(() {});
-                                    return;
-                                  }
-                                  if (_model.imageList.length <= 0) {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return WebViewAware(
-                                          child: AlertDialog(
-                                            content: Text(() {
-                                              if (FFLocalizations.of(context)
-                                                      .languageCode ==
-                                                  'th') {
-                                                return 'กรุณาอัปโหลดรูปภาพอย่างน้อย 1 รูป';
-                                              } else if (FFLocalizations.of(
-                                                          context)
-                                                      .languageCode ==
-                                                  'en') {
-                                                return 'กรุณาอัปโหลดรูปภาพอย่างน้อย 1 รูป';
-                                              } else if (FFLocalizations.of(
-                                                          context)
-                                                      .languageCode ==
-                                                  'vi') {
-                                                return 'กรุณาอัปโหลดรูปภาพอย่างน้อย 1 รูป';
-                                              } else {
-                                                return 'กรุณาอัปโหลดรูปภาพอย่างน้อย 1 รูป';
-                                              }
-                                            }()),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    );
-                                    if (_shouldSetState) safeSetState(() {});
-                                    return;
-                                  }
-                                  var confirmDialogResponse = await showDialog<
-                                          bool>(
+                              child: Builder(
+                                builder: (context) => FFButtonWidget(
+                                  onPressed: () async {
+                                    var _shouldSetState = false;
+                                    if (!(_model.dropDownFollowupValue !=
+                                            null &&
+                                        _model.dropDownFollowupValue != '')) {
+                                      await showDialog(
                                         context: context,
                                         builder: (alertDialogContext) {
                                           return WebViewAware(
@@ -2885,76 +2731,288 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                 if (FFLocalizations.of(context)
                                                         .languageCode ==
                                                     'th') {
-                                                  return 'คุณต้องการจะบันทึกรายการหรือไม่?';
+                                                  return 'กรุณาเลือกผลการติดตามหนี้';
                                                 } else if (FFLocalizations.of(
                                                             context)
                                                         .languageCode ==
                                                     'en') {
-                                                  return 'คุณต้องการจะบันทึกรายการหรือไม่?';
+                                                  return 'กรุณาเลือกผลการติดตามหนี้';
                                                 } else if (FFLocalizations.of(
                                                             context)
                                                         .languageCode ==
                                                     'vi') {
-                                                  return 'คุณต้องการจะบันทึกรายการหรือไม่?';
+                                                  return 'กรุณาเลือกผลการติดตามหนี้';
                                                 } else {
-                                                  return 'คุณต้องการจะบันทึกรายการหรือไม่?';
+                                                  return 'กรุณาเลือกผลการติดตามหนี้';
                                                 }
                                               }()),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () =>
                                                       Navigator.pop(
-                                                          alertDialogContext,
-                                                          false),
-                                                  child: Text('Cancel'),
-                                                ),
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          true),
-                                                  child: Text('Confirm'),
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
                                                 ),
                                               ],
                                             ),
                                           );
                                         },
-                                      ) ??
-                                      false;
-                                  if (!confirmDialogResponse) {
-                                    if (_shouldSetState) safeSetState(() {});
-                                    return;
-                                  }
-                                  if (_model.imageUrlList.length <= 0) {
-                                    _model.uploadFileUrlListOutput =
-                                        await actions
-                                            .uploadMultipleFileFirebaseStorage(
-                                      'UploadFile/BranchView/Collection',
-                                      _model.imageList.toList(),
+                                      );
+                                      if (_shouldSetState) safeSetState(() {});
+                                      return;
+                                    }
+                                    if (!true) {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return WebViewAware(
+                                            child: AlertDialog(
+                                              content: Text(() {
+                                                if (FFLocalizations.of(context)
+                                                        .languageCode ==
+                                                    'th') {
+                                                  return 'ผลการติดตามหนี้';
+                                                } else if (FFLocalizations.of(
+                                                            context)
+                                                        .languageCode ==
+                                                    'en') {
+                                                  return 'ผลการติดตามหนี้';
+                                                } else if (FFLocalizations.of(
+                                                            context)
+                                                        .languageCode ==
+                                                    'vi') {
+                                                  return 'ผลการติดตามหนี้';
+                                                } else {
+                                                  return 'ผลการติดตามหนี้';
+                                                }
+                                              }()),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      );
+                                      if (_shouldSetState) safeSetState(() {});
+                                      return;
+                                    }
+                                    if (_model.remarkTextFieldTextController
+                                            .text ==
+                                        '') {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return WebViewAware(
+                                            child: AlertDialog(
+                                              content: Text(() {
+                                                if (FFLocalizations.of(context)
+                                                        .languageCode ==
+                                                    'th') {
+                                                  return 'กรุณากรอกหมายเหตุ';
+                                                } else if (FFLocalizations.of(
+                                                            context)
+                                                        .languageCode ==
+                                                    'en') {
+                                                  return 'กรุณากรอกหมายเหตุ';
+                                                } else if (FFLocalizations.of(
+                                                            context)
+                                                        .languageCode ==
+                                                    'vi') {
+                                                  return 'กรุณากรอกหมายเหตุ';
+                                                } else {
+                                                  return 'กรุณากรอกหมายเหตุ';
+                                                }
+                                              }()),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      );
+                                      if (_shouldSetState) safeSetState(() {});
+                                      return;
+                                    }
+                                    if (_model.imageList.length <= 0) {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return WebViewAware(
+                                            child: AlertDialog(
+                                              content: Text(() {
+                                                if (FFLocalizations.of(context)
+                                                        .languageCode ==
+                                                    'th') {
+                                                  return 'กรุณาอัปโหลดรูปภาพอย่างน้อย 1 รูป';
+                                                } else if (FFLocalizations.of(
+                                                            context)
+                                                        .languageCode ==
+                                                    'en') {
+                                                  return 'กรุณาอัปโหลดรูปภาพอย่างน้อย 1 รูป';
+                                                } else if (FFLocalizations.of(
+                                                            context)
+                                                        .languageCode ==
+                                                    'vi') {
+                                                  return 'กรุณาอัปโหลดรูปภาพอย่างน้อย 1 รูป';
+                                                } else {
+                                                  return 'กรุณาอัปโหลดรูปภาพอย่างน้อย 1 รูป';
+                                                }
+                                              }()),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      );
+                                      if (_shouldSetState) safeSetState(() {});
+                                      return;
+                                    }
+                                    var confirmDialogResponse =
+                                        await showDialog<bool>(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return WebViewAware(
+                                                  child: AlertDialog(
+                                                    content: Text(() {
+                                                      if (FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode ==
+                                                          'th') {
+                                                        return 'คุณต้องการจะบันทึกรายการหรือไม่?';
+                                                      } else if (FFLocalizations
+                                                                  .of(context)
+                                                              .languageCode ==
+                                                          'en') {
+                                                        return 'คุณต้องการจะบันทึกรายการหรือไม่?';
+                                                      } else if (FFLocalizations
+                                                                  .of(context)
+                                                              .languageCode ==
+                                                          'vi') {
+                                                        return 'คุณต้องการจะบันทึกรายการหรือไม่?';
+                                                      } else {
+                                                        return 'คุณต้องการจะบันทึกรายการหรือไม่?';
+                                                      }
+                                                    }()),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext,
+                                                                false),
+                                                        child: Text('Cancel'),
+                                                      ),
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext,
+                                                                true),
+                                                        child: Text('Confirm'),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              },
+                                            ) ??
+                                            false;
+                                    if (!confirmDialogResponse) {
+                                      if (_shouldSetState) safeSetState(() {});
+                                      return;
+                                    }
+                                    showDialog(
+                                      context: context,
+                                      builder: (dialogContext) {
+                                        return Dialog(
+                                          elevation: 0,
+                                          insetPadding: EdgeInsets.zero,
+                                          backgroundColor: Colors.transparent,
+                                          alignment: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          child: WebViewAware(
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                FocusScope.of(dialogContext)
+                                                    .unfocus();
+                                                FocusManager
+                                                    .instance.primaryFocus
+                                                    ?.unfocus();
+                                              },
+                                              child: Container(
+                                                height: double.infinity,
+                                                width: double.infinity,
+                                                child: LoadingWidget(),
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
                                     );
-                                    _shouldSetState = true;
-                                    _model.imageUrlList = _model
-                                        .uploadFileUrlListOutput!
-                                        .toList()
-                                        .cast<String>();
-                                    safeSetState(() {});
-                                  }
-                                  if (_shouldSetState) safeSetState(() {});
-                                },
-                                text: FFLocalizations.of(context).getText(
-                                  'tssbb04y' /* บันทึกการลงพื้นที่ */,
-                                ),
-                                options: FFButtonOptions(
-                                  height: 50.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: Color(0xFF004984),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        font: GoogleFonts.readexPro(
+
+                                    if (_model.imageUrlList.length <= 0) {
+                                      _model.uploadFileUrlListOutput =
+                                          await actions
+                                              .uploadMultipleFileFirebaseStorage(
+                                        context,
+                                        'UploadFile/BranchView/Collection',
+                                        _model.imageList.toList(),
+                                        (statusMessage) async {
+                                          FFAppState().statusProcess =
+                                              statusMessage!;
+                                          safeSetState(() {});
+                                        },
+                                      );
+                                      _shouldSetState = true;
+                                      _model.imageUrlList = _model
+                                          .uploadFileUrlListOutput!
+                                          .toList()
+                                          .cast<String>();
+                                      safeSetState(() {});
+                                    }
+                                    Navigator.pop(context);
+                                    if (_shouldSetState) safeSetState(() {});
+                                  },
+                                  text: FFLocalizations.of(context).getText(
+                                    'tssbb04y' /* บันทึกการลงพื้นที่ */,
+                                  ),
+                                  options: FFButtonOptions(
+                                    height: 50.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: Color(0xFF004984),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontStyle,
+                                          ),
+                                          color: Colors.white,
+                                          letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
@@ -2964,21 +3022,13 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                   .titleSmall
                                                   .fontStyle,
                                         ),
-                                        color: Colors.white,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .fontStyle,
-                                      ),
-                                  elevation: 3.0,
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
+                                    elevation: 3.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                               ),
                             ),

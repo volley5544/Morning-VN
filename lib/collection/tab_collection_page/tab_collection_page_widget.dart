@@ -211,17 +211,9 @@ class _TabCollectionPageWidgetState extends State<TabCollectionPageWidget>
               },
             ),
             title: Text(
-              () {
-                if (FFLocalizations.of(context).languageCode == 'th') {
-                  return 'ประเภทหนี้';
-                } else if (FFLocalizations.of(context).languageCode == 'en') {
-                  return 'ประเภทหนี้';
-                } else if (FFLocalizations.of(context).languageCode == 'vi') {
-                  return 'ประเภทหนี้';
-                } else {
-                  return 'ประเภทหนี้';
-                }
-              }(),
+              FFLocalizations.of(context).getText(
+                '5j6iopjw' /* Debt type */,
+              ),
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                     font: GoogleFonts.outfit(
                       fontWeight: FlutterFlowTheme.of(context)
