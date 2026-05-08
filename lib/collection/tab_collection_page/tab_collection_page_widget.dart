@@ -74,10 +74,7 @@ class _TabCollectionPageWidgetState extends State<TabCollectionPageWidget>
 
       _model.urlCollection =
           await UrlStorageRecord.getDocumentOnce(FFAppState().urlCollectionVN!);
-      FFAppState().apiUrlVnCollection =
-          FFDevEnvironmentValues.currentEnvironment == 'dev'
-              ? _model.urlCollection!.collectionVnDev
-              : _model.urlCollection!.collectionVn;
+      FFAppState().apiUrlVnCollection = _model.urlCollection!.collectionVn;
       FFAppState().accessToken = widget.token!;
       FFAppState().employeeID = widget.employeeId!;
       safeSetState(() {});

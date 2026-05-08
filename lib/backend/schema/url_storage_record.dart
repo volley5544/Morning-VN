@@ -15,18 +15,12 @@ class UrlStorageRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "collection_vn_dev" field.
-  String? _collectionVnDev;
-  String get collectionVnDev => _collectionVnDev ?? '';
-  bool hasCollectionVnDev() => _collectionVnDev != null;
-
   // "collection_vn" field.
   String? _collectionVn;
   String get collectionVn => _collectionVn ?? '';
   bool hasCollectionVn() => _collectionVn != null;
 
   void _initializeFields() {
-    _collectionVnDev = snapshotData['collection_vn_dev'] as String?;
     _collectionVn = snapshotData['collection_vn'] as String?;
   }
 
@@ -65,12 +59,10 @@ class UrlStorageRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createUrlStorageRecordData({
-  String? collectionVnDev,
   String? collectionVn,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'collection_vn_dev': collectionVnDev,
       'collection_vn': collectionVn,
     }.withoutNulls,
   );
@@ -83,13 +75,11 @@ class UrlStorageRecordDocumentEquality implements Equality<UrlStorageRecord> {
 
   @override
   bool equals(UrlStorageRecord? e1, UrlStorageRecord? e2) {
-    return e1?.collectionVnDev == e2?.collectionVnDev &&
-        e1?.collectionVn == e2?.collectionVn;
+    return e1?.collectionVn == e2?.collectionVn;
   }
 
   @override
-  int hash(UrlStorageRecord? e) =>
-      const ListEquality().hash([e?.collectionVnDev, e?.collectionVn]);
+  int hash(UrlStorageRecord? e) => const ListEquality().hash([e?.collectionVn]);
 
   @override
   bool isValidKey(Object? o) => o is UrlStorageRecord;
