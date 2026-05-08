@@ -218,7 +218,7 @@ class _TabCollectionPageWidgetState extends State<TabCollectionPageWidget>
               highlightColor: Colors.transparent,
               onTap: () async {
                 _model.translateOutput = await actions.translateLanguage2(
-                  'สวัสดีชาวโลก',
+                  'hello world',
                   FFLocalizations.of(context).languageCode,
                 );
                 await showDialog(
