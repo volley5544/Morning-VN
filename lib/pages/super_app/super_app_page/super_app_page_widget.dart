@@ -1408,8 +1408,22 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
                                                       Colors.transparent,
                                                   onTap: () async {
                                                     context.pushNamed(
-                                                        TabCollectionPageWidget
-                                                            .routeName);
+                                                      TabCollectionPageWidget
+                                                          .routeName,
+                                                      queryParameters: {
+                                                        'token': serializeParam(
+                                                          FFAppState()
+                                                              .accessToken,
+                                                          ParamType.String,
+                                                        ),
+                                                        'employeeId':
+                                                            serializeParam(
+                                                          FFAppState()
+                                                              .employeeID,
+                                                          ParamType.String,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
                                                   },
                                                   child: Text(
                                                     FFLocalizations.of(context)
