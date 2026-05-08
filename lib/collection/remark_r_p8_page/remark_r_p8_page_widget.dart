@@ -619,15 +619,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(5.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                '${dateTimeFormat(
-                                                  "yMd",
-                                                  functions
-                                                      .parseStringToDatetime(
-                                                          '2026-04-30'),
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
-                                                )}',
+                                                '${widget.contNoSelected?.lpayd}',
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -747,15 +739,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                     .fromSTEB(
                                                         5.0, 0.0, 0.0, 0.0),
                                                 child: Text(
-                                                  '${dateTimeFormat(
-                                                    "yMd",
-                                                    functions
-                                                        .parseStringToDatetime(
-                                                            '2026-04-30'),
-                                                    locale: FFLocalizations.of(
-                                                            context)
-                                                        .languageCode,
-                                                  )}',
+                                                  '${widget.contNoSelected?.dateofdue}',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -881,16 +865,26 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                       .fromSTEB(
                                                           5.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    '${dateTimeFormat(
-                                                      "yMd",
-                                                      functions
-                                                          .parseStringToDatetime(
-                                                              '2026-04-30'),
-                                                      locale:
-                                                          FFLocalizations.of(
+                                                    '${widget.contNoSelected?.dayofdue}(${() {
+                                                      if (FFLocalizations.of(
                                                                   context)
-                                                              .languageCode,
-                                                    )}(งวด3)',
+                                                              .languageCode ==
+                                                          'th') {
+                                                        return 'งวด';
+                                                      } else if (FFLocalizations
+                                                                  .of(context)
+                                                              .languageCode ==
+                                                          'en') {
+                                                        return 'period';
+                                                      } else if (FFLocalizations
+                                                                  .of(context)
+                                                              .languageCode ==
+                                                          'vi') {
+                                                        return 'Giai đoạn';
+                                                      } else {
+                                                        return 'period';
+                                                      }
+                                                    }()}${widget.contNoSelected?.expFrm})',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -1012,7 +1006,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                     .fromSTEB(
                                                         5.0, 0.0, 0.0, 0.0),
                                                 child: Text(
-                                                  'qqq',
+                                                  '${widget.contNoSelected?.targetstat}',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -1133,7 +1127,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                     .fromSTEB(
                                                         5.0, 0.0, 0.0, 0.0),
                                                 child: Text(
-                                                  'qqq',
+                                                  '${widget.contNoSelected?.contstat}',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -1254,7 +1248,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                     .fromSTEB(
                                                         5.0, 0.0, 0.0, 0.0),
                                                 child: Text(
-                                                  '${functions.showNumberWithComma('5544')} บาท',
+                                                  '${functions.showNumberWithComma('${widget.contNoSelected?.expAmt}')} บาท',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -1386,7 +1380,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                             .fromSTEB(5.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      '${functions.showNumberWithComma('5544')} บาท',
+                                                      '${functions.showNumberWithComma('${widget.contNoSelected?.arnow}')} บาท',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1516,16 +1510,11 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                             .fromSTEB(5.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      '${dateTimeFormat(
-                                                        "yMd",
-                                                        functions
-                                                            .parseStringToDatetime(
-                                                                '2026-04-30'),
-                                                        locale:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .languageCode,
-                                                      )}',
+                                                      valueOrDefault<String>(
+                                                        widget.contNoSelected
+                                                            ?.dateofdata,
+                                                        'DATEOFDATA',
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -2975,6 +2964,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                         (statusMessage) async {
                                           FFAppState().statusProcess =
                                               statusMessage!;
+                                          safeSetState(() {});
                                           safeSetState(() {});
                                         },
                                       );

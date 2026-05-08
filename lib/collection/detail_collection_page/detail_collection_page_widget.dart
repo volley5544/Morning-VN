@@ -1225,7 +1225,7 @@ class _DetailCollectionPageWidgetState extends State<DetailCollectionPageWidget>
                                                                               0.0),
                                                                           child:
                                                                               Text(
-                                                                            '${datalistItem.dateofdue}(งวด${datalistItem.expFrm})',
+                                                                            '${datalistItem.dayofdue}(งวด${datalistItem.expFrm})',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   font: GoogleFonts.readexPro(
                                                                                     fontWeight: FontWeight.normal,
