@@ -105,6 +105,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
             );
           },
         );
+        context.safePop();
         return;
       }
       if ('${getJsonField(
@@ -132,6 +133,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
             );
           },
         );
+        context.safePop();
         return;
       }
       _model.configRP8Data =
@@ -2278,10 +2280,8 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                                               .fontStyle,
                                                     ),
                                                 hintText:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  'v418ha04' /* 13.123456,100.123456 */,
-                                                ),
+                                                    currentUserLocationValue
+                                                        ?.toString(),
                                                 hintStyle: FlutterFlowTheme.of(
                                                         context)
                                                     .labelMedium

@@ -3227,11 +3227,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'ที่ตั้ง',
       'vi': 'vị trí',
     },
-    'v418ha04': {
-      'en': '13.123456,100.123456',
-      'th': '',
-      'vi': '',
-    },
     'byt3lt4t': {
       'en': 'remark',
       'th': 'หมายเหตุ',
