@@ -909,14 +909,40 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
 
                                                       await requestPermission(
                                                           locationPermission);
-                                                      if (await getPermissionStatus(
-                                                          locationPermission)) {
-                                                        _model.backgroundLocationCheck =
-                                                            await actions
-                                                                .backgroundLocationCheck();
-                                                        _shouldSetState = true;
-                                                        if (!_model
-                                                            .backgroundLocationCheck!) {
+                                                      if (!isWeb) {
+                                                        if (await getPermissionStatus(
+                                                            locationPermission)) {
+                                                          _model.backgroundLocationCheck =
+                                                              await actions
+                                                                  .backgroundLocationCheck();
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (!_model
+                                                              .backgroundLocationCheck!) {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return WebViewAware(
+                                                                  child:
+                                                                      AlertDialog(
+                                                                    content: Text(
+                                                                        'Để theo dõi công việc của bạn, Morning FM cần có quyền vị trí nền. Vui lòng chọn \"Cho phép mọi lúc\" trong cài đặt quyền ứng dụng.'),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        onPressed:
+                                                                            () =>
+                                                                                Navigator.pop(alertDialogContext),
+                                                                        child: Text(
+                                                                            'Mở Cài Đặt'),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                );
+                                                              },
+                                                            );
+                                                          }
+                                                        } else {
                                                           await showDialog(
                                                             context: context,
                                                             builder:
@@ -925,14 +951,14 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                                 child:
                                                                     AlertDialog(
                                                                   content: Text(
-                                                                      'Để theo dõi công việc của bạn, Morning FM cần có quyền vị trí nền. Vui lòng chọn \"Cho phép mọi lúc\" trong cài đặt quyền ứng dụng.'),
+                                                                      'Vui lòng cho phép truyhạn để theo dõi công việc của bạn'),
                                                                   actions: [
                                                                     TextButton(
                                                                       onPressed:
                                                                           () =>
                                                                               Navigator.pop(alertDialogContext),
                                                                       child: Text(
-                                                                          'Mở Cài Đặt'),
+                                                                          'Ok'),
                                                                     ),
                                                                   ],
                                                                 ),
@@ -940,49 +966,53 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                             },
                                                           );
                                                         }
-                                                      } else {
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return WebViewAware(
-                                                              child:
-                                                                  AlertDialog(
-                                                                content: Text(
-                                                                    'Vui lòng cho phép truyhạn để theo dõi công việc của bạn'),
-                                                                actions: [
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            alertDialogContext),
-                                                                    child: Text(
-                                                                        'Ok'),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            );
-                                                          },
-                                                        );
-                                                      }
 
-                                                      _model.permissionRequestOutput =
-                                                          await actions
-                                                              .backgroundLocationPermission(
-                                                        isiOS,
-                                                      );
-                                                      _shouldSetState = true;
-                                                      if (!_model
-                                                          .permissionRequestOutput!) {
-                                                        if (isiOS) {
-                                                          _model.permissionRequestOutput2 =
-                                                              await actions
-                                                                  .backgroundLocationPermission(
-                                                            isiOS,
-                                                          );
-                                                          _shouldSetState =
-                                                              true;
-                                                          if (!_model
-                                                              .permissionRequestOutput2!) {
+                                                        _model.permissionRequestOutput =
+                                                            await actions
+                                                                .backgroundLocationPermission(
+                                                          isiOS,
+                                                        );
+                                                        _shouldSetState = true;
+                                                        if (!_model
+                                                            .permissionRequestOutput!) {
+                                                          if (isiOS) {
+                                                            _model.permissionRequestOutput2 =
+                                                                await actions
+                                                                    .backgroundLocationPermission(
+                                                              isiOS,
+                                                            );
+                                                            _shouldSetState =
+                                                                true;
+                                                            if (!_model
+                                                                .permissionRequestOutput2!) {
+                                                              await showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (alertDialogContext) {
+                                                                  return WebViewAware(
+                                                                    child:
+                                                                        AlertDialog(
+                                                                      content: Text(
+                                                                          'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          onPressed: () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                          child:
+                                                                              Text('Ok'),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              );
+                                                              if (_shouldSetState)
+                                                                safeSetState(
+                                                                    () {});
+                                                              return;
+                                                            }
+                                                          } else {
                                                             await showDialog(
                                                               context: context,
                                                               builder:
@@ -1010,70 +1040,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                                   () {});
                                                             return;
                                                           }
-                                                        } else {
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return WebViewAware(
-                                                                child:
-                                                                    AlertDialog(
-                                                                  content: Text(
-                                                                      'Vui lòng chọn \"Cho phép mọi lúc\" quyền truy cập vào vị trí của bạn để theo dõi công việc của bạn'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              );
-                                                            },
-                                                          );
-                                                          if (_shouldSetState)
-                                                            safeSetState(() {});
-                                                          return;
                                                         }
-                                                      }
-                                                      _model.checkGpsEnable =
-                                                          await actions
-                                                              .checkGpsServiceEnable();
-                                                      _shouldSetState = true;
-                                                      if (!_model
-                                                          .checkGpsEnable!) {
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return WebViewAware(
-                                                              child:
-                                                                  AlertDialog(
-                                                                content: Text(
-                                                                    'Vui lòng bật GPS trước khi tiếp tục'),
-                                                                actions: [
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            alertDialogContext),
-                                                                    child: Text(
-                                                                        'Ok'),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            );
-                                                          },
-                                                        );
-                                                        await actions
-                                                            .enableGpsService();
-                                                        _model.checkGpsEnable2 =
+                                                        _model.checkGpsEnable =
                                                             await actions
                                                                 .checkGpsServiceEnable();
                                                         _shouldSetState = true;
                                                         if (!_model
-                                                            .checkGpsEnable2!) {
+                                                            .checkGpsEnable!) {
                                                           await showDialog(
                                                             context: context,
                                                             builder:
@@ -1096,9 +1069,42 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                               );
                                                             },
                                                           );
-                                                          if (_shouldSetState)
-                                                            safeSetState(() {});
-                                                          return;
+                                                          await actions
+                                                              .enableGpsService();
+                                                          _model.checkGpsEnable2 =
+                                                              await actions
+                                                                  .checkGpsServiceEnable();
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (!_model
+                                                              .checkGpsEnable2!) {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return WebViewAware(
+                                                                  child:
+                                                                      AlertDialog(
+                                                                    content: Text(
+                                                                        'Vui lòng bật GPS trước khi tiếp tục'),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        onPressed:
+                                                                            () =>
+                                                                                Navigator.pop(alertDialogContext),
+                                                                        child: Text(
+                                                                            'Ok'),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                );
+                                                              },
+                                                            );
+                                                            if (_shouldSetState)
+                                                              safeSetState(
+                                                                  () {});
+                                                            return;
+                                                          }
                                                         }
                                                       }
                                                       FFAppState()
@@ -1281,46 +1287,47 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                             ''),
                                                       )}';
                                                       safeSetState(() {});
-                                                      if (isAndroid) {
-                                                      } else {
-                                                        if (!isiOS) {
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return WebViewAware(
-                                                                child:
-                                                                    AlertDialog(
-                                                                  content: Text(
-                                                                      FFLocalizations.of(
-                                                                              context)
-                                                                          .getVariableText(
-                                                                    enText:
-                                                                        'This application is only available for use on Android or iOS.',
-                                                                    viText:
-                                                                        'Ứng dụng này chỉ được sử dụng trên Android hoặc iOS',
-                                                                    thText:
-                                                                        'แอพพลิเคชั่นนี้ ให้ใช้ได้แค่ใน Android หรือ Ios เท่านั้น',
-                                                                  )),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              );
-                                                            },
-                                                          );
-                                                          if (_shouldSetState)
-                                                            safeSetState(() {});
-                                                          return;
+                                                      if (!isWeb) {
+                                                        if (isAndroid) {
+                                                        } else {
+                                                          if (!isiOS) {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return WebViewAware(
+                                                                  child:
+                                                                      AlertDialog(
+                                                                    content: Text(
+                                                                        FFLocalizations.of(context)
+                                                                            .getVariableText(
+                                                                      enText:
+                                                                          'This application is only available for use on Android or iOS.',
+                                                                      viText:
+                                                                          'Ứng dụng này chỉ được sử dụng trên Android hoặc iOS',
+                                                                      thText:
+                                                                          'แอพพลิเคชั่นนี้ ให้ใช้ได้แค่ใน Android หรือ Ios เท่านั้น',
+                                                                    )),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        onPressed:
+                                                                            () =>
+                                                                                Navigator.pop(alertDialogContext),
+                                                                        child: Text(
+                                                                            'Ok'),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                );
+                                                              },
+                                                            );
+                                                            if (_shouldSetState)
+                                                              safeSetState(
+                                                                  () {});
+                                                            return;
+                                                          }
                                                         }
                                                       }
-
                                                       _model.getUserProfile =
                                                           await GetUserProfileAPICall
                                                               .call(

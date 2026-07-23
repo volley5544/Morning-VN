@@ -83,46 +83,48 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
       _model.appConfigOutput = await queryApplicationConfigRecordOnce(
         singleRecord: true,
       ).then((s) => s.firstOrNull);
-      _model.getBuildVersion = await actions.getBuildVersion();
-      if (!((String appBuildNumber, String latestBuildNumber) {
-        return int.parse(appBuildNumber) >= int.parse(latestBuildNumber);
-      }(
-          functions.getBuildNumber(_model.getBuildVersion)!,
-          (isiOS
-              ? _model.appConfigOutput!.buildNumberIos
-              : _model.appConfigOutput!.buildNumber)))) {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return WebViewAware(
-              child: AlertDialog(
-                content: Text(FFLocalizations.of(context).getVariableText(
-                  enText:
-                      '\'Morning FM\' has a new version available in the store! Please update in the store before using the application.',
-                  viText:
-                      '\'Morning FM\' Có phiên bản mới trong cửa hàng!. Vui lòng cập nhật tại cửa hàng trước khi sử dụng ứng dụng',
-                  thText:
-                      '\'Morning FM\' มีเวอร์ชันใหม่ในร้านค้า! กรุณาอัปเดตที่ร้านค้าก่อนใช้งานแอปพลิเคชัน',
-                )),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext),
-                    child: Text('Ok'),
-                  ),
-                ],
-              ),
-            );
-          },
-        );
-        if (isiOS) {
-          await launchURL('https://testflight.apple.com/join/GG9nQqJR');
-        } else {
-          await launchURL(
-              'https://play.google.com/store/apps/details?id=com.srisawad.morningvn');
-        }
+      if (!isWeb) {
+        _model.getBuildVersion = await actions.getBuildVersion();
+        if (!((String appBuildNumber, String latestBuildNumber) {
+          return int.parse(appBuildNumber) >= int.parse(latestBuildNumber);
+        }(
+            functions.getBuildNumber(_model.getBuildVersion)!,
+            (isiOS
+                ? _model.appConfigOutput!.buildNumberIos
+                : _model.appConfigOutput!.buildNumber)))) {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return WebViewAware(
+                child: AlertDialog(
+                  content: Text(FFLocalizations.of(context).getVariableText(
+                    enText:
+                        '\'Morning FM\' has a new version available in the store! Please update in the store before using the application.',
+                    viText:
+                        '\'Morning FM\' Có phiên bản mới trong cửa hàng!. Vui lòng cập nhật tại cửa hàng trước khi sử dụng ứng dụng',
+                    thText:
+                        '\'Morning FM\' มีเวอร์ชันใหม่ในร้านค้า! กรุณาอัปเดตที่ร้านค้าก่อนใช้งานแอปพลิเคชัน',
+                  )),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: Text('Ok'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+          if (isiOS) {
+            await launchURL('https://testflight.apple.com/join/GG9nQqJR');
+          } else {
+            await launchURL(
+                'https://play.google.com/store/apps/details?id=com.srisawad.morningvn');
+          }
 
-        await actions.terminateAppAction();
-        return;
+          await actions.terminateAppAction();
+          return;
+        }
       }
       if (FFAppState().isLogin) {
         if (!FFAppState().fromSetPin) {
