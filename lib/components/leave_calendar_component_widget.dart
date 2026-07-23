@@ -50,6 +50,8 @@ class _LeaveCalendarComponentWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => LeaveCalendarComponentModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

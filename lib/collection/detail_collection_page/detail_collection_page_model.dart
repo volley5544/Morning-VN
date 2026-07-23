@@ -46,6 +46,13 @@ class DetailCollectionPageModel
   List<CollectionDataModelStruct> get checkboxCheckedItems =>
       checkboxValueMap.entries.where((e) => e.value).map((e) => e.key).toList();
 
+  // Stores action output result for [Custom Action - translateLanguage2] action in Icon widget.
+  String? errorPhoneNumber2;
+  // Stores action output result for [Custom Action - translateLanguage2] action in Icon widget.
+  String? summitPhoneNumber2;
+  // Stores action output result for [Custom Action - open3CXAction] action in Icon widget.
+  bool? call3CXAction;
+
   @override
   void initState(BuildContext context) {}
 

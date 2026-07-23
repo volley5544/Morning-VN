@@ -39,6 +39,8 @@ class _DatailLeaveRequetWidgetState extends State<DatailLeaveRequetWidget> {
       _model.leaveDetailList = widget.detailList!.toList().cast<dynamic>();
       safeSetState(() {});
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -148,6 +148,8 @@ class CollectionVNGroup {
       GetRemarkRPDropdownApiCall();
   static SaveCallCollectionCall saveCallCollectionCall =
       SaveCallCollectionCall();
+  static SaveCollectionOnsiteApiCall saveCollectionOnsiteApiCall =
+      SaveCollectionOnsiteApiCall();
 }
 
 class GetDataCountCall {
@@ -468,6 +470,72 @@ class SaveCallCollectionCall {
     return ApiManager.instance.makeApiCall(
       callName: 'save call collection',
       apiUrl: '${baseUrl}/api/collection/save-call-collection',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-Language': '${language}',
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class SaveCollectionOnsiteApiCall {
+  Future<ApiCallResponse> call({
+    String? description = '',
+    String? remark = '',
+    String? uid = '',
+    String? jobType = '',
+    String? citizenId = '',
+    String? customerName = '',
+    String? contNo = '',
+    String? vLoanServer = '',
+    List<String>? urlImgList,
+    String? branchLocation = '',
+    String? branchName = '',
+    String? username = '',
+    String? latitude = '',
+    String? longitude = '',
+    String? url = '',
+    String? language = '',
+    String? token = '',
+  }) async {
+    final baseUrl = CollectionVNGroup.getBaseUrl(
+      url: url,
+      language: language,
+      token: token,
+    );
+    final urlImg = _serializeList(urlImgList);
+
+    final ffApiRequestBody = '''
+{
+  "Description": "${escapeStringForJson(description)}",
+  "Remark": "${escapeStringForJson(remark)}",
+  "UID": "${escapeStringForJson(uid)}",
+  "Job_Type": "${escapeStringForJson(jobType)}",
+  "Username": "${escapeStringForJson(username)}",
+  "CitizenId": "${escapeStringForJson(citizenId)}",
+  "Customer_Name": "${escapeStringForJson(customerName)}",
+  "ContNo": "${escapeStringForJson(contNo)}",
+  "VLoan_Server": "${escapeStringForJson(vLoanServer)}",
+  "url_img": ${urlImg},
+  "Branch_Location": "${escapeStringForJson(branchLocation)}",
+  "Branch_Name": "${escapeStringForJson(branchName)}",
+  "Latitude": "${escapeStringForJson(latitude)}",
+  "Longitude": "${escapeStringForJson(longitude)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'saveCollectionOnsiteApi',
+      apiUrl: '${baseUrl}/api/collection/send-data',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',

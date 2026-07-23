@@ -492,6 +492,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'ขออนุมัติลา',
       'vi': 'Đơn xin nghỉ',
     },
+    'm250hv7y': {
+      'en': '1',
+      'th': '',
+      'vi': '',
+    },
+    'l0pjai37': {
+      'en': 'Collection',
+      'th': 'ติดตามหนี้',
+      'vi': 'Bộ sưu tập',
+    },
     'bex75qrc': {
       'en': 'Location\nemployee',
       'th': 'สถานที่ตั้ง\nพนักงาน',
@@ -2857,9 +2867,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // listCollectionPage
   {
     'k2q2uyl2': {
-      'en': 'ค้นหาโดย',
-      'th': '',
-      'vi': '',
+      'en': 'search by',
+      'th': 'ค้นหาโดย',
+      'vi': 'tìm kiếm theo',
     },
     'fifhrmar': {
       'en': 'Search for an item...',
@@ -2892,9 +2902,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': 'thẻ căn cước',
     },
     'rwlf30kw': {
-      'en': 'เรียงข้อมูลโดย',
-      'th': '',
-      'vi': '',
+      'en': 'sort by',
+      'th': 'เรียงลำดับตาม',
+      'vi': 'sắp xếp theo',
     },
     'd87sl1px': {
       'en': 'Search for an item...',
@@ -3178,9 +3188,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'vi': '',
     },
     'pncl6q8r': {
-      'en': 'Results of the field visit',
-      'th': 'ผลการสำรวจภาคสนาม',
-      'vi': 'Kết quả chuyến thăm thực địa',
+      'en': 'Onsite',
+      'th': 'ลงพื้นที่',
+      'vi': 'tại chỗ',
     },
     'fzn891qt': {
       'en': 'Debt collection results',
@@ -3237,7 +3247,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'บันทึกการลงพื้นที่',
       'vi': 'cứu',
     },
-    'p6ttv0tq': {
+    'lpaoqfn1': {
+      'en': 'onsite',
+      'th': 'ลงพื้นที่',
+      'vi': 'tại chỗ',
+    },
+    'orgzmj7a': {
       'en': 'Home',
       'th': '',
       'vi': '',
@@ -3245,7 +3260,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // SaveCallCollectionPage
   {
-    '1zz3ht28': {
+    'te2jwd2n': {
       'en': 'Record call results',
       'th': 'บันทึกผลการโทร',
       'vi': 'Ghi lại kết quả cuộc gọi',
@@ -3445,7 +3460,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'บันทึก',
       'vi': 'cứu',
     },
-    'q4663lbx': {
+    '62m6vinj': {
       'en': 'Home',
       'th': '',
       'vi': '',
@@ -3508,7 +3523,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'ประวัติการโทร',
       'vi': 'lịch sử cuộc gọi',
     },
-    '7r6lb14m': {
+    'h0rxuv32': {
       'en': 'Home',
       'th': '',
       'vi': '',

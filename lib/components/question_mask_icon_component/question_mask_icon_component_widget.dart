@@ -27,6 +27,8 @@ class _QuestionMaskIconComponentWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => QuestionMaskIconComponentModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

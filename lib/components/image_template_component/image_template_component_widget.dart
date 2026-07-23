@@ -26,6 +26,8 @@ class _ImageTemplateComponentWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => ImageTemplateComponentModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

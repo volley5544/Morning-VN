@@ -30,6 +30,8 @@ class _SelectLanguageComponentWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => SelectLanguageComponentModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

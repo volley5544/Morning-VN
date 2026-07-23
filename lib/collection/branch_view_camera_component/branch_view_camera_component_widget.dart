@@ -35,6 +35,8 @@ class _BranchViewCameraComponentWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => BranchViewCameraComponentModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

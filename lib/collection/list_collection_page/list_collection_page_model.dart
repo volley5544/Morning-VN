@@ -26,6 +26,13 @@ class ListCollectionPageModel
   PagingController<ApiPagingParams, dynamic>? listViewPagingController;
   Function(ApiPagingParams nextPageMarker)? listViewApiCall;
 
+  // Stores action output result for [Custom Action - translateLanguage2] action in Icon widget.
+  String? errorPhoneNumber;
+  // Stores action output result for [Custom Action - translateLanguage2] action in Icon widget.
+  String? summitPhoneNumber;
+  // Stores action output result for [Custom Action - open3CXAction] action in Icon widget.
+  bool? call3CXAction;
+
   @override
   void initState(BuildContext context) {}
 

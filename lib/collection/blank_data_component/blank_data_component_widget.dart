@@ -31,6 +31,8 @@ class _BlankDataComponentWidgetState extends State<BlankDataComponentWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BlankDataComponentModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

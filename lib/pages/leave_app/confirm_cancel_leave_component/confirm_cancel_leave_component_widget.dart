@@ -51,6 +51,8 @@ class _ConfirmCancelLeaveComponentWidgetState
 
     _model.reasonCancelTextController ??= TextEditingController();
     _model.reasonCancelFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

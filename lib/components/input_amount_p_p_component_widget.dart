@@ -57,6 +57,7 @@ class _InputAmountPPComponentWidgetState
         }
       },
     );
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

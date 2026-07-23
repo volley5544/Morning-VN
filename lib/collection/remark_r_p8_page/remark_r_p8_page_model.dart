@@ -54,6 +54,8 @@ class RemarkRP8PageModel extends FlutterFlowModel<RemarkRP8PageWidget> {
   final googleMapsController = Completer<GoogleMapController>();
   // Stores action output result for [Custom Action - uploadMultipleFileFirebaseStorage] action in Button widget.
   List<String>? uploadFileUrlListOutput;
+  // Stores action output result for [Backend Call - API (saveCollectionOnsiteApi)] action in Button widget.
+  ApiCallResponse? saveCollectionApiOutput;
   // Model for BranchViewCameraComponent component.
   late BranchViewCameraComponentModel branchViewCameraComponentModel;
 

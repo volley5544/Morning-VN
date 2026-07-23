@@ -27,6 +27,8 @@ class _StatusCompnentWidgetState extends State<StatusCompnentWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => StatusCompnentModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

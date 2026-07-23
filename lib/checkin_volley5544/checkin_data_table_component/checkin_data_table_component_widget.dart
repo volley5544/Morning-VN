@@ -33,6 +33,8 @@ class _CheckinDataTableComponentWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => CheckinDataTableComponentModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

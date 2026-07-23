@@ -32,6 +32,8 @@ class _ShowCheckinImageNewWidgetState extends State<ShowCheckinImageNewWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ShowCheckinImageNewModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
