@@ -12,11 +12,17 @@ class RemarkDropdownRP8ModelStruct extends FFFirebaseStruct {
     String? code,
     String? description,
     String? isActive,
+    String? groupCollectionCode,
+    String? collectionCode,
+    String? collectionDescription,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _code = code,
         _description = description,
         _isActive = isActive,
+        _groupCollectionCode = groupCollectionCode,
+        _collectionCode = collectionCode,
+        _collectionDescription = collectionDescription,
         super(firestoreUtilData);
 
   // "id" field.
@@ -49,12 +55,36 @@ class RemarkDropdownRP8ModelStruct extends FFFirebaseStruct {
 
   bool hasIsActive() => _isActive != null;
 
+  // "group_collection_code" field.
+  String? _groupCollectionCode;
+  String get groupCollectionCode => _groupCollectionCode ?? '';
+  set groupCollectionCode(String? val) => _groupCollectionCode = val;
+
+  bool hasGroupCollectionCode() => _groupCollectionCode != null;
+
+  // "collection_code" field.
+  String? _collectionCode;
+  String get collectionCode => _collectionCode ?? '';
+  set collectionCode(String? val) => _collectionCode = val;
+
+  bool hasCollectionCode() => _collectionCode != null;
+
+  // "collection_description" field.
+  String? _collectionDescription;
+  String get collectionDescription => _collectionDescription ?? '';
+  set collectionDescription(String? val) => _collectionDescription = val;
+
+  bool hasCollectionDescription() => _collectionDescription != null;
+
   static RemarkDropdownRP8ModelStruct fromMap(Map<String, dynamic> data) =>
       RemarkDropdownRP8ModelStruct(
         id: castToType<int>(data['id']),
         code: data['code'] as String?,
         description: data['description'] as String?,
         isActive: data['is_active'] as String?,
+        groupCollectionCode: data['group_collection_code'] as String?,
+        collectionCode: data['collection_code'] as String?,
+        collectionDescription: data['collection_description'] as String?,
       );
 
   static RemarkDropdownRP8ModelStruct? maybeFromMap(dynamic data) => data is Map
@@ -66,6 +96,9 @@ class RemarkDropdownRP8ModelStruct extends FFFirebaseStruct {
         'code': _code,
         'description': _description,
         'is_active': _isActive,
+        'group_collection_code': _groupCollectionCode,
+        'collection_code': _collectionCode,
+        'collection_description': _collectionDescription,
       }.withoutNulls;
 
   @override
@@ -84,6 +117,18 @@ class RemarkDropdownRP8ModelStruct extends FFFirebaseStruct {
         ),
         'is_active': serializeParam(
           _isActive,
+          ParamType.String,
+        ),
+        'group_collection_code': serializeParam(
+          _groupCollectionCode,
+          ParamType.String,
+        ),
+        'collection_code': serializeParam(
+          _collectionCode,
+          ParamType.String,
+        ),
+        'collection_description': serializeParam(
+          _collectionDescription,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -111,6 +156,21 @@ class RemarkDropdownRP8ModelStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        groupCollectionCode: deserializeParam(
+          data['group_collection_code'],
+          ParamType.String,
+          false,
+        ),
+        collectionCode: deserializeParam(
+          data['collection_code'],
+          ParamType.String,
+          false,
+        ),
+        collectionDescription: deserializeParam(
+          data['collection_description'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -122,12 +182,22 @@ class RemarkDropdownRP8ModelStruct extends FFFirebaseStruct {
         id == other.id &&
         code == other.code &&
         description == other.description &&
-        isActive == other.isActive;
+        isActive == other.isActive &&
+        groupCollectionCode == other.groupCollectionCode &&
+        collectionCode == other.collectionCode &&
+        collectionDescription == other.collectionDescription;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([id, code, description, isActive]);
+  int get hashCode => const ListEquality().hash([
+        id,
+        code,
+        description,
+        isActive,
+        groupCollectionCode,
+        collectionCode,
+        collectionDescription
+      ]);
 }
 
 RemarkDropdownRP8ModelStruct createRemarkDropdownRP8ModelStruct({
@@ -135,6 +205,9 @@ RemarkDropdownRP8ModelStruct createRemarkDropdownRP8ModelStruct({
   String? code,
   String? description,
   String? isActive,
+  String? groupCollectionCode,
+  String? collectionCode,
+  String? collectionDescription,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -145,6 +218,9 @@ RemarkDropdownRP8ModelStruct createRemarkDropdownRP8ModelStruct({
       code: code,
       description: description,
       isActive: isActive,
+      groupCollectionCode: groupCollectionCode,
+      collectionCode: collectionCode,
+      collectionDescription: collectionDescription,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

@@ -505,6 +505,10 @@ class SaveCollectionOnsiteApiCall {
     String? username = '',
     String? latitude = '',
     String? longitude = '',
+    String? groupCollectionCode = '',
+    String? collectionCode = '',
+    String? collectionDescription = '',
+    String? code = '',
     String? url = '',
     String? language = '',
     String? token = '',
@@ -518,6 +522,10 @@ class SaveCollectionOnsiteApiCall {
 
     final ffApiRequestBody = '''
 {
+  "GroupCollectionCode": "${escapeStringForJson(groupCollectionCode)}",
+  "CollectionCode": "${escapeStringForJson(collectionCode)}",
+  "CollectionDescription": "${escapeStringForJson(collectionDescription)}",
+  "Code": "${escapeStringForJson(code)}",
   "Description": "${escapeStringForJson(description)}",
   "Remark": "${escapeStringForJson(remark)}",
   "UID": "${escapeStringForJson(uid)}",

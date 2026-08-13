@@ -12,7 +12,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
-import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -1789,8 +1788,27 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                     optionLabels: _model.configRP8Data!.dropdown
                                         .map((e) => e.description)
                                         .toList(),
-                                    onChanged: (val) => safeSetState(() =>
-                                        _model.dropDownFollowupValue = val),
+                                    onChanged: (val) async {
+                                      safeSetState(() =>
+                                          _model.dropDownFollowupValue = val);
+                                      if (!(('${_model.dropDownFollowupValue}' !=
+                                              'null') &&
+                                          ('${_model.dropDownFollowupValue}' !=
+                                              ''))) {
+                                        return;
+                                      }
+                                      _model.selectedRP8Value = _model
+                                          .configRP8Data?.dropdown
+                                          .elementAtOrNull(
+                                              functions.getIndexOfSomethingList(
+                                                  _model.configRP8Data?.dropdown
+                                                      .map((e) => e.code)
+                                                      .toList()
+                                                      .toList(),
+                                                  _model
+                                                      .dropDownFollowupValue)!);
+                                      safeSetState(() {});
+                                    },
                                     width: 200.0,
                                     height: 50.0,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -2983,7 +3001,7 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                             .call(
                                       description: 'ติดตามหนี้',
                                       remark:
-                                          '${_model.dropDownFollowupValue}_[ผู้ติดตามหนี้: ${FFAppState().employeeID}]_${_model.remarkTextFieldTextController.text}',
+                                          '${_model.remarkTextFieldTextController.text}',
                                       uid: '-',
                                       jobType: 'Collection',
                                       citizenId: widget.contNoSelected?.cuscod,
@@ -3004,6 +3022,15 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                           currentUserLocationValue, 'lat'),
                                       longitude: functions.getLatLngFunction(
                                           currentUserLocationValue, 'long'),
+                                      groupCollectionCode: _model
+                                          .selectedRP8Value
+                                          ?.groupCollectionCode,
+                                      collectionCode: _model
+                                          .selectedRP8Value?.collectionCode,
+                                      collectionDescription: _model
+                                          .selectedRP8Value
+                                          ?.collectionDescription,
+                                      code: _model.selectedRP8Value?.code,
                                     );
 
                                     _shouldSetState = true;
@@ -3067,10 +3094,6 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                       return;
                                     }
                                     Navigator.pop(context);
-
-                                    context.pushNamed(
-                                        TabCollectionPageWidget.routeName);
-
                                     context.safePop();
                                     if (_shouldSetState) safeSetState(() {});
                                   },

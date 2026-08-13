@@ -161,7 +161,7 @@ class _SuperAppPageWidgetState extends State<SuperAppPageWidget>
       safeSetState(() {});
       if (!functions.containsValueInJsonList(FFAppState().roleMenuJson,
           FFAppState().profileLevel, 'isTracking')!) {
-        if (true) {
+        if (false) {
           await actions.initialBackgroundFetch(
             FFAppState().employeeID,
             '${FFAppState().ProfilePhoneNumber}',

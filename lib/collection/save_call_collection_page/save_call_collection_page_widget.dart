@@ -2155,9 +2155,9 @@ class _SaveCallCollectionPageWidgetState
                                                                   null
                                                               ? dateTimeFormat(
                                                                   "yMd",
-                                                                  functions
-                                                                      .parseStringToDateTime(
-                                                                          '2026-05-05'),
+                                                                  functions.parseStringToDateTime(_model
+                                                                      .datePicked
+                                                                      ?.toString()),
                                                                   locale: FFLocalizations.of(
                                                                           context)
                                                                       .languageCode,
@@ -3387,11 +3387,11 @@ class _SaveCallCollectionPageWidgetState
                                                     FFAppState().employeeID,
                                                 updatedUserid:
                                                     FFAppState().employeeID,
-                                                arappdate:
-                                                    _model.datePicked != null
-                                                        ? _model.datePicked
-                                                            ?.toString()
-                                                        : '',
+                                                arappdate: _model.datePicked !=
+                                                        null
+                                                    ? functions.getDateFormat(
+                                                        _model.datePicked)
+                                                    : '',
                                                 ardesc:
                                                     _model.textController2.text,
                                                 userid: FFAppState().employeeID,
@@ -3438,48 +3438,11 @@ class _SaveCallCollectionPageWidgetState
                                               ));
                                               safeSetState(() {});
                                             }
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return WebViewAware(
-                                                  child: AlertDialog(
-                                                    content: Text('done loop'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
-                                              },
-                                            );
                                             if (_model.saveCall.length <= 0) {
                                               if (_shouldSetState)
                                                 safeSetState(() {});
                                               return;
                                             }
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return WebViewAware(
-                                                  child: AlertDialog(
-                                                    content: Text(
-                                                        '${(_model.saveCall.firstOrNull?.toMap())?.toString()}'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
-                                              },
-                                            );
                                             showDialog(
                                               context: context,
                                               builder: (dialogContext) {

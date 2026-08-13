@@ -1074,9 +1074,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       columnKeyStorage1Record!
                                                           .apiUrl;
                                                   safeSetState(() {});
-                                                  FFAppState().apiUrlAppState =
-                                                      'https://update-proceeds-shift-amp.trycloudflare.com';
-                                                  safeSetState(() {});
                                                   _model.authAPIOutput =
                                                       await AuthenAPICall.call(
                                                     username: _model
