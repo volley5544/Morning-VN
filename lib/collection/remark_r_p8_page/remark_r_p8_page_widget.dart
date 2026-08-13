@@ -3094,6 +3094,28 @@ class _RemarkRP8PageWidgetState extends State<RemarkRP8PageWidget>
                                       return;
                                     }
                                     Navigator.pop(context);
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return WebViewAware(
+                                          child: AlertDialog(
+                                            content: Text('${getJsonField(
+                                              (_model.saveCollectionApiOutput
+                                                      ?.jsonBody ??
+                                                  ''),
+                                              r'''$.message''',
+                                            ).toString()}'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
                                     context.safePop();
                                     if (_shouldSetState) safeSetState(() {});
                                   },

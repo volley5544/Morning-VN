@@ -33,3 +33,4 @@ export 'initial_background_fetch.dart' show initialBackgroundFetch;
 export 'open_tableau_browser.dart' show openTableauBrowser;
 export 'open3_c_x_action.dart' show open3CXAction;
 export 'translate_language2.dart' show translateLanguage2;
+export 'prevent_screen_record.dart' show preventScreenRecord;
