@@ -81,8 +81,8 @@ class GetLocationEmployeeAPICall {
 
     final ffApiRequestBody = '''
 {
-  "employee_id": "${escapeStringForJson(employeeId)}",
-  "date_time": "${escapeStringForJson(dateTime)}"
+  "employee_id": ${employeeId == null ? 'null' : '"${escapeStringForJson(employeeId)}"'},
+  "date_time": ${dateTime == null ? 'null' : '"${escapeStringForJson(dateTime)}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'GetLocationEmployeeAPI',
@@ -169,9 +169,9 @@ class GetDataCountCall {
 
     final ffApiRequestBody = '''
 {
-  "branchCode": "${escapeStringForJson(branchCode)}",
-  "codeKate": "${escapeStringForJson(codeKate)}",
-  "codeRegion": "${escapeStringForJson(codeRegion)}"
+  "branchCode": ${branchCode == null ? 'null' : '"${escapeStringForJson(branchCode)}"'},
+  "codeKate": ${codeKate == null ? 'null' : '"${escapeStringForJson(codeKate)}"'},
+  "codeRegion": ${codeRegion == null ? 'null' : '"${escapeStringForJson(codeRegion)}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'get data count',
@@ -220,7 +220,7 @@ class GetDataPersonCall {
 
     final ffApiRequestBody = '''
 {
-  "idCard": "${escapeStringForJson(idCard)}"
+  "idCard": ${idCard == null ? 'null' : '"${escapeStringForJson(idCard)}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'get data person',
@@ -277,15 +277,15 @@ class GetDataListCall {
 
     final ffApiRequestBody = '''
 {
-  "branchCode": "${escapeStringForJson(branchCode)}",
-  "codeKate": "${escapeStringForJson(codeKate)}",
-  "codeRegion": "${escapeStringForJson(codeRegion)}",
+  "branchCode": ${branchCode == null ? 'null' : '"${escapeStringForJson(branchCode)}"'},
+  "codeKate": ${codeKate == null ? 'null' : '"${escapeStringForJson(codeKate)}"'},
+  "codeRegion": ${codeRegion == null ? 'null' : '"${escapeStringForJson(codeRegion)}"'},
   "dataPage": ${dataPage},
   "pageSize": ${pageSize},
-  "dataFilter": "${escapeStringForJson(dataFilter)}",
-  "searchBy": "${escapeStringForJson(searchBy)}",
-  "search":"${escapeStringForJson(search)}" ,
-  "sortBy": "${escapeStringForJson(sortBy)}"
+  "dataFilter": ${dataFilter == null ? 'null' : '"${escapeStringForJson(dataFilter)}"'},
+  "searchBy": ${searchBy == null ? 'null' : '"${escapeStringForJson(searchBy)}"'},
+  "search":${search == null ? 'null' : '"${escapeStringForJson(search)}"'} ,
+  "sortBy": ${sortBy == null ? 'null' : '"${escapeStringForJson(sortBy)}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'get data list',
@@ -324,7 +324,7 @@ class GetDataHistoryCall {
 
     final ffApiRequestBody = '''
 {
-  "contNo": "${escapeStringForJson(contNo)}"
+  "contNo": ${contNo == null ? 'null' : '"${escapeStringForJson(contNo)}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'get data history',
@@ -522,24 +522,24 @@ class SaveCollectionOnsiteApiCall {
 
     final ffApiRequestBody = '''
 {
-  "GroupCollectionCode": "${escapeStringForJson(groupCollectionCode)}",
-  "CollectionCode": "${escapeStringForJson(collectionCode)}",
-  "CollectionDescription": "${escapeStringForJson(collectionDescription)}",
-  "Code": "${escapeStringForJson(code)}",
-  "Description": "${escapeStringForJson(description)}",
-  "Remark": "${escapeStringForJson(remark)}",
-  "UID": "${escapeStringForJson(uid)}",
-  "Job_Type": "${escapeStringForJson(jobType)}",
-  "Username": "${escapeStringForJson(username)}",
-  "CitizenId": "${escapeStringForJson(citizenId)}",
-  "Customer_Name": "${escapeStringForJson(customerName)}",
-  "ContNo": "${escapeStringForJson(contNo)}",
-  "VLoan_Server": "${escapeStringForJson(vLoanServer)}",
+  "GroupCollectionCode": ${groupCollectionCode == null ? 'null' : '"${escapeStringForJson(groupCollectionCode)}"'},
+  "CollectionCode": ${collectionCode == null ? 'null' : '"${escapeStringForJson(collectionCode)}"'},
+  "CollectionDescription": ${collectionDescription == null ? 'null' : '"${escapeStringForJson(collectionDescription)}"'},
+  "Code": ${code == null ? 'null' : '"${escapeStringForJson(code)}"'},
+  "Description": ${description == null ? 'null' : '"${escapeStringForJson(description)}"'},
+  "Remark": ${remark == null ? 'null' : '"${escapeStringForJson(remark)}"'},
+  "UID": ${uid == null ? 'null' : '"${escapeStringForJson(uid)}"'},
+  "Job_Type": ${jobType == null ? 'null' : '"${escapeStringForJson(jobType)}"'},
+  "Username": ${username == null ? 'null' : '"${escapeStringForJson(username)}"'},
+  "CitizenId": ${citizenId == null ? 'null' : '"${escapeStringForJson(citizenId)}"'},
+  "Customer_Name": ${customerName == null ? 'null' : '"${escapeStringForJson(customerName)}"'},
+  "ContNo": ${contNo == null ? 'null' : '"${escapeStringForJson(contNo)}"'},
+  "VLoan_Server": ${vLoanServer == null ? 'null' : '"${escapeStringForJson(vLoanServer)}"'},
   "url_img": ${urlImg},
-  "Branch_Location": "${escapeStringForJson(branchLocation)}",
-  "Branch_Name": "${escapeStringForJson(branchName)}",
-  "Latitude": "${escapeStringForJson(latitude)}",
-  "Longitude": "${escapeStringForJson(longitude)}"
+  "Branch_Location": ${branchLocation == null ? 'null' : '"${escapeStringForJson(branchLocation)}"'},
+  "Branch_Name": ${branchName == null ? 'null' : '"${escapeStringForJson(branchName)}"'},
+  "Latitude": ${latitude == null ? 'null' : '"${escapeStringForJson(latitude)}"'},
+  "Longitude": ${longitude == null ? 'null' : '"${escapeStringForJson(longitude)}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'saveCollectionOnsiteApi',
@@ -577,10 +577,10 @@ class AuthenAPICall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "username": "${username}",
-  "password": "${password}",
-  "uid": "${uid}",
-  "project_name" : "${projectName}"
+  "username": ${username == null ? 'null' : '"${username}"'},
+  "password": ${password == null ? 'null' : '"${password}"'},
+  "uid": ${uid == null ? 'null' : '"${uid}"'},
+  "project_name" : ${projectName == null ? 'null' : '"${projectName}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'authenAPI',
@@ -660,7 +660,7 @@ class GetEmployeeListCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "employee_id": "${employeeId}"
+  "employee_id": ${employeeId == null ? 'null' : '"${employeeId}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'GetEmployeeList',
@@ -715,11 +715,11 @@ class WorkCheckAPICall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "latitude": "${latitude}",
-  "longitude": "${longitude}",
-  "url_img": "${urlImg}",
-  "branch": "${branch}",
-  "remark": "${remark}"
+  "latitude": ${latitude == null ? 'null' : '"${latitude}"'},
+  "longitude": ${longitude == null ? 'null' : '"${longitude}"'},
+  "url_img": ${urlImg == null ? 'null' : '"${urlImg}"'},
+  "branch": ${branch == null ? 'null' : '"${branch}"'},
+  "remark": ${remark == null ? 'null' : '"${remark}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'workCheckAPI',
@@ -802,8 +802,8 @@ class GetLocationEmployeeCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "employee_id": "${employeeId}",
-  "date_time": "${dateTime}"
+  "employee_id": ${employeeId == null ? 'null' : '"${employeeId}"'},
+  "date_time": ${dateTime == null ? 'null' : '"${dateTime}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'GetLocationEmployee',
@@ -859,11 +859,11 @@ class GetLocationCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "latitude": "${latitude}",
-  "longitude": "${longitude}",
-  "url_img": "${urlImg}",
-  "branch": "${branch}",
-  "remark": "${remark}"
+  "latitude": ${latitude == null ? 'null' : '"${latitude}"'},
+  "longitude": ${longitude == null ? 'null' : '"${longitude}"'},
+  "url_img": ${urlImg == null ? 'null' : '"${urlImg}"'},
+  "branch": ${branch == null ? 'null' : '"${branch}"'},
+  "remark": ${remark == null ? 'null' : '"${remark}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'GetLocation',
@@ -920,9 +920,9 @@ class GetBranchLocationCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "latitude": "${latitude}",
-  "longitude": "${longitude}",
-  "branch_code": "${branchCode}"
+  "latitude": ${latitude == null ? 'null' : '"${latitude}"'},
+  "longitude": ${longitude == null ? 'null' : '"${longitude}"'},
+  "branch_code": ${branchCode == null ? 'null' : '"${branchCode}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'getBranchLocation',
@@ -999,10 +999,10 @@ class UpdateBranchLocationCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "latitude": "${latitude}",
-  "longitude": "${longitude}",
-  "branch_code": "${branchCode}",
-  "branch_name": "${branchName}"
+  "latitude": ${latitude == null ? 'null' : '"${latitude}"'},
+  "longitude": ${longitude == null ? 'null' : '"${longitude}"'},
+  "branch_code": ${branchCode == null ? 'null' : '"${branchCode}"'},
+  "branch_name": ${branchName == null ? 'null' : '"${branchName}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'updateBranchLocation',
@@ -1076,12 +1076,12 @@ class CreateBranchLocationCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "latitude": "${latitude}",
-  "longitude": "${longitude}",
-  "branch_code": "${branchCode}",
-  "branch_name": "${branchName}",
-  "area_code": "${areaCode}",
-  "region_code": "${regionCode}"
+  "latitude": ${latitude == null ? 'null' : '"${latitude}"'},
+  "longitude": ${longitude == null ? 'null' : '"${longitude}"'},
+  "branch_code": ${branchCode == null ? 'null' : '"${branchCode}"'},
+  "branch_name": ${branchName == null ? 'null' : '"${branchName}"'},
+  "area_code": ${areaCode == null ? 'null' : '"${areaCode}"'},
+  "region_code": ${regionCode == null ? 'null' : '"${regionCode}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'createBranchLocation',
@@ -1383,12 +1383,12 @@ class SaveLeaveCall {
 
     final ffApiRequestBody = '''
 {
-  "leave_type": "${leaveType}",
-  "leave_start_date": "${leaveStartDate}",
-  "leave_end_date": "${leaveEndDate}",
-  "leave_period": "${leavePeriod}",
-  "leave_reason": "${leaveReason}",
-  "leave_document": "${leaveDocument}",
+  "leave_type": ${leaveType == null ? 'null' : '"${leaveType}"'},
+  "leave_start_date": ${leaveStartDate == null ? 'null' : '"${leaveStartDate}"'},
+  "leave_end_date": ${leaveEndDate == null ? 'null' : '"${leaveEndDate}"'},
+  "leave_period": ${leavePeriod == null ? 'null' : '"${leavePeriod}"'},
+  "leave_reason": ${leaveReason == null ? 'null' : '"${leaveReason}"'},
+  "leave_document": ${leaveDocument == null ? 'null' : '"${leaveDocument}"'},
   "leave_date": ${leaveDate}
 }''';
     return ApiManager.instance.makeApiCall(
@@ -1756,8 +1756,8 @@ class SaveStatusLeaveCall {
     final ffApiRequestBody = '''
 {
   "id": ${id},
-  "status": "${escapeStringForJson(status)}",
-  "reason": "${escapeStringForJson(reason)}"
+  "status": ${status == null ? 'null' : '"${escapeStringForJson(status)}"'},
+  "reason": ${reason == null ? 'null' : '"${escapeStringForJson(reason)}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'saveStatusLeave',
