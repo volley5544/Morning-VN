@@ -120,8 +120,7 @@ class RoleMenuRecord extends FirestoreRecord {
 
   @override
   bool operator ==(other) =>
-      other is RoleMenuRecord &&
-      reference.path.hashCode == other.reference.path.hashCode;
+      other is RoleMenuRecord && reference.path == other.reference.path;
 }
 
 Map<String, dynamic> createRoleMenuRecordData({
@@ -168,12 +167,12 @@ class RoleMenuRecordDocumentEquality implements Equality<RoleMenuRecord> {
 
   @override
   int hash(RoleMenuRecord? e) => const ListEquality().hash([
-        e?.menuName,
-        e?.menuHo,
-        e?.menuBranch,
-        e?.menuGBM,
-        e?.menuASM,
-        e?.menuAssistant,
+        const ListEquality().hash(e?.menuName),
+        const ListEquality().hash(e?.menuHo),
+        const ListEquality().hash(e?.menuBranch),
+        const ListEquality().hash(e?.menuGBM),
+        const ListEquality().hash(e?.menuASM),
+        const ListEquality().hash(e?.menuAssistant),
         e?.email,
         e?.displayName,
         e?.photoUrl,

@@ -1,6 +1,6 @@
 // ignore_for_file: unnecessary_getters_setters
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 
 import '/backend/schema/util/firestore_util.dart';
 
@@ -154,8 +154,13 @@ class OtherYearStruct extends FFFirebaseStruct {
   }
 
   @override
-  int get hashCode => const ListEquality()
-      .hash([leaveUse, leaveDate, year, leaveLimit, leaveRemain]);
+  int get hashCode => const ListEquality().hash([
+        leaveUse,
+        const ListEquality().hash(leaveDate),
+        year,
+        leaveLimit,
+        leaveRemain
+      ]);
 }
 
 OtherYearStruct createOtherYearStruct({

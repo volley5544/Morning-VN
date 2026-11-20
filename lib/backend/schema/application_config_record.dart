@@ -74,7 +74,7 @@ class ApplicationConfigRecord extends FirestoreRecord {
   @override
   bool operator ==(other) =>
       other is ApplicationConfigRecord &&
-      reference.path.hashCode == other.reference.path.hashCode;
+      reference.path == other.reference.path;
 }
 
 Map<String, dynamic> createApplicationConfigRecordData({

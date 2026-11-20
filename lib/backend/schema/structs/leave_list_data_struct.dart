@@ -1,6 +1,6 @@
 // ignore_for_file: unnecessary_getters_setters
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 
 import '/backend/schema/util/firestore_util.dart';
 
@@ -317,12 +317,12 @@ class LeaveListDataStruct extends FFFirebaseStruct {
         currentYear,
         startDate,
         endDate,
-        allLeaveList,
+        const ListEquality().hash(allLeaveList),
         color,
         icon,
         tempYear,
         ontherYear,
-        leavePeriod
+        const ListEquality().hash(leavePeriod)
       ]);
 }
 

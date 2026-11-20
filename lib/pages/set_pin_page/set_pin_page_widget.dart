@@ -45,38 +45,33 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Title(
-        title: 'setPinPage',
-        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
-        child: GestureDetector(
-          onTap: () {
-            FocusScope.of(context).unfocus();
-            FocusManager.instance.primaryFocus?.unfocus();
-          },
-          child: PopScope(
-            canPop: false,
-            child: Scaffold(
-              key: scaffoldKey,
-              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-              body: SafeArea(
-                top: true,
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            FFLocalizations.of(context).getText(
-                              'vyizgov8' /* Set Your Pin */,
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .headlineSmall
-                                .override(
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: PopScope(
+        canPop: false,
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          body: SafeArea(
+            top: true,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        FFLocalizations.of(context).getText(
+                          'vyizgov8' /* Set Your Pin */,
+                        ),
+                        style:
+                            FlutterFlowTheme.of(context).headlineSmall.override(
                                   font: GoogleFonts.outfit(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .headlineSmall
@@ -93,18 +88,17 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                                       .headlineSmall
                                       .fontStyle,
                                 ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            44.0, 8.0, 44.0, 0.0),
+                        child: Text(
+                          FFLocalizations.of(context).getText(
+                            'e81wxbhr' /* This Pin will Use to Enter App... */,
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                44.0, 8.0, 44.0, 0.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'e81wxbhr' /* This Pin will Use to Enter App... */,
-                              ),
-                              textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
+                          textAlign: TextAlign.center,
+                          style:
+                              FlutterFlowTheme.of(context).bodySmall.override(
                                     font: GoogleFonts.readexPro(
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .bodySmall
@@ -121,18 +115,17 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                                         .bodySmall
                                         .fontStyle,
                                   ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                12.0, 32.0, 12.0, 0.0),
-                            child: PinCodeTextField(
-                              autoDisposeControllers: false,
-                              appContext: context,
-                              length: 6,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            12.0, 32.0, 12.0, 0.0),
+                        child: PinCodeTextField(
+                          autoDisposeControllers: false,
+                          appContext: context,
+                          length: 6,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
                                     font: GoogleFonts.readexPro(
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .titleSmall
@@ -150,153 +143,151 @@ class _SetPinPageWidgetState extends State<SetPinPageWidget> {
                                         .titleSmall
                                         .fontStyle,
                                   ),
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              enableActiveFill: false,
-                              autoFocus: true,
-                              focusNode: _model.pinCodeFocusNode,
-                              enablePinAutofill: true,
-                              errorTextSpace: 16.0,
-                              showCursor: false,
-                              cursorColor: FlutterFlowTheme.of(context).primary,
-                              obscureText: false,
-                              hintCharacter: '-',
-                              keyboardType: TextInputType.number,
-                              inputFormatters: [
-                                FilteringTextInputFormatter.digitsOnly
-                              ],
-                              pinTheme: PinTheme(
-                                fieldHeight: 55.0,
-                                fieldWidth: 50.0,
-                                borderWidth: 2.0,
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(12.0),
-                                  bottomRight: Radius.circular(12.0),
-                                  topLeft: Radius.circular(12.0),
-                                  topRight: Radius.circular(12.0),
-                                ),
-                                shape: PinCodeFieldShape.box,
-                                activeColor:
-                                    FlutterFlowTheme.of(context).primary,
-                                inactiveColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                selectedColor:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                              ),
-                              controller: _model.pinCodeController,
-                              onChanged: (_) {},
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              validator: _model.pinCodeControllerValidator
-                                  .asValidator(context),
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          enableActiveFill: false,
+                          autoFocus: true,
+                          focusNode: _model.pinCodeFocusNode,
+                          enablePinAutofill: true,
+                          errorTextSpace: 16.0,
+                          showCursor: false,
+                          cursorColor: FlutterFlowTheme.of(context).primary,
+                          obscureText: false,
+                          hintCharacter: '-',
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
+                          pinTheme: PinTheme(
+                            fieldHeight: 55.0,
+                            fieldWidth: 50.0,
+                            borderWidth: 2.0,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(12.0),
+                              bottomRight: Radius.circular(12.0),
+                              topLeft: Radius.circular(12.0),
+                              topRight: Radius.circular(12.0),
                             ),
+                            shape: PinCodeFieldShape.box,
+                            activeColor: FlutterFlowTheme.of(context).primary,
+                            inactiveColor:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            selectedColor:
+                                FlutterFlowTheme.of(context).secondaryText,
                           ),
-                        ],
+                          controller: _model.pinCodeController,
+                          onChanged: (_) {},
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: _model.pinCodeControllerValidator
+                              .asValidator(context),
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 44.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          HapticFeedback.mediumImpact();
-                          if (!(_model.pinCodeController!.text != '')) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 44.0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      HapticFeedback.mediumImpact();
+                      if (!(_model.pinCodeController!.text != '')) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              FFLocalizations.of(context).getVariableText(
+                                enText: 'Please enter the PIN',
+                                viText: 'Vui lòng nhập mã PIN',
+                                thText: 'กรุณาใส่พิน',
+                              ),
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            duration: Duration(milliseconds: 3000),
+                            backgroundColor: Color(0xCC000000),
+                          ),
+                        );
+                        return;
+                      }
+                      if (!functions
+                          .checkPin(_model.pinCodeController!.text)!) {
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return WebViewAware(
+                              child: AlertDialog(
                                 content: Text(
-                                  FFLocalizations.of(context).getVariableText(
-                                    enText: 'Please enter the PIN',
-                                    viText: 'Vui lòng nhập mã PIN',
-                                    thText: 'กรุณาใส่พิน',
+                                    FFLocalizations.of(context).getVariableText(
+                                  enText:
+                                      'Please enter a 6-digit PIN (numbers)',
+                                  viText:
+                                      'Vui lòng nhập mã PIN 6 chữ số (chỉ số)',
+                                  thText: 'กรุณาใส่รหัสพิน6หลัก (ตัวเลข)',
+                                )),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
                                   ),
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                duration: Duration(milliseconds: 3000),
-                                backgroundColor: Color(0xCC000000),
+                                ],
                               ),
                             );
-                            return;
-                          }
-                          if (!functions
-                              .checkPin(_model.pinCodeController!.text)!) {
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return WebViewAware(
-                                  child: AlertDialog(
-                                    content: Text(FFLocalizations.of(context)
-                                        .getVariableText(
-                                      enText:
-                                          'Please enter a 6-digit PIN (numbers)',
-                                      viText:
-                                          'Vui lòng nhập mã PIN 6 chữ số (chỉ số)',
-                                      thText: 'กรุณาใส่รหัสพิน6หลัก (ตัวเลข)',
-                                    )),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: Text('Ok'),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            );
-                            return;
-                          }
-                          FFAppState().pinCode = _model.pinCodeController!.text;
-                          FFAppState().fromSetPin = true;
-                          FFAppState().update(() {});
+                          },
+                        );
+                        return;
+                      }
+                      FFAppState().pinCode = _model.pinCodeController!.text;
+                      FFAppState().fromSetPin = true;
+                      FFAppState().update(() {});
 
-                          context.goNamed(SuperAppPageWidget.routeName);
-                        },
-                        text: FFLocalizations.of(context).getText(
-                          '67idg0p8' /* Confirm */,
-                        ),
-                        options: FFButtonOptions(
-                          width: 270.0,
-                          height: 50.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    font: GoogleFonts.readexPro(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                          elevation: 2.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                      ),
+                      context.goNamed(SuperAppPageWidget.routeName);
+                    },
+                    text: FFLocalizations.of(context).getText(
+                      '67idg0p8' /* Confirm */,
                     ),
-                  ],
+                    options: FFButtonOptions(
+                      width: 270.0,
+                      height: 50.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      textStyle: FlutterFlowTheme.of(context)
+                          .titleSmall
+                          .override(
+                            font: GoogleFonts.readexPro(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .fontStyle,
+                            ),
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .fontStyle,
+                          ),
+                      elevation: 2.0,
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

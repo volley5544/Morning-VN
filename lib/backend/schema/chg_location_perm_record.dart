@@ -54,8 +54,7 @@ class ChgLocationPermRecord extends FirestoreRecord {
 
   @override
   bool operator ==(other) =>
-      other is ChgLocationPermRecord &&
-      reference.path.hashCode == other.reference.path.hashCode;
+      other is ChgLocationPermRecord && reference.path == other.reference.path;
 }
 
 Map<String, dynamic> createChgLocationPermRecordData() {
@@ -77,7 +76,8 @@ class ChgLocationPermRecordDocumentEquality
   }
 
   @override
-  int hash(ChgLocationPermRecord? e) => const ListEquality().hash([e?.empId]);
+  int hash(ChgLocationPermRecord? e) =>
+      const ListEquality().hash([const ListEquality().hash(e?.empId)]);
 
   @override
   bool isValidKey(Object? o) => o is ChgLocationPermRecord;

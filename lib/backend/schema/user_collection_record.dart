@@ -84,8 +84,7 @@ class UserCollectionRecord extends FirestoreRecord {
 
   @override
   bool operator ==(other) =>
-      other is UserCollectionRecord &&
-      reference.path.hashCode == other.reference.path.hashCode;
+      other is UserCollectionRecord && reference.path == other.reference.path;
 }
 
 Map<String, dynamic> createUserCollectionRecordData({

@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'pending_email_change.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -24,11 +26,11 @@ class MorningFMFirebaseUser extends BaseAuthUser {
 
   @override
   Future? updateEmail(String email) async {
-    try {
-      await user?.updateEmail(email);
-    } catch (_) {
-      await user?.verifyBeforeUpdateEmail(email);
-    }
+    final targetUser = user;
+    if (targetUser == null) return;
+    await targetUser.verifyBeforeUpdateEmail(email);
+    await rememberPendingEmailChange(targetUser.uid, email);
+    unawaited(syncPendingEmailChange(targetUser));
   }
 
   @override
@@ -54,6 +56,7 @@ class MorningFMFirebaseUser extends BaseAuthUser {
     await FirebaseAuth.instance.currentUser
         ?.reload()
         .then((_) => user = FirebaseAuth.instance.currentUser);
+    unawaited(syncPendingEmailChange(user));
   }
 
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
@@ -70,6 +73,7 @@ Stream<BaseAuthUser> morningFMFirebaseUserStream() => FirebaseAuth.instance
         .map<BaseAuthUser>(
       (user) {
         currentUser = MorningFMFirebaseUser(user);
+        unawaited(syncPendingEmailChange(user));
         return currentUser!;
       },
     );

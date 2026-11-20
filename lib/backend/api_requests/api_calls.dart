@@ -2,6 +2,10 @@ import 'dart:convert';
 import '../schema/structs/index.dart';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' show Color, DateTimeRange;
+// Redundant when the data-type schema export already re-exports it.
+// ignore: unnecessary_import
+import 'package:from_css_color/from_css_color.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
@@ -1809,6 +1813,31 @@ String _toEncodable(dynamic item) {
   if (item is DocumentReference) {
     return item.path;
   }
+  if (item is DateTime) {
+    return item.toIso8601String();
+  }
+  if (item is Color) {
+    return item.toCssString();
+  }
+  if (item is LatLng) {
+    return item.serialize();
+  }
+  if (item is DateTimeRange) {
+    String millis(DateTime d) =>
+        '${d.isUtc ? 'u' : 'l'}${d.millisecondsSinceEpoch}';
+    return '${millis(item.start)}|${millis(item.end)}';
+  }
+  if (item is FFPlace) {
+    return jsonEncode({
+      'latLng': item.latLng.serialize(),
+      'name': item.name,
+      'address': item.address,
+      'city': item.city,
+      'state': item.state,
+      'country': item.country,
+      'zipCode': item.zipCode,
+    });
+  }
   return item;
 }
 
@@ -1840,9 +1869,6 @@ String? escapeStringForJson(String? input) {
   if (input == null) {
     return null;
   }
-  return input
-      .replaceAll('\\', '\\\\')
-      .replaceAll('"', '\\"')
-      .replaceAll('\n', '\\n')
-      .replaceAll('\t', '\\t');
+  final encoded = jsonEncode(input);
+  return encoded.substring(1, encoded.length - 1);
 }

@@ -102,8 +102,7 @@ class ToolsMenuRecord extends FirestoreRecord {
 
   @override
   bool operator ==(other) =>
-      other is ToolsMenuRecord &&
-      reference.path.hashCode == other.reference.path.hashCode;
+      other is ToolsMenuRecord && reference.path == other.reference.path;
 }
 
 Map<String, dynamic> createToolsMenuRecordData({

@@ -669,7 +669,9 @@ class _FlutterFlowGoogleMapState extends State<FlutterFlowGoogleMap> {
         mapType: widget.mapType,
         zoomGesturesEnabled: widget.allowZoom,
         zoomControlsEnabled: widget.showZoomControls,
-        myLocationEnabled: widget.showLocation,
+        // google_maps_flutter_web 0.6.5 started honouring this, which would
+        // prompt for location on web maps that never showed it before.
+        myLocationEnabled: widget.showLocation && !kIsWeb,
         compassEnabled: widget.showCompass,
         mapToolbarEnabled: widget.showMapToolbar,
         trafficEnabled: widget.showTraffic,

@@ -197,709 +197,203 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Title(
-        title: 'TrackingPage',
-        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
-        child: GestureDetector(
-          onTap: () {
-            FocusScope.of(context).unfocus();
-            FocusManager.instance.primaryFocus?.unfocus();
-          },
-          child: PopScope(
-            canPop: false,
-            child: Scaffold(
-              key: scaffoldKey,
-              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-              drawer: Container(
-                width: MediaQuery.sizeOf(context).width * 0.5,
-                child: Drawer(
-                  elevation: 16.0,
-                  child: WebViewAware(
-                    child: Container(
-                      width: double.infinity,
-                      height: double.infinity,
-                      decoration: BoxDecoration(),
-                      child: Visibility(
-                        visible: responsiveVisibility(
-                          context: context,
-                          tablet: false,
-                          tabletLandscape: false,
-                          desktop: false,
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 100.0, 0.0, 100.0),
-                          child: Container(
-                            width: 100.0,
-                            height: double.infinity,
-                            decoration: BoxDecoration(),
-                            child: Builder(
-                              builder: (context) {
-                                final list30DaysDateTimeListItem = functions
-                                        .generateListLast30dateTime(
-                                            widget.selectDate)
-                                        ?.toList() ??
-                                    [];
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: PopScope(
+        canPop: false,
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          drawer: Container(
+            width: MediaQuery.sizeOf(context).width * 0.5,
+            child: Drawer(
+              elevation: 16.0,
+              child: WebViewAware(
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  decoration: BoxDecoration(),
+                  child: Visibility(
+                    visible: responsiveVisibility(
+                      context: context,
+                      tablet: false,
+                      tabletLandscape: false,
+                      desktop: false,
+                    ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          0.0, 100.0, 0.0, 100.0),
+                      child: Container(
+                        width: 100.0,
+                        height: double.infinity,
+                        decoration: BoxDecoration(),
+                        child: Builder(
+                          builder: (context) {
+                            final list30DaysDateTimeListItem = functions
+                                    .generateListLast30dateTime(
+                                        widget.selectDate)
+                                    ?.toList() ??
+                                [];
 
-                                return ListView.builder(
-                                  padding: EdgeInsets.zero,
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: list30DaysDateTimeListItem.length,
-                                  itemBuilder: (context,
-                                      list30DaysDateTimeListItemIndex) {
-                                    final list30DaysDateTimeListItemItem =
-                                        list30DaysDateTimeListItem[
-                                            list30DaysDateTimeListItemIndex];
-                                    return Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          4.0,
-                                          valueOrDefault<double>(
-                                            functions.getDateFormat(
-                                                        list30DaysDateTimeListItemItem) ==
-                                                    _model.dateIndex
-                                                ? 8.0
-                                                : 4.0,
-                                            0.0,
+                            return ListView.builder(
+                              padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: list30DaysDateTimeListItem.length,
+                              itemBuilder:
+                                  (context, list30DaysDateTimeListItemIndex) {
+                                final list30DaysDateTimeListItemItem =
+                                    list30DaysDateTimeListItem[
+                                        list30DaysDateTimeListItemIndex];
+                                return Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      4.0,
+                                      valueOrDefault<double>(
+                                        functions.getDateFormat(
+                                                    list30DaysDateTimeListItemItem) ==
+                                                _model.dateIndex
+                                            ? 8.0
+                                            : 4.0,
+                                        0.0,
+                                      ),
+                                      4.0,
+                                      valueOrDefault<double>(
+                                        functions.getDateFormat(
+                                                    list30DaysDateTimeListItemItem) ==
+                                                _model.dateIndex
+                                            ? 8.0
+                                            : 0.0,
+                                        0.0,
+                                      )),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      if (!functions.containStringInListString(
+                                          widget.data
+                                              ?.map((e) => e.date)
+                                              .toList()
+                                              .toList(),
+                                          functions.getDateFormat(
+                                              list30DaysDateTimeListItemItem))!) {
+                                        return;
+                                      }
+                                      if (scaffoldKey
+                                              .currentState!.isDrawerOpen ||
+                                          scaffoldKey
+                                              .currentState!.isEndDrawerOpen) {
+                                        Navigator.pop(context);
+                                      }
+
+                                      if (Navigator.of(context).canPop()) {
+                                        context.pop();
+                                      }
+                                      context.pushNamed(
+                                        TrackingPageWidget.routeName,
+                                        queryParameters: {
+                                          'selectDate': serializeParam(
+                                            widget.selectDate,
+                                            ParamType.String,
                                           ),
-                                          4.0,
-                                          valueOrDefault<double>(
-                                            functions.getDateFormat(
-                                                        list30DaysDateTimeListItemItem) ==
-                                                    _model.dateIndex
-                                                ? 8.0
-                                                : 0.0,
-                                            0.0,
-                                          )),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          if (!functions.containStringInListString(
-                                              widget.data
-                                                  ?.map((e) => e.date)
-                                                  .toList()
-                                                  .toList(),
-                                              functions.getDateFormat(
-                                                  list30DaysDateTimeListItemItem))!) {
-                                            return;
-                                          }
-                                          if (scaffoldKey
-                                                  .currentState!.isDrawerOpen ||
-                                              scaffoldKey.currentState!
-                                                  .isEndDrawerOpen) {
-                                            Navigator.pop(context);
-                                          }
-
-                                          if (Navigator.of(context).canPop()) {
-                                            context.pop();
-                                          }
-                                          context.pushNamed(
-                                            TrackingPageWidget.routeName,
-                                            queryParameters: {
-                                              'selectDate': serializeParam(
-                                                widget.selectDate,
-                                                ParamType.String,
-                                              ),
-                                              'data': serializeParam(
-                                                widget.data,
-                                                ParamType.DataStruct,
-                                                isList: true,
-                                              ),
-                                              'index': serializeParam(
-                                                functions.getIndexOfSomethingList(
+                                          'data': serializeParam(
+                                            widget.data,
+                                            ParamType.DataStruct,
+                                            isList: true,
+                                          ),
+                                          'index': serializeParam(
+                                            functions.getIndexOfSomethingList(
+                                                widget.data
+                                                    ?.map((e) => e.date)
+                                                    .toList()
+                                                    .toList(),
+                                                functions.getDateFormat(
+                                                    list30DaysDateTimeListItemItem)),
+                                            ParamType.int,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+                                    },
+                                    child: Material(
+                                      color: Colors.transparent,
+                                      elevation: functions.getDateFormat(
+                                                  list30DaysDateTimeListItemItem) ==
+                                              _model.dateIndex
+                                          ? 5.0
+                                          : 0.0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            valueOrDefault<double>(
+                                          functions.getDateFormat(
+                                                      list30DaysDateTimeListItemItem) ==
+                                                  _model.dateIndex
+                                              ? 12.0
+                                              : 0.0,
+                                          0.0,
+                                        )),
+                                      ),
+                                      child: Container(
+                                        width: 100.0,
+                                        height: functions.getDateFormat(
+                                                    list30DaysDateTimeListItemItem) ==
+                                                _model.dateIndex
+                                            ? 65.0
+                                            : 40.0,
+                                        decoration: BoxDecoration(
+                                          color: valueOrDefault<Color>(
+                                            functions.containStringInListString(
                                                     widget.data
                                                         ?.map((e) => e.date)
                                                         .toList()
                                                         .toList(),
                                                     functions.getDateFormat(
-                                                        list30DaysDateTimeListItemItem)),
-                                                ParamType.int,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        },
-                                        child: Material(
-                                          color: Colors.transparent,
-                                          elevation: functions.getDateFormat(
-                                                      list30DaysDateTimeListItemItem) ==
-                                                  _model.dateIndex
-                                              ? 5.0
-                                              : 0.0,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                                valueOrDefault<double>(
-                                              functions.getDateFormat(
-                                                          list30DaysDateTimeListItemItem) ==
-                                                      _model.dateIndex
-                                                  ? 12.0
-                                                  : 0.0,
-                                              0.0,
-                                            )),
+                                                        list30DaysDateTimeListItemItem))!
+                                                ? FlutterFlowTheme.of(context)
+                                                    .secondaryBackground
+                                                : Color(0xFFDFDFDF),
+                                            Color(0xFFDFDFDF),
                                           ),
-                                          child: Container(
-                                            width: 100.0,
-                                            height: functions.getDateFormat(
+                                          borderRadius: BorderRadius.circular(
+                                              valueOrDefault<double>(
+                                            functions.getDateFormat(
                                                         list30DaysDateTimeListItemItem) ==
                                                     _model.dateIndex
-                                                ? 65.0
-                                                : 40.0,
-                                            decoration: BoxDecoration(
-                                              color: valueOrDefault<Color>(
-                                                functions.containStringInListString(
-                                                        widget.data
-                                                            ?.map((e) => e.date)
-                                                            .toList()
-                                                            .toList(),
-                                                        functions.getDateFormat(
-                                                            list30DaysDateTimeListItemItem))!
-                                                    ? FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground
-                                                    : Color(0xFFDFDFDF),
-                                                Color(0xFFDFDFDF),
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      valueOrDefault<double>(
-                                                functions.getDateFormat(
-                                                            list30DaysDateTimeListItemItem) ==
-                                                        _model.dateIndex
-                                                    ? 12.0
-                                                    : 0.0,
-                                                0.0,
-                                              )),
-                                              border: Border.all(
-                                                color: functions.getDateFormat(
-                                                            list30DaysDateTimeListItemItem) ==
-                                                        _model.dateIndex
-                                                    ? Color(0xFFFF6500)
-                                                    : Colors.transparent,
-                                                width: functions.getDateFormat(
-                                                            list30DaysDateTimeListItemItem) ==
-                                                        _model.dateIndex
-                                                    ? 3.0
-                                                    : 0.0,
-                                              ),
-                                            ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    '${functions.showDateChrist(list30DaysDateTimeListItemItem.toString())}',
-                                                    '22/01/68',
-                                                  ),
-                                                  style:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            font: GoogleFonts
-                                                                .readexPro(
-                                                              fontWeight:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                            ),
-                                                            color:
-                                                                valueOrDefault<
-                                                                    Color>(
-                                                              functions.containStringInListString(
-                                                                      widget
-                                                                          .data
-                                                                          ?.map((e) => e
-                                                                              .date)
-                                                                          .toList()
-                                                                          .toList(),
-                                                                      functions
-                                                                          .getDateFormat(
-                                                                              list30DaysDateTimeListItemItem))!
-                                                                  ? FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText
-                                                                  : Color(
-                                                                      0xFF969696),
-                                                              Color(0xFF969696),
-                                                            ),
-                                                            fontSize: 18.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                ),
-                                              ],
-                                            ),
+                                                ? 12.0
+                                                : 0.0,
+                                            0.0,
+                                          )),
+                                          border: Border.all(
+                                            color: functions.getDateFormat(
+                                                        list30DaysDateTimeListItemItem) ==
+                                                    _model.dateIndex
+                                                ? Color(0xFFFF6500)
+                                                : Colors.transparent,
+                                            width: functions.getDateFormat(
+                                                        list30DaysDateTimeListItemItem) ==
+                                                    _model.dateIndex
+                                                ? 3.0
+                                                : 0.0,
                                           ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              appBar: AppBar(
-                backgroundColor: Color(0xFFFF6500),
-                automaticallyImplyLeading: false,
-                leading: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    context.safePop();
-                  },
-                  child: Icon(
-                    Icons.arrow_back,
-                    color: Color(0xFBFFFFFF),
-                    size: 30.0,
-                  ),
-                ),
-                title: Text(
-                  FFLocalizations.of(context).getText(
-                    'f4i8hze7' /* employee Location  */,
-                  ),
-                  style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        font: GoogleFonts.outfit(
-                          fontWeight: FlutterFlowTheme.of(context)
-                              .headlineMedium
-                              .fontWeight,
-                          fontStyle: FlutterFlowTheme.of(context)
-                              .headlineMedium
-                              .fontStyle,
-                        ),
-                        color: Colors.white,
-                        fontSize: 22.0,
-                        letterSpacing: 0.0,
-                        fontWeight: FlutterFlowTheme.of(context)
-                            .headlineMedium
-                            .fontWeight,
-                        fontStyle: FlutterFlowTheme.of(context)
-                            .headlineMedium
-                            .fontStyle,
-                      ),
-                ),
-                actions: [],
-                centerTitle: true,
-                elevation: 10.0,
-              ),
-              body: SafeArea(
-                top: true,
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: BoxDecoration(),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Container(
-                              width: double.infinity,
-                              height: 40.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 0.0, 10.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      flex: 1,
-                                      child: Icon(
-                                        Icons.grid_3x3,
-                                        color: Colors.black,
-                                        size: 24.0,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 3,
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          '623ekfqn' /* employee_id :  */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.readexPro(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              fontSize: 13.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 5,
-                                      child: Text(
-                                        '${FFAppState().EmpProfileLocationSelected.employeeId}',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.readexPro(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              fontSize: 13.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ).animateOnPageLoad(animationsMap[
-                                'containerOnPageLoadAnimation1']!),
-                            Container(
-                              width: double.infinity,
-                              height: 40.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 0.0, 10.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      flex: 1,
-                                      child: Icon(
-                                        Icons.person,
-                                        color: Colors.black,
-                                        size: 24.0,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 3,
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'yt2d1r9c' /* employee name :  */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.readexPro(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              fontSize: 13.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 5,
-                                      child: Container(
-                                        decoration: BoxDecoration(),
-                                        child: Text(
-                                          '${FFAppState().EmpProfileLocationSelected.nameTh}',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font: GoogleFonts.readexPro(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                                fontSize: 13.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ).animateOnPageLoad(animationsMap[
-                                'containerOnPageLoadAnimation2']!),
-                            Container(
-                              width: double.infinity,
-                              height: 40.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 0.0, 10.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      flex: 1,
-                                      child: Icon(
-                                        Icons.work,
-                                        color: Colors.black,
-                                        size: 24.0,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 3,
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'ag8e9bht' /* position : */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.readexPro(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              fontSize: 13.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 5,
-                                      child: Container(
-                                        decoration: BoxDecoration(),
-                                        child: Text(
-                                          '${FFAppState().EmpProfileLocationSelected.position}',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font: GoogleFonts.readexPro(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                                fontSize: 13.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ).animateOnPageLoad(animationsMap[
-                                'containerOnPageLoadAnimation3']!),
-                            Container(
-                              width: double.infinity,
-                              height: 40.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 0.0, 10.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      flex: 1,
-                                      child: Icon(
-                                        Icons.location_on_sharp,
-                                        color: Colors.black,
-                                        size: 24.0,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 3,
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'flp6d1t0' /* total Location :  */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.readexPro(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              fontSize: 13.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 5,
-                                      child: Container(
-                                        decoration: BoxDecoration(),
-                                        child: Row(
+                                        child: Column(
                                           mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
-                                            Flexible(
-                                              child: Text(
-                                                '${'${(widget.data?.elementAtOrNull(widget.index!))?.data.length.toString()}'}${() {
-                                                  if (FFLocalizations.of(
-                                                              context)
-                                                          .languageCode ==
-                                                      'th') {
-                                                    return 'ที่';
-                                                  } else if (FFLocalizations.of(
-                                                              context)
-                                                          .languageCode ==
-                                                      'en') {
-                                                    return 'at';
-                                                  } else {
-                                                    return 'Tại';
-                                                  }
-                                                }()} (${functions.showDateChrist(_model.dateIndex)})',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      font:
-                                                          GoogleFonts.readexPro(
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                      fontSize: 13.0,
-                                                      letterSpacing: 0.0,
+                                            Text(
+                                              valueOrDefault<String>(
+                                                '${functions.showDateChrist(list30DaysDateTimeListItemItem.toString())}',
+                                                '22/01/68',
+                                              ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.readexPro(
                                                       fontWeight:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -911,252 +405,721 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                                               .bodyMedium
                                                               .fontStyle,
                                                     ),
-                                              ),
-                                            ),
-                                            if (responsiveVisibility(
-                                              context: context,
-                                              tablet: false,
-                                              tabletLandscape: false,
-                                              desktop: false,
-                                            ))
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    scaffoldKey.currentState!
-                                                        .openDrawer();
-                                                  },
-                                                  child: Icon(
-                                                    Icons
-                                                        .calendar_month_rounded,
-                                                    color: Color(0xFFFF6500),
-                                                    size: 30.0,
+                                                    color:
+                                                        valueOrDefault<Color>(
+                                                      functions.containStringInListString(
+                                                              widget.data
+                                                                  ?.map((e) =>
+                                                                      e.date)
+                                                                  .toList()
+                                                                  .toList(),
+                                                              functions
+                                                                  .getDateFormat(
+                                                                      list30DaysDateTimeListItemItem))!
+                                                          ? FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText
+                                                          : Color(0xFF969696),
+                                                      Color(0xFF969696),
+                                                    ),
+                                                    fontSize: 18.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
                                                   ),
-                                                ),
-                                              ),
+                                            ),
                                           ],
                                         ),
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ),
-                            ).animateOnPageLoad(animationsMap[
-                                'containerOnPageLoadAnimation4']!),
-                            Divider(
-                              thickness: 2.0,
-                            ),
-                          ].addToStart(SizedBox(height: 8.0)),
+                                  ),
+                                );
+                              },
+                            );
+                          },
                         ),
                       ),
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              if (responsiveVisibility(
-                                context: context,
-                                phone: false,
-                              ))
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          appBar: AppBar(
+            backgroundColor: Color(0xFFFF6500),
+            automaticallyImplyLeading: false,
+            leading: InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                context.safePop();
+              },
+              child: Icon(
+                Icons.arrow_back,
+                color: Color(0xFBFFFFFF),
+                size: 30.0,
+              ),
+            ),
+            title: Text(
+              FFLocalizations.of(context).getText(
+                'f4i8hze7' /* employee Location  */,
+              ),
+              style: FlutterFlowTheme.of(context).headlineMedium.override(
+                    font: GoogleFonts.outfit(
+                      fontWeight: FlutterFlowTheme.of(context)
+                          .headlineMedium
+                          .fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                    ),
+                    color: Colors.white,
+                    fontSize: 22.0,
+                    letterSpacing: 0.0,
+                    fontWeight:
+                        FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                  ),
+            ),
+            actions: [],
+            centerTitle: true,
+            elevation: 10.0,
+          ),
+          body: SafeArea(
+            top: true,
+            child: Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          height: 40.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 10.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
                                 Expanded(
-                                  flex: 2,
-                                  child: Container(
-                                    width: 100.0,
-                                    height: double.infinity,
-                                    decoration: BoxDecoration(),
-                                    child: Builder(
-                                      builder: (context) {
-                                        final list30DaysDateTimeListItem =
-                                            functions
-                                                    .generateListLast30dateTime(
-                                                        widget.selectDate)
-                                                    ?.toList() ??
-                                                [];
-
-                                        return ListView.builder(
-                                          padding: EdgeInsets.fromLTRB(
-                                            0,
-                                            8.0,
-                                            0,
-                                            12.0,
+                                  flex: 1,
+                                  child: Icon(
+                                    Icons.grid_3x3,
+                                    color: Colors.black,
+                                    size: 24.0,
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 3,
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      '623ekfqn' /* employee_id :  */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.vertical,
-                                          itemCount:
-                                              list30DaysDateTimeListItem.length,
-                                          itemBuilder: (context,
-                                              list30DaysDateTimeListItemIndex) {
-                                            final list30DaysDateTimeListItemItem =
-                                                list30DaysDateTimeListItem[
-                                                    list30DaysDateTimeListItemIndex];
-                                            return Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      4.0,
-                                                      valueOrDefault<double>(
+                                          fontSize: 13.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 5,
+                                  child: Text(
+                                    '${FFAppState().EmpProfileLocationSelected.employeeId}',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                          fontSize: 13.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ).animateOnPageLoad(
+                            animationsMap['containerOnPageLoadAnimation1']!),
+                        Container(
+                          width: double.infinity,
+                          height: 40.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 10.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Icon(
+                                    Icons.person,
+                                    color: Colors.black,
+                                    size: 24.0,
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 3,
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'yt2d1r9c' /* employee name :  */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                          fontSize: 13.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 5,
+                                  child: Container(
+                                    decoration: BoxDecoration(),
+                                    child: Text(
+                                      '${FFAppState().EmpProfileLocationSelected.nameTh}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            fontSize: 13.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ).animateOnPageLoad(
+                            animationsMap['containerOnPageLoadAnimation2']!),
+                        Container(
+                          width: double.infinity,
+                          height: 40.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 10.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Icon(
+                                    Icons.work,
+                                    color: Colors.black,
+                                    size: 24.0,
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 3,
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'ag8e9bht' /* position : */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                          fontSize: 13.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 5,
+                                  child: Container(
+                                    decoration: BoxDecoration(),
+                                    child: Text(
+                                      '${FFAppState().EmpProfileLocationSelected.position}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            fontSize: 13.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ).animateOnPageLoad(
+                            animationsMap['containerOnPageLoadAnimation3']!),
+                        Container(
+                          width: double.infinity,
+                          height: 40.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 10.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Icon(
+                                    Icons.location_on_sharp,
+                                    color: Colors.black,
+                                    size: 24.0,
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 3,
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'flp6d1t0' /* total Location :  */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                          fontSize: 13.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 5,
+                                  child: Container(
+                                    decoration: BoxDecoration(),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Flexible(
+                                          child: Text(
+                                            '${'${(widget.data?.elementAtOrNull(widget.index!))?.data.length.toString()}'}${() {
+                                              if (FFLocalizations.of(context)
+                                                      .languageCode ==
+                                                  'th') {
+                                                return 'ที่';
+                                              } else if (FFLocalizations.of(
+                                                          context)
+                                                      .languageCode ==
+                                                  'en') {
+                                                return 'at';
+                                              } else {
+                                                return 'Tại';
+                                              }
+                                            }()} (${functions.showDateChrist(_model.dateIndex)})',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  font: GoogleFonts.readexPro(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  fontSize: 13.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                          ),
+                                        ),
+                                        if (responsiveVisibility(
+                                          context: context,
+                                          tablet: false,
+                                          tabletLandscape: false,
+                                          desktop: false,
+                                        ))
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 0.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                scaffoldKey.currentState!
+                                                    .openDrawer();
+                                              },
+                                              child: Icon(
+                                                Icons.calendar_month_rounded,
+                                                color: Color(0xFFFF6500),
+                                                size: 30.0,
+                                              ),
+                                            ),
+                                          ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ).animateOnPageLoad(
+                            animationsMap['containerOnPageLoadAnimation4']!),
+                        Divider(
+                          thickness: 2.0,
+                        ),
+                      ].addToStart(SizedBox(height: 8.0)),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          if (responsiveVisibility(
+                            context: context,
+                            phone: false,
+                          ))
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                width: 100.0,
+                                height: double.infinity,
+                                decoration: BoxDecoration(),
+                                child: Builder(
+                                  builder: (context) {
+                                    final list30DaysDateTimeListItem = functions
+                                            .generateListLast30dateTime(
+                                                widget.selectDate)
+                                            ?.toList() ??
+                                        [];
+
+                                    return ListView.builder(
+                                      padding: EdgeInsets.fromLTRB(
+                                        0,
+                                        8.0,
+                                        0,
+                                        12.0,
+                                      ),
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount:
+                                          list30DaysDateTimeListItem.length,
+                                      itemBuilder: (context,
+                                          list30DaysDateTimeListItemIndex) {
+                                        final list30DaysDateTimeListItemItem =
+                                            list30DaysDateTimeListItem[
+                                                list30DaysDateTimeListItemIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  4.0,
+                                                  valueOrDefault<double>(
+                                                    functions.getDateFormat(
+                                                                list30DaysDateTimeListItemItem) ==
+                                                            _model.dateIndex
+                                                        ? 8.0
+                                                        : 4.0,
+                                                    0.0,
+                                                  ),
+                                                  4.0,
+                                                  valueOrDefault<double>(
+                                                    functions.getDateFormat(
+                                                                list30DaysDateTimeListItemItem) ==
+                                                            _model.dateIndex
+                                                        ? 8.0
+                                                        : 0.0,
+                                                    0.0,
+                                                  )),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              if (!functions
+                                                  .containStringInListString(
+                                                      widget.data
+                                                          ?.map((e) => e.date)
+                                                          .toList()
+                                                          .toList(),
+                                                      functions.getDateFormat(
+                                                          list30DaysDateTimeListItemItem))!) {
+                                                return;
+                                              }
+                                              if (Navigator.of(context)
+                                                  .canPop()) {
+                                                context.pop();
+                                              }
+                                              context.pushNamed(
+                                                TrackingPageWidget.routeName,
+                                                queryParameters: {
+                                                  'selectDate': serializeParam(
+                                                    widget.selectDate,
+                                                    ParamType.String,
+                                                  ),
+                                                  'data': serializeParam(
+                                                    widget.data,
+                                                    ParamType.DataStruct,
+                                                    isList: true,
+                                                  ),
+                                                  'index': serializeParam(
+                                                    functions.getIndexOfSomethingList(
+                                                        widget.data
+                                                            ?.map((e) => e.date)
+                                                            .toList()
+                                                            .toList(),
                                                         functions.getDateFormat(
-                                                                    list30DaysDateTimeListItemItem) ==
-                                                                _model.dateIndex
-                                                            ? 8.0
-                                                            : 4.0,
-                                                        0.0,
-                                                      ),
-                                                      4.0,
-                                                      valueOrDefault<double>(
-                                                        functions.getDateFormat(
-                                                                    list30DaysDateTimeListItemItem) ==
-                                                                _model.dateIndex
-                                                            ? 8.0
-                                                            : 0.0,
-                                                        0.0,
-                                                      )),
-                                              child: InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  if (!functions
-                                                      .containStringInListString(
-                                                          widget.data
-                                                              ?.map(
-                                                                  (e) => e.date)
-                                                              .toList()
-                                                              .toList(),
-                                                          functions.getDateFormat(
-                                                              list30DaysDateTimeListItemItem))!) {
-                                                    return;
-                                                  }
-                                                  if (Navigator.of(context)
-                                                      .canPop()) {
-                                                    context.pop();
-                                                  }
-                                                  context.pushNamed(
-                                                    TrackingPageWidget
-                                                        .routeName,
-                                                    queryParameters: {
-                                                      'selectDate':
-                                                          serializeParam(
-                                                        widget.selectDate,
-                                                        ParamType.String,
-                                                      ),
-                                                      'data': serializeParam(
-                                                        widget.data,
-                                                        ParamType.DataStruct,
-                                                        isList: true,
-                                                      ),
-                                                      'index': serializeParam(
-                                                        functions.getIndexOfSomethingList(
+                                                            list30DaysDateTimeListItemItem)),
+                                                    ParamType.int,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+                                            },
+                                            child: Material(
+                                              color: Colors.transparent,
+                                              elevation: functions.getDateFormat(
+                                                          list30DaysDateTimeListItemItem) ==
+                                                      _model.dateIndex
+                                                  ? 5.0
+                                                  : 0.0,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        valueOrDefault<double>(
+                                                  functions.getDateFormat(
+                                                              list30DaysDateTimeListItemItem) ==
+                                                          _model.dateIndex
+                                                      ? 12.0
+                                                      : 0.0,
+                                                  0.0,
+                                                )),
+                                              ),
+                                              child: Container(
+                                                width: 100.0,
+                                                height: functions.getDateFormat(
+                                                            list30DaysDateTimeListItemItem) ==
+                                                        _model.dateIndex
+                                                    ? 65.0
+                                                    : 40.0,
+                                                decoration: BoxDecoration(
+                                                  color: valueOrDefault<Color>(
+                                                    functions.containStringInListString(
                                                             widget.data
                                                                 ?.map((e) =>
                                                                     e.date)
                                                                 .toList()
                                                                 .toList(),
                                                             functions.getDateFormat(
-                                                                list30DaysDateTimeListItemItem)),
-                                                        ParamType.int,
-                                                      ),
-                                                    }.withoutNulls,
-                                                  );
-                                                },
-                                                child: Material(
-                                                  color: Colors.transparent,
-                                                  elevation:
-                                                      functions.getDateFormat(
-                                                                  list30DaysDateTimeListItemItem) ==
-                                                              _model.dateIndex
-                                                          ? 5.0
-                                                          : 0.0,
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            valueOrDefault<
-                                                                double>(
-                                                      functions.getDateFormat(
-                                                                  list30DaysDateTimeListItemItem) ==
-                                                              _model.dateIndex
-                                                          ? 12.0
-                                                          : 0.0,
-                                                      0.0,
-                                                    )),
+                                                                list30DaysDateTimeListItemItem))!
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryBackground
+                                                        : Color(0xFFDFDFDF),
+                                                    Color(0xFFDFDFDF),
                                                   ),
-                                                  child: Container(
-                                                    width: 100.0,
-                                                    height: functions.getDateFormat(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          valueOrDefault<
+                                                              double>(
+                                                    functions.getDateFormat(
                                                                 list30DaysDateTimeListItemItem) ==
                                                             _model.dateIndex
-                                                        ? 65.0
-                                                        : 40.0,
-                                                    decoration: BoxDecoration(
-                                                      color:
-                                                          valueOrDefault<Color>(
-                                                        functions.containStringInListString(
-                                                                widget.data
-                                                                    ?.map((e) =>
-                                                                        e.date)
-                                                                    .toList()
-                                                                    .toList(),
-                                                                functions
-                                                                    .getDateFormat(
-                                                                        list30DaysDateTimeListItemItem))!
-                                                            ? FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground
-                                                            : Color(0xFFDFDFDF),
-                                                        Color(0xFFDFDFDF),
+                                                        ? 12.0
+                                                        : 0.0,
+                                                    0.0,
+                                                  )),
+                                                  border: Border.all(
+                                                    color: functions.getDateFormat(
+                                                                list30DaysDateTimeListItemItem) ==
+                                                            _model.dateIndex
+                                                        ? Color(0xFFFF6500)
+                                                        : Colors.transparent,
+                                                    width: functions.getDateFormat(
+                                                                list30DaysDateTimeListItemItem) ==
+                                                            _model.dateIndex
+                                                        ? 3.0
+                                                        : 0.0,
+                                                  ),
+                                                ),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      valueOrDefault<String>(
+                                                        '${functions.showDateChrist(list30DaysDateTimeListItemItem.toString())}',
+                                                        '22/01/68',
                                                       ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              valueOrDefault<
-                                                                  double>(
-                                                        functions.getDateFormat(
-                                                                    list30DaysDateTimeListItemItem) ==
-                                                                _model.dateIndex
-                                                            ? 12.0
-                                                            : 0.0,
-                                                        0.0,
-                                                      )),
-                                                      border: Border.all(
-                                                        color: functions.getDateFormat(
-                                                                    list30DaysDateTimeListItemItem) ==
-                                                                _model.dateIndex
-                                                            ? Color(0xFFFF6500)
-                                                            : Colors
-                                                                .transparent,
-                                                        width: functions.getDateFormat(
-                                                                    list30DaysDateTimeListItemItem) ==
-                                                                _model.dateIndex
-                                                            ? 3.0
-                                                            : 0.0,
-                                                      ),
-                                                    ),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            '${functions.showDateChrist(list30DaysDateTimeListItemItem.toString())}',
-                                                            '22/01/68',
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .bodyMedium
                                                               .override(
                                                                 font: GoogleFonts
@@ -1202,50 +1165,50 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget>
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                               ),
-                                                        ),
-                                                      ],
                                                     ),
-                                                  ),
+                                                  ],
                                                 ),
                                               ),
-                                            );
-                                          },
+                                            ),
+                                          ),
                                         );
                                       },
-                                    ),
-                                  ),
-                                ),
-                              if (responsiveVisibility(
-                                context: context,
-                                phone: false,
-                              ))
-                                VerticalDivider(
-                                  thickness: 2.0,
-                                ),
-                              Expanded(
-                                flex: 7,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  child: wrapWithModel(
-                                    model: _model.polyMapWidgetComponentModel,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: PolyMapWidgetComponentWidget(),
-                                  ),
+                                    );
+                                  },
                                 ),
                               ),
-                            ],
+                            ),
+                          if (responsiveVisibility(
+                            context: context,
+                            phone: false,
+                          ))
+                            VerticalDivider(
+                              thickness: 2.0,
+                            ),
+                          Expanded(
+                            flex: 7,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                              ),
+                              child: wrapWithModel(
+                                model: _model.polyMapWidgetComponentModel,
+                                updateCallback: () => safeSetState(() {}),
+                                child: PolyMapWidgetComponentWidget(),
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
-                    ].addToEnd(SizedBox(height: 12.0)),
+                    ),
                   ),
-                ),
+                ].addToEnd(SizedBox(height: 12.0)),
               ),
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

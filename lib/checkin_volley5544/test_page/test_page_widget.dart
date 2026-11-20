@@ -104,157 +104,150 @@ class _TestPageWidgetState extends State<TestPageWidget> {
     context.watch<FFAppState>();
 
     return Builder(
-      builder: (context) => Title(
-          title: 'TestPage',
-          color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
-          child: GestureDetector(
-            onTap: () {
-              FocusScope.of(context).unfocus();
-              FocusManager.instance.primaryFocus?.unfocus();
-            },
-            child: PopScope(
-              canPop: false,
-              child: Scaffold(
-                key: scaffoldKey,
-                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-                appBar: AppBar(
-                  backgroundColor: FlutterFlowTheme.of(context).primary,
-                  automaticallyImplyLeading: false,
-                  title: Text(
-                    FFLocalizations.of(context).getText(
-                      'twf4yttl' /* Page Title */,
-                    ),
-                    style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          font: GoogleFonts.outfit(
-                            fontWeight: FlutterFlowTheme.of(context)
-                                .headlineMedium
-                                .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .headlineMedium
-                                .fontStyle,
-                          ),
-                          color: Colors.white,
-                          fontSize: 22.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
-                              .headlineMedium
-                              .fontWeight,
-                          fontStyle: FlutterFlowTheme.of(context)
-                              .headlineMedium
-                              .fontStyle,
-                        ),
-                  ),
-                  actions: [],
-                  centerTitle: false,
-                  elevation: 2.0,
+      builder: (context) => GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        child: PopScope(
+          canPop: false,
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            appBar: AppBar(
+              backgroundColor: FlutterFlowTheme.of(context).primary,
+              automaticallyImplyLeading: false,
+              title: Text(
+                FFLocalizations.of(context).getText(
+                  'twf4yttl' /* Page Title */,
                 ),
-                body: SafeArea(
-                  top: true,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 400.0,
-                        decoration: BoxDecoration(),
-                        child: Container(
-                          width: double.infinity,
-                          height: double.infinity,
-                          child: custom_widgets.LeaveCalendarWidget(
-                            width: double.infinity,
-                            height: double.infinity,
-                            todayColor: Color(0xFFFF843D),
-                            selectedColor: Color(0xFFFF843D),
-                            selectedTextColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            holidaysList: _model.holidayDataPage
-                                .map((e) => e.date)
-                                .toList(),
-                            currentDate: getCurrentTimestamp,
-                            currentYear:
-                                _model.currentYearDataPage.lastOrNull?.year,
-                            nextYear: _model.nextYearDataPage.lastOrNull?.year,
-                            currentYearSelectableDates: _model
-                                .currentYearDataPage.lastOrNull!.leaveRemain,
-                            nextYearSelectableDates:
-                                _model.nextYearDataPage.lastOrNull!.leaveRemain,
-                            startdate: getJsonField(
-                              _model.listLeaveData.lastOrNull,
-                              r'''$.start_date''',
-                            ).toString(),
-                            enddate: getJsonField(
-                              _model.listLeaveData.lastOrNull,
-                              r'''$.end_date''',
-                            ).toString(),
-                            previousYear: '1',
-                            previousYearSelectableDates: '3',
-                          ),
-                        ),
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      font: GoogleFonts.outfit(
+                        fontWeight: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontWeight,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontStyle,
                       ),
-                      FFButtonWidget(
-                        onPressed: () async {
-                          await showDialog(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return WebViewAware(
-                                child: AlertDialog(
-                                  title: Text(
-                                      'จำนวนวันลา ${FFAppState().selectedDatesList.length.toString()} วัน'),
-                                  content: Text(functions.returnAllValueInList(
-                                      FFAppState()
-                                          .selectedDatesList
-                                          .toList())!),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('Ok'),
-                                    ),
-                                  ],
+                      color: Colors.white,
+                      fontSize: 22.0,
+                      letterSpacing: 0.0,
+                      fontWeight: FlutterFlowTheme.of(context)
+                          .headlineMedium
+                          .fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                    ),
+              ),
+              actions: [],
+              centerTitle: false,
+              elevation: 2.0,
+            ),
+            body: SafeArea(
+              top: true,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 400.0,
+                    decoration: BoxDecoration(),
+                    child: Container(
+                      width: double.infinity,
+                      height: double.infinity,
+                      child: custom_widgets.LeaveCalendarWidget(
+                        width: double.infinity,
+                        height: double.infinity,
+                        todayColor: Color(0xFFFF843D),
+                        selectedColor: Color(0xFFFF843D),
+                        selectedTextColor:
+                            FlutterFlowTheme.of(context).secondaryBackground,
+                        holidaysList:
+                            _model.holidayDataPage.map((e) => e.date).toList(),
+                        currentDate: getCurrentTimestamp,
+                        currentYear:
+                            _model.currentYearDataPage.lastOrNull?.year,
+                        nextYear: _model.nextYearDataPage.lastOrNull?.year,
+                        currentYearSelectableDates:
+                            _model.currentYearDataPage.lastOrNull!.leaveRemain,
+                        nextYearSelectableDates:
+                            _model.nextYearDataPage.lastOrNull!.leaveRemain,
+                        startdate: getJsonField(
+                          _model.listLeaveData.lastOrNull,
+                          r'''$.start_date''',
+                        ).toString(),
+                        enddate: getJsonField(
+                          _model.listLeaveData.lastOrNull,
+                          r'''$.end_date''',
+                        ).toString(),
+                        previousYear: '1',
+                        previousYearSelectableDates: '3',
+                      ),
+                    ),
+                  ),
+                  FFButtonWidget(
+                    onPressed: () async {
+                      await showDialog(
+                        context: context,
+                        builder: (alertDialogContext) {
+                          return WebViewAware(
+                            child: AlertDialog(
+                              title: Text(
+                                  'จำนวนวันลา ${FFAppState().selectedDatesList.length.toString()} วัน'),
+                              content: Text(functions.returnAllValueInList(
+                                  FFAppState().selectedDatesList.toList())!),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: Text('Ok'),
                                 ),
-                              );
-                            },
+                              ],
+                            ),
                           );
                         },
-                        text: FFLocalizations.of(context).getText(
-                          'lwgr5i7x' /* print date */,
-                        ),
-                        options: FFButtonOptions(
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    font: GoogleFonts.readexPro(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                          elevation: 0.0,
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                    ],
+                      );
+                    },
+                    text: FFLocalizations.of(context).getText(
+                      'lwgr5i7x' /* print date */,
+                    ),
+                    options: FFButtonOptions(
+                      height: 40.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                font: GoogleFonts.readexPro(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                                color: Colors.white,
+                                letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .fontStyle,
+                              ),
+                      elevation: 0.0,
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

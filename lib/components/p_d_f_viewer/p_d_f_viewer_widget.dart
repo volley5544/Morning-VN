@@ -67,7 +67,9 @@ class _PDFViewerWidgetState extends State<PDFViewerWidget> {
                   '8hrqora5' /*  */,
                 ),
                 icon: FaIcon(
-                  FontAwesomeIcons.times,
+                  FaIconData(const IconData(/* times */ 0xf00d,
+                      fontFamily: 'FontAwesomeSolid',
+                      fontPackage: 'font_awesome_flutter')),
                   size: 40.0,
                 ),
                 options: FFButtonOptions(

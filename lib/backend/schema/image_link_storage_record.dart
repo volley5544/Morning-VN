@@ -85,8 +85,7 @@ class ImageLinkStorageRecord extends FirestoreRecord {
 
   @override
   bool operator ==(other) =>
-      other is ImageLinkStorageRecord &&
-      reference.path.hashCode == other.reference.path.hashCode;
+      other is ImageLinkStorageRecord && reference.path == other.reference.path;
 }
 
 Map<String, dynamic> createImageLinkStorageRecordData() {
@@ -114,12 +113,12 @@ class ImageLinkStorageRecordDocumentEquality
 
   @override
   int hash(ImageLinkStorageRecord? e) => const ListEquality().hash([
-        e?.bannerImage,
-        e?.cardImage,
-        e?.blurHash,
-        e?.linkUrl,
-        e?.order,
-        e?.isHaveLink
+        const ListEquality().hash(e?.bannerImage),
+        const ListEquality().hash(e?.cardImage),
+        const ListEquality().hash(e?.blurHash),
+        const ListEquality().hash(e?.linkUrl),
+        const ListEquality().hash(e?.order),
+        const ListEquality().hash(e?.isHaveLink)
       ]);
 
   @override
